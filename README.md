@@ -1,4 +1,8 @@
 # AetherOnePi
 Open Source Radionics for the Raspberry Pi
 
-Blog: [Radionics](https://radionics.home.blog)
+... coming soon ...
+
+## Blogs
+- [Radionics](https://radionics.home.blog)
+- [Isuret Polos](https://isuretpolos.wordpress.com)
