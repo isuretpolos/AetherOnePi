@@ -71,6 +71,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
             public void run() {
                 try {
 
+                    dataService.init();
                     socketServer = new SocketServer();
 
                     try {

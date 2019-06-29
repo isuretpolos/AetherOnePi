@@ -32,7 +32,7 @@ public class DataService {
         log.info("Initializing data repository ...");
 
         try {
-            getRepository("https://github.com/radionics/radionics-database.git", "radionics");
+            getRepository("https://github.com/isuretpolos/radionics-rates.git", "radionics");
         } catch (Exception e) {
             log.error("Error while refreshing data repository!", e);
         }

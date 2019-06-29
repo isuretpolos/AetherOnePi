@@ -12,6 +12,8 @@ import processing.core.PFont;
 import processing.core.PImage;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +51,14 @@ public class GuiElements {
         this.p = p;
         cp5 = new ControlP5(p);
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
-        fonts.put("default", p.loadFont(new File("").getAbsolutePath() + "/src/main/resources/fonts/ProcessingSansPro-Semibold-14.vlw"));
+
+        try {
+            InputStream input = GuiElements.class.getResourceAsStream("/fonts/ProcessingSansPro-Semibold-14.vlw");
+            PFont defaultFont = new PFont(input);
+            fonts.put("default", defaultFont);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         whiteStyleColor.setBackground(p.color(255))
                 .setForeground(p.color(20))
