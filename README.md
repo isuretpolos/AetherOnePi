@@ -1,9 +1,12 @@
 # AetherOnePi
 Open Source Radionics for the Raspberry Pi
 
+
+
 Version 1.0 will be ready for August 2019.
 Stay tuned and subscribe to my blog(s).
 
+# Resources
 ## Blogs
 - [Radionics](https://radionics.home.blog)
 - [Isuret Polos](https://isuretpolos.wordpress.com)

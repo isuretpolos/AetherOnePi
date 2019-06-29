@@ -141,7 +141,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("WEBSITE")
                 .addButton("BOOKS")
                 .addButton("FACEBOOK")
-                .addButton("YOUTUBE");
+                .addButton("YOUTUBE")
+                .addDashboardScreen();
         guiElements
                 .selectCurrentTab("SESSION")
                 .setInitialBounds(border, posY, 150f, 14f, false)

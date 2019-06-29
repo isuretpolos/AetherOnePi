@@ -268,4 +268,8 @@ public class GuiElements {
     public void addAnalyseScreeen() {
         drawableElementList.add(new AnalyseScreen(p));
     }
+
+    public void addDashboardScreen() {
+        drawableElementList.add(new DashboardScreen(p));
+    }
 }
