@@ -31,6 +31,12 @@ public class AnalysisService {
     public AnalysisResult getAnalysisResult(Iterable<Rate> rates) {
 
         AnalysisResult analysisResult = new AnalysisResult();
+
+        if (hotbitsClient.getHotbitPackages().size() == 0) {
+            System.err.println("ERROR - not enough hotbit packages! Please use the stick-pad!");
+            return analysisResult;
+        }
+
         List<Rate> rateList = new ArrayList<>();
 
         for (Rate rate : rates) {
