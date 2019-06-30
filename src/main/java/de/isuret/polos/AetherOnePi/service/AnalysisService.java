@@ -32,74 +32,75 @@ public class AnalysisService {
 
         AnalysisResult analysisResult = new AnalysisResult();
 
-        if (hotbitsClient.getHotbitPackages().size() == 0) {
-            System.err.println("ERROR - not enough hotbit packages! Please use the stick-pad!");
-            return analysisResult;
-        }
+        try {
+            List<Rate> rateList = new ArrayList<>();
 
-        List<Rate> rateList = new ArrayList<>();
-
-        for (Rate rate : rates) {
-            rateList.add(rate);
-        }
-
-        Map<String, Integer> ratesValues = new HashMap<>();
-
-        int max = rateList.size() / 10;
-        if (max > MAX_RATELIST_SIZE) max = MAX_RATELIST_SIZE;
-        int count = 0;
-
-        while (rateList.size() > 0) {
-
-            int x = hotbitsClient.getInteger(0,rateList.size() - 1);
-            Rate rate = rateList.remove(x);
-            ratesValues.put(rate.getName(),0);
-
-            count +=1;
-
-            if (count >= max) {
-                break;
+            for (Rate rate : rates) {
+                rateList.add(rate);
             }
-        }
 
-        int biggestLevel = 0;
-        boolean analysisFinished = false;
+            Map<String, Integer> ratesValues = new HashMap<>();
 
-        while (!analysisFinished) {
-            for (String rate : ratesValues.keySet()) {
+            int max = rateList.size() / 10;
+            if (max > MAX_RATELIST_SIZE) max = MAX_RATELIST_SIZE;
+            int count = 0;
 
-                Integer energeticValue = ratesValues.get(rate);
+            while (rateList.size() > 0) {
 
-                energeticValue += hotbitsClient.getInteger(10);
+                int x = hotbitsClient.getInteger(0, rateList.size() - 1);
+                Rate rate = rateList.remove(x);
+                ratesValues.put(rate.getName(), 0);
 
-                ratesValues.put(rate, energeticValue);
+                count += 1;
 
-                if (energeticValue > biggestLevel) {
-                    biggestLevel = energeticValue;
-                }
-
-                if (biggestLevel >= MAX_HIT) {
-                    analysisFinished = true;
+                if (count >= max) {
                     break;
                 }
             }
 
-            if (piService != null) {
-                piService.toggle(AetherOnePins.CONTROL);
-                piService.delay(30);
+            int biggestLevel = 0;
+            boolean analysisFinished = false;
+
+            while (!analysisFinished) {
+                for (String rate : ratesValues.keySet()) {
+
+                    Integer energeticValue = ratesValues.get(rate);
+
+                    energeticValue += hotbitsClient.getInteger(10);
+
+                    ratesValues.put(rate, energeticValue);
+
+                    if (energeticValue > biggestLevel) {
+                        biggestLevel = energeticValue;
+                    }
+
+                    if (biggestLevel >= MAX_HIT) {
+                        analysisFinished = true;
+                        break;
+                    }
+                }
+
+                if (piService != null) {
+                    piService.toggle(AetherOnePins.CONTROL);
+                    piService.delay(30);
+                }
             }
+
+            if (piService != null) {
+                piService.high(AetherOnePins.CONTROL);
+            }
+
+            for (String rate : ratesValues.keySet()) {
+                analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate), rate, 0, 0, 0));
+            }
+
+            AnalysisResult sortedResult = analysisResult.sort().shorten(AnalyseScreen.MAX_ENTRIES);
+
+            return sortedResult;
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("ERROR - ... something gone wrong during analysis! Please use the stick-pad!");
+            return analysisResult;
         }
-
-        if (piService != null) {
-            piService.high(AetherOnePins.CONTROL);
-        }
-
-        for (String rate : ratesValues.keySet()) {
-            analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate),rate,0,0, 0));
-        }
-
-        AnalysisResult sortedResult = analysisResult.sort().shorten(AnalyseScreen.MAX_ENTRIES);
-
-        return sortedResult;
     }
 }

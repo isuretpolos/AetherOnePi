@@ -93,6 +93,12 @@ public class HotbitsClient {
 
         File hotbitFile = hotbitsFactory.createHotbitPackage(packageSize, packageFolder);
 
+        if (!hotbitFile.exists()) {
+            pseudoRandomMode = true;
+            logger.error(String.format("hotbit file %s does not exist. Switching into pseudoRandomMode!", hotbitFile.getAbsolutePath()));
+            throw null;
+        }
+
         HotbitPackage hotbitPackage = HotbitPackage.builder().fileName(hotbitFile.getName()).hotbits(FileUtils.readFileToString(hotbitFile, "UTF-8")).build();
         hotbitPackage.setOriginalSize(hotbitPackage.getHotbits().length());
 
