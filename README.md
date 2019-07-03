@@ -18,6 +18,8 @@ Stay tuned and subscribe to my blog(s).
 - [Isuret Polos](https://isuretpolos.wordpress.com)
 ## Literature
 - [My books](https://isuretpolos.wordpress.com/literature/)
+## Community
+- [Open Source Radionics](https://vk.com/club184090674)
 
 # Participation
 Please note that we have a strict [code of conduct](CODE_OF_CONDUCT.md) in our open source radionics project.

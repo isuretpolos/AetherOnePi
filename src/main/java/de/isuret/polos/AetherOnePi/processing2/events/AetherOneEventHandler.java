@@ -69,7 +69,7 @@ public class AetherOneEventHandler {
         }
 
         if ("BOOKS".equals(name)) {
-            openWebsiteInDefaultBrowser("https://radionics.home.blog");
+            openWebsiteInDefaultBrowser("https://isuretpolos.wordpress.com/literature");
             return;
         }
 
