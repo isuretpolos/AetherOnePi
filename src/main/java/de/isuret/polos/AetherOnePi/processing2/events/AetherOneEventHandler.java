@@ -58,8 +58,8 @@ public class AetherOneEventHandler {
             return;
         }
 
-        if ("FACEBOOK".equals(name)) {
-            openWebsiteInDefaultBrowser("https://www.facebook.com/groups/174120139896076");
+        if ("COMMUNITY".equals(name)) {
+            openWebsiteInDefaultBrowser("https://vk.com/club184090674");
             return;
         }
 

@@ -141,7 +141,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("DOCUMENTATION")
                 .addButton("WEBSITE")
                 .addButton("BOOKS")
-                .addButton("FACEBOOK")
+                .addButton("COMMUNITY")
                 .addButton("YOUTUBE")
                 .addDashboardScreen();
         guiElements
