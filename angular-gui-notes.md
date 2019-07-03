@@ -2,3 +2,5 @@
 - ng new project-name
 - ng add @ng-bootstrap/schematics
 - ng generate component
+- ng build
+- ng serve -o
