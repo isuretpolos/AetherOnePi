@@ -1,6 +1,15 @@
 # Documentation
 ## Quick Guide
 TODO work in progress
+
+![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/dashboard.jpg)
+
+![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/session.jpg)
+
+![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
+
+![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/broadcast.jpg)
+
 ## Developer Guide
 Note: I will not give support to the novice in java programming.
 I assume that you are a professional developer if you read this chapter.

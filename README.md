@@ -1,13 +1,9 @@
 # AetherOnePi
 Open Source Radionics for the Raspberry Pi
 
-![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/dashboard.jpg)
-
-![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/session.jpg)
+![Logo](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/94b8b3273bda20deb2be553205fbe45ed74dec3f/gui/src/assets/aetherOnePiLogo256.png)
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
-
-![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/broadcast.jpg)
 
 Version 1.0 will be ready for August 2019.
 Stay tuned and subscribe to my blog(s).
