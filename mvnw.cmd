@@ -137,6 +137,9 @@ if exist %WRAPPER_JAR% (
 )
 @REM End of extension
 
+echo installing controlP5 library in local repository
+%MAVEN_JAVA_EXE% %JVM_CONFIG_MAVEN_PROPS% %MAVEN_OPTS% %MAVEN_DEBUG_OPTS% -classpath %WRAPPER_JAR% "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" %WRAPPER_LAUNCHER% %MAVEN_CONFIG% org.apache.maven.plugins:maven-install-plugin:2.3.1:install-file -Dfile=libs/controlP5.jar -DgroupId=sojamo.de -DartifactId=controlP5 -Dversion=2.1.6 -Dpackaging=jar
+echo executing maven goal specified by user
 %MAVEN_JAVA_EXE% %JVM_CONFIG_MAVEN_PROPS% %MAVEN_OPTS% %MAVEN_DEBUG_OPTS% -classpath %WRAPPER_JAR% "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*
 if ERRORLEVEL 1 goto error
 goto end
