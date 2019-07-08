@@ -55,6 +55,12 @@ Finally **ng serve -o** for executing a mini server for the gui. The parameter -
 #### Missing ControlP5 Lib
 Call **[installLibsDependencies.bat](../installLibsDependencies.bat)** for installing [ControlP5](http://www.sojamo.de/libraries/controlP5/) library in your local repository. Unfortunately this library is not available in [maven central repository](https://www.tutorialspoint.com/maven/maven_repositories.htm). You need to do this just once for your *developer environment*. I have added this call also in **mvnw.cmd**.
 
+    installLibsDependencies.bat
+    
+or 
+
+    mvnw
+
 #### Build the project
     mvn clean install
 
