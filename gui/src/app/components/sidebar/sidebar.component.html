@@ -1,4 +1,4 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-sm-1 d-none d-md-block bg-light sidebar">
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
@@ -19,13 +19,13 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a routerLink="analysis" class="nav-link">
+        <a routerLink="analysis" class="nav-link" (click)="setDatabaseName('homeopathy')">
           <span data-feather="file-text"></span>
           Homeopathy
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a routerLink="analysis" class="nav-link" (click)="setDatabaseName('agriculture')">
           <span data-feather="file-text"></span>
           Agriculture
         </a>

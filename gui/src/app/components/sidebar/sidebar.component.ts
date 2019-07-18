@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ContextService} from "../../services/context.service";
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private contextService:ContextService) { }
 
   ngOnInit() {
+  }
+
+  setDatabaseName(databaseName:string):void {
+    this.contextService.setDatabaseName(databaseName);
   }
 
 }

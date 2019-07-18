@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Context} from "../../domain/context";
+import {ContextService} from "../../services/context.service";
 
 @Component({
   selector: 'app-analysis',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalysisComponent implements OnInit {
 
-  constructor() { }
+  context:Context;
+
+  constructor(private contextService:ContextService) { }
 
   ngOnInit() {
+    this.context = this.contextService.getContext();
   }
 
 }
