@@ -5,12 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.dizitart.no2.objects.Id;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @Data
 @Builder
@@ -18,6 +16,8 @@ import java.util.List;
 @AllArgsConstructor
 public class AnalysisResult implements Serializable {
 
+    @Id
+    private UUID id;
     private List<RateObject> rateObjects = new ArrayList<>();
 
     @JsonIgnore
