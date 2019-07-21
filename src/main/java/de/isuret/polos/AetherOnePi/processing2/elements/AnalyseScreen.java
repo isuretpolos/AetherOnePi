@@ -70,12 +70,20 @@ public class AnalyseScreen implements IDrawableElement {
                 p.stroke(255);
                 p.text("BROADCAST",935,y-2);
 
-                if (rate.getUrl() != null) {
+                if (browserSupported && rate.getUrl() != null) {
                     p.fill(3, 177, 252);
                     p.rect(1035,y-15,40,15);
                     p.fill(0);
                     p.stroke(255);
                     p.text("URL",1040,y-2);
+                }
+
+                if (browserSupported) {
+                    p.fill(3, 170, 252);
+                    p.rect(1080,y-15,65,15);
+                    p.fill(0);
+                    p.stroke(255);
+                    p.text("GOOGLE",1085,y-2);
                 }
 
                 //MOUSELINE
@@ -97,7 +105,11 @@ public class AnalyseScreen implements IDrawableElement {
                         }
 
                         if (browserSupported && rate.getUrl() != null && (p.mouseButton == p.RIGHT || (p.mouseX >= 1040 && p.mouseX < 1080))) {
-                            openUrl(rate);
+                            openUrl(rate.getUrl());
+                        }
+
+                        if (browserSupported && (p.mouseButton == p.RIGHT || (p.mouseX >= 1080 && p.mouseX < 1145))) {
+                            openUrl("https://www.google.com/search?q=" + rate.getNameOrRate().replaceAll(" ","+"));
                         }
                     }
                 }
@@ -147,9 +159,9 @@ public class AnalyseScreen implements IDrawableElement {
         }
     }
 
-    public void openUrl(RateObject rate) {
+    public void openUrl(String url) {
         try {
-            Desktop.getDesktop().browse(new URI(rate.getUrl()));
+            Desktop.getDesktop().browse(new URI(url));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {
