@@ -2,10 +2,10 @@ package de.isuret.polos.AetherOnePi.service;
 
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Rate;
-import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
+import de.isuret.polos.AetherOnePi.utils.RateUtils;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -91,8 +91,10 @@ public class AnalysisService {
             }
 
             for (String rate : ratesValues.keySet()) {
-                analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate), rate, 0, 0, 0));
+                RateUtils.insertRate(analysisResult, ratesValues, rate);
             }
+
+            System.out.println(analysisResult);
 
             AnalysisResult sortedResult = analysisResult.sort().shorten(AnalyseScreen.MAX_ENTRIES);
 

@@ -11,6 +11,7 @@ public class RateObject {
 
     private Integer energeticValue;
     private String nameOrRate;
+    private String url;
     private Integer gv = 0;
     private Integer recurring = 0;
 

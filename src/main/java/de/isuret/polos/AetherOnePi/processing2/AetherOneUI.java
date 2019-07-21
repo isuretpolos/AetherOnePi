@@ -44,7 +44,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     @Setter
     private Case caseObject = new Case();
     @Setter
-    private String selectedDatabase = "HOMEOPATHY_Clarke_NO_RATES.txt";
+    private String selectedDatabase = "HOMEOPATHY_Clarke_With_MateriaMedicaUrls.txt";
     @Setter
     private AnalysisResult analysisResult;
     @Setter
