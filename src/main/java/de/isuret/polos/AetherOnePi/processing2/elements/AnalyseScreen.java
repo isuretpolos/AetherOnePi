@@ -5,14 +5,24 @@ import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.StickPad;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 public class AnalyseScreen implements IDrawableElement {
 
     private AetherOneUI p;
     private StickPad stickPad = new StickPad();
     public final static int MAX_ENTRIES = 21;
+    private boolean browserSupported = false;
 
     public AnalyseScreen(AetherOneUI p) {
         this.p = p;
+
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            browserSupported = true;
+        }
     }
 
     @Override
@@ -47,10 +57,34 @@ public class AnalyseScreen implements IDrawableElement {
             p.text("GV", 804, y);
             p.text("GV RE", 844, y);
             p.text("REC", 890, y);
+            p.text("ACTIONS", 925, y);
             p.line(35, y + 2, 1200, y + 2);
             y += 18;
 
             for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
+
+                // ACTION BUTTONS
+                p.fill(0,255,0);
+                p.rect(930,y-15,100,15);
+                p.fill(0);
+                p.stroke(255);
+                p.text("BROADCAST",935,y-2);
+
+                if (browserSupported && rate.getUrl() != null) {
+                    p.fill(3, 177, 252);
+                    p.rect(1035,y-15,40,15);
+                    p.fill(0);
+                    p.stroke(255);
+                    p.text("URL",1040,y-2);
+                }
+
+                if (browserSupported) {
+                    p.fill(3, 170, 252);
+                    p.rect(1080,y-15,65,15);
+                    p.fill(0);
+                    p.stroke(255);
+                    p.text("GOOGLE",1085,y-2);
+                }
 
                 //MOUSELINE
                 if (p.mouseY >= y - 18 && p.mouseY < y && p.mouseX < 1200) { //de breedde van de muis bij klikken
@@ -66,8 +100,16 @@ public class AnalyseScreen implements IDrawableElement {
                             ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
                         }
 
-                        if (p.mouseButton == p.RIGHT) {
+                        if (p.mouseButton == p.RIGHT || (p.mouseX >= 935 && p.mouseX < 1030)) {
                             p.getAetherOneEventHandler().broadcastNow();
+                        }
+
+                        if (browserSupported && rate.getUrl() != null && (p.mouseButton == p.RIGHT || (p.mouseX >= 1040 && p.mouseX < 1080))) {
+                            openUrl(rate.getUrl());
+                        }
+
+                        if (browserSupported && (p.mouseButton == p.RIGHT || (p.mouseX >= 1080 && p.mouseX < 1145))) {
+                            openUrl("https://www.google.com/search?q=" + rate.getNameOrRate().replaceAll(" ","+"));
                         }
                     }
                 }
@@ -113,6 +155,17 @@ public class AnalyseScreen implements IDrawableElement {
             p.line(800, 100, 800, y - 15);
             p.line(840, 100, 840, y - 15);
             p.line(885, 100, 885, y - 15);
+            p.line(920, 100, 920, y - 15);
+        }
+    }
+
+    public void openUrl(String url) {
+        try {
+            Desktop.getDesktop().browse(new URI(url));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
         }
     }
 

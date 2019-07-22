@@ -3,6 +3,7 @@ package de.isuret.polos.AetherOnePi.domain;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
 import de.isuret.polos.AetherOnePi.service.DataService;
+import de.isuret.polos.AetherOnePi.utils.RateUtils;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -64,7 +65,7 @@ public class StickPad {
         }
 
         for (String rate : ratesValues.keySet()) {
-            analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate),rate,0,0, 0));
+            RateUtils.insertRate(analysisResult, ratesValues, rate);
         }
 
         return analysisResult.sort();
