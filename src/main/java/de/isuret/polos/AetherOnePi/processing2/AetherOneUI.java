@@ -1,15 +1,10 @@
 package de.isuret.polos.AetherOnePi.processing2;
 
 import controlP5.ControlEvent;
-import controlP5.Matrix;
-import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
-import de.isuret.polos.AetherOnePi.domain.Case;
-import de.isuret.polos.AetherOnePi.service.DataService;
-import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
-import javafx.embed.swing.JFXPanel;
-import lombok.Getter;
 import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
 import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
+import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
+import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
 import de.isuret.polos.AetherOnePi.processing.communication.SocketServer;
@@ -19,15 +14,15 @@ import de.isuret.polos.AetherOnePi.processing2.elements.DashboardElement;
 import de.isuret.polos.AetherOnePi.processing2.elements.GuiElements;
 import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
 import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
+import de.isuret.polos.AetherOnePi.service.DataService;
+import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
+import lombok.Getter;
 import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import processing.core.PApplet;
 
-import javax.swing.*;
-import java.io.File;
 import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
 
 @Getter
 public class AetherOneUI extends PApplet implements IStatusReceiver {
@@ -85,31 +80,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 }
             }
         }).start();
-
-        initializeJavaFX();
     }
 
     public void setTitle(String title) {
         surface.setTitle(title);
-    }
-
-    /**
-     * initializes JavaFX environment for a better sound playback than processing
-     */
-    private void initializeJavaFX() {
-        final CountDownLatch latch = new CountDownLatch(1);
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new JFXPanel();
-                latch.countDown();
-            }
-        });
-
-        try {
-            latch.await();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public void setup() {

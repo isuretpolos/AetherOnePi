@@ -5,7 +5,6 @@ import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.exceptions.AetherOnePiException;
-import de.isuret.polos.AetherOnePi.processing2.sound.AetherOneSoundUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -144,7 +143,6 @@ public class HotbitsHandler {
             }
 
             p.println("We have now " + hotbits.size() + " hot seeds!");
-            AetherOneSoundUtils.say("Ready for radionics!", "readyForRadionics");
         } catch (Exception e) {
             throw new AetherOnePiException("unable to retrieve hotbits from AetherOnePi server", e);
         }
