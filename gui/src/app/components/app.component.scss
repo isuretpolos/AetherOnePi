@@ -18,6 +18,12 @@ body {
   font-family: Nunito,sans-serif !important;
 }
 
+@media (min-width: 1024px) {
+  .ml-sm-auto, .mx-sm-auto {
+    margin-left: 200px !important;
+  }
+}
+
 main {
   color: #ffffff;
 }
