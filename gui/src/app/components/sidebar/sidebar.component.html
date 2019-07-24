@@ -1,4 +1,4 @@
-<nav class="col-sm-1 d-none d-md-block bg-light sidebar">
+<nav class="col-sm-2 d-none d-md-block bg-light sidebar">
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <li class="nav-item">
@@ -8,7 +8,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">
+        <a routerLink="session" class="nav-link btn-light" style="color: black !important;">
+          <i class="fas fa-male"></i>
           Session
         </a>
       </li>
@@ -19,43 +20,43 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a routerLink="analysis" class="nav-link" (click)="setDatabaseName('homeopathy')">
+        <a routerLink="analysis" class="nav-link btn-primary" (click)="setDatabaseName('homeopathy')">
           <i class="fas fa-prescription-bottle"></i>
           Homeopathy
         </a>
       </li>
       <li class="nav-item">
-        <a routerLink="analysis" class="nav-link" (click)="setDatabaseName('agriculture')">
+        <a routerLink="analysis" class="nav-link btn-success" (click)="setDatabaseName('agriculture')">
           <i class="fas fa-compass"></i>
           Agriculture
         </a>
       </li>
       <li class="nav-item">
-        <a routerLink="analysis" class="nav-link" (click)="setDatabaseName('agriculture')">
+        <a routerLink="analysis" class="nav-link btn-danger" (click)="setDatabaseName('energy')">
           <i class="fas fa-battery-half"></i>
           Energy
         </a>
       </li>
       <li class="nav-item">
-        <a routerLink="analysis" class="nav-link" (click)="setDatabaseName('agriculture')">
+        <a routerLink="analysis" class="nav-link btn-warning" style="color: black !important;" (click)="setDatabaseName('biology')">
           <i class="fas fa-diagnoses"></i>
           Biology
         </a>
       </li>
       <li class="nav-item">
-        <a routerLink="analysis" class="nav-link" (click)="setDatabaseName('agriculture')">
+        <a routerLink="analysis" class="nav-link btn-secondary" (click)="setDatabaseName('chemical')">
           <i class="fas fa-diagnoses"></i>
           Chemical
         </a>
       </li>
       <li class="nav-item">
-        <a routerLink="analysis" class="nav-link" (click)="setDatabaseName('agriculture')">
+        <a routerLink="analysis" class="nav-link btn-info" (click)="setDatabaseName('essences')">
           <i class="fas fa-diagnoses"></i>
           Essences
         </a>
       </li>
       <li class="nav-item">
-        <a routerLink="analysis" class="nav-link" (click)="setDatabaseName('agriculture')">
+        <a routerLink="analysis" class="nav-link btn-dark" (click)="setDatabaseName('food')">
           <i class="fas fa-diagnoses"></i>
           Food
         </a>

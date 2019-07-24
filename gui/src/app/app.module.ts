@@ -8,13 +8,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { SessionComponent } from './components/session/session.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     AnalysisComponent,
-    SidebarComponent
+    SidebarComponent,
+    SessionComponent
   ],
   imports: [
     BrowserModule,

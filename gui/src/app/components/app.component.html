@@ -1,5 +1,6 @@
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-1 mr-0" routerLink=""><img src="assets/aetherOnePiLogo64.png" style="width: 32px" /> AetherOnePi</a>
+  <a class="navbar-brand mr-sm-4" routerLink="">
+    <b>AetherOnePi V1.1</b></a>
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
@@ -10,13 +11,9 @@
 
 <div class="container-fluid">
   <div class="row">
-
     <app-sidebar></app-sidebar>
-
     <main role="main" class="col-sm-9 ml-sm-auto col-lg-10 px-4">
       <router-outlet></router-outlet>
-<!--      <canvas class="my-4 w-100" id="myChart" width="100%" height="100%"></canvas>-->
-
     </main>
   </div>
 </div>
