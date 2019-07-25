@@ -1,12 +1,11 @@
-# AetherOnePi
-Open Source Radionics for the Raspberry Pi
-
 ![Logo](https://github.com/isuretpolos/AetherOnePi/raw/master/gui/src/assets/AetherOneLogo.png)
+#AetherOnePi
+Open Source Radionics for the Raspberry Pi
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
 
-Version 1.0 will be ready for August 2019.
-Stay tuned and subscribe to my blog(s).
+Version 1.0 (Standalone Client) will be ready for August 2019.
+Stay tuned and subscribe to my blog(s) and join the [community](https://vk.com/club184090674).
 
 # Resources
 ## Documentation
