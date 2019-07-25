@@ -1,21 +1,48 @@
 import Map from 'ol/Map';
 import View from 'ol/View';
-import TileLayer from 'ol/layer/Tile';
-import XYZ from 'ol/source/XYZ';
+import Draw from 'ol/interaction/Draw.js';
+import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
+import {OSM, Vector as VectorSource} from 'ol/source.js';
 import {defaults as defaultControls, FullScreen} from 'ol/control.js';
 
 export class MapObject {
-  map: Map = new Map({
+
+  constructor() {
+    this.addInteraction('LineString');
+  }
+
+  /**
+   * OpenStreetMaps
+   */
+  private raster = new TileLayer({
+    source: new OSM()
+  });
+
+  private draw: Draw;
+  private source: VectorSource = new VectorSource({wrapX: false});
+  private vector = new VectorLayer({
+    source: this.source
+  });
+
+  private addInteraction(typeSelect:string) {
+    var value = typeSelect;
+    if (value !== 'None') {
+      this.draw = new Draw({
+        source: this.source,
+        type: typeSelect,
+        freehand: true
+      });
+     this.map.addInteraction(this.draw);
+    }
+  }
+
+  public map: Map = new Map({
     target: 'map',
     controls: defaultControls().extend([
       new FullScreen()
     ]),
     layers: [
-      new TileLayer({
-        source: new XYZ({
-          url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        })
-      })
+      this.raster, this.vector
     ],
     view: new View({
       center: [0, 0],
