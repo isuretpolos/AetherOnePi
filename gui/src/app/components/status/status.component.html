@@ -1,7 +1,16 @@
-<ul *ngIf="aetherOnePiStatus != null">
-  <li>hotbitsPackages = {{aetherOnePiStatus.hotbitsPackages}}</li>
-  <li>broadcasting = {{aetherOnePiStatus.broadcasting}}</li>
-  <li>text = {{aetherOnePiStatus.text}}</li>
-</ul>
+<div class="statusComponent">
+  <ul *ngIf="aetherOnePiStatus != null">
+    <li *ngIf="aetherOnePiStatus.pseudoRandom == false"><span class="badge badge-danger">Simulation Mode</span></li>
+    <li><span class="badge badge-primary">hotbitsPackages {{aetherOnePiStatus.hotbitsPackages}}</span></li>
+    <li *ngIf="aetherOnePiStatus.broadcasting == true"><span class="badge badge-success">broadcasting</span></li>
+    <li *ngIf="aetherOnePiStatus.grounding == true"><span class="badge badge-success">grounding</span></li>
+    <li *ngIf="aetherOnePiStatus.copying == true"><span class="badge badge-success">copying</span></li>
+    <li *ngIf="aetherOnePiStatus.clearing == true"><span class="badge badge-info">clearing</span></li>
+    <li *ngIf="aetherOnePiStatus.text != null && aetherOnePiStatus.text.length > 0"><span
+      class="badge badge-secondary">{{aetherOnePiStatus.text}}</span></li>
+  </ul>
 
-<span *ngIf="aetherOnePiStatus == null" class="badge badge-warning">No connection to AetherOnePi Server</span>
+  <span *ngIf="aetherOnePiStatus == null" class="badge badge-warning">No connection to AetherOnePi Server</span>
+  <p *ngIf="aetherOnePiStatus != null && aetherOnePiStatus.progress > 0"><ngb-progressbar type="primary" [value]="aetherOnePiStatus.progress" [striped]="true" [animated]="true"><i>progress {{aetherOnePiStatus.progress}}%</i></ngb-progressbar></p>
+  <p *ngIf="aetherOnePiStatus != null && aetherOnePiStatus.queue > 0"><ngb-progressbar type="primary" [value]="aetherOnePiStatus.queue" [striped]="true" [animated]="true"><i>queue {{aetherOnePiStatus.queue}}%</i></ngb-progressbar></p>
+</div>
