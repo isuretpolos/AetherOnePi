@@ -1,7 +1,7 @@
 # AetherOnePi
 Open Source Radionics for the Raspberry Pi
 
-![Logo](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/94b8b3273bda20deb2be553205fbe45ed74dec3f/gui/src/assets/aetherOnePiLogo256.png)
+![Logo](https://github.com/isuretpolos/AetherOnePi/raw/master/gui/src/assets/AetherOneLogo.png)
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
 
