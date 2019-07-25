@@ -21,3 +21,8 @@
               "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-brands.css",
               "node_modules/@fortawesome/fontawesome-free-webfonts/css/fa-solid.css"
     ]
+
+# Interesting libs
+OpenLayers
+
+    yarn add ol@latest
