@@ -11,6 +11,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import { SessionComponent } from './components/session/session.component';
 import { StatusComponent } from './components/status/status.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { StatusComponent } from './components/status/status.component';
     AnalysisComponent,
     SidebarComponent,
     SessionComponent,
-    StatusComponent
+    StatusComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
