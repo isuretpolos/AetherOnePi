@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
+import {EMPTY, interval, Observable, of} from "rxjs";
 import {AetherOnePiStatus} from "../../domain/AetherOnePiStatus";
 // TODO how to switch environment???
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {environment} from "$environment/environment";
+import {HttpClient, HttpErrorResponse, HttpResponse} from "@angular/common/http";
+import {catchError, startWith, switchMap} from "rxjs/operators";
+import {empty} from "rxjs/internal/Observer";
 
 @Component({
   selector: 'app-status',
@@ -12,7 +14,6 @@ import {HttpClient} from "@angular/common/http";
 })
 export class StatusComponent implements OnInit {
 
-  $aetherOnePiStatus:Observable<AetherOnePiStatus>;
   aetherOnePiStatus:AetherOnePiStatus;
   serverUrl:string = `${environment.serverUrl}:${environment.serverPort}`;
 
@@ -21,12 +22,18 @@ export class StatusComponent implements OnInit {
   ngOnInit() {
 
     console.log(`get status from ${this.serverUrl}/status`);
-    this.$aetherOnePiStatus = this.getServerStatus();
-    this.$aetherOnePiStatus.subscribe(status => this.aetherOnePiStatus = status);
+
+    interval(5000)
+      .pipe(
+        startWith(0),
+        switchMap(() => this.http.get<AetherOnePiStatus>(`${this.serverUrl}/status`))
+      )
+      // .pipe(catchError(() => {return empty<AetherOnePiStatus>()}))
+      .subscribe(res => {
+        console.log('polling status ...');
+        this.aetherOnePiStatus = res;
+      });
   }
 
-  getServerStatus():Observable<AetherOnePiStatus> {
-    return this.http.get<AetherOnePiStatus>(`${this.serverUrl}/status`);
-  }
 
 }
