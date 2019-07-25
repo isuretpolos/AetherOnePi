@@ -23,6 +23,7 @@
     "@ng-bootstrap/ng-bootstrap": "^2.0.0-alpha.0",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "bootstrap": "^4.0.0",
+    "rx-polling": "^1.0.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
