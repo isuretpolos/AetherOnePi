@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {EMPTY, interval, Observable, of} from "rxjs";
 import {AetherOnePiStatus} from "../../domain/AetherOnePiStatus";
 // TODO how to switch environment???
 import {environment} from "$environment/environment";
-import {HttpClient, HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {catchError, startWith, switchMap} from "rxjs/operators";
-import {empty} from "rxjs/internal/Observer";
+import {HttpClient} from "@angular/common/http";
+import polling from 'rx-polling';
 
 @Component({
   selector: 'app-status',
@@ -23,16 +21,26 @@ export class StatusComponent implements OnInit {
 
     console.log(`get status from ${this.serverUrl}/status`);
 
-    interval(5000)
-      .pipe(
-        startWith(0),
-        switchMap(() => this.http.get<AetherOnePiStatus>(`${this.serverUrl}/status`))
-      )
-      // .pipe(catchError(() => {return empty<AetherOnePiStatus>()}))
-      .subscribe(res => {
+    polling(this.http.get<AetherOnePiStatus>(`${this.serverUrl}/status`), { interval: 5000 })
+      .subscribe((status) => {
         console.log('polling status ...');
-        this.aetherOnePiStatus = res;
+        this.aetherOnePiStatus = status;
+      }, (error) => {
+        // The Observable will throw if it's not able to recover after N attempts
+        // By default it will attempts 9 times with exponential delay between each other.
+        console.error(error);
       });
+
+    // interval(5000)
+    //   .pipe(
+    //     startWith(0),
+    //     switchMap(() => this.http.get<AetherOnePiStatus>(`${this.serverUrl}/status`))
+    //   )
+    //   // .pipe(catchError(() => {return empty<AetherOnePiStatus>()}))
+    //   .subscribe(res => {
+    //     console.log('polling status ...');
+    //     this.aetherOnePiStatus = res;
+    //   });
   }
 
 

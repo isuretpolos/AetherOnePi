@@ -43,6 +43,7 @@ public class RestConnector {
         aetherOnePiStatus.setHotbitsPackages(hotbitsClient.getHotbitPackages().size());
         aetherOnePiStatus.setPseudoRandom(hotbitsClient.isPseudoRandomMode());
         aetherOnePiStatus.setBroadcasting(broadCastService.getBroadcasting());
+        aetherOnePiStatus.setText(UUID.randomUUID().toString());
         return aetherOnePiStatus;
     }
 
