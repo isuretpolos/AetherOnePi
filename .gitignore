@@ -6,6 +6,7 @@ temporaryDashboardText.txt
 /data/
 /config/
 /images/
+/gui//node_modules
 *.log
 !.mvn/wrapper/maven-wrapper.jar
 
