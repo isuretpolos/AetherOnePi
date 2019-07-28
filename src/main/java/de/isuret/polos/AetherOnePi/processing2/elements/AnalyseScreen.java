@@ -9,13 +9,17 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Calendar;
+import java.util.Date;
 
 public class AnalyseScreen implements IDrawableElement {
 
     private AetherOneUI p;
     private StickPad stickPad = new StickPad();
-    public final static int MAX_ENTRIES = 21;
     private boolean browserSupported = false;
+    private Date lastClick = Calendar.getInstance().getTime();
+
+    public final static int MAX_ENTRIES = 21;
 
     public AnalyseScreen(AetherOneUI p) {
         this.p = p;
@@ -93,23 +97,11 @@ public class AnalyseScreen implements IDrawableElement {
                     p.rect(33, y - 16, 1160, 18);
 
                     if (p.mousePressed) {
-                        ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText(rate.getNameOrRate());
-                        if (rate.getGv() > 0) {
-                            ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText(String.valueOf(rate.getGv()));
-                        } else {
-                            ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
-                        }
 
-                        if (p.mouseButton == p.RIGHT || (p.mouseX >= 935 && p.mouseX < 1030)) {
-                            p.getAetherOneEventHandler().broadcastNow();
-                        }
-
-                        if (browserSupported && rate.getUrl() != null && (p.mouseButton == p.RIGHT || (p.mouseX >= 1040 && p.mouseX < 1080))) {
-                            openUrl(rate.getUrl());
-                        }
-
-                        if (browserSupported && (p.mouseButton == p.RIGHT || (p.mouseX >= 1080 && p.mouseX < 1145))) {
-                            openUrl("https://www.google.com/search?q=" + rate.getNameOrRate().replaceAll(" ","+"));
+                        // Prevent multiple clicks
+                        if (Calendar.getInstance().getTime().getTime() - 1000 >= lastClick.getTime()) {
+                            performClickEvent(rate);
+                            lastClick = Calendar.getInstance().getTime();
                         }
                     }
                 }
@@ -156,6 +148,27 @@ public class AnalyseScreen implements IDrawableElement {
             p.line(840, 100, 840, y - 15);
             p.line(885, 100, 885, y - 15);
             p.line(920, 100, 920, y - 15);
+        }
+    }
+
+    public void performClickEvent(RateObject rate) {
+        ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText(rate.getNameOrRate());
+        if (rate.getGv() > 0) {
+            ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText(String.valueOf(rate.getGv()));
+        } else {
+            ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
+        }
+
+        if (p.mouseButton == p.RIGHT || (p.mouseX >= 935 && p.mouseX < 1030)) {
+            p.getAetherOneEventHandler().broadcastNow();
+        }
+
+        if (browserSupported && rate.getUrl() != null && (p.mouseButton == p.RIGHT || (p.mouseX >= 1040 && p.mouseX < 1080))) {
+            openUrl(rate.getUrl());
+        }
+
+        if (browserSupported && (p.mouseButton == p.RIGHT || (p.mouseX >= 1080 && p.mouseX < 1145))) {
+            openUrl("https://www.google.com/search?q=" + rate.getNameOrRate().replaceAll(" ","+"));
         }
     }
 
