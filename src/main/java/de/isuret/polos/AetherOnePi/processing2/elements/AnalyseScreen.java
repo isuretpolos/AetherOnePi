@@ -4,6 +4,7 @@ import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.StickPad;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
+import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 
 import java.awt.*;
 import java.io.IOException;
@@ -12,12 +13,12 @@ import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AnalyseScreen implements IDrawableElement {
+public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
     private AetherOneUI p;
     private StickPad stickPad = new StickPad();
     private boolean browserSupported = false;
-    private Date lastClick = Calendar.getInstance().getTime();
+    private boolean mouseClickOccurred = false;
 
     public final static int MAX_ENTRIES = 21;
 
@@ -68,26 +69,26 @@ public class AnalyseScreen implements IDrawableElement {
             for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
 
                 // ACTION BUTTONS
-                p.fill(0,255,0);
-                p.rect(930,y-15,100,15);
+                p.fill(0, 255, 0);
+                p.rect(930, y - 15, 100, 15);
                 p.fill(0);
                 p.stroke(255);
-                p.text("BROADCAST",935,y-2);
+                p.text("BROADCAST", 935, y - 2);
 
                 if (browserSupported && rate.getUrl() != null) {
                     p.fill(3, 177, 252);
-                    p.rect(1035,y-15,40,15);
+                    p.rect(1035, y - 15, 40, 15);
                     p.fill(0);
                     p.stroke(255);
-                    p.text("URL",1040,y-2);
+                    p.text("URL", 1040, y - 2);
                 }
 
                 if (browserSupported) {
                     p.fill(3, 170, 252);
-                    p.rect(1080,y-15,65,15);
+                    p.rect(1080, y - 15, 65, 15);
                     p.fill(0);
                     p.stroke(255);
-                    p.text("GOOGLE",1085,y-2);
+                    p.text("GOOGLE", 1085, y - 2);
                 }
 
                 //MOUSELINE
@@ -96,13 +97,10 @@ public class AnalyseScreen implements IDrawableElement {
                     p.fill(10, 255, 10, 40);
                     p.rect(33, y - 16, 1160, 18);
 
-                    if (p.mousePressed) {
-
+                    if (mouseClickOccurred) {
+                        mouseClickOccurred = false;
                         // Prevent multiple clicks
-                        if (Calendar.getInstance().getTime().getTime() - 1000 >= lastClick.getTime()) {
-                            performClickEvent(rate);
-                            lastClick = Calendar.getInstance().getTime();
-                        }
+                        performClickEvent(rate);
                     }
                 }
 
@@ -168,7 +166,7 @@ public class AnalyseScreen implements IDrawableElement {
         }
 
         if (browserSupported && (p.mouseButton == p.RIGHT || (p.mouseX >= 1080 && p.mouseX < 1145))) {
-            openUrl("https://www.google.com/search?q=" + rate.getNameOrRate().replaceAll(" ","+"));
+            openUrl("https://www.google.com/search?q=" + rate.getNameOrRate().replaceAll(" ", "+"));
         }
     }
 
@@ -206,5 +204,10 @@ public class AnalyseScreen implements IDrawableElement {
     @Override
     public String getAssignedTabName() {
         return "ANALYZE";
+    }
+
+    @Override
+    public void mouseClicked() {
+        this.mouseClickOccurred = true;
     }
 }
