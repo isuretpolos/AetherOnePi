@@ -9,7 +9,7 @@ You need [Java Runtime 8](https://java.com/en/download/help/download_options.xml
     java -version
 
 ### Start the Standalone Client
- ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/startGuiBat.jpg)
+ ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/startGuiBat.JPG)
  
  On Windows doubleclick on "startGui.bat". Or on other systems like MacOS or Linux you can open a terminal and type
  
