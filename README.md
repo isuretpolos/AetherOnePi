@@ -1,6 +1,6 @@
 ![Logo](https://github.com/isuretpolos/AetherOnePi/raw/master/gui/src/assets/AetherOneLogo.png)
 
-#AetherOnePi
+# AetherOnePi
 
 Open Source Radionics for the Raspberry Pi
 
