@@ -84,6 +84,13 @@
             <version>2.1.6</version>
         </dependency>
 
+        <!-- MacOS missing class bugfix -->
+        <dependency>
+            <groupId>processing.org</groupId>
+            <artifactId>appleJar</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <dependency>
             <groupId>com.github.goxr3plus</groupId>
             <artifactId>java-google-speech-api</artifactId>
