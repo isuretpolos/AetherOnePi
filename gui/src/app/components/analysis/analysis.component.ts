@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Context} from "../../domain/context";
 import {ContextService} from "../../services/context.service";
 import {AetherServerService} from "../../services/aether-server.service";
+import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-analysis',
@@ -10,13 +11,21 @@ import {AetherServerService} from "../../services/aether-server.service";
 })
 export class AnalysisComponent implements OnInit {
 
-  context:Context;
+  context: Context;
+  analysisSettingsForm: FormGroup;
 
-  constructor(private contextService:ContextService, private aetherServerService: AetherServerService) { }
+  constructor(
+    private contextService: ContextService,
+    private aetherServerService: AetherServerService,
+    private formbuilder: FormBuilder
+  ) {
+  }
 
   ngOnInit() {
     this.context = this.contextService.getContext();
-    this.aetherServerService.getAllRateNames().subscribe(rates => console.log(rates));
+    this.analysisSettingsForm = this.formbuilder.group({
+      rateNames: []
+    });
   }
 
 }
