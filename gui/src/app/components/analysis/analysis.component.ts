@@ -28,4 +28,8 @@ export class AnalysisComponent implements OnInit {
     });
   }
 
+  selectRateName() {
+    console.log(this.analysisSettingsForm.getRawValue().rateNames);
+  }
+
 }

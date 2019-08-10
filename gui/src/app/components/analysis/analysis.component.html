@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <p>Analysis for {{ context.databaseName }}</p>
   <form [formGroup]="analysisSettingsForm" *ngIf="context; else loading">
-    <select class="custom-select" formControlName="rateNames">
+    <select class="custom-select" formControlName="rateNames" (ngModelChange)="selectRateName()">
       <option [value]="rate" *ngFor="let rate of context.rateNames">{{rate}}</option>
     </select>
   </form>
