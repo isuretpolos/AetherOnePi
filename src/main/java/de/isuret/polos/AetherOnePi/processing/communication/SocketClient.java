@@ -28,9 +28,13 @@ public class SocketClient {
 
     public void startConnection(String ip, int port) throws IOException {
         address = ip;
-        clientSocket = new Socket(ip, port);
-        out = new PrintWriter(clientSocket.getOutputStream(), true);
-        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        try {
+            clientSocket = new Socket(ip, port);
+            out = new PrintWriter(clientSocket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public AetherOnePiStatus sendStatus(AetherOnePiStatus status) throws IOException {

@@ -1,12 +1,42 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <p>Analysis for {{ context.databaseName }}</p>
-  <form [formGroup]="analysisSettingsForm" *ngIf="context; else loading">
-    <select class="custom-select text-light bg-dark" formControlName="rateNames" (ngModelChange)="selectRateName()">
-      <option [value]="rate" *ngFor="let rate of rateNames">{{rate}}</option>
-    </select>
+  <form class="form-inline" [formGroup]="analysisSettingsForm" *ngIf="context; else loading">
+    <div class="form-group mx-sm-3 mb-2">
+      <select class="custom-select text-light bg-dark" formControlName="rateNames" (ngModelChange)="selectRateName()">
+        <option [value]="rate" *ngFor="let rate of rateNames">{{rate}}</option>
+      </select>
+    </div>
+    <button class="btn btn-success mb-2" (click)="analyze()">ANALYZE</button>
   </form>
 
   <ng-template #loading>
     Loading Analysis Settings ...
   </ng-template>
+</div>
+
+<div *ngIf="analysisResult != null">
+  <table class="table table-dark table-bordered">
+    <thead>
+    <tr>
+      <th scope="col">NO</th>
+      <th scope="col">EV</th>
+      <th scope="col">RATE / SIGNATURE</th>
+      <th scope="col">GV</th>
+      <th scope="col">GV REC</th>
+      <th scope="col">REC</th>
+      <th scope="col">ACTIONS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let rateObject of analysisResult.rateObjects">
+      <th scope="row">2</th>
+      <td>{{rateObject.energeticValue}}</td>
+      <td>{{rateObject.nameOrRate}}</td>
+      <td>{{rateObject.gv}}</td>
+      <td>{{rateObject.recurringGeneralVitality}}</td>
+      <td>{{rateObject.recurring}}</td>
+      <td><button class="btn btn-success btn-sm">BROADCAST</button></td>
+    </tr>
+    </tbody>
+  </table>
 </div>

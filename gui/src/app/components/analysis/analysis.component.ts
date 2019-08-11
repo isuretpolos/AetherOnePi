@@ -3,6 +3,7 @@ import {Context} from "../../domain/context";
 import {ContextService} from "../../services/context.service";
 import {AetherServerService} from "../../services/aether-server.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {AnalysisResult} from "../../domain/analysisResult";
 
 @Component({
   selector: 'app-analysis',
@@ -14,6 +15,7 @@ export class AnalysisComponent implements OnInit {
   context: Context;
   public rateNames: string[];
   public analysisSettingsForm: FormGroup;
+  public analysisResult: AnalysisResult;
 
   constructor(
     private contextService: ContextService,
@@ -37,6 +39,14 @@ export class AnalysisComponent implements OnInit {
 
   selectRateName() {
     console.log(this.analysisSettingsForm.getRawValue().rateNames);
+  }
+
+  analyze() {
+    console.log('analyze: ' + this.analysisSettingsForm.getRawValue().rateNames);
+    this.aetherServerService.analyze(this.analysisSettingsForm.getRawValue().rateNames).subscribe(data => {
+      console.log(data);
+      this.analysisResult = data;
+    })
   }
 
 }

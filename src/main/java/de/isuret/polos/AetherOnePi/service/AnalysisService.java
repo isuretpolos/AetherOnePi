@@ -37,6 +37,7 @@ public class AnalysisService {
 
             for (Rate rate : rates) {
                 rateList.add(rate);
+                System.out.println("add rate " + rate);
             }
 
             Map<String, Integer> ratesValues = new HashMap<>();
@@ -51,6 +52,8 @@ public class AnalysisService {
                 Rate rate = rateList.remove(x);
                 ratesValues.put(rate.getName(), 0);
 
+                System.out.println(rate);
+
                 count += 1;
 
                 if (count >= max) {
@@ -61,12 +64,16 @@ public class AnalysisService {
             int biggestLevel = 0;
             boolean analysisFinished = false;
 
+            System.out.println("continue to add energetic value");
+
             while (!analysisFinished) {
                 for (String rate : ratesValues.keySet()) {
 
                     Integer energeticValue = ratesValues.get(rate);
 
                     energeticValue += hotbitsClient.getInteger(10);
+
+                    System.out.println("energeticValue = " + energeticValue);
 
                     ratesValues.put(rate, energeticValue);
 

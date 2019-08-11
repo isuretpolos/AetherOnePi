@@ -153,7 +153,6 @@ public class HotbitsClient {
             return pseudoRand.nextInt((max - min) + 1) + min;
             // FIXME choose a better internet service than this return getRandomOrgSeeded().nextInt((max - min) + 1) + min;
         }
-
         return getRandom(Calendar.getInstance().getTimeInMillis() + getSeed(30)).nextInt((max - min) + 1) + min;
     }
 
@@ -253,6 +252,7 @@ public class HotbitsClient {
 
     public Long getSeed(int iterations) {
 
+        System.out.println("getSeed with iterations " + iterations);
         long seed = 0;
 
         for (int x = 0; x < iterations; x++) {

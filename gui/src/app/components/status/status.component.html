@@ -1,6 +1,6 @@
 <div class="statusComponent">
   <ul *ngIf="aetherOnePiStatus != null">
-    <li *ngIf="aetherOnePiStatus.pseudoRandom == false"><span class="badge badge-danger">Simulation Mode</span></li>
+    <li *ngIf="aetherOnePiStatus.pseudoRandom"><span class="badge badge-danger">Simulation Mode</span></li>
     <li><span class="badge badge-primary">hotbitsPackages {{aetherOnePiStatus.hotbitsPackages}}</span></li>
     <li *ngIf="aetherOnePiStatus.broadcasting == true"><span class="badge badge-success">broadcasting</span></li>
     <li *ngIf="aetherOnePiStatus.grounding == true"><span class="badge badge-success">grounding</span></li>

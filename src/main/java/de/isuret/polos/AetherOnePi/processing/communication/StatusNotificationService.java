@@ -34,14 +34,18 @@ public class StatusNotificationService {
      * @param ipAddress
      * @throws IOException
      */
-    public void registerClient(String ipAddress) throws IOException {
+    public void registerClient(String ipAddress) {
 
-        if (clients.get(ipAddress) != null) return;
+        try {
+            if (clients.get(ipAddress) != null) return;
 
-        SocketClient client = new SocketClient();
-        client.startConnection(ipAddress, 5555);
-        clients.put(ipAddress, client);
-        logger.info("Client for " + ipAddress + " registered.");
+            SocketClient client = new SocketClient();
+            client.startConnection(ipAddress, 5555);
+            clients.put(ipAddress, client);
+            logger.info("Client for " + ipAddress + " registered.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setProgress(Integer progress) throws IOException {
@@ -61,20 +65,24 @@ public class StatusNotificationService {
      */
     public void sendStatus() throws IOException {
 
-        logger.info(status);
-        String obsoleteClientHost = null;
+        try {
+            logger.info(status);
+            String obsoleteClientHost = null;
 
-        for (SocketClient client : clients.values()) {
-            try {
-                client.sendStatus(status);
-            } catch (SocketException e) {
-                obsoleteClientHost = client.getAddress();
-                break;
+            for (SocketClient client : clients.values()) {
+                try {
+                    client.sendStatus(status);
+                } catch (SocketException e) {
+                    obsoleteClientHost = client.getAddress();
+                    break;
+                }
             }
-        }
 
-        if (obsoleteClientHost != null) {
-            removeClient(obsoleteClientHost);
+            if (obsoleteClientHost != null) {
+                removeClient(obsoleteClientHost);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
