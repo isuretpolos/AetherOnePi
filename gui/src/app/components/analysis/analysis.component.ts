@@ -12,7 +12,8 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class AnalysisComponent implements OnInit {
 
   context: Context;
-  analysisSettingsForm: FormGroup;
+  public rateNames: string[];
+  public analysisSettingsForm: FormGroup;
 
   constructor(
     private contextService: ContextService,
@@ -22,9 +23,15 @@ export class AnalysisComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refreshForm("");
     this.context = this.contextService.getContext();
+    this.refreshForm(this.context.selectedRateDatabase);
+    this.rateNames = this.context.rateNames;
+  }
+
+  refreshForm(name: string) {
     this.analysisSettingsForm = this.formbuilder.group({
-      rateNames: []
+      rateNames: name
     });
   }
 
