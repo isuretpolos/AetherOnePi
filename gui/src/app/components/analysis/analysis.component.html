@@ -1,10 +1,14 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <p>Analysis for {{ context.databaseName }}</p>
   <form class="form-inline" [formGroup]="analysisSettingsForm" *ngIf="context; else loading">
-    <div class="form-group mx-sm-3 mb-2">
+    <div *ngIf="rateNames != null" class="form-group mx-sm-3 mb-2">
       <select class="custom-select text-light bg-dark" formControlName="rateNames" (ngModelChange)="selectRateName()">
         <option [value]="rate" *ngFor="let rate of rateNames">{{rate}}</option>
       </select>
+    </div>
+    <img src="/assets/spinnerKnob.gif" *ngIf="rateNames == null" width="45">
+    <div class="form-group mx-sm-3 mb-2">
+      <input formControlName="intention" placeholder="intention" class="bg-dark text-light form-control">
     </div>
     <button class="btn btn-success mb-2" (click)="analyze()">ANALYZE</button>
   </form>
@@ -15,7 +19,7 @@
 </div>
 
 <div *ngIf="analysisResult != null">
-  <table class="table table-dark table-bordered">
+  <table class="table table-dark table-bordered table-hover">
     <thead>
     <tr>
       <th scope="col">NO</th>
@@ -29,7 +33,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let rateObject of analysisResult.rateObjects">
-      <th scope="row">2</th>
+      <th scope="row"></th>
       <td>{{rateObject.energeticValue}}</td>
       <td>{{rateObject.nameOrRate}}</td>
       <td>{{rateObject.gv}}</td>

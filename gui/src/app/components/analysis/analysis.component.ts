@@ -13,7 +13,7 @@ import {AnalysisResult} from "../../domain/analysisResult";
 export class AnalysisComponent implements OnInit {
 
   context: Context;
-  public rateNames: string[];
+  public rateNames: string[] = null;
   public analysisSettingsForm: FormGroup;
   public analysisResult: AnalysisResult;
 
@@ -25,15 +25,21 @@ export class AnalysisComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.refreshForm("");
+    this.refreshForm("","");
     this.context = this.contextService.getContext();
-    this.refreshForm(this.context.selectedRateDatabase);
+
+    if (this.context.databaseName == null) {
+      this.contextService.navigateToAnalysis("homeopathy");
+    }
+
+    this.refreshForm(this.context.selectedRateDatabase, this.context.intention);
     this.rateNames = this.context.rateNames;
   }
 
-  refreshForm(name: string) {
+  refreshForm(name: string, intention: string) {
     this.analysisSettingsForm = this.formbuilder.group({
-      rateNames: name
+      rateNames: name,
+      intention: intention
     });
   }
 

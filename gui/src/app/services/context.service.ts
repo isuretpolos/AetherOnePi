@@ -37,6 +37,7 @@ export class ContextService {
       this.context.databaseName = databaseName;
       this.context.selectedRateDatabase = rateNamesArray[0];
       this.context.rateNames = rateNamesArray;
+      this.context.intention = "";
 
       console.log(this.context);
 
