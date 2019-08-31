@@ -132,11 +132,26 @@ public class BroadcastUnit extends PApplet {
         }
 
         paintOneLayer();
+        paintProgressBar();
 
         if (saveFrames > 0) {
             saveFrame("images/radionicBroadcasting-######.png");
             saveFrames--;
         }
+
+
+    }
+
+    public void paintProgressBar() {
+        noStroke();
+        fill(255,0,0);
+
+        Float sec = new Float(seconds);
+        Float wid = new Float(WIDTH);
+        Float millisAfterStart = new Float(Calendar.getInstance().getTimeInMillis() - start);
+        Float delta = 100/wid/sec;
+        Float progress = millisAfterStart * delta;
+        rect(0,0,progress,3);
     }
 
     private void paintOverlay() {
