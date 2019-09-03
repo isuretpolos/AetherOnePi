@@ -82,6 +82,12 @@ public class DatabaseService {
         return result.getAffectedCount();
     }
 
+    public int updateCase(Case caseObject) {
+
+        WriteResult result = caseRepository.update(ObjectFilters.eq("name",caseObject.getName()), caseObject);
+        return result.getAffectedCount();
+    }
+
     /**
      * Get all cases
      * @return
@@ -112,4 +118,10 @@ public class DatabaseService {
 
         return null;
     }
+
+    public void deleteCase(String name) {
+        caseRepository.remove(ObjectFilters.eq("name",name));
+    }
+
+
 }

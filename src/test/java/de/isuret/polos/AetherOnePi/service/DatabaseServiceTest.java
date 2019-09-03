@@ -35,6 +35,8 @@ public class DatabaseServiceTest {
         caseObject2.setName("Test Target 2");
 
         databaseService.createCase(caseObject1);
+        int rowsAffected = databaseService.updateCase(caseObject1);
+        Assert.assertEquals(1, rowsAffected);
         databaseService.createCase(caseObject2);
 
         cases = databaseService.getAllCases();
@@ -46,5 +48,9 @@ public class DatabaseServiceTest {
         Case findResult = databaseService.getCaseByName("Test Target 1");
         Assert.assertNotNull(findResult);
         Assert.assertEquals("Test Target 1", findResult.getName());
+
+        databaseService.deleteCase("Test Target 1");
+        findResult = databaseService.getCaseByName("Test Target 1");
+        Assert.assertNull(findResult);
     }
 }
