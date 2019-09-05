@@ -2,6 +2,7 @@ package de.isuret.polos.AetherOnePi.service;
 
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Case;
+import de.isuret.polos.AetherOnePi.domain.CaseList;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.dizitart.no2.Nitrite;
@@ -92,14 +93,14 @@ public class DatabaseService {
      * Get all cases
      * @return
      */
-    public List<Case> getAllCases() {
-        List<Case> cases = new ArrayList<>();
+    public CaseList getAllCases() {
+        CaseList caseList = new CaseList();
 
         for (Case caseObject : caseRepository.find()) {
-            cases.add(caseObject);
+            caseList.getCaseList().add(caseObject);
         }
 
-        return cases;
+        return caseList;
     }
 
     /**

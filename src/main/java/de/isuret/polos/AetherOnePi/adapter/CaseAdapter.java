@@ -1,11 +1,10 @@
 package de.isuret.polos.AetherOnePi.adapter;
 
 import de.isuret.polos.AetherOnePi.domain.Case;
+import de.isuret.polos.AetherOnePi.domain.CaseList;
 import de.isuret.polos.AetherOnePi.service.DatabaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
@@ -16,7 +15,7 @@ public class CaseAdapter {
     private DatabaseService databaseService;
 
     @GetMapping
-    public List<Case> getAllCases() {
+    public CaseList getAllCases() {
 
         return databaseService.getAllCases();
     }
