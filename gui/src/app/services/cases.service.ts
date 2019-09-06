@@ -21,4 +21,8 @@ export class CasesService {
   createCase(caseObject:Case):Observable<number> {
     return this.http.post<number>(`${this.serverUrl}/case`, caseObject);
   }
+
+  deleteCase(name: string):Observable<number> {
+    return this.http.delete<number>(`${this.serverUrl}/case/` + name);
+  }
 }

@@ -4,6 +4,8 @@ import {AetherOnePiStatus} from "../../domain/AetherOnePiStatus";
 import {environment} from "$environment/environment";
 import {HttpClient} from "@angular/common/http";
 import polling from 'rx-polling';
+import {ContextService} from "../../services/context.service";
+import {Context} from "../../domain/context";
 
 @Component({
   selector: 'app-status',
@@ -13,18 +15,23 @@ import polling from 'rx-polling';
 export class StatusComponent implements OnInit {
 
   aetherOnePiStatus:AetherOnePiStatus;
+  context:Context;
   serverUrl:string = `${environment.serverUrl}:${environment.serverPort}`;
 
-  constructor(private http:HttpClient) { }
+  constructor(
+    private http:HttpClient,
+    private contextService:ContextService
+  ) { }
 
   ngOnInit() {
 
     console.log(`get status from ${this.serverUrl}/status`);
 
-    polling(this.http.get<AetherOnePiStatus>(`${this.serverUrl}/status`), { interval: 5000 })
+    polling(this.http.get<AetherOnePiStatus>(`${this.serverUrl}/status`), { interval: 6765 })
       .subscribe((status) => {
         console.log('polling status ...');
         this.aetherOnePiStatus = status;
+        this.context = this.contextService.getContext();
       }, (error) => {
         // The Observable will throw if it's not able to recover after N attempts
         // By default it will attempts 9 times with exponential delay between each other.

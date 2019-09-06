@@ -1,7 +1,8 @@
 <div class="statusComponent">
   <ul *ngIf="aetherOnePiStatus != null">
-    <li *ngIf="aetherOnePiStatus.pseudoRandom"><span class="badge badge-danger">Simulation Mode</span></li>
-    <li><span class="badge badge-primary">hotbitsPackages {{aetherOnePiStatus.hotbitsPackages}}</span></li>
+    <li *ngIf="context != null && context.caseObject != null" class="btn btn-primary"> <i class="fas fa-male"></i> {{context.caseObject.name}} </li>
+    <li *ngIf="aetherOnePiStatus.pseudoRandom" class="btn btn-danger">Simulation Mode</li>
+    <li class="btn btn-primary">hotbitsPackages {{aetherOnePiStatus.hotbitsPackages}}</li>
     <li *ngIf="aetherOnePiStatus.broadcasting == true"><span class="badge badge-success">broadcasting</span></li>
     <li *ngIf="aetherOnePiStatus.grounding == true"><span class="badge badge-success">grounding</span></li>
     <li *ngIf="aetherOnePiStatus.copying == true"><span class="badge badge-success">copying</span></li>

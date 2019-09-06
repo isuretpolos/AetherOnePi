@@ -27,7 +27,10 @@
       <tr *ngFor="let caseObject of cases.caseList">
         <td>{{caseObject.name}}</td>
         <td>{{caseObject.description}}</td>
-        <td><button class="btn btn-success btn-sm">BROADCAST</button></td>
+        <td>
+          <button class="btn btn-success btn-sm" (click)="openCase(caseObject)">SELECT</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteCase(caseObject)" style="margin-left: 1rem">DELETE</button>
+        </td>
       </tr>
       </tbody>
     </table>

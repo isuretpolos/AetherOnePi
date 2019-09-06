@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {Case, CaseList} from "../../domain/case";
 import {CasesService} from "../../services/cases.service";
+import {ContextService} from "../../services/context.service";
 
 @Component({
   selector: 'app-session',
@@ -12,7 +13,10 @@ export class SessionComponent implements OnInit {
   caseForm: FormGroup;
   cases: CaseList;
 
-  constructor(private caseService: CasesService ) { }
+  constructor(
+    private caseService: CasesService,
+    private contextService:ContextService
+  ) { }
 
   ngOnInit() {
     this.createForm();
@@ -40,6 +44,18 @@ export class SessionComponent implements OnInit {
       console.log(rowsAffected);
       this.loadCases();
       this.createForm();
+      this.contextService.getContext().caseObject = caseObject;
+    });
+  }
+
+  openCase(caseObject: Case) {
+    this.contextService.getContext().caseObject = caseObject;
+    console.log(this.contextService.getContext());
+  }
+
+  deleteCase(caseObject: Case) {
+    this.caseService.deleteCase(caseObject.name).subscribe( result => {
+      this.caseService.getAllCases().subscribe( cases => this.cases = cases);
     });
   }
 }
