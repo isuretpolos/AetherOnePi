@@ -59,12 +59,16 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.text("NO", 35, y);
             p.text("EV", 80, y);
             p.text("RATE / SIGNATURE", 125, y);
+            p.text("HIT", 764, y);
             p.text("GV", 804, y);
             p.text("GV RE", 844, y);
             p.text("REC", 890, y);
             p.text("ACTIONS", 925, y);
             p.line(35, y + 2, 1200, y + 2);
             y += 18;
+
+            Integer highestGV = null;
+            Integer highestY = null;
 
             for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
 
@@ -126,12 +130,21 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                 p.text(rate.getNameOrRate(), 125, y);
                 p.text(rate.getGv(), 804, y);
 
+                if (highestGV == null || highestGV < rate.getGv()) {
+                    highestGV = rate.getGv();
+                    highestY = y;
+                }
+
                 if (rate.getRecurringGeneralVitality() > 1) {
                     p.text(rate.getRecurringGeneralVitality(), 854, y);
                 }
 
                 if (rate.getRecurring() > 0) {
                     p.text(rate.getRecurring(), 900, y);
+                }
+
+                if (rate.getGv() > 0) {
+//                    p.text(rate.getGv() - p.getGeneralVitality(), 764, y);
                 }
 
                 p.line(35, y + 2, 1200, y + 2);
@@ -142,10 +155,14 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
             p.line(70, 100, 70, y - 15);
             p.line(105, 100, 105, y - 15);
+            p.line(760, 100, 760, y - 15);
             p.line(800, 100, 800, y - 15);
             p.line(840, 100, 840, y - 15);
             p.line(885, 100, 885, y - 15);
             p.line(920, 100, 920, y - 15);
+
+            p.stroke(255,0,0);
+            p.text(highestGV, 764, highestY);
         }
     }
 

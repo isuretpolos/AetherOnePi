@@ -9,7 +9,7 @@ Open Source Radionics for the Raspberry Pi
 ## Download
 Download [Version 1.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/1.0) (Standalone Client)
 
-Subscribe to my blog(s) and join the [community](https://vk.com/club184090674).
+Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 
 # Resources
 ## Documentation
@@ -20,7 +20,7 @@ Subscribe to my blog(s) and join the [community](https://vk.com/club184090674).
 ## Literature
 - [My books](https://isuretpolos.wordpress.com/literature/)
 ## Community
-- [Open Source Radionics](https://vk.com/club184090674)
+- [Open Source Radionics](https://vk.com/aetherone)
 
 # Participation
 Please note that we have a strict [code of conduct](CODE_OF_CONDUCT.md) in our open source radionics project.

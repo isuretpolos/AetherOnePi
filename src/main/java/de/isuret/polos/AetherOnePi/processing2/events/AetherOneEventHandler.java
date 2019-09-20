@@ -59,7 +59,7 @@ public class AetherOneEventHandler {
         }
 
         if ("COMMUNITY".equals(name)) {
-            openWebsiteInDefaultBrowser("https://vk.com/club184090674");
+            openWebsiteInDefaultBrowser("https://vk.com/aetherone");
             return;
         }
 
