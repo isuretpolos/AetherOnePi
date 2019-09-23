@@ -17,6 +17,7 @@ Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 ## Blogs
 - [Radionics](https://radionics.home.blog)
 - [Isuret Polos](https://isuretpolos.wordpress.com)
+- [Open Source Radionics on Tumblr](https://aetheronepi.tumblr.com)
 ## Literature
 - [My books](https://isuretpolos.wordpress.com/literature/)
 ## Community
