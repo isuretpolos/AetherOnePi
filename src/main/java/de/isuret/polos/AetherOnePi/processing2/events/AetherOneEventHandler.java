@@ -10,6 +10,7 @@ import de.isuret.polos.AetherOnePi.processing2.dialogs.SessionDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
+import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.StringUtils;
@@ -177,9 +178,18 @@ public class AetherOneEventHandler {
             return;
         }
 
+        if ("STATISTICS".equals(name)) {
+            generateStatisticsAndShow();
+            return;
+        }
+
         if ("BROADCAST NOW".equals(name)) {
             broadcastNow();
         }
+    }
+
+    private void generateStatisticsAndShow() {
+        StatisticsGenerator.start(p.getCaseObject());
     }
 
     public void broadcastNow() {

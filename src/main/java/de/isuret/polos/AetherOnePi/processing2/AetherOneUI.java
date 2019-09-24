@@ -144,6 +144,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("CHEMICAL")
                 .addButton("ENERGY")
                 .addButton("STICKPAD")
+                .setInitialBounds(border, posY + 465, 120f, 14f, false)
+                .addButton("STATISTICS")
                 .addAnalyseScreeen();
         guiElements
                 .selectCurrentTab("AREA")
