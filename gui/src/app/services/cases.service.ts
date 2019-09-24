@@ -18,6 +18,10 @@ export class CasesService {
     return this.http.get<CaseList>(`${this.serverUrl}/case`);
   }
 
+  getCaseByName(name:string):Observable<Case> {
+    return this.http.get<Case>(`${this.serverUrl}/case/${name}`);
+  }
+
   createCase(caseObject:Case):Observable<number> {
     return this.http.post<number>(`${this.serverUrl}/case`, caseObject);
   }

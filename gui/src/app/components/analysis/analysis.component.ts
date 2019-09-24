@@ -3,7 +3,7 @@ import {Context} from "../../domain/context";
 import {ContextService} from "../../services/context.service";
 import {AetherServerService} from "../../services/aether-server.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {AnalysisResult} from "../../domain/analysisResult";
+import {AnalysisResult, RateObject} from "../../domain/analysisResult";
 
 @Component({
   selector: 'app-analysis',
@@ -55,4 +55,7 @@ export class AnalysisComponent implements OnInit {
     })
   }
 
+  broadcast(rateObject:RateObject) {
+    console.log(rateObject);
+  }
 }

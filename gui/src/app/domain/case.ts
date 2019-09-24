@@ -5,7 +5,7 @@ export class Case {
   description:string;
   created:Date;
   lastChange:Date;
-  sessions:Session[];
+  sessionList:Session[];
 }
 
 export class Session {

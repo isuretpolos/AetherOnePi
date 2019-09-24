@@ -49,8 +49,10 @@ export class SessionComponent implements OnInit {
   }
 
   openCase(caseObject: Case) {
-    this.contextService.getContext().caseObject = caseObject;
-    console.log(this.contextService.getContext());
+
+    localStorage.setItem('lastCaseName', caseObject.name);
+    this.contextService.setCase(caseObject);
+    this.contextService.addNewSession();
   }
 
   deleteCase(caseObject: Case) {

@@ -1,6 +1,13 @@
-<div class="statusComponent">
+<div *ngIf="context" class="statusComponent">
+
+  <div *ngIf="context.caseObject">
+      <div class="form-group">
+        <textarea id="sessionText" style="width: 80%;background-color: #171a1d; color: #9fcdff; border-style: none" placeholder="Intention or notes"></textarea>
+      </div>
+  </div>
+
   <ul *ngIf="aetherOnePiStatus != null">
-    <li *ngIf="context != null && context.caseObject != null" class="btn btn-primary"> <i class="fas fa-male"></i> {{context.caseObject.name}} </li>
+    <li *ngIf="context != null && context.caseObject != null" class="btn btn-primary" (click)="saveSessionNotes()"> <i class="fas fa-male"></i> Save notes for "{{context.caseObject.name}}" </li>
     <li *ngIf="aetherOnePiStatus.pseudoRandom" class="btn btn-danger">Simulation Mode</li>
     <li class="btn btn-primary">hotbitsPackages {{aetherOnePiStatus.hotbitsPackages}}</li>
     <li *ngIf="aetherOnePiStatus.broadcasting == true"><span class="badge badge-success">broadcasting</span></li>

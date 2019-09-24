@@ -6,6 +6,8 @@ import {HttpClient} from "@angular/common/http";
 import polling from 'rx-polling';
 import {ContextService} from "../../services/context.service";
 import {Context} from "../../domain/context";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Session} from "../../domain/case";
 
 @Component({
   selector: 'app-status',
@@ -17,10 +19,12 @@ export class StatusComponent implements OnInit {
   aetherOnePiStatus:AetherOnePiStatus;
   context:Context;
   serverUrl:string = `${environment.serverUrl}:${environment.serverPort}`;
+  sessionNotes:FormGroup;
 
   constructor(
     private http:HttpClient,
-    private contextService:ContextService
+    private contextService:ContextService,
+    private formbuilder: FormBuilder
   ) { }
 
   ngOnInit() {
@@ -38,17 +42,18 @@ export class StatusComponent implements OnInit {
         console.error(error);
       });
 
-    // interval(5000)
-    //   .pipe(
-    //     startWith(0),
-    //     switchMap(() => this.http.get<AetherOnePiStatus>(`${this.serverUrl}/status`))
-    //   )
-    //   // .pipe(catchError(() => {return empty<AetherOnePiStatus>()}))
-    //   .subscribe(res => {
-    //     console.log('polling status ...');
-    //     this.aetherOnePiStatus = res;
-    //   });
+    this.refreshSessionNotesForm();
   }
 
+  refreshSessionNotesForm() {
+    this.sessionNotes = this.formbuilder.group({
+      intentionOrNotes: ""
+    });
+  }
+
+  saveSessionNotes():void {
+
+    console.log(this.contextService.getCurrentSession());
+  }
 
 }
