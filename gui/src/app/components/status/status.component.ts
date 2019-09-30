@@ -56,6 +56,7 @@ export class StatusComponent implements OnInit {
 
   saveSessionNotes():void {
 
+    this.contextService.addNewNoteToSession(this.sessionNotes.getRawValue());
     console.log(this.sessionNotes.getRawValue());
     console.log(this.contextService.getCurrentSession());
     this.sessionNotes.reset();
