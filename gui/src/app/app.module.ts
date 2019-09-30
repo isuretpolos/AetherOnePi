@@ -12,6 +12,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { SessionComponent } from './components/session/session.component';
 import { StatusComponent } from './components/status/status.component';
 import { MapComponent } from './components/map/map.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MapComponent } from './components/map/map.component';
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

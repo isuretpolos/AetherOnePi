@@ -8,6 +8,7 @@ import {ContextService} from "../../services/context.service";
 import {Context} from "../../domain/context";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {Session} from "../../domain/case";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-status',
@@ -24,7 +25,8 @@ export class StatusComponent implements OnInit {
   constructor(
     private http:HttpClient,
     private contextService:ContextService,
-    private formbuilder: FormBuilder
+    private formbuilder: FormBuilder,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
@@ -57,6 +59,7 @@ export class StatusComponent implements OnInit {
     console.log(this.sessionNotes.getRawValue());
     console.log(this.contextService.getCurrentSession());
     this.sessionNotes.reset();
+    this.toastr.success('Your session notes are saved!', 'Information');
   }
 
 }
