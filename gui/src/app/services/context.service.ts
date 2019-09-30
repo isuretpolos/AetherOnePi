@@ -39,7 +39,7 @@ export class ContextService {
     this.context.caseObject.sessionList.push(session);
   }
 
-  addNewNoteToSession(noteOrIntention:string):void {
+  addNewNoteToSession(title:string, noteOrIntention:string):void {
     // TODO add new data-block to session
     // this.getCurrentSession().
   }

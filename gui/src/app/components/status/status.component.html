@@ -1,9 +1,12 @@
 <div *ngIf="context" class="statusComponent">
 
   <div *ngIf="context.caseObject">
+    <form [formGroup]="sessionNotes">
       <div class="form-group">
-        <textarea id="sessionText" style="width: 80%;background-color: #171a1d; color: #9fcdff; border-style: none" placeholder="Intention or notes"></textarea>
+        <input id="sessionTitle" style="width: 80%;background-color: #171a1d; color: #72ff5b; border-style: none" placeholder="Title or subheader" formControlName="title">
+        <textarea id="sessionText" style="width: 80%;background-color: #171a1d; color: #9fcdff; border-style: none" placeholder="Intention or notes" formControlName="intentionOrNotes"></textarea>
       </div>
+    </form>
   </div>
 
   <ul *ngIf="aetherOnePiStatus != null">

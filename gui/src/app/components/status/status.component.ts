@@ -47,13 +47,16 @@ export class StatusComponent implements OnInit {
 
   refreshSessionNotesForm() {
     this.sessionNotes = this.formbuilder.group({
-      intentionOrNotes: ""
+      intentionOrNotes: "",
+      title: ""
     });
   }
 
   saveSessionNotes():void {
 
+    console.log(this.sessionNotes.getRawValue());
     console.log(this.contextService.getCurrentSession());
+    this.sessionNotes.reset();
   }
 
 }
