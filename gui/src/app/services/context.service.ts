@@ -36,13 +36,12 @@ export class ContextService {
 
   addNewSession(): void {
     let session = new Session();
-    this.context.caseObject.sessionList.push(session);
+    this.getCase().sessionList.push(session);
   }
 
-  addNewNoteToSession(noteData:any):void {
-    // TODO add new data-block to session
-    console.log(noteData);
-    // this.getCurrentSession().
+  addNewNoteToSession(notesOnSession:any) {
+    this.getCase().lastChange = new Date();
+    // TODO
   }
 
   navigateToAnalysis(databaseName: string): void {

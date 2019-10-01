@@ -14,7 +14,6 @@ export class CasesService {
   constructor(private http: HttpClient) { }
 
   getAllCases(): Observable<CaseList> {
-    console.log("trying to ...");
     return this.http.get<CaseList>(`${this.serverUrl}/case`);
   }
 
@@ -24,6 +23,10 @@ export class CasesService {
 
   createCase(caseObject:Case):Observable<number> {
     return this.http.post<number>(`${this.serverUrl}/case`, caseObject);
+  }
+
+  updateCase(caseObject:Case):Observable<number> {
+    return this.http.put<number>(`${this.serverUrl}/case`, caseObject);
   }
 
   deleteCase(name: string):Observable<number> {
