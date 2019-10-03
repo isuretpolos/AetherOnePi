@@ -1,10 +1,14 @@
 <div class="modal-header">
   <h4 class="modal-title" id="modal-basic-title">{{selectedCase.name}}</h4>
+  Created: {{selectedCase.created | date:'mediumDate'}}<br>
+  Updated: {{selectedCase.lastChange | date:'mediumDate'}}<br>
 </div>
 <div class="modal-body">
   <p>{{selectedCase.description}}</p>
   <div *ngFor="let sessionObject of selectedCase.sessionList">
-    <b>{{sessionObject.intention}}</b><br>
+    <b>
+      {{sessionObject.intention}} - {{sessionObject.created | date:'mediumDate'}} | {{sessionObject.created | date:'shortTime'}}
+    </b><br>
     <div>{{sessionObject.description}}</div>
 
     <table class="table table-dark table-bordered table-hover table-sm" *ngIf="sessionObject.analysisResult">

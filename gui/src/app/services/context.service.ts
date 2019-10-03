@@ -38,6 +38,7 @@ export class ContextService {
 
   addNewSession(): void {
     let session = new Session();
+    session.created = new Date();
     this.getCase().sessionList.push(session);
   }
 
