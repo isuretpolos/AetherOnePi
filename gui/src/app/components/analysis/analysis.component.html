@@ -39,7 +39,10 @@
       <td>{{rateObject.gv}}</td>
       <td>{{rateObject.recurringGeneralVitality}}</td>
       <td>{{rateObject.recurring}}</td>
-      <td><button class="btn btn-success btn-sm" (click)="broadcast(rateObject)">BROADCAST</button></td>
+      <td>
+        <button class="btn btn-success btn-sm" (click)="broadcast(rateObject)">BROADCAST</button>
+        <a *ngIf="rateObject.url" href="{{rateObject.url}}" target="_blank" class="btn btn-primary btn-sm" style="margin-left: 1rem">URL</a>
+      </td>
     </tr>
     </tbody>
   </table>
