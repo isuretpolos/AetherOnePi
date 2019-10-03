@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Case} from "../../../domain/case";
 
 @Component({
   selector: 'app-case-view',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./case-view.component.scss']
 })
 export class CaseViewComponent implements OnInit {
+
+  @Input() selectedCase:Case;
 
   constructor() { }
 

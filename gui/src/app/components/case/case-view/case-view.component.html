@@ -1,1 +1,8 @@
-<p>case-view works!</p>
+<div *ngIf="selectedCase">
+  <h3>{{selectedCase.name}}</h3>
+  <p>{{selectedCase.description}}</p>
+  <p *ngFor="let sessionObject of selectedCase.sessionList">
+    <b>{{sessionObject.intention}}</b><br>
+    {{sessionObject.description}}
+  </p>
+</div>

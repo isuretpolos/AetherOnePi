@@ -12,6 +12,7 @@ import {ContextService} from "../../services/context.service";
 export class SessionComponent implements OnInit {
   caseForm: FormGroup;
   cases: CaseList;
+  selectedCase: Case;
 
   constructor(
     private caseService: CasesService,
@@ -57,6 +58,7 @@ export class SessionComponent implements OnInit {
     localStorage.setItem('lastCaseName', caseObject.name);
     this.contextService.setCase(caseObject);
     this.contextService.addNewSession();
+    this.selectedCase = caseObject;
   }
 
   deleteCase(caseObject: Case) {
@@ -67,5 +69,6 @@ export class SessionComponent implements OnInit {
 
   showCase(caseObject: Case) {
     console.log(caseObject)
+    this.selectedCase = caseObject;
   }
 }
