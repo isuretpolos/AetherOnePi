@@ -52,6 +52,7 @@ export class AnalysisComponent implements OnInit {
     this.aetherServerService.analyze(this.analysisSettingsForm.getRawValue().rateNames).subscribe(data => {
       console.log(data);
       this.analysisResult = data;
+      this.contextService.getCurrentSession().analysisResult = data;
     })
   }
 

@@ -34,7 +34,7 @@ import { CaseViewComponent } from './components/case/case-view/case-view.compone
     ReactiveFormsModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

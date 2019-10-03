@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {Case, CaseList} from "../../domain/case";
 import {CasesService} from "../../services/cases.service";
 import {ContextService} from "../../services/context.service";
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-session',
@@ -13,10 +14,12 @@ export class SessionComponent implements OnInit {
   caseForm: FormGroup;
   cases: CaseList;
   selectedCase: Case;
+  closeResult: string;
 
   constructor(
     private caseService: CasesService,
-    private contextService:ContextService
+    private contextService:ContextService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -67,8 +70,23 @@ export class SessionComponent implements OnInit {
     });
   }
 
-  showCase(caseObject: Case) {
+  showCase(caseObject: Case, content) {
     console.log(caseObject)
     this.selectedCase = caseObject;
+    this.modalService.open(content, {size: 'lg'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 }
