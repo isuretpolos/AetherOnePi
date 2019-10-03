@@ -61,6 +61,7 @@ export class StatusComponent implements OnInit {
     this.contextService.addNewNoteToSession(this.sessionNotes.getRawValue());
     this.caseService.updateCase(this.contextService.getCase()).subscribe( data => {
       this.sessionNotes.reset();
+      this.contextService.addNewSession();
       this.toastr.success('Your session notes are saved!', 'Information');
     });
   }

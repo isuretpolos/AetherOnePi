@@ -12,11 +12,11 @@ export class Session {
   intention:string;
   description:string;
   created:Date;
-  analysisResults:AnalysisResult[];
-  broadCastedList:BroadcastedList[];
+  analysisResult:AnalysisResult;
+  broadCasted:Broadcasted;
 }
 
-export class BroadcastedList {
+export class Broadcasted {
   clear:boolean;
   intention:string;
   signature:string;

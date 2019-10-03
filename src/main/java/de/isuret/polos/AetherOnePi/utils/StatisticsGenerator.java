@@ -28,8 +28,8 @@ public class StatisticsGenerator {
         Map<String,RateObject> rates = new HashMap<>();
 
         for (Session session : caseObject.getSessionList()) {
-            for (AnalysisResult analysisResult : session.getAnalysisResults()) {
-                for (RateObject rateObject : analysisResult.getRateObjects()) {
+            if (session.getAnalysisResult() != null) {
+                for (RateObject rateObject : session.getAnalysisResult().getRateObjects()) {
 
                     RateObject rate = rates.get(rateObject.getNameOrRate());
 

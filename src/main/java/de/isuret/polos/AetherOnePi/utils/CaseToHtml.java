@@ -48,8 +48,6 @@ public class CaseToHtml {
     }
 
     public static void writeSession(StringBuilder html, Session session) {
-        if (session.getAnalysisResults().size() == 0) return;
-
         html.append("<div class=\"jumbotron\">");
 
         if (session.getIntention() != null) {
@@ -61,17 +59,12 @@ public class CaseToHtml {
             html.append("<hr class=\"my-4\">");
         }
 
-        for (AnalysisResult analysisResult : session.getAnalysisResults()) {
-            writeAnalysisResult(html, analysisResult);
-        }
+        writeAnalysisResult(html, session.getAnalysisResult());
 
-        if (session.getBroadCastedList().size() > 0) {
+        if (session.getBroadCasted() != null) {
             html.append("<hr class=\"my-4\">");
             html.append("<h4 class=\"display-5\">Broadcasts</h4>");
-        }
-
-        for (BroadCastData broadCastData : session.getBroadCastedList()) {
-            writeBroadCastData(html, broadCastData);
+            writeBroadCastData(html, session.getBroadCasted());
         }
 
         html.append("</div>");
@@ -85,6 +78,8 @@ public class CaseToHtml {
     }
 
     private static void writeAnalysisResult(StringBuilder html, AnalysisResult analysisResult) {
+
+        if (analysisResult == null) return;
 
         if (analysisResult.getRateObjects().size() == 0) return;
 

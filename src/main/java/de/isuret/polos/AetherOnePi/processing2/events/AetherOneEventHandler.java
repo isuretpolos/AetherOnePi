@@ -257,14 +257,14 @@ public class AetherOneEventHandler {
 
     private void saveCase() {
         if (p.getCaseObject().getSessionList().size() > 0) {
-            p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1).getAnalysisResults().add(p.getAnalysisResult());
+            p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1).setAnalysisResult(p.getAnalysisResult());
             p.saveCase();
         }
     }
 
     private void saveBroadcast(BroadCastData broadCastData) {
         if (p.getCaseObject().getSessionList().size() > 0) {
-            p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1).getBroadCastedList().add(broadCastData);
+            p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1).setBroadCasted(broadCastData);
             p.saveCase();
         }
     }
@@ -278,23 +278,18 @@ public class AetherOneEventHandler {
 
         if (p.getCaseObject().getSessionList().size() > 0) {
             Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
-            Integer lastAnalysisResultPosition = lastSession.getAnalysisResults().size() - 1;
-
-            if (lastAnalysisResultPosition > 0) {
-                lastSession.getAnalysisResults().set(lastAnalysisResultPosition, p.getAnalysisResult());
-            }
-
+            lastSession.setAnalysisResult(p.getAnalysisResult());
             p.saveCase();
         }
     }
 
     private RateObject checkForRecurrence(RateObject rateObject) {
 
-        for (int i=0; i<recurringRateList.size(); i++) {
+        for (int i = 0; i < recurringRateList.size(); i++) {
             RateObject rate = recurringRateList.get(i);
             if (rate.getNameOrRate().equals(rateObject.getNameOrRate())) {
                 rate.setRecurring(rate.getRecurring() + 1);
-                recurringRateList.set(i,rate);
+                recurringRateList.set(i, rate);
                 return rate;
             }
         }
@@ -392,7 +387,7 @@ public class AetherOneEventHandler {
         RateObject rateObject = p.getAnalysisResult().getRateObjects().get(p.getGvCounter() - 1);
         rateObject.setGv(gv);
 
-        Map<Integer,Integer> gvOccurrences = new HashMap<>();
+        Map<Integer, Integer> gvOccurrences = new HashMap<>();
 
         for (int iRate = 0; iRate < p.getAnalysisResult().getRateObjects().size(); iRate++) {
 

@@ -3,6 +3,7 @@ import {Context} from "../domain/context";
 import {AetherServerService} from "./aether-server.service";
 import {Router} from "@angular/router";
 import {Case, Session} from "../domain/case";
+import {CasesService} from "./cases.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class ContextService {
 
   constructor(
     private aetherServerService: AetherServerService,
-    private router: Router
+    private router: Router,
+    private caseService: CasesService
   ) {
   }
 
@@ -41,7 +43,8 @@ export class ContextService {
 
   addNewNoteToSession(notesOnSession:any) {
     this.getCase().lastChange = new Date();
-    // TODO
+    this.getCurrentSession().intention = notesOnSession.title;
+    this.getCurrentSession().description = notesOnSession.intentionOrNotes;
   }
 
   navigateToAnalysis(databaseName: string): void {

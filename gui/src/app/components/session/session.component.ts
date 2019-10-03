@@ -48,6 +48,10 @@ export class SessionComponent implements OnInit {
     });
   }
 
+  /**
+   * Open a selected case and add a transient session
+   * @param caseObject
+   */
   openCase(caseObject: Case) {
 
     localStorage.setItem('lastCaseName', caseObject.name);
@@ -59,5 +63,9 @@ export class SessionComponent implements OnInit {
     this.caseService.deleteCase(caseObject.name).subscribe( result => {
       this.caseService.getAllCases().subscribe( cases => this.cases = cases);
     });
+  }
+
+  showCase(caseObject: Case) {
+    console.log(caseObject)
   }
 }

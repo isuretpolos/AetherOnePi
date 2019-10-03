@@ -10,6 +10,9 @@ import org.dizitart.no2.objects.Id;
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * The Analysis Result consists of single rate objects with general vitality checks and energetic values.
+ */
 @Data
 @Builder
 @NoArgsConstructor
