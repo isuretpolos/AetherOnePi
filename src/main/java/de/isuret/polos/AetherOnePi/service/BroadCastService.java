@@ -132,7 +132,7 @@ public class BroadCastService {
 
         statusNotificationService.getStatus().setText("");
         statusNotificationService.getStatus().setBroadcasting(false);
-        setProgress(0);
+//        setProgress(0);
     }
 
     private void setProgress(int progress) {

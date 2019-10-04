@@ -4,6 +4,8 @@ import {ContextService} from "../../services/context.service";
 import {AetherServerService} from "../../services/aether-server.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AnalysisResult, RateObject} from "../../domain/analysisResult";
+import {Broadcasted} from "../../domain/case";
+import {CasesService} from "../../services/cases.service";
 
 @Component({
   selector: 'app-analysis',
@@ -20,7 +22,8 @@ export class AnalysisComponent implements OnInit {
   constructor(
     private contextService: ContextService,
     private aetherServerService: AetherServerService,
-    private formbuilder: FormBuilder
+    private formbuilder: FormBuilder,
+    private caseService: CasesService
   ) {
   }
 
@@ -48,15 +51,23 @@ export class AnalysisComponent implements OnInit {
   }
 
   analyze() {
-    console.log('analyze: ' + this.analysisSettingsForm.getRawValue().rateNames);
     this.aetherServerService.analyze(this.analysisSettingsForm.getRawValue().rateNames).subscribe(data => {
-      console.log(data);
       this.analysisResult = data;
       this.contextService.getCurrentSession().analysisResult = data;
     })
   }
 
   broadcast(rateObject:RateObject) {
-    console.log(rateObject);
+
+    let broadcasted = new Broadcasted();
+    broadcasted.signature = rateObject.nameOrRate;
+    broadcasted.enteringWithGeneralVitality = rateObject.gv;
+
+    this.aetherServerService.broadcast(broadcasted).subscribe(data => {
+      this.contextService.getCurrentSession().broadCasted = broadcasted;
+      this.caseService.updateCase(this.contextService.getCase()).subscribe( data => {
+        this.contextService.addNewSession();
+      });
+    })
   }
 }

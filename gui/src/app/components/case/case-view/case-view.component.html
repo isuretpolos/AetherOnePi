@@ -5,10 +5,17 @@
 </div>
 <div class="modal-body">
   <p>{{selectedCase.description}}</p>
-  <div *ngFor="let sessionObject of selectedCase.sessionList">
+  <div *ngFor="let sessionObject of selectedCase.sessionList" class="alert alert-dark">
     <b>
-      {{sessionObject.intention}} - {{sessionObject.created | date:'mediumDate'}} | {{sessionObject.created | date:'shortTime'}}
-    </b><br>
+      <span>
+        {{sessionObject.intention}} - {{sessionObject.created | date:'mediumDate'}} | {{sessionObject.created | date:'shortTime'}}
+      </span>
+      <span class="bg-success" *ngIf="sessionObject.broadCasted">
+        {{sessionObject.broadCasted.signature}}
+        {{sessionObject.broadCasted.enteringWithGeneralVitality}} |
+        {{sessionObject.broadCasted.leavingWithGeneralVitality}}
+      </span>
+    </b>
     <div>{{sessionObject.description}}</div>
 
     <table class="table table-dark table-bordered table-hover table-sm" *ngIf="sessionObject.analysisResult">
