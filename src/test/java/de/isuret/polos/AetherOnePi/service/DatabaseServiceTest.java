@@ -3,21 +3,29 @@ package de.isuret.polos.AetherOnePi.service;
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.domain.CaseList;
 import org.junit.Assert;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class DatabaseServiceTest {
 
-    private DatabaseService databaseService;
+    private static DatabaseService databaseService;
 
-    @Before
-    public void setup() {
+    @BeforeClass
+    public static void setup() {
         databaseService = new DatabaseService();
         databaseService.setFilepath("target/test.db");
         databaseService.setUsername("user");
         databaseService.setPassword("password");
         databaseService.setDatabaseName("test");
         databaseService.init(true);
+    }
+
+    @Test
+    public void testGetFolderPath() {
+        Assert.assertNull(databaseService.getFolderPath(null));
+        String result = databaseService.getFolderPath("more/case/aetherone.db");
+        Assert.assertNotNull(result);
+        Assert.assertEquals("more/case",result);
     }
 
     @Test

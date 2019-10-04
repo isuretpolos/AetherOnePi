@@ -150,7 +150,7 @@
                                         <argument>build</argument>
                                         <argument>--prod=true</argument>
                                     </arguments>
-                                    <workingDirectory>${basedir}/gui/</workingDirectory>
+                                    <workingDirectory>${basedir}/gui</workingDirectory>
                                 </configuration>
                             </execution>
                         </executions>

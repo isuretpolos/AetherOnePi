@@ -20,7 +20,7 @@
     "@angular/platform-browser-dynamic": "~8.2.0-next.2",
     "@angular/router": "~8.2.0-next.2",
     "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
-    "@ng-bootstrap/ng-bootstrap": "^2.0.0-alpha.0",
+    "@ng-bootstrap/ng-bootstrap": "^4.0.0",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "bootstrap": "^4.0.0",
     "ngx-toastr": "^11.0.0",

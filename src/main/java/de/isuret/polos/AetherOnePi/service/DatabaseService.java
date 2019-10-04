@@ -13,10 +13,10 @@ import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.File;
 
 @Service
 @Setter
@@ -44,6 +44,9 @@ public class DatabaseService {
     }
 
     public void init(boolean dropFirst) {
+
+        initFilePathFolder(filepath);
+
         Nitrite db = Nitrite.builder()
                 .compressed()
                 .filePath(filepath)
@@ -58,6 +61,26 @@ public class DatabaseService {
         }
 
         getRepositories(db);
+    }
+
+    private void initFilePathFolder(String filepath) {
+
+        String folderPath = getFolderPath(filepath);
+
+        File folder = new File(folderPath);
+
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+    }
+
+    public String getFolderPath(String filepath) {
+
+        if (!StringUtils.isEmpty(filepath) && filepath.contains(".db")) {
+            return filepath.substring(0, filepath.lastIndexOf("/"));
+        }
+
+        return filepath;
     }
 
     public void getRepositories(Nitrite db) {
