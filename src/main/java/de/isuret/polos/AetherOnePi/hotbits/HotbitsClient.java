@@ -88,7 +88,7 @@ public class HotbitsClient {
         logger.info(hotbitPackages.size());
 
         if (statusNotificationService != null) {
-            statusNotificationService.setHotbitsPackages(hotbitPackages.size());
+//            statusNotificationService.setHotbitsPackages(hotbitPackages.size());
         }
 
         File hotbitFile = hotbitsFactory.createHotbitPackage(packageSize, packageFolder);
@@ -252,7 +252,6 @@ public class HotbitsClient {
 
     public Long getSeed(int iterations) {
 
-        System.out.println("getSeed with iterations " + iterations);
         long seed = 0;
 
         for (int x = 0; x < iterations; x++) {

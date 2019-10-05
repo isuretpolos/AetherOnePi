@@ -73,8 +73,6 @@ public class AnalysisService {
 
                     energeticValue += hotbitsClient.getInteger(10);
 
-                    System.out.println("energeticValue = " + energeticValue);
-
                     ratesValues.put(rate, energeticValue);
 
                     if (energeticValue > biggestLevel) {

@@ -1,15 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {AetherOnePiStatus} from "../../domain/AetherOnePiStatus";
-// TODO how to switch environment???
 import {environment} from "$environment/environment";
 import {HttpClient} from "@angular/common/http";
 import polling from 'rx-polling';
 import {ContextService} from "../../services/context.service";
 import {Context} from "../../domain/context";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {Session} from "../../domain/case";
 import {ToastrService} from "ngx-toastr";
 import {CasesService} from "../../services/cases.service";
+import {BaseUrlUtility} from "../../services/BaseUrlUtility";
 
 @Component({
   selector: 'app-status',
@@ -20,7 +19,7 @@ export class StatusComponent implements OnInit {
 
   aetherOnePiStatus:AetherOnePiStatus;
   context:Context;
-  serverUrl:string = `${environment.serverUrl}:${environment.serverPort}`;
+  serverUrl:string = `${BaseUrlUtility.getBaseUrl()}:${environment.serverPort}`;
   sessionNotes:FormGroup;
 
   constructor(

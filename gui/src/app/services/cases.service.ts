@@ -3,15 +3,18 @@ import {environment} from "$environment/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Case, CaseList} from "../domain/case";
+import {BaseUrlUtility} from "./BaseUrlUtility";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CasesService {
 
-  serverUrl:string = `${environment.serverUrl}:${environment.serverPort}`;
+  serverUrl:string = `${BaseUrlUtility.getBaseUrl()}:${environment.serverPort}`;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) {}
 
   getAllCases(): Observable<CaseList> {
     return this.http.get<CaseList>(`${this.serverUrl}/case`);

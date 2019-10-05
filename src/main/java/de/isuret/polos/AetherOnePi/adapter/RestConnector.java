@@ -43,7 +43,7 @@ public class RestConnector {
         aetherOnePiStatus.setHotbitsPackages(hotbitsClient.getHotbitPackages().size());
         aetherOnePiStatus.setPseudoRandom(hotbitsClient.isPseudoRandomMode());
         aetherOnePiStatus.setBroadcasting(broadCastService.getBroadcasting());
-        aetherOnePiStatus.setText(UUID.randomUUID().toString());
+//        aetherOnePiStatus.setText(UUID.randomUUID().toString());
         return aetherOnePiStatus;
     }
 
@@ -108,14 +108,15 @@ public class RestConnector {
     @RequestMapping("analysis/{rateListName}")
     public AnalysisResult analysisRateList(@PathVariable String rateListName, HttpServletRequest request) throws IOException {
 
-        statusNotificationService.registerClient(request.getRemoteAddr());
+        System.out.println("analysis of " + rateListName);
+//        statusNotificationService.registerClient(request.getRemoteAddr());
         Iterable<Rate> rates = dataService.findAllBySourceName(rateListName);
         return analyseService.getAnalysisResult(rates);
     }
 
     @PostMapping("broadcasting")
     public BroadCastData broadcast(@RequestBody BroadCastData broadCastData, HttpServletRequest request) throws IOException {
-        statusNotificationService.registerClient(request.getRemoteAddr());
+//        statusNotificationService.registerClient(request.getRemoteAddr());
         return broadcastQueue.addBroadcastDataToQueue(broadCastData);
     }
 

@@ -14,6 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Broadcast Service for the Raspberry Pi
+ */
 @Service
 public class BroadCastService {
 
@@ -121,8 +124,9 @@ public class BroadCastService {
                 }
             }
 
-            Double progress = r / percent;
-            setProgress(progress.intValue());
+            // FIXME this will be done with webSockets!
+//            Double progress = r / percent;
+//            setProgress(progress.intValue());
         }
 
         piService.high(AetherOnePins.CONTROL);
@@ -135,9 +139,9 @@ public class BroadCastService {
 //        setProgress(0);
     }
 
-    private void setProgress(int progress) {
+    private void setProgress2(int progress) {
         try {
-            statusNotificationService.setProgress(progress);
+            statusNotificationService.setProgress2(progress);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "$environment/environment";
 import {Observable} from "rxjs";
-import {AnalysisResult, RateObject} from "../domain/analysisResult";
+import {AnalysisResult} from "../domain/analysisResult";
 import {Broadcasted} from "../domain/case";
+import {BaseUrlUtility} from "./BaseUrlUtility";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AetherServerService {
 
-  serverUrl:string = `${environment.serverUrl}:${environment.serverPort}`;
+  serverUrl:string = `${BaseUrlUtility.getBaseUrl()}:${environment.serverPort}`;
 
   constructor(private http: HttpClient) { }
 
