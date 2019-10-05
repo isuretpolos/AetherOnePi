@@ -6,6 +6,7 @@ export class Case {
   created:Date;
   lastChange:Date;
   sessionList:Session[];
+  topTenList:RateObjectWrapper[]
 }
 
 export class Session {
@@ -28,4 +29,11 @@ export class Broadcasted {
 
 export class CaseList {
   caseList:Case[];
+}
+
+export class RateObjectWrapper {
+  occurrence:number;
+  overallEnergeticValue:number;
+  overallGV:number;
+  name:string;
 }

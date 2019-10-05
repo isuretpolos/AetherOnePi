@@ -5,6 +5,30 @@
 </div>
 <div class="modal-body">
   <p>{{selectedCase.description}}</p>
+
+  <div class="alert alert-dark" *ngIf="selectedCase.topTenList">
+    <h5>Statistics / Top Ten Rates or Signatures</h5>
+    <p>Reoccurring patterns of statistical significance, sorted in descending order, by occurrence, general vitality, energetic value and name.</p>
+    <table class="table table-dark table-bordered table-hover table-sm">
+      <thead>
+      <tr>
+        <th scope="col">REC</th>
+        <th scope="col">GV</th>
+        <th scope="col">EV</th>
+        <th scope="col">RATE / SIGNATURE</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let rate of selectedCase.topTenList">
+        <td>{{rate.occurrence}}</td>
+        <td>{{rate.overallGV}}</td>
+        <td>{{rate.overallEnergeticValue}}</td>
+        <td>{{rate.name}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
   <div *ngFor="let sessionObject of selectedCase.sessionList" class="alert alert-dark">
     <b>
       <span>

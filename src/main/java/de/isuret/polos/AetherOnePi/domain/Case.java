@@ -33,6 +33,11 @@ public class Case {
      */
     private List<Session> sessionList = new ArrayList<>();
 
+    /**
+     * Top Ten of rates determined by analysis (Statistics)
+     */
+    private List<RateObjectWrapper> topTenList = new ArrayList<>();
+
     public Case() {
         created = Calendar.getInstance();
     }
