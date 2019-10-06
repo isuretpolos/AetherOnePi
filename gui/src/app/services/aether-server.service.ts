@@ -4,7 +4,7 @@ import {environment} from "$environment/environment";
 import {Observable} from "rxjs";
 import {AnalysisResult} from "../domain/analysisResult";
 import {Broadcasted} from "../domain/case";
-import {BaseUrlUtility} from "./BaseUrlUtility";
+import {BaseUrlUtility} from "../utilities/BaseUrlUtility";
 
 @Injectable({
   providedIn: 'root'

@@ -8,7 +8,7 @@ import {Context} from "../../domain/context";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
 import {CasesService} from "../../services/cases.service";
-import {BaseUrlUtility} from "../../services/BaseUrlUtility";
+import {BaseUrlUtility} from "../../utilities/BaseUrlUtility";
 
 @Component({
   selector: 'app-status',

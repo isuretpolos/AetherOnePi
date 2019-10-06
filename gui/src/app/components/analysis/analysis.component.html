@@ -35,7 +35,7 @@
       <td>{{analysisResult.rateObjects.indexOf(rateObject) + 1}}</td>
       <td>{{rateObject.energeticValue}}</td>
       <td>{{rateObject.nameOrRate}}</td>
-      <td>{{rateObject.gv}}</td>
+      <td [style.background-color]="colorRelativeToGeneralVitality(analysisResult.generalVitality, rateObject.gv)">{{rateObject.gv}}</td>
       <td>{{rateObject.recurringGeneralVitality}}</td>
       <td>{{rateObject.recurring}}</td>
       <td>

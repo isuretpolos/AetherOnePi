@@ -3,7 +3,7 @@ import {environment} from "$environment/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Case, CaseList} from "../domain/case";
-import {BaseUrlUtility} from "./BaseUrlUtility";
+import {BaseUrlUtility} from "../utilities/BaseUrlUtility";
 
 @Injectable({
   providedIn: 'root'

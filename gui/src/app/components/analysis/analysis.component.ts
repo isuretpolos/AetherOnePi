@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {AnalysisResult, RateObject} from "../../domain/analysisResult";
 import {Broadcasted} from "../../domain/case";
 import {CasesService} from "../../services/cases.service";
+import {ColorUtility} from "../../utilities/ColorUtility";
 
 @Component({
   selector: 'app-analysis',
@@ -90,5 +91,9 @@ export class AnalysisComponent implements OnInit {
         });
       }
     })
+  }
+
+  colorRelativeToGeneralVitality(generalVitality:number,gv:number) {
+    return ColorUtility.colorRelativeToGeneralVitality(generalVitality, gv);
   }
 }

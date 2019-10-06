@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Case} from "../../../domain/case";
+import {ColorUtility} from "../../../utilities/ColorUtility";
 
 @Component({
   selector: 'app-case-view',
@@ -15,4 +16,7 @@ export class CaseViewComponent implements OnInit {
   ngOnInit() {
   }
 
+  colorRelativeToGeneralVitality(generalVitality:number,gv:number) {
+    return ColorUtility.colorRelativeToGeneralVitality(generalVitality, gv);
+  }
 }
