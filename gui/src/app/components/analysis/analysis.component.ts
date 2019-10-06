@@ -62,12 +62,33 @@ export class AnalysisComponent implements OnInit {
     let broadcasted = new Broadcasted();
     broadcasted.signature = rateObject.nameOrRate;
     broadcasted.enteringWithGeneralVitality = rateObject.gv;
+    broadcasted.repeat = rateObject.energeticValue;
 
     this.aetherServerService.broadcast(broadcasted).subscribe(data => {
       this.contextService.getCurrentSession().broadCasted = broadcasted;
       this.caseService.updateCase(this.contextService.getCase()).subscribe( data => {
         this.contextService.addNewSession();
       });
+    })
+  }
+
+  checkGeneralVitality() {
+    if (this.analysisResult == null) {
+      console.error("You tried to check for general vitality, while no analysis object exist!");
+    }
+
+    if (this.analysisResult.generalVitality == null) {
+      this.aetherServerService.checkGeneralVitality().subscribe( gv => this.analysisResult.generalVitality = gv);
+      return;
+    }
+
+    this.analysisResult.rateObjects.forEach(rateObject => {
+      if (rateObject.gv == null || rateObject.gv == 0) {
+        this.aetherServerService.checkGeneralVitality().subscribe( gv => {
+          rateObject.gv = gv;
+          console.log(rateObject);
+        });
+      }
     })
   }
 }

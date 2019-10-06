@@ -26,4 +26,8 @@ export class AetherServerService {
   broadcast(broadcasted: Broadcasted):Observable<Broadcasted> {
     return this.http.post<Broadcasted>(`${this.serverUrl}/broadcasting`, broadcasted);
   }
+
+  checkGeneralVitality():Observable<number> {
+    return this.http.get<number>(`${this.serverUrl}/analysis/generalVitality`);
+  }
 }

@@ -1,5 +1,6 @@
 export class AnalysisResult {
   rateObjects:RateObject[] = [];
+  generalVitality:number;
 }
 
 export class RateObject {

@@ -36,6 +36,7 @@ public class BroadcastQueue {
     }
 
     public BroadCastData addBroadcastDataToQueue(BroadCastData data) {
+        logger.info("addBroadcastDataToQueue " + data.getSignature());
         broadCastDataList.add(data);
         return data;
     }

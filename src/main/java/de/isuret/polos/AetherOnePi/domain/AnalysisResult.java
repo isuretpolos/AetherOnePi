@@ -22,6 +22,7 @@ public class AnalysisResult implements Serializable {
     @Id
     private UUID id;
     private List<RateObject> rateObjects = new ArrayList<>();
+    private Integer generalVitality;
 
     @JsonIgnore
     public AnalysisResult sort() {

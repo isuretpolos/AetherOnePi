@@ -102,7 +102,7 @@ public class RestConnector {
             }
         });
 
-        return vitalityList.get(0).getNumber();
+        return vitalityList.get(0).getValue();
     }
 
     @RequestMapping("analysis/{rateListName}")
