@@ -20,8 +20,9 @@ Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 - [Open Source Radionics on Tumblr](https://aetheronepi.tumblr.com)
 ## Literature
 - [My books](https://isuretpolos.wordpress.com/literature/)
-## Community
+## Communities
 - [Open Source Radionics](https://vk.com/aetherone)
+- [Youtube](https://www.youtube.com/channel/UCFVTNpzycFUoF4h0CbRS92Q)
 
 # Participation
 Please note that we have a strict [code of conduct](CODE_OF_CONDUCT.md) in our open source radionics project.
