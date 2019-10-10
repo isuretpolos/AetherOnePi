@@ -17,4 +17,11 @@ export class MapComponent implements OnInit {
     this.map = new MapObject();
   }
 
+  drawArea() {
+    this.map.addInteraction('Square');
+  }
+
+  drawBox() {
+    this.map.addInteraction('Box');
+  }
 }
