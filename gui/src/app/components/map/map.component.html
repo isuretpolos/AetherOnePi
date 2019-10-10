@@ -1,11 +1,17 @@
 <div id="map" class="map"></div>
 <hr>
 <div class="btn-toolbar" role="toolbar">
-  <div class="btn-group mr-2" role="group">
+  <div *ngIf="!map.draw" class="btn-group mr-2" role="group">
     <button class="btn btn-primary" (click)="drawArea()">DRAW AREA</button>
   </div>
-  <div class="btn-group mr-2" role="group">
-    <button class="btn btn-primary">SCAN</button>
+  <div *ngIf="map.draw" class="btn-group mr-2" role="group">
+    <button class="btn btn-warning" (click)="stopDrawing()">STOP DRAWING</button>
+  </div>
+  <div *ngIf="!scanning" class="btn-group mr-2" role="group">
+    <button class="btn btn-primary" (click)="scanArea()">SCAN</button>
+  </div>
+  <div *ngIf="scanning" class="btn-group mr-2" role="group">
+    <button class="btn btn-warning">SCANNING ...</button>
   </div>
   <div class="btn-group" role="group">
     <button class="btn btn-success">BROADCAST</button>

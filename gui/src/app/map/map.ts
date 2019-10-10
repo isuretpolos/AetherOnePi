@@ -4,11 +4,13 @@ import Draw, {createRegularPolygon, createBox} from 'ol/interaction/Draw.js';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
 import {OSM, Vector as VectorSource} from 'ol/source.js';
 import {defaults as defaultControls, FullScreen} from 'ol/control.js';
+import {AreaService} from "../services/area.service";
 
 export class MapObject {
 
-  constructor() {
-    //this.addInteraction('LineString');
+  constructor(
+    private areaService: AreaService
+  ) {
   }
 
   /**
@@ -18,13 +20,22 @@ export class MapObject {
     source: new OSM()
   });
 
-  private draw: Draw;
+  draw: Draw;
+  lastSketch:any;
   private source: VectorSource = new VectorSource({wrapX: false});
   private vector = new VectorLayer({
     source: this.source
   });
 
+  public init() {
+    this.vector.getSource().on('addfeature', (event) => {
+      this.lastSketch = event.feature;
+      this.areaService.generateAreaGrid(this.lastSketch);
+    });
+  }
+
   public addInteraction(typeSelect: string) {
+
     let value = typeSelect;
     if (value !== 'None') {
 
@@ -69,4 +80,11 @@ export class MapObject {
       zoom: 2
     })
   });
+
+  stopDrawing() {
+    if (this.draw) {
+      this.map.removeInteraction(this.draw);
+      this.draw = null;
+    }
+  }
 }

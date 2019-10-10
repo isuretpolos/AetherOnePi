@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MapObject} from "../../map/map";
+import {AreaService} from "../../services/area.service";
 
 @Component({
   selector: 'app-map',
@@ -8,13 +9,14 @@ import {MapObject} from "../../map/map";
 })
 export class MapComponent implements OnInit {
 
-  mapId: string;
   map: MapObject;
+  scanning:boolean = false;
 
-  constructor() { }
+  constructor(private areaService: AreaService) { }
 
   ngOnInit() {
-    this.map = new MapObject();
+    this.map = new MapObject(this.areaService);
+    this.map.init();
   }
 
   drawArea() {
@@ -23,5 +25,18 @@ export class MapComponent implements OnInit {
 
   drawBox() {
     this.map.addInteraction('Box');
+  }
+
+  stopDrawing() {
+    this.map.stopDrawing();
+  }
+
+  scanArea() {
+    console.log(this.map.lastSketch);
+    this.scanning = true;
+
+    setTimeout(() => {
+      this.scanning = false;
+    }, 2000);
   }
 }
