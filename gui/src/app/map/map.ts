@@ -1,5 +1,9 @@
 import Map from 'ol/Map';
 import View from 'ol/View';
+import Vector from 'ol/layer/Vector';
+import Feature from 'ol/Feature';
+import Point from 'ol/geom/Point';
+import * as olProj from 'ol/proj';
 import Draw, {createRegularPolygon, createBox} from 'ol/interaction/Draw.js';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
 import {OSM, Vector as VectorSource} from 'ol/source.js';
@@ -32,6 +36,19 @@ export class MapObject {
       this.lastSketch = event.feature;
       this.areaService.generateAreaGrid(this.lastSketch);
     });
+
+    let marker = new Feature({
+      geometry: new Point(olProj.fromLonLat([-74.006,40.7127])),
+    });
+
+
+    this.source.addFeature(marker);
+
+    let marker1 = new Feature({
+      geometry: new Point(olProj.fromLonLat([-7024868.64752084, 1203424.5733218156])),
+    });
+
+    this.source.addFeature(marker1);
   }
 
   public addInteraction(typeSelect: string) {

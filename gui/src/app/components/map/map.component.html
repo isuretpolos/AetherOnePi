@@ -7,8 +7,11 @@
   <div *ngIf="map.draw" class="btn-group mr-2" role="group">
     <button class="btn btn-warning" (click)="stopDrawing()">STOP DRAWING</button>
   </div>
-  <div *ngIf="!scanning" class="btn-group mr-2" role="group">
+  <div *ngIf="!scanning && !map.draw && map.lastSketch" class="btn-group mr-2" role="group">
     <button class="btn btn-primary" (click)="scanArea()">SCAN</button>
+  </div>
+  <div *ngIf="!map.lastSketch || map.draw" class="btn-group mr-2" role="group">
+    <button class="btn btn-dark">SCAN</button>
   </div>
   <div *ngIf="scanning" class="btn-group mr-2" role="group">
     <button class="btn btn-warning">SCANNING ...</button>
@@ -17,3 +20,4 @@
     <button class="btn btn-success">BROADCAST</button>
   </div>
 </div>
+<pre class="text-light">First draw an area by clicking on "DRAW AREA", afterwards click "STOP DRAWING" and finally on "SCAN".</pre>
