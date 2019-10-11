@@ -37,18 +37,15 @@ export class MapObject {
       this.areaService.generateAreaGrid(this.lastSketch);
     });
 
-    let marker = new Feature({
-      geometry: new Point(olProj.fromLonLat([-74.006,40.7127])),
-    });
+    this.insertPointMarker(1017529.7205322661, 4870567.442331431);
+  }
 
+  private insertPointMarker(x,y) {
+    let marker = new Feature({
+      geometry: new Point(olProj.fromLonLat([x, y], 'EPSG:4326', 'EPSG:3857')),
+    });
 
     this.source.addFeature(marker);
-
-    let marker1 = new Feature({
-      geometry: new Point(olProj.fromLonLat([-7024868.64752084, 1203424.5733218156])),
-    });
-
-    this.source.addFeature(marker1);
   }
 
   public addInteraction(typeSelect: string) {
