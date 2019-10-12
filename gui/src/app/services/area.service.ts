@@ -14,40 +14,18 @@ export class AreaService {
   generateAreaGrid(sketch:any, source: VectorSource) {
 
     let coordinates = sketch.getGeometry().getCoordinates();
+    let coordinatesArray = coordinates[0];
 
-    for (let i=0; i<coordinates.length; i++) {
-
-      let coordinate = coordinates[i];
-
-      // FIXME CRASHES
-
-      console.log(coordinate);
-      let firstH:number = coordinate[0][0];
-      let secondH:number = coordinate[1][0];
-      let differenceH:number = 0;
-
-      if (firstH > secondH) {
-        differenceH = firstH - secondH;
-      } else {
-        differenceH = secondH - firstH;
-      }
-
-      differenceH = differenceH / 10000000;
-
-      let newpointX: number = firstH + differenceH;
-      let newpointY: number = secondH;
-
-      console.log(`x ${newpointX} and y ${newpointY}`);
-      this.insertPointMarker(newpointY,newpointX, source);
-      // break;
-
-      // END FIXME
-
-      for (let j=0; j<coordinate.length; j++) {
-        let coordinatePair = coordinate[j];
-        this.insertPointMarker(coordinatePair[0], coordinatePair[1], source);
-      }
+    if (coordinatesArray.length != 5) {
+      console.error('not enough points inside polygon (should be 5)');
+      return;
     }
+
+    let leftBottomPoint = coordinatesArray[0];
+    let rightBottomPoint = coordinatesArray[1];
+
+    this.insertPointMarker(leftBottomPoint[0], leftBottomPoint[1], source);
+    this.insertPointMarker(rightBottomPoint[0], rightBottomPoint[1], source);
   }
 
   private insertPointMarker(x,y, source: VectorSource) {

@@ -20,10 +20,7 @@ export class MapComponent implements OnInit {
   }
 
   drawArea() {
-    this.map.addInteraction('Square');
-  }
-
-  drawBox() {
+    this.map.clearDrawing();
     this.map.addInteraction('Box');
   }
 

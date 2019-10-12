@@ -37,16 +37,9 @@ export class MapObject {
         this.lastDrawEvent = new Date();
         this.lastSketch = event.feature;
         this.areaService.generateAreaGrid(this.lastSketch, this.source);
+        this.stopDrawing();
       }
     });
-  }
-
-  private insertPointMarker(x,y) {
-    let marker = new Feature({
-      geometry: new Point(olProj.fromLonLat([x, y], 'EPSG:4326', 'EPSG:3857')),
-    });
-
-    this.source.addFeature(marker);
   }
 
   public addInteraction(typeSelect: string) {
@@ -102,5 +95,9 @@ export class MapObject {
       this.draw = null;
       this.lastDrawEvent = null;
     }
+  }
+
+  clearDrawing() {
+    this.source.clear();
   }
 }
