@@ -21,22 +21,36 @@ export class AreaService {
       return;
     }
 
-    let leftBottomPoint = coordinatesArray[0];
-    let rightBottomPoint = coordinatesArray[1];
-
-    let middleBottomPoint = [
-      leftBottomPoint[0] + (rightBottomPoint[0] - leftBottomPoint[0]) / 2,
-      leftBottomPoint[1] + (rightBottomPoint[1] - leftBottomPoint[1]) / 2
-    ];
-
-    this.insertPointMarker(leftBottomPoint[0], leftBottomPoint[1], source);
-    this.insertPointMarker(rightBottomPoint[0], rightBottomPoint[1], source);
-    this.insertPointMarker(middleBottomPoint[0], middleBottomPoint[1], source);
+    // subdivice the box into 4 smaller boxes
+    let one = coordinatesArray[0];
+    let two = this.getMiddlePoint(coordinatesArray[0],coordinatesArray[1]);
+    // three is the center of the entire box
+    let three = this.getMiddlePoint(two, this.getMiddlePoint(coordinatesArray[2],coordinatesArray[3]));
+    let four = this.getMiddlePoint(coordinatesArray[3],coordinatesArray[4]);
+    this.insertPointMarker(one, source);
+    this.insertPointMarker(two, source);
+    this.insertPointMarker(three, source);
+    this.insertPointMarker(four, source);
   }
 
-  private insertPointMarker(x,y, source: VectorSource) {
+  /**
+   * Returns the middle point between two points
+   * @param first
+   * @param second
+   */
+  private getMiddlePoint(first,second):any {
+
+    let middleBottomPoint = [
+      first[0] + (second[0] - first[0]) / 2,
+      first[1] + (second[1] - first[1]) / 2
+    ];
+
+    return middleBottomPoint;
+  }
+
+  private insertPointMarker(point:any, source: VectorSource) {
     let marker = new Feature({
-      geometry: new Point(olProj.fromLonLat([x, y], 'EPSG:4326', 'EPSG:3857')),
+      geometry: new Point(olProj.fromLonLat([point[0], point[1]], 'EPSG:4326', 'EPSG:3857')),
     });
 
     source.addFeature(marker);
