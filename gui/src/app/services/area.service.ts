@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Vector as VectorSource} from "ol/source";
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
+import Polygon from 'ol/geom/Polygon';
 import * as olProj from 'ol/proj';
 
 @Injectable({
@@ -9,9 +10,10 @@ import * as olProj from 'ol/proj';
 })
 export class AreaService {
 
-  constructor() { }
+  constructor() {
+  }
 
-  generateAreaGrid(sketch:any, source: VectorSource) {
+  generateAreaGrid(sketch: any, source: VectorSource) {
 
     let coordinates = sketch.getGeometry().getCoordinates();
     let coordinatesArray = coordinates[0];
@@ -23,14 +25,16 @@ export class AreaService {
 
     // subdivice the box into 4 smaller boxes
     let one = coordinatesArray[0];
-    let two = this.getMiddlePoint(coordinatesArray[0],coordinatesArray[1]);
+    let two = this.getMiddlePoint(coordinatesArray[0], coordinatesArray[1]);
     // three is the center of the entire box
-    let three = this.getMiddlePoint(two, this.getMiddlePoint(coordinatesArray[2],coordinatesArray[3]));
-    let four = this.getMiddlePoint(coordinatesArray[3],coordinatesArray[4]);
+    let three = this.getMiddlePoint(two, this.getMiddlePoint(coordinatesArray[2], coordinatesArray[3]));
+    let four = this.getMiddlePoint(coordinatesArray[3], coordinatesArray[4]);
     this.insertPointMarker(one, source);
     this.insertPointMarker(two, source);
     this.insertPointMarker(three, source);
     this.insertPointMarker(four, source);
+
+    this.insertBox([one, two, three, four], source);
   }
 
   /**
@@ -38,7 +42,7 @@ export class AreaService {
    * @param first
    * @param second
    */
-  private getMiddlePoint(first,second):any {
+  private getMiddlePoint(first, second): any {
 
     let middleBottomPoint = [
       first[0] + (second[0] - first[0]) / 2,
@@ -48,11 +52,24 @@ export class AreaService {
     return middleBottomPoint;
   }
 
-  private insertPointMarker(point:any, source: VectorSource) {
-    let marker = new Feature({
-      geometry: new Point(olProj.fromLonLat([point[0], point[1]], 'EPSG:4326', 'EPSG:3857')),
+  private insertPointMarker(point: any, source: VectorSource) {
+    let geom = new Feature({
+      geometry: new Point(olProj.fromLonLat([point[0], point[1]], 'EPSG:4326', 'EPSG:3857'))
     });
+    console.log(geom);
+    source.addFeature(geom);
+  }
 
-    source.addFeature(marker);
+  private insertBox(fourCorner: any, source: VectorSource) {
+    console.log(fourCorner);
+    // let polygon = new Polygon(olProj.getTransform([fourCorner[0], fourCorner[1], fourCorner[2], fourCorner[3], fourCorner[0]], 'EPSG:4326', 'EPSG:3857'));
+    let polygon = new Polygon([fourCorner[0], fourCorner[1], fourCorner[2], fourCorner[3], fourCorner[0]]);
+    polygon.transform('EPSG:4326', 'EPSG:3857');
+
+    let geom = new Feature({
+      geometry: polygon
+    });
+    console.log(geom);
+    source.addFeature(geom);
   }
 }
