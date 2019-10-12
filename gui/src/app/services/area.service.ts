@@ -24,8 +24,14 @@ export class AreaService {
     let leftBottomPoint = coordinatesArray[0];
     let rightBottomPoint = coordinatesArray[1];
 
+    let middleBottomPoint = [
+      leftBottomPoint[0] + (rightBottomPoint[0] - leftBottomPoint[0]) / 2,
+      leftBottomPoint[1] + (rightBottomPoint[1] - leftBottomPoint[1]) / 2
+    ];
+
     this.insertPointMarker(leftBottomPoint[0], leftBottomPoint[1], source);
     this.insertPointMarker(rightBottomPoint[0], rightBottomPoint[1], source);
+    this.insertPointMarker(middleBottomPoint[0], middleBottomPoint[1], source);
   }
 
   private insertPointMarker(x,y, source: VectorSource) {
