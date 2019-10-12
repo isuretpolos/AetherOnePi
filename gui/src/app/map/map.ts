@@ -1,10 +1,9 @@
 import Map from 'ol/Map';
 import View from 'ol/View';
-import Vector from 'ol/layer/Vector';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import * as olProj from 'ol/proj';
-import Draw, {createRegularPolygon, createBox} from 'ol/interaction/Draw.js';
+import Draw, {createBox, createRegularPolygon} from 'ol/interaction/Draw.js';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
 import {OSM, Vector as VectorSource} from 'ol/source.js';
 import {defaults as defaultControls, FullScreen} from 'ol/control.js';
@@ -26,6 +25,7 @@ export class MapObject {
 
   draw: Draw;
   lastSketch:any;
+  private lastDrawEvent = null;
   private source: VectorSource = new VectorSource({wrapX: false});
   private vector = new VectorLayer({
     source: this.source
@@ -33,11 +33,12 @@ export class MapObject {
 
   public init() {
     this.vector.getSource().on('addfeature', (event) => {
-      this.lastSketch = event.feature;
-      this.areaService.generateAreaGrid(this.lastSketch);
+      if (!this.lastDrawEvent) {
+        this.lastDrawEvent = new Date();
+        this.lastSketch = event.feature;
+        this.areaService.generateAreaGrid(this.lastSketch, this.source);
+      }
     });
-
-    this.insertPointMarker(1017529.7205322661, 4870567.442331431);
   }
 
   private insertPointMarker(x,y) {
@@ -99,6 +100,7 @@ export class MapObject {
     if (this.draw) {
       this.map.removeInteraction(this.draw);
       this.draw = null;
+      this.lastDrawEvent = null;
     }
   }
 }
