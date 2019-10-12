@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Vector as VectorSource} from "ol/source";
 import Feature from 'ol/Feature';
-import Point from 'ol/geom/Point';
-import Polygon from 'ol/geom/Polygon';
+import * as geom from 'ol/geom';
 import * as olProj from 'ol/proj';
 
 @Injectable({
@@ -29,12 +28,13 @@ export class AreaService {
     // three is the center of the entire box
     let three = this.getMiddlePoint(two, this.getMiddlePoint(coordinatesArray[2], coordinatesArray[3]));
     let four = this.getMiddlePoint(coordinatesArray[3], coordinatesArray[4]);
-    this.insertPointMarker(one, source);
-    this.insertPointMarker(two, source);
-    this.insertPointMarker(three, source);
-    this.insertPointMarker(four, source);
 
-    this.insertBox([one, two, three, four], source);
+    this.insertBox(
+      this.insertPointMarker(one, source),
+      this.insertPointMarker(two, source),
+      this.insertPointMarker(three, source),
+      this.insertPointMarker(four, source)
+    , source);
   }
 
   /**
@@ -52,24 +52,31 @@ export class AreaService {
     return middleBottomPoint;
   }
 
-  private insertPointMarker(point: any, source: VectorSource) {
-    let geom = new Feature({
-      geometry: new Point(olProj.fromLonLat([point[0], point[1]], 'EPSG:4326', 'EPSG:3857'))
+  private insertPointMarker(pointCoordinates: any, source: VectorSource):any {
+    let point = new geom.Point(olProj.fromLonLat([pointCoordinates[0], pointCoordinates[1]], 'EPSG:4326', 'EPSG:3857'));
+    let g = new Feature({
+      geometry: point
     });
-    console.log(geom);
-    source.addFeature(geom);
+    source.addFeature(g);
+    return pointCoordinates;
   }
 
-  private insertBox(fourCorner: any, source: VectorSource) {
-    console.log(fourCorner);
-    // let polygon = new Polygon(olProj.getTransform([fourCorner[0], fourCorner[1], fourCorner[2], fourCorner[3], fourCorner[0]], 'EPSG:4326', 'EPSG:3857'));
-    let polygon = new Polygon([fourCorner[0], fourCorner[1], fourCorner[2], fourCorner[3], fourCorner[0]]);
-    polygon.transform('EPSG:4326', 'EPSG:3857');
+  private insertBox(a,b,c,d, source: VectorSource) {
 
-    let geom = new Feature({
+    let points = [];
+    points.push(a);
+    points.push(b);
+    points.push(c);
+    points.push(d);
+    points.push(a);
+    let polygon = new geom.Polygon([points]);
+    let srcProj = new olProj.Projection("EPSG:4326");
+    let targetProj = new olProj.Projection("EPSG:3857");
+    polygon.transform(srcProj, targetProj);
+
+    let g = new Feature({
       geometry: polygon
     });
-    console.log(geom);
-    source.addFeature(geom);
+    source.addFeature(g);
   }
 }
