@@ -29,25 +29,19 @@ export class AreaService {
 
     let polygonArray = [];
 
-    // subdivice the box into 4 smaller boxes
     let one = coordinatesArray[0];
-    let two = this.getMiddlePoint(coordinatesArray[0], coordinatesArray[1]);
-    // three is the center of the entire box
-    let three = this.getMiddlePoint(two, this.getMiddlePoint(coordinatesArray[2], coordinatesArray[3]));
-    let four = this.getMiddlePoint(coordinatesArray[3], coordinatesArray[4]);
+    let five = coordinatesArray[1];
+    let seven = coordinatesArray[2];
+    let nine = coordinatesArray[3];
+    let two = this.getMiddlePoint(one, five);
+    let three = this.getMiddlePoint(two, this.getMiddlePoint(seven, nine));
+    let four = this.getMiddlePoint(nine, one);
+    let six = this.getMiddlePoint(five, seven);
+    let eight = this.getMiddlePoint(nine, seven);
 
     polygonArray.push(this.createBox(one,two,three,four));
-
-    let five = coordinatesArray[1];
-    let six = this.getMiddlePoint(coordinatesArray[1], coordinatesArray[2]);
-
     polygonArray.push(this.createBox(two,five,six,three));
-
-    let seven = coordinatesArray[2];
-    let eight = this.getMiddlePoint(coordinatesArray[3], coordinatesArray[2]);
     polygonArray.push(this.createBox(six,seven,eight,three));
-
-    let nine = coordinatesArray[3];
     polygonArray.push(this.createBox(three,eight,nine,four));
 
     for (let polygon of polygonArray) {
