@@ -40,15 +40,14 @@ export class AreaService {
       let r = this.randomInt(0,255);
       let g = this.randomInt(0,255);
       let b = this.randomInt(0,255);
-      let background = `rgba(${r}, ${g}, ${b}, 0.1)`;
-      console.log(background);
+      let alpha = this.randomInt(1,50);
       feature.setStyle(new olStyle.Style({
         stroke: new olStyle.Stroke({
-          color: 'rgba(0, 0, 0, 0.1)',
+          color: `rgba(0, 0, 0, 0.1)`,
           width: 1
         }),
         fill: new olStyle.Fill({
-          color: background
+          color: `rgba(${r}, ${g}, ${b}, 0.${alpha})`
         })
       }));
     }
