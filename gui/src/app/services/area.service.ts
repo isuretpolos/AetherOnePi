@@ -27,6 +27,17 @@ export class AreaService {
     this.insertPointMarker(coordinatesArray[2], source);
     this.insertPointMarker(coordinatesArray[3], source);
 
+    let polygonArray = this.generateFourInternalPolygons(coordinatesArray);
+
+    for (let polygon of polygonArray) {
+      let polygonBoxFeature = new Feature({
+        geometry: polygon
+      });
+      source.addFeature(polygonBoxFeature);
+    }
+  }
+
+  private generateFourInternalPolygons(coordinatesArray) {
     let polygonArray = [];
 
     let one = coordinatesArray[0];
@@ -39,17 +50,11 @@ export class AreaService {
     let six = this.getMiddlePoint(five, seven);
     let eight = this.getMiddlePoint(nine, seven);
 
-    polygonArray.push(this.createBox(one,two,three,four));
-    polygonArray.push(this.createBox(two,five,six,three));
-    polygonArray.push(this.createBox(six,seven,eight,three));
-    polygonArray.push(this.createBox(three,eight,nine,four));
-
-    for (let polygon of polygonArray) {
-      let polygonBoxFeature = new Feature({
-        geometry: polygon
-      });
-      source.addFeature(polygonBoxFeature);
-    }
+    polygonArray.push(this.createBox(one, two, three, four));
+    polygonArray.push(this.createBox(two, five, six, three));
+    polygonArray.push(this.createBox(six, seven, eight, three));
+    polygonArray.push(this.createBox(three, eight, nine, four));
+    return polygonArray;
   }
 
   /**
