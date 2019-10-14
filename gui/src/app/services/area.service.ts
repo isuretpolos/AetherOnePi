@@ -3,12 +3,14 @@ import {Vector as VectorSource} from "ol/source";
 import Feature from 'ol/Feature';
 import * as geom from 'ol/geom';
 import * as olProj from 'ol/proj';
+import * as olStyle from 'ol/style';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AreaService {
 
+  private static MAX_LEVEL:number = 3;
   constructor() {
   }
 
@@ -27,17 +29,57 @@ export class AreaService {
     this.insertPointMarker(coordinatesArray[2], source);
     this.insertPointMarker(coordinatesArray[3], source);
 
-    let polygonArray = this.generateFourInternalPolygons(coordinatesArray);
+    let polygonArray = this.generateFourInternalPolygons(coordinatesArray,0);
 
-    for (let polygon of polygonArray) {
-      let polygonBoxFeature = new Feature({
-        geometry: polygon
-      });
-      source.addFeature(polygonBoxFeature);
+    console.log(polygonArray);
+
+    this.insertPolygonsAsFeatures(polygonArray, source, 0);
+
+    for (let feature of source.getFeatures()) {
+      // Test set color
+      let r = this.randomInt(0,255);
+      let g = this.randomInt(0,255);
+      let b = this.randomInt(0,255);
+      let background = `rgba(${r}, ${g}, ${b}, 0.1)`;
+      console.log(background);
+      feature.setStyle(new olStyle.Style({
+        stroke: new olStyle.Stroke({
+          color: 'rgba(0, 0, 0, 0.1)',
+          width: 1
+        }),
+        fill: new olStyle.Fill({
+          color: background
+        })
+      }));
     }
   }
 
-  private generateFourInternalPolygons(coordinatesArray) {
+  private randomInt(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  private insertPolygonsAsFeatures(polygonArray, source: VectorSource, level:number) {
+
+    level += 1;
+
+    for (let polygonData of polygonArray) {
+
+      if (polygonData instanceof Array) {
+        this.insertPolygonsAsFeatures(polygonData, source, level);
+      } else {
+        let polygonBoxFeature = new Feature({
+          geometry: polygonData
+        });
+
+        if (level == AreaService.MAX_LEVEL) {
+          source.addFeature(polygonBoxFeature);
+        }
+      }
+    }
+  }
+
+  private generateFourInternalPolygons(coordinatesArray, level:number) {
+    level += 1;
     let polygonArray = [];
 
     let one = coordinatesArray[0];
@@ -54,6 +96,14 @@ export class AreaService {
     polygonArray.push(this.createBox(two, five, six, three));
     polygonArray.push(this.createBox(six, seven, eight, three));
     polygonArray.push(this.createBox(three, eight, nine, four));
+
+    if (level < AreaService.MAX_LEVEL) {
+      polygonArray.push(this.generateFourInternalPolygons(polygonArray[0].getCoordinates()[0],level));
+      polygonArray.push(this.generateFourInternalPolygons(polygonArray[1].getCoordinates()[0],level));
+      polygonArray.push(this.generateFourInternalPolygons(polygonArray[2].getCoordinates()[0],level));
+      polygonArray.push(this.generateFourInternalPolygons(polygonArray[3].getCoordinates()[0],level));
+    }
+
     return polygonArray;
   }
 
