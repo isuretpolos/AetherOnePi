@@ -1,8 +1,5 @@
 import Map from 'ol/Map';
 import View from 'ol/View';
-import Feature from 'ol/Feature';
-import Point from 'ol/geom/Point';
-import * as olProj from 'ol/proj';
 import Draw, {createBox, createRegularPolygon} from 'ol/interaction/Draw.js';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
 import {OSM, Vector as VectorSource} from 'ol/source.js';

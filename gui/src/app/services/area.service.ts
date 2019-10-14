@@ -22,6 +22,13 @@ export class AreaService {
       return;
     }
 
+    this.insertPointMarker(coordinatesArray[0], source);
+    this.insertPointMarker(coordinatesArray[1], source);
+    this.insertPointMarker(coordinatesArray[2], source);
+    this.insertPointMarker(coordinatesArray[3], source);
+
+    let polygonArray = [];
+
     // subdivice the box into 4 smaller boxes
     let one = coordinatesArray[0];
     let two = this.getMiddlePoint(coordinatesArray[0], coordinatesArray[1]);
@@ -29,12 +36,19 @@ export class AreaService {
     let three = this.getMiddlePoint(two, this.getMiddlePoint(coordinatesArray[2], coordinatesArray[3]));
     let four = this.getMiddlePoint(coordinatesArray[3], coordinatesArray[4]);
 
-    this.insertBox(
-      this.insertPointMarker(one, source),
-      this.insertPointMarker(two, source),
-      this.insertPointMarker(three, source),
-      this.insertPointMarker(four, source)
-    , source);
+    polygonArray.push(this.createBox(one,two,three,four));
+
+    let five = coordinatesArray[1];
+    let six = this.getMiddlePoint(coordinatesArray[1], coordinatesArray[2]);
+
+    polygonArray.push(this.createBox(two,five,six,three));
+
+    for (let polygon of polygonArray) {
+      let polygonBoxFeature = new Feature({
+        geometry: polygon
+      });
+      source.addFeature(polygonBoxFeature);
+    }
   }
 
   /**
@@ -61,7 +75,7 @@ export class AreaService {
     return pointCoordinates;
   }
 
-  private insertBox(a,b,c,d, source: VectorSource) {
+  private createBox(a,b,c,d):geom.Polygon {
 
     let points = [];
     points.push(a);
@@ -74,9 +88,6 @@ export class AreaService {
     let targetProj = new olProj.Projection("EPSG:3857");
     polygon.transform(srcProj, targetProj);
 
-    let g = new Feature({
-      geometry: polygon
-    });
-    source.addFeature(g);
+    return polygon;
   }
 }
