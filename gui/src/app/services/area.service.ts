@@ -43,6 +43,13 @@ export class AreaService {
 
     polygonArray.push(this.createBox(two,five,six,three));
 
+    let seven = coordinatesArray[2];
+    let eight = this.getMiddlePoint(coordinatesArray[3], coordinatesArray[2]);
+    polygonArray.push(this.createBox(six,seven,eight,three));
+
+    let nine = coordinatesArray[3];
+    polygonArray.push(this.createBox(three,eight,nine,four));
+
     for (let polygon of polygonArray) {
       let polygonBoxFeature = new Feature({
         geometry: polygon
