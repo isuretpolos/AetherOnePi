@@ -3,7 +3,6 @@ import {Vector as VectorSource} from "ol/source";
 import Feature from 'ol/Feature';
 import * as geom from 'ol/geom';
 import * as olProj from 'ol/proj';
-import * as olStyle from 'ol/style';
 
 @Injectable({
   providedIn: 'root'
@@ -34,27 +33,6 @@ export class AreaService {
     console.log(polygonArray);
 
     this.insertPolygonsAsFeatures(polygonArray, source, 0);
-
-    for (let feature of source.getFeatures()) {
-      // Test set color
-      let r = this.randomInt(0,255);
-      let g = this.randomInt(0,255);
-      let b = this.randomInt(0,255);
-      let alpha = this.randomInt(1,50);
-      feature.setStyle(new olStyle.Style({
-        stroke: new olStyle.Stroke({
-          color: `rgba(0, 0, 0, 0.1)`,
-          width: 1
-        }),
-        fill: new olStyle.Fill({
-          color: `rgba(${r}, ${g}, ${b}, 0.${alpha})`
-        })
-      }));
-    }
-  }
-
-  private randomInt(min, max){
-    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   private insertPolygonsAsFeatures(polygonArray, source: VectorSource, level:number) {

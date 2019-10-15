@@ -22,8 +22,8 @@ export class MapObject {
 
   draw: Draw;
   lastSketch:any;
+  source: VectorSource = new VectorSource({wrapX: false});
   private lastDrawEvent = null;
-  private source: VectorSource = new VectorSource({wrapX: false});
   private vector = new VectorLayer({
     source: this.source
   });
