@@ -23,6 +23,10 @@ export class AetherServerService {
     return this.http.get<AnalysisResult>(`${this.serverUrl}/analysis/${rateListName}`);
   }
 
+  analyzeAreaGrid(rateListName:string):Observable<AnalysisResult> {
+    return this.http.get<AnalysisResult>(`${this.serverUrl}/analysisArea/${rateListName}`);
+  }
+
   broadcast(broadcasted: Broadcasted):Observable<Broadcasted> {
     return this.http.post<Broadcasted>(`${this.serverUrl}/broadcasting`, broadcasted);
   }

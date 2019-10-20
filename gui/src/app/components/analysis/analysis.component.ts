@@ -87,7 +87,6 @@ export class AnalysisComponent implements OnInit {
       if (rateObject.gv == null || rateObject.gv == 0) {
         this.aetherServerService.checkGeneralVitality().subscribe( gv => {
           rateObject.gv = gv;
-          console.log(rateObject);
         });
       }
     })

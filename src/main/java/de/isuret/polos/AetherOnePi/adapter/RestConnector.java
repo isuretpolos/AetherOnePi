@@ -75,48 +75,40 @@ public class RestConnector {
     @RequestMapping("analysis/generalVitality")
     public Integer analyseGeneralVitality() {
 
-        Map<Integer,Integer> vitalityMap = new HashMap<>();
-
-        for (int x=0; x<101; x++) {
-
-            vitalityMap.put(x,0);
-        }
-
-        for (int x=0; x<3456; x++) {
-
-            Integer key = hotbitsClient.getInteger(0,100);
-            Integer value = vitalityMap.get(key) + 1;
-            vitalityMap.put(key,value);
-        }
-
-        List<VitalityObject> vitalityList = new ArrayList<>();
-
-        for (int x=0; x<101; x++) {
-            vitalityList.add(new VitalityObject(x,vitalityMap.get(x)));
-        }
-
-        Collections.sort(vitalityList, new Comparator<VitalityObject>() {
-            @Override
-            public int compare(VitalityObject o1, VitalityObject o2) {
-                return o2.getValue().compareTo(o1.getValue());
-            }
-        });
-
-        return vitalityList.get(0).getValue();
+        return analyseService.checkGeneralVitality();
     }
 
     @RequestMapping("analysis/{rateListName}")
     public AnalysisResult analysisRateList(@PathVariable String rateListName, HttpServletRequest request) throws IOException {
 
-        System.out.println("analysis of " + rateListName);
-//        statusNotificationService.registerClient(request.getRemoteAddr());
         Iterable<Rate> rates = dataService.findAllBySourceName(rateListName);
         return analyseService.getAnalysisResult(rates);
     }
 
+    /**
+     * Scan one spatial grid on a map and automatically check also the general vitality
+     * @param rateListName
+     * @param request
+     * @return
+     * @throws IOException
+     */
+    @RequestMapping("analysisArea/{rateListName}")
+    public AnalysisResult analysisAreaRateList(@PathVariable String rateListName, HttpServletRequest request) throws IOException {
+
+        Iterable<Rate> rates = dataService.findAllBySourceName(rateListName);
+        AnalysisResult analysisResult = analyseService.getAnalysisResult(rates);
+
+        analysisResult.setGeneralVitality(analyseService.checkGeneralVitality());
+
+        for (RateObject rateObject : analysisResult.getRateObjects()) {
+            rateObject.setGv(analyseService.checkGeneralVitality());
+        }
+
+        return analysisResult;
+    }
+
     @PostMapping("broadcasting")
     public BroadCastData broadcast(@RequestBody BroadCastData broadCastData, HttpServletRequest request) throws IOException {
-//        statusNotificationService.registerClient(request.getRemoteAddr());
         return broadcastQueue.addBroadcastDataToQueue(broadCastData);
     }
 

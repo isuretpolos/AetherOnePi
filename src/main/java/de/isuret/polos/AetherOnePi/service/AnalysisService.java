@@ -2,6 +2,7 @@ package de.isuret.polos.AetherOnePi.service;
 
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Rate;
+import de.isuret.polos.AetherOnePi.domain.VitalityObject;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
@@ -10,10 +11,7 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class AnalysisService {
@@ -109,5 +107,36 @@ public class AnalysisService {
             System.err.println("ERROR - ... something gone wrong during analysis! Please use the stick-pad!");
             return analysisResult;
         }
+    }
+
+    public Integer checkGeneralVitality() {
+        Map<Integer,Integer> vitalityMap = new HashMap<>();
+
+        for (int x=0; x<101; x++) {
+
+            vitalityMap.put(x,0);
+        }
+
+        for (int x=0; x<3456; x++) {
+
+            Integer key = hotbitsClient.getInteger(0,100);
+            Integer value = vitalityMap.get(key) + 1;
+            vitalityMap.put(key,value);
+        }
+
+        List<VitalityObject> vitalityList = new ArrayList<>();
+
+        for (int x=0; x<101; x++) {
+            vitalityList.add(new VitalityObject(x,vitalityMap.get(x)));
+        }
+
+        Collections.sort(vitalityList, new Comparator<VitalityObject>() {
+            @Override
+            public int compare(VitalityObject o1, VitalityObject o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        return vitalityList.get(0).getValue();
     }
 }
