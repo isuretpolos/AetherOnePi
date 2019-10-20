@@ -1,23 +1,25 @@
-<div id="map" class="map"></div>
-<hr>
-<div class="btn-toolbar" role="toolbar">
-  <div *ngIf="!map.draw" class="btn-group mr-2" role="group">
-    <button class="btn btn-primary" (click)="drawArea()">DRAW AREA</button>
+<div id="map" class="map">
+  <div id="toolbar" class="btn-toolbar" role="toolbar">
+    <div *ngIf="!map.draw" class="btn-group mr-2" role="group">
+      <button class="btn btn-primary" (click)="drawArea()">DRAW AREA</button>
+    </div>
+    <div *ngIf="map.draw" class="btn-group mr-2" role="group">
+      <button class="btn btn-warning" (click)="stopDrawing()">STOP DRAWING</button>
+    </div>
+    <div *ngIf="!scanning && !map.draw && map.lastSketch" class="btn-group mr-2" role="group">
+      <button class="btn btn-primary" (click)="scanArea()">SCAN</button>
+    </div>
+    <div *ngIf="!map.lastSketch || map.draw" class="btn-group mr-2" role="group">
+      <button class="btn btn-dark">SCAN</button>
+    </div>
+    <div *ngIf="scanning" class="btn-group mr-2" role="group">
+      <button class="btn btn-warning" (click)="stopScanning()">SCANNING {{areaAnalysis.gridAnalysis.length + 1}} of 64</button>
+    </div>
+    <div class="btn-group" role="group">
+      <button class="btn btn-success">BROADCAST</button>
+    </div>
   </div>
-  <div *ngIf="map.draw" class="btn-group mr-2" role="group">
-    <button class="btn btn-warning" (click)="stopDrawing()">STOP DRAWING</button>
-  </div>
-  <div *ngIf="!scanning && !map.draw && map.lastSketch" class="btn-group mr-2" role="group">
-    <button class="btn btn-primary" (click)="scanArea()">SCAN</button>
-  </div>
-  <div *ngIf="!map.lastSketch || map.draw" class="btn-group mr-2" role="group">
-    <button class="btn btn-dark">SCAN</button>
-  </div>
-  <div *ngIf="scanning" class="btn-group mr-2" role="group">
-    <button class="btn btn-warning" (click)="stopScanning()">SCANNING {{areaAnalysis.gridAnalysis.length + 1}} of 64</button>
-  </div>
-  <div class="btn-group" role="group">
-    <button class="btn btn-success">BROADCAST</button>
-  </div>
+  <app-area-scan-grid-result *ngIf="gridResult" [analysisResult]="gridResult"></app-area-scan-grid-result>
 </div>
+<hr>
 <pre class="text-light">First draw an area by clicking on "DRAW AREA", afterwards click "STOP DRAWING" and finally on "SCAN".</pre>

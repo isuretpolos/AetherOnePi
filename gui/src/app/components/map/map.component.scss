@@ -1,3 +1,6 @@
+.map {
+  z-index: 99;
+}
 .map:-moz-full-screen {
   height: 100%;
 }
@@ -12,4 +15,20 @@
 }
 .ol-rotate {
   top: 3em;
+}
+
+#toolbar {
+  position: absolute; top: 4rem; left: 10rem; z-index: 998;
+}
+#toolbar:-moz-full-screen {
+  position: fixed; top: 1px; left: 10px; z-index: 998;
+}
+#toolbar:-webkit-full-screen {
+  position: fixed; top: 1px; left: 10px; z-index: 998;
+}
+#toolbar:-ms-fullscreen {
+  position: fixed; top: 1px; left: 10px; z-index: 998;
+}
+#toolbar:fullscreen {
+  position: fixed; top: 1px; left: 10px; z-index: 998;
 }

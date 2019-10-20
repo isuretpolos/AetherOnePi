@@ -15,6 +15,7 @@ import { MapComponent } from './components/map/map.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CaseViewComponent } from './components/case/case-view/case-view.component';
+import { AreaScanGridResultComponent } from './components/map/area-scan-grid-result/area-scan-grid-result.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CaseViewComponent } from './components/case/case-view/case-view.compone
     SessionComponent,
     StatusComponent,
     MapComponent,
-    CaseViewComponent
+    CaseViewComponent,
+    AreaScanGridResultComponent
   ],
   imports: [
     BrowserModule,

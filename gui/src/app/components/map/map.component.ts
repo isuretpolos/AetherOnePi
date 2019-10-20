@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MapObject} from "../../map/map";
 import {AreaService} from "../../services/area.service";
 import * as olStyle from 'ol/style';
-import {AreaAnalysis} from "../../domain/analysisResult";
+import {AnalysisResult, AreaAnalysis} from "../../domain/analysisResult";
 import {AetherServerService} from "../../services/aether-server.service";
 
 @Component({
@@ -15,6 +15,7 @@ export class MapComponent implements OnInit {
   map: MapObject;
   scanning:boolean = false;
   areaAnalysis:AreaAnalysis;
+  gridResult:AnalysisResult;
 
   constructor(
     private areaService: AreaService,
@@ -24,6 +25,13 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.map = new MapObject(this.areaService);
     this.map.init();
+    let map = this.map.map;
+
+    map.getViewport().addEventListener("click", (e) => {
+      map.forEachFeatureAtPixel(map.getEventPixel(e), (feature, layer) => {
+        this.gridResult = feature.analysisResult;
+      });
+    });
   }
 
   drawArea() {
@@ -49,7 +57,10 @@ export class MapComponent implements OnInit {
       this.map.source.removeFeature(this.map.lastSketch);
     }
 
-    this.scanGrid();
+    this.aetherServerService.checkGeneralVitality().subscribe( gv => {
+      this.areaAnalysis.generalVitality = gv;
+      this.scanGrid();
+    });
   }
 
   private scanGrid() {
@@ -64,15 +75,9 @@ export class MapComponent implements OnInit {
         return;
       }
 
-      let r = this.randomInt(0, 255);
-      let g = this.randomInt(0, 255);
-      let b = this.randomInt(0, 255);
-      let alpha = this.randomInt(1, 50);
-
-
       this.areaAnalysis.gridAnalysis.push(analysisResult);
       let gridNumber = this.areaAnalysis.gridAnalysis.length;
-      this.colorGrid(r,g,b,alpha,gridNumber);
+      this.colorGrid(gridNumber);
 
       if (gridNumber >= 64) {
         this.scanning = false;
@@ -82,12 +87,18 @@ export class MapComponent implements OnInit {
     });
   }
 
-  private colorGrid(r:number,g:number,b:number,alpha:number,gridNumber:number) {
+  private colorGrid(gridNumber:number) {
 
+    let analysisResult:AnalysisResult = this.areaAnalysis.gridAnalysis[gridNumber - 1];
     let counter = 0;
+    let r = this.randomInt(0, 255);
+    let g = this.randomInt(0, 255);
+    let b = this.randomInt(0, 255);
+    let alpha = this.randomInt(1, 50);
 
     for (let feature of this.map.source.getFeatures()) {
       if (counter == gridNumber) {
+        feature.analysisResult = analysisResult;
         feature.setStyle(new olStyle.Style({
           stroke: new olStyle.Stroke({
             color: `rgba(0, 0, 0, 0.1)`,
@@ -97,6 +108,7 @@ export class MapComponent implements OnInit {
             color: `rgba(${r}, ${g}, ${b}, 0.${alpha})`
           })
         }));
+        console.log(feature);
         break;
       }
 
