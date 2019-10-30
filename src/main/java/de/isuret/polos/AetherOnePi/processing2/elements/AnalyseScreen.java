@@ -19,6 +19,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
     private StickPad stickPad = new StickPad();
     private boolean browserSupported = false;
     private boolean mouseClickOccurred = false;
+    private Long lastMouseClick = null;
 
     public final static int MAX_ENTRIES = 21;
 
@@ -225,6 +226,17 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
     @Override
     public void mouseClicked() {
-        this.mouseClickOccurred = true;
+
+        if (this.lastMouseClick == null) {
+            this.lastMouseClick = Calendar.getInstance().getTimeInMillis();
+            this.mouseClickOccurred = true;
+            return;
+        }
+
+        if (this.lastMouseClick + 500 < Calendar.getInstance().getTimeInMillis()) {
+            this.mouseClickOccurred = true;
+        }
+
+        this.lastMouseClick = Calendar.getInstance().getTimeInMillis();
     }
 }
