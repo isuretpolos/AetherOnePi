@@ -108,7 +108,6 @@ export class MapComponent implements OnInit {
   }
 
   private colorGrid(gridNumber: number) {
-console.log(gridNumber);
     let analysisResult: AnalysisResult = this.areaAnalysis.gridAnalysis[gridNumber - 1];
     let counter = 0;
 
