@@ -235,7 +235,7 @@ public class AetherOneEventHandler {
             p.setGeneralVitality(0);
             dataService.refreshDatabaseList();
             List<Rate> rates = dataService.findAllBySourceName(databaseName);
-            AnalysisResult result = analyseService.getAnalysisResult(rates);
+            AnalysisResult result = analyseService.analyseRateList(rates);
             List<RateObject> rateObjects = new ArrayList<>();
 
             for (RateObject rate : result.getRateObjects()) {

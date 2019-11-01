@@ -278,7 +278,7 @@ public class HotbitsClient {
         return bytes;
     }
 
-    public Byte getByte() {
+    public synchronized Byte getByte() {
 
         if (currentData == null) {
             try {
@@ -356,11 +356,11 @@ public class HotbitsClient {
                     }
 
                     if (errorCounter > 0) {
-                        makePause(10000);
+                        makePause(1000);
                     }
 
                     if (errorCounter > 20) {
-                        makePause(60000);
+                        makePause(10000);
                     }
 
                     makePause();

@@ -26,7 +26,7 @@ public class AnalysisService {
     @Autowired
     private PiService piService;
 
-    public AnalysisResult getAnalysisResult(Iterable<Rate> rates) {
+    public AnalysisResult analyseRateList(Iterable<Rate> rates) {
 
         AnalysisResult analysisResult = new AnalysisResult();
 
@@ -35,8 +35,9 @@ public class AnalysisService {
 
             for (Rate rate : rates) {
                 rateList.add(rate);
-                System.out.println("add rate " + rate);
             }
+
+            rateList = shuffleRateList(rateList);
 
             Map<String, Integer> ratesValues = new HashMap<>();
 
@@ -44,13 +45,14 @@ public class AnalysisService {
             if (max > MAX_RATELIST_SIZE) max = MAX_RATELIST_SIZE;
             int count = 0;
 
+            /**
+             * Get some rates
+             */
             while (rateList.size() > 0) {
 
                 int x = hotbitsClient.getInteger(0, rateList.size() - 1);
                 Rate rate = rateList.remove(x);
                 ratesValues.put(rate.getName(), 0);
-
-                System.out.println(rate);
 
                 count += 1;
 
@@ -62,8 +64,9 @@ public class AnalysisService {
             int biggestLevel = 0;
             boolean analysisFinished = false;
 
-            System.out.println("continue to add energetic value");
-
+            /**
+             * Add energetic value
+             */
             while (!analysisFinished) {
                 for (String rate : ratesValues.keySet()) {
 
@@ -109,6 +112,21 @@ public class AnalysisService {
         }
     }
 
+    /**
+     * Shuffle the rate list once before using it, so there is no "order" which could form a typical bell curve
+     * @param rateList
+     * @return
+     */
+    private List<Rate> shuffleRateList(List<Rate> rateList) {
+        List<Rate> shuffledRateList = new ArrayList<>();
+
+        while (rateList.size() > 0) {
+            shuffledRateList.add(rateList.remove(hotbitsClient.getInteger(0, rateList.size() - 1)));
+        }
+
+        return shuffledRateList;
+    }
+
     public Integer checkGeneralVitality() {
         Map<Integer,Integer> vitalityMap = new HashMap<>();
 
@@ -121,6 +139,8 @@ public class AnalysisService {
 
             Integer key = hotbitsClient.getInteger(0,100);
             Integer value = vitalityMap.get(key) + 1;
+
+//            System.out.println(String.format("key %s value %s", key, value));
             vitalityMap.put(key,value);
         }
 

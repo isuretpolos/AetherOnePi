@@ -82,7 +82,7 @@ public class RestConnector {
     public AnalysisResult analysisRateList(@PathVariable String rateListName, HttpServletRequest request) throws IOException {
 
         Iterable<Rate> rates = dataService.findAllBySourceName(rateListName);
-        return analyseService.getAnalysisResult(rates);
+        return analyseService.analyseRateList(rates);
     }
 
     /**
@@ -96,7 +96,7 @@ public class RestConnector {
     public AnalysisResult analysisAreaRateList(@PathVariable String rateListName, HttpServletRequest request) throws IOException {
 
         Iterable<Rate> rates = dataService.findAllBySourceName(rateListName);
-        AnalysisResult analysisResult = analyseService.getAnalysisResult(rates);
+        AnalysisResult analysisResult = analyseService.analyseRateList(rates);
 
         analysisResult.setGeneralVitality(analyseService.checkGeneralVitality());
 
