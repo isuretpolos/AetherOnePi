@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * The HotbitsHandler downloads asynchronously TRNG data from the AetherOnePi server and saves them as packages files
+ * inside a hotbitsFolder (usually named "hotbits")
+ */
 public class HotbitsHandler {
 
     private Logger logger = LoggerFactory.getLogger(HotbitsHandler.class);
