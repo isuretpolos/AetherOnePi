@@ -235,6 +235,8 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
         if (this.lastMouseClick + 500 < Calendar.getInstance().getTimeInMillis()) {
             this.mouseClickOccurred = true;
+        } else {
+            this.mouseClickOccurred = false;
         }
 
         this.lastMouseClick = Calendar.getInstance().getTimeInMillis();
