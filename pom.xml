@@ -192,7 +192,7 @@
                                     <resources>
                                         <resource>
                                             <directory>${basedir}/gui/dist/gui</directory>
-                                            <filtering>true</filtering>
+                                            <filtering>false</filtering>
                                         </resource>
                                     </resources>
                                 </configuration>
