@@ -78,6 +78,12 @@ public class RestConnector {
         return analyseService.checkGeneralVitality();
     }
 
+    @PostMapping("analysis/generalVitality")
+    public AnalysisResult analyseGeneralVitality(@RequestBody AnalysisResult analysisResult) {
+
+        return analyseService.checkGeneralVitalityForAnalysis(analysisResult);
+    }
+
     @RequestMapping("analysis/{rateListName}")
     public AnalysisResult analysisRateList(@PathVariable String rateListName, HttpServletRequest request) throws IOException {
 

@@ -2,6 +2,7 @@ package de.isuret.polos.AetherOnePi.service;
 
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Rate;
+import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.VitalityObject;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
@@ -159,5 +160,16 @@ public class AnalysisService {
         });
 
         return vitalityList.get(0).getValue();
+    }
+
+    public AnalysisResult checkGeneralVitalityForAnalysis(AnalysisResult analysisResult) {
+
+        analysisResult.setGeneralVitality(checkGeneralVitality());
+
+        for (RateObject rateObject : analysisResult.getRateObjects()) {
+            rateObject.setGv(checkGeneralVitality());
+        }
+
+        return analysisResult;
     }
 }

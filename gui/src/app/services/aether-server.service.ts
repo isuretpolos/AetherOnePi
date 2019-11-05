@@ -34,4 +34,8 @@ export class AetherServerService {
   checkGeneralVitality():Observable<number> {
     return this.http.get<number>(`${this.serverUrl}/analysis/generalVitality`);
   }
+
+  checkGeneralVitalityForAnalysisResult(analysisResult:AnalysisResult):Observable<AnalysisResult> {
+    return this.http.post<AnalysisResult>(`${this.serverUrl}/analysis/generalVitality`, analysisResult);
+  }
 }

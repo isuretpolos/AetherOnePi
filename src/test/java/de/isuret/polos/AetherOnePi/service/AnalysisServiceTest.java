@@ -54,5 +54,9 @@ public class AnalysisServiceTest {
         System.out.println(analysisResult.toString().replaceAll(",","\n"));
 
         Assert.assertEquals(0, counter.size());
+
+        System.out.println("========================================");
+        analysisResult = analysisService.checkGeneralVitalityForAnalysis(analysisResult);
+        System.out.println(analysisResult.toString().replaceAll(",","\n"));
     }
 }
