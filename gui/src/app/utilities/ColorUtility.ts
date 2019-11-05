@@ -20,9 +20,18 @@ export class ColorUtility {
     if (!(generalVitality && gv)) return;
 
     if (gv > generalVitality) {
-      return "#" + ColorUtility.fullColorHex(0, gv - generalVitality,0);
+      let relativeValue = this.map(gv - generalVitality, 0, gv,0, 255);
+      console.log(`gv ${gv} generalVitality ${generalVitality} relativeValue ${relativeValue}`);
+      return "#" + ColorUtility.fullColorHex(0, Math.floor(relativeValue),0);
     }
 
-    return "#" + ColorUtility.fullColorHex(generalVitality - gv, 0,0);
+    let relativeValue = this.map(generalVitality - gv, 0, generalVitality,0, 255);
+    console.log(`gv ${gv} generalVitality ${generalVitality} relativeValue ${relativeValue}`);
+    return "#" + ColorUtility.fullColorHex(Math.floor(relativeValue), 0,0);
+  }
+
+  static map(x:number, in_min:number, in_max:number, out_min:number, out_max:number ):number {
+
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
   }
 }

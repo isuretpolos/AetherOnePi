@@ -23,6 +23,7 @@ public class AnalysisService {
     @Autowired
     private HotbitsClient hotbitsClient;
 
+    @Setter
     @Autowired
     private PiService piService;
 

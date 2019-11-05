@@ -80,6 +80,17 @@ export class AnalysisComponent implements OnInit {
 
     if (this.analysisResult.generalVitality == null) {
       this.aetherServerService.checkGeneralVitality().subscribe( gv => this.analysisResult.generalVitality = gv);
+      this.analysisResult.rateObjects.forEach(rateObject => {
+        rateObject.gv = null;
+      });
+      return;
+    }
+
+    if (this.analysisResult.rateObjects[0].gv != null) {
+      this.analysisResult.rateObjects.forEach(rateObject => {
+        rateObject.gv = null;
+      });
+      this.analysisResult.generalVitality = null;
       return;
     }
 
