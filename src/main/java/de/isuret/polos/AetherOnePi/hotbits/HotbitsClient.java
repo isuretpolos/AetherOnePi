@@ -1,13 +1,13 @@
 package de.isuret.polos.AetherOnePi.hotbits;
 
-import lombok.Data;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
 import de.isuret.polos.AetherOnePi.processing.communication.StatusNotificationService;
 import de.isuret.polos.AetherOnePi.service.PiService;
 import de.isuret.polos.AetherOnePi.utils.HttpUtils;
+import lombok.Data;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -97,7 +97,7 @@ public class HotbitsClient {
         if (!hotbitFile.exists()) {
             pseudoRandomMode = true;
             logger.error(String.format("hotbit file %s does not exist. Switching into pseudoRandomMode!", hotbitFile.getAbsolutePath()));
-            throw null;
+            throw new IOException("hotbit file %s does not exist. Switching into pseudoRandomMode!");
         }
 
         HotbitPackage hotbitPackage = HotbitPackage.builder().fileName(hotbitFile.getName()).hotbits(FileUtils.readFileToString(hotbitFile, "UTF-8")).build();
