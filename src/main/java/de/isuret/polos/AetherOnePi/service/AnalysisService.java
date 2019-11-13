@@ -140,7 +140,7 @@ public class AnalysisService {
         for (int x=0; x<3456; x++) {
 
             Integer key = hotbitsClient.getInteger(0,100);
-            Integer value = vitalityMap.get(key) + 1;
+            Integer value = vitalityMap.get(key).intValue() + 1;
 
 //            System.out.println(String.format("key %s value %s", key, value));
             vitalityMap.put(key,value);

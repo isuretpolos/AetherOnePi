@@ -58,7 +58,7 @@ public class RateUtils {
         FileUtils.writeLines(enhancedRateList, "UTF-8", newRates);
     }
 
-    private static String cleanRateName(String part) {
+    public static String cleanRateName(String part) {
 
         return part
                 .replaceAll("æ","ae")

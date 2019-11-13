@@ -365,6 +365,8 @@ public class HotbitsClient {
 
                     makePause();
                 }
+
+                // TODO continue with persisting packages on file system
             }
 
             private void makePause() {
