@@ -55,7 +55,7 @@ public class SessionDialog extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (caseObject.getSessionList().size() == 0) return;
-                caseObject.getSessionList().get(caseObject.getSessionList().size() - 1).getAnalysisResults().add(p.getAnalysisResult());
+                caseObject.getSessionList().get(caseObject.getSessionList().size() - 1).setAnalysisResult(p.getAnalysisResult());
                 saveCase();
             }
         });

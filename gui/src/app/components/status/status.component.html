@@ -1,7 +1,18 @@
-<div class="statusComponent">
+<div *ngIf="context" class="statusComponent">
+
+  <div *ngIf="context.caseObject">
+    <form [formGroup]="sessionNotes">
+      <div class="form-group">
+        <input id="sessionTitle" style="width: 80%;background-color: #171a1d; color: #72ff5b; border-style: none" placeholder="Title or subheader" formControlName="title">
+        <textarea id="sessionText" style="width: 80%;background-color: #171a1d; color: #9fcdff; border-style: none" placeholder="Intention or notes" formControlName="intentionOrNotes"></textarea>
+      </div>
+    </form>
+  </div>
+
   <ul *ngIf="aetherOnePiStatus != null">
-    <li *ngIf="aetherOnePiStatus.pseudoRandom == false"><span class="badge badge-danger">Simulation Mode</span></li>
-    <li><span class="badge badge-primary">hotbitsPackages {{aetherOnePiStatus.hotbitsPackages}}</span></li>
+    <li *ngIf="context != null && context.caseObject != null" class="btn btn-primary" (click)="saveSessionNotes()"> <i class="fas fa-male"></i> Save notes for "{{context.caseObject.name}}" </li>
+    <li *ngIf="aetherOnePiStatus.pseudoRandom" class="btn btn-danger">Simulation Mode</li>
+    <li class="btn btn-primary">hotbitsPackages {{aetherOnePiStatus.hotbitsPackages}}</li>
     <li *ngIf="aetherOnePiStatus.broadcasting == true"><span class="badge badge-success">broadcasting</span></li>
     <li *ngIf="aetherOnePiStatus.grounding == true"><span class="badge badge-success">grounding</span></li>
     <li *ngIf="aetherOnePiStatus.copying == true"><span class="badge badge-success">copying</span></li>

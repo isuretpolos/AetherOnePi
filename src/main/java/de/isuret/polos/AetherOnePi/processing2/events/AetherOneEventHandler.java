@@ -10,6 +10,7 @@ import de.isuret.polos.AetherOnePi.processing2.dialogs.SessionDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
+import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.StringUtils;
@@ -59,7 +60,7 @@ public class AetherOneEventHandler {
         }
 
         if ("COMMUNITY".equals(name)) {
-            openWebsiteInDefaultBrowser("https://vk.com/club184090674");
+            openWebsiteInDefaultBrowser("https://vk.com/aetherone");
             return;
         }
 
@@ -177,9 +178,18 @@ public class AetherOneEventHandler {
             return;
         }
 
+        if ("STATISTICS".equals(name)) {
+            generateStatisticsAndShow();
+            return;
+        }
+
         if ("BROADCAST NOW".equals(name)) {
             broadcastNow();
         }
+    }
+
+    private void generateStatisticsAndShow() {
+        StatisticsGenerator.start(p.getCaseObject());
     }
 
     public void broadcastNow() {
@@ -225,7 +235,7 @@ public class AetherOneEventHandler {
             p.setGeneralVitality(0);
             dataService.refreshDatabaseList();
             List<Rate> rates = dataService.findAllBySourceName(databaseName);
-            AnalysisResult result = analyseService.getAnalysisResult(rates);
+            AnalysisResult result = analyseService.analyseRateList(rates);
             List<RateObject> rateObjects = new ArrayList<>();
 
             for (RateObject rate : result.getRateObjects()) {
@@ -247,14 +257,14 @@ public class AetherOneEventHandler {
 
     private void saveCase() {
         if (p.getCaseObject().getSessionList().size() > 0) {
-            p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1).getAnalysisResults().add(p.getAnalysisResult());
+            p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1).setAnalysisResult(p.getAnalysisResult());
             p.saveCase();
         }
     }
 
     private void saveBroadcast(BroadCastData broadCastData) {
         if (p.getCaseObject().getSessionList().size() > 0) {
-            p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1).getBroadCastedList().add(broadCastData);
+            p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1).setBroadCasted(broadCastData);
             p.saveCase();
         }
     }
@@ -268,23 +278,18 @@ public class AetherOneEventHandler {
 
         if (p.getCaseObject().getSessionList().size() > 0) {
             Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
-            Integer lastAnalysisResultPosition = lastSession.getAnalysisResults().size() - 1;
-
-            if (lastAnalysisResultPosition > 0) {
-                lastSession.getAnalysisResults().set(lastAnalysisResultPosition, p.getAnalysisResult());
-            }
-
+            lastSession.setAnalysisResult(p.getAnalysisResult());
             p.saveCase();
         }
     }
 
     private RateObject checkForRecurrence(RateObject rateObject) {
 
-        for (int i=0; i<recurringRateList.size(); i++) {
+        for (int i = 0; i < recurringRateList.size(); i++) {
             RateObject rate = recurringRateList.get(i);
             if (rate.getNameOrRate().equals(rateObject.getNameOrRate())) {
                 rate.setRecurring(rate.getRecurring() + 1);
-                recurringRateList.set(i,rate);
+                recurringRateList.set(i, rate);
                 return rate;
             }
         }
@@ -382,7 +387,7 @@ public class AetherOneEventHandler {
         RateObject rateObject = p.getAnalysisResult().getRateObjects().get(p.getGvCounter() - 1);
         rateObject.setGv(gv);
 
-        Map<Integer,Integer> gvOccurrences = new HashMap<>();
+        Map<Integer, Integer> gvOccurrences = new HashMap<>();
 
         for (int iRate = 0; iRate < p.getAnalysisResult().getRateObjects().size(); iRate++) {
 

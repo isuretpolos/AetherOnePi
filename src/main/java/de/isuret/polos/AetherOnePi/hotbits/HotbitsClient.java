@@ -16,6 +16,7 @@ import org.springframework.util.StringUtils;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -55,10 +56,10 @@ public class HotbitsClient {
     private boolean stop = false;
     private int errorCounter = 0;
     private HotbitsFactory hotbitsFactory;
-    private Random pseudoRand;
+    private SecureRandom pseudoRand;
 
     public HotbitsClient() {
-        pseudoRand = new Random(Calendar.getInstance().getTimeInMillis());
+        pseudoRand = new SecureRandom(String.valueOf(Calendar.getInstance().getTimeInMillis()).getBytes());
         hotbitsFactory = new HotbitsFactory();
     }
 
@@ -88,7 +89,7 @@ public class HotbitsClient {
         logger.info(hotbitPackages.size());
 
         if (statusNotificationService != null) {
-            statusNotificationService.setHotbitsPackages(hotbitPackages.size());
+//            statusNotificationService.setHotbitsPackages(hotbitPackages.size());
         }
 
         File hotbitFile = hotbitsFactory.createHotbitPackage(packageSize, packageFolder);
@@ -129,7 +130,6 @@ public class HotbitsClient {
         if (pseudoRandomMode) {
 
             return pseudoRand.nextBoolean();
-            // FIXME choose a better internet service than this return getRandomOrgSeeded().nextInt((max - min) + 1) + min;
         }
 
         return getRandom(getSeed(5)).nextBoolean();
@@ -140,7 +140,6 @@ public class HotbitsClient {
         if (pseudoRandomMode) {
 
             return pseudoRand.nextInt(bound);
-            // FIXME choose a better internet service than this return getRandomOrgSeeded().nextInt((max - min) + 1) + min;
         }
 
         return getRandom(Calendar.getInstance().getTimeInMillis() + getSeed(30)).nextInt(bound);
@@ -151,9 +150,7 @@ public class HotbitsClient {
         if (pseudoRandomMode) {
 
             return pseudoRand.nextInt((max - min) + 1) + min;
-            // FIXME choose a better internet service than this return getRandomOrgSeeded().nextInt((max - min) + 1) + min;
         }
-
         return getRandom(Calendar.getInstance().getTimeInMillis() + getSeed(30)).nextInt((max - min) + 1) + min;
     }
 
@@ -281,7 +278,7 @@ public class HotbitsClient {
         return bytes;
     }
 
-    public Byte getByte() {
+    public synchronized Byte getByte() {
 
         if (currentData == null) {
             try {
@@ -359,11 +356,11 @@ public class HotbitsClient {
                     }
 
                     if (errorCounter > 0) {
-                        makePause(10000);
+                        makePause(1000);
                     }
 
                     if (errorCounter > 20) {
-                        makePause(60000);
+                        makePause(10000);
                     }
 
                     makePause();

@@ -1,3 +1,48 @@
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
   <p>Analysis for {{ context.databaseName }}</p>
+  <form class="form-inline" [formGroup]="analysisSettingsForm" *ngIf="context; else loading">
+    <div *ngIf="rateNames != null" class="form-group mx-sm-3 mb-2">
+      <select class="custom-select text-light bg-dark" formControlName="rateNames" (ngModelChange)="selectRateName()">
+        <option [value]="rate" *ngFor="let rate of rateNames">{{rate}}</option>
+      </select>
+    </div>
+    <img src="/assets/spinnerKnob.gif" *ngIf="rateNames == null" width="45">
+    <button *ngIf="analysisResult" class="btn btn-success mb-2" (click)="checkGeneralVitality()" style="margin-right: 1rem">CHECK GENERAL VITALITY</button>
+    <button class="btn btn-success mb-2" (click)="analyze()">ANALYZE</button>
+  </form>
+
+  <ng-template #loading>
+    Loading Analysis Settings ...
+  </ng-template>
+</div>
+
+<div *ngIf="analysisResult">
+  <h4 *ngIf="analysisResult.generalVitality">General Vitality <span class="badge badge-secondary">{{analysisResult.generalVitality}}</span></h4>
+  <table class="table table-dark table-bordered table-hover table-sm">
+    <thead>
+    <tr>
+      <th scope="col">NO</th>
+      <th scope="col">EV</th>
+      <th scope="col">RATE / SIGNATURE</th>
+      <th scope="col">GV</th>
+      <th scope="col">GV REC</th>
+      <th scope="col">REC</th>
+      <th scope="col">ACTIONS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let rateObject of analysisResult.rateObjects">
+      <td>{{analysisResult.rateObjects.indexOf(rateObject) + 1}}</td>
+      <td>{{rateObject.energeticValue}}</td>
+      <td>{{rateObject.nameOrRate}}</td>
+      <td [style.background-color]="colorRelativeToGeneralVitality(analysisResult.generalVitality, rateObject.gv)">{{rateObject.gv}}</td>
+      <td>{{rateObject.recurringGeneralVitality}}</td>
+      <td>{{rateObject.recurring}}</td>
+      <td>
+        <button class="btn btn-success btn-sm" (click)="broadcast(rateObject)">BROADCAST</button>
+        <a *ngIf="rateObject.url" href="{{rateObject.url}}" target="_blank" class="btn btn-primary btn-sm" style="margin-left: 1rem">URL</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
 </div>

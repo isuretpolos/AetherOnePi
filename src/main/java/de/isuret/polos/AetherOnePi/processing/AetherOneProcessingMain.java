@@ -49,7 +49,7 @@ import java.util.List;
  * <p>
  * https://github.com/radionics
  * https://radionicsnews.wordpress.com
- * https://vk.com/club184090674
+ * https://vk.com/aetherone
  */
 @Getter
 @Setter

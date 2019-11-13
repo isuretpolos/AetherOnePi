@@ -275,7 +275,9 @@ public class GuiElements {
     }
 
     public void addAnalyseScreeen() {
-        drawableElementList.add(new AnalyseScreen(p));
+        AnalyseScreen analyseScreen = new AnalyseScreen(p);
+        p.getMouseClickObserverList().add(analyseScreen);
+        drawableElementList.add(analyseScreen);
     }
 
     public void addDashboardScreen() {

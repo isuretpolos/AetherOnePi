@@ -1,11 +1,15 @@
 ![Logo](https://github.com/isuretpolos/AetherOnePi/raw/master/gui/src/assets/AetherOneLogo.png)
-#AetherOnePi
+
+# AetherOnePi
+
 Open Source Radionics for the Raspberry Pi
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
 
-Version 1.0 (Standalone Client) will be ready for August 2019.
-Stay tuned and subscribe to my blog(s) and join the [community](https://vk.com/club184090674).
+## Download
+Download [Version 1.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/1.0) (Standalone Client)
+
+Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 
 # Resources
 ## Documentation
@@ -13,10 +17,12 @@ Stay tuned and subscribe to my blog(s) and join the [community](https://vk.com/c
 ## Blogs
 - [Radionics](https://radionics.home.blog)
 - [Isuret Polos](https://isuretpolos.wordpress.com)
+- [Open Source Radionics on Tumblr](https://aetheronepi.tumblr.com)
 ## Literature
 - [My books](https://isuretpolos.wordpress.com/literature/)
-## Community
-- [Open Source Radionics](https://vk.com/club184090674)
+## Communities
+- [Open Source Radionics](https://vk.com/aetherone)
+- [Youtube](https://www.youtube.com/channel/UCFVTNpzycFUoF4h0CbRS92Q)
 
 # Participation
 Please note that we have a strict [code of conduct](CODE_OF_CONDUCT.md) in our open source radionics project.

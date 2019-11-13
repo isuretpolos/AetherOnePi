@@ -1,14 +1,16 @@
 import Map from 'ol/Map';
 import View from 'ol/View';
-import Draw from 'ol/interaction/Draw.js';
+import Draw, {createBox, createRegularPolygon} from 'ol/interaction/Draw.js';
 import {Tile as TileLayer, Vector as VectorLayer} from 'ol/layer.js';
 import {OSM, Vector as VectorSource} from 'ol/source.js';
 import {defaults as defaultControls, FullScreen} from 'ol/control.js';
+import {AreaService} from "../services/area.service";
 
 export class MapObject {
 
-  constructor() {
-    this.addInteraction('LineString');
+  constructor(
+    private areaService: AreaService
+  ) {
   }
 
   /**
@@ -18,21 +20,55 @@ export class MapObject {
     source: new OSM()
   });
 
-  private draw: Draw;
-  private source: VectorSource = new VectorSource({wrapX: false});
+  draw: Draw;
+  lastSketch:any;
+  source: VectorSource = new VectorSource({wrapX: false});
+  private lastDrawEvent = null;
   private vector = new VectorLayer({
     source: this.source
   });
 
-  private addInteraction(typeSelect:string) {
-    var value = typeSelect;
+  public init() {
+    this.vector.getSource().on('addfeature', (event) => {
+      if (!this.lastDrawEvent) {
+        this.lastDrawEvent = new Date();
+        this.lastSketch = event.feature;
+        this.areaService.generateAreaGrid(this.lastSketch, this.source);
+        this.stopDrawing();
+      }
+    });
+  }
+
+  public addInteraction(typeSelect: string) {
+
+    let value = typeSelect;
     if (value !== 'None') {
+
+      let geometryFunction;
+
+      if (value === 'Square') {
+        value = 'Circle';
+        geometryFunction = createRegularPolygon(4);
+      } else if (value === 'Box') {
+        value = 'Circle';
+        geometryFunction = createBox();
+      } else {
+        this.draw = new Draw({
+          source: this.source,
+          type: 'LineString',
+          freehand: true
+        });
+        this.map.addInteraction(this.draw);
+        return;
+      }
+
       this.draw = new Draw({
         source: this.source,
-        type: typeSelect,
-        freehand: true
+        type: value,
+        geometryFunction: geometryFunction
       });
-     this.map.addInteraction(this.draw);
+
+      this.map.addInteraction(this.draw);
     }
   }
 
@@ -49,4 +85,16 @@ export class MapObject {
       zoom: 2
     })
   });
+
+  stopDrawing() {
+    if (this.draw) {
+      this.map.removeInteraction(this.draw);
+      this.draw = null;
+      this.lastDrawEvent = null;
+    }
+  }
+
+  clearDrawing() {
+    this.source.clear();
+  }
 }

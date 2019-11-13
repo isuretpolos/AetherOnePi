@@ -15,7 +15,7 @@
     <description>Open Source Radionics for the Rasperry Pi</description>
 
     <properties>
-        <aether.version>1.0.0</aether.version>
+        <aether.version>1.1.0</aether.version>
         <java.version>1.8</java.version>
     </properties>
 
@@ -75,6 +75,13 @@
             <version>1.5</version>
         </dependency>
 
+        <!-- GeoInformatics -->
+        <dependency>
+            <groupId>org.locationtech.jts</groupId>
+            <artifactId>jts-core</artifactId>
+            <version>1.16.1</version>
+        </dependency>
+
         <dependency>
             <groupId>org.processing</groupId>
             <artifactId>core</artifactId>
@@ -86,6 +93,13 @@
             <groupId>sojamo.de</groupId>
             <artifactId>controlP5</artifactId>
             <version>2.1.6</version>
+        </dependency>
+
+        <!-- MacOS missing class bugfix -->
+        <dependency>
+            <groupId>processing.org</groupId>
+            <artifactId>appleJar</artifactId>
+            <version>1.0.0</version>
         </dependency>
 
         <dependency>
@@ -147,7 +161,7 @@
                                         <argument>build</argument>
                                         <argument>--prod=true</argument>
                                     </arguments>
-                                    <workingDirectory>${basedir}/gui/</workingDirectory>
+                                    <workingDirectory>${basedir}/gui</workingDirectory>
                                 </configuration>
                             </execution>
                         </executions>
@@ -182,7 +196,7 @@
                                     <resources>
                                         <resource>
                                             <directory>${basedir}/gui/dist/gui</directory>
-                                            <filtering>true</filtering>
+                                            <filtering>false</filtering>
                                         </resource>
                                     </resources>
                                 </configuration>

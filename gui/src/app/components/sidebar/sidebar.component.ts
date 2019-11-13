@@ -13,8 +13,8 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
   }
 
-  setDatabaseName(databaseName:string):void {
-    this.contextService.setDatabaseName(databaseName);
+  navigateToAnalysis(databaseName:string):void {
+    this.contextService.navigateToAnalysis(databaseName);
   }
 
 }

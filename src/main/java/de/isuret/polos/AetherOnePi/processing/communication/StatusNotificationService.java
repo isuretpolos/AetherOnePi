@@ -1,6 +1,5 @@
 package de.isuret.polos.AetherOnePi.processing.communication;
 
-import lombok.Getter;
 import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
 import de.isuret.polos.AetherOnePi.service.BroadCastService;
 import org.apache.commons.logging.Log;
@@ -10,7 +9,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.net.SocketException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Status services handling the notification of all clients
@@ -34,47 +34,55 @@ public class StatusNotificationService {
      * @param ipAddress
      * @throws IOException
      */
-    public void registerClient(String ipAddress) throws IOException {
+    public void registerClient(String ipAddress) {
 
-        if (clients.get(ipAddress) != null) return;
+        try {
+            if (clients.get(ipAddress) != null) return;
 
-        SocketClient client = new SocketClient();
-        client.startConnection(ipAddress, 5555);
-        clients.put(ipAddress, client);
-        logger.info("Client for " + ipAddress + " registered.");
+            SocketClient client = new SocketClient();
+            client.startConnection(ipAddress, 5555);
+            clients.put(ipAddress, client);
+            logger.info("Client for " + ipAddress + " registered.");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public void setProgress(Integer progress) throws IOException {
+    public void setProgress2(Integer progress) throws IOException {
 
         status.setProgress(progress);
-        sendStatus();
+        sendStatus2();
     }
 
-    public void setHotbitsPackages(Integer siteOfPackages) throws IOException {
+    public void setHotbitsPackages2(Integer siteOfPackages) throws IOException {
         status.setHotbitsPackages(siteOfPackages);
-        sendStatus();
+        sendStatus2();
     }
 
     /**
      * Sends the status to all registered clients
      * @throws IOException
      */
-    public void sendStatus() throws IOException {
+    public void sendStatus2() throws IOException {
 
-        logger.info(status);
-        String obsoleteClientHost = null;
+        try {
+            logger.info(status);
+            String obsoleteClientHost = null;
 
-        for (SocketClient client : clients.values()) {
-            try {
-                client.sendStatus(status);
-            } catch (SocketException e) {
-                obsoleteClientHost = client.getAddress();
-                break;
+            for (SocketClient client : clients.values()) {
+                try {
+                    client.sendStatus(status);
+                } catch (SocketException e) {
+                    obsoleteClientHost = client.getAddress();
+                    break;
+                }
             }
-        }
 
-        if (obsoleteClientHost != null) {
-            removeClient(obsoleteClientHost);
+            if (obsoleteClientHost != null) {
+                removeClient(obsoleteClientHost);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

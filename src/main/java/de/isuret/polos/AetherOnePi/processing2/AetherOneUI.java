@@ -13,6 +13,7 @@ import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.elements.DashboardElement;
 import de.isuret.polos.AetherOnePi.processing2.elements.GuiElements;
 import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
+import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
@@ -23,6 +24,8 @@ import org.slf4j.LoggerFactory;
 import processing.core.PApplet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 public class AetherOneUI extends PApplet implements IStatusReceiver {
@@ -36,6 +39,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private HotbitsClient hotbitsClient;
     private HotbitsHandler hotbitsHandler;
     private DataService dataService = new DataService();
+    private List<MouseClickObserver> mouseClickObserverList = new ArrayList<>();
     @Setter
     private Case caseObject = new Case();
     @Setter
@@ -140,6 +144,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("CHEMICAL")
                 .addButton("ENERGY")
                 .addButton("STICKPAD")
+                .setInitialBounds(border, posY + 465, 120f, 14f, false)
+                .addButton("STATISTICS")
                 .addAnalyseScreeen();
         guiElements
                 .selectCurrentTab("AREA")
@@ -242,6 +248,12 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
             CaseToHtml.transformCaseObjectIntoHtml(caseObject);
         } catch (IOException e1) {
             logger.error("Unable to persist case object", e1);
+        }
+    }
+
+    public void mouseClicked() {
+        for (MouseClickObserver mouseClickObserver : mouseClickObserverList) {
+            mouseClickObserver.mouseClicked();
         }
     }
 

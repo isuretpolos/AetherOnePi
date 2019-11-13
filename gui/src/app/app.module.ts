@@ -12,6 +12,10 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { SessionComponent } from './components/session/session.component';
 import { StatusComponent } from './components/status/status.component';
 import { MapComponent } from './components/map/map.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CaseViewComponent } from './components/case/case-view/case-view.component';
+import { AreaScanGridResultComponent } from './components/map/area-scan-grid-result/area-scan-grid-result.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +25,18 @@ import { MapComponent } from './components/map/map.component';
     SidebarComponent,
     SessionComponent,
     StatusComponent,
-    MapComponent
+    MapComponent,
+    CaseViewComponent,
+    AreaScanGridResultComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,15 +4,38 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * The RateObject represents a single signature or rate in radionics analysis.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RateObject {
 
+    /**
+     * The energetic value aquired during TRNG / Hotbits analysis under the influence of the observers mind.
+     */
     private Integer energeticValue;
+
+    /**
+     * Name of the signature or a numeric rate, representing the invisible, immaterial and non-local morphic field.
+     */
     private String nameOrRate;
+
+    /**
+     * An url pointing towards a description on the web.
+     */
     private String url;
+
+    /**
+     * The general vitality in relation to the current vitality of the target.
+     */
     private Integer gv = 0;
+
+    /**
+     * A recurring of a rate object throughout different sessions has a special value,
+     * similar to a repeating pattern or a constitutional remedy in homeopathy.
+     */
     private Integer recurring = 0;
 
     /**

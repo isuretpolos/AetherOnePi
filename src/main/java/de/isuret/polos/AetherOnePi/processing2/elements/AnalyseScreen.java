@@ -4,6 +4,7 @@ import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.StickPad;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
+import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 
 import java.awt.*;
 import java.io.IOException;
@@ -12,12 +13,13 @@ import java.net.URISyntaxException;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AnalyseScreen implements IDrawableElement {
+public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
     private AetherOneUI p;
     private StickPad stickPad = new StickPad();
     private boolean browserSupported = false;
-    private Date lastClick = Calendar.getInstance().getTime();
+    private boolean mouseClickOccurred = false;
+    private Long lastMouseClick = null;
 
     public final static int MAX_ENTRIES = 21;
 
@@ -58,6 +60,7 @@ public class AnalyseScreen implements IDrawableElement {
             p.text("NO", 35, y);
             p.text("EV", 80, y);
             p.text("RATE / SIGNATURE", 125, y);
+            p.text("HIT", 764, y);
             p.text("GV", 804, y);
             p.text("GV RE", 844, y);
             p.text("REC", 890, y);
@@ -65,29 +68,32 @@ public class AnalyseScreen implements IDrawableElement {
             p.line(35, y + 2, 1200, y + 2);
             y += 18;
 
+            Integer highestGV = null;
+            Integer highestY = null;
+
             for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
 
                 // ACTION BUTTONS
-                p.fill(0,255,0);
-                p.rect(930,y-15,100,15);
+                p.fill(0, 255, 0);
+                p.rect(930, y - 15, 100, 15);
                 p.fill(0);
                 p.stroke(255);
-                p.text("BROADCAST",935,y-2);
+                p.text("BROADCAST", 935, y - 2);
 
                 if (browserSupported && rate.getUrl() != null) {
                     p.fill(3, 177, 252);
-                    p.rect(1035,y-15,40,15);
+                    p.rect(1035, y - 15, 40, 15);
                     p.fill(0);
                     p.stroke(255);
-                    p.text("URL",1040,y-2);
+                    p.text("URL", 1040, y - 2);
                 }
 
                 if (browserSupported) {
                     p.fill(3, 170, 252);
-                    p.rect(1080,y-15,65,15);
+                    p.rect(1080, y - 15, 65, 15);
                     p.fill(0);
                     p.stroke(255);
-                    p.text("GOOGLE",1085,y-2);
+                    p.text("GOOGLE", 1085, y - 2);
                 }
 
                 //MOUSELINE
@@ -96,13 +102,10 @@ public class AnalyseScreen implements IDrawableElement {
                     p.fill(10, 255, 10, 40);
                     p.rect(33, y - 16, 1160, 18);
 
-                    if (p.mousePressed) {
-
+                    if (mouseClickOccurred) {
+                        mouseClickOccurred = false;
                         // Prevent multiple clicks
-                        if (Calendar.getInstance().getTime().getTime() - 1000 >= lastClick.getTime()) {
-                            performClickEvent(rate);
-                            lastClick = Calendar.getInstance().getTime();
-                        }
+                        performClickEvent(rate);
                     }
                 }
 
@@ -128,12 +131,21 @@ public class AnalyseScreen implements IDrawableElement {
                 p.text(rate.getNameOrRate(), 125, y);
                 p.text(rate.getGv(), 804, y);
 
+                if (highestGV == null || highestGV < rate.getGv()) {
+                    highestGV = rate.getGv();
+                    highestY = y;
+                }
+
                 if (rate.getRecurringGeneralVitality() > 1) {
                     p.text(rate.getRecurringGeneralVitality(), 854, y);
                 }
 
                 if (rate.getRecurring() > 0) {
                     p.text(rate.getRecurring(), 900, y);
+                }
+
+                if (rate.getGv() > 0) {
+//                    p.text(rate.getGv() - p.getGeneralVitality(), 764, y);
                 }
 
                 p.line(35, y + 2, 1200, y + 2);
@@ -144,10 +156,14 @@ public class AnalyseScreen implements IDrawableElement {
 
             p.line(70, 100, 70, y - 15);
             p.line(105, 100, 105, y - 15);
+            p.line(760, 100, 760, y - 15);
             p.line(800, 100, 800, y - 15);
             p.line(840, 100, 840, y - 15);
             p.line(885, 100, 885, y - 15);
             p.line(920, 100, 920, y - 15);
+
+            p.stroke(255,0,0);
+            p.text(highestGV, 764, highestY);
         }
     }
 
@@ -168,7 +184,7 @@ public class AnalyseScreen implements IDrawableElement {
         }
 
         if (browserSupported && (p.mouseButton == p.RIGHT || (p.mouseX >= 1080 && p.mouseX < 1145))) {
-            openUrl("https://www.google.com/search?q=" + rate.getNameOrRate().replaceAll(" ","+"));
+            openUrl("https://www.google.com/search?q=" + rate.getNameOrRate().replaceAll(" ", "+"));
         }
     }
 
@@ -206,5 +222,23 @@ public class AnalyseScreen implements IDrawableElement {
     @Override
     public String getAssignedTabName() {
         return "ANALYZE";
+    }
+
+    @Override
+    public void mouseClicked() {
+
+        if (this.lastMouseClick == null) {
+            this.lastMouseClick = Calendar.getInstance().getTimeInMillis();
+            this.mouseClickOccurred = true;
+            return;
+        }
+
+        if (this.lastMouseClick + 500 < Calendar.getInstance().getTimeInMillis()) {
+            this.mouseClickOccurred = true;
+        } else {
+            this.mouseClickOccurred = false;
+        }
+
+        this.lastMouseClick = Calendar.getInstance().getTimeInMillis();
     }
 }
