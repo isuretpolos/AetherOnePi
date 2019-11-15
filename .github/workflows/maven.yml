@@ -16,7 +16,7 @@ jobs:
     - name: Validate and Install Libs
       run: mvn -B validate
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml -Dmaven.test.skip=true
     - name: Upload Artifact - Make Directory
       run: mkdir -p aetherOnePi/beta/release
     - uses: actions/upload-artifact@master
