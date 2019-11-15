@@ -13,15 +13,8 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Validate and Install Libs
-      run: mvn -B validate
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml -Dmaven.test.skip=true
     - name: Upload Artifact - Make Directory
       run: |
         mkdir -p aetherOnePi/beta/release;
-        cp target/AetherOnePi-1.0.0.jar aetherOnePi/beta/release/;
-    - uses: actions/upload-artifact@master
-      with:
-        name: AetherOnePi-1.0.0.jar
-        path: aetherOnePi/beta/release
+        pwd;
+        ls -l;
