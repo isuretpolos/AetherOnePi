@@ -23,8 +23,8 @@ jobs:
           pwd;
           ls -l;
           ls -l target;
-          cp target/AetherOnePi-1.0.0.jar aetherOnePi/beta/release/;
+          cp target/AetherOnePi-1.1.0.jar aetherOnePi/beta/release/;
       - uses: actions/upload-artifact@master
         with:
-          name: AetherOnePi-1.0.0.jar
+          name: AetherOnePi-1.1.0.jar
           path: aetherOnePi/beta/release
