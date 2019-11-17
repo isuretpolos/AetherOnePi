@@ -1,0 +1,38 @@
+name: BUILD AETHERONEPI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Install Libs and Build with Maven
+        run: |
+          mvn -B validate;
+          mvn -B package --file pom.xml -Dmaven.test.skip=true
+      - name: Upload Artifact - Make Directory
+        run: |
+          mkdir -p aetherOnePi/beta/release/backgrounds;
+          mkdir -p aetherOnePi/beta/release/cases;
+          mkdir -p aetherOnePi/beta/release/config;
+          mkdir -p aetherOnePi/beta/release/data;
+          mkdir -p aetherOnePi/beta/release/hotbits;
+          mkdir -p aetherOnePi/beta/release/images;
+          pwd;
+          ls -l;
+          ls -l target;
+          cp target/AetherOnePi-1.1.0.jar aetherOnePi/beta/release/;
+          cp target/AetherOnePi-1.1.0-jar-with-dependencies.jar aetherOnePi/beta/release/;
+          cp backgrounds/*.jpg aetherOnePi/beta/release/backgrounds/;
+          cp start*.bat aetherOnePi/beta/release/;
+      - uses: actions/upload-artifact@master
+        with:
+          name: AetherOnePi-1.1.0-Beta
+          path: aetherOnePi/beta/release
