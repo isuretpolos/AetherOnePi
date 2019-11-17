@@ -54,7 +54,7 @@ public class StatusNotificationService {
         sendStatus2();
     }
 
-    public void setHotbitsPackages2(Integer siteOfPackages) throws IOException {
+    public void setHotbitsPackages(Integer siteOfPackages) throws IOException {
         status.setHotbitsPackages(siteOfPackages);
         sendStatus2();
     }
@@ -63,10 +63,9 @@ public class StatusNotificationService {
      * Sends the status to all registered clients
      * @throws IOException
      */
-    public void sendStatus2() throws IOException {
+    public void sendStatus2() {
 
         try {
-            logger.info(status);
             String obsoleteClientHost = null;
 
             for (SocketClient client : clients.values()) {
@@ -81,9 +80,7 @@ public class StatusNotificationService {
             if (obsoleteClientHost != null) {
                 removeClient(obsoleteClientHost);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        } catch (Exception e) {}
     }
 
     private void removeClient(String obsoleteClientHost) {
