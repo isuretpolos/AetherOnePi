@@ -111,7 +111,7 @@ public class HotbitsHandler {
                 continue;
             }
 
-            if (file.getName().startsWith("package_")) {
+            if (file.getName().startsWith("hotbits_")) {
                 try {
                     HotBitIntegers integers = mapper.readValue(file, HotBitIntegers.class);
 
@@ -162,7 +162,7 @@ public class HotbitsHandler {
             }
 
             ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(new File("hotbits/package_" + String.valueOf(Calendar.getInstance().getTimeInMillis()) + ".json"),integers);
+            mapper.writeValue(new File("hotbits/hotbits_" + String.valueOf(Calendar.getInstance().getTimeInMillis()) + ".json"),integers);
 
         } catch (Exception e) {
             throw new AetherOnePiException("unable to retrieve hotbits from AetherOnePi server", e);

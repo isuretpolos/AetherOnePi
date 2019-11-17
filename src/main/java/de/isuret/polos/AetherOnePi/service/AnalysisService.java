@@ -102,8 +102,6 @@ public class AnalysisService {
                 RateUtils.insertRate(analysisResult, ratesValues, rate);
             }
 
-            System.out.println(analysisResult);
-
             AnalysisResult sortedResult = analysisResult.sort().shorten(AnalyseScreen.MAX_ENTRIES);
 
             return sortedResult;

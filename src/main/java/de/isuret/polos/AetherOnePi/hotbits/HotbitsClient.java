@@ -9,7 +9,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -40,11 +39,9 @@ public class HotbitsClient {
     private String hotbitServerUrls;
     private Long lastCall = null;
 
-    @Value("${packageSize}")
     private int packageSize = 1000;
-    @Value("${storageSize}")
     private Integer storageSize = 100;
-    @Value("${packageFolder}")
+    private Integer storageBigCacheSize = 5000;
     private String packageFolder = "hotbits";
 
     @Autowired
@@ -53,7 +50,6 @@ public class HotbitsClient {
     @Autowired
     private StatusNotificationService statusNotificationService;
 
-    private boolean stop = false;
     private int errorCounter = 0;
     private HotbitsFactory hotbitsFactory;
     private SecureRandom pseudoRand;
@@ -69,7 +65,7 @@ public class HotbitsClient {
         actualizeLastCallValue();
 
         if (piService != null && piService.getPiAvailable()) {
-            initAsynchronousDownload();
+            initAsynchronousGeneration();
         } else {
             logger.warn("Either piService is null or Pi is not available!");
         }
@@ -79,14 +75,7 @@ public class HotbitsClient {
         lastCall = Calendar.getInstance().getTimeInMillis();
     }
 
-    public synchronized void close() {
-        logger.info(hotbitPackages.size());
-        stop = true;
-    }
-
     private HotbitPackage downloadPackage() throws InterruptedException, IOException {
-
-        logger.info(hotbitPackages.size());
 
         if (statusNotificationService != null) {
 //            statusNotificationService.setHotbitsPackages(hotbitPackages.size());
@@ -100,13 +89,21 @@ public class HotbitsClient {
             throw new IOException("hotbit file %s does not exist. Switching into pseudoRandomMode!");
         }
 
-        HotbitPackage hotbitPackage = HotbitPackage.builder().fileName(hotbitFile.getName()).hotbits(FileUtils.readFileToString(hotbitFile, "UTF-8")).build();
-        hotbitPackage.setOriginalSize(hotbitPackage.getHotbits().length());
+        return getHotbitPackageFromFileSystem(hotbitFile);
+    }
+
+    private HotbitPackage getHotbitPackageFromFileSystem(File hotbitFile) throws IOException {
+
+        if (!hotbitFile.getName().startsWith("hotbits_")) {
+            logger.error("hotbitFile name is wrong (should begin with hotbits_...) : " + hotbitFile.getName());
+            return null;
+        }
+        String data = FileUtils.readFileToString(hotbitFile, "UTF-8");
+        HotbitPackage hotbitPackage = HotbitPackage.builder().fileName(hotbitFile.getName()).hotbits(data).build();
+        hotbitPackage.setOriginalSize(data.length());
 
         // If it is a cached file, then delete
-        if (hotbitFile.getName().startsWith("package_")) {
-            hotbitFile.delete();
-        }
+        hotbitFile.delete();
 
         return hotbitPackage;
     }
@@ -156,7 +153,6 @@ public class HotbitsClient {
 
     public synchronized HotbitPackage getPackage() throws InterruptedException, IOException {
 
-        logger.info("getPackage");
         actualizeLastCallValue();
 
         // First check the storage and trigger a download process
@@ -166,17 +162,10 @@ public class HotbitsClient {
 
             if (hotPackage != null && hotPackage.getOriginalSize() > 0) {
                 hotbitPackages.add(hotPackage);
-
-                if (piService != null) {
-                    piService.high(AetherOnePins.RED);
-                    System.out.println("Wait a little in order to regain cache!");
-                    Thread.sleep(125);
-                    System.out.println("--- ok continue ---");
-                    piService.low(AetherOnePins.RED);
-                }
             }
         }
 
+        // Get hotbits from cache
         if (!hotbitPackages.isEmpty()) {
             HotbitPackage hotPackage = hotbitPackages.remove(0);
             return hotPackage;
@@ -216,7 +205,7 @@ public class HotbitsClient {
                 String[] parts = randomSeeds.split("\n");
 
                 if (parts.length < 5) {
-                    System.out.println(randomSeeds);
+                    System.out.println("randomSeeds " + randomSeeds);
                     return new Random(Calendar.getInstance().getTimeInMillis());
                 }
 
@@ -302,7 +291,6 @@ public class HotbitsClient {
             currentPosition = 0;
 
             try {
-                logger.info("Get new hotbits package");
                 refreshActualPackage();
             } catch (InterruptedException e) {
                 logger.error(e);
@@ -316,7 +304,10 @@ public class HotbitsClient {
         return b;
     }
 
-    private void initAsynchronousDownload() {
+    /**
+     * ASYNCHRONOUS HOTBITS GENERATION
+     */
+    private void initAsynchronousGeneration() {
 
         hotbitsFactory = new HotbitsFactory();
 
@@ -331,15 +322,42 @@ public class HotbitsClient {
         (new Thread() {
             public void run() {
 
-                while (!stop) {
+                // it should run forever
+                while (true) {
 
-                    if (hotbitPackages.size() < storageSize) {
+                    // preload hotbits into cache (small but fast)
+                    preloadHotbitsIntoCache();
+
+                    // store hotbits on filesystem for later use (bigger but slower cache)
+                    storeHotbitsOnFileSystem();
+
+                    if (errorCounter > 0) {
+                        makePause(1000);
+                    }
+
+                    if (errorCounter > 20) {
+                        makePause(10000);
+                    }
+
+                    makePause();
+                }
+
+                // TODO continue with persisting packages on file system
+            }
+
+            public void storeHotbitsOnFileSystem() {
+                if (hotbitPackages.size() >= storageSize) {
+
+                    File folder = new File(packageFolder);
+
+                    if (folder.exists() && folder.listFiles().length < storageBigCacheSize) {
 
                         try {
                             HotbitPackage hotPackage = downloadPackage();
 
                             if (hotPackage != null && hotPackage.getOriginalSize() > 0) {
-                                hotbitPackages.add(hotPackage);
+                                // here the packages are created and stored into another folder
+                                hotbitsFactory.createHotbitPackage(packageSize, packageFolder);
                                 errorCounter = 0;
                             }
 
@@ -354,19 +372,30 @@ public class HotbitsClient {
                             logger.error(e);
                         }
                     }
-
-                    if (errorCounter > 0) {
-                        makePause(1000);
-                    }
-
-                    if (errorCounter > 20) {
-                        makePause(10000);
-                    }
-
-                    makePause();
                 }
+            }
 
-                // TODO continue with persisting packages on file system
+            public void preloadHotbitsIntoCache() {
+                if (hotbitPackages.size() < storageSize) {
+                    try {
+                        HotbitPackage hotPackage = downloadPackage();
+
+                        if (hotPackage != null && hotPackage.getOriginalSize() > 0) {
+                            hotbitPackages.add(hotPackage);
+                            errorCounter = 0;
+                        }
+
+                    } catch (InterruptedException e) {
+
+                        if (errorCounter == 0) {
+                            logger.error(e);
+                        }
+
+                        errorCounter++;
+                    } catch (IOException e) {
+                        logger.error(e);
+                    }
+                }
             }
 
             private void makePause() {
@@ -383,10 +412,9 @@ public class HotbitsClient {
 
                     long lastCallInMillis = Calendar.getInstance().getTimeInMillis() - lastCall;
 
-                    if (lastCallInMillis < 60000) {
+                    if (lastCallInMillis < 360000) {
                         Thread.sleep(10);
                     } else {
-                        logger.info("slow mode");
                         Thread.sleep(10000);
                     }
 
@@ -407,12 +435,10 @@ public class HotbitsClient {
 
     private void refreshActualPackage() throws InterruptedException, IOException {
 
-        logger.info("refreshActualPackage");
-
         HotbitPackage hotbitPackage = getPackage();
 
         if (hotbitPackage == null) {
-            logger.info("No data available via REST services!");
+            logger.warn("No data available via REST services!");
             return;
         }
 

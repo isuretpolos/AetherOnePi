@@ -19,8 +19,8 @@ public class HotbitsFactory implements IHotbitsFactory {
 
 	public File createHotbitPackage(int packageSize, String targetFolder) throws IOException {
 
-		System.gc();
 		String fileName = getActualFileName();
+		makeFolderIfNecessary(targetFolder);
 		File file = new File(targetFolder + "/" + fileName);
 
 		List<Byte> data = new ArrayList<>();
@@ -40,9 +40,9 @@ public class HotbitsFactory implements IHotbitsFactory {
             logger.warn("Cannot access hotbits directly from source, but I try to read from cache instead.");
             File hotbitsFolder = new File("hotbits");
 
-            if (hotbitsFolder.exists() && hotbitsFolder.listFiles().length > 1) {
+            if (hotbitsFolder.exists() && hotbitsFolder.listFiles().length > 5) {
                 for (File cachedFile : hotbitsFolder.listFiles()) {
-                    if (cachedFile.getName().startsWith("package_")) {
+                    if (cachedFile.getName().startsWith("hotbits_")) {
                         return cachedFile;
                     }
                 }
@@ -50,6 +50,14 @@ public class HotbitsFactory implements IHotbitsFactory {
         }
 
 		return file;
+	}
+
+	public void makeFolderIfNecessary(String targetFolder) {
+		File folder = new File(targetFolder);
+
+		if (!folder.exists()) {
+			folder.mkdirs();
+		}
 	}
 
 	private void collectingBytes(int packageSize, final List<Byte> data) throws HotbitsCollectingException {
