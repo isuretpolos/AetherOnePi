@@ -206,7 +206,9 @@ public class AetherOneEventHandler {
             ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
         }
 
-        BroadcastUnit.startBroadcastUnit(seconds, signature);
+        // replaced by the embedded BroadcastElement
+//        BroadcastUnit.startBroadcastUnit(seconds, signature);
+        p.getGuiElements().addBroadcastElement(signature, seconds);
 
         BroadCastData broadCastData = new BroadCastData();
         broadCastData.setSignature(signature);

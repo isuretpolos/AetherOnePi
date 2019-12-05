@@ -97,6 +97,12 @@ public class GuiElements {
         return this;
     }
 
+    public GuiElements addBroadcastElement(String signature, int seconds) {
+        BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
+        drawableElementList.add(broadcastElement);
+        return this;
+    }
+
     public GuiElements addStatusLED(String name) {
 
         StatusLED statusLED = new StatusLED(p, "global", name, x, y);
@@ -232,13 +238,30 @@ public class GuiElements {
         p.fill(255);
         p.textFont(fonts.get("default"), 14);
 
+        int drawOrderBroadcastElements = 0;
+
+        List<IDrawableElement> removeElements = new ArrayList<>();
+
+        // FIXME ConcurrentModificationException while clicking on the broadcast button in analysis screen
         for (IDrawableElement drawableElement : drawableElementList) {
 
             if (currentTab.equals(drawableElement.getAssignedTabName())
                     || "global".equals(drawableElement.getAssignedTabName())) {
+
+                if (drawableElement instanceof BroadcastElement) {
+                    BroadcastElement broadcastElement = (BroadcastElement) drawableElement;
+                    if (broadcastElement.isStop()) {
+                        removeElements.add(broadcastElement);
+                    }
+                    drawableElement.setDrawOrderByType(drawOrderBroadcastElements);
+                    drawOrderBroadcastElements += 1;
+                }
+
                 drawableElement.draw();
             }
         }
+
+        drawableElementList.removeAll(removeElements);
 
         // Overlay
         p.noStroke();
@@ -274,10 +297,18 @@ public class GuiElements {
         drawableElementList.add(drawableElement);
     }
 
-    public void addAnalyseScreeen() {
+    public GuiElements addAnalyseScreeen() {
         AnalyseScreen analyseScreen = new AnalyseScreen(p);
         p.getMouseClickObserverList().add(analyseScreen);
         drawableElementList.add(analyseScreen);
+        return this;
+    }
+
+    public GuiElements addBroadcastScreeen() {
+        BroadcastScreen screen = new BroadcastScreen(p);
+        p.getMouseClickObserverList().add(screen);
+        drawableElementList.add(screen);
+        return this;
     }
 
     public void addDashboardScreen() {

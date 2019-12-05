@@ -40,6 +40,11 @@ public class DashboardScreen implements IDrawableElement {
     }
 
     @Override
+    public void setDrawOrderByType(int i) {
+
+    }
+
+    @Override
     public String getAssignedTabName() {
         return "default";
     }

@@ -167,6 +167,11 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
         }
     }
 
+    @Override
+    public void setDrawOrderByType(int i) {
+
+    }
+
     public void performClickEvent(RateObject rate) {
         ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText(rate.getNameOrRate());
         if (rate.getGv() > 0) {

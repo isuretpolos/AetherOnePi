@@ -146,7 +146,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("STICKPAD")
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
                 .addButton("STATISTICS")
-                .addAnalyseScreeen();
+                .addAnalyseScreeen()
+                .addBroadcastScreeen();
         guiElements
                 .selectCurrentTab("AREA")
                 .setInitialBounds(border, posY, 150f, 14f, false)
