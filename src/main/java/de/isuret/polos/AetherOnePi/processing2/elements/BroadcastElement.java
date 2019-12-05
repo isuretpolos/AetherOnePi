@@ -241,7 +241,7 @@ public class BroadcastElement implements IDrawableElement {
             return;
         }
 
-        if (movingWaveAmount > 200) {
+        if (movingWaveAmount > 2584) {
             movingWaveAmount = 0;
             return;
         }
