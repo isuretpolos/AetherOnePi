@@ -46,6 +46,8 @@ public class GuiElements {
     private boolean verticalAlignment;
     private int backgroundOverlayAlpha = 120;
     private int foregroundOverlayAlpha = 100;
+    @Setter
+    private IDrawableElement newDrawableElement;
 
     public GuiElements(AetherOneUI p) {
         this.p = p;
@@ -99,7 +101,7 @@ public class GuiElements {
 
     public GuiElements addBroadcastElement(String signature, int seconds) {
         BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
-        drawableElementList.add(broadcastElement);
+        newDrawableElement = broadcastElement;
         return this;
     }
 
@@ -242,7 +244,11 @@ public class GuiElements {
 
         List<IDrawableElement> removeElements = new ArrayList<>();
 
-        // FIXME ConcurrentModificationException while clicking on the broadcast button in analysis screen
+        if (newDrawableElement != null) {
+            drawableElementList.add(newDrawableElement);
+            newDrawableElement = null;
+        }
+
         for (IDrawableElement drawableElement : drawableElementList) {
 
             if (currentTab.equals(drawableElement.getAssignedTabName())
@@ -259,6 +265,8 @@ public class GuiElements {
 
                 drawableElement.draw();
             }
+
+
         }
 
         drawableElementList.removeAll(removeElements);

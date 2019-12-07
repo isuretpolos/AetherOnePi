@@ -192,7 +192,7 @@ public class AetherOneEventHandler {
         StatisticsGenerator.start(p.getCaseObject());
     }
 
-    public void broadcastNow() {
+    public synchronized void broadcastNow() {
         String sessionName = "";
         if (p.getCaseObject().getName() != null) {
             sessionName = p.getCaseObject().getName();

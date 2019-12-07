@@ -260,7 +260,6 @@ public class BroadcastElement implements IDrawableElement {
         p.line(x + offsetX + p.cos(angle) * length, y + offsetY - p.sin(angle) * length, x + +offsetX + p.cos(angle) * length / 2, y + offsetY - p.sin(angle) * length / 2);
     }
 
-    // TODO add offset
     private void partialInvert() {
 
         p.loadPixels();
