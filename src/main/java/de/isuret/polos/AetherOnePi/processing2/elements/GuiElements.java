@@ -49,6 +49,7 @@ public class GuiElements {
     private int foregroundOverlayAlpha = 100;
     @Setter
     private IDrawableElement newDrawableElement;
+    private Boolean stopAll = false;
 
     public GuiElements(AetherOneUI p) {
         this.p = p;
@@ -235,6 +236,13 @@ public class GuiElements {
 
     public void draw() {
 
+        if (stopAll) {
+            stopAll = false;
+            clearAllBroadcastElements();
+        }
+
+        broadcastQueueList.clear();
+
         drawBackground();
         drawBorders();
 
@@ -285,6 +293,12 @@ public class GuiElements {
                 }
 
                 drawableElement.draw();
+            } else if (drawableElement instanceof BroadcastElement) {
+                BroadcastElement broadcastElement = (BroadcastElement) drawableElement;
+                p.noStroke();
+                p.fill(100,100,100,10);
+                p.rect(675, 550, 200, 150);
+                broadcastElement.draw(675, 550, 200, 150);
             }
 
             if (drawableElement instanceof BroadcastElement) {
@@ -325,6 +339,19 @@ public class GuiElements {
         p.noStroke();
         p.fill(10, 0, 30, foregroundOverlayAlpha);
         p.rect(0, 0, p.width, p.height);
+    }
+
+    private void clearAllBroadcastElements() {
+
+        List<BroadcastElement> removeElements = new ArrayList<>();
+
+        for (IDrawableElement drawableElement : drawableElementList) {
+            if (drawableElement instanceof BroadcastElement) {
+                removeElements.add((BroadcastElement) drawableElement);
+            }
+        }
+
+        drawableElementList.removeAll(removeElements);
     }
 
     public int countActiveBroadcastElements() {
@@ -381,5 +408,9 @@ public class GuiElements {
 
     public void addDashboardScreen() {
         drawableElementList.add(new DashboardScreen(p));
+    }
+
+    public void stopAll() {
+        stopAll = true;
     }
 }

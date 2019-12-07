@@ -224,6 +224,7 @@ public class AetherOneEventHandler {
         p.setAnalysisResult(null);
         p.setGeneralVitality(0);
         p.setGvCounter(0);
+//        p.getGuiElements().stopAll();
     }
 
     private void analyzeCurrentDatabase() {

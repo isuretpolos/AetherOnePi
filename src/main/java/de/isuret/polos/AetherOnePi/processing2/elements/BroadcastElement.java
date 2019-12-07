@@ -67,6 +67,22 @@ public class BroadcastElement implements IDrawableElement {
         start = Calendar.getInstance().getTimeInMillis();
     }
 
+    /**
+     * Draws the broadcast signature on a specific area outside the broadcast tab, in order to keep the flow of
+     * information without interuption
+     *
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
+    public void draw(int x, int y, int width, int height) {
+        paintSignatureCharacter(x, y, width, height);
+    }
+
+    /**
+     * Draws the broadcast signature encoded onto it's own field inside the broadcast tab
+     */
     public void draw() {
 
         if (seconds == null) return;
@@ -329,9 +345,14 @@ public class BroadcastElement implements IDrawableElement {
     }
 
     private void paintPoint() {
+        paintPoint(offsetX, offsetY, WIDTH, HEIGHT);
+    }
+
+    private void paintPoint(int offsetX, int offsetY, int width, int height) {
         p.stroke(random.nextInt(255), random.nextInt(255), random.nextInt(255));
         p.fill(random.nextInt(255), random.nextInt(255), random.nextInt(255));
-        p.point(random.nextInt(WIDTH) + offsetX, random.nextInt(HEIGHT) + offsetY);
+
+        p.point(random.nextInt(width) + offsetX, random.nextInt(height) + offsetY);
     }
 
     private void paintLine(int i, int i2) {
@@ -405,11 +426,16 @@ public class BroadcastElement implements IDrawableElement {
 
     private void paintSignatureCharacter() {
         paintPoint();
+        paintSignatureCharacter(offsetX, offsetY, WIDTH, HEIGHT);
+    }
+
+    private void paintSignatureCharacter(int offsetX, int offsetY, int width, int height) {
+        paintPoint(offsetX, offsetY, width, height);
 
         for (int c = 0; c < random.nextInt(9) + 1; c++) {
             int pos = random.nextInt(signature.length());
             String one = signature.substring(pos, pos + 1);
-            p.text(one, random.nextInt(WIDTH) + offsetX, random.nextInt(HEIGHT) + offsetY);
+            p.text(one, random.nextInt(width) + offsetX, random.nextInt(height) + offsetY);
         }
     }
 

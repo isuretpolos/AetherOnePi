@@ -106,6 +106,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
         guiElements.initTabs()
                 .addTab("SESSION")
+                .addTab("SETTINGS")
                 .addTab("ANALYZE")
                 .addTab("IMAGE")
                 .addTab("RATES")
