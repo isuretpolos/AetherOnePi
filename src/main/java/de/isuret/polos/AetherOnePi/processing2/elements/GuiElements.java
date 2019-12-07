@@ -37,6 +37,7 @@ public class GuiElements {
     @Getter
     private Map<String, StatusLED> statusLEDMap = new HashMap<>();
     private List<IDrawableElement> drawableElementList = new ArrayList<>();
+    private List<BroadcastElement> broadcastQueueList = new ArrayList<>();
     private Float x;
     private Float y;
     private Float width;
@@ -241,13 +242,33 @@ public class GuiElements {
         p.textFont(fonts.get("default"), 14);
 
         int drawOrderBroadcastElements = 0;
+        int countOrderBroadcastElements = 0;
+        int activeBroadcastElements = countActiveBroadcastElements();
 
         List<IDrawableElement> removeElements = new ArrayList<>();
 
         if (newDrawableElement != null) {
-            drawableElementList.add(newDrawableElement);
+
+            if (activeBroadcastElements < 8) {
+                drawableElementList.add(newDrawableElement);
+            } else {
+                broadcastQueueList.add((BroadcastElement) newDrawableElement);
+            }
+
             newDrawableElement = null;
         }
+
+        if (activeBroadcastElements < 8 && broadcastQueueList.size() > 0) {
+            BroadcastElement broadcastElement = broadcastQueueList.remove(0);
+            broadcastElement.start();
+            drawableElementList.add(broadcastElement);
+        }
+
+        p.fill(255);
+        p.line(200,550,200,700);
+        p.line(670,550,670,700);
+        p.line(200,560,670,560);
+        p.text("BROADCAST QUEUE", 205,555);
 
         for (IDrawableElement drawableElement : drawableElementList) {
 
@@ -266,7 +287,36 @@ public class GuiElements {
                 drawableElement.draw();
             }
 
+            if (drawableElement instanceof BroadcastElement) {
+                BroadcastElement broadcastElement = (BroadcastElement) drawableElement;
+                p.fill(255);
+                String text = broadcastElement.getSignature();
+                if (text.length() > 20) {
+                    text = text.substring(0,20);
+                }
+                p.text(text, 205,570 + (15 * countOrderBroadcastElements));
+                countOrderBroadcastElements++;
+                p.fill(255);
+                p.rect(340,550 + (15 * countOrderBroadcastElements),broadcastElement.WIDTH, 5);
+                p.fill(255,0,0);
+                float progress = 0;
+                if (broadcastElement.getProgress() != null) {
+                    progress = broadcastElement.getProgress();
+                }
+                p.rect(340,550 + (15 * countOrderBroadcastElements),progress, 5);
+                broadcastElement.calcuateProgress();
 
+                if (broadcastElement.isStop()) {
+                    removeElements.add(broadcastElement);
+                }
+                // TODO smaller draw for broadcast element while not inside the broadcast tab
+            }
+        }
+
+        if (broadcastQueueList.size() > 0) {
+            p.fill(255);
+            p.textFont(fonts.get("default"), 14);
+            p.text("Queue size: " + broadcastQueueList.size(), 205,570 + (15 * 9));
         }
 
         drawableElementList.removeAll(removeElements);
@@ -275,6 +325,16 @@ public class GuiElements {
         p.noStroke();
         p.fill(10, 0, 30, foregroundOverlayAlpha);
         p.rect(0, 0, p.width, p.height);
+    }
+
+    public int countActiveBroadcastElements() {
+        int count = 0;
+        for (IDrawableElement drawableElement : drawableElementList) {
+            if (drawableElement instanceof BroadcastElement) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private void drawBorders() {

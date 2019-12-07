@@ -22,6 +22,7 @@ public class BroadcastElement implements IDrawableElement {
     private String tabName;
     @Setter
     private Integer seconds;
+    @Getter
     @Setter
     private String signature;
     private Long start;
@@ -31,6 +32,8 @@ public class BroadcastElement implements IDrawableElement {
     private Integer movingWaveAmount = 0;
     private Integer offsetX = 0;
     private Integer offsetY = 0;
+    @Getter
+    private Float progress;
 
     private static Long lastBroadcast = null;
     @Getter
@@ -54,24 +57,20 @@ public class BroadcastElement implements IDrawableElement {
         if (lastBroadcast != null && now < (lastBroadcast + 500)) {
             return;
         }
+
+        start();
+        random = new Random(start);
+        p.fill(random.nextInt(255), random.nextInt(255), random.nextInt(255));
+    }
+
+    public void start() {
+        start = Calendar.getInstance().getTimeInMillis();
     }
 
     public void draw() {
 
         if (seconds == null) return;
-
         if (signature == null) return;
-
-        if (start == null) {
-            start = Calendar.getInstance().getTimeInMillis();
-            random = new Random(start);
-            p.fill(random.nextInt(255), random.nextInt(255), random.nextInt(255));
-        }
-
-        if (Calendar.getInstance().getTimeInMillis() > start + (1000 * seconds)) {
-            stop = true;
-            return;
-        }
 
         if (random.nextInt(13) >= 12) {
             paintSignatureCharacter();
@@ -128,15 +127,22 @@ public class BroadcastElement implements IDrawableElement {
         return tabName;
     }
 
-    public void paintProgressBar() {
-        p.noStroke();
-        p.fill(255, 0, 0, 50);
-
+    public void calcuateProgress() {
         Float sec = new Float(seconds);
         Float wid = new Float(WIDTH);
         Float millisAfterStart = new Float(Calendar.getInstance().getTimeInMillis() - start);
         Float delta = 100 / wid / sec;
-        Float progress = millisAfterStart * delta;
+        progress = millisAfterStart * delta;
+
+        if (Calendar.getInstance().getTimeInMillis() > start + (1000 * seconds)) {
+            stop = true;
+        }
+    }
+
+    public void paintProgressBar() {
+        calcuateProgress();
+        p.noStroke();
+        p.fill(255, 0, 0, 50);
         p.rect(0 + offsetX, 0 + offsetY, progress, 3);
     }
 
@@ -246,7 +252,6 @@ public class BroadcastElement implements IDrawableElement {
             return;
         }
 
-        System.out.println(movingWaveAmount);
         movingWaveAmount += 4;
 
         p.noFill();
