@@ -29,6 +29,7 @@ public class BroadcastElement implements IDrawableElement {
     private Random random;
     private SecureRandom random2;
     private Integer saveFrames = 0;
+    @Getter
     private Integer movingWaveAmount = 0;
     private Integer offsetX = 0;
     private Integer offsetY = 0;
@@ -174,10 +175,6 @@ public class BroadcastElement implements IDrawableElement {
     private void paintOneLayer() {
         paintPoint();
 
-//        if (random2.nextInt(21) >= 20) {
-//            partialInvert();
-//        }
-
         if (random2.nextInt(33) >= 32) {
 
             int max = random.nextInt(100) + 1;
@@ -279,35 +276,6 @@ public class BroadcastElement implements IDrawableElement {
 
     private void lineAngle(int x, int y, float angle, float length) {
         p.line(x + offsetX + p.cos(angle) * length, y + offsetY - p.sin(angle) * length, x + +offsetX + p.cos(angle) * length / 2, y + offsetY - p.sin(angle) * length / 2);
-    }
-
-    private void partialInvert() {
-
-        p.loadPixels();
-
-        for (int i = 0; i < (WIDTH * HEIGHT); i++) {
-
-            float red = p.red(p.pixels[i]);
-            float green = p.green(p.pixels[i]);
-            float blue = p.blue(p.pixels[i]);
-
-            if (random.nextInt(WIDTH * HEIGHT) >= (WIDTH * HEIGHT) - 1) {
-                paintOverlay(5);
-                break;
-            } else if (random.nextInt(WIDTH * HEIGHT) >= (WIDTH * HEIGHT) / 2) {
-                red = 250 - red;
-                green = 250 - green;
-                blue = 250 - blue;
-            } else {
-                red = 255 - red;
-                green = 255 - green;
-                blue = 255 - blue;
-            }
-
-            p.pixels[i] = p.color(red, green, blue);
-        }
-
-        p.updatePixels();
     }
 
     // TODO add offset

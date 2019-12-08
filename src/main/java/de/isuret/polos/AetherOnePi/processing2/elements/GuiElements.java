@@ -301,9 +301,17 @@ public class GuiElements {
                 broadcastElement.draw(675, 550, 200, 150);
             }
 
+            // Broadcast Queue in action
             if (drawableElement instanceof BroadcastElement) {
                 BroadcastElement broadcastElement = (BroadcastElement) drawableElement;
-                p.fill(255);
+
+                // green text while wave
+                if (broadcastElement.getMovingWaveAmount() > 0) {
+                    p.fill(0,255,0);
+                } else {
+                    p.fill(255);
+                }
+
                 String text = broadcastElement.getSignature();
                 if (text.length() > 20) {
                     text = text.substring(0,20);
@@ -327,6 +335,7 @@ public class GuiElements {
             }
         }
 
+        // Broadcast Queue waiting list
         if (broadcastQueueList.size() > 0) {
             p.fill(255);
             p.textFont(fonts.get("default"), 14);

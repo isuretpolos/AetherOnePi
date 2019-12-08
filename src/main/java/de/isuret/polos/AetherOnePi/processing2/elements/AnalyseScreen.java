@@ -104,6 +104,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
                     if (mouseClickOccurred) {
                         mouseClickOccurred = false;
+                        this.lastMouseClick = Calendar.getInstance().getTimeInMillis();
                         // Prevent multiple clicks
                         performClickEvent(rate);
                     }
@@ -164,6 +165,15 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
             p.stroke(255,0,0);
             p.text(highestGV, 764, highestY);
+        }
+
+        if (mouseClickOccurred) {
+            p.fill(255);
+            p.text("CLICK",10,20);
+
+            if (this.lastMouseClick + 500 > Calendar.getInstance().getTimeInMillis()) {
+                this.mouseClickOccurred = false;
+            }
         }
     }
 
