@@ -241,7 +241,7 @@ public class GuiElements {
             clearAllBroadcastElements();
         }
 
-        broadcastQueueList.clear();
+        getCp5().get("QUEUE").setValue(broadcastQueueList.size());
 
         drawBackground();
         drawBorders();
