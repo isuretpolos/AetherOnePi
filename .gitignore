@@ -8,6 +8,7 @@ temporaryDashboardText.txt
 /images/
 /gui//node_modules
 /go/bin/
+/go/*.exe
 *.log
 !.mvn/wrapper/maven-wrapper.jar
 
