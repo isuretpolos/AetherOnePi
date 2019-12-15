@@ -75,6 +75,13 @@
             <version>1.5</version>
         </dependency>
 
+        <!-- MacOS missing class bugfix -->
+        <dependency>
+            <groupId>processing.org</groupId>
+            <artifactId>appleJar</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
         <!-- GeoInformatics -->
         <dependency>
             <groupId>org.locationtech.jts</groupId>
@@ -216,6 +223,28 @@
                             <version>2.1.6</version>
                             <packaging>jar</packaging>
                             <file>${basedir}/libs/controlP5.jar</file>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>install-jar-lib</id>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <phase>validate</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-install-plugin</artifactId>
+                        <version>3.0.0-M1</version>
+                        <configuration>
+                            <groupId>processing.org</groupId>
+                            <artifactId>appleJar</artifactId>
+                            <version>1.0.0</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/libs/apple.jar</file>
                             <generatePom>true</generatePom>
                         </configuration>
                         <executions>
