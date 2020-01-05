@@ -78,7 +78,7 @@ public class HotbitsClient {
     private HotbitPackage downloadPackage() throws InterruptedException, IOException {
 
         if (statusNotificationService != null) {
-//            statusNotificationService.setHotbitsPackages(hotbitPackages.size());
+            statusNotificationService.setHotbitsPackages(hotbitPackages.size());
         }
 
         File hotbitFile = hotbitsFactory.createHotbitPackage(packageSize, packageFolder);
