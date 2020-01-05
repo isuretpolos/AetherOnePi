@@ -2,15 +2,15 @@ package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import controlP5.CColor;
 import controlP5.ControlP5;
-import lombok.Getter;
-import lombok.Setter;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
-import processing.core.PApplet;
+import lombok.Getter;
+import lombok.Setter;
 import processing.core.PFont;
 import processing.core.PImage;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -331,7 +331,6 @@ public class GuiElements {
                 if (broadcastElement.isStop()) {
                     removeElements.add(broadcastElement);
                 }
-                // TODO smaller draw for broadcast element while not inside the broadcast tab
             }
         }
 
@@ -342,6 +341,11 @@ public class GuiElements {
             p.text("Queue size: " + broadcastQueueList.size(), 205,570 + (15 * 9));
         }
 
+        // Display tray information once a broadcast is finished
+        if (removeElements.size() == 1 && removeElements.get(0) instanceof BroadcastElement) {
+            BroadcastElement broadcastElement = (BroadcastElement) removeElements.get(0);
+            p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
+        }
         drawableElementList.removeAll(removeElements);
 
         // Overlay
