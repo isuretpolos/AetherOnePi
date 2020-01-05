@@ -22,7 +22,10 @@ import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import processing.core.PApplet;
+import processing.core.PImage;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,6 +55,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private Integer generalVitality = 0;
     @Setter
     private Boolean stickPadMode = false;
+    @Getter
+    private TrayIcon trayIcon;
 
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
@@ -84,6 +89,17 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 }
             }
         }).start();
+
+    }
+
+    private void createSurfaceIcon() throws IOException {
+
+        PImage icon = null;
+        Image image = ImageIO.read(getClass().getClassLoader().getResource("icons/aetherOnePi.png"));
+        if (image == null) return;
+        icon = new PImage(image);
+        if (icon == null) return;
+        surface.setIcon(icon);
     }
 
     public void setTitle(String title) {
@@ -92,6 +108,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     public void setup() {
         background(200);
+
+        // TODO add dynamic more elements with resizing the screen and adjust some of the graphics which are too static
+        surface.setResizable(true);
 
         try {
             hotbitsClient = new HotbitsClient();
@@ -106,6 +125,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
         guiElements.initTabs()
                 .addTab("SESSION")
+                .addTab("SETTINGS")
                 .addTab("ANALYZE")
                 .addTab("IMAGE")
                 .addTab("RATES")
@@ -146,7 +166,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("STICKPAD")
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
                 .addButton("STATISTICS")
-                .addAnalyseScreeen();
+                .addAnalyseScreeen()
+                .addBroadcastScreeen();
         guiElements
                 .selectCurrentTab("AREA")
                 .setInitialBounds(border, posY, 150f, 14f, false)
@@ -196,6 +217,13 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         hotbitsHandler = new HotbitsHandler(this);
         hotbitsHandler.loadHotbits();
         setTitle("AetherOneUI - New Case ... enter name and description");
+
+        try {
+            createTrayIcon();
+            createSurfaceIcon();
+        } catch (Exception e) {
+            logger.error("Error while trying to display tray and icon", e);
+        }
     }
 
     public void draw() {
@@ -255,6 +283,47 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         for (MouseClickObserver mouseClickObserver : mouseClickObserverList) {
             mouseClickObserver.mouseClicked();
         }
+    }
+
+    public void createTrayIcon() throws AWTException {
+        //Obtain only one instance of the SystemTray object
+        SystemTray tray = SystemTray.getSystemTray();
+        Image image = Toolkit.getDefaultToolkit().createImage(getClass().getClassLoader().getResource("icons/aetherOnePi.png"));
+        trayIcon = new TrayIcon(image, "AetherOnePi");
+        trayIcon.setImageAutoSize(true);
+        trayIcon.setToolTip("AetherOnePi");
+//        final PopupMenu popup = createPopupMenuForTrayIcon();
+//        trayIcon.setPopupMenu(popup);
+        tray.add(trayIcon);
+    }
+
+    public PopupMenu createPopupMenuForTrayIcon() {
+        final PopupMenu popup = new PopupMenu();
+
+        // Create a pop-up menu components
+        MenuItem aboutItem = new MenuItem("About");
+        CheckboxMenuItem cb1 = new CheckboxMenuItem("Set auto size");
+        CheckboxMenuItem cb2 = new CheckboxMenuItem("Set tooltip");
+        Menu displayMenu = new Menu("Display");
+        MenuItem errorItem = new MenuItem("Error");
+        MenuItem warningItem = new MenuItem("Warning");
+        MenuItem infoItem = new MenuItem("Info");
+        MenuItem noneItem = new MenuItem("None");
+        MenuItem exitItem = new MenuItem("Exit");
+
+        //Add components to pop-up menu
+        popup.add(aboutItem);
+        popup.addSeparator();
+        popup.add(cb1);
+        popup.add(cb2);
+        popup.addSeparator();
+        popup.add(displayMenu);
+        displayMenu.add(errorItem);
+        displayMenu.add(warningItem);
+        displayMenu.add(infoItem);
+        displayMenu.add(noneItem);
+        popup.add(exitItem);
+        return popup;
     }
 
 }

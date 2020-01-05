@@ -2,15 +2,15 @@ package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import controlP5.CColor;
 import controlP5.ControlP5;
-import lombok.Getter;
-import lombok.Setter;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
-import processing.core.PApplet;
+import lombok.Getter;
+import lombok.Setter;
 import processing.core.PFont;
 import processing.core.PImage;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,6 +37,7 @@ public class GuiElements {
     @Getter
     private Map<String, StatusLED> statusLEDMap = new HashMap<>();
     private List<IDrawableElement> drawableElementList = new ArrayList<>();
+    private List<BroadcastElement> broadcastQueueList = new ArrayList<>();
     private Float x;
     private Float y;
     private Float width;
@@ -46,6 +47,9 @@ public class GuiElements {
     private boolean verticalAlignment;
     private int backgroundOverlayAlpha = 120;
     private int foregroundOverlayAlpha = 100;
+    @Setter
+    private IDrawableElement newDrawableElement;
+    private Boolean stopAll = false;
 
     public GuiElements(AetherOneUI p) {
         this.p = p;
@@ -94,6 +98,12 @@ public class GuiElements {
 
         cp5.getWindow().setPositionOfTabs(border + 5, border + 3);
 
+        return this;
+    }
+
+    public GuiElements addBroadcastElement(String signature, int seconds) {
+        BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
+        newDrawableElement = broadcastElement;
         return this;
     }
 
@@ -226,24 +236,145 @@ public class GuiElements {
 
     public void draw() {
 
+        if (stopAll) {
+            stopAll = false;
+            clearAllBroadcastElements();
+        }
+
+        getCp5().get("QUEUE").setValue(broadcastQueueList.size());
+
         drawBackground();
         drawBorders();
 
         p.fill(255);
         p.textFont(fonts.get("default"), 14);
 
+        int drawOrderBroadcastElements = 0;
+        int countOrderBroadcastElements = 0;
+        int activeBroadcastElements = countActiveBroadcastElements();
+
+        List<IDrawableElement> removeElements = new ArrayList<>();
+
+        if (newDrawableElement != null) {
+
+            if (activeBroadcastElements < 8) {
+                drawableElementList.add(newDrawableElement);
+            } else {
+                broadcastQueueList.add((BroadcastElement) newDrawableElement);
+            }
+
+            newDrawableElement = null;
+        }
+
+        if (activeBroadcastElements < 8 && broadcastQueueList.size() > 0) {
+            BroadcastElement broadcastElement = broadcastQueueList.remove(0);
+            broadcastElement.start();
+            drawableElementList.add(broadcastElement);
+        }
+
+        p.fill(255);
+        p.line(200,550,200,700);
+        p.line(670,550,670,700);
+        p.line(200,560,670,560);
+        p.text("BROADCAST QUEUE", 205,555);
+
         for (IDrawableElement drawableElement : drawableElementList) {
 
             if (currentTab.equals(drawableElement.getAssignedTabName())
                     || "global".equals(drawableElement.getAssignedTabName())) {
+
+                if (drawableElement instanceof BroadcastElement) {
+                    BroadcastElement broadcastElement = (BroadcastElement) drawableElement;
+                    if (broadcastElement.isStop()) {
+                        removeElements.add(broadcastElement);
+                    }
+                    drawableElement.setDrawOrderByType(drawOrderBroadcastElements);
+                    drawOrderBroadcastElements += 1;
+                }
+
                 drawableElement.draw();
+            } else if (drawableElement instanceof BroadcastElement) {
+                BroadcastElement broadcastElement = (BroadcastElement) drawableElement;
+                p.noStroke();
+                p.fill(100,100,100,10);
+                p.rect(675, 550, 200, 150);
+                broadcastElement.draw(675, 550, 200, 150);
+            }
+
+            // Broadcast Queue in action
+            if (drawableElement instanceof BroadcastElement) {
+                BroadcastElement broadcastElement = (BroadcastElement) drawableElement;
+
+                // green text while wave
+                if (broadcastElement.getMovingWaveAmount() > 0) {
+                    p.fill(0,255,0);
+                } else {
+                    p.fill(255);
+                }
+
+                String text = broadcastElement.getSignature();
+                if (text.length() > 20) {
+                    text = text.substring(0,20);
+                }
+                p.text(text, 205,570 + (15 * countOrderBroadcastElements));
+                countOrderBroadcastElements++;
+                p.fill(255);
+                p.rect(340,550 + (15 * countOrderBroadcastElements),broadcastElement.WIDTH, 5);
+                p.fill(255,0,0);
+                float progress = 0;
+                if (broadcastElement.getProgress() != null) {
+                    progress = broadcastElement.getProgress();
+                }
+                p.rect(340,550 + (15 * countOrderBroadcastElements),progress, 5);
+                broadcastElement.calcuateProgress();
+
+                if (broadcastElement.isStop()) {
+                    removeElements.add(broadcastElement);
+                }
             }
         }
+
+        // Broadcast Queue waiting list
+        if (broadcastQueueList.size() > 0) {
+            p.fill(255);
+            p.textFont(fonts.get("default"), 14);
+            p.text("Queue size: " + broadcastQueueList.size(), 205,570 + (15 * 9));
+        }
+
+        // Display tray information once a broadcast is finished
+        if (removeElements.size() == 1 && removeElements.get(0) instanceof BroadcastElement) {
+            BroadcastElement broadcastElement = (BroadcastElement) removeElements.get(0);
+            p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
+        }
+        drawableElementList.removeAll(removeElements);
 
         // Overlay
         p.noStroke();
         p.fill(10, 0, 30, foregroundOverlayAlpha);
         p.rect(0, 0, p.width, p.height);
+    }
+
+    private void clearAllBroadcastElements() {
+
+        List<BroadcastElement> removeElements = new ArrayList<>();
+
+        for (IDrawableElement drawableElement : drawableElementList) {
+            if (drawableElement instanceof BroadcastElement) {
+                removeElements.add((BroadcastElement) drawableElement);
+            }
+        }
+
+        drawableElementList.removeAll(removeElements);
+    }
+
+    public int countActiveBroadcastElements() {
+        int count = 0;
+        for (IDrawableElement drawableElement : drawableElementList) {
+            if (drawableElement instanceof BroadcastElement) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private void drawBorders() {
@@ -274,13 +405,25 @@ public class GuiElements {
         drawableElementList.add(drawableElement);
     }
 
-    public void addAnalyseScreeen() {
+    public GuiElements addAnalyseScreeen() {
         AnalyseScreen analyseScreen = new AnalyseScreen(p);
         p.getMouseClickObserverList().add(analyseScreen);
         drawableElementList.add(analyseScreen);
+        return this;
+    }
+
+    public GuiElements addBroadcastScreeen() {
+        BroadcastScreen screen = new BroadcastScreen(p);
+        p.getMouseClickObserverList().add(screen);
+        drawableElementList.add(screen);
+        return this;
     }
 
     public void addDashboardScreen() {
         drawableElementList.add(new DashboardScreen(p));
+    }
+
+    public void stopAll() {
+        stopAll = true;
     }
 }

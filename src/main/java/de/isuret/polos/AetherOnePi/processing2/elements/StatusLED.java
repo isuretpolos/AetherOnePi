@@ -40,6 +40,11 @@ public class StatusLED implements IDrawableElement {
     }
 
     @Override
+    public void setDrawOrderByType(int i) {
+
+    }
+
+    @Override
     public String getAssignedTabName() {
         return tabName;
     }

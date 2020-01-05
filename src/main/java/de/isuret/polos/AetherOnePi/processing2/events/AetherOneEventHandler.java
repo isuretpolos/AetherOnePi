@@ -192,7 +192,7 @@ public class AetherOneEventHandler {
         StatisticsGenerator.start(p.getCaseObject());
     }
 
-    public void broadcastNow() {
+    public synchronized void broadcastNow() {
         String sessionName = "";
         if (p.getCaseObject().getName() != null) {
             sessionName = p.getCaseObject().getName();
@@ -206,7 +206,9 @@ public class AetherOneEventHandler {
             ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
         }
 
-        BroadcastUnit.startBroadcastUnit(seconds, signature);
+        // replaced by the embedded BroadcastElement
+//        BroadcastUnit.startBroadcastUnit(seconds, signature);
+        p.getGuiElements().addBroadcastElement(signature, seconds);
 
         BroadCastData broadCastData = new BroadCastData();
         broadCastData.setSignature(signature);
@@ -222,6 +224,7 @@ public class AetherOneEventHandler {
         p.setAnalysisResult(null);
         p.setGeneralVitality(0);
         p.setGvCounter(0);
+//        p.getGuiElements().stopAll();
     }
 
     private void analyzeCurrentDatabase() {
