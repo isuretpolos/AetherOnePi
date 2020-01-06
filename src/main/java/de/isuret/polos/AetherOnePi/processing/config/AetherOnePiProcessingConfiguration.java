@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Utility for loading and saving configurations and settings
+ */
 public class AetherOnePiProcessingConfiguration {
 
     public static final String ENVIRONMENT = "Environment";
