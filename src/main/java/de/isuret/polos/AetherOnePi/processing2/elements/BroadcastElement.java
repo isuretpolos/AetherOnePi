@@ -25,6 +25,9 @@ public class BroadcastElement implements IDrawableElement {
     @Getter
     @Setter
     private String signature;
+    @Getter
+    @Setter
+    private String target;
     private Long start;
     private Random random;
     private SecureRandom random2;
@@ -35,9 +38,16 @@ public class BroadcastElement implements IDrawableElement {
     private Integer offsetY = 0;
     @Getter
     private Float progress;
+    @Getter
+    @Setter
+    private Integer counterCheckGV = 500;
+    @Getter
+    @Setter
+    private Boolean counterCheck = false;
 
     private static Long lastBroadcast = null;
     @Getter
+    @Setter
     private boolean stop = false;
 
     public BroadcastElement(AetherOneUI p, String tabName, int seconds, String signature) {

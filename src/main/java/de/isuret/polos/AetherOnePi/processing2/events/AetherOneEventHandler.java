@@ -4,10 +4,10 @@ import controlP5.ControlEvent;
 import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
-import de.isuret.polos.AetherOnePi.processing2.dialogs.BroadcastUnit;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.SelectDatabaseDialog;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.SessionDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
+import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
@@ -171,6 +171,11 @@ public class AetherOneEventHandler {
             return;
         }
 
+        if ("GROUNDING".equals(name)) {
+            grounding();
+            return;
+        }
+
         if ("STICKPAD".equals(name) && p.getSelectedDatabase() != null) {
             if (!p.getStickPadMode()) {
                 p.setStickPadMode(true);
@@ -186,6 +191,21 @@ public class AetherOneEventHandler {
         if ("BROADCAST NOW".equals(name)) {
             broadcastNow();
         }
+    }
+
+    private void grounding() {
+        GroundingProcess groundingProcess = new GroundingProcess();
+        String signature = groundingProcess.getGroundingSignature();
+
+        // Current GV of the operator (because grounding is only for the operator)
+        // The counterCheck should top this value!
+        Integer gvOfOperator = p.checkGeneralVitalityValue();
+
+        p.getGuiElements().addBroadcastElement(signature, 10, true, gvOfOperator);
+
+        BroadCastData broadCastData = new BroadCastData();
+        broadCastData.setSignature(signature);
+        saveBroadcast(broadCastData);
     }
 
     private void generateStatisticsAndShow() {
@@ -352,24 +372,7 @@ public class AetherOneEventHandler {
             return;
         }
 
-        List<Integer> list = new ArrayList<Integer>();
-
-        for (int x = 0; x < 3; x++) {
-            list.add(p.getHotbitsClient().getInteger(1000));
-        }
-
-        Collections.sort(list, Collections.reverseOrder());
-
-        Integer gv = list.get(0);
-
-        if (gv > 950) {
-            int randomDice = p.getHotbitsClient().getInteger(100);
-
-            while (randomDice >= 50) {
-                gv += randomDice;
-                randomDice = p.getHotbitsClient().getInteger(100);
-            }
-        }
+        Integer gv = p.checkGeneralVitalityValue();
 
         if (p.getGvCounter() == 0) {
             p.setGeneralVitality(gv);

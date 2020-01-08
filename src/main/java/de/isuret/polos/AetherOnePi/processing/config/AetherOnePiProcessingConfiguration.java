@@ -17,6 +17,7 @@ import java.util.Map;
  */
 public class AetherOnePiProcessingConfiguration {
 
+    public static final String SETTINGS = "Settings";
     public static final String ENVIRONMENT = "Environment";
     public static final String GUI = "Gui";
 
