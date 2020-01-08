@@ -26,31 +26,28 @@ public class SettingsScreen implements IDrawableElement {
         p.line(290,y,290,500);
 
         for (String key : settings.getBooleans().keySet()) {
-            y += 16;
-            p.color(255);
-            p.text(key, 40, y);
+            y = drawSettingsTableRow(y, key);
             p.text(settings.getBoolean(key,false).toString(), 300, y);
-            p.stroke(100);
-            p.line(30,y + 2,1000,y + 2);
         }
 
         for (String key : settings.getIntegers().keySet()) {
-            y += 16;
-            p.color(255);
-            p.text(key, 40, y);
+            y = drawSettingsTableRow(y, key);
             p.text(settings.getInteger(key,0).toString(), 300, y);
-            p.stroke(100);
-            p.line(30,y + 2,1000,y + 2);
         }
 
         for (String key : settings.getStrings().keySet()) {
-            y += 16;
-            p.color(255);
-            p.text(key, 40, y);
+            y = drawSettingsTableRow(y, key);
             p.text(settings.getString(key,"").toString(), 300, y);
-            p.stroke(100);
-            p.line(30,y + 2,1000,y + 2);
         }
+    }
+
+    public int drawSettingsTableRow(int y, String key) {
+        y += 16;
+        p.color(255);
+        p.text(key, 40, y);
+        p.stroke(100);
+        p.line(30, y + 2, 1000, y + 2);
+        return y;
     }
 
     @Override
