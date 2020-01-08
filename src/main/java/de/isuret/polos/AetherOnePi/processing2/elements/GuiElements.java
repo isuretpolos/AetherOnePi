@@ -107,6 +107,14 @@ public class GuiElements {
         return this;
     }
 
+    public GuiElements addBroadcastElement(String signature, int seconds, Boolean counterCheck, Integer counterCheckGV) {
+        BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
+        broadcastElement.setCounterCheck(counterCheck);
+        broadcastElement.setCounterCheckGV(counterCheckGV);
+        newDrawableElement = broadcastElement;
+        return this;
+    }
+
     public GuiElements addStatusLED(String name) {
 
         StatusLED statusLED = new StatusLED(p, "global", name, x, y);
@@ -260,6 +268,8 @@ public class GuiElements {
             if (activeBroadcastElements < 8) {
                 drawableElementList.add(newDrawableElement);
             } else {
+                // If it is a BroadcastElement then add it to the queue
+                // Later add it also to the drawableElementList if the entire list is smaller than 8 entries
                 broadcastQueueList.add((BroadcastElement) newDrawableElement);
             }
 
@@ -329,7 +339,18 @@ public class GuiElements {
                 broadcastElement.calcuateProgress();
 
                 if (broadcastElement.isStop()) {
+                    // remove it anyway
                     removeElements.add(broadcastElement);
+
+                    // First counter check if necessary
+                    // If it returns false, it will be removed from the broadcast queue, because it reached its goal
+                    // Else, it will be reinserted for another 10 seconds
+                    if (!counterCheckIsPositive(broadcastElement)) {
+
+                        // do it again ... until it reach its goal ... be persistent
+                        broadcastElement.setStop(false);
+                        broadcastQueueList.add(broadcastElement);
+                    }
                 }
             }
         }
@@ -344,7 +365,11 @@ public class GuiElements {
         // Display tray information once a broadcast is finished
         if (removeElements.size() == 1 && removeElements.get(0) instanceof BroadcastElement) {
             BroadcastElement broadcastElement = (BroadcastElement) removeElements.get(0);
-            p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
+
+            // As long the broadcast element is inside a counterCheck loop, don't display a tray message
+            if (broadcastElement.isStop() == true) {
+                p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
+            }
         }
         drawableElementList.removeAll(removeElements);
 
@@ -352,6 +377,26 @@ public class GuiElements {
         p.noStroke();
         p.fill(10, 0, 30, foregroundOverlayAlpha);
         p.rect(0, 0, p.width, p.height);
+    }
+
+    /**
+     * Returns true if the broadcast element has reached its goal by checking the GV against the target automatically
+     * @param broadcastElement
+     * @return
+     */
+    private boolean counterCheckIsPositive(BroadcastElement broadcastElement) {
+
+        if (!broadcastElement.getCounterCheck()) return true;
+
+        Integer gvTarget = p.checkGeneralVitalityValue();
+
+        System.out.println(String.format("CounterCheck target gv is %s and broadcastElement gv is %s", gvTarget, broadcastElement.getCounterCheckGV() ));
+
+        if (gvTarget < broadcastElement.getCounterCheckGV()) {
+            return false;
+        }
+
+        return true;
     }
 
     private void clearAllBroadcastElements() {
@@ -421,6 +466,10 @@ public class GuiElements {
 
     public void addDashboardScreen() {
         drawableElementList.add(new DashboardScreen(p));
+    }
+
+    public void addSettingsScreen() {
+        drawableElementList.add(new SettingsScreen(p));
     }
 
     public void stopAll() {

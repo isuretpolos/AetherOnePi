@@ -28,11 +28,14 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
 public class AetherOneUI extends PApplet implements IStatusReceiver {
 
+    @Getter
+    private Settings settings;
     private Settings guiConf;
     private GuiElements guiElements;
     private SocketServer socketServer;
@@ -66,6 +69,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     public void settings() {
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
+        settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
         size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721));
 
         piClient = new AetherOnePiClient();
@@ -90,6 +94,29 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
             }
         }).start();
 
+    }
+
+    public Integer checkGeneralVitalityValue() {
+
+        List<Integer> list = new ArrayList<Integer>();
+
+        for (int x = 0; x < 3; x++) {
+            list.add(getHotbitsClient().getInteger(1000));
+        }
+
+        Collections.sort(list, Collections.reverseOrder());
+
+        Integer gv = list.get(0);
+
+        if (gv > 950) {
+            int randomDice = getHotbitsClient().getInteger(100);
+
+            while (randomDice >= 50) {
+                gv += randomDice;
+                randomDice = getHotbitsClient().getInteger(100);
+            }
+        }
+        return gv;
     }
 
     private void createSurfaceIcon() throws IOException {
@@ -153,6 +180,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addTextfield("NAME")
                 .addTextfield("DESCRIPTION");
         guiElements
+                .selectCurrentTab("SETTINGS")
+                .setInitialBounds(border, posY, 150f, 14f, false)
+                .addSettingsScreen();
+        guiElements
                 .selectCurrentTab("ANALYZE")
                 .setInitialBounds(border, posY, 120f, 14f, false)
                 .addButton("SELECT DATA")
@@ -165,6 +196,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("ENERGY")
                 .addButton("STICKPAD")
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
+                .addButton("GROUNDING")
                 .addButton("STATISTICS")
                 .addAnalyseScreeen()
                 .addBroadcastScreeen();
