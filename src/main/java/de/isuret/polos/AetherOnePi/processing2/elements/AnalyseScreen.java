@@ -71,6 +71,8 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             Integer highestGV = null;
             Integer highestY = null;
 
+            drawAnalysisBroadband();
+
             for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
 
                 // ACTION BUTTONS
@@ -175,6 +177,67 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                 this.mouseClickOccurred = false;
             }
         }
+    }
+
+    private void drawAnalysisBroadband() {
+
+        final float bandWidth = 850;
+        final float maxGV = getMaxGV();
+
+        if (maxGV == 0) return;
+
+        float relation = 0f;
+
+            relation = bandWidth / maxGV;
+
+        p.fill(0,255,0,70f);
+        p.noStroke();
+        p.rect(300,500,bandWidth,40);
+
+        // -------------------------------------------------------
+        // --- Scale relatively to the bandWidth and max value ---
+        p.pushMatrix();
+        p.scale(relation,1f); // 2D Scaling only on X-axis
+        // General Vitality
+        p.fill(0,255,255);
+        p.rect(300 + p.getGeneralVitality(),500,4,40);
+
+        // Max General Vitality of all rates
+        p.fill(255,0,0);
+        p.rect(300 + maxGV,500,4,40);
+
+        // All values on the bandWith
+        for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
+            if (rate.getGv() == 0) continue;
+            p.fill(255);
+            p.rect(300 + rate.getGv(),500,1,40);
+        }
+
+        p.popMatrix();
+        // --- End of scaling --
+        // -------------------------------------------------------
+    }
+
+    private int getMaxGV() {
+
+        int count = 0;
+        int maxGV = 0;
+
+        for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
+
+            if (rate.getGv() > maxGV) {
+                maxGV = rate.getGv();
+            }
+
+            count++;
+            if (count >= MAX_ENTRIES) break;
+        }
+
+        if (p.getGeneralVitality() > maxGV) {
+            maxGV = p.getGeneralVitality();
+        }
+
+        return maxGV;
     }
 
     @Override
