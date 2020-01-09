@@ -10,8 +10,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
+import java.util.List;
 
 public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
@@ -73,6 +73,34 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
             drawAnalysisBroadband();
 
+            final Map<String, Integer> words = new HashMap<>();
+
+            // collect words for later use in marking reoccurrences
+            for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
+
+                String name = rate.getNameOrRate().trim();
+
+                if (name.contains(" ")) {
+
+                    String parts[] = name.split(" ");
+
+                    for (String part : parts) {
+                        if (words.get(part) != null) {
+                            words.put(part, words.get(part) + 1);
+                        } else {
+                            words.put(part, 1);
+                        }
+                    }
+                } else {
+                    if (words.get(name) != null) {
+                        words.put(name, words.get(name) + 1);
+                    } else {
+                        words.put(name, 1);
+                    }
+                }
+            }
+
+            // draw the rate table
             for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
 
                 // ACTION BUTTONS
@@ -133,6 +161,29 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                 p.text(rate.getEnergeticValue(), 80, y);
                 p.text(rate.getNameOrRate(), 125, y);
                 p.text(rate.getGv(), 804, y);
+
+                // Mark reoccurrence of word parts in the list
+                String name = rate.getNameOrRate();
+
+                if (name.contains(" ")) {
+
+                    String parts[] = name.split(" ");
+
+                    for (String part : parts) {
+                        if (words.get(part) != null && words.get(part) > 1) {
+                            p.noStroke();
+                            p.fill(200,0,0,50f);
+                            p.rect(105, y - 15, 700, 15);
+                            break;
+                        }
+                    }
+                } else if (words.get(name) != null && words.get(name) > 1) {
+                    p.noStroke();
+                    p.fill(200,0,0,50f);
+                    p.rect(105, y - 15, 65, 15);
+                }
+
+                p.stroke(160);
 
                 if (highestGV == null || highestGV < rate.getGv()) {
                     highestGV = rate.getGv();
