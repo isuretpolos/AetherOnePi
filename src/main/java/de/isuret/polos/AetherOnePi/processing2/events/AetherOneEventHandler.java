@@ -196,6 +196,17 @@ public class AetherOneEventHandler {
 
         if ("BROADCAST LIST".equals(name)) {
             broadcastList();
+            return;
+        }
+
+        if ("STOP CURRENT".equals(name)) {
+            p.getGuiElements().stopCurrentBroadcast();
+            return;
+        }
+
+        if ("STOP ALL".equals(name)) {
+            p.getGuiElements().stopAllBroadcasts();
+            return;
         }
     }
 

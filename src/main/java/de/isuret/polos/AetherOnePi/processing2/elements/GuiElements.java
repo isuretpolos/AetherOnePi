@@ -50,6 +50,7 @@ public class GuiElements {
     @Setter
     private IDrawableElement newDrawableElement;
     private Boolean stopAll = false;
+    private Boolean stopCurrentBroadcast = false;
 
     public GuiElements(AetherOneUI p) {
         this.p = p;
@@ -249,6 +250,11 @@ public class GuiElements {
             clearAllBroadcastElements();
         }
 
+        if (stopCurrentBroadcast) {
+            stopCurrentBroadcast = false;
+            removeCurrentBroadcastElement();
+        }
+
         getCp5().get("QUEUE").setValue(broadcastQueueList.size());
 
         drawBackground();
@@ -415,6 +421,19 @@ public class GuiElements {
         drawableElementList.removeAll(removeElements);
     }
 
+    private void removeCurrentBroadcastElement() {
+        List<BroadcastElement> removeElements = new ArrayList<>();
+
+        for (IDrawableElement drawableElement : drawableElementList) {
+            if (drawableElement instanceof BroadcastElement) {
+                removeElements.add((BroadcastElement) drawableElement);
+                break;
+            }
+        }
+
+        drawableElementList.removeAll(removeElements);
+    }
+
     public int countActiveBroadcastElements() {
         int count = 0;
         for (IDrawableElement drawableElement : drawableElementList) {
@@ -477,7 +496,11 @@ public class GuiElements {
         drawableElementList.add(settingsScreen);
     }
 
-    public void stopAll() {
+    public void stopAllBroadcasts() {
         stopAll = true;
+    }
+
+    public void stopCurrentBroadcast() {
+        stopCurrentBroadcast = true;
     }
 }
