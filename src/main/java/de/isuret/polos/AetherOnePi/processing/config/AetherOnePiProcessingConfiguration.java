@@ -51,6 +51,7 @@ public class AetherOnePiProcessingConfiguration {
     public static void saveAllSettings() {
 
         for (String name : settingsMap.keySet()) {
+            System.out.println(name);
             saveSettings(settingsMap.get(name));
         }
     }

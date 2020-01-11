@@ -317,6 +317,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         }
     }
 
+    public Point getMousePoint() {
+        return new Point(mouseX, mouseY);
+    }
+
     public void createTrayIcon() throws AWTException {
         //Obtain only one instance of the SystemTray object
         SystemTray tray = SystemTray.getSystemTray();
