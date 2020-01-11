@@ -30,6 +30,10 @@ public class Settings {
         return defaultValue;
     }
 
+    public void setBoolean(String key, Boolean value) {
+        booleans.put(key, value);
+    }
+
     public Integer getInteger(String key, Integer defaultValue) {
 
         Integer value = integers.get(key);

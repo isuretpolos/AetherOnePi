@@ -262,10 +262,12 @@ public class GuiElements {
         int activeBroadcastElements = countActiveBroadcastElements();
 
         List<IDrawableElement> removeElements = new ArrayList<>();
+        Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
 
         if (newDrawableElement != null) {
 
-            if (activeBroadcastElements < 8) {
+            if (!settings.getBoolean(SettingsScreen.BROADCAST_SINGLE_RATES_ONLY, false) && activeBroadcastElements < 8
+            || settings.getBoolean(SettingsScreen.BROADCAST_SINGLE_RATES_ONLY, false) && activeBroadcastElements == 0) {
                 drawableElementList.add(newDrawableElement);
             } else {
                 // If it is a BroadcastElement then add it to the queue
@@ -276,7 +278,8 @@ public class GuiElements {
             newDrawableElement = null;
         }
 
-        if (activeBroadcastElements < 8 && broadcastQueueList.size() > 0) {
+        if (!settings.getBoolean(SettingsScreen.BROADCAST_SINGLE_RATES_ONLY, false) && activeBroadcastElements < 8 && broadcastQueueList.size() > 0
+        || settings.getBoolean(SettingsScreen.BROADCAST_SINGLE_RATES_ONLY, false) && activeBroadcastElements == 0 && broadcastQueueList.size() > 0) {
             BroadcastElement broadcastElement = broadcastQueueList.remove(0);
             broadcastElement.start();
             drawableElementList.add(broadcastElement);
@@ -469,7 +472,9 @@ public class GuiElements {
     }
 
     public void addSettingsScreen() {
-        drawableElementList.add(new SettingsScreen(p));
+        SettingsScreen settingsScreen = new SettingsScreen(p);
+        p.getMouseClickObserverList().add(settingsScreen);
+        drawableElementList.add(settingsScreen);
     }
 
     public void stopAll() {
