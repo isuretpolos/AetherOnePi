@@ -103,7 +103,7 @@ public class GuiElements {
 
     public GuiElements addBroadcastElement(String signature, int seconds) {
         BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
-        newDrawableElement = broadcastElement;
+        broadcastQueueList.add(broadcastElement);
         return this;
     }
 
@@ -111,7 +111,7 @@ public class GuiElements {
         BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
         broadcastElement.setCounterCheck(counterCheck);
         broadcastElement.setCounterCheckGV(counterCheckGV);
-        newDrawableElement = broadcastElement;
+        broadcastQueueList.add(broadcastElement);
         return this;
     }
 

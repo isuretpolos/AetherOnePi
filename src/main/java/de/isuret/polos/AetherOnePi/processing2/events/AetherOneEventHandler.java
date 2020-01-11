@@ -11,6 +11,7 @@ import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.StringUtils;
@@ -190,6 +191,49 @@ public class AetherOneEventHandler {
 
         if ("BROADCAST NOW".equals(name)) {
             broadcastNow();
+            return;
+        }
+
+        if ("BROADCAST LIST".equals(name)) {
+            broadcastList();
+        }
+    }
+
+    private void broadcastList() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File("data"));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "Rate List Files", "txt");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                List<String> rateEntries = FileUtils.readLines(chooser.getSelectedFile(), "UTF-8");
+
+                for (String line : rateEntries) {
+                    if (line.contains("(") && line.contains(")")) {
+                        String signature = line.substring(0, line.indexOf("(")).trim();
+                        String duration = line.substring(line.indexOf("(") + 1).replace(")","").trim().toUpperCase();
+                        log.info(signature + " - " + duration);
+                        int seconds = 0;
+                        if (duration.contains("S")) {
+                            seconds = Integer.parseInt(duration.replace("S",""));
+                        }
+                        if (duration.contains("M")) {
+                            seconds = Integer.parseInt(duration.replace("M","")) * 60;
+                        }
+                        if (duration.contains("H")) {
+                            seconds = Integer.parseInt(duration.replace("H","")) * 3600;
+                        }
+                        p.getGuiElements().addBroadcastElement(signature, seconds);
+                    } else {
+                        log.info(line);
+                        p.getGuiElements().addBroadcastElement(line, 20);
+                    }
+                }
+            } catch (IOException e) {
+                log.error("Error loading rate list file", e);
+            }
         }
     }
 

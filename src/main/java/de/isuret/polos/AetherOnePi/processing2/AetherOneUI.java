@@ -223,6 +223,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .selectCurrentTab("BROADCAST")
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addButton("BROADCAST NOW")
+                .addButton("BROADCAST LIST")
                 .addButton("SCHEDULE")
                 .setInitialBounds(border, posY + 24, 150f, 14f, true)
                 .addTextfield("SIGNATURE")
