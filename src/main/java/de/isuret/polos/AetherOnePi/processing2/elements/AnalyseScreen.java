@@ -85,6 +85,11 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                     String parts[] = name.split(" ");
 
                     for (String part : parts) {
+
+                        part = part.replaceAll("-","").replaceAll(">","").trim();
+
+                        if (part.length() < 3) continue;
+
                         if (words.get(part) != null) {
                             words.put(part, words.get(part) + 1);
                         } else {
@@ -170,6 +175,11 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                     String parts[] = name.split(" ");
 
                     for (String part : parts) {
+
+                        part = part.replaceAll("-","").replaceAll(">","").trim();
+
+                        if (part.length() < 3) continue;
+
                         if (words.get(part) != null && words.get(part) > 1) {
                             p.noStroke();
                             p.fill(200,0,0,50f);
