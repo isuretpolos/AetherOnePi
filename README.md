@@ -19,6 +19,7 @@ Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 # Resources
 ## Documentation
 - [Documentation](documentation/documentation.md)
+- [AetherOnePi Standalone Handbook for v1.1](https://radionics.home.blog/2020/01/13/aetheronepi-standalone-handbook-for-v1-1/)
 ## Blogs
 - [Radionics](https://radionics.home.blog)
 - [Isuret Polos](https://isuretpolos.wordpress.com)
