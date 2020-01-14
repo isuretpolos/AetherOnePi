@@ -51,6 +51,11 @@ public class AetherOneEventHandler {
         String name = theEvent.getName();
 
         if ("DOCUMENTATION".equals(name)) {
+            openWebsiteInDefaultBrowser("https://radionics.home.blog/2020/01/13/aetheronepi-standalone-handbook-for-v1-1/");
+            return;
+        }
+
+        if ("GITHUB".equals(name)) {
             openWebsiteInDefaultBrowser("https://github.com/isuretpolos/AetherOnePi");
             return;
         }
