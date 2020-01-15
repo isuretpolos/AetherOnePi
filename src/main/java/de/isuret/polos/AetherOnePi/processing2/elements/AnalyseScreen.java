@@ -208,10 +208,6 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                     p.text(rate.getRecurring(), 900, y);
                 }
 
-                if (rate.getGv() > 0) {
-//                    p.text(rate.getGv() - p.getGeneralVitality(), 764, y);
-                }
-
                 p.line(35, y + 2, 1200, y + 2);
                 y += 18;
                 count++;
@@ -227,6 +223,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.line(920, 100, 920, y - 15);
 
             p.stroke(255,0,0);
+            p.fill(255);
             p.text(highestGV, 764, highestY);
         }
 
