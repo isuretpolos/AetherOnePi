@@ -1,6 +1,7 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import controlP5.CColor;
+import controlP5.ControlFont;
 import controlP5.ControlP5;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.processing.config.Settings;
@@ -46,7 +47,7 @@ public class GuiElements {
     private String currentTab = "default";
     private boolean verticalAlignment;
     private int backgroundOverlayAlpha = 120;
-    private int foregroundOverlayAlpha = 100;
+    private int foregroundOverlayAlpha = 80;
     @Setter
     private IDrawableElement newDrawableElement;
     private Boolean stopAll = false;
@@ -76,9 +77,9 @@ public class GuiElements {
                 .setCaptionLabel(p.color(0))
                 .setValueLabel(p.color(0));
 
-        greenStyleColor.setBackground(p.color(20))
+        greenStyleColor.setBackground(p.color(100))
                 .setForeground(p.color(0, 150, 20))
-                .setCaptionLabel(p.color(100))
+                .setCaptionLabel(p.color(255))
                 .setValueLabel(p.color(255));
     }
 
@@ -230,10 +231,11 @@ public class GuiElements {
         cp5.addSlider(text)
                 .setPosition(x, y)
                 .setSize(w, h)
+                .setFont(getFonts().get("default"))
                 .setColor(greenStyleColor)
                 .setRange(0, range)
                 .moveTo("global")
-                .getCaptionLabel().setPaddingX(10).setPaddingY(-9).setColor(150);
+                .getCaptionLabel().setPaddingX(10).setPaddingY(-9).setColor(255);
 
         if (verticalAlignment) {
             this.y += h + 3;
