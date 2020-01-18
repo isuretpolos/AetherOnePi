@@ -234,7 +234,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addTextfield("SECONDS");
         guiElements
                 .selectCurrentTab("default")
-                .setInitialBounds(border + 4f, 550f, 0f, 0f, true)
+                .setInitialBounds(border - 11f, 550f, 0f, 0f, true)
                 .addStatusLED("PI")
                 .addStatusLED("BROADCASTING")
                 .addStatusLED("CLEARING")
