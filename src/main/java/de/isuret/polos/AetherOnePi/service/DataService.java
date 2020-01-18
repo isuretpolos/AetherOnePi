@@ -168,4 +168,17 @@ public class DataService {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(caseFile, Case.class);
     }
+
+    public List<String> getAllCaseNames() {
+
+        List<String> list = new ArrayList<>();
+
+        for (File file : new File("cases/").listFiles()) {
+            if (file.isFile() && file.getName().endsWith("json")) {
+                list.add(file.getName().replace(".json",""));
+            }
+        }
+
+        return list;
+    }
 }
