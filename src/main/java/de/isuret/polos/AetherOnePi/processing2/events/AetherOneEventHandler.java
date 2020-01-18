@@ -92,18 +92,11 @@ public class AetherOneEventHandler {
             int returnVal = chooser.showOpenDialog(null);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
 
+                File file = chooser.getSelectedFile();
                 log.info("You chose to open this file: " +
-                        chooser.getSelectedFile().getName());
-                try {
-                    Case c = dataService.loadCase(chooser.getSelectedFile());
-                    c.getSessionList().add(new Session());
-                    p.setTitle("AetherOneUI - " + c.getName());
-                    p.setCaseObject(c);
-                    ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText(c.getName());
-                    ((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).setText(c.getDescription());
-                } catch (IOException e) {
-                    log.error("Error loading case file", e);
-                }
+                        file.getName());
+
+                loadCaseFile(file);
             }
             return;
         }
@@ -212,6 +205,27 @@ public class AetherOneEventHandler {
         if ("STOP ALL".equals(name)) {
             p.getGuiElements().stopAllBroadcasts();
             return;
+        }
+    }
+
+    public void loadCaseFile(File file) {
+        if ("dashboardInformations.json".equals(file.getName())) {
+            return;
+        }
+
+        if (!file.exists()) {
+            return;
+        }
+
+        try {
+            Case c = dataService.loadCase(file);
+            c.getSessionList().add(new Session());
+            p.setTitle("AetherOneUI - " + c.getName());
+            p.setCaseObject(c);
+            ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText(c.getName());
+            ((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).setText(c.getDescription());
+        } catch (IOException e) {
+            log.error("Error loading case file", e);
         }
     }
 

@@ -5,6 +5,7 @@ import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
 import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Case;
+import de.isuret.polos.AetherOnePi.domain.DashboardInformations;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
 import de.isuret.polos.AetherOnePi.processing.communication.SocketServer;
