@@ -65,10 +65,11 @@ public class GuiElements {
             e.printStackTrace();
         }
 
-        whiteStyleColor.setBackground(p.color(255))
-                .setForeground(p.color(20))
-                .setCaptionLabel(p.color(100))
-                .setValueLabel(p.color(255));
+        whiteStyleColor.setBackground(p.color(32,156,238))
+                .setForeground(p.color(0))
+                .setCaptionLabel(p.color(255))
+                .setValueLabel(p.color(255))
+                .setActive(p.color(0));
 
         textFieldStyleColor.setBackground(p.color(255))
                 .setForeground(p.color(0))
@@ -88,10 +89,10 @@ public class GuiElements {
 
         cp5.getTab("default")
                 .activateEvent(true)
-                .setColorBackground(p.color(255))
-                .setColorLabel(p.color(125))
-                .setColorActive(p.color(25))
-                .setColorForeground(p.color(25))
+                .setColorBackground(p.color(32,156,238))
+                .setColorLabel(p.color(255))
+                .setColorActive(p.color(0,166,70))
+                .setColorForeground(p.color(0))
                 .setLabel("DASHBOARD")
                 .setId(1)
                 .getCaptionLabel().setFont(font)
@@ -134,10 +135,10 @@ public class GuiElements {
     public GuiElements addTab(String name) {
         PFont font = fonts.get("default");
         cp5.addTab(name)
-                .setColorBackground(p.color(255))
-                .setColorLabel(p.color(125))
-                .setColorActive(p.color(25))
-                .setColorForeground(p.color(25))
+                .setColorBackground(p.color(32,156,238))
+                .setColorLabel(p.color(255))
+                .setColorActive(p.color(0,166,70))
+                .setColorForeground(p.color(0))
                 .setId(2)
                 .activateEvent(true)
                 .getCaptionLabel().setFont(font)
