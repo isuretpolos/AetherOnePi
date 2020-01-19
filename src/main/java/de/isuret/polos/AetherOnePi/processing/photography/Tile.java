@@ -1,7 +1,7 @@
 package de.isuret.polos.AetherOnePi.processing.photography;
 
-import lombok.Data;
 import de.isuret.polos.AetherOnePi.processing.AetherOneCore;
+import lombok.Data;
 import processing.core.PApplet;
 
 import java.util.ArrayList;

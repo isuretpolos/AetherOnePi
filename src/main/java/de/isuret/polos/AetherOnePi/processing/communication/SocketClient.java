@@ -1,8 +1,8 @@
 package de.isuret.polos.AetherOnePi.processing.communication;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Getter;
 import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
+import lombok.Getter;
 
 import javax.annotation.PostConstruct;
 import java.io.BufferedReader;

@@ -1,8 +1,8 @@
 package de.isuret.polos.AetherOnePi.service;
 
 import com.pi4j.io.gpio.*;
-import lombok.Getter;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
+import lombok.Getter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;

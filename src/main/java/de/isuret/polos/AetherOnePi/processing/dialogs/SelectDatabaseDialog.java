@@ -1,8 +1,8 @@
 package de.isuret.polos.AetherOnePi.processing.dialogs;
 
-import lombok.Getter;
 import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
 import de.isuret.polos.AetherOnePi.exceptions.AetherOneException;
+import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;

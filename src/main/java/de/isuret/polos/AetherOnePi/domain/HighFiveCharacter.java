@@ -1,11 +1,11 @@
 package de.isuret.polos.AetherOnePi.domain;
 
+import de.isuret.polos.AetherOnePi.enums.HighFiveAlphabet;
+import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import de.isuret.polos.AetherOnePi.enums.HighFiveAlphabet;
-import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
 
 import java.util.ArrayList;
 import java.util.List;

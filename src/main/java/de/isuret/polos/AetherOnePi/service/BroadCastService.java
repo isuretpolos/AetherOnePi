@@ -1,9 +1,9 @@
 package de.isuret.polos.AetherOnePi.service;
 
-import lombok.Getter;
 import de.isuret.polos.AetherOnePi.domain.BroadCastData;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
 import de.isuret.polos.AetherOnePi.processing.communication.StatusNotificationService;
+import lombok.Getter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
