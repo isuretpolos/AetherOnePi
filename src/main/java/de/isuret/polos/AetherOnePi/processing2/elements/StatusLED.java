@@ -1,7 +1,7 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
-import lombok.Setter;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
+import lombok.Setter;
 
 public class StatusLED implements IDrawableElement {
 

@@ -1,7 +1,6 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import controlP5.CColor;
-import controlP5.ControlFont;
 import controlP5.ControlP5;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.processing.config.Settings;

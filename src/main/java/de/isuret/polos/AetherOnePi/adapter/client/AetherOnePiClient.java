@@ -1,11 +1,11 @@
 package de.isuret.polos.AetherOnePi.adapter.client;
 
-import lombok.Setter;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.BroadCastData;
 import de.isuret.polos.AetherOnePi.exceptions.AetherOneException;
 import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.client.ResourceAccessException;

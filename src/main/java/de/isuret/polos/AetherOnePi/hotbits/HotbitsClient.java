@@ -1,6 +1,5 @@
 package de.isuret.polos.AetherOnePi.hotbits;
 
-import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
 import de.isuret.polos.AetherOnePi.processing.communication.StatusNotificationService;
 import de.isuret.polos.AetherOnePi.service.PiService;
 import de.isuret.polos.AetherOnePi.utils.HttpUtils;
