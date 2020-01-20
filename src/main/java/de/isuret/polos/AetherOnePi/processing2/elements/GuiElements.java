@@ -474,28 +474,38 @@ public class GuiElements {
         drawableElementList.add(drawableElement);
     }
 
-    public GuiElements addAnalyseScreeen() {
+    public GuiElements addAnalyseScreen() {
         AnalyseScreen analyseScreen = new AnalyseScreen(p);
         p.getMouseClickObserverList().add(analyseScreen);
         drawableElementList.add(analyseScreen);
         return this;
     }
 
-    public GuiElements addBroadcastScreeen() {
+    public GuiElements addBroadcastScreen() {
         BroadcastScreen screen = new BroadcastScreen(p);
         p.getMouseClickObserverList().add(screen);
         drawableElementList.add(screen);
         return this;
     }
 
-    public void addDashboardScreen() {
-        drawableElementList.add(new DashboardScreen(p));
+    public GuiElements addRatesScreen() {
+        RatesScreen screen = new RatesScreen(p);
+        p.getMouseClickObserverList().add(screen);
+        p.getKeyPressedObserverList().add(screen);
+        drawableElementList.add(screen);
+        return this;
     }
 
-    public void addSettingsScreen() {
+    public GuiElements addDashboardScreen() {
+        drawableElementList.add(new DashboardScreen(p));
+        return this;
+    }
+
+    public GuiElements addSettingsScreen() {
         SettingsScreen settingsScreen = new SettingsScreen(p);
         p.getMouseClickObserverList().add(settingsScreen);
         drawableElementList.add(settingsScreen);
+        return this;
     }
 
     public void stopAllBroadcasts() {
