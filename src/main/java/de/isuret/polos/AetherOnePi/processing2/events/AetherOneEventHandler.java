@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AetherOneEventHandler {
+public class AetherOneEventHandler implements KeyPressedObserver {
 
     private Log log = LogFactory.getLog(AetherOneEventHandler.class);
 
@@ -415,7 +415,7 @@ public class AetherOneEventHandler {
         }
     }
 
-    public void controlKeyPressed(char key) {
+    public void keyPressed(char key) {
 
         if (key == '0') {
 //            cp5.get(Matrix.class, "peggotty").clear();

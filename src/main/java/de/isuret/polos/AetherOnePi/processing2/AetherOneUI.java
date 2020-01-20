@@ -13,6 +13,7 @@ import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.elements.DashboardElement;
 import de.isuret.polos.AetherOnePi.processing2.elements.GuiElements;
 import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
+import de.isuret.polos.AetherOnePi.processing2.events.KeyPressedObserver;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
 import de.isuret.polos.AetherOnePi.service.DataService;
@@ -46,6 +47,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private HotbitsHandler hotbitsHandler;
     private DataService dataService = new DataService();
     private List<MouseClickObserver> mouseClickObserverList = new ArrayList<>();
+    private List<KeyPressedObserver> keyPressedObserverList = new ArrayList<>();
     @Setter
     private Case caseObject = new Case();
     @Setter
@@ -147,6 +149,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
         guiElements = new GuiElements(this);
         aetherOneEventHandler = new AetherOneEventHandler(this);
+        keyPressedObserverList.add(aetherOneEventHandler);
         final float border = guiElements.getBorder() + 5f;
         final float posY = (guiElements.getBorder() * 2) - 7;
 
@@ -199,8 +202,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
                 .addButton("GROUNDING")
                 .addButton("STATISTICS")
-                .addAnalyseScreeen()
-                .addBroadcastScreeen();
+                .addAnalyseScreen();
         guiElements
                 .selectCurrentTab("AREA")
                 .setInitialBounds(border, posY, 150f, 14f, false)
@@ -219,7 +221,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("GENERATE MD5");
         guiElements
                 .selectCurrentTab("RATES")
-                .setInitialBounds(border, posY, 150f, 14f, false);
+                .setInitialBounds(border, posY, 150f, 14f, false)
+                .addRatesScreen();
         guiElements
                 .selectCurrentTab("BROADCAST")
                 .setInitialBounds(border, posY, 150f, 14f, false)
@@ -230,7 +233,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .setInitialBounds(border, posY + 24, 150f, 14f, true)
                 .addTextfield("SIGNATURE")
                 .setInitialBounds(border, posY + 44, 20f, 14f, true)
-                .addTextfield("SECONDS");
+                .addTextfield("SECONDS")
+                .addBroadcastScreen();
         guiElements
                 .selectCurrentTab("default")
                 .setInitialBounds(border - 11f, 550f, 0f, 0f, true)
@@ -302,7 +306,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     }
 
     public void keyPressed() {
-        aetherOneEventHandler.controlKeyPressed(key);
+
+        for (KeyPressedObserver observer : keyPressedObserverList) {
+            observer.keyPressed(key);
+        }
     }
 
     public void saveCase() {
