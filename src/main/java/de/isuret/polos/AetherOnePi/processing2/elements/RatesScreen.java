@@ -52,7 +52,7 @@ public class RatesScreen implements IDrawableElement, MouseClickObserver, KeyPre
                     p.getHotbitsClient().getInteger(255)
             );
 
-            p.textSize(20);
+            p.textSize(40);
             p.text(element, pos.x, pos.y);
 
             if (pos.x == target.x && pos.y == target.y) {
