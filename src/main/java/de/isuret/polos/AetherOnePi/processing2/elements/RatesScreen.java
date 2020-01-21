@@ -16,6 +16,7 @@ public class RatesScreen implements IDrawableElement, MouseClickObserver, KeyPre
     private Map<String, Integer> elementArray;
     private String element;
     private String rate;
+    private String intention;
     private Boolean spacePressed = false;
 
     public RatesScreen(AetherOneUI p) {
@@ -30,6 +31,19 @@ public class RatesScreen implements IDrawableElement, MouseClickObserver, KeyPre
         p.fill(0,255,0);
         p.textSize(20);
         p.text("PRESS AND HOLD 'SPACE' KEY,\nWHILE FOCUSING ON YOUR INTENTION!", 60,100);
+
+        if (p.getCaseObject() != null && p.getCaseObject().getSessionList().size() > 0) {
+            intention = p
+                    .getCaseObject().getSessionList()
+                    .get(p.getCaseObject().getSessionList().size() - 1)
+                    .getIntention();
+
+            if (intention != null) {
+                p.fill(255, 0, 0);
+                p.textSize(30);
+                p.text(intention, 60, 150);
+            }
+        }
 
         if (rate != null) {
             drawRate();
