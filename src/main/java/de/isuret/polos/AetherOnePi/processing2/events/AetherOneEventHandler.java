@@ -320,6 +320,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         p.setTitle("AetherOneUI - New Case ... enter name and description");
         ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText("");
         ((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).setText("");
+        ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText("");
+        ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
         recurringRateList.clear();
         p.setAnalysisResult(null);
         p.setGeneralVitality(0);
@@ -456,30 +458,23 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         return text;
     }
 
-    private Object getFromClipboard (DataFlavor flavor) {
+    private Object getFromClipboard(DataFlavor flavor) {
 
-        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-        Transferable contents = clipboard.getContents(null);
-        Object object = null; // the potential result
+        try {
+            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            Transferable contents = clipboard.getContents(null);
 
-        if (contents != null && contents.isDataFlavorSupported(flavor)) {
-            try
-            {
-                object = contents.getTransferData(flavor);
+            if (contents != null && contents.isDataFlavorSupported(flavor)) {
+                return contents.getTransferData(flavor);
             }
 
-            catch (UnsupportedFlavorException e1) // Unlikely but we must catch it
-            {
-                e1.printStackTrace();
-            }
-
-            catch (java.io.IOException e2)
-            {
-                e2.printStackTrace() ;
-            }
+        } catch (UnsupportedFlavorException e) {
+            log.trace(e);
+        } catch (IOException e) {
+            log.trace(e);
         }
 
-        return object;
+        return null;
     }
 
     private void checkGeneralVitality() {
