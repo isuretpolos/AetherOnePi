@@ -37,7 +37,7 @@ public class HotbitsFactory implements IHotbitsFactory {
 
 			FileUtils.writeByteArrayToFile(file, bytes);
 		} catch (HotbitsCollectingException e) {
-            logger.warn("Cannot access hotbits directly from source, but I try to read from cache instead.");
+            logger.trace("Cannot access hotbits directly from source, but I try to read from cache instead.");
             File hotbitsFolder = new File("hotbits");
 
             if (hotbitsFolder.exists() && hotbitsFolder.listFiles().length > 5) {

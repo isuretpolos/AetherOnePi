@@ -85,7 +85,6 @@ public class DataService {
             }
 
             if (file.getName().endsWith(".txt")) {
-                log.info("adding rate file " + file.getName());
                 databases.put(file.getName(), file);
             }
         }
