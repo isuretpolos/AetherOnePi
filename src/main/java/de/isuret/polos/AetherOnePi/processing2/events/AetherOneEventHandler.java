@@ -19,6 +19,10 @@ import org.springframework.util.StringUtils;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -432,6 +436,50 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             analyzeCurrentDatabase();
             return;
         }
+
+        // Paste CTRL+V
+        if (p.keyCode == 86) {
+            String text = getTextFromClipboard();
+            if (text == null) return;
+            ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText(text);
+            ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
+            return;
+        }
+    }
+
+    private String getTextFromClipboard () {
+        String text = (String) getFromClipboard(DataFlavor.stringFlavor);
+
+        if (text==null)
+            return "";
+
+        return text;
+    }
+
+    private Object getFromClipboard (DataFlavor flavor) {
+
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        Transferable contents = clipboard.getContents(null);
+        Object object = null; // the potential result
+
+        if (contents != null && contents.isDataFlavorSupported(flavor)) {
+            try
+            {
+                object = contents.getTransferData(flavor);
+            }
+
+            catch (UnsupportedFlavorException e1) // Unlikely but we must catch it
+            {
+                e1.printStackTrace();
+            }
+
+            catch (java.io.IOException e2)
+            {
+                e2.printStackTrace() ;
+            }
+        }
+
+        return object;
     }
 
     private void checkGeneralVitality() {

@@ -67,7 +67,7 @@ public class HotbitsHandler {
                             offlineForHowManyTime = 10;
                         }
                     } else if (offlineForHowManyTime == 0) {
-                        logger.info("storing hotbits on harddisk for later use");
+                        logger.trace("storing hotbits on harddisk for later use");
                         try {
                             if (hotbitsFolder.listFiles().length > 20000) {
                                 // there are enough hotbits packages, so stop

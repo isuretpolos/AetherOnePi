@@ -39,7 +39,7 @@
     </root>
 
     <!-- LOG "de.isuret.polos*" at TRACE level -->
-    <logger name="de.isuret.polos" level="trace" additivity="false">
+    <logger name="de.isuret.polos" level="info" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>
