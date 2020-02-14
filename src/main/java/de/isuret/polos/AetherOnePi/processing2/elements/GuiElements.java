@@ -42,6 +42,7 @@ public class GuiElements {
     private Float y;
     private Float width;
     private Float height;
+    @Getter
     @Setter
     private String currentTab = "default";
     private boolean verticalAlignment;
