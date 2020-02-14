@@ -423,20 +423,19 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
     public void keyPressed(char key) {
 
-        if (key == '0') {
-//            cp5.get(Matrix.class, "peggotty").clear();
-            return;
-        }
+        if (p.getGuiElements().getCurrentTab().equals("ANALYZE")) {
+            if (key == p.ENTER) {
+                checkGeneralVitality();
+                return;
+            }
 
-        if (key == p.ENTER) {
-            checkGeneralVitality();
-            return;
-        }
+            // CTRL = 17
+            if (p.keyCode == 17) {
+                analyzeCurrentDatabase();
+                return;
+            }
 
-        // CTRL = 17
-        if (p.keyCode == 17 && p.getGuiElements().getCurrentTab().equals("ANALYZE")) {
-            analyzeCurrentDatabase();
-            return;
+            // TODO if session exist evaluate keys back and forth, right and left, for navigating through the session list
         }
 
         // Paste CTRL+V
@@ -478,9 +477,12 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     private void checkGeneralVitality() {
+
+        // Prepare to repeat the analysis
         if (p.getGvCounter() > AnalyseScreen.MAX_ENTRIES || p.getGvCounter() > p.getAnalysisResult().getRateObjects().size()) {
             p.setGvCounter(0);
 
+            // set everything to zero
             for (int iRate = 0; iRate < p.getAnalysisResult().getRateObjects().size(); iRate++) {
 
                 RateObject rateObject = p.getAnalysisResult().getRateObjects().get(iRate);
@@ -488,14 +490,22 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                 rateObject.setRecurringGeneralVitality(0);
             }
 
+            // now save the analysis as an additional session, because you repeated the analysis
+            Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
+            p.getCaseObject().getSessionList().add(lastSession);
+            lastSession.setAnalysisResult(p.getAnalysisResult());
+            p.saveCase();
             return;
         }
 
+        // Check GV ...
         Integer gv = p.checkGeneralVitalityValue();
 
+        // ... of the target ...
         if (p.getGvCounter() == 0) {
             p.setGeneralVitality(gv);
         } else {
+            // ... or of the rate inside the current analysis
             setRateGeneralVitality(gv);
         }
 
