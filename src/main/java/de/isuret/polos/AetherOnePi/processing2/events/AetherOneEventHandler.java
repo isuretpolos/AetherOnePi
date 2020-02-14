@@ -434,13 +434,13 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         // CTRL = 17
-        if (p.keyCode == 17) {
+        if (p.keyCode == 17 && p.getGuiElements().getCurrentTab().equals("ANALYZE")) {
             analyzeCurrentDatabase();
             return;
         }
 
         // Paste CTRL+V
-        if (p.keyCode == 86) {
+        if (p.keyCode == 86 && p.getGuiElements().getCurrentTab().equals("BROADCAST")) {
             String text = getTextFromClipboard();
             if (text == null) return;
             ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText(text);

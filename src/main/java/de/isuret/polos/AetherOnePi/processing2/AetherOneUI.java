@@ -305,7 +305,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         guiElements.setValue("HOTBITS", percentage);
     }
 
-    public void keyPressed() {
+    public void keyReleased() {
 
         for (KeyPressedObserver observer : keyPressedObserverList) {
             observer.keyPressed(key);
