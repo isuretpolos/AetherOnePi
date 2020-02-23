@@ -24,6 +24,18 @@ public class AnalysisResult implements Serializable {
     private List<RateObject> rateObjects = new ArrayList<>();
     private Integer generalVitality;
 
+    /**
+     * Make a copy
+     * @param r
+     */
+    public AnalysisResult(AnalysisResult r) {
+        id = UUID.randomUUID();
+
+        for (RateObject rateObject : r.rateObjects) {
+            rateObjects.add(new RateObject(rateObject));
+        }
+    }
+
     @JsonIgnore
     public AnalysisResult sort() {
         Collections.sort(rateObjects, new Comparator<RateObject>() {

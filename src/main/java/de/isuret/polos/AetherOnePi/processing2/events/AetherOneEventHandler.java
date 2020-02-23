@@ -3,7 +3,11 @@ package de.isuret.polos.AetherOnePi.processing2.events;
 import controlP5.ControlEvent;
 import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.*;
+import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
+import de.isuret.polos.AetherOnePi.processing.config.Settings;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
+import de.isuret.polos.AetherOnePi.processing2.dialogs.BroadcastUnit;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.SelectDatabaseDialog;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.SessionDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
@@ -27,10 +31,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class AetherOneEventHandler implements KeyPressedObserver {
 
@@ -111,7 +113,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
             try {
                 Case c = p.getCaseObject();
-                c.getSessionList().add(new Session());
+                Session session = new Session();
+                session.setCreated(Calendar.getInstance());
+                c.getSessionList().add(session);
                 c.setName(((Textfield) p.getGuiElements().getCp5().get("NAME")).getText());
                 c.setDescription(((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).getText());
                 dataService.saveCase(c);
@@ -224,8 +228,11 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         try {
+            clearForNewCase();
             Case c = dataService.loadCase(file);
-            c.getSessionList().add(new Session());
+            Session session = new Session();
+            session.setCreated(Calendar.getInstance());
+            c.getSessionList().add(session);
             p.setTitle("AetherOneUI - " + c.getName());
             p.setCaseObject(c);
             ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText(c.getName());
@@ -307,8 +314,14 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         // replaced by the embedded BroadcastElement
-//        BroadcastUnit.startBroadcastUnit(seconds, signature);
-        p.getGuiElements().addBroadcastElement(signature, seconds);
+        Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
+        boolean broadCastEmbedded = settings.getBoolean("broadcast.embedded", true);
+
+        if (broadCastEmbedded) {
+            p.getGuiElements().addBroadcastElement(signature, seconds);
+        } else {
+            BroadcastUnit.startBroadcastUnit(seconds, signature);
+        }
 
         BroadCastData broadCastData = new BroadCastData();
         broadCastData.setSignature(signature);
@@ -316,6 +329,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     private void clearForNewCase() {
+        p.setAnalysisPointer(null);
         p.setCaseObject(new Case());
         p.setTitle("AetherOneUI - New Case ... enter name and description");
         ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText("");
@@ -331,6 +345,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
     private void analyzeCurrentDatabase() {
         analyzeDatabase(p.getSelectedDatabase());
+
+        // TODO check if a new session is required
+        p.setAnalysisPointer(null);
     }
 
     private void analyzeDatabase(String databaseName) {
@@ -423,7 +440,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
     public void keyPressed(char key) {
 
-        if (p.getGuiElements().getCurrentTab().equals("ANALYZE")) {
+        if (p.getGuiElements().getCurrentTab().equals(AetherOneConstants.ANALYZE)) {
             if (key == p.ENTER) {
                 checkGeneralVitality();
                 return;
@@ -435,16 +452,41 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                 return;
             }
 
-            // TODO if session exist evaluate keys back and forth, right and left, for navigating through the session list
+            // if session exist evaluate keys back and forth, right and left, for navigating through the session list
+            navigateThroughHistoricalAnalysis();
         }
 
         // Paste CTRL+V
-        if (p.keyCode == 86 && p.getGuiElements().getCurrentTab().equals("BROADCAST")) {
+        if (p.keyCode == 86 && p.getGuiElements().getCurrentTab().equals(AetherOneConstants.BROADCAST)) {
             String text = getTextFromClipboard();
             if (text == null) return;
             ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText(text);
             ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
             return;
+        }
+    }
+
+    public void navigateThroughHistoricalAnalysis() {
+
+        if ((p.keyCode == 37 || p.keyCode == 39) && p.getCaseObject()!= null &&
+                p.getCaseObject().getSessionList() != null && p.getCaseObject().getSessionList().size() > 0) {
+
+            if (p.getAnalysisPointer() == null) {
+                p.setAnalysisPointer(p.getCaseObject().getSessionList().size() -1);
+            }
+
+            // left = 37, right = 39
+            if (p.keyCode == 37 && p.getAnalysisPointer() > 0) {
+                p.setAnalysisPointer(p.getAnalysisPointer() - 1);
+            } else if (p.keyCode == 39 && p.getAnalysisPointer() < p.getCaseObject().getSessionList().size() - 1) {
+                p.setAnalysisPointer(p.getAnalysisPointer() + 1);
+            }
+
+            AnalysisResult analysisResult = p.getCaseObject().getSessionList().get(p.getAnalysisPointer()).getAnalysisResult();
+
+            if (analysisResult != null) {
+                p.setAnalysisResult(analysisResult);
+            }
         }
     }
 
@@ -478,23 +520,24 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
     private void checkGeneralVitality() {
 
+        if (p.getAnalysisResult() == null) return;
+
+        if (p.getGvCounter() == null) p.setGvCounter(0);
+
+        if (p.getAnalysisResult() != null && p.getAnalysisPointer() != null) {
+            // during navigation you practically need a new session, therefore add a new one
+            addNewSession();
+            p.setAnalysisPointer(null);
+            p.setGvCounter(0);
+            return;
+        }
+
         // Prepare to repeat the analysis
         if (p.getGvCounter() > AnalyseScreen.MAX_ENTRIES || p.getGvCounter() > p.getAnalysisResult().getRateObjects().size()) {
-            p.setGvCounter(0);
-
-            // set everything to zero
-            for (int iRate = 0; iRate < p.getAnalysisResult().getRateObjects().size(); iRate++) {
-
-                RateObject rateObject = p.getAnalysisResult().getRateObjects().get(iRate);
-                rateObject.setGv(0);
-                rateObject.setRecurringGeneralVitality(0);
-            }
+            cleanAnalysisForNewGvCheck();
 
             // now save the analysis as an additional session, because you repeated the analysis
-            Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
-            p.getCaseObject().getSessionList().add(lastSession);
-            lastSession.setAnalysisResult(p.getAnalysisResult());
-            p.saveCase();
+            addNewSession();
             return;
         }
 
@@ -511,6 +554,27 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         p.setGvCounter(p.getGvCounter() + 1);
         saveGeneralVitality();
+    }
+
+    private void addNewSession() {
+        Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
+        Session newSession = new Session(lastSession);
+        p.getCaseObject().getSessionList().add(newSession);
+        p.setAnalysisResult(new AnalysisResult(p.getAnalysisResult()));
+        newSession.setAnalysisResult(p.getAnalysisResult());
+        p.saveCase();
+    }
+
+    private void cleanAnalysisForNewGvCheck() {
+        p.setGvCounter(0);
+
+        // set everything to zero
+        for (int iRate = 0; iRate < p.getAnalysisResult().getRateObjects().size(); iRate++) {
+
+            RateObject rateObject = p.getAnalysisResult().getRateObjects().get(iRate);
+            rateObject.setGv(0);
+            rateObject.setRecurringGeneralVitality(0);
+        }
     }
 
     public void setRateGeneralVitality(Integer gv) {

@@ -52,7 +52,7 @@ public class HotbitsHandler {
 
                         // offline mode, no need to wait too long, just load the hotbits from harddisk
                         offlineForHowManyTime = offlineForHowManyTime - 1;
-                        logger.info("offline mode counter = " + offlineForHowManyTime);
+                        logger.trace("offline mode counter = " + offlineForHowManyTime);
                         loadHotbitsFromHarddisk();
                         waitMilliseconds(2000);
                         continue;
@@ -62,7 +62,7 @@ public class HotbitsHandler {
                             // online mode ?
                             retrieveHotbitsFromAetherOnePi();
                         } catch (AetherOnePiException e) {
-                            logger.info("loading from harddisk instead of server");
+                            logger.trace("loading from harddisk instead of server");
                             loadHotbitsFromHarddisk();
                             offlineForHowManyTime = 10;
                         }
@@ -77,12 +77,12 @@ public class HotbitsHandler {
 
                             saveHotbitsFromAetherOnePi();
                         } catch (AetherOnePiException e) {
-                            logger.warn("no connection to AetherOnePi server, cannot collect hotbits", e);
+                            logger.trace("no connection to AetherOnePi server, cannot collect hotbits", e);
                             offlineForHowManyTime = 10;
                         }
                     } else if (offlineForHowManyTime > 0) {
                         offlineForHowManyTime = offlineForHowManyTime - 1;
-                        logger.info("offline mode counter = " + offlineForHowManyTime);
+                        logger.trace("offline mode counter = " + offlineForHowManyTime);
                         waitMilliseconds(2000);
                         continue;
                     }

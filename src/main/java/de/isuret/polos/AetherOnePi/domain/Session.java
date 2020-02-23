@@ -25,4 +25,14 @@ public class Session {
     private Calendar created;
     AnalysisResult analysisResult;
     BroadCastData broadCasted;
+
+    /**
+     * Makes a copy of the session (used during GV checks)
+     * @param vo
+     */
+    public Session(Session vo) {
+        intention = vo.intention;
+        description = vo.description;
+        created = Calendar.getInstance();
+    }
 }
