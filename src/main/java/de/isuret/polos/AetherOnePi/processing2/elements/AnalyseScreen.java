@@ -2,6 +2,7 @@ package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
+import de.isuret.polos.AetherOnePi.domain.Session;
 import de.isuret.polos.AetherOnePi.domain.StickPad;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
@@ -10,6 +11,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,6 +53,17 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             }
         }
 
+        if (p.getCaseObject() != null && p.getCaseObject().getSessionList() != null) {
+
+            if (p.getCaseObject().getSessionList().size() > 0 && p.getAnalysisPointer() != null) {
+                Session session = p.getCaseObject().getSessionList().get(p.getAnalysisPointer());
+                if (session != null && session.getCreated() != null) {
+                    DateFormat formatter = new SimpleDateFormat();
+                    p.fill(255);
+                    p.text(formatter.format(session.getCreated().getTime()), 400, 110);
+                }
+            }
+        }
 
         if (p.getAnalysisResult() != null) {
 

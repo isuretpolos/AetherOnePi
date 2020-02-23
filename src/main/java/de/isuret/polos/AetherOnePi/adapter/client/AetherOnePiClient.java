@@ -95,7 +95,7 @@ public class AetherOnePiClient {
         try {
             trngNumbers = restTemplate.getForObject(String.format("%s/hotbits-integer/%s/%s/%s", baseUrl, min, max, amount), HotBitIntegers.class);
         } catch (ResourceAccessException e) {
-            logger.error("Hotbits cannot be streamed. Check if the server is online.\n"+  e.getMessage());
+            logger.trace("Hotbits cannot be streamed. Check if the server is online.\n"+  e.getMessage());
         }
 
         if (trngNumbers == null) {

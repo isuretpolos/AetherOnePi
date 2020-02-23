@@ -55,6 +55,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     @Setter
     private AnalysisResult analysisResult;
     @Setter
+    private Integer analysisPointer;
+    @Setter
     private Integer gvCounter = 0;
     @Setter
     private Integer generalVitality = 0;
@@ -154,14 +156,14 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         final float posY = (guiElements.getBorder() * 2) - 7;
 
         guiElements.initTabs()
-                .addTab("SESSION")
-                .addTab("SETTINGS")
-                .addTab("ANALYZE")
-                .addTab("IMAGE")
-                .addTab("RATES")
-                .addTab("PEGGOTTY")
-                .addTab("AREA")
-                .addTab("BROADCAST");
+                .addTab(AetherOneConstants.SESSION)
+                .addTab(AetherOneConstants.SETTINGS)
+                .addTab(AetherOneConstants.ANALYZE)
+                .addTab(AetherOneConstants.IMAGE)
+                .addTab(AetherOneConstants.RATES)
+                .addTab(AetherOneConstants.PEGGOTTY)
+                .addTab(AetherOneConstants.AREA)
+                .addTab(AetherOneConstants.BROADCAST);
 
         guiElements
                 .selectCurrentTab("default")
@@ -174,7 +176,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("YOUTUBE")
                 .addDashboardScreen();
         guiElements
-                .selectCurrentTab("SESSION")
+                .selectCurrentTab(AetherOneConstants.SESSION)
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addButton("NEW")
                 .addButton("LOAD")
@@ -184,14 +186,14 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addTextfield("NAME")
                 .addTextfield("DESCRIPTION");
         guiElements
-                .selectCurrentTab("SETTINGS")
+                .selectCurrentTab(AetherOneConstants.SETTINGS)
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addSettingsScreen();
         guiElements
-                .selectCurrentTab("ANALYZE")
+                .selectCurrentTab(AetherOneConstants.ANALYZE)
                 .setInitialBounds(border, posY, 120f, 14f, false)
                 .addButton("SELECT DATA")
-                .addButton("ANALYZE")
+                .addButton(AetherOneConstants.ANALYZE)
                 .addButton("HOMEOPATHY")
                 .addButton("BIOLOGICAL")
                 .addButton("SYMBOLISM")
@@ -204,7 +206,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("STATISTICS")
                 .addAnalyseScreen();
         guiElements
-                .selectCurrentTab("AREA")
+                .selectCurrentTab(AetherOneConstants.AREA)
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addButton("PASTE AREA")
                 .addButton("LOAD AREA")
@@ -212,7 +214,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("SCAN FOR TARGET")
                 .addButton("AGRICULTURE");
         guiElements
-                .selectCurrentTab("IMAGE")
+                .selectCurrentTab(AetherOneConstants.IMAGE)
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addButton("PASTE IMAGE")
                 .addButton("LOAD IMAGE")
@@ -220,7 +222,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("BROADCAST IMAGE")
                 .addButton("GENERATE MD5");
         guiElements
-                .selectCurrentTab("RATES")
+                .selectCurrentTab(AetherOneConstants.RATES)
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addRatesScreen();
         guiElements
