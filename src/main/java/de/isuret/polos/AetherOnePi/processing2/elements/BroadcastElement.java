@@ -19,6 +19,10 @@ public class BroadcastElement implements IDrawableElement {
 
     public static final int WIDTH = 320;
     public static final int HEIGHT = 180;
+    private static final String ADDITIONAL_RATES [] = {
+            "ENERGY", "FIRE", "POWER", "WOOD", "GROUNDING", "EARTH", "RYTHM",
+            "METAL", "WATER", "DEEPNESS", "DO NO HARM!", "UNITY", "LOVE"
+    };
     private AetherOneUI p;
     private String tabName;
     @Setter
@@ -257,6 +261,11 @@ public class BroadcastElement implements IDrawableElement {
         int hotbitsForBroadcastingRandomNumber = random.nextInt(100);
         if (hotbitsForBroadcastingRandomNumber >= 98) {
             File hotbitsFolder = new File("hotbits");
+
+            //p.text(one, random.nextInt(width) + offsetX, random.nextInt(height) + offsetY);
+            p.text(ADDITIONAL_RATES[p.getHotbitsClient().getInteger(0, ADDITIONAL_RATES.length - 1)],
+                    p.getHotbitsClient().getInteger(WIDTH) + offsetX,
+                    p.getHotbitsClient().getInteger(HEIGHT) + offsetY);
 
             int hotbitsCacheSize = hotbitsFolder.listFiles().length;
 
