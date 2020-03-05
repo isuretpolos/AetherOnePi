@@ -13,6 +13,7 @@ import java.awt.*;
 public class SettingsScreen implements IDrawableElement, MouseClickObserver {
 
     public static final String BROADCAST_SINGLE_RATES_ONLY = "broadcast.single.rates.only";
+    public static final String ANALYSIS_VERY_HIGH_MAX_HIT = "analysis.very.high.max.hit";
     private AetherOneUI p;
     private boolean mouseClicked = false;
 
@@ -22,6 +23,7 @@ public class SettingsScreen implements IDrawableElement, MouseClickObserver {
         Settings settings = p.getSettings();
         // init settings
         settings.getBoolean(BROADCAST_SINGLE_RATES_ONLY, false);
+        settings.getBoolean(ANALYSIS_VERY_HIGH_MAX_HIT, false);
         AetherOnePiProcessingConfiguration.saveAllSettings();
     }
 
