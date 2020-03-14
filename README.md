@@ -6,6 +6,9 @@ Open Source Radionics for the Raspberry Pi
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
 
+## Java 1.8 runtime
+You need Java 1.8 as a runtime. Download it from [java.com](https://www.java.com/en/download/) and install it before you run the AetherOnePi application on your PC or Raspberry Pi.
+
 ## Download
 Download [Version 1.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/1.0) (Standalone Client)
 
