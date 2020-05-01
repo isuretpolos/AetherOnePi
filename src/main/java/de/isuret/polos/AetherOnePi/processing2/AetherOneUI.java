@@ -64,6 +64,12 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private Boolean stickPadMode = false;
     @Getter
     private TrayIcon trayIcon;
+    @Getter
+    @Setter
+    private String trainingSignature = null;
+    @Getter
+    @Setter
+    private Boolean trainingSignatureCovered = true;
 
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
@@ -204,6 +210,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
                 .addButton("GROUNDING")
                 .addButton("STATISTICS")
+                .addButton(AetherOneConstants.TRAINING_START)
+                .addButton(AetherOneConstants.TRAINING_UNCOVER)
                 .addAnalyseScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.AREA)

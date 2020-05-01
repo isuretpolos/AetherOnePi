@@ -250,6 +250,16 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                 this.mouseClickOccurred = false;
             }
         }
+
+        if (p.getTrainingSignature() != null) {
+            p.fill(255);
+            p.text("TRAINING MODE ...",450,510);
+        }
+
+        if (p.getTrainingSignature() != null && !p.getTrainingSignatureCovered()) {
+            p.fill(255);
+            p.text(p.getTrainingSignature(),600,510);
+        }
     }
 
     private void drawAnalysisBroadband() {

@@ -216,6 +216,18 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             p.getGuiElements().stopAllBroadcasts();
             return;
         }
+
+        if (AetherOneConstants.TRAINING_START.equals(name)) {
+            p.setTrainingSignatureCovered(true);
+            trainingSelectSignatureFromCurrentDatabase();
+            return;
+        }
+
+        if (AetherOneConstants.TRAINING_UNCOVER.equals(name)) {
+            p.setTrainingSignatureCovered(false);
+            System.out.println(p.getTrainingSignature());
+            return;
+        }
     }
 
     public void loadCaseFile(File file) {
@@ -329,6 +341,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     private void clearForNewCase() {
+        p.setTrainingSignature(null);
+        p.setTrainingSignatureCovered(true);
         p.setAnalysisPointer(null);
         p.setCaseObject(new Case());
         p.setTitle("AetherOneUI - New Case ... enter name and description");
@@ -374,6 +388,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             saveCase();
         } catch (IOException e) {
             log.error("Error analyzing ", e);
+        }
+    }
+
+    private void trainingSelectSignatureFromCurrentDatabase() {
+        try {
+            dataService.refreshDatabaseList();
+            List<Rate> rates = dataService.findAllBySourceName(p.getSelectedDatabase());
+            p.setTrainingSignature(analyseService.selectTrainingRate(rates));
+        } catch (Exception e) {
+            log.error("Error selecting a signature for training mode ", e);
         }
     }
 

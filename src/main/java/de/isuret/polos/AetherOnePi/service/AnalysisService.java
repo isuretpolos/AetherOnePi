@@ -181,4 +181,10 @@ public class AnalysisService {
 
         return analysisResult;
     }
+
+    public String selectTrainingRate(List<Rate> rates) {
+        int x = hotbitsClient.getInteger(0, rates.size() - 1);
+        Rate rate = rates.get(x);
+        return rate.getName();
+    }
 }

@@ -16,6 +16,10 @@ or download the Beta which is build after each change on the [Action tab](https:
 
 Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 
+# Feature History
+- 2020-05-01 Training Mode
+
+
 # Resources
 ## Documentation
 - [Documentation](documentation/documentation.md)

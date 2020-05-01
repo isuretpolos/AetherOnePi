@@ -12,4 +12,6 @@ public class AetherOneConstants {
     public static final String PEGGOTTY = "PEGGOTTY";
     public static final String BROADCAST = "BROADCAST";
     public static final String AREA = "AREA";
+    public static final String TRAINING_START = "TRAINING[START]";
+    public static final String TRAINING_UNCOVER = "TRAINING[UNCOVER]";
 }
