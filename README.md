@@ -18,6 +18,7 @@ Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 
 # Feature History
 - 2020-05-01 Training Mode
+- 2020-05-16 General Vitality check for the virtual StickPad
 
 
 # Resources

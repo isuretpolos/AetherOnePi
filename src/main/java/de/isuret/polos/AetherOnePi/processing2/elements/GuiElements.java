@@ -38,6 +38,7 @@ public class GuiElements {
     private Map<String, StatusLED> statusLEDMap = new HashMap<>();
     private List<IDrawableElement> drawableElementList = new ArrayList<>();
     private List<BroadcastElement> broadcastQueueList = new ArrayList<>();
+    @Getter
     private Float x;
     private Float y;
     private Float width;

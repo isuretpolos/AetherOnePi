@@ -185,9 +185,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("STICKPAD".equals(name) && p.getSelectedDatabase() != null) {
+        if (AetherOneConstants.STICKPAD.equals(name) && p.getSelectedDatabase() != null) {
             if (!p.getStickPadMode()) {
                 p.setStickPadMode(true);
+            }
+            return;
+        }
+
+        if (AetherOneConstants.GV.equals(name) && p.getSelectedDatabase() != null) {
+            if (!p.getStickPadGeneralVitalityMode()) {
+                p.setStickPadGeneralVitalityMode(true);
             }
             return;
         }
@@ -354,7 +361,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         p.setAnalysisResult(null);
         p.setGeneralVitality(0);
         p.setGvCounter(0);
-//        p.getGuiElements().stopAll();
+        p.setStickPadMode(false);
+        p.setStickPadGeneralVitalityMode(false);
     }
 
     private void analyzeCurrentDatabase() {

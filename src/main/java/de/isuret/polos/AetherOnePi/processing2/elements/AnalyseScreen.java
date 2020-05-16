@@ -38,7 +38,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
     @Override
     public void draw() {
 
-        if (p.getStickPadMode()) {
+        if (p.getStickPadMode() || p.getStickPadGeneralVitalityMode()) {
             analyzeStickPad();
         }
 
@@ -360,6 +360,10 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
     }
 
     private void analyzeStickPad() {
+
+        if (!stickPad.getGeneralVitalityChecking()) {
+            stickPad.setGeneralVitalityChecking(p.getStickPadGeneralVitalityMode());
+        }
 
         if (stickPad.getGeneralVitalityChecking()) {
             p.fill(156, 255, 99);

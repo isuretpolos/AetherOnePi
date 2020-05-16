@@ -62,6 +62,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private Integer generalVitality = 0;
     @Setter
     private Boolean stickPadMode = false;
+    @Setter
+    private Boolean stickPadGeneralVitalityMode = false;
     @Getter
     private TrayIcon trayIcon;
     @Getter
@@ -206,7 +208,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton("ESSENCES")
                 .addButton("CHEMICAL")
                 .addButton("ENERGY")
-                .addButton("STICKPAD")
+                .addButton(AetherOneConstants.STICKPAD)
+                .setInitialBounds(getGuiElements().getX(), posY, 100f, 14f, false)
+                .addButton(AetherOneConstants.GV)
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
                 .addButton("GROUNDING")
                 .addButton("STATISTICS")
