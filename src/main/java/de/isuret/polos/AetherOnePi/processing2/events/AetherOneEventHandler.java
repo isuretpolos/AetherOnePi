@@ -589,12 +589,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     private void addNewSession() {
-        Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
-        Session newSession = new Session(lastSession);
-        p.getCaseObject().getSessionList().add(newSession);
-        p.setAnalysisResult(new AnalysisResult(p.getAnalysisResult()));
-        newSession.setAnalysisResult(p.getAnalysisResult());
-        p.saveCase();
+        try {
+            Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
+            Session newSession = new Session(lastSession);
+            p.getCaseObject().getSessionList().add(newSession);
+            p.setAnalysisResult(new AnalysisResult(p.getAnalysisResult()));
+            newSession.setAnalysisResult(p.getAnalysisResult());
+            p.saveCase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void cleanAnalysisForNewGvCheck() {
