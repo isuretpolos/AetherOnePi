@@ -4,6 +4,7 @@ import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.Session;
 import de.isuret.polos.AetherOnePi.domain.StickPad;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 
@@ -386,7 +387,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
     @Override
     public String getAssignedTabName() {
-        return "ANALYZE";
+        return AetherOneConstants.ANALYZE;
     }
 
     @Override

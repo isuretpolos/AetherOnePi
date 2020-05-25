@@ -3,6 +3,7 @@ package de.isuret.polos.AetherOnePi.processing2.events;
 import controlP5.ControlEvent;
 import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.*;
+import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
@@ -185,6 +186,29 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
+        if (AetherOneConstants.LOAD_IMAGE_LAYERS.equals(name)) {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new File("data_images"));
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "Case Files", "json");
+            chooser.setFileFilter(filter);
+            int returnVal = chooser.showOpenDialog(null);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+
+                File directory = chooser.getSelectedFile();
+                log.info("You chose to open this image layer directory: " +
+                        directory.getAbsolutePath());
+
+                p.setImageLayersAnalysis(new ImageLayersAnalysis(p, directory));
+            }
+            return;
+        }
+
+        if (AetherOneConstants.ANALYZE_IMAGE.equals(name)) {
+            p.getImageLayersAnalysis().analyze();
+        }
+
         if (AetherOneConstants.STICKPAD.equals(name) && p.getSelectedDatabase() != null) {
             if (!p.getStickPadMode()) {
                 p.setStickPadMode(true);
@@ -348,6 +372,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     private void clearForNewCase() {
+        p.setImageLayersAnalysis(null);
         p.setTrainingSignature(null);
         p.setTrainingSignatureCovered(true);
         p.setAnalysisPointer(null);
@@ -590,6 +615,10 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
     private void addNewSession() {
         try {
+            if (p.getCaseObject().getSessionList().size() == 0) {
+                System.out.println("No case or session object in memory");
+                return;
+            }
             Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
             Session newSession = new Session(lastSession);
             p.getCaseObject().getSessionList().add(newSession);

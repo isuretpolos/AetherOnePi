@@ -510,6 +510,13 @@ public class GuiElements {
         return this;
     }
 
+    public GuiElements addImageLayerScreen() {
+        ImageLayerScreen imageLayerScreen = new ImageLayerScreen(p);
+        p.getMouseClickObserverList().add(imageLayerScreen);
+        drawableElementList.add(imageLayerScreen);
+        return this;
+    }
+
     public void stopAllBroadcasts() {
         stopAll = true;
     }
@@ -517,4 +524,5 @@ public class GuiElements {
     public void stopCurrentBroadcast() {
         stopCurrentBroadcast = true;
     }
+
 }

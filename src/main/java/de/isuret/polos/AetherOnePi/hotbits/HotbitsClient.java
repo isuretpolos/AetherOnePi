@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
-
+// TODO this need to be refactored, moved to the server project only
 @Data
 @Component
 public class HotbitsClient {
@@ -93,7 +93,7 @@ public class HotbitsClient {
 
     private HotbitPackage getHotbitPackageFromFileSystem(File hotbitFile) throws IOException {
 
-        if (!hotbitFile.getName().startsWith("hotbits_")) {
+        if (!hotbitFile.getName().startsWith("hotbits_") && !hotbitFile.getName().endsWith(".dat")) {
             logger.error("hotbitFile name is wrong (should begin with hotbits_...) : " + hotbitFile.getName());
             return null;
         }
