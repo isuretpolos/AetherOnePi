@@ -2,6 +2,7 @@ package de.isuret.polos.AetherOnePi.processing2.hotbits;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
+import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.exceptions.AetherOnePiException;
@@ -10,15 +11,17 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 
 /**
  * The HotbitsHandler downloads asynchronously TRNG data from the AetherOnePi server and saves them as packages files
  * inside a hotbitsFolder (usually named "hotbits")
  */
-public class HotbitsHandler {
+public class HotbitsHandler implements IHotbitsClient {
 
     private Logger logger = LoggerFactory.getLogger(HotbitsHandler.class);
 
@@ -43,6 +46,10 @@ public class HotbitsHandler {
             public void run() {
 
                 int offlineForHowManyTime = 0;
+
+                if (hotbitsFolder.listFiles().length > 1000) {
+                    loadHotbitsFromHarddisk();
+                }
 
                 while (true) {
 
@@ -198,5 +205,32 @@ public class HotbitsHandler {
         if (count > 100) count = 100;
 
         ((IStatusReceiver) p).setHotbitsPercentage((float) count);
+    }
+
+    @Override
+    public boolean getBoolean() {
+        if (hotbits != null && hotbits.size() > 0) {
+            return new Random(hotbits.remove(0)).nextBoolean();
+        } else {
+            return new SecureRandom().nextBoolean();
+        }
+    }
+
+    @Override
+    public int getInteger(int bound) {
+        if (hotbits != null && hotbits.size() > 0) {
+            return new Random(hotbits.remove(0)).nextInt(bound);
+        } else {
+            return new SecureRandom().nextInt(bound);
+        }
+    }
+
+    @Override
+    public int getInteger(Integer min, Integer max) {
+        if (hotbits != null && hotbits.size() > 0) {
+            return new Random(hotbits.remove(0)).nextInt((max - min) + 1) + min;
+        } else {
+            return new SecureRandom().nextInt((max - min) + 1) + min;
+        }
     }
 }

@@ -16,6 +16,7 @@ import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
+import lombok.Getter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -41,11 +42,12 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
     private AetherOneUI p;
     private DataService dataService = new DataService();
-    private AnalysisService analyseService = new AnalysisService();
+    private AnalysisService analyseService;
     private List<RateObject> recurringRateList = new ArrayList<RateObject>();
 
     public AetherOneEventHandler(AetherOneUI p) {
         this.p = p;
+        analyseService = p.getAnalyseService();
         analyseService.setHotbitsClient(p.getHotbitsClient());
     }
 

@@ -6,6 +6,7 @@ import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
+import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
 import de.isuret.polos.AetherOnePi.processing.communication.SocketServer;
@@ -17,6 +18,7 @@ import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
 import de.isuret.polos.AetherOnePi.processing2.events.KeyPressedObserver;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
+import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
 import lombok.Getter;
@@ -44,8 +46,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private AetherOnePiStatus status;
     private AetherOneEventHandler aetherOneEventHandler;
     private AetherOnePiClient piClient;
-    private HotbitsClient hotbitsClient;
+    private IHotbitsClient hotbitsClient;
     private HotbitsHandler hotbitsHandler;
+    @Getter
+    private AnalysisService analyseService;
     private DataService dataService = new DataService();
     private List<MouseClickObserver> mouseClickObserverList = new ArrayList<>();
     private List<KeyPressedObserver> keyPressedObserverList = new ArrayList<>();
@@ -154,15 +158,15 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         // TODO add dynamic more elements with resizing the screen and adjust some of the graphics which are too static
         surface.setResizable(true);
 
-        try {
-            hotbitsClient = new HotbitsClient();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        guiElements = new GuiElements(this);
+        hotbitsHandler = new HotbitsHandler(this);
+        hotbitsClient = hotbitsHandler;
+        analyseService = new AnalysisService();
+        analyseService.setHotbitsClient(hotbitsClient);
         aetherOneEventHandler = new AetherOneEventHandler(this);
         keyPressedObserverList.add(aetherOneEventHandler);
+
+        guiElements = new GuiElements(this);
+
         final float border = guiElements.getBorder() + 5f;
         final float posY = (guiElements.getBorder() * 2) - 7;
 
@@ -273,8 +277,6 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         guiElements.addDrawableElement(new DashboardElement(this));
         guiElements.setCurrentTab(AetherOneConstants.DEFAULT);
 
-        hotbitsHandler = new HotbitsHandler(this);
-        hotbitsHandler.loadHotbits();
         setTitle("AetherOneUI - New Case ... enter name and description");
 
         try {
@@ -283,6 +285,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         } catch (Exception e) {
             logger.error("Error while trying to display tray and icon", e);
         }
+
+        hotbitsHandler.loadHotbits();
     }
 
     public void draw() {
@@ -292,7 +296,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     public void controlEvent(ControlEvent theEvent) {
 
-        aetherOneEventHandler.controlEvent(theEvent);
+        if (aetherOneEventHandler != null) {
+            aetherOneEventHandler.controlEvent(theEvent);
+        }
     }
 
     private void prepareExitHandler() {

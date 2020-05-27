@@ -7,8 +7,8 @@ public class HotbitsClientTest {
 
     @Test
     public void testHotbitsClient() {
-        HotbitsClient hotbitsClient = new HotbitsClient();
-        Integer value = hotbitsClient.getInteger(0,1000);
+        IHotbitsClient IHotbitsClient = new HotbitsClient();
+        Integer value = IHotbitsClient.getInteger(0,1000);
         Assert.assertNotNull(value);
         System.out.println(value);
     }
