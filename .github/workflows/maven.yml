@@ -25,7 +25,7 @@ jobs:
           mkdir -p aetherOnePi/beta/release/data;
           mkdir -p aetherOnePi/beta/release/hotbits;
           mkdir -p aetherOnePi/beta/release/images;
-          mkdir -p aetherOnePi/beta/release/data_images;
+          mkdir -p aetherOnePi/beta/release/data_images/IMAGE_CHAKRAS;
           mkdir -p aetherOnePi/beta/release/processing/HotbitsFromWebCam;
           pwd;
           ls -l;
@@ -33,7 +33,7 @@ jobs:
           cp target/AetherOnePi-1.1.0.jar aetherOnePi/beta/release/;
           cp target/AetherOnePi-1.1.0-jar-with-dependencies.jar aetherOnePi/beta/release/;
           cp backgrounds/*.jpg aetherOnePi/beta/release/backgrounds/;
-          cp -r data_images/*.* aetherOnePi/beta/release/data_images/;
+          cp -r data_images/IMAGE_CHAKRAS/*.* aetherOnePi/beta/release/data_images/IMAGE_CHAKRAS/;
           cp processing/HotbitsFromWebCam/HotbitsFromWebCam.pde aetherOnePi/beta/release/processing/HotbitsFromWebCam/;
           cp start*.bat aetherOnePi/beta/release/;
       - uses: actions/upload-artifact@master
