@@ -22,6 +22,8 @@ public class ImageLayersAnalysis {
     private static int RESIZE_HEIGHT = 460;
     private int min = 256;
     private int max = 0;
+    private float relativeGVratio = 0f;
+    private float relativeMax = 0f;
 
     public ImageLayersAnalysis(AetherOneUI p, File directory) {
 
@@ -42,7 +44,7 @@ public class ImageLayersAnalysis {
 
             PImage image = p.loadImage(file.getAbsolutePath());
             image.resize(0, RESIZE_HEIGHT);
-            imageLayers.add(new ImageLayer(image));
+            imageLayers.add(new ImageLayer(image, file.getName()));
         }
 
         for (File file:directory.listFiles()) {
@@ -53,7 +55,7 @@ public class ImageLayersAnalysis {
 
             PImage image = p.loadImage(file.getAbsolutePath());
             image.resize(0, RESIZE_HEIGHT);
-            imageLayers.add(new ImageLayer(image));
+            imageLayers.add(new ImageLayer(image, file.getName()));
             System.out.println(file.getName());
         }
     }
@@ -73,6 +75,10 @@ public class ImageLayersAnalysis {
                 for (int x = 0; x < 256; x++) {
                     if (p.getHotbitsClient().getInteger(0, 1000) >= 500) {
                         gv++;
+
+                        if (p.getHotbitsClient().getInteger(1,6) == 6) {
+                            gv++;
+                        }
                     }
                 }
 
@@ -82,7 +88,17 @@ public class ImageLayersAnalysis {
             }
         }
 
-        System.out.println("min " + min + " and max " + max + " after " + rounds + " rounds");
+        float minF = new Float(min);
+        float maxF = new Float(max);
+        relativeGVratio = 256 / (maxF - minF);
+        relativeMax = new Float(max - min);
+
+        System.out.println("min " + min + " and max " + max + " after " + rounds + " rounds with an relative GV ratio of " + relativeGVratio);
+
+        for (ImageLayer imageLayer : imageLayers) {
+            float relativeGV = relativeGVratio * (imageLayer.getGv() - min);
+            System.out.println(imageLayer.getName() + " relative GV " + relativeGV);
+        }
     }
 
     public void draw() {
@@ -95,7 +111,8 @@ public class ImageLayersAnalysis {
                 p.image(imageLayer.getImage(), x,y);
             } else {
                 // add transparency
-                p.tint(255, imageLayer.getGv());
+                float relativeGV = relativeGVratio * (imageLayer.getGv() - min);
+                p.tint(255, relativeGV);
                 p.image(imageLayer.getImage(), x, y);
             }
 
