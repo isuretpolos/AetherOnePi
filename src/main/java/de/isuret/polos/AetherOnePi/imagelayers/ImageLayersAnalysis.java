@@ -41,6 +41,7 @@ public class ImageLayersAnalysis {
             if (file.isDirectory()) continue;
             if (!file.isFile()) continue;
             if (!file.getName().startsWith("IMAGE")) continue;
+            if (!file.getName().toLowerCase().endsWith("png")) continue;
 
             PImage image = p.loadImage(file.getAbsolutePath());
             image.resize(0, RESIZE_HEIGHT);
@@ -52,6 +53,7 @@ public class ImageLayersAnalysis {
             if (file.isDirectory()) continue;
             if (!file.isFile()) continue;
             if (file.getName().startsWith("IMAGE")) continue;
+            if (!file.getName().toLowerCase().endsWith("png")) continue;
 
             PImage image = p.loadImage(file.getAbsolutePath());
             image.resize(0, RESIZE_HEIGHT);
