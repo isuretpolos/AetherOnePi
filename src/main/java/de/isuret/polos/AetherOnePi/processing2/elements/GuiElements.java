@@ -525,4 +525,10 @@ public class GuiElements {
         stopCurrentBroadcast = true;
     }
 
+    public GuiElements addSessionScreen() {
+
+        SessionScreen sessionScreen = new SessionScreen(p);
+        drawableElementList.add(sessionScreen);
+        return this;
+    }
 }

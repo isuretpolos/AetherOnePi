@@ -57,6 +57,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private Case caseObject = new Case();
     @Setter
     private String selectedDatabase = "HOMEOPATHY_Clarke_With_MateriaMedicaUrls.txt";
+    @Getter
+    @Setter
+    private String essentielQuestion;
     @Setter
     private AnalysisResult analysisResult;
     @Setter
@@ -197,9 +200,11 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton(AetherOneConstants.LOAD)
                 .addButton(AetherOneConstants.SAVE)
                 .addButton(AetherOneConstants.EDIT_CASE)
+                .addButton(AetherOneConstants.ESSENTIAL_QUESTIONS)
                 .setInitialBounds(border, posY + 24, 150f, 14f, true)
                 .addTextfield(AetherOneConstants.NAME)
-                .addTextfield(AetherOneConstants.DESCRIPTION);
+                .addTextfield(AetherOneConstants.DESCRIPTION)
+                .addSessionScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.SETTINGS)
                 .setInitialBounds(border, posY, 150f, 14f, false)

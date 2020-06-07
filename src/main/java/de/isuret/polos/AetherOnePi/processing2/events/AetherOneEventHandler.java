@@ -134,6 +134,10 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             SessionDialog sessionDialog = new SessionDialog(p);
         }
 
+        if (AetherOneConstants.ESSENTIAL_QUESTIONS.equals(name)) {
+            p.setEssentielQuestion(askEssentialQuestions());
+        }
+
         if ("NEW".equals(name)) {
             clearForNewCase();
             return;
@@ -263,6 +267,75 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
     }
 
+    public String askEssentialQuestions() {
+
+        StringBuilder str = new StringBuilder("== ESSENTIAL QUESTIONS ==\n");
+
+        str.append("Do I have permission to work with this person?\n");
+
+        Integer gv = p.checkGeneralVitalityValue();
+
+        if (gv > 500) {
+            str.append("- YES! (" + gv + ")\n\n");
+
+            str.append("Is it in the person's best and highest good that I work with them?\n");
+            gv = p.checkGeneralVitalityValue();
+
+            if (gv > 500) {
+                str.append("- YES! (" + gv + ")\n\n");
+            } else {
+                str.append("- NO! (" + gv + ")\n\n");
+            }
+
+            str.append("Is it in my best and highest good?\n");
+            gv = p.checkGeneralVitalityValue();
+
+            if (gv > 500) {
+                str.append("- YES! (" + gv + ")\n\n");
+            } else {
+                str.append("- NO! (" + gv + ")\n\n");
+            }
+
+        } else {
+            str.append("- NO! ... Will I ever have permission to work with this person? (" + gv + ")\n");
+
+            gv = p.checkGeneralVitalityValue();
+
+            if (gv > 500) {
+                Map<String, Integer> whenMap = new HashMap<>();
+                str.append("-- YES ... In what amount of time?(" + gv + ")\n");
+                whenMap.put("In one week", 0);
+                whenMap.put("In one month", 0);
+                whenMap.put("In two months", 0);
+                whenMap.put("In 3 months", 0);
+                whenMap.put("In 6 months", 0);
+                whenMap.put("In 1 year", 0);
+                whenMap.put("In 2 year", 0);
+
+                String answer = "";
+                int max = 0;
+
+                for (String when : whenMap.keySet()) {
+                    whenMap.put(when,p.checkGeneralVitalityValue());
+                }
+
+                for (String when : whenMap.keySet()) {
+                    if (whenMap.get(when).intValue() > max) {
+                        max = whenMap.get(when);
+                        answer = when;
+                    }
+                }
+
+                str.append("--- " + answer + "\n");
+
+            } else {
+                str.append("-- NO!!! (" + gv + ")");
+            }
+        }
+
+        return str.toString();
+    }
+
     public void loadCaseFile(File file) {
         if ("dashboardInformations.json".equals(file.getName())) {
             return;
@@ -374,6 +447,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     private void clearForNewCase() {
+        p.setEssentielQuestion(null);
         p.setImageLayersAnalysis(null);
         p.setTrainingSignature(null);
         p.setTrainingSignatureCovered(true);
