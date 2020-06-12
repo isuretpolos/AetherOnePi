@@ -59,6 +59,7 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!-- processing -->
         <dependency>
             <groupId>com.pi4j</groupId>
             <artifactId>pi4j-core</artifactId>
@@ -76,7 +77,97 @@
             <artifactId>pi4j-gpio-extension</artifactId>
             <version>${pi4j-core.version}</version>
         </dependency>
+<!--
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
+            <version>2.1</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-windows-amd64</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-linux-amd64</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-macosx-universal</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>core</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-linux-armv6hf</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-windows-i586</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-linux-i586</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-windows-i586</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-macosx-universal</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-linux-i586</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-linux-armv6hf</artifactId>
+            <version>2.1</version>
+        </dependency>
+         processing END -->
 
         <dependency>
             <groupId>org.eclipse.jgit</groupId>
@@ -339,6 +430,10 @@
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>Clojars Repository</id>
+            <url>https://clojars.org/repo/</url>
         </repository>
     </repositories>
 

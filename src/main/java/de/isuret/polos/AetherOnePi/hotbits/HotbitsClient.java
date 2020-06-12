@@ -4,6 +4,7 @@ import de.isuret.polos.AetherOnePi.processing.communication.StatusNotificationSe
 import de.isuret.polos.AetherOnePi.service.PiService;
 import de.isuret.polos.AetherOnePi.utils.HttpUtils;
 import lombok.Data;
+import lombok.Setter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -19,10 +20,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
-
+// TODO this need to be refactored, moved to the server project only
 @Data
 @Component
-public class HotbitsClient {
+public class HotbitsClient implements IHotbitsClient {
 
     private Log logger = LogFactory.getLog(HotbitsClient.class);
 
@@ -93,7 +94,7 @@ public class HotbitsClient {
 
     private HotbitPackage getHotbitPackageFromFileSystem(File hotbitFile) throws IOException {
 
-        if (!hotbitFile.getName().startsWith("hotbits_")) {
+        if (!hotbitFile.getName().startsWith("hotbits_") && !hotbitFile.getName().endsWith(".dat")) {
             logger.error("hotbitFile name is wrong (should begin with hotbits_...) : " + hotbitFile.getName());
             return null;
         }
@@ -121,6 +122,7 @@ public class HotbitsClient {
         return (getSeed(1) & 1) == 0;
     }
 
+    @Override
     public boolean getBoolean() {
 
         if (pseudoRandomMode) {
@@ -131,6 +133,7 @@ public class HotbitsClient {
         return getRandom(getSeed(5)).nextBoolean();
     }
 
+    @Override
     public int getInteger(int bound) {
 
         if (pseudoRandomMode) {
@@ -141,6 +144,7 @@ public class HotbitsClient {
         return getRandom(Calendar.getInstance().getTimeInMillis() + getSeed(30)).nextInt(bound);
     }
 
+    @Override
     public int getInteger(Integer min, Integer max) {
 
         if (pseudoRandomMode) {

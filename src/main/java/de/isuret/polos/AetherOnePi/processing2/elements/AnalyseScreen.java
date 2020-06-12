@@ -4,6 +4,7 @@ import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.Session;
 import de.isuret.polos.AetherOnePi.domain.StickPad;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 
@@ -38,7 +39,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
     @Override
     public void draw() {
 
-        if (p.getStickPadMode()) {
+        if (p.getStickPadMode() || p.getStickPadGeneralVitalityMode()) {
             analyzeStickPad();
         }
 
@@ -250,6 +251,16 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                 this.mouseClickOccurred = false;
             }
         }
+
+        if (p.getTrainingSignature() != null) {
+            p.fill(255);
+            p.text("TRAINING MODE ...",450,510);
+        }
+
+        if (p.getTrainingSignature() != null && !p.getTrainingSignatureCovered()) {
+            p.fill(255);
+            p.text(p.getTrainingSignature(),600,510);
+        }
     }
 
     private void drawAnalysisBroadband() {
@@ -351,6 +362,10 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
     private void analyzeStickPad() {
 
+        if (!stickPad.getGeneralVitalityChecking()) {
+            stickPad.setGeneralVitalityChecking(p.getStickPadGeneralVitalityMode());
+        }
+
         if (stickPad.getGeneralVitalityChecking()) {
             p.fill(156, 255, 99);
         } else {
@@ -372,7 +387,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
     @Override
     public String getAssignedTabName() {
-        return "ANALYZE";
+        return AetherOneConstants.ANALYZE;
     }
 
     @Override
