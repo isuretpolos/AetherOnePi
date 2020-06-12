@@ -6,6 +6,8 @@ import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
+import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
+import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
 import de.isuret.polos.AetherOnePi.processing.communication.SocketServer;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
@@ -13,8 +15,10 @@ import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.elements.DashboardElement;
 import de.isuret.polos.AetherOnePi.processing2.elements.GuiElements;
 import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
+import de.isuret.polos.AetherOnePi.processing2.events.KeyPressedObserver;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
+import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
 import lombok.Getter;
@@ -28,35 +32,56 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Getter
 public class AetherOneUI extends PApplet implements IStatusReceiver {
 
+    @Getter
+    private Settings settings;
     private Settings guiConf;
     private GuiElements guiElements;
     private SocketServer socketServer;
     private AetherOnePiStatus status;
     private AetherOneEventHandler aetherOneEventHandler;
     private AetherOnePiClient piClient;
-    private HotbitsClient hotbitsClient;
+    private IHotbitsClient hotbitsClient;
     private HotbitsHandler hotbitsHandler;
+    @Getter
+    private AnalysisService analyseService;
     private DataService dataService = new DataService();
     private List<MouseClickObserver> mouseClickObserverList = new ArrayList<>();
+    private List<KeyPressedObserver> keyPressedObserverList = new ArrayList<>();
     @Setter
     private Case caseObject = new Case();
     @Setter
     private String selectedDatabase = "HOMEOPATHY_Clarke_With_MateriaMedicaUrls.txt";
+    @Getter
+    @Setter
+    private String essentielQuestion;
     @Setter
     private AnalysisResult analysisResult;
+    @Setter
+    private ImageLayersAnalysis imageLayersAnalysis;
+    @Setter
+    private Integer analysisPointer;
     @Setter
     private Integer gvCounter = 0;
     @Setter
     private Integer generalVitality = 0;
     @Setter
     private Boolean stickPadMode = false;
+    @Setter
+    private Boolean stickPadGeneralVitalityMode = false;
     @Getter
     private TrayIcon trayIcon;
+    @Getter
+    @Setter
+    private String trainingSignature = null;
+    @Getter
+    @Setter
+    private Boolean trainingSignatureCovered = true;
 
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
@@ -66,6 +91,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     public void settings() {
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
+        settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
         size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721));
 
         piClient = new AetherOnePiClient();
@@ -92,6 +118,29 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     }
 
+    public Integer checkGeneralVitalityValue() {
+
+        List<Integer> list = new ArrayList<Integer>();
+
+        for (int x = 0; x < 3; x++) {
+            list.add(getHotbitsClient().getInteger(1000));
+        }
+
+        Collections.sort(list, Collections.reverseOrder());
+
+        Integer gv = list.get(0);
+
+        if (gv > 950) {
+            int randomDice = getHotbitsClient().getInteger(100);
+
+            while (randomDice >= 50) {
+                gv += randomDice;
+                randomDice = getHotbitsClient().getInteger(100);
+            }
+        }
+        return gv;
+    }
+
     private void createSurfaceIcon() throws IOException {
 
         PImage icon = null;
@@ -112,110 +161,127 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         // TODO add dynamic more elements with resizing the screen and adjust some of the graphics which are too static
         surface.setResizable(true);
 
-        try {
-            hotbitsClient = new HotbitsClient();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        hotbitsHandler = new HotbitsHandler(this);
+        hotbitsClient = hotbitsHandler;
+        analyseService = new AnalysisService();
+        analyseService.setHotbitsClient(hotbitsClient);
+        aetherOneEventHandler = new AetherOneEventHandler(this);
+        keyPressedObserverList.add(aetherOneEventHandler);
 
         guiElements = new GuiElements(this);
-        aetherOneEventHandler = new AetherOneEventHandler(this);
+
         final float border = guiElements.getBorder() + 5f;
         final float posY = (guiElements.getBorder() * 2) - 7;
 
         guiElements.initTabs()
-                .addTab("SESSION")
-                .addTab("SETTINGS")
-                .addTab("ANALYZE")
-                .addTab("IMAGE")
-                .addTab("RATES")
-                .addTab("PEGGOTTY")
-                .addTab("AREA")
-                .addTab("BROADCAST");
+                .addTab(AetherOneConstants.SESSION)
+                .addTab(AetherOneConstants.SETTINGS)
+                .addTab(AetherOneConstants.ANALYZE)
+                .addTab(AetherOneConstants.IMAGE)
+                .addTab(AetherOneConstants.RATES)
+                .addTab(AetherOneConstants.PEGGOTTY)
+                .addTab(AetherOneConstants.AREA)
+                .addTab(AetherOneConstants.BROADCAST);
 
         guiElements
-                .selectCurrentTab("default")
+                .selectCurrentTab(AetherOneConstants.DEFAULT)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("DOCUMENTATION")
-                .addButton("WEBSITE")
-                .addButton("BOOKS")
-                .addButton("COMMUNITY")
-                .addButton("YOUTUBE")
+                .addButton(AetherOneConstants.DOCUMENTATION)
+                .addButton(AetherOneConstants.WEBSITE)
+                .addButton(AetherOneConstants.BOOKS)
+                .addButton(AetherOneConstants.COMMUNITY)
+                .addButton(AetherOneConstants.GITHUB)
+                .addButton(AetherOneConstants.YOUTUBE)
                 .addDashboardScreen();
         guiElements
-                .selectCurrentTab("SESSION")
+                .selectCurrentTab(AetherOneConstants.SESSION)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("NEW")
-                .addButton("LOAD")
-                .addButton("SAVE")
-                .addButton("EDIT CASE")
+                .addButton(AetherOneConstants.NEW)
+                .addButton(AetherOneConstants.LOAD)
+                .addButton(AetherOneConstants.SAVE)
+                .addButton(AetherOneConstants.EDIT_CASE)
+                .addButton(AetherOneConstants.ESSENTIAL_QUESTIONS)
                 .setInitialBounds(border, posY + 24, 150f, 14f, true)
-                .addTextfield("NAME")
-                .addTextfield("DESCRIPTION");
+                .addTextfield(AetherOneConstants.NAME)
+                .addTextfield(AetherOneConstants.DESCRIPTION)
+                .addSessionScreen();
         guiElements
-                .selectCurrentTab("ANALYZE")
+                .selectCurrentTab(AetherOneConstants.SETTINGS)
+                .setInitialBounds(border, posY, 150f, 14f, false)
+                .addSettingsScreen();
+        guiElements
+                .selectCurrentTab(AetherOneConstants.ANALYZE)
                 .setInitialBounds(border, posY, 120f, 14f, false)
-                .addButton("SELECT DATA")
-                .addButton("ANALYZE")
-                .addButton("HOMEOPATHY")
-                .addButton("BIOLOGICAL")
-                .addButton("SYMBOLISM")
-                .addButton("ESSENCES")
-                .addButton("CHEMICAL")
-                .addButton("ENERGY")
-                .addButton("STICKPAD")
+                .addButton(AetherOneConstants.SELECT_DATA)
+                .addButton(AetherOneConstants.ANALYZE)
+                .addButton(AetherOneConstants.HOMEOPATHY)
+                .addButton(AetherOneConstants.BIOLOGICAL)
+                .addButton(AetherOneConstants.SYMBOLISM)
+                .addButton(AetherOneConstants.ESSENCES)
+                .addButton(AetherOneConstants.CHEMICAL)
+                .addButton(AetherOneConstants.ENERGY)
+                .addButton(AetherOneConstants.STICKPAD)
+                .setInitialBounds(getGuiElements().getX(), posY, 100f, 14f, false)
+                .addButton(AetherOneConstants.GV)
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
-                .addButton("STATISTICS")
-                .addAnalyseScreeen()
-                .addBroadcastScreeen();
+                .addButton(AetherOneConstants.GROUNDING)
+                .addButton(AetherOneConstants.STATISTICS)
+                .addButton(AetherOneConstants.TRAINING_START)
+                .addButton(AetherOneConstants.TRAINING_UNCOVER)
+                .addAnalyseScreen();
         guiElements
-                .selectCurrentTab("AREA")
+                .selectCurrentTab(AetherOneConstants.AREA)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("PASTE AREA")
-                .addButton("LOAD AREA")
-                .addButton("CLEAR AREA")
-                .addButton("SCAN FOR TARGET")
-                .addButton("AGRICULTURE");
+                .addButton(AetherOneConstants.PASTE_AREA)
+                .addButton(AetherOneConstants.LOAD_AREA)
+                .addButton(AetherOneConstants.CLEAR_AREA)
+                .addButton(AetherOneConstants.SCAN_FOR_TARGET)
+                .addButton(AetherOneConstants.AGRICULTURE);
         guiElements
-                .selectCurrentTab("IMAGE")
+                .selectCurrentTab(AetherOneConstants.IMAGE)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("PASTE IMAGE")
-                .addButton("LOAD IMAGE")
-                .addButton("CLEAR IMAGE")
-                .addButton("BROADCAST IMAGE")
-                .addButton("GENERATE MD5");
+                .addButton(AetherOneConstants.PASTE_IMAGE)
+                .addButton(AetherOneConstants.LOAD_IMAGE)
+                .addButton(AetherOneConstants.LOAD_IMAGE_LAYERS)
+                .addButton(AetherOneConstants.ANALYZE_IMAGE)
+                .addButton(AetherOneConstants.CLEAR_IMAGE)
+                .addButton(AetherOneConstants.BROADCAST_IMAGE)
+                .addButton(AetherOneConstants.GENERATE_MD_5)
+                .addImageLayerScreen();
         guiElements
-                .selectCurrentTab("RATES")
-                .setInitialBounds(border, posY, 150f, 14f, false);
-        guiElements
-                .selectCurrentTab("BROADCAST")
+                .selectCurrentTab(AetherOneConstants.RATES)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("BROADCAST NOW")
-                .addButton("SCHEDULE")
+                .addRatesScreen();
+        guiElements
+                .selectCurrentTab(AetherOneConstants.BROADCAST)
+                .setInitialBounds(border, posY, 150f, 14f, false)
+                .addButton(AetherOneConstants.BROADCAST_NOW)
+                .addButton(AetherOneConstants.BROADCAST_LIST)
+                .addButton(AetherOneConstants.STOP_CURRENT)
+                .addButton(AetherOneConstants.STOP_ALL)
                 .setInitialBounds(border, posY + 24, 150f, 14f, true)
-                .addTextfield("SIGNATURE")
+                .addTextfield(AetherOneConstants.SIGNATURE)
                 .setInitialBounds(border, posY + 44, 20f, 14f, true)
-                .addTextfield("SECONDS");
+                .addTextfield(AetherOneConstants.SECONDS)
+                .addBroadcastScreen();
         guiElements
-                .selectCurrentTab("default")
-                .setInitialBounds(border + 4f, 550f, 0f, 0f, true)
-                .addStatusLED("PI")
-                .addStatusLED("BROADCASTING")
-                .addStatusLED("CLEARING")
-                .addStatusLED("GROUNDING")
-                .addStatusLED("COPYING")
-                .addSlider("HOTBITS", 100, 10, 100)
-                .addSlider("PACKAGES", 100, 10, 100)
-                .addSlider("CACHE", 100, 10, 20000)
-                .addSlider("PROGRESS", 100, 10, 100)
-                .addSlider("QUEUE", 100, 10, 20);
+                .selectCurrentTab(AetherOneConstants.DEFAULT)
+                .setInitialBounds(border - 11f, 550f, 0f, 0f, true)
+                .addStatusLED(AetherOneConstants.PI)
+                .addStatusLED(AetherOneConstants.BROADCASTING)
+                .addStatusLED(AetherOneConstants.CLEARING)
+                .addStatusLED(AetherOneConstants.GROUNDING)
+                .addStatusLED(AetherOneConstants.COPYING)
+                .addSlider(AetherOneConstants.HOTBITS, 100, 10, 100)
+                .addSlider(AetherOneConstants.PACKAGES, 100, 10, 100)
+                .addSlider(AetherOneConstants.CACHE, 100, 10, 20000)
+                .addSlider(AetherOneConstants.PROGRESS, 100, 10, 100)
+                .addSlider(AetherOneConstants.QUEUE, 100, 10, 20);
 
         prepareExitHandler();
         guiElements.addDrawableElement(new DashboardElement(this));
-        guiElements.setCurrentTab("default");
+        guiElements.setCurrentTab(AetherOneConstants.DEFAULT);
 
-        hotbitsHandler = new HotbitsHandler(this);
-        hotbitsHandler.loadHotbits();
         setTitle("AetherOneUI - New Case ... enter name and description");
 
         try {
@@ -224,6 +290,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         } catch (Exception e) {
             logger.error("Error while trying to display tray and icon", e);
         }
+
+        hotbitsHandler.loadHotbits();
     }
 
     public void draw() {
@@ -233,7 +301,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     public void controlEvent(ControlEvent theEvent) {
 
-        aetherOneEventHandler.controlEvent(theEvent);
+        if (aetherOneEventHandler != null) {
+            aetherOneEventHandler.controlEvent(theEvent);
+        }
     }
 
     private void prepareExitHandler() {
@@ -266,8 +336,11 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         guiElements.setValue("HOTBITS", percentage);
     }
 
-    public void keyPressed() {
-        aetherOneEventHandler.controlKeyPressed(key);
+    public void keyReleased() {
+
+        for (KeyPressedObserver observer : keyPressedObserverList) {
+            observer.keyPressed(key);
+        }
     }
 
     public void saveCase() {
@@ -283,6 +356,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         for (MouseClickObserver mouseClickObserver : mouseClickObserverList) {
             mouseClickObserver.mouseClicked();
         }
+    }
+
+    public Point getMousePoint() {
+        return new Point(mouseX, mouseY);
     }
 
     public void createTrayIcon() throws AWTException {

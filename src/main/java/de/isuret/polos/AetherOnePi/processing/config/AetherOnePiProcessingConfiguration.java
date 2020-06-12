@@ -12,15 +12,29 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Utility for loading and saving configurations and settings
+ */
 public class AetherOnePiProcessingConfiguration {
 
+    public static final String SETTINGS = "Settings";
     public static final String ENVIRONMENT = "Environment";
     public static final String GUI = "Gui";
+    private static String configPath = "config/";
 
     private AetherOnePiProcessingConfiguration() {
     }
 
     private static Map<String, Settings> settingsMap = new HashMap<>();
+
+    /**
+     * For testing purposes you can set another path (like target)
+     *
+     * @param newPath
+     */
+    public static void setConfigPath(String newPath) {
+        configPath = newPath;
+    }
 
     /**
      * Reload all settings from json files
@@ -37,6 +51,7 @@ public class AetherOnePiProcessingConfiguration {
     public static void saveAllSettings() {
 
         for (String name : settingsMap.keySet()) {
+            System.out.println(name);
             saveSettings(settingsMap.get(name));
         }
     }
@@ -53,7 +68,7 @@ public class AetherOnePiProcessingConfiguration {
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
 
         try {
-            File configFile = new File("config/" + settings.getName() + ".json");
+            File configFile = new File(configPath + settings.getName() + ".json");
             System.out.println(configFile.getAbsolutePath());
 
             if (makeFileIfNotExist(configFile)) return;
@@ -87,15 +102,17 @@ public class AetherOnePiProcessingConfiguration {
      */
     public static Settings loadSettings(String name, boolean reload) {
 
+        // return the existing map of configs if it exists
         if (!reload && settingsMap.get(name) != null) {
             return settingsMap.get(name);
         }
 
+        // else create one
         ObjectMapper mapper = new ObjectMapper();
 
         Settings settings = null;
         try {
-            settings = mapper.readValue(new File("config/" + name + ".json"), Settings.class);
+            settings = mapper.readValue(new File(configPath + name + ".json"), Settings.class);
         } catch (IOException e) {
             // everything is fine, this just means that the config file is created for the first time
         }

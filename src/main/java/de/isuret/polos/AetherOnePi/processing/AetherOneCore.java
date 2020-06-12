@@ -1,10 +1,10 @@
 package de.isuret.polos.AetherOnePi.processing;
 
+import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
+import de.isuret.polos.AetherOnePi.service.DataService;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
-import de.isuret.polos.AetherOnePi.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

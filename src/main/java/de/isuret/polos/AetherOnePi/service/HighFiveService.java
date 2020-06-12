@@ -6,11 +6,8 @@ import de.isuret.polos.AetherOnePi.domain.HighFivePackage;
 import de.isuret.polos.AetherOnePi.enums.HighFiveAlphabet;
 import de.isuret.polos.AetherOnePi.exceptions.AetherOneException;
 import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.Calendar;
-import java.util.List;
 
 public class HighFiveService {
 

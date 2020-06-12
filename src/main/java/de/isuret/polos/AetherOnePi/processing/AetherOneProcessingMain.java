@@ -1,9 +1,6 @@
 package de.isuret.polos.AetherOnePi.processing;
 
 import controlP5.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
 import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
@@ -17,6 +14,9 @@ import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing.dialogs.SelectDatabaseDialog;
 import de.isuret.polos.AetherOnePi.processing.photography.ImagePixel;
 import de.isuret.polos.AetherOnePi.processing.photography.Tile;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import processing.core.PApplet;
 import processing.core.PImage;
 import processing.data.JSONArray;
@@ -34,8 +34,8 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.security.MessageDigest;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
 /**
  * //<>// //<>// //<>//

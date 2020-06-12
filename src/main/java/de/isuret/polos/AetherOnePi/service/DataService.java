@@ -2,7 +2,10 @@ package de.isuret.polos.AetherOnePi.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.domain.Case;
+import de.isuret.polos.AetherOnePi.domain.DashboardInformations;
 import de.isuret.polos.AetherOnePi.domain.Rate;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -26,10 +29,24 @@ public class DataService {
 
     private Map<String, File> databases = new HashMap<>();
 
+    @Getter
+    @Setter
+    private DashboardInformations dashboardInformations;
+
     @PostConstruct
     public void init() {
 
         log.info("Initializing data repository ...");
+
+        if (!new File("cases").exists()) {
+            new File("cases").mkdir();
+        }
+
+        try {
+            dashboardInformations = loadDashboardInformations();
+        } catch (IOException e) {
+            log.error("Unable to load dashboardInformation!", e);
+        }
 
         try {
             getRepository("https://github.com/isuretpolos/radionics-rates.git", "radionics");
@@ -68,7 +85,6 @@ public class DataService {
             }
 
             if (file.getName().endsWith(".txt")) {
-                log.info("adding rate file " + file.getName());
                 databases.put(file.getName(), file);
             }
         }
@@ -157,15 +173,59 @@ public class DataService {
     public void saveCase(Case caseObject) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
-        if (!new File("cases").exists()) {
-            new File("cases").mkdir();
-        }
         mapper.writeValue(new File("cases/" + caseObject.getName().replaceAll(" ","") + ".json"), caseObject);
     }
 
     public Case loadCase(File caseFile) throws IOException {
 
+        if (!caseFile.exists()) {
+            return null;
+        }
+
+        DashboardInformations dashboard = loadDashboardInformations();
+        String caseName = caseFile.getName().replace(".json","");
+        dashboard.getRecentlyLoadedCases().remove(caseName);
+        dashboard.getRecentlyLoadedCases().add(0, caseName);
+
+        if (dashboard.getRecentlyLoadedCases().size() > 11) {
+            dashboard.getRecentlyLoadedCases().remove(dashboard.getRecentlyLoadedCases().size() - 1);
+        }
+
+        saveDashboardInformations(dashboard);
+
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(caseFile, Case.class);
+    }
+
+    public DashboardInformations loadDashboardInformations() throws IOException {
+
+        File file = new File("cases/dashboardInformations.json");
+
+        if (!file.exists()) {
+            return new DashboardInformations();
+        }
+
+        ObjectMapper mapper = new ObjectMapper();
+        dashboardInformations = mapper.readValue(file, DashboardInformations.class);
+        return dashboardInformations;
+    }
+
+    public void saveDashboardInformations(DashboardInformations info) throws IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File("cases/dashboardInformations.json"), info);
+    }
+
+    public List<String> getAllCaseNames() {
+
+        List<String> list = new ArrayList<>();
+
+        for (File file : new File("cases/").listFiles()) {
+            if (file.isFile() && file.getName().endsWith("json")) {
+                list.add(file.getName().replace(".json",""));
+            }
+        }
+
+        return list;
     }
 }

@@ -16,9 +16,16 @@ or download the Beta which is build after each change on the [Action tab](https:
 
 Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 
+# Feature History
+- 2020-05-23 Image Layers Analysis
+- 2020-05-21 [Hotbits from WebCam](https://radionics.home.blog/2020/05/21/hotbits-from-webcam-for-the-aetheronepi/)
+- 2020-05-16 General Vitality check for the virtual StickPad
+- 2020-05-01 Training Mode
+
 # Resources
 ## Documentation
 - [Documentation](documentation/documentation.md)
+- [AetherOnePi Standalone Handbook for v1.1](https://radionics.home.blog/2020/01/13/aetheronepi-standalone-handbook-for-v1-1/)
 ## Blogs
 - [Radionics](https://radionics.home.blog)
 - [Isuret Polos](https://isuretpolos.wordpress.com)

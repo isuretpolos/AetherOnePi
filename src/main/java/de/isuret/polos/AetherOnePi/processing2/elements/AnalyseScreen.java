@@ -2,7 +2,9 @@ package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
+import de.isuret.polos.AetherOnePi.domain.Session;
 import de.isuret.polos.AetherOnePi.domain.StickPad;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 
@@ -10,8 +12,11 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
@@ -34,7 +39,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
     @Override
     public void draw() {
 
-        if (p.getStickPadMode()) {
+        if (p.getStickPadMode() || p.getStickPadGeneralVitalityMode()) {
             analyzeStickPad();
         }
 
@@ -49,6 +54,17 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             }
         }
 
+        if (p.getCaseObject() != null && p.getCaseObject().getSessionList() != null) {
+
+            if (p.getCaseObject().getSessionList().size() > 0 && p.getAnalysisPointer() != null) {
+                Session session = p.getCaseObject().getSessionList().get(p.getAnalysisPointer());
+                if (session != null && session.getCreated() != null) {
+                    DateFormat formatter = new SimpleDateFormat();
+                    p.fill(255);
+                    p.text(formatter.format(session.getCreated().getTime()), 400, 110);
+                }
+            }
+        }
 
         if (p.getAnalysisResult() != null) {
 
@@ -71,6 +87,41 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             Integer highestGV = null;
             Integer highestY = null;
 
+            drawAnalysisBroadband();
+
+            final Map<String, Integer> words = new HashMap<>();
+
+            // collect words for later use in marking reoccurrences
+            for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
+
+                String name = rate.getNameOrRate().trim();
+
+                if (name.contains(" ")) {
+
+                    String parts[] = name.split(" ");
+
+                    for (String part : parts) {
+
+                        part = part.replaceAll("-","").replaceAll(">","").trim();
+
+                        if (part.length() < 3) continue;
+
+                        if (words.get(part) != null) {
+                            words.put(part, words.get(part) + 1);
+                        } else {
+                            words.put(part, 1);
+                        }
+                    }
+                } else {
+                    if (words.get(name) != null) {
+                        words.put(name, words.get(name) + 1);
+                    } else {
+                        words.put(name, 1);
+                    }
+                }
+            }
+
+            // draw the rate table
             for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
 
                 // ACTION BUTTONS
@@ -132,6 +183,34 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                 p.text(rate.getNameOrRate(), 125, y);
                 p.text(rate.getGv(), 804, y);
 
+                // Mark reoccurrence of word parts in the list
+                String name = rate.getNameOrRate();
+
+                if (name.contains(" ")) {
+
+                    String parts[] = name.split(" ");
+
+                    for (String part : parts) {
+
+                        part = part.replaceAll("-","").replaceAll(">","").trim();
+
+                        if (part.length() < 3) continue;
+
+                        if (words.get(part) != null && words.get(part) > 1) {
+                            p.noStroke();
+                            p.fill(200,0,0,50f);
+                            p.rect(105, y - 15, 700, 15);
+                            break;
+                        }
+                    }
+                } else if (words.get(name) != null && words.get(name) > 1) {
+                    p.noStroke();
+                    p.fill(200,0,0,50f);
+                    p.rect(105, y - 15, 65, 15);
+                }
+
+                p.stroke(160);
+
                 if (highestGV == null || highestGV < rate.getGv()) {
                     highestGV = rate.getGv();
                     highestY = y;
@@ -143,10 +222,6 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
                 if (rate.getRecurring() > 0) {
                     p.text(rate.getRecurring(), 900, y);
-                }
-
-                if (rate.getGv() > 0) {
-//                    p.text(rate.getGv() - p.getGeneralVitality(), 764, y);
                 }
 
                 p.line(35, y + 2, 1200, y + 2);
@@ -164,6 +239,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.line(920, 100, 920, y - 15);
 
             p.stroke(255,0,0);
+            p.fill(255);
             p.text(highestGV, 764, highestY);
         }
 
@@ -175,6 +251,77 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                 this.mouseClickOccurred = false;
             }
         }
+
+        if (p.getTrainingSignature() != null) {
+            p.fill(255);
+            p.text("TRAINING MODE ...",450,510);
+        }
+
+        if (p.getTrainingSignature() != null && !p.getTrainingSignatureCovered()) {
+            p.fill(255);
+            p.text(p.getTrainingSignature(),600,510);
+        }
+    }
+
+    private void drawAnalysisBroadband() {
+
+        final float bandWidth = 850;
+        final float maxGV = getMaxGV();
+
+        if (maxGV == 0) return;
+
+        float relation = 0f;
+
+            relation = bandWidth / maxGV;
+
+        p.fill(0,255,0,70f);
+        p.noStroke();
+        p.rect(300,500,bandWidth,40);
+
+        // -------------------------------------------------------
+        // --- Scale relatively to the bandWidth and max value ---
+        p.pushMatrix();
+        p.scale(relation,1f); // 2D Scaling only on X-axis
+        // General Vitality
+        p.fill(0,255,255);
+        p.rect(300 + p.getGeneralVitality(),500,4,40);
+
+        // Max General Vitality of all rates
+        p.fill(255,0,0);
+        p.rect(300 + maxGV,500,4,40);
+
+        // All values on the bandWith
+        for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
+            if (rate.getGv() == 0) continue;
+            p.fill(255);
+            p.rect(300 + rate.getGv(),500,1,40);
+        }
+
+        p.popMatrix();
+        // --- End of scaling --
+        // -------------------------------------------------------
+    }
+
+    private int getMaxGV() {
+
+        int count = 0;
+        int maxGV = 0;
+
+        for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
+
+            if (rate.getGv() > maxGV) {
+                maxGV = rate.getGv();
+            }
+
+            count++;
+            if (count >= MAX_ENTRIES) break;
+        }
+
+        if (p.getGeneralVitality() > maxGV) {
+            maxGV = p.getGeneralVitality();
+        }
+
+        return maxGV;
     }
 
     @Override
@@ -215,6 +362,10 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
     private void analyzeStickPad() {
 
+        if (!stickPad.getGeneralVitalityChecking()) {
+            stickPad.setGeneralVitalityChecking(p.getStickPadGeneralVitalityMode());
+        }
+
         if (stickPad.getGeneralVitalityChecking()) {
             p.fill(156, 255, 99);
         } else {
@@ -236,7 +387,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
     @Override
     public String getAssignedTabName() {
-        return "ANALYZE";
+        return AetherOneConstants.ANALYZE;
     }
 
     @Override

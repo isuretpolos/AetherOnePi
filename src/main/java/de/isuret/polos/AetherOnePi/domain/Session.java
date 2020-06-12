@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 /**
  * One session has a new meaning:
@@ -27,4 +25,14 @@ public class Session {
     private Calendar created;
     AnalysisResult analysisResult;
     BroadCastData broadCasted;
+
+    /**
+     * Makes a copy of the session (used during GV checks)
+     * @param vo
+     */
+    public Session(Session vo) {
+        intention = vo.intention;
+        description = vo.description;
+        created = Calendar.getInstance();
+    }
 }

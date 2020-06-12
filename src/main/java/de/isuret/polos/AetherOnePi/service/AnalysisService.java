@@ -5,8 +5,11 @@ import de.isuret.polos.AetherOnePi.domain.Rate;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.VitalityObject;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
-import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
+import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
+import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
+import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
+import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
 import de.isuret.polos.AetherOnePi.utils.RateUtils;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,19 +21,28 @@ import java.util.*;
 public class AnalysisService {
 
     public static final int MAX_RATELIST_SIZE = 5000;
-    public static final int MAX_HIT = 100;
 
     @Setter
     @Autowired
-    private HotbitsClient hotbitsClient;
+    private IHotbitsClient hotbitsClient;
 
     @Setter
     @Autowired
     private PiService piService;
 
+    @Setter
+    private Integer maxValue = 100;
+
     public AnalysisResult analyseRateList(Iterable<Rate> rates) {
 
         AnalysisResult analysisResult = new AnalysisResult();
+        Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
+
+        if (settings.getBoolean(SettingsScreen.ANALYSIS_VERY_HIGH_MAX_HIT, false)) {
+            maxValue = 1000;
+        } else {
+            maxValue = 100;
+        }
 
         try {
             List<Rate> rateList = new ArrayList<>();
@@ -82,7 +94,7 @@ public class AnalysisService {
                         biggestLevel = energeticValue;
                     }
 
-                    if (biggestLevel >= MAX_HIT) {
+                    if (biggestLevel >= maxValue) {
                         analysisFinished = true;
                         break;
                     }
@@ -139,8 +151,7 @@ public class AnalysisService {
 
             Integer key = hotbitsClient.getInteger(0,100);
             Integer value = vitalityMap.get(key).intValue() + 1;
-
-//            System.out.println(String.format("key %s value %s", key, value));
+            
             vitalityMap.put(key,value);
         }
 
@@ -169,5 +180,11 @@ public class AnalysisService {
         }
 
         return analysisResult;
+    }
+
+    public String selectTrainingRate(List<Rate> rates) {
+        int x = hotbitsClient.getInteger(0, rates.size() - 1);
+        Rate rate = rates.get(x);
+        return rate.getName();
     }
 }

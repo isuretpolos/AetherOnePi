@@ -43,4 +43,15 @@ public class RateObject {
      * then mark the recurring gv in order to spot such occurrences
      */
     private Integer recurringGeneralVitality = 0;
+
+    /**
+     * Make a copy
+     */
+    public RateObject(RateObject r) {
+
+        energeticValue = r.energeticValue;
+        nameOrRate = r.nameOrRate;
+        url = r.url;
+        recurring = r.recurring;
+    }
 }

@@ -1,11 +1,11 @@
 package de.isuret.polos.AetherOnePi.adapter.client;
 
-import lombok.Setter;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.BroadCastData;
 import de.isuret.polos.AetherOnePi.exceptions.AetherOneException;
 import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
+import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.client.ResourceAccessException;
@@ -95,7 +95,7 @@ public class AetherOnePiClient {
         try {
             trngNumbers = restTemplate.getForObject(String.format("%s/hotbits-integer/%s/%s/%s", baseUrl, min, max, amount), HotBitIntegers.class);
         } catch (ResourceAccessException e) {
-            logger.error("Hotbits cannot be streamed. Check if the server is online.\n"+  e.getMessage());
+            logger.trace("Hotbits cannot be streamed. Check if the server is online.\n"+  e.getMessage());
         }
 
         if (trngNumbers == null) {

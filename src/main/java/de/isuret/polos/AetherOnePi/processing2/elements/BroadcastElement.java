@@ -4,6 +4,7 @@ import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Calendar;
@@ -18,6 +19,10 @@ public class BroadcastElement implements IDrawableElement {
 
     public static final int WIDTH = 320;
     public static final int HEIGHT = 180;
+    private static final String ADDITIONAL_RATES [] = {
+            "ENERGY", "FIRE", "POWER", "WOOD", "GROUNDING", "EARTH", "RYTHM",
+            "METAL", "WATER", "DEEPNESS", "DO NO HARM!", "UNITY", "LOVE"
+    };
     private AetherOneUI p;
     private String tabName;
     @Setter
@@ -25,6 +30,9 @@ public class BroadcastElement implements IDrawableElement {
     @Getter
     @Setter
     private String signature;
+    @Getter
+    @Setter
+    private String target;
     private Long start;
     private Random random;
     private SecureRandom random2;
@@ -35,9 +43,16 @@ public class BroadcastElement implements IDrawableElement {
     private Integer offsetY = 0;
     @Getter
     private Float progress;
+    @Getter
+    @Setter
+    private Integer counterCheckGV = 500;
+    @Getter
+    @Setter
+    private Boolean counterCheck = false;
 
     private static Long lastBroadcast = null;
     @Getter
+    @Setter
     private boolean stop = false;
 
     public BroadcastElement(AetherOneUI p, String tabName, int seconds, String signature) {
@@ -61,6 +76,13 @@ public class BroadcastElement implements IDrawableElement {
 
         start();
         random = new Random(start);
+
+        File hotbitsFolder = new File("hotbits");
+
+        if (hotbitsFolder.listFiles().length > 100) {
+            random = new Random(p.getHotbitsClient().getInteger(0,100000));
+        }
+
         p.fill(random.nextInt(255), random.nextInt(255), random.nextInt(255));
     }
 
@@ -234,6 +256,39 @@ public class BroadcastElement implements IDrawableElement {
         if (random2.nextInt(6765) >= 6764) {
             movingWaveAmount = 1;
         }
+
+        // use hotbits for broadcasting
+        int hotbitsForBroadcastingRandomNumber = random.nextInt(100);
+        if (hotbitsForBroadcastingRandomNumber >= 98) {
+            File hotbitsFolder = new File("hotbits");
+
+            //p.text(one, random.nextInt(width) + offsetX, random.nextInt(height) + offsetY);
+            p.text(ADDITIONAL_RATES[p.getHotbitsClient().getInteger(0, ADDITIONAL_RATES.length - 1)],
+                    p.getHotbitsClient().getInteger(WIDTH) + offsetX,
+                    p.getHotbitsClient().getInteger(HEIGHT) + offsetY);
+
+            int hotbitsCacheSize = hotbitsFolder.listFiles().length;
+
+            if (hotbitsCacheSize > 10000) {
+
+                choseRandomColorAlpha();
+                p.rect(10 + offsetX, 10 + offsetY, 10, 10);
+                p.text(hotbitsForBroadcastingRandomNumber, 30 + offsetX, 10 + offsetY);
+
+                choseRandomColorAlpha();
+                hotbitsForBroadcastingRandomNumber = p.getHotbitsClient().getInteger(0, 1000);
+                p.text(hotbitsForBroadcastingRandomNumber, 30 + offsetX, 30 + offsetY);
+
+                if (hotbitsForBroadcastingRandomNumber >= 998) {
+                    movingWaveAmount = 1;
+                    random = new Random(p.getHotbitsClient().getInteger(0, 100000));
+                }
+            }
+
+            if (hotbitsCacheSize > 20000) {
+                random = new Random(p.getHotbitsClient().getInteger(0, 10000000));
+            }
+        }
     }
 
     private void paintRadionicCard(int i, int i2) {
@@ -281,35 +336,39 @@ public class BroadcastElement implements IDrawableElement {
     // TODO add offset
     private void partialInvert(int x, int y, int w, int h) {
 
-        p.loadPixels();
+        try {
+            p.loadPixels();
 
-        int xx = 0;
-        int yy = 0;
+            int xx = 0;
+            int yy = 0;
 
-        for (int i = 0; i < (WIDTH * HEIGHT); i++) {
+            for (int i = 0; i < (WIDTH * HEIGHT); i++) {
 
-            xx++;
+                xx++;
 
-            if (xx >= WIDTH) {
-                xx = 0;
-                yy++;
+                if (xx >= WIDTH) {
+                    xx = 0;
+                    yy++;
+                }
+
+                if (!(xx >= x && xx <= x + w && yy >= y && yy <= y + h)) {
+                    continue;
+                }
+
+                float red = p.red(p.pixels[i]);
+                float green = p.green(p.pixels[i]);
+                float blue = p.blue(p.pixels[i]);
+                red = 255 - red;
+                green = 255 - green;
+                blue = 255 - blue;
+
+                p.pixels[i] = p.color(red, green, blue);
             }
 
-            if (!(xx >= x && xx <= x + w && yy >= y && yy <= y + h)) {
-                continue;
-            }
-
-            float red = p.red(p.pixels[i]);
-            float green = p.green(p.pixels[i]);
-            float blue = p.blue(p.pixels[i]);
-            red = 255 - red;
-            green = 255 - green;
-            blue = 255 - blue;
-
-            p.pixels[i] = p.color(red, green, blue);
+            p.updatePixels();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        p.updatePixels();
     }
 
     private void paintPoint() {

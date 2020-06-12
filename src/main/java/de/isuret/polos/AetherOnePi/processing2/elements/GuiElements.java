@@ -38,18 +38,21 @@ public class GuiElements {
     private Map<String, StatusLED> statusLEDMap = new HashMap<>();
     private List<IDrawableElement> drawableElementList = new ArrayList<>();
     private List<BroadcastElement> broadcastQueueList = new ArrayList<>();
+    @Getter
     private Float x;
     private Float y;
     private Float width;
     private Float height;
+    @Getter
     @Setter
     private String currentTab = "default";
     private boolean verticalAlignment;
     private int backgroundOverlayAlpha = 120;
-    private int foregroundOverlayAlpha = 100;
+    private int foregroundOverlayAlpha = 80;
     @Setter
     private IDrawableElement newDrawableElement;
     private Boolean stopAll = false;
+    private Boolean stopCurrentBroadcast = false;
 
     public GuiElements(AetherOneUI p) {
         this.p = p;
@@ -64,19 +67,20 @@ public class GuiElements {
             e.printStackTrace();
         }
 
-        whiteStyleColor.setBackground(p.color(255))
-                .setForeground(p.color(20))
-                .setCaptionLabel(p.color(100))
-                .setValueLabel(p.color(255));
+        whiteStyleColor.setBackground(p.color(32,156,238))
+                .setForeground(p.color(0))
+                .setCaptionLabel(p.color(255))
+                .setValueLabel(p.color(255))
+                .setActive(p.color(0));
 
         textFieldStyleColor.setBackground(p.color(255))
                 .setForeground(p.color(0))
                 .setCaptionLabel(p.color(0))
                 .setValueLabel(p.color(0));
 
-        greenStyleColor.setBackground(p.color(20))
+        greenStyleColor.setBackground(p.color(100))
                 .setForeground(p.color(0, 150, 20))
-                .setCaptionLabel(p.color(100))
+                .setCaptionLabel(p.color(255))
                 .setValueLabel(p.color(255));
     }
 
@@ -87,10 +91,10 @@ public class GuiElements {
 
         cp5.getTab("default")
                 .activateEvent(true)
-                .setColorBackground(p.color(255))
-                .setColorLabel(p.color(125))
-                .setColorActive(p.color(25))
-                .setColorForeground(p.color(25))
+                .setColorBackground(p.color(32,156,238))
+                .setColorLabel(p.color(255))
+                .setColorActive(p.color(0,166,70))
+                .setColorForeground(p.color(0))
                 .setLabel("DASHBOARD")
                 .setId(1)
                 .getCaptionLabel().setFont(font)
@@ -103,7 +107,15 @@ public class GuiElements {
 
     public GuiElements addBroadcastElement(String signature, int seconds) {
         BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
-        newDrawableElement = broadcastElement;
+        broadcastQueueList.add(broadcastElement);
+        return this;
+    }
+
+    public GuiElements addBroadcastElement(String signature, int seconds, Boolean counterCheck, Integer counterCheckGV) {
+        BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
+        broadcastElement.setCounterCheck(counterCheck);
+        broadcastElement.setCounterCheckGV(counterCheckGV);
+        broadcastQueueList.add(broadcastElement);
         return this;
     }
 
@@ -125,10 +137,10 @@ public class GuiElements {
     public GuiElements addTab(String name) {
         PFont font = fonts.get("default");
         cp5.addTab(name)
-                .setColorBackground(p.color(255))
-                .setColorLabel(p.color(125))
-                .setColorActive(p.color(25))
-                .setColorForeground(p.color(25))
+                .setColorBackground(p.color(32,156,238))
+                .setColorLabel(p.color(255))
+                .setColorActive(p.color(0,166,70))
+                .setColorForeground(p.color(0))
                 .setId(2)
                 .activateEvent(true)
                 .getCaptionLabel().setFont(font)
@@ -220,10 +232,11 @@ public class GuiElements {
         cp5.addSlider(text)
                 .setPosition(x, y)
                 .setSize(w, h)
+                .setFont(getFonts().get("default"))
                 .setColor(greenStyleColor)
                 .setRange(0, range)
                 .moveTo("global")
-                .getCaptionLabel().setPaddingX(10).setPaddingY(-9).setColor(150);
+                .getCaptionLabel().setPaddingX(10).setPaddingY(-9).setColor(255);
 
         if (verticalAlignment) {
             this.y += h + 3;
@@ -241,6 +254,11 @@ public class GuiElements {
             clearAllBroadcastElements();
         }
 
+        if (stopCurrentBroadcast) {
+            stopCurrentBroadcast = false;
+            removeCurrentBroadcastElement();
+        }
+
         getCp5().get("QUEUE").setValue(broadcastQueueList.size());
 
         drawBackground();
@@ -254,19 +272,24 @@ public class GuiElements {
         int activeBroadcastElements = countActiveBroadcastElements();
 
         List<IDrawableElement> removeElements = new ArrayList<>();
+        Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
 
         if (newDrawableElement != null) {
 
-            if (activeBroadcastElements < 8) {
+            if (!settings.getBoolean(SettingsScreen.BROADCAST_SINGLE_RATES_ONLY, false) && activeBroadcastElements < 8
+            || settings.getBoolean(SettingsScreen.BROADCAST_SINGLE_RATES_ONLY, false) && activeBroadcastElements == 0) {
                 drawableElementList.add(newDrawableElement);
             } else {
+                // If it is a BroadcastElement then add it to the queue
+                // Later add it also to the drawableElementList if the entire list is smaller than 8 entries
                 broadcastQueueList.add((BroadcastElement) newDrawableElement);
             }
 
             newDrawableElement = null;
         }
 
-        if (activeBroadcastElements < 8 && broadcastQueueList.size() > 0) {
+        if (!settings.getBoolean(SettingsScreen.BROADCAST_SINGLE_RATES_ONLY, false) && activeBroadcastElements < 8 && broadcastQueueList.size() > 0
+        || settings.getBoolean(SettingsScreen.BROADCAST_SINGLE_RATES_ONLY, false) && activeBroadcastElements == 0 && broadcastQueueList.size() > 0) {
             BroadcastElement broadcastElement = broadcastQueueList.remove(0);
             broadcastElement.start();
             drawableElementList.add(broadcastElement);
@@ -329,7 +352,18 @@ public class GuiElements {
                 broadcastElement.calcuateProgress();
 
                 if (broadcastElement.isStop()) {
+                    // remove it anyway
                     removeElements.add(broadcastElement);
+
+                    // First counter check if necessary
+                    // If it returns false, it will be removed from the broadcast queue, because it reached its goal
+                    // Else, it will be reinserted for another 10 seconds
+                    if (!counterCheckIsPositive(broadcastElement)) {
+
+                        // do it again ... until it reach its goal ... be persistent
+                        broadcastElement.setStop(false);
+                        broadcastQueueList.add(broadcastElement);
+                    }
                 }
             }
         }
@@ -344,7 +378,11 @@ public class GuiElements {
         // Display tray information once a broadcast is finished
         if (removeElements.size() == 1 && removeElements.get(0) instanceof BroadcastElement) {
             BroadcastElement broadcastElement = (BroadcastElement) removeElements.get(0);
-            p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
+
+            // As long the broadcast element is inside a counterCheck loop, don't display a tray message
+            if (broadcastElement.isStop() == true) {
+                p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
+            }
         }
         drawableElementList.removeAll(removeElements);
 
@@ -354,6 +392,26 @@ public class GuiElements {
         p.rect(0, 0, p.width, p.height);
     }
 
+    /**
+     * Returns true if the broadcast element has reached its goal by checking the GV against the target automatically
+     * @param broadcastElement
+     * @return
+     */
+    private boolean counterCheckIsPositive(BroadcastElement broadcastElement) {
+
+        if (!broadcastElement.getCounterCheck()) return true;
+
+        Integer gvTarget = p.checkGeneralVitalityValue();
+
+        System.out.println(String.format("CounterCheck target gv is %s and broadcastElement gv is %s", gvTarget, broadcastElement.getCounterCheckGV() ));
+
+        if (gvTarget < broadcastElement.getCounterCheckGV()) {
+            return false;
+        }
+
+        return true;
+    }
+
     private void clearAllBroadcastElements() {
 
         List<BroadcastElement> removeElements = new ArrayList<>();
@@ -361,6 +419,19 @@ public class GuiElements {
         for (IDrawableElement drawableElement : drawableElementList) {
             if (drawableElement instanceof BroadcastElement) {
                 removeElements.add((BroadcastElement) drawableElement);
+            }
+        }
+
+        drawableElementList.removeAll(removeElements);
+    }
+
+    private void removeCurrentBroadcastElement() {
+        List<BroadcastElement> removeElements = new ArrayList<>();
+
+        for (IDrawableElement drawableElement : drawableElementList) {
+            if (drawableElement instanceof BroadcastElement) {
+                removeElements.add((BroadcastElement) drawableElement);
+                break;
             }
         }
 
@@ -405,25 +476,59 @@ public class GuiElements {
         drawableElementList.add(drawableElement);
     }
 
-    public GuiElements addAnalyseScreeen() {
+    public GuiElements addAnalyseScreen() {
         AnalyseScreen analyseScreen = new AnalyseScreen(p);
         p.getMouseClickObserverList().add(analyseScreen);
         drawableElementList.add(analyseScreen);
         return this;
     }
 
-    public GuiElements addBroadcastScreeen() {
+    public GuiElements addBroadcastScreen() {
         BroadcastScreen screen = new BroadcastScreen(p);
         p.getMouseClickObserverList().add(screen);
         drawableElementList.add(screen);
         return this;
     }
 
-    public void addDashboardScreen() {
-        drawableElementList.add(new DashboardScreen(p));
+    public GuiElements addRatesScreen() {
+        RatesScreen screen = new RatesScreen(p);
+        p.getMouseClickObserverList().add(screen);
+        p.getKeyPressedObserverList().add(screen);
+        drawableElementList.add(screen);
+        return this;
     }
 
-    public void stopAll() {
+    public GuiElements addDashboardScreen() {
+        drawableElementList.add(new DashboardScreen(p));
+        return this;
+    }
+
+    public GuiElements addSettingsScreen() {
+        SettingsScreen settingsScreen = new SettingsScreen(p);
+        p.getMouseClickObserverList().add(settingsScreen);
+        drawableElementList.add(settingsScreen);
+        return this;
+    }
+
+    public GuiElements addImageLayerScreen() {
+        ImageLayerScreen imageLayerScreen = new ImageLayerScreen(p);
+        p.getMouseClickObserverList().add(imageLayerScreen);
+        drawableElementList.add(imageLayerScreen);
+        return this;
+    }
+
+    public void stopAllBroadcasts() {
         stopAll = true;
+    }
+
+    public void stopCurrentBroadcast() {
+        stopCurrentBroadcast = true;
+    }
+
+    public GuiElements addSessionScreen() {
+
+        SessionScreen sessionScreen = new SessionScreen(p);
+        drawableElementList.add(sessionScreen);
+        return this;
     }
 }

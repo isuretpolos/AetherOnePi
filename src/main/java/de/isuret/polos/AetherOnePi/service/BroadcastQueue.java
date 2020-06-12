@@ -1,16 +1,13 @@
 package de.isuret.polos.AetherOnePi.service;
 
 import de.isuret.polos.AetherOnePi.domain.BroadCastData;
-import de.isuret.polos.AetherOnePi.processing.communication.SocketServer;
 import de.isuret.polos.AetherOnePi.processing.communication.StatusNotificationService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

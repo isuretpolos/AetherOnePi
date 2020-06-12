@@ -36,13 +36,13 @@ public class HotbitsAccessor {
             return data;
 
         } catch (FileNotFoundException e){
-            logger.warn("Error while accessing hotbits = " + e.getMessage());
+            logger.trace("Error while accessing hotbits = " + e.getMessage());
             return null;
         } catch (Exception e) {
             counterError++;
 
-            logger.error("Error while accessing hotbits = " + e.getMessage());
-            logger.info("wait a little and then proceed");
+            logger.trace("Error while accessing hotbits = " + e.getMessage());
+            logger.trace("wait a little and then proceed");
 
             try {
                 Thread.sleep(250);

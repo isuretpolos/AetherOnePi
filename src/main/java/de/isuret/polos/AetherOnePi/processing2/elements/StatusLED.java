@@ -1,7 +1,7 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
-import lombok.Setter;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
+import lombok.Setter;
 
 public class StatusLED implements IDrawableElement {
 
@@ -29,13 +29,13 @@ public class StatusLED implements IDrawableElement {
         if (on) {
             p.fill(0,240,0);
         } else {
-            p.fill(60);
+            p.fill(80);
         }
 
         p.rect(x,y,20,10);
 
-        p.fill(200);
-        p.textFont(p.getGuiElements().getFonts().get("default"),10);
+        p.fill(255);
+        p.textFont(p.getGuiElements().getFonts().get("default"),14);
         p.text(text,x +24,y + 10);
     }
 
