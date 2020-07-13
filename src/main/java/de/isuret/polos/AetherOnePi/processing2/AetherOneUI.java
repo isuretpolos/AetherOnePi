@@ -178,6 +178,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addTab(AetherOneConstants.SETTINGS)
                 .addTab(AetherOneConstants.ANALYZE)
                 .addTab(AetherOneConstants.IMAGE)
+                .addTab(AetherOneConstants.CARD)
                 .addTab(AetherOneConstants.RATES)
                 .addTab(AetherOneConstants.PEGGOTTY)
                 .addTab(AetherOneConstants.AREA)
@@ -229,6 +230,17 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton(AetherOneConstants.TRAINING_START)
                 .addButton(AetherOneConstants.TRAINING_UNCOVER)
                 .addAnalyseScreen();
+        guiElements
+                .selectCurrentTab(AetherOneConstants.CARD)
+                .setInitialBounds(border, posY, 120f, 14f, false)
+                .addButton(AetherOneConstants.SELECT_DATA_FOR_CARD)
+                .addButton(AetherOneConstants.PASTE_CARD_IMAGE)
+                .addButton(AetherOneConstants.ANALYZE_CARD)
+                .addButton(AetherOneConstants.GENERATE_CARD)
+                .addButton(AetherOneConstants.CLEAR_CARD)
+                .setInitialBounds(Float.valueOf(width / 2), 85f, 150f, 14f, true)
+                .addTextfield(AetherOneConstants.SIGNATURE_FOR_CARD)
+                .addCardScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.AREA)
                 .setInitialBounds(border, posY, 150f, 14f, false)
