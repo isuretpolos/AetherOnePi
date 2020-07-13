@@ -6,6 +6,8 @@ import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
+import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
+import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
 import de.isuret.polos.AetherOnePi.processing.communication.SocketServer;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
@@ -16,6 +18,7 @@ import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
 import de.isuret.polos.AetherOnePi.processing2.events.KeyPressedObserver;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
+import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
 import lombok.Getter;
@@ -43,8 +46,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private AetherOnePiStatus status;
     private AetherOneEventHandler aetherOneEventHandler;
     private AetherOnePiClient piClient;
-    private HotbitsClient hotbitsClient;
+    private IHotbitsClient hotbitsClient;
     private HotbitsHandler hotbitsHandler;
+    @Getter
+    private AnalysisService analyseService;
     private DataService dataService = new DataService();
     private List<MouseClickObserver> mouseClickObserverList = new ArrayList<>();
     private List<KeyPressedObserver> keyPressedObserverList = new ArrayList<>();
@@ -52,8 +57,13 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private Case caseObject = new Case();
     @Setter
     private String selectedDatabase = "HOMEOPATHY_Clarke_With_MateriaMedicaUrls.txt";
+    @Getter
+    @Setter
+    private String essentielQuestion;
     @Setter
     private AnalysisResult analysisResult;
+    @Setter
+    private ImageLayersAnalysis imageLayersAnalysis;
     @Setter
     private Integer analysisPointer;
     @Setter
@@ -62,8 +72,16 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private Integer generalVitality = 0;
     @Setter
     private Boolean stickPadMode = false;
+    @Setter
+    private Boolean stickPadGeneralVitalityMode = false;
     @Getter
     private TrayIcon trayIcon;
+    @Getter
+    @Setter
+    private String trainingSignature = null;
+    @Getter
+    @Setter
+    private Boolean trainingSignatureCovered = true;
 
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
@@ -143,15 +161,15 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         // TODO add dynamic more elements with resizing the screen and adjust some of the graphics which are too static
         surface.setResizable(true);
 
-        try {
-            hotbitsClient = new HotbitsClient();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        guiElements = new GuiElements(this);
+        hotbitsHandler = new HotbitsHandler(this);
+        hotbitsClient = hotbitsHandler;
+        analyseService = new AnalysisService();
+        analyseService.setHotbitsClient(hotbitsClient);
         aetherOneEventHandler = new AetherOneEventHandler(this);
         keyPressedObserverList.add(aetherOneEventHandler);
+
+        guiElements = new GuiElements(this);
+
         final float border = guiElements.getBorder() + 5f;
         final float posY = (guiElements.getBorder() * 2) - 7;
 
@@ -160,31 +178,34 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addTab(AetherOneConstants.SETTINGS)
                 .addTab(AetherOneConstants.ANALYZE)
                 .addTab(AetherOneConstants.IMAGE)
+                .addTab(AetherOneConstants.CARD)
                 .addTab(AetherOneConstants.RATES)
                 .addTab(AetherOneConstants.PEGGOTTY)
                 .addTab(AetherOneConstants.AREA)
                 .addTab(AetherOneConstants.BROADCAST);
 
         guiElements
-                .selectCurrentTab("default")
+                .selectCurrentTab(AetherOneConstants.DEFAULT)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("DOCUMENTATION")
-                .addButton("WEBSITE")
-                .addButton("BOOKS")
-                .addButton("COMMUNITY")
-                .addButton("GITHUB")
-                .addButton("YOUTUBE")
+                .addButton(AetherOneConstants.DOCUMENTATION)
+                .addButton(AetherOneConstants.WEBSITE)
+                .addButton(AetherOneConstants.BOOKS)
+                .addButton(AetherOneConstants.COMMUNITY)
+                .addButton(AetherOneConstants.GITHUB)
+                .addButton(AetherOneConstants.YOUTUBE)
                 .addDashboardScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.SESSION)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("NEW")
-                .addButton("LOAD")
-                .addButton("SAVE")
-                .addButton("EDIT CASE")
+                .addButton(AetherOneConstants.NEW)
+                .addButton(AetherOneConstants.LOAD)
+                .addButton(AetherOneConstants.SAVE)
+                .addButton(AetherOneConstants.EDIT_CASE)
+                .addButton(AetherOneConstants.ESSENTIAL_QUESTIONS)
                 .setInitialBounds(border, posY + 24, 150f, 14f, true)
-                .addTextfield("NAME")
-                .addTextfield("DESCRIPTION");
+                .addTextfield(AetherOneConstants.NAME)
+                .addTextfield(AetherOneConstants.DESCRIPTION)
+                .addSessionScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.SETTINGS)
                 .setInitialBounds(border, posY, 150f, 14f, false)
@@ -192,71 +213,87 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         guiElements
                 .selectCurrentTab(AetherOneConstants.ANALYZE)
                 .setInitialBounds(border, posY, 120f, 14f, false)
-                .addButton("SELECT DATA")
+                .addButton(AetherOneConstants.SELECT_DATA)
                 .addButton(AetherOneConstants.ANALYZE)
-                .addButton("HOMEOPATHY")
-                .addButton("BIOLOGICAL")
-                .addButton("SYMBOLISM")
-                .addButton("ESSENCES")
-                .addButton("CHEMICAL")
-                .addButton("ENERGY")
-                .addButton("STICKPAD")
+                .addButton(AetherOneConstants.HOMEOPATHY)
+                .addButton(AetherOneConstants.BIOLOGICAL)
+                .addButton(AetherOneConstants.SYMBOLISM)
+                .addButton(AetherOneConstants.ESSENCES)
+                .addButton(AetherOneConstants.CHEMICAL)
+                .addButton(AetherOneConstants.ENERGY)
+                .addButton(AetherOneConstants.STICKPAD)
+                .setInitialBounds(getGuiElements().getX(), posY, 100f, 14f, false)
+                .addButton(AetherOneConstants.GV)
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
-                .addButton("GROUNDING")
-                .addButton("STATISTICS")
+                .addButton(AetherOneConstants.GROUNDING)
+                .addButton(AetherOneConstants.STATISTICS)
+                .addButton(AetherOneConstants.TRAINING_START)
+                .addButton(AetherOneConstants.TRAINING_UNCOVER)
                 .addAnalyseScreen();
+        guiElements
+                .selectCurrentTab(AetherOneConstants.CARD)
+                .setInitialBounds(border, posY, 120f, 14f, false)
+                .addButton(AetherOneConstants.SELECT_DATA_FOR_CARD)
+                .addButton(AetherOneConstants.PASTE_CARD_IMAGE)
+                .addButton(AetherOneConstants.ANALYZE_CARD)
+                .addButton(AetherOneConstants.GENERATE_CARD)
+                .addButton(AetherOneConstants.CLEAR_CARD)
+                .setInitialBounds(Float.valueOf(width / 2), 85f, 150f, 14f, true)
+                .addTextfield(AetherOneConstants.SIGNATURE_FOR_CARD)
+                .addCardScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.AREA)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("PASTE AREA")
-                .addButton("LOAD AREA")
-                .addButton("CLEAR AREA")
-                .addButton("SCAN FOR TARGET")
-                .addButton("AGRICULTURE");
+                .addButton(AetherOneConstants.PASTE_AREA)
+                .addButton(AetherOneConstants.LOAD_AREA)
+                .addButton(AetherOneConstants.CLEAR_AREA)
+                .addButton(AetherOneConstants.SCAN_FOR_TARGET)
+                .addButton(AetherOneConstants.AGRICULTURE);
         guiElements
                 .selectCurrentTab(AetherOneConstants.IMAGE)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("PASTE IMAGE")
-                .addButton("LOAD IMAGE")
-                .addButton("CLEAR IMAGE")
-                .addButton("BROADCAST IMAGE")
-                .addButton("GENERATE MD5");
+                .addButton(AetherOneConstants.PASTE_IMAGE)
+                .addButton(AetherOneConstants.LOAD_IMAGE)
+                .addButton(AetherOneConstants.LOAD_IMAGE_LAYERS)
+                .addButton(AetherOneConstants.ANALYZE_IMAGE)
+                .addButton(AetherOneConstants.CLEAR_IMAGE)
+                .addButton(AetherOneConstants.BROADCAST_IMAGE)
+                .addButton(AetherOneConstants.GENERATE_MD_5)
+                .addImageLayerScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.RATES)
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addRatesScreen();
         guiElements
-                .selectCurrentTab("BROADCAST")
+                .selectCurrentTab(AetherOneConstants.BROADCAST)
                 .setInitialBounds(border, posY, 150f, 14f, false)
-                .addButton("BROADCAST NOW")
-                .addButton("BROADCAST LIST")
-                .addButton("STOP CURRENT")
-                .addButton("STOP ALL")
+                .addButton(AetherOneConstants.BROADCAST_NOW)
+                .addButton(AetherOneConstants.BROADCAST_LIST)
+                .addButton(AetherOneConstants.STOP_CURRENT)
+                .addButton(AetherOneConstants.STOP_ALL)
                 .setInitialBounds(border, posY + 24, 150f, 14f, true)
-                .addTextfield("SIGNATURE")
+                .addTextfield(AetherOneConstants.SIGNATURE)
                 .setInitialBounds(border, posY + 44, 20f, 14f, true)
-                .addTextfield("SECONDS")
+                .addTextfield(AetherOneConstants.SECONDS)
                 .addBroadcastScreen();
         guiElements
-                .selectCurrentTab("default")
+                .selectCurrentTab(AetherOneConstants.DEFAULT)
                 .setInitialBounds(border - 11f, 550f, 0f, 0f, true)
-                .addStatusLED("PI")
-                .addStatusLED("BROADCASTING")
-                .addStatusLED("CLEARING")
-                .addStatusLED("GROUNDING")
-                .addStatusLED("COPYING")
-                .addSlider("HOTBITS", 100, 10, 100)
-                .addSlider("PACKAGES", 100, 10, 100)
-                .addSlider("CACHE", 100, 10, 20000)
-                .addSlider("PROGRESS", 100, 10, 100)
-                .addSlider("QUEUE", 100, 10, 20);
+                .addStatusLED(AetherOneConstants.PI)
+                .addStatusLED(AetherOneConstants.BROADCASTING)
+                .addStatusLED(AetherOneConstants.CLEARING)
+                .addStatusLED(AetherOneConstants.GROUNDING)
+                .addStatusLED(AetherOneConstants.COPYING)
+                .addSlider(AetherOneConstants.HOTBITS, 100, 10, 100)
+                .addSlider(AetherOneConstants.PACKAGES, 100, 10, 100)
+                .addSlider(AetherOneConstants.CACHE, 100, 10, 20000)
+                .addSlider(AetherOneConstants.PROGRESS, 100, 10, 100)
+                .addSlider(AetherOneConstants.QUEUE, 100, 10, 20);
 
         prepareExitHandler();
         guiElements.addDrawableElement(new DashboardElement(this));
-        guiElements.setCurrentTab("default");
+        guiElements.setCurrentTab(AetherOneConstants.DEFAULT);
 
-        hotbitsHandler = new HotbitsHandler(this);
-        hotbitsHandler.loadHotbits();
         setTitle("AetherOneUI - New Case ... enter name and description");
 
         try {
@@ -265,6 +302,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         } catch (Exception e) {
             logger.error("Error while trying to display tray and icon", e);
         }
+
+        hotbitsHandler.loadHotbits();
     }
 
     public void draw() {
@@ -274,7 +313,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     public void controlEvent(ControlEvent theEvent) {
 
-        aetherOneEventHandler.controlEvent(theEvent);
+        if (aetherOneEventHandler != null) {
+            aetherOneEventHandler.controlEvent(theEvent);
+        }
     }
 
     private void prepareExitHandler() {

@@ -5,7 +5,7 @@ import de.isuret.polos.AetherOnePi.domain.Rate;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.VitalityObject;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
-import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
+import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
@@ -24,7 +24,7 @@ public class AnalysisService {
 
     @Setter
     @Autowired
-    private HotbitsClient hotbitsClient;
+    private IHotbitsClient hotbitsClient;
 
     @Setter
     @Autowired
@@ -180,5 +180,11 @@ public class AnalysisService {
         }
 
         return analysisResult;
+    }
+
+    public String selectTrainingRate(List<Rate> rates) {
+        int x = hotbitsClient.getInteger(0, rates.size() - 1);
+        Rate rate = rates.get(x);
+        return rate.getName();
     }
 }

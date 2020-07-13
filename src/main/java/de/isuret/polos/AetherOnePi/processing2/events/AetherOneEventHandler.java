@@ -3,6 +3,7 @@ package de.isuret.polos.AetherOnePi.processing2.events;
 import controlP5.ControlEvent;
 import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.*;
+import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
@@ -15,6 +16,9 @@ import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
+import de.isuret.polos.AetherOnePi.utils.cards.CardMaker;
+import de.isuret.polos.AetherOnePi.utils.cards.RadionicLine;
+import lombok.Getter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -40,11 +44,12 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
     private AetherOneUI p;
     private DataService dataService = new DataService();
-    private AnalysisService analyseService = new AnalysisService();
+    private AnalysisService analyseService;
     private List<RateObject> recurringRateList = new ArrayList<RateObject>();
 
     public AetherOneEventHandler(AetherOneUI p) {
         this.p = p;
+        analyseService = p.getAnalyseService();
         analyseService.setHotbitsClient(p.getHotbitsClient());
     }
 
@@ -131,12 +136,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             SessionDialog sessionDialog = new SessionDialog(p);
         }
 
+        if (AetherOneConstants.ESSENTIAL_QUESTIONS.equals(name)) {
+            p.setEssentielQuestion(askEssentialQuestions());
+        }
+
         if ("NEW".equals(name)) {
             clearForNewCase();
             return;
         }
 
-        if ("SELECT DATA".equals(name)) {
+        if (AetherOneConstants.SELECT_DATA.equals(name)) {
             SelectDatabaseDialog selectDatabaseDialog = new SelectDatabaseDialog(null);
 
             if (!StringUtils.isEmpty(selectDatabaseDialog.getSelectedDatabase())) {
@@ -145,7 +154,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("ANALYZE".equals(name)) {
+        if (AetherOneConstants.SELECT_DATA_FOR_CARD.equals(name)) {
+            SelectDatabaseDialog selectDatabaseDialog = new SelectDatabaseDialog(null);
+
+            if (!StringUtils.isEmpty(selectDatabaseDialog.getSelectedDatabase())) {
+                p.setSelectedDatabase(selectDatabaseDialog.getSelectedDatabase());
+            }
+            return;
+        }
+
+        if (AetherOneConstants.ANALYZE.equals(name)) {
             analyzeCurrentDatabase();
             return;
         }
@@ -185,9 +203,49 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("STICKPAD".equals(name) && p.getSelectedDatabase() != null) {
+        if (AetherOneConstants.ANALYZE_CARD.equals(name)) {
+            analyzeCurrentDatabase();
+            return;
+        }
+
+        if (AetherOneConstants.GENERATE_CARD.equals(name)) {
+            generateCard();
+            return;
+        }
+
+        if (AetherOneConstants.LOAD_IMAGE_LAYERS.equals(name)) {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new File("data_images"));
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "Case Files", "json");
+            chooser.setFileFilter(filter);
+            int returnVal = chooser.showOpenDialog(null);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+
+                File directory = chooser.getSelectedFile();
+                log.info("You chose to open this image layer directory: " +
+                        directory.getAbsolutePath());
+
+                p.setImageLayersAnalysis(new ImageLayersAnalysis(p, directory));
+            }
+            return;
+        }
+
+        if (AetherOneConstants.ANALYZE_IMAGE.equals(name)) {
+            p.getImageLayersAnalysis().analyze();
+        }
+
+        if (AetherOneConstants.STICKPAD.equals(name) && p.getSelectedDatabase() != null) {
             if (!p.getStickPadMode()) {
                 p.setStickPadMode(true);
+            }
+            return;
+        }
+
+        if (AetherOneConstants.GV.equals(name) && p.getSelectedDatabase() != null) {
+            if (!p.getStickPadGeneralVitalityMode()) {
+                p.setStickPadGeneralVitalityMode(true);
             }
             return;
         }
@@ -216,6 +274,137 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             p.getGuiElements().stopAllBroadcasts();
             return;
         }
+
+        if (AetherOneConstants.TRAINING_START.equals(name)) {
+            p.setTrainingSignatureCovered(true);
+            trainingSelectSignatureFromCurrentDatabase();
+            return;
+        }
+
+        if (AetherOneConstants.TRAINING_UNCOVER.equals(name)) {
+            p.setTrainingSignatureCovered(false);
+            System.out.println(p.getTrainingSignature());
+            return;
+        }
+    }
+
+    private void generateCard() {
+
+        AnalysisResult analysisResult = p.getAnalysisResult();
+
+        if (analysisResult == null) return;
+        if (analysisResult.getRateObjects().size() == 0) return;
+
+        int max = 10;
+
+        if (analysisResult.getRateObjects().size() < 10) {
+            max = analysisResult.getRateObjects().size();
+        }
+
+        List<RadionicLine> lines = new ArrayList<>();
+
+        Collections.sort(analysisResult.getRateObjects(), new Comparator<RateObject>() {
+            @Override
+            public int compare(RateObject o1, RateObject o2) {
+                if (o1.getGv() > 0 && o2.getGv() > 0) {
+                    return o2.getGv().compareTo(o1.getGv());
+                } else {
+                    return o2.getEnergeticValue().compareTo(o1.getEnergeticValue());
+                }
+            }
+        });
+
+        for (int i = 0; i < max; i++) {
+            RateObject rate = analysisResult.getRateObjects().get(i);
+
+            double degree = rate.getEnergeticValue();
+
+            if (rate.getGv() > 0) {
+                degree = degree * rate.getGv();
+            }
+
+            RadionicLine line = new RadionicLine(rate.getGv(), degree, rate.getNameOrRate(), new Color(p.getHotbitsHandler().getInteger(255),p.getHotbitsHandler().getInteger(255),p.getHotbitsHandler().getInteger(255)));
+            lines.add(line);
+        }
+
+        CardMaker cardMaker = new CardMaker();
+        cardMaker.make(lines);
+
+        try {
+            if (!new File("cards").exists()) new File("cards").mkdir();
+            cardMaker.save(new File("cards/card_" + Calendar.getInstance().getTimeInMillis() + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String askEssentialQuestions() {
+
+        StringBuilder str = new StringBuilder("== ESSENTIAL QUESTIONS ==\n");
+
+        str.append("Do I have permission to work with this person?\n");
+
+        Integer gv = p.checkGeneralVitalityValue();
+
+        if (gv > 500) {
+            str.append("- YES! (" + gv + ")\n\n");
+
+            str.append("Is it in the person's best and highest good that I work with them?\n");
+            gv = p.checkGeneralVitalityValue();
+
+            if (gv > 500) {
+                str.append("- YES! (" + gv + ")\n\n");
+            } else {
+                str.append("- NO! (" + gv + ")\n\n");
+            }
+
+            str.append("Is it in my best and highest good?\n");
+            gv = p.checkGeneralVitalityValue();
+
+            if (gv > 500) {
+                str.append("- YES! (" + gv + ")\n\n");
+            } else {
+                str.append("- NO! (" + gv + ")\n\n");
+            }
+
+        } else {
+            str.append("- NO! ... Will I ever have permission to work with this person? (" + gv + ")\n");
+
+            gv = p.checkGeneralVitalityValue();
+
+            if (gv > 500) {
+                Map<String, Integer> whenMap = new HashMap<>();
+                str.append("-- YES ... In what amount of time?(" + gv + ")\n");
+                whenMap.put("In one week", 0);
+                whenMap.put("In one month", 0);
+                whenMap.put("In two months", 0);
+                whenMap.put("In 3 months", 0);
+                whenMap.put("In 6 months", 0);
+                whenMap.put("In 1 year", 0);
+                whenMap.put("In 2 year", 0);
+
+                String answer = "";
+                int max = 0;
+
+                for (String when : whenMap.keySet()) {
+                    whenMap.put(when,p.checkGeneralVitalityValue());
+                }
+
+                for (String when : whenMap.keySet()) {
+                    if (whenMap.get(when).intValue() > max) {
+                        max = whenMap.get(when);
+                        answer = when;
+                    }
+                }
+
+                str.append("--- " + answer + "\n");
+
+            } else {
+                str.append("-- NO!!! (" + gv + ")");
+            }
+        }
+
+        return str.toString();
     }
 
     public void loadCaseFile(File file) {
@@ -329,6 +518,10 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     private void clearForNewCase() {
+        p.setEssentielQuestion(null);
+        p.setImageLayersAnalysis(null);
+        p.setTrainingSignature(null);
+        p.setTrainingSignatureCovered(true);
         p.setAnalysisPointer(null);
         p.setCaseObject(new Case());
         p.setTitle("AetherOneUI - New Case ... enter name and description");
@@ -340,7 +533,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         p.setAnalysisResult(null);
         p.setGeneralVitality(0);
         p.setGvCounter(0);
-//        p.getGuiElements().stopAll();
+        p.setStickPadMode(false);
+        p.setStickPadGeneralVitalityMode(false);
     }
 
     private void analyzeCurrentDatabase() {
@@ -374,6 +568,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             saveCase();
         } catch (IOException e) {
             log.error("Error analyzing ", e);
+        }
+    }
+
+    private void trainingSelectSignatureFromCurrentDatabase() {
+        try {
+            dataService.refreshDatabaseList();
+            List<Rate> rates = dataService.findAllBySourceName(p.getSelectedDatabase());
+            p.setTrainingSignature(analyseService.selectTrainingRate(rates));
+        } catch (Exception e) {
+            log.error("Error selecting a signature for training mode ", e);
         }
     }
 
@@ -557,12 +761,20 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     private void addNewSession() {
-        Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
-        Session newSession = new Session(lastSession);
-        p.getCaseObject().getSessionList().add(newSession);
-        p.setAnalysisResult(new AnalysisResult(p.getAnalysisResult()));
-        newSession.setAnalysisResult(p.getAnalysisResult());
-        p.saveCase();
+        try {
+            if (p.getCaseObject().getSessionList().size() == 0) {
+                System.out.println("No case or session object in memory");
+                return;
+            }
+            Session lastSession = p.getCaseObject().getSessionList().get(p.getCaseObject().getSessionList().size() - 1);
+            Session newSession = new Session(lastSession);
+            p.getCaseObject().getSessionList().add(newSession);
+            p.setAnalysisResult(new AnalysisResult(p.getAnalysisResult()));
+            newSession.setAnalysisResult(p.getAnalysisResult());
+            p.saveCase();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void cleanAnalysisForNewGvCheck() {

@@ -103,6 +103,7 @@ public class StickPad {
         } else if (p.getGvCounter() > AnalyseScreen.MAX_ENTRIES) {
             p.setStickPadMode(false);
             setGeneralVitalityChecking(false);
+            p.setStickPadGeneralVitalityMode(false);
             p.setGvCounter(0);
         } else {
             p.getAetherOneEventHandler().setRateGeneralVitality(gv);

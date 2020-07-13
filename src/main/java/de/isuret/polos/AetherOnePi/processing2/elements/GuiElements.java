@@ -10,6 +10,7 @@ import lombok.Setter;
 import processing.core.PFont;
 import processing.core.PImage;
 
+import javax.smartcardio.Card;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -38,6 +39,7 @@ public class GuiElements {
     private Map<String, StatusLED> statusLEDMap = new HashMap<>();
     private List<IDrawableElement> drawableElementList = new ArrayList<>();
     private List<BroadcastElement> broadcastQueueList = new ArrayList<>();
+    @Getter
     private Float x;
     private Float y;
     private Float width;
@@ -509,11 +511,32 @@ public class GuiElements {
         return this;
     }
 
+    public GuiElements addImageLayerScreen() {
+        ImageLayerScreen imageLayerScreen = new ImageLayerScreen(p);
+        p.getMouseClickObserverList().add(imageLayerScreen);
+        drawableElementList.add(imageLayerScreen);
+        return this;
+    }
+
     public void stopAllBroadcasts() {
         stopAll = true;
     }
 
     public void stopCurrentBroadcast() {
         stopCurrentBroadcast = true;
+    }
+
+    public GuiElements addSessionScreen() {
+
+        SessionScreen sessionScreen = new SessionScreen(p);
+        drawableElementList.add(sessionScreen);
+        return this;
+    }
+
+    public GuiElements addCardScreen() {
+
+        CardScreen cardScreen = new CardScreen(p);
+        drawableElementList.add(cardScreen);
+        return this;
     }
 }
