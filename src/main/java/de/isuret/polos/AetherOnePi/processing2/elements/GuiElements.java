@@ -10,6 +10,7 @@ import lombok.Setter;
 import processing.core.PFont;
 import processing.core.PImage;
 
+import javax.smartcardio.Card;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -529,6 +530,13 @@ public class GuiElements {
 
         SessionScreen sessionScreen = new SessionScreen(p);
         drawableElementList.add(sessionScreen);
+        return this;
+    }
+
+    public GuiElements addCardScreen() {
+
+        CardScreen cardScreen = new CardScreen(p);
+        drawableElementList.add(cardScreen);
         return this;
     }
 }

@@ -16,6 +16,8 @@ import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
+import de.isuret.polos.AetherOnePi.utils.cards.CardMaker;
+import de.isuret.polos.AetherOnePi.utils.cards.RadionicLine;
 import lombok.Getter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
@@ -143,7 +145,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("SELECT DATA".equals(name)) {
+        if (AetherOneConstants.SELECT_DATA.equals(name)) {
             SelectDatabaseDialog selectDatabaseDialog = new SelectDatabaseDialog(null);
 
             if (!StringUtils.isEmpty(selectDatabaseDialog.getSelectedDatabase())) {
@@ -152,7 +154,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("ANALYZE".equals(name)) {
+        if (AetherOneConstants.SELECT_DATA_FOR_CARD.equals(name)) {
+            SelectDatabaseDialog selectDatabaseDialog = new SelectDatabaseDialog(null);
+
+            if (!StringUtils.isEmpty(selectDatabaseDialog.getSelectedDatabase())) {
+                p.setSelectedDatabase(selectDatabaseDialog.getSelectedDatabase());
+            }
+            return;
+        }
+
+        if (AetherOneConstants.ANALYZE.equals(name)) {
             analyzeCurrentDatabase();
             return;
         }
@@ -189,6 +200,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         if ("GROUNDING".equals(name)) {
             grounding();
+            return;
+        }
+
+        if (AetherOneConstants.ANALYZE_CARD.equals(name)) {
+            analyzeCurrentDatabase();
+            return;
+        }
+
+        if (AetherOneConstants.GENERATE_CARD.equals(name)) {
+            generateCard();
             return;
         }
 
@@ -264,6 +285,56 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             p.setTrainingSignatureCovered(false);
             System.out.println(p.getTrainingSignature());
             return;
+        }
+    }
+
+    private void generateCard() {
+
+        AnalysisResult analysisResult = p.getAnalysisResult();
+
+        if (analysisResult == null) return;
+        if (analysisResult.getRateObjects().size() == 0) return;
+
+        int max = 10;
+
+        if (analysisResult.getRateObjects().size() < 10) {
+            max = analysisResult.getRateObjects().size();
+        }
+
+        List<RadionicLine> lines = new ArrayList<>();
+
+        Collections.sort(analysisResult.getRateObjects(), new Comparator<RateObject>() {
+            @Override
+            public int compare(RateObject o1, RateObject o2) {
+                if (o1.getGv() > 0 && o2.getGv() > 0) {
+                    return o2.getGv().compareTo(o1.getGv());
+                } else {
+                    return o2.getEnergeticValue().compareTo(o1.getEnergeticValue());
+                }
+            }
+        });
+
+        for (int i = 0; i < max; i++) {
+            RateObject rate = analysisResult.getRateObjects().get(i);
+
+            double degree = rate.getEnergeticValue();
+
+            if (rate.getGv() > 0) {
+                degree = degree * rate.getGv();
+            }
+
+            RadionicLine line = new RadionicLine(rate.getGv(), degree, rate.getNameOrRate(), new Color(p.getHotbitsHandler().getInteger(255),p.getHotbitsHandler().getInteger(255),p.getHotbitsHandler().getInteger(255)));
+            lines.add(line);
+        }
+
+        CardMaker cardMaker = new CardMaker();
+        cardMaker.make(lines);
+
+        try {
+            if (!new File("cards").exists()) new File("cards").mkdir();
+            cardMaker.save(new File("cards/card_" + Calendar.getInstance().getTimeInMillis() + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

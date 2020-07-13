@@ -66,4 +66,11 @@ public class AetherOneConstants {
     public static final String YOUTUBE = "YOUTUBE";
     public static final String ANALYZE_IMAGE = "ANALYZE IMAGE";
     public static final String ESSENTIAL_QUESTIONS = "ESSENTIAL QUESTIONS";
+    public static final String CARD = "CARD";
+    public static final String SELECT_DATA_FOR_CARD = "DATA FOR CARD";
+    public static final String SIGNATURE_FOR_CARD = "INTENTION";
+    public static final String GENERATE_CARD = "GENERATE CARD";
+    public static final String CLEAR_CARD = "CLEAR CARD";
+    public static final String ANALYZE_CARD = "ANALYZE CARD";
+    public static final String PASTE_CARD_IMAGE = "PASTE CARD IMAGE";
 }
