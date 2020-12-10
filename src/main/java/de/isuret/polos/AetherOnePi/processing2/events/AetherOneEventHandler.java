@@ -12,6 +12,7 @@ import de.isuret.polos.AetherOnePi.processing2.dialogs.BroadcastUnit;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.SelectDatabaseDialog;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.SessionDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
+import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
 import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
@@ -489,6 +490,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     public synchronized void broadcastNow() {
+
+        Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
+
         String sessionName = "";
         if (p.getCaseObject().getName() != null) {
             sessionName = p.getCaseObject().getName();
@@ -498,12 +502,15 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         try {
             seconds = Integer.parseInt(((Textfield) p.getGuiElements().getCp5().get("SECONDS")).getText());
+
+            if (settings.getBoolean(SettingsScreen.BROADCAST_DELTA_TIME, false)) {
+                seconds -= p.getGeneralVitality();
+            }
         } catch (Exception e) {
             ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
         }
 
         // replaced by the embedded BroadcastElement
-        Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
         boolean broadCastEmbedded = settings.getBoolean("broadcast.embedded", true);
 
         if (broadCastEmbedded) {
