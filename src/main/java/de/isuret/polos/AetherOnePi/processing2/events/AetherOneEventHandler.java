@@ -199,7 +199,12 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("GROUNDING".equals(name)) {
+        if (AetherOneConstants.BROADCAST_MIX.equals(name)) {
+            broadcastMix();
+            return;
+        }
+
+        if (AetherOneConstants.GROUNDING.equals(name)) {
             grounding();
             return;
         }
@@ -286,6 +291,35 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             p.setTrainingSignatureCovered(false);
             System.out.println(p.getTrainingSignature());
             return;
+        }
+    }
+
+    private void broadcastMix() {
+
+        List<RateObject> rateObjectList = new ArrayList<>();
+        Integer gv = p.getGeneralVitality();
+
+        for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
+
+            if (rate.getGv() > gv) {
+                rateObjectList.add(rate);
+            }
+        }
+
+        Collections.sort(rateObjectList, new Comparator<RateObject>() {
+            @Override
+            public int compare(RateObject o1, RateObject o2) {
+
+                if (o2.getGv() == o1.getGv()) {
+                    return o2.getEnergeticValue().compareTo(o1.getEnergeticValue());
+                }
+
+                return o2.getGv().compareTo(o1.getGv());
+            }
+        });
+
+        for (RateObject rateObject : rateObjectList) {
+            p.getGuiElements().addBroadcastElement(rateObject.getNameOrRate(), rateObject.getGv() - gv);
         }
     }
 

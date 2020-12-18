@@ -226,6 +226,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton(AetherOneConstants.GV)
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
                 .addButton(AetherOneConstants.GROUNDING)
+                .addButton(AetherOneConstants.BROADCAST_MIX)
                 .addButton(AetherOneConstants.STATISTICS)
                 .addButton(AetherOneConstants.TRAINING_START)
                 .addButton(AetherOneConstants.TRAINING_UNCOVER)

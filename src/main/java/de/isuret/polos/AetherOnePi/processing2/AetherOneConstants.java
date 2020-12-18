@@ -73,4 +73,5 @@ public class AetherOneConstants {
     public static final String CLEAR_CARD = "CLEAR CARD";
     public static final String ANALYZE_CARD = "ANALYZE CARD";
     public static final String PASTE_CARD_IMAGE = "PASTE CARD IMAGE";
+    public static final String BROADCAST_MIX = "BROADCAST MIX";
 }
