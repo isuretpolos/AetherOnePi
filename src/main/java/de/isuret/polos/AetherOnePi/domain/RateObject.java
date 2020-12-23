@@ -54,6 +54,7 @@ public class RateObject {
      */
     public RateObject(RateObject r) {
 
+        level = r.level;
         energeticValue = r.energeticValue;
         nameOrRate = r.nameOrRate;
         url = r.url;
