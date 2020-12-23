@@ -45,6 +45,11 @@ public class RateObject {
     private Integer recurringGeneralVitality = 0;
 
     /**
+     * From 1 which is physical body to 12 which is spiritual level
+     */
+    private Integer level = 0;
+
+    /**
      * Make a copy
      */
     public RateObject(RateObject r) {

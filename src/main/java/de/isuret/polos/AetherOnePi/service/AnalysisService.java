@@ -116,6 +116,39 @@ public class AnalysisService {
 
             AnalysisResult sortedResult = analysisResult.sort().shorten(AnalyseScreen.MAX_ENTRIES);
 
+            // now check the level, from physical to spiritual, 1 to 12
+            for (RateObject rateObject : sortedResult.getRateObjects()) {
+
+                Map<Integer,Integer> levels = new HashMap<>();
+
+                for (int i=1; i<13; i++) {
+                    levels.put(i,0);
+                }
+
+                for (int x=0; x<100; x++) {
+
+                    Integer level = hotbitsClient.getInteger(1,12);
+                    Integer value = levels.get(level);
+
+                    if (hotbitsClient.getBoolean()) {
+                        value += 1;
+                        levels.put(level, value);
+                    }
+                }
+
+                Integer maxValue = 0;
+
+                for (Integer level : levels.keySet()) {
+
+                    Integer value = levels.get(level);
+
+                    if (value > maxValue) {
+                        maxValue = value;
+                        rateObject.setLevel(level);
+                    }
+                }
+            }
+
             return sortedResult;
         } catch (Exception e) {
             e.printStackTrace();
