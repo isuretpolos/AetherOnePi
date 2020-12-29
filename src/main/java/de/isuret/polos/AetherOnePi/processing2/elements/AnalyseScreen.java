@@ -76,6 +76,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.text("NO", 35, y);
             p.text("EV", 80, y);
             p.text("RATE / SIGNATURE", 125, y);
+            p.text("POTENCY", 600, y);
             p.text("LVL", 724, y);
             p.text("HIT", 764, y);
             p.text("GV", 804, y);
@@ -127,6 +128,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
                 // LEVEL
                 p.fill(255);
+                p.text(rate.getPotency(), 600, y - 2);
                 p.text(rate.getLevel(), 724, y - 2);
 
                 // ACTION BUTTONS
@@ -237,6 +239,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
             p.line(70, 100, 70, y - 15);
             p.line(105, 100, 105, y - 15);
+            p.line(590, 100, 590, y - 15);
             p.line(720, 100, 720, y - 15);
             p.line(760, 100, 760, y - 15);
             p.line(800, 100, 800, y - 15);

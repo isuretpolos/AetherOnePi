@@ -49,6 +49,8 @@ public class RateObject {
      */
     private Integer level = 0;
 
+    private String potency;
+
     /**
      * Make a copy
      */
