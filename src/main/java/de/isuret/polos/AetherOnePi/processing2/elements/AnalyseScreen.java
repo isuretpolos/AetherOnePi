@@ -128,7 +128,11 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
                 // LEVEL
                 p.fill(255);
-                p.text(rate.getPotency(), 600, y - 2);
+
+                if (rate.getPotency() != null) {
+                    p.text(rate.getPotency(), 600, y - 2);
+                }
+
                 p.text(rate.getLevel(), 724, y - 2);
 
                 // ACTION BUTTONS
