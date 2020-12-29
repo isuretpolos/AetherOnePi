@@ -61,5 +61,6 @@ public class RateObject {
         nameOrRate = r.nameOrRate;
         url = r.url;
         recurring = r.recurring;
+        potency = r.potency;
     }
 }
