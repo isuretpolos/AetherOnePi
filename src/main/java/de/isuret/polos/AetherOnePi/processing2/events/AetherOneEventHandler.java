@@ -319,7 +319,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         });
 
         for (RateObject rateObject : rateObjectList) {
-            p.getGuiElements().addBroadcastElement(rateObject.getNameOrRate(), rateObject.getGv() - gv);
+            p.getGuiElements().addBroadcastElement(
+                    rateObject.getNameOrRate() + " " + rateObject.getEnergeticValue() + " " +
+                            rateObject.getPotency(), rateObject.getGv() - gv);
         }
     }
 
