@@ -2,6 +2,9 @@ package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import controlP5.CColor;
 import controlP5.ControlP5;
+import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
+import de.isuret.polos.AetherOnePi.domain.Rate;
+import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
@@ -264,6 +267,7 @@ public class GuiElements {
 
         drawBackground();
         drawBorders();
+        handleAutoMode();
 
         p.fill(255);
         p.textFont(fonts.get("default"), 14);
@@ -391,6 +395,38 @@ public class GuiElements {
         p.noStroke();
         p.fill(10, 0, 30, foregroundOverlayAlpha);
         p.rect(0, 0, p.width, p.height);
+    }
+
+    private void handleAutoMode() {
+        if (!p.getAutoMode()) return;
+
+        // if nothing is broadcast ...
+        if (broadcastQueueList.size() < 8) {
+            // analyse automatically
+            List<Rate> rates = null;
+            int gv = p.checkGeneralVitalityValue();
+
+            // no need for auto mode if gv is higher than 100 (which means it is not optimal, but not critical either)
+            if (gv > 100) return;
+
+            try {
+                rates = p.getDataService().findAllBySourceName(p.getSelectedDatabase());
+                AnalysisResult result = p.getAnalyseService().analyseRateList(rates);
+
+                for (RateObject rateObject : result.getRateObjects()) {
+                    // check GV
+                    int gvOfRate = p.checkGeneralVitalityValue();
+                    // if gv of rate is higher as of target + 500 or generally higher than 1400 than broadcast
+                    if (gvOfRate > 1400 || gvOfRate > gv + 700) {
+                        int seconds = p.getHotbitsHandler().getInteger(10,1000);
+                        addBroadcastElement(rateObject.getNameOrRate(), seconds);
+                        break;
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

@@ -5,7 +5,6 @@ import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
 import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Case;
-import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
@@ -82,6 +81,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     @Getter
     @Setter
     private Boolean trainingSignatureCovered = true;
+    @Getter
+    @Setter
+    private Boolean autoMode = false;
 
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
@@ -227,6 +229,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
                 .addButton(AetherOneConstants.GROUNDING)
                 .addButton(AetherOneConstants.BROADCAST_MIX)
+                .addButton(AetherOneConstants.BROADCAST_AUTO_ON)
+                .addButton(AetherOneConstants.BROADCAST_AUTO_OFF)
                 .addButton(AetherOneConstants.STATISTICS)
                 .addButton(AetherOneConstants.TRAINING_START)
                 .addButton(AetherOneConstants.TRAINING_UNCOVER)
@@ -308,7 +312,6 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     }
 
     public void draw() {
-
         guiElements.draw();
     }
 

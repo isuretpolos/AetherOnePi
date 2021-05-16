@@ -204,6 +204,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
+        if (AetherOneConstants.BROADCAST_AUTO_ON.equals(name)) {
+            p.setAutoMode(true);
+            return;
+        }
+
+        if (AetherOneConstants.BROADCAST_AUTO_OFF.equals(name)) {
+            p.setAutoMode(false);
+            return;
+        }
+
         if (AetherOneConstants.GROUNDING.equals(name)) {
             grounding();
             return;

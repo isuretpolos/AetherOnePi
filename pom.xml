@@ -15,7 +15,7 @@
     <description>Open Source Radionics for the Rasperry Pi</description>
 
     <properties>
-        <aether.version>1.2.0</aether.version>
+        <aether.version>1.2.1</aether.version>
         <java.version>1.8</java.version>
         <commons-io.version>2.5</commons-io.version>
         <pi4j-core.version>1.2</pi4j-core.version>
@@ -76,6 +76,18 @@
             <groupId>com.pi4j</groupId>
             <artifactId>pi4j-gpio-extension</artifactId>
             <version>${pi4j-core.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.processing</groupId>
+            <artifactId>sound</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jsyn</groupId>
+            <artifactId>unitgen</artifactId>
+            <version>1.0</version>
         </dependency>
 <!--
         <dependency>
@@ -351,6 +363,36 @@
                                     <version>${appleJar.version}</version>
                                     <packaging>jar</packaging>
                                     <file>${basedir}/libs/apple.jar</file>
+                                    <generatePom>true</generatePom>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-sound-lib</id>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <phase>validate</phase>
+                                <configuration>
+                                    <groupId>org.processing</groupId>
+                                    <artifactId>sound</artifactId>
+                                    <version>1.0</version>
+                                    <packaging>jar</packaging>
+                                    <file>${basedir}/libs/sound.jar</file>
+                                    <generatePom>true</generatePom>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>install-unitgen-lib</id>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <phase>validate</phase>
+                                <configuration>
+                                    <groupId>com.jsyn</groupId>
+                                    <artifactId>unitgen</artifactId>
+                                    <version>1.0</version>
+                                    <packaging>jar</packaging>
+                                    <file>${basedir}/libs/jsyn-20171016.jar</file>
                                     <generatePom>true</generatePom>
                                 </configuration>
                             </execution>

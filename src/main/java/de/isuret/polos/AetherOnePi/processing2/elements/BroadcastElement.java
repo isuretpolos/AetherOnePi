@@ -3,6 +3,7 @@ package de.isuret.polos.AetherOnePi.processing2.elements;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import lombok.Getter;
 import lombok.Setter;
+import processing.sound.SoundFile;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
@@ -281,6 +282,12 @@ public class BroadcastElement implements IDrawableElement {
 
                 if (hotbitsForBroadcastingRandomNumber >= 998) {
                     movingWaveAmount = 1;
+                    /*try {
+                        SoundFile soundFile = new SoundFile(p, "sounds/wave_F.mp3");
+                        soundFile.play();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }*/
                     random = new Random(p.getHotbitsClient().getInteger(0, 100000));
                 }
             }
