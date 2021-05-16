@@ -77,109 +77,109 @@
             <artifactId>pi4j-gpio-extension</artifactId>
             <version>${pi4j-core.version}</version>
         </dependency>
-        <!--
-                <dependency>
-                    <groupId>org.processing</groupId>
-                    <artifactId>sound</artifactId>
-                    <version>1.0</version>
-                </dependency>
 
-                <dependency>
-                    <groupId>com.jsyn</groupId>
-                    <artifactId>unitgen</artifactId>
-                    <version>1.0</version>
-                </dependency>
+        <dependency>
+            <groupId>org.processing</groupId>
+            <artifactId>sound</artifactId>
+            <version>1.0</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>com.jsyn</groupId>
+            <artifactId>unitgen</artifactId>
+            <version>1.0</version>
+        </dependency>
+<!--
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-windows-amd64</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>jogl-all-natives-windows-amd64</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-windows-amd64</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>jogl-all-natives-linux-amd64</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-linux-amd64</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>jogl-all-natives-macosx-universal</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-macosx-universal</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>core</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>core</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>gluegen-rt</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>gluegen-rt-natives-linux-armv6hf</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-linux-armv6hf</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>jogl-all-natives-windows-i586</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-windows-i586</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>jogl-all-natives-linux-i586</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-linux-i586</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>gluegen-rt-natives-windows-i586</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-windows-i586</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-linux-amd64</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>gluegen-rt-natives-macosx-universal</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-macosx-universal</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>gluegen-rt-natives-linux-i586</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>gluegen-rt-natives-linux-i586</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>jogl-all</artifactId>
-                    <version>2.1</version>
-                </dependency>
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all</artifactId>
+            <version>2.1</version>
+        </dependency>
 
-                <dependency>
-                    <groupId>org.clojars.originalsurfmex.processing</groupId>
-                    <artifactId>jogl-all-natives-linux-armv6hf</artifactId>
-                    <version>2.1</version>
-                </dependency>
-                 processing END -->
+        <dependency>
+            <groupId>org.clojars.originalsurfmex.processing</groupId>
+            <artifactId>jogl-all-natives-linux-armv6hf</artifactId>
+            <version>2.1</version>
+        </dependency>
+         processing END -->
 
         <dependency>
             <groupId>org.eclipse.jgit</groupId>
@@ -366,7 +366,7 @@
                                     <generatePom>true</generatePom>
                                 </configuration>
                             </execution>
-                            <!--<execution>
+                            <execution>
                                 <id>install-sound-lib</id>
                                 <goals>
                                     <goal>install-file</goal>
@@ -395,7 +395,7 @@
                                     <file>${basedir}/libs/jsyn-20171016.jar</file>
                                     <generatePom>true</generatePom>
                                 </configuration>
-                            </execution>-->
+                            </execution>
                         </executions>
                     </plugin>
                     <plugin>
