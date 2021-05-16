@@ -366,7 +366,7 @@
                                     <generatePom>true</generatePom>
                                 </configuration>
                             </execution>
-                            <execution>
+                            <!--<execution>
                                 <id>install-sound-lib</id>
                                 <goals>
                                     <goal>install-file</goal>
@@ -395,7 +395,7 @@
                                     <file>${basedir}/libs/jsyn-20171016.jar</file>
                                     <generatePom>true</generatePom>
                                 </configuration>
-                            </execution>
+                            </execution>-->
                         </executions>
                     </plugin>
                     <plugin>
