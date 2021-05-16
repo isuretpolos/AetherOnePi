@@ -19,9 +19,9 @@ public class RateUtils {
         String parts [] = rate.split("\t");
 
         if (parts.length > 1) {
-            analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate), parts[0], parts[1], 0, 0, 0));
+            analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate), parts[0], parts[1], 0, 0, 0, 0, null));
         } else {
-            analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate), rate, null, 0, 0, 0));
+            analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate), rate, null, 0, 0, 0, 0, null));
         }
     }
 

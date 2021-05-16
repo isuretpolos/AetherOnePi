@@ -22,6 +22,7 @@ Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 - 2020-05-21 [Hotbits from WebCam](https://radionics.home.blog/2020/05/21/hotbits-from-webcam-for-the-aetheronepi/)
 - 2020-05-16 General Vitality check for the virtual StickPad
 - 2020-05-01 Training Mode
+- 2020-12-18 Broadcast Mix button, Settings for broadcast only delta of necessary time between rate and GV of target
 
 # Resources
 ## Documentation

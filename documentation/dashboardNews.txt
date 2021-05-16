@@ -1,9 +1,11 @@
 Welcome to AetherOnePi, a open source radionics project!
 
-The most current version is the 1.0.1 with a new feature:
-- Best HIT column, which shows the highest general vitality check
+The most current version is the 1.2.0 with a new feature:
+- Broadcast Mix Button
 
 Read the documentation by clicking on the button "DOCUMENTATION".
 Else join the VK community if you have questions and if
 you want to contribute with your experience to the open source
 project.
+
+There is also a new blog on radionics in German.

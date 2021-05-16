@@ -45,13 +45,22 @@ public class RateObject {
     private Integer recurringGeneralVitality = 0;
 
     /**
+     * From 1 which is physical body to 12 which is spiritual level
+     */
+    private Integer level = 0;
+
+    private String potency;
+
+    /**
      * Make a copy
      */
     public RateObject(RateObject r) {
 
+        level = r.level;
         energeticValue = r.energeticValue;
         nameOrRate = r.nameOrRate;
         url = r.url;
         recurring = r.recurring;
+        potency = r.potency;
     }
 }

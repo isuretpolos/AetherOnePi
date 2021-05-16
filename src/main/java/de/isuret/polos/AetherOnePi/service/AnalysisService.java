@@ -1,9 +1,6 @@
 package de.isuret.polos.AetherOnePi.service;
 
-import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
-import de.isuret.polos.AetherOnePi.domain.Rate;
-import de.isuret.polos.AetherOnePi.domain.RateObject;
-import de.isuret.polos.AetherOnePi.domain.VitalityObject;
+import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
@@ -116,6 +113,40 @@ public class AnalysisService {
 
             AnalysisResult sortedResult = analysisResult.sort().shorten(AnalyseScreen.MAX_ENTRIES);
 
+            // now check the level, from physical to spiritual, 1 to 12
+            for (RateObject rateObject : sortedResult.getRateObjects()) {
+
+                rateObject.setPotency(analyzePotency());
+                Map<Integer,Integer> levels = new HashMap<>();
+
+                for (int i=1; i<13; i++) {
+                    levels.put(i,0);
+                }
+
+                for (int x=0; x<100; x++) {
+
+                    Integer level = hotbitsClient.getInteger(1,12);
+                    Integer value = levels.get(level);
+
+                    if (hotbitsClient.getBoolean()) {
+                        value += 1;
+                        levels.put(level, value);
+                    }
+                }
+
+                Integer maxValue = 0;
+
+                for (Integer level : levels.keySet()) {
+
+                    Integer value = levels.get(level);
+
+                    if (value > maxValue) {
+                        maxValue = value;
+                        rateObject.setLevel(level);
+                    }
+                }
+            }
+
             return sortedResult;
         } catch (Exception e) {
             e.printStackTrace();
@@ -186,5 +217,43 @@ public class AnalysisService {
         int x = hotbitsClient.getInteger(0, rates.size() - 1);
         Rate rate = rates.get(x);
         return rate.getName();
+    }
+
+    public String analyzePotency() {
+
+        final String potencyType [] = {"D","C","LM","Q","FLUX"};
+        final Integer potencyStrengthD [] = {0,1,3,4,6,12,30,200};
+        final Integer potencyStrengthC_OR_FLUX [] = {0,1,3,6,12,30,200,1000,10000,50000,100000,1000000};
+        List<Potency> potencies = new ArrayList<>();
+        Map<Integer,Integer> potencyChoice = new HashMap<>();
+
+        for (int x=0; x<100; x++) {
+            Potency potency = new Potency();
+            potency.setPotencyType(potencyType[hotbitsClient.getInteger(0,potencyType.length - 1)]);
+
+            if (potency.getPotencyType().equals("D")) {
+                potency.setPotencyStrength(potencyStrengthD[hotbitsClient.getInteger(0,potencyStrengthD.length - 1)]);
+            } else if (potency.getPotencyType().equals("C") || potency.getPotencyType().equals("FLUX")) {
+                potency.setPotencyStrength(potencyStrengthC_OR_FLUX[hotbitsClient.getInteger(0,potencyStrengthC_OR_FLUX.length - 1)]);
+            } else {
+                potency.setPotencyStrength(hotbitsClient.getInteger(1,30));
+            }
+
+            potencyChoice.put(x,0);
+            potencies.add(potency);
+        }
+
+        while (true) {
+
+            int pos = hotbitsClient.getInteger(0,99);
+            Integer strength = potencyChoice.get(pos);
+            strength += 1;
+
+            if (strength > 77) {
+                return potencies.get(pos).toString();
+            }
+
+            potencyChoice.put(pos, strength);
+        }
     }
 }
