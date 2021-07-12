@@ -577,6 +577,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         p.setTrainingSignatureCovered(true);
         p.setAnalysisPointer(null);
         p.setCaseObject(new Case());
+        p.getResonatedList().clear();
         p.setTitle("AetherOneUI - New Case ... enter name and description");
         ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText("");
         ((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).setText("");

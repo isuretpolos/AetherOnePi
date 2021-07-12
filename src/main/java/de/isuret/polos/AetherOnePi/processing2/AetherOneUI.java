@@ -5,6 +5,7 @@ import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
 import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Case;
+import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
@@ -85,6 +86,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     @Setter
     private Boolean autoMode = false;
 
+    @Getter
+    @Setter
+    private List<RateObject> resonatedList = new ArrayList<>();
+
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
     public static void main(String[] args) {
@@ -92,6 +97,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     }
 
     public void settings() {
+
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
         settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
         size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721));
