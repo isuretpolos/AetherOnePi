@@ -30,6 +30,8 @@ import processing.core.PImage;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -165,6 +167,14 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     public void setup() {
         background(200);
+
+        AetherOneUI ui = this;
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run () {
+                System.out.println("SHUTDOWN HOOK");
+                ui.stop();
+            }
+        }));
 
         // TODO add dynamic more elements with resizing the screen and adjust some of the graphics which are too static
         surface.setResizable(true);
@@ -319,6 +329,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     public void draw() {
         guiElements.draw();
+    }
+
+    public void stop() {
+        aetherOneEventHandler.saveResonanceProtocol();
     }
 
     public void controlEvent(ControlEvent theEvent) {
