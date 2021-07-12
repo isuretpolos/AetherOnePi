@@ -128,6 +128,18 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     }
 
+    public Integer checkPercentage() {
+        List<Integer> list = new ArrayList<Integer>();
+
+        for (int x = 0; x < 3; x++) {
+            list.add(getHotbitsClient().getInteger(100));
+        }
+
+        Collections.sort(list, Collections.reverseOrder());
+
+        return list.get(0);
+    }
+
     public Integer checkGeneralVitalityValue() {
 
         List<Integer> list = new ArrayList<Integer>();
