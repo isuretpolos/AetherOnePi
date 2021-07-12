@@ -23,6 +23,8 @@ Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 - 2020-05-16 General Vitality check for the virtual StickPad
 - 2020-05-01 Training Mode
 - 2020-12-18 Broadcast Mix button, Settings for broadcast only delta of necessary time between rate and GV of target
+- 2020-12-23 Level analysis  
+- 2021-05-16 Auto Broadcasting Mode
 - 2021-07-12 Binaural sounds when rate resonates during broadcast, some minor adjustments and improvements
 
 # Resources
