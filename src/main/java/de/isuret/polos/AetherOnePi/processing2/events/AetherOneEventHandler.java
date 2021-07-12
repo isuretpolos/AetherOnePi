@@ -36,6 +36,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 
@@ -370,7 +371,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                 degree = degree * rate.getGv();
             }
 
-            RadionicLine line = new RadionicLine(rate.getGv(), degree, rate.getNameOrRate(), new Color(p.getHotbitsHandler().getInteger(255),p.getHotbitsHandler().getInteger(255),p.getHotbitsHandler().getInteger(255)));
+            RadionicLine line = new RadionicLine(rate.getGv(), degree, rate.getNameOrRate(), new Color(p.getHotbitsHandler().getInteger(255), p.getHotbitsHandler().getInteger(255), p.getHotbitsHandler().getInteger(255)));
             lines.add(line);
         }
 
@@ -389,6 +390,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         StringBuilder str = new StringBuilder("== ESSENTIAL QUESTIONS ==\n");
 
+        str.append("Appropriateness? (0 to 100)\n");
+        str.append(p.checkPercentage()).append("%\n\n");
+
         str.append("Do I have permission to work with this person?\n");
 
         Integer gv = p.checkGeneralVitalityValue();
@@ -402,7 +406,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             if (gv > 500) {
                 str.append("- YES! (" + gv + ")\n\n");
             } else {
-                str.append("- NO! (" + gv + ")\n\n");
+                str.append("- NO! ... Will I ever have permission to work with this person? (" + gv + ")\n\n");
+                askQuestionWhen(str);
             }
 
             str.append("Is it in my best and highest good?\n");
@@ -411,47 +416,52 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             if (gv > 500) {
                 str.append("- YES! (" + gv + ")\n\n");
             } else {
-                str.append("- NO! (" + gv + ")\n\n");
+                str.append("- NO! ... Will I ever have permission to work with this person? (" + gv + ")\n\n");
+                askQuestionWhen(str);
             }
 
         } else {
             str.append("- NO! ... Will I ever have permission to work with this person? (" + gv + ")\n");
-
-            gv = p.checkGeneralVitalityValue();
-
-            if (gv > 500) {
-                Map<String, Integer> whenMap = new HashMap<>();
-                str.append("-- YES ... In what amount of time?(" + gv + ")\n");
-                whenMap.put("In one week", 0);
-                whenMap.put("In one month", 0);
-                whenMap.put("In two months", 0);
-                whenMap.put("In 3 months", 0);
-                whenMap.put("In 6 months", 0);
-                whenMap.put("In 1 year", 0);
-                whenMap.put("In 2 year", 0);
-
-                String answer = "";
-                int max = 0;
-
-                for (String when : whenMap.keySet()) {
-                    whenMap.put(when,p.checkGeneralVitalityValue());
-                }
-
-                for (String when : whenMap.keySet()) {
-                    if (whenMap.get(when).intValue() > max) {
-                        max = whenMap.get(when);
-                        answer = when;
-                    }
-                }
-
-                str.append("--- " + answer + "\n");
-
-            } else {
-                str.append("-- NO!!! (" + gv + ")");
-            }
+            askQuestionWhen(str);
         }
 
         return str.toString();
+    }
+
+    private void askQuestionWhen(StringBuilder str) {
+
+        Integer gv = p.checkGeneralVitalityValue();
+
+        if (gv > 500) {
+            Map<String, Integer> whenMap = new HashMap<>();
+            str.append("-- YES ... In what amount of time?(" + gv + ")\n");
+            whenMap.put("In one week", 0);
+            whenMap.put("In one month", 0);
+            whenMap.put("In two months", 0);
+            whenMap.put("In 3 months", 0);
+            whenMap.put("In 6 months", 0);
+            whenMap.put("In 1 year", 0);
+            whenMap.put("In 2 year", 0);
+
+            String answer = "";
+            int max = 0;
+
+            for (String when : whenMap.keySet()) {
+                whenMap.put(when, p.checkGeneralVitalityValue());
+            }
+
+            for (String when : whenMap.keySet()) {
+                if (whenMap.get(when).intValue() > max) {
+                    max = whenMap.get(when);
+                    answer = when;
+                }
+            }
+
+            str.append("--- " + answer + "\n\n");
+
+        } else {
+            str.append("-- NO!!! (" + gv + ")\n\n");
+        }
     }
 
     public void loadCaseFile(File file) {
@@ -492,17 +502,17 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                 for (String line : rateEntries) {
                     if (line.contains("(") && line.contains(")")) {
                         String signature = line.substring(0, line.indexOf("(")).trim();
-                        String duration = line.substring(line.indexOf("(") + 1).replace(")","").trim().toUpperCase();
+                        String duration = line.substring(line.indexOf("(") + 1).replace(")", "").trim().toUpperCase();
                         log.info(signature + " - " + duration);
                         int seconds = 0;
                         if (duration.contains("S")) {
-                            seconds = Integer.parseInt(duration.replace("S",""));
+                            seconds = Integer.parseInt(duration.replace("S", ""));
                         }
                         if (duration.contains("M")) {
-                            seconds = Integer.parseInt(duration.replace("M","")) * 60;
+                            seconds = Integer.parseInt(duration.replace("M", "")) * 60;
                         }
                         if (duration.contains("H")) {
-                            seconds = Integer.parseInt(duration.replace("H","")) * 3600;
+                            seconds = Integer.parseInt(duration.replace("H", "")) * 3600;
                         }
                         p.getGuiElements().addBroadcastElement(signature, seconds);
                     } else {
@@ -571,12 +581,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     private void clearForNewCase() {
+
+        saveResonanceProtocol();
+
         p.setEssentielQuestion(null);
         p.setImageLayersAnalysis(null);
         p.setTrainingSignature(null);
         p.setTrainingSignatureCovered(true);
         p.setAnalysisPointer(null);
         p.setCaseObject(new Case());
+        p.getResonatedList().clear();
         p.setTitle("AetherOneUI - New Case ... enter name and description");
         ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText("");
         ((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).setText("");
@@ -588,6 +602,46 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         p.setGvCounter(0);
         p.setStickPadMode(false);
         p.setStickPadGeneralVitalityMode(false);
+    }
+
+    public void saveResonanceProtocol() {
+        if (p.getResonatedList().size() > 0) {
+
+            System.out.println("Saving resonance protocol");
+
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+            File resonateProtocolDirectory = new File("resonateProtocols");
+
+            if (!resonateProtocolDirectory.exists()) {
+                resonateProtocolDirectory.mkdirs();
+            }
+
+            StringBuilder str = new StringBuilder("== RESONANCE PROTOCOL ==\nRESONANCE COUNTER;NAME OR RATE\n");
+
+            for (RateObject rateObject : p.getResonatedList()) {
+                str
+                        .append(rateObject.getResonateCounter())
+                        .append(";")
+                        .append(rateObject.getNameOrRate())
+                        .append("\n");
+            }
+
+            String caseName = "nocase";
+
+            if (p.getCaseObject() != null && p.getCaseObject().getName() != null) {
+                caseName = p.getCaseObject().getName().toLowerCase().replaceAll(" ","");
+            }
+
+            try {
+                FileUtils.writeStringToFile(new File("resonateProtocols/"
+                        + sdf.format(Calendar.getInstance().getTime())
+                        + "_resonance_"
+                        + caseName
+                        + ".txt"), str.toString(), "UTF-8");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     private void analyzeCurrentDatabase() {
@@ -725,11 +779,11 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
     public void navigateThroughHistoricalAnalysis() {
 
-        if ((p.keyCode == 37 || p.keyCode == 39) && p.getCaseObject()!= null &&
+        if ((p.keyCode == 37 || p.keyCode == 39) && p.getCaseObject() != null &&
                 p.getCaseObject().getSessionList() != null && p.getCaseObject().getSessionList().size() > 0) {
 
             if (p.getAnalysisPointer() == null) {
-                p.setAnalysisPointer(p.getCaseObject().getSessionList().size() -1);
+                p.setAnalysisPointer(p.getCaseObject().getSessionList().size() - 1);
             }
 
             // left = 37, right = 39
@@ -747,10 +801,10 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
     }
 
-    private String getTextFromClipboard () {
+    private String getTextFromClipboard() {
         String text = (String) getFromClipboard(DataFlavor.stringFlavor);
 
-        if (text==null)
+        if (text == null)
             return "";
 
         return text;

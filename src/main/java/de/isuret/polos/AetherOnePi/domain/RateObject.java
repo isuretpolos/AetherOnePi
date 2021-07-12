@@ -51,6 +51,8 @@ public class RateObject {
 
     private String potency;
 
+    private Integer resonateCounter = 0;
+
     /**
      * Make a copy
      */

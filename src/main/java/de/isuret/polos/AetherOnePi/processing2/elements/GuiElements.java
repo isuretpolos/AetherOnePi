@@ -306,6 +306,20 @@ public class GuiElements {
         p.line(200,560,670,560);
         p.text("BROADCAST QUEUE", 205,555);
 
+        p.line(670,560,1070,560);
+        p.text("RESONATED RATES", 675,555);
+        //p.text("X: " + p.getMousePoint().x + " Y: " + p.getMousePoint().y, 20,20);
+
+        for (int i=0; i<p.getResonatedList().size(); i++) {
+
+            RateObject rateObject = p.getResonatedList().get(i);
+            p.fill(0, 150 + (rateObject.getResonateCounter() * 25) ,0); //dynamic color
+            p.text(rateObject.getResonateCounter(), 675,575 + (15*i));
+            p.text(rateObject.getNameOrRate(), 695,575 + (15*i));
+
+            if (i > 9) break;
+        }
+
         for (IDrawableElement drawableElement : drawableElementList) {
 
             if (currentTab.equals(drawableElement.getAssignedTabName())

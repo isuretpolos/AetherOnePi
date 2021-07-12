@@ -1,6 +1,8 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
+import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
+import de.isuret.polos.AetherOnePi.sound.Binaural;
 import lombok.Getter;
 import lombok.Setter;
 import processing.sound.SoundFile;
@@ -9,6 +11,8 @@ import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Random;
 
 /**
@@ -20,7 +24,7 @@ public class BroadcastElement implements IDrawableElement {
 
     public static final int WIDTH = 320;
     public static final int HEIGHT = 180;
-    private static final String ADDITIONAL_RATES [] = {
+    private static final String ADDITIONAL_RATES[] = {
             "ENERGY", "FIRE", "POWER", "WOOD", "GROUNDING", "EARTH", "RYTHM",
             "METAL", "WATER", "DEEPNESS", "DO NO HARM!", "UNITY", "LOVE"
     };
@@ -56,6 +60,9 @@ public class BroadcastElement implements IDrawableElement {
     @Setter
     private boolean stop = false;
 
+    private Binaural binaural = null;
+    private boolean playingSound = false;
+
     public BroadcastElement(AetherOneUI p, String tabName, int seconds, String signature) {
         this.p = p;
         this.seconds = seconds;
@@ -81,10 +88,14 @@ public class BroadcastElement implements IDrawableElement {
         File hotbitsFolder = new File("hotbits");
 
         if (hotbitsFolder.listFiles().length > 100) {
-            random = new Random(p.getHotbitsClient().getInteger(0,100000));
+            random = new Random(p.getHotbitsClient().getInteger(0, 100000));
         }
 
         p.fill(random.nextInt(255), random.nextInt(255), random.nextInt(255));
+
+        if (!p.getSettings().getBoolean(SettingsScreen.PLAY_SOUND, false)) {
+            playingSound = true;
+        }
     }
 
     public void start() {
@@ -105,7 +116,7 @@ public class BroadcastElement implements IDrawableElement {
     }
 
     /**
-     * Draws the broadcast signature encoded onto it's own field inside the broadcast tab
+     * Draws the broadcast signature embedded onto it's own field inside the broadcast tab
      */
     public void draw() {
 
@@ -145,7 +156,7 @@ public class BroadcastElement implements IDrawableElement {
 
         paintOneLayer();
         paintProgressBar();
-
+        playBinauralSound();
     }
 
     @Override
@@ -256,6 +267,22 @@ public class BroadcastElement implements IDrawableElement {
 
         if (random2.nextInt(6765) >= 6764) {
             movingWaveAmount = 1;
+
+            boolean foundResonatedRate = false;
+
+            for (RateObject rateObject : p.getResonatedList()) {
+                if (rateObject.getNameOrRate().equals(signature)) {
+                    foundResonatedRate = true;
+                    rateObject.setResonateCounter(rateObject.getResonateCounter() + 1);
+                }
+            }
+
+            if (!foundResonatedRate) {
+                RateObject rateObject = new RateObject();
+                rateObject.setNameOrRate(signature);
+                rateObject.setResonateCounter(1);
+                p.getResonatedList().add(rateObject);
+            }
         }
 
         // use hotbits for broadcasting
@@ -334,6 +361,34 @@ public class BroadcastElement implements IDrawableElement {
         p.ellipse((WIDTH / 2) + offsetX, (HEIGHT / 2) + offsetY, (HEIGHT - 4) - movingWaveAmount, (HEIGHT - 4) - movingWaveAmount);
         p.stroke(random.nextInt(255), random.nextInt(255), random.nextInt(255));
         p.ellipse((WIDTH / 2) + offsetX, (HEIGHT / 2) + offsetY, (HEIGHT - 4) + movingWaveAmount, (HEIGHT - 4) + movingWaveAmount);
+
+        Collections.sort(p.getResonatedList(), new Comparator<RateObject>() {
+            @Override
+            public int compare(RateObject o1, RateObject o2) {
+                return o2.getResonateCounter().compareTo(o1.getResonateCounter());
+            }
+        });
+    }
+
+    private void playBinauralSound() {
+        if (!playingSound && movingWaveAmount > 0) {
+            playingSound = true;
+
+            if (binaural == null) {
+                int leftFreq = 50 + p.getHotbitsClient().getInteger(500);
+                int rightFreq = leftFreq + p.getHotbitsClient().getInteger(50);
+                binaural = new Binaural(leftFreq, rightFreq, 0.1f + (p.getHotbitsClient().getInteger(10)* 0.1f));
+            }
+
+            (new Thread() {
+                public void run() {
+                    binaural.play(3);
+                    binaural.shutdown();
+                    binaural = null;
+                    playingSound = false;
+                }
+            }).start();
+        }
     }
 
     private void lineAngle(int x, int y, float angle, float length) {
