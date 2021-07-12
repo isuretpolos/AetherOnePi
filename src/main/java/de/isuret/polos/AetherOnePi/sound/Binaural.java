@@ -30,7 +30,7 @@ public class Binaural {
         binauralGenerator.shutdown();
     }
 
-    private Binaural(int leftFreq, int rightFreq, float volume) {
+    public Binaural(int leftFreq, int rightFreq, float volume) {
         // Fill the left and right channel buffers with sine waves
         fillBufferWithSineWave(leftChannel, leftFreq, volume);
         fillBufferWithSineWave(rightChannel, rightFreq, volume);
@@ -54,7 +54,7 @@ public class Binaural {
         }
     }
 
-    private void play(int seconds) {
+    public void play(int seconds) {
         int samplePosition = 0;
         int endPosition = (int)audioFormat.getSampleRate();
         for (int i = 0; i < SAMPLE_RATE * seconds / 2; i++) {
@@ -67,7 +67,7 @@ public class Binaural {
         }
     }
 
-    private void shutdown() {
+    public void shutdown() {
         line.flush();
         line.close();
     }

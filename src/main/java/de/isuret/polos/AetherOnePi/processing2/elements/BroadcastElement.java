@@ -1,6 +1,7 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
+import de.isuret.polos.AetherOnePi.sound.Binaural;
 import lombok.Getter;
 import lombok.Setter;
 import processing.sound.SoundFile;
@@ -20,7 +21,7 @@ public class BroadcastElement implements IDrawableElement {
 
     public static final int WIDTH = 320;
     public static final int HEIGHT = 180;
-    private static final String ADDITIONAL_RATES [] = {
+    private static final String ADDITIONAL_RATES[] = {
             "ENERGY", "FIRE", "POWER", "WOOD", "GROUNDING", "EARTH", "RYTHM",
             "METAL", "WATER", "DEEPNESS", "DO NO HARM!", "UNITY", "LOVE"
     };
@@ -56,6 +57,9 @@ public class BroadcastElement implements IDrawableElement {
     @Setter
     private boolean stop = false;
 
+    private Binaural binaural;
+    private boolean playingSound = false;
+
     public BroadcastElement(AetherOneUI p, String tabName, int seconds, String signature) {
         this.p = p;
         this.seconds = seconds;
@@ -81,10 +85,17 @@ public class BroadcastElement implements IDrawableElement {
         File hotbitsFolder = new File("hotbits");
 
         if (hotbitsFolder.listFiles().length > 100) {
-            random = new Random(p.getHotbitsClient().getInteger(0,100000));
+            random = new Random(p.getHotbitsClient().getInteger(0, 100000));
         }
 
         p.fill(random.nextInt(255), random.nextInt(255), random.nextInt(255));
+
+        if (!p.getSettings().getBoolean(SettingsScreen.PLAY_SOUND, false)) {
+            playingSound = true;
+        }
+        int leftFreq = 50 + random.nextInt(500);
+        int rightFreq = leftFreq + random.nextInt(50);
+        binaural = new Binaural(leftFreq, rightFreq, .5f);
     }
 
     public void start() {
@@ -105,7 +116,7 @@ public class BroadcastElement implements IDrawableElement {
     }
 
     /**
-     * Draws the broadcast signature encoded onto it's own field inside the broadcast tab
+     * Draws the broadcast signature embedded onto it's own field inside the broadcast tab
      */
     public void draw() {
 
@@ -145,7 +156,7 @@ public class BroadcastElement implements IDrawableElement {
 
         paintOneLayer();
         paintProgressBar();
-
+        playBinauralSound();
     }
 
     @Override
@@ -334,6 +345,18 @@ public class BroadcastElement implements IDrawableElement {
         p.ellipse((WIDTH / 2) + offsetX, (HEIGHT / 2) + offsetY, (HEIGHT - 4) - movingWaveAmount, (HEIGHT - 4) - movingWaveAmount);
         p.stroke(random.nextInt(255), random.nextInt(255), random.nextInt(255));
         p.ellipse((WIDTH / 2) + offsetX, (HEIGHT / 2) + offsetY, (HEIGHT - 4) + movingWaveAmount, (HEIGHT - 4) + movingWaveAmount);
+    }
+
+    private void playBinauralSound() {
+        if (!playingSound && movingWaveAmount > 0) {
+            playingSound = true;
+            (new Thread() {
+                public void run() {
+                    binaural.play(3);
+                    playingSound = false;
+                }
+            }).start();
+        }
     }
 
     private void lineAngle(int x, int y, float angle, float length) {
