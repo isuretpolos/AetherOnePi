@@ -316,6 +316,12 @@ public class AnalysisService {
             }
         }
 
+        for (String remedy : otherRemediesClinicalSymptoms.keySet()) {
+            if (!otherRemediesClinicalSymptoms2.containsKey(remedy)) {
+                otherRemediesClinicalSymptoms2.put(remedy, new ArrayList<>());
+            }
+        }
+
         List<String> clinicalSymptomsInCommon = new ArrayList<>();
 
 
