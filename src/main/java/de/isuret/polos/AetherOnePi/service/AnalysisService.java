@@ -1,5 +1,8 @@
 package de.isuret.polos.AetherOnePi.service;
 
+import static j2html.TagCreator.*;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
@@ -8,10 +11,14 @@ import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
 import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
 import de.isuret.polos.AetherOnePi.utils.RateUtils;
+import j2html.tags.ContainerTag;
 import lombok.Setter;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 @Service
@@ -29,6 +36,17 @@ public class AnalysisService {
 
     @Setter
     private Integer maxValue = 100;
+
+    private ClarkeMateriaMedica clarkeMateriaMedica;
+
+    public AnalysisService() {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            clarkeMateriaMedica = objectMapper.readValue(new File("data/radionics/HOMEOPATHY/clarkeMateriaMedica.json"), ClarkeMateriaMedica.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public AnalysisResult analyseRateList(Iterable<Rate> rates) {
 
@@ -117,15 +135,15 @@ public class AnalysisService {
             for (RateObject rateObject : sortedResult.getRateObjects()) {
 
                 rateObject.setPotency(analyzePotency());
-                Map<Integer,Integer> levels = new HashMap<>();
+                Map<Integer, Integer> levels = new HashMap<>();
 
-                for (int i=1; i<13; i++) {
-                    levels.put(i,0);
+                for (int i = 1; i < 13; i++) {
+                    levels.put(i, 0);
                 }
 
-                for (int x=0; x<100; x++) {
+                for (int x = 0; x < 100; x++) {
 
-                    Integer level = hotbitsClient.getInteger(1,12);
+                    Integer level = hotbitsClient.getInteger(1, 12);
                     Integer value = levels.get(level);
 
                     if (hotbitsClient.getBoolean()) {
@@ -157,6 +175,7 @@ public class AnalysisService {
 
     /**
      * Shuffle the rate list once before using it, so there is no "order" which could form a typical bell curve
+     *
      * @param rateList
      * @return
      */
@@ -171,25 +190,25 @@ public class AnalysisService {
     }
 
     public Integer checkGeneralVitality() {
-        Map<Integer,Integer> vitalityMap = new HashMap<>();
+        Map<Integer, Integer> vitalityMap = new HashMap<>();
 
-        for (int x=0; x<101; x++) {
+        for (int x = 0; x < 101; x++) {
 
-            vitalityMap.put(x,0);
+            vitalityMap.put(x, 0);
         }
 
-        for (int x=0; x<3456; x++) {
+        for (int x = 0; x < 3456; x++) {
 
-            Integer key = hotbitsClient.getInteger(0,100);
+            Integer key = hotbitsClient.getInteger(0, 100);
             Integer value = vitalityMap.get(key).intValue() + 1;
-            
-            vitalityMap.put(key,value);
+
+            vitalityMap.put(key, value);
         }
 
         List<VitalityObject> vitalityList = new ArrayList<>();
 
-        for (int x=0; x<101; x++) {
-            vitalityList.add(new VitalityObject(x,vitalityMap.get(x)));
+        for (int x = 0; x < 101; x++) {
+            vitalityList.add(new VitalityObject(x, vitalityMap.get(x)));
         }
 
         Collections.sort(vitalityList, new Comparator<VitalityObject>() {
@@ -221,31 +240,31 @@ public class AnalysisService {
 
     public String analyzePotency() {
 
-        final String potencyType [] = {"D","C","LM","Q","FLUX"};
-        final Integer potencyStrengthD [] = {0,1,3,4,6,12,30,200};
-        final Integer potencyStrengthC_OR_FLUX [] = {0,1,3,6,12,30,200,1000,10000,50000,100000,1000000};
+        final String potencyType[] = {"D", "C", "LM", "Q", "FLUX"};
+        final Integer potencyStrengthD[] = {0, 1, 3, 4, 6, 12, 30, 200};
+        final Integer potencyStrengthC_OR_FLUX[] = {0, 1, 3, 6, 12, 30, 200, 1000, 10000, 50000, 100000, 1000000};
         List<Potency> potencies = new ArrayList<>();
-        Map<Integer,Integer> potencyChoice = new HashMap<>();
+        Map<Integer, Integer> potencyChoice = new HashMap<>();
 
-        for (int x=0; x<100; x++) {
+        for (int x = 0; x < 100; x++) {
             Potency potency = new Potency();
-            potency.setPotencyType(potencyType[hotbitsClient.getInteger(0,potencyType.length - 1)]);
+            potency.setPotencyType(potencyType[hotbitsClient.getInteger(0, potencyType.length - 1)]);
 
             if (potency.getPotencyType().equals("D")) {
-                potency.setPotencyStrength(potencyStrengthD[hotbitsClient.getInteger(0,potencyStrengthD.length - 1)]);
+                potency.setPotencyStrength(potencyStrengthD[hotbitsClient.getInteger(0, potencyStrengthD.length - 1)]);
             } else if (potency.getPotencyType().equals("C") || potency.getPotencyType().equals("FLUX")) {
-                potency.setPotencyStrength(potencyStrengthC_OR_FLUX[hotbitsClient.getInteger(0,potencyStrengthC_OR_FLUX.length - 1)]);
+                potency.setPotencyStrength(potencyStrengthC_OR_FLUX[hotbitsClient.getInteger(0, potencyStrengthC_OR_FLUX.length - 1)]);
             } else {
-                potency.setPotencyStrength(hotbitsClient.getInteger(1,30));
+                potency.setPotencyStrength(hotbitsClient.getInteger(1, 30));
             }
 
-            potencyChoice.put(x,0);
+            potencyChoice.put(x, 0);
             potencies.add(potency);
         }
 
         while (true) {
 
-            int pos = hotbitsClient.getInteger(0,99);
+            int pos = hotbitsClient.getInteger(0, 99);
             Integer strength = potencyChoice.get(pos);
             strength += 1;
 
@@ -255,5 +274,89 @@ public class AnalysisService {
 
             potencyChoice.put(pos, strength);
         }
+    }
+
+    public File analyzeClarke(String nameOrRate, AnalysisResult analysisResult) {
+
+        List<String> clinicalSymptoms = new ArrayList<>();
+        Map<String, List<Symptom2Remedies>> otherRemediesClinicalSymptoms = new HashMap<>();
+        Map<String, List<Symptom2Remedies>> otherRemediesClinicalSymptoms2 = new HashMap<>();
+
+        for (Symptom2Remedies symptom2Remedies : clarkeMateriaMedica.getClinicalSymptoms()) {
+            // collect the clinical symptoms for the one remedy
+            if (symptom2Remedies.getRemedies().contains(nameOrRate)) {
+
+                clinicalSymptoms.add(symptom2Remedies.getSymptom());
+                // additionally collect the same symptom for the other remedies in the analysis
+                for (RateObject rateObject : analysisResult.getRateObjects()) {
+                    if (nameOrRate.equals(rateObject.getNameOrRate())) continue;
+                    if (symptom2Remedies.getRemedies().contains(rateObject.getNameOrRate())) {
+                        if (otherRemediesClinicalSymptoms.containsKey(rateObject.getNameOrRate())) {
+                            otherRemediesClinicalSymptoms.get(rateObject.getNameOrRate()).add(symptom2Remedies);
+                        } else {
+                            List<Symptom2Remedies> symptoms = new ArrayList<>();
+                            symptoms.add(symptom2Remedies);
+                            otherRemediesClinicalSymptoms.put(rateObject.getNameOrRate(), symptoms);
+                        }
+                    }
+                }
+            } else {
+                // and the symptoms of the other remedies that they do not have in common
+                for (RateObject rateObject : analysisResult.getRateObjects()) {
+                    if (symptom2Remedies.getRemedies().contains(rateObject.getNameOrRate())) {
+                        if (otherRemediesClinicalSymptoms2.containsKey(rateObject.getNameOrRate())) {
+                            otherRemediesClinicalSymptoms2.get(rateObject.getNameOrRate()).add(symptom2Remedies);
+                        } else {
+                            List<Symptom2Remedies> symptoms = new ArrayList<>();
+                            symptoms.add(symptom2Remedies);
+                            otherRemediesClinicalSymptoms2.put(rateObject.getNameOrRate(), symptoms);
+                        }
+                    }
+                }
+            }
+        }
+
+        List<String> clinicalSymptomsInCommon = new ArrayList<>();
+
+
+        String htmlString = html(
+                head(
+                        title("Clinical Materia Medica - " + nameOrRate),
+                        link().withRel("stylesheet").withHref("https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css")
+                ),
+                body(
+                        div(attrs(".container"),
+                                h1("== " + nameOrRate + " =="),
+                                h3("Clinical symptoms"),
+                                div(attrs(".alert .alert-secondary"),
+                                        clinicalSymptoms.stream().map(
+                                                symptom -> span(attrs(".badge .bg-success"), text(symptom))
+                                        ).toArray(ContainerTag[]::new)
+                                ),
+                                h3("Compare"),
+                                p("Other remedies that have the clinical symptoms in common:"),
+                                div(otherRemediesClinicalSymptoms.keySet().stream().map(
+                                        remedy -> div(attrs(".alert .alert-secondary"),
+                                                h4(remedy),
+                                                div(otherRemediesClinicalSymptoms.get(remedy).stream().map(
+                                                        symptom2Remedies -> span(attrs(".badge .bg-success"), text(symptom2Remedies.getSymptom()))
+                                                ).toArray(ContainerTag[]::new)),
+                                                div(otherRemediesClinicalSymptoms2.get(remedy).stream().map(
+                                                        symptom2Remedies -> span(attrs(".badge .bg-dark"), text(symptom2Remedies.getSymptom()))
+                                                ).toArray(ContainerTag[]::new))
+                                        )
+                                ).toArray(ContainerTag[]::new))
+                        )
+                )
+        ).renderFormatted();
+
+        new File("logs").mkdir();
+        File file = new File("logs/" + nameOrRate.replaceAll(" ", "") + ".html");
+        try {
+            FileUtils.writeStringToFile(file, htmlString, "UTF-8");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return file;
     }
 }

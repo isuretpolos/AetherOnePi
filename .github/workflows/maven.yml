@@ -40,5 +40,5 @@ jobs:
           cp start*.bat aetherOnePi/beta/release/;
       - uses: actions/upload-artifact@master
         with:
-          name: AetherOnePi-1.2.2
+          name: AetherOnePi-1.2.3
           path: aetherOnePi/beta/release

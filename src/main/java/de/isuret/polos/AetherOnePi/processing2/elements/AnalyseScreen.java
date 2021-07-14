@@ -9,6 +9,7 @@ import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -16,6 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
@@ -158,11 +160,19 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                     p.text("GOOGLE", 1085, y - 2);
                 }
 
+                if (p.getSelectedDatabase().toLowerCase().contains("clarke")) {
+                    p.fill(120, 170, 252);
+                    p.rect(1150, y - 15, 60, 15);
+                    p.fill(0);
+                    p.stroke(255);
+                    p.text("CLARKE", 1155, y - 2);
+                }
+
                 //MOUSELINE
-                if (p.mouseY >= y - 18 && p.mouseY < y && p.mouseX < 1200) { //de breedde van de muis bij klikken
+                if (p.mouseY >= y - 18 && p.mouseY < y && p.mouseX < 1200) {
                     p.noStroke();
                     p.fill(10, 255, 10, 40);
-                    p.rect(33, y - 16, 1160, 18);
+                    p.rect(33, y - 16, 1190, 18);
 
                     if (mouseClickOccurred) {
                         mouseClickOccurred = false;
@@ -360,6 +370,18 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
         if (browserSupported && (p.mouseButton == p.RIGHT || (p.mouseX >= 1080 && p.mouseX < 1145))) {
             openUrl("https://www.google.com/search?q=" + rate.getNameOrRate().replaceAll(" ", "+"));
+        }
+
+        if (p.mouseButton == p.RIGHT || (p.mouseX >= 1150 && p.mouseX < 1210)) {
+            openFile(p.getAnalyseService().analyzeClarke(rate.getNameOrRate(), p.getAnalysisResult()));
+        }
+    }
+
+    public void openFile(File file) {
+        try {
+            Desktop.getDesktop().browse(file.toURI());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
