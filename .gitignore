@@ -41,3 +41,4 @@ temporaryDashboardText.txt
 /src/main/resources/static/
 /cards/
 /sounds/wave_F.mp3
+/logs/**.html

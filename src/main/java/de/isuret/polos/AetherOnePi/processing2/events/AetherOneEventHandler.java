@@ -80,8 +80,13 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("COMMUNITY".equals(name)) {
+        if (AetherOneConstants.COMMUNITY.equals(name)) {
             openWebsiteInDefaultBrowser("https://vk.com/aetherone");
+            return;
+        }
+
+        if (AetherOneConstants.REDDIT.equals(name)) {
+            openWebsiteInDefaultBrowser("https://www.reddit.com/r/digitalradionics/");
             return;
         }
 

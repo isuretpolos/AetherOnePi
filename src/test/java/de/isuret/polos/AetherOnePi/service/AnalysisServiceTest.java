@@ -14,6 +14,19 @@ import java.util.List;
 public class AnalysisServiceTest {
 
     @Test
+    public void testClarkeAnalysis() {
+        AnalysisService analysisService = new AnalysisService();
+        AnalysisResult analysisResult = new AnalysisResult();
+        RateObject rateObjectCina = new RateObject();
+        rateObjectCina.setNameOrRate("Cina");
+        analysisResult.getRateObjects().add(rateObjectCina);
+        RateObject rateObjectAntimon = new RateObject();
+        rateObjectAntimon.setNameOrRate("Antimonium Tartaricum");
+        analysisResult.getRateObjects().add(rateObjectAntimon);
+        analysisService.analyzeClarke("Cina",analysisResult);
+    }
+
+    @Test
     public void testAnalysisService() throws IOException {
         AnalysisService analysisService = new AnalysisService();
         analysisService.setHotbitsClient(new HotbitsClient());

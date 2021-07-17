@@ -26,6 +26,7 @@ Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 - 2020-12-23 Level analysis  
 - 2021-05-16 Auto Broadcasting Mode
 - 2021-07-12 Binaural sounds when rate resonates during broadcast, some minor adjustments and improvements
+- 2021-07-14 Clinical symptoms comparing with the entire result (only for Clarke Materia Medica)
 
 # Resources
 ## Documentation

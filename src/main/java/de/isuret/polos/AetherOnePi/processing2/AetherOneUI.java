@@ -2,10 +2,7 @@ package de.isuret.polos.AetherOnePi.processing2;
 
 import controlP5.ControlEvent;
 import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
-import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
-import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
-import de.isuret.polos.AetherOnePi.domain.Case;
-import de.isuret.polos.AetherOnePi.domain.RateObject;
+import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
@@ -219,6 +216,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addButton(AetherOneConstants.DOCUMENTATION)
                 .addButton(AetherOneConstants.WEBSITE)
+                .addButton(AetherOneConstants.REDDIT)
                 .addButton(AetherOneConstants.BOOKS)
                 .addButton(AetherOneConstants.COMMUNITY)
                 .addButton(AetherOneConstants.GITHUB)
