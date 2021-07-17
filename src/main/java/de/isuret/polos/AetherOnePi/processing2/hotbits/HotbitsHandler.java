@@ -218,9 +218,13 @@ public class HotbitsHandler implements IHotbitsClient {
 
     @Override
     public int getInteger(int bound) {
-        if (hotbits != null && hotbits.size() > 0) {
-            return new Random(hotbits.remove(0)).nextInt(bound);
-        } else {
+        try {
+            if (hotbits != null && hotbits.size() > 0) {
+                return new Random(hotbits.remove(0)).nextInt(bound);
+            } else {
+                return new SecureRandom().nextInt(bound);
+            }
+        } catch (Exception e) {
             return new SecureRandom().nextInt(bound);
         }
     }

@@ -216,6 +216,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addButton(AetherOneConstants.DOCUMENTATION)
                 .addButton(AetherOneConstants.WEBSITE)
+                .addButton(AetherOneConstants.REDDIT)
                 .addButton(AetherOneConstants.BOOKS)
                 .addButton(AetherOneConstants.COMMUNITY)
                 .addButton(AetherOneConstants.GITHUB)

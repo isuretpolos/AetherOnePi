@@ -76,4 +76,5 @@ public class AetherOneConstants {
     public static final String BROADCAST_MIX = "BROADCAST MIX";
     public static final String BROADCAST_AUTO_ON = "AUTO MODE ON";
     public static final String BROADCAST_AUTO_OFF = "AUTO MODE OFF";
+    public static final String REDDIT = "REDDIT";
 }

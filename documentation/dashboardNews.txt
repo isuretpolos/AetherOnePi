@@ -1,7 +1,6 @@
 Welcome to AetherOnePi, a open source radionics project!
 
-The most current version is the 1.2.0 with a new feature:
-- Broadcast Mix Button
+The most current version is the 1.2.3 with a lots of new features!
 
 Read the documentation by clicking on the button "DOCUMENTATION".
 Else join the VK community if you have questions and if
@@ -9,3 +8,5 @@ you want to contribute with your experience to the open source
 project.
 
 There is also a new blog on radionics in German.
+
+A free book is currently in the works!
