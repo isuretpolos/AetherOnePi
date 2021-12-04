@@ -37,6 +37,12 @@ public class AetherOneConstants {
     public static final String SECONDS = "SECONDS";
     public static final String DEFAULT = "default";
     public static final String PI = "PI";
+    public static final String WEBCAM_LIST_SHOW = "SHOW WEBCAMS";
+    public static final String WEBCAM_SET = "SET WEBCAM";
+    public static final String WEBCAM_ACQUIRE_HOTBITS = "GET HOTBITS";
+    public static final String WEBCAM_ACQUIRE_HOTBITS_STOP = "STOP HOTBITS";
+    public static final String WEBCAM_SHOW_IMAGE = "SHOW IMAGE";
+    public static final String WEBCAM_NUMBER = "WEBCAM[n]";
     public static final String BROADCASTING = "BROADCASTING";
     public static final String CLEARING = "CLEARING";
     public static final String COPYING = "COPYING";

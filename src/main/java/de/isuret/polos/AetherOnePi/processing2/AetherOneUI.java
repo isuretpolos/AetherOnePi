@@ -1,8 +1,12 @@
 package de.isuret.polos.AetherOnePi.processing2;
 
+import com.github.sarxos.webcam.Webcam;
 import controlP5.ControlEvent;
 import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
-import de.isuret.polos.AetherOnePi.domain.*;
+import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
+import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
+import de.isuret.polos.AetherOnePi.domain.Case;
+import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
@@ -27,11 +31,11 @@ import processing.core.PImage;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 import java.util.List;
 
 @Getter
@@ -47,6 +51,21 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     private AetherOnePiClient piClient;
     private IHotbitsClient hotbitsClient;
     private HotbitsHandler hotbitsHandler;
+    @Getter
+    @Setter
+    private boolean hotbitsFromWebCamAcquiring = false;
+    @Getter
+    @Setter
+    private Webcam webcam = null;
+    @Getter
+    private List<Webcam> webcamList;
+    @Getter
+    private BufferedImage webcamImage;
+    @Getter
+    @Setter
+    private Integer webCamNumber;
+    @Getter
+    private Integer countPackages = 0;
     @Getter
     private AnalysisService analyseService;
     private DataService dataService = new DataService();
@@ -87,6 +106,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     @Getter
     @Setter
+    private PImage clipBoardImage;
+
+    @Getter
+    @Setter
     private List<RateObject> resonatedList = new ArrayList<>();
 
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
@@ -123,6 +146,15 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
             }
         }).start();
 
+    }
+
+    public void initWebcamsList() {
+        try {
+            logger.info("Get list of Webcams ...");
+            webcamList = Webcam.getWebcams();
+        } catch (Exception e) {
+            logger.error("Error searching webcam(s)",e);
+        }
     }
 
     public Integer checkPercentage() {
@@ -209,6 +241,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addTab(AetherOneConstants.RATES)
                 .addTab(AetherOneConstants.PEGGOTTY)
                 .addTab(AetherOneConstants.AREA)
+                .addTab(AetherOneConstants.HOTBITS)
                 .addTab(AetherOneConstants.BROADCAST);
 
         guiElements
@@ -279,7 +312,8 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton(AetherOneConstants.LOAD_AREA)
                 .addButton(AetherOneConstants.CLEAR_AREA)
                 .addButton(AetherOneConstants.SCAN_FOR_TARGET)
-                .addButton(AetherOneConstants.AGRICULTURE);
+                .addButton(AetherOneConstants.AGRICULTURE)
+                .addAreaScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.IMAGE)
                 .setInitialBounds(border, posY, 150f, 14f, false)
@@ -295,6 +329,17 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .selectCurrentTab(AetherOneConstants.RATES)
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addRatesScreen();
+        guiElements
+                .selectCurrentTab(AetherOneConstants.HOTBITS)
+                .setInitialBounds(border, posY, 150f, 14f, false)
+                .addButton(AetherOneConstants.WEBCAM_LIST_SHOW)
+                .addButton(AetherOneConstants.WEBCAM_SET)
+                .addButton(AetherOneConstants.WEBCAM_ACQUIRE_HOTBITS)
+                .addButton(AetherOneConstants.WEBCAM_ACQUIRE_HOTBITS_STOP)
+                .addButton(AetherOneConstants.WEBCAM_SHOW_IMAGE)
+                .setInitialBounds(border, posY + 24, 150f, 14f, true)
+                .addTextfield(AetherOneConstants.WEBCAM_NUMBER)
+                .addHotbitsScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.BROADCAST)
                 .setInitialBounds(border, posY, 150f, 14f, false)
@@ -325,7 +370,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         guiElements.addDrawableElement(new DashboardElement(this));
         guiElements.setCurrentTab(AetherOneConstants.DEFAULT);
 
-        setTitle("AetherOneUI - New Case ... enter name and description");
+        setTitle("AetherOnePI - New Case ... enter name and description");
 
         try {
             createTrayIcon();
@@ -449,4 +494,105 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         return popup;
     }
 
+    public void startWebCamHotbitAcquire() {
+
+        webcam = webcamList.get(webCamNumber);
+        webcam.setViewSize(webcam.getViewSizes()[0]);
+
+        if (webcam.open()) {
+
+            (new Thread() {
+                public void run() {
+
+                    File hotbitsFolder = new File("hotbits");
+                    countPackages = hotbitsFolder.listFiles().length;
+
+                    final int screen_width = webcam.getViewSize().width;
+                    final int screen_height = webcam.getViewSize().height;
+                    final int HOW_MANY_FILES = 20000;
+                    final int HOW_MANY_INTEGERS_PER_PACKAGES = 10000;
+                    final int pixelArraySize = screen_width * screen_height;
+                    Integer lastPixelArray [] = new Integer[pixelArraySize];
+                    String bits = "";
+                    Integer countIntegers = 0;
+                    Random random = null;
+                    String integerList = "{\"integerList\":[";
+                    hotbitsFromWebCamAcquiring = true;
+                    
+                    while (countPackages < HOW_MANY_FILES && hotbitsFromWebCamAcquiring) {
+
+                        if (webcam == null) return;
+                        webcamImage = webcam.getImage();
+                        if (webcamImage == null) return;
+                        byte[] pixels = ((DataBufferByte) webcamImage.getRaster().getDataBuffer()).getData();
+
+                        for (int i = 0; i < pixelArraySize; i++) {
+                            int currentColor = pixels[i];
+
+                            if (lastPixelArray[i] == null) {
+                                lastPixelArray[i] = currentColor;
+                            }
+
+                            int lastPixelColor = lastPixelArray[i];
+
+                            if (currentColor > lastPixelColor) {
+                                bits += "1";
+                            } else if (currentColor < lastPixelColor) {
+                                bits += "0";
+                            } else {
+                                continue;
+                            }
+
+                            if (bits.length() >= 24) {
+                                Integer randomInt = Integer.parseInt(bits, 2);
+                                random = new Random(randomInt);
+
+                                randomInt += random.nextInt(10000);
+
+                                if (countIntegers > 0) integerList += ",";
+                                integerList += randomInt.toString();
+                                bits = "";
+                                countIntegers++;
+
+                                if (countIntegers >= HOW_MANY_INTEGERS_PER_PACKAGES) {
+                                    countPackages++;
+                                    countIntegers = 0;
+                                    String textArray[] = new String[1];
+                                    integerList += "]}";
+                                    textArray[0] = integerList;
+                                    saveStrings("hotbits/hotbits_" + Calendar.getInstance().getTimeInMillis() + ".json", textArray);
+
+                                    integerList = "{\"integerList\":[";
+                                }
+                            }
+                        }
+                    }
+
+                    webcam.close();
+                    webcam = null;
+                    hotbitsFromWebCamAcquiring = false;
+                }
+            }).start();
+            
+        }
+    }
+
+    public void showWebCamImage() {
+
+        webcam = webcamList.get(webCamNumber);
+        webcam.setViewSize(webcam.getViewSizes()[0]);
+
+        if (webcam.open()) {
+
+            (new Thread() {
+                public void run() {
+
+                    while (webcam != null) {
+                        webcamImage = webcam.getImage();
+                        if (webcamImage == null) return;
+                    }
+                }
+            }).start();
+        }
+    }
 }

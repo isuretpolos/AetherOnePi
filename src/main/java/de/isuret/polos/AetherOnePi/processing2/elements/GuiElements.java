@@ -589,4 +589,14 @@ public class GuiElements {
         drawableElementList.add(cardScreen);
         return this;
     }
+
+    public GuiElements addAreaScreen() {
+        drawableElementList.add(new AreaScreen(p));
+        return this;
+    }
+
+    public GuiElements addHotbitsScreen() {
+        drawableElementList.add(new HotbitsScreen(p));
+        return this;
+    }
 }

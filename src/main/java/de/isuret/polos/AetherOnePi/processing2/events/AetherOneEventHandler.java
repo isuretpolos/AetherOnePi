@@ -19,11 +19,11 @@ import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
 import de.isuret.polos.AetherOnePi.utils.cards.CardMaker;
 import de.isuret.polos.AetherOnePi.utils.cards.RadionicLine;
-import lombok.Getter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.StringUtils;
+import processing.core.PImage;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -37,12 +37,13 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
 public class AetherOneEventHandler implements KeyPressedObserver {
 
     private Log log = LogFactory.getLog(AetherOneEventHandler.class);
+    private Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
     private AetherOneUI p;
     private DataService dataService = new DataService();
@@ -222,6 +223,61 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         if (AetherOneConstants.GROUNDING.equals(name)) {
             grounding();
+            return;
+        }
+
+        if (AetherOneConstants.WEBCAM_LIST_SHOW.equals(name)) {
+            p.initWebcamsList();
+            return;
+        }
+
+        if (AetherOneConstants.WEBCAM_SET.equals(name)) {
+            try {
+                String webCamNumber = ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.WEBCAM_NUMBER)).getText();
+                p.setWebCamNumber(Integer.parseInt(webCamNumber));
+            } catch (Exception e) {
+                log.error("Error setting the webcam number");
+            }
+            return;
+        }
+
+        if (AetherOneConstants.WEBCAM_ACQUIRE_HOTBITS.equals(name)) {
+            p.startWebCamHotbitAcquire();
+            return;
+        }
+
+        if (AetherOneConstants.WEBCAM_ACQUIRE_HOTBITS_STOP.equals(name)) {
+            p.setHotbitsFromWebCamAcquiring(false);
+            return;
+        }
+
+        if (AetherOneConstants.WEBCAM_SHOW_IMAGE.equals(name)) {
+            if (p.getWebcam() != null) {
+                p.getWebcam().close();
+                p.setWebcam(null);
+            } else {
+                p.showWebCamImage();
+            }
+            return;
+        }
+
+        if (AetherOneConstants.PASTE_AREA.equals(name)) {
+            Transferable clipData = clipboard.getContents(clipboard);
+            if (clipData != null) {
+                if (clipData.isDataFlavorSupported(DataFlavor.imageFlavor)) {
+                    try {
+                        PImage image = new PImage((Image) clipData.getTransferData(clipData.getTransferDataFlavors()[0]));
+                        p.setClipBoardImage(image.copy());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            return;
+        }
+
+        if (AetherOneConstants.CLEAR_AREA.equals(name)) {
+            p.setClipBoardImage(null);
             return;
         }
 

@@ -225,6 +225,7 @@ public class HotbitsHandler implements IHotbitsClient {
                 return new SecureRandom().nextInt(bound);
             }
         } catch (Exception e) {
+            e.printStackTrace();
             return new SecureRandom().nextInt(bound);
         }
     }
