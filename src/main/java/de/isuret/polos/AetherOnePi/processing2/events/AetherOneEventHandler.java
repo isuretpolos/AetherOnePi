@@ -132,7 +132,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                 c.setName(((Textfield) p.getGuiElements().getCp5().get("NAME")).getText());
                 c.setDescription(((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).getText());
                 dataService.saveCase(c);
-                p.setTitle("AetherOneUI - " + c.getName());
+                p.setTitle(AetherOneConstants.TITLE + p.getTitleAffix() + " - " +  c.getName());
                 p.setCaseObject(c);
             } catch (IOException e) {
                 log.error("Error saving case to file", e);
@@ -540,7 +540,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             Session session = new Session();
             session.setCreated(Calendar.getInstance());
             c.getSessionList().add(session);
-            p.setTitle("AetherOneUI - " + c.getName());
+            p.setTitle(AetherOneConstants.TITLE + p.getTitleAffix() + " - " + c.getName());
             p.setCaseObject(c);
             ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText(c.getName());
             ((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).setText(c.getDescription());
@@ -652,7 +652,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         p.setAnalysisPointer(null);
         p.setCaseObject(new Case());
         p.getResonatedList().clear();
-        p.setTitle("AetherOneUI - New Case ... enter name and description");
+        p.setTitle(AetherOneConstants.TITLE + p.getTitleAffix() + " - New Case ... enter name and description");
         ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText("");
         ((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).setText("");
         ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText("");

@@ -24,6 +24,7 @@ import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import processing.core.PApplet;
@@ -41,6 +42,8 @@ import java.util.List;
 @Getter
 public class AetherOneUI extends PApplet implements IStatusReceiver {
 
+    @Getter
+    private String titleAffix = "";
     @Getter
     private Settings settings;
     private Settings guiConf;
@@ -119,6 +122,16 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     }
 
     public void settings() {
+
+        try {
+            titleAffix = " " + new File(FilenameUtils.getFullPathNoEndSeparator(new File(".").getAbsolutePath())).getName();
+            if (titleAffix.toLowerCase().contains("aether")) {
+                logger.info("Seems that the parent folder has no meaningful name ;)");
+                titleAffix = "";
+            }
+        } catch (Exception e) {
+            logger.error("Error reading the parent folder name", e);
+        }
 
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
         settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
@@ -370,7 +383,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         guiElements.addDrawableElement(new DashboardElement(this));
         guiElements.setCurrentTab(AetherOneConstants.DEFAULT);
 
-        setTitle("AetherOnePI - New Case ... enter name and description");
+        setTitle(AetherOneConstants.TITLE + titleAffix + " - New Case ... enter name and description");
 
         try {
             createTrayIcon();
