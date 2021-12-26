@@ -210,7 +210,15 @@ public class HotbitsHandler implements IHotbitsClient {
     @Override
     public boolean getBoolean() {
         if (hotbits != null && hotbits.size() > 0) {
-            return new Random(hotbits.remove(0)).nextBoolean();
+            try {
+                return new Random(hotbits.remove(0)).nextBoolean();
+            } catch (Exception e) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException ignored) { }
+                return new SecureRandom().nextBoolean();
+            }
+
         } else {
             return new SecureRandom().nextBoolean();
         }
@@ -218,22 +226,20 @@ public class HotbitsHandler implements IHotbitsClient {
 
     @Override
     public int getInteger(int bound) {
-        try {
-            if (hotbits != null && hotbits.size() > 0) {
-                return new Random(hotbits.remove(0)).nextInt(bound);
-            } else {
-                return new SecureRandom().nextInt(bound);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new SecureRandom().nextInt(bound);
-        }
+        return getInteger(0, bound);
     }
 
     @Override
     public int getInteger(Integer min, Integer max) {
         if (hotbits != null && hotbits.size() > 0) {
-            return new Random(hotbits.remove(0)).nextInt((max - min) + 1) + min;
+            try {
+                return new Random(hotbits.remove(0)).nextInt((max - min) + 1) + min;
+            } catch (Exception e) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException ignored) { }
+                return new SecureRandom().nextInt((max - min) + 1) + min;
+            }
         } else {
             return new SecureRandom().nextInt((max - min) + 1) + min;
         }

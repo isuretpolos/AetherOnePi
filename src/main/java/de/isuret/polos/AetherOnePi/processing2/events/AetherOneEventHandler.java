@@ -91,8 +91,13 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("YOUTUBE".equals(name)) {
+        if (AetherOneConstants.YOUTUBE.equals(name)) {
             openWebsiteInDefaultBrowser("https://www.youtube.com/channel/UCFVTNpzycFUoF4h0CbRS92Q");
+            return;
+        }
+
+        if (AetherOneConstants.TWITTER.equals(name)) {
+            openWebsiteInDefaultBrowser("https://twitter.com/IsuretP");
             return;
         }
 

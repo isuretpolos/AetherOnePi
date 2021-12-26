@@ -70,6 +70,7 @@ public class AetherOneConstants {
     public static final String COMMUNITY = "COMMUNITY";
     public static final String GITHUB = "GITHUB";
     public static final String YOUTUBE = "YOUTUBE";
+    public static final String TWITTER = "TWITTER";
     public static final String ANALYZE_IMAGE = "ANALYZE IMAGE";
     public static final String ESSENTIAL_QUESTIONS = "ESSENTIAL QUESTIONS";
     public static final String CARD = "CARD";

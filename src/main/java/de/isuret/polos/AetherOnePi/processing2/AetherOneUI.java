@@ -259,7 +259,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
         guiElements
                 .selectCurrentTab(AetherOneConstants.DEFAULT)
-                .setInitialBounds(border, posY, 150f, 14f, false)
+                .setInitialBounds(border, posY, 140f, 14f, false)
                 .addButton(AetherOneConstants.DOCUMENTATION)
                 .addButton(AetherOneConstants.WEBSITE)
                 .addButton(AetherOneConstants.REDDIT)
@@ -267,6 +267,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton(AetherOneConstants.COMMUNITY)
                 .addButton(AetherOneConstants.GITHUB)
                 .addButton(AetherOneConstants.YOUTUBE)
+                .addButton(AetherOneConstants.TWITTER)
                 .addDashboardScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.SESSION)
