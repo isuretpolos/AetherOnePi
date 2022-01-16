@@ -24,6 +24,7 @@ import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import processing.core.PApplet;
@@ -41,6 +42,8 @@ import java.util.List;
 @Getter
 public class AetherOneUI extends PApplet implements IStatusReceiver {
 
+    @Getter
+    private String titleAffix = "";
     @Getter
     private Settings settings;
     private Settings guiConf;
@@ -119,6 +122,16 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     }
 
     public void settings() {
+
+        try {
+            titleAffix = " " + new File(FilenameUtils.getFullPathNoEndSeparator(new File(".").getAbsolutePath())).getName();
+            if (titleAffix.toLowerCase().contains("aether")) {
+                logger.info("Seems that the parent folder has no meaningful name ;)");
+                titleAffix = "";
+            }
+        } catch (Exception e) {
+            logger.error("Error reading the parent folder name", e);
+        }
 
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
         settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
@@ -246,7 +259,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
         guiElements
                 .selectCurrentTab(AetherOneConstants.DEFAULT)
-                .setInitialBounds(border, posY, 150f, 14f, false)
+                .setInitialBounds(border, posY, 140f, 14f, false)
                 .addButton(AetherOneConstants.DOCUMENTATION)
                 .addButton(AetherOneConstants.WEBSITE)
                 .addButton(AetherOneConstants.REDDIT)
@@ -254,6 +267,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton(AetherOneConstants.COMMUNITY)
                 .addButton(AetherOneConstants.GITHUB)
                 .addButton(AetherOneConstants.YOUTUBE)
+                .addButton(AetherOneConstants.TWITTER)
                 .addDashboardScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.SESSION)
@@ -370,7 +384,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         guiElements.addDrawableElement(new DashboardElement(this));
         guiElements.setCurrentTab(AetherOneConstants.DEFAULT);
 
-        setTitle("AetherOnePI - New Case ... enter name and description");
+        setTitle(AetherOneConstants.TITLE + titleAffix + " - New Case ... enter name and description");
 
         try {
             createTrayIcon();
@@ -516,9 +530,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                     String bits = "";
                     Integer countIntegers = 0;
                     Random random = null;
-                    String integerList = "{\"integerList\":[";
+                    List<Integer> integerList = new ArrayList<>();
                     hotbitsFromWebCamAcquiring = true;
-                    
+
                     while (countPackages < HOW_MANY_FILES && hotbitsFromWebCamAcquiring) {
 
                         if (webcam == null) return;
@@ -547,22 +561,29 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                                 Integer randomInt = Integer.parseInt(bits, 2);
                                 random = new Random(randomInt);
 
-                                randomInt += random.nextInt(10000);
+                                randomInt += random.nextInt(100000);
 
-                                if (countIntegers > 0) integerList += ",";
-                                integerList += randomInt.toString();
+                                if (!integerList.contains(randomInt)) {
+                                    integerList.add(randomInt);
+                                }
+
                                 bits = "";
                                 countIntegers++;
 
-                                if (countIntegers >= HOW_MANY_INTEGERS_PER_PACKAGES) {
+                                if (integerList.size() >= HOW_MANY_INTEGERS_PER_PACKAGES) {
                                     countPackages++;
                                     countIntegers = 0;
                                     String textArray[] = new String[1];
-                                    integerList += "]}";
-                                    textArray[0] = integerList;
+                                    String jsonHotbits = "";
+                                    for (Integer hotbit : integerList) {
+                                        if (jsonHotbits.length() > 1) {
+                                            jsonHotbits += ",";
+                                        }
+                                        jsonHotbits += hotbit.toString();
+                                    }
+                                    textArray[0] = "{\"integerList\":[" + jsonHotbits + "]}";
                                     saveStrings("hotbits/hotbits_" + Calendar.getInstance().getTimeInMillis() + ".json", textArray);
-
-                                    integerList = "{\"integerList\":[";
+                                    integerList.clear();
                                 }
                             }
                         }

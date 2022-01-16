@@ -1,2 +1,2 @@
-java -jar AetherOnePi-1.2.4.jar
+java -jar AetherOnePi-1.2.5.jar
 pause
