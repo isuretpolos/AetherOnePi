@@ -3,6 +3,9 @@ package de.isuret.polos.AetherOnePi.processing2.dialogs;
 import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Measurement of improbable events in realtime
  */
@@ -17,6 +20,7 @@ public class ImprobabilityMeterDialog extends PApplet {
     public static int MAX_AGE = (BOTTOM_Y - BEGIN_Y) / PIXEL_SIZE;
     private HotbitsHandler hotbitsHandler;
     private Pixel[][] pixels = new Pixel[WIDTH / PIXEL_SIZE][(BOTTOM_Y - BEGIN_Y) / PIXEL_SIZE];
+    private List<Integer> graphBar = new ArrayList<>();
 
     private class Pixel {
 
@@ -68,6 +72,7 @@ public class ImprobabilityMeterDialog extends PApplet {
         for (int x = 0; x < pixels.length; x++) {
 
             pixels[x] = new Pixel[(BOTTOM_Y - BEGIN_Y) / PIXEL_SIZE];
+            graphBar.add(0);
 
             for (int y = 0; y < pixels[x].length; y++) {
                 pixels[x][y] = null;
@@ -86,7 +91,6 @@ public class ImprobabilityMeterDialog extends PApplet {
             for (int y = pixels[x].length -1; y > -1; y--) {
 
                 Pixel pixel = pixels[x][y];
-                System.out.println(y);
                 if (pixel == null) continue;
 
                 fill(255, 255 - y * 3, 255 - y * 3);
@@ -121,6 +125,7 @@ public class ImprobabilityMeterDialog extends PApplet {
 
                 } else {
                     pixel.age += 1;
+                    pixels[x][y] = pixel;
                     if (pixel.age >= MAX_AGE) {
                         pixels[x][y] = null;
                     }
@@ -135,8 +140,23 @@ public class ImprobabilityMeterDialog extends PApplet {
         stroke(25);
         noFill();
         rect(CENTER - (pixels.length / 2) * PIXEL_SIZE, BEGIN_Y, pixels.length * PIXEL_SIZE, (pixels.length * PIXEL_SIZE) - BEGIN_Y);
+
         for (int x = 0; x < pixels.length; x++) {
             line(x * PIXEL_SIZE, BEGIN_Y, x * PIXEL_SIZE, BOTTOM_Y);
+
+            Integer graphBarValue = graphBar.get(x);
+
+            if (pixels[x][pixels[x].length-1] != null) {
+                graphBarValue += 255;
+            } else {
+                graphBarValue -= 1;
+            }
+
+            graphBar.set(x,graphBarValue);
+            if (graphBarValue < 0) graphBarValue = 1;
+            if (graphBarValue > 255) graphBarValue = 255;
+            fill(255,graphBarValue,0);
+            rect(x * PIXEL_SIZE, BOTTOM_Y + PIXEL_SIZE, PIXEL_SIZE, graphBarValue / 3);
         }
 
         for (int y = pixels[0].length - 1; y > -1; y--) {
