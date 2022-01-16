@@ -530,9 +530,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                     String bits = "";
                     Integer countIntegers = 0;
                     Random random = null;
-                    String integerList = "{\"integerList\":[";
+                    List<Integer> integerList = new ArrayList<>();
                     hotbitsFromWebCamAcquiring = true;
-                    
+
                     while (countPackages < HOW_MANY_FILES && hotbitsFromWebCamAcquiring) {
 
                         if (webcam == null) return;
@@ -561,22 +561,29 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                                 Integer randomInt = Integer.parseInt(bits, 2);
                                 random = new Random(randomInt);
 
-                                randomInt += random.nextInt(10000);
+                                randomInt += random.nextInt(100000);
 
-                                if (countIntegers > 0) integerList += ",";
-                                integerList += randomInt.toString();
+                                if (!integerList.contains(randomInt)) {
+                                    integerList.add(randomInt);
+                                }
+
                                 bits = "";
                                 countIntegers++;
 
-                                if (countIntegers >= HOW_MANY_INTEGERS_PER_PACKAGES) {
+                                if (integerList.size() >= HOW_MANY_INTEGERS_PER_PACKAGES) {
                                     countPackages++;
                                     countIntegers = 0;
                                     String textArray[] = new String[1];
-                                    integerList += "]}";
-                                    textArray[0] = integerList;
+                                    String jsonHotbits = "";
+                                    for (Integer hotbit : integerList) {
+                                        if (jsonHotbits.length() > 1) {
+                                            jsonHotbits += ",";
+                                        }
+                                        jsonHotbits += hotbit.toString();
+                                    }
+                                    textArray[0] = "{\"integerList\":[" + jsonHotbits + "]}";
                                     saveStrings("hotbits/hotbits_" + Calendar.getInstance().getTimeInMillis() + ".json", textArray);
-
-                                    integerList = "{\"integerList\":[";
+                                    integerList.clear();
                                 }
                             }
                         }
