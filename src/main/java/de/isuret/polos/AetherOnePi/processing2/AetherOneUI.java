@@ -36,8 +36,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
 @Getter
 public class AetherOneUI extends PApplet implements IStatusReceiver {

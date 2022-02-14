@@ -1,6 +1,6 @@
 Welcome to AetherOnePi, an open source radionics project!
 
-The most current version is the 1.2.5 with a lots of new features!
+The most current version is the 1.2.6 with a lots of new features!
 
 Read the documentation by clicking on the button "DOCUMENTATION".
 Else join the VK community if you have questions and if

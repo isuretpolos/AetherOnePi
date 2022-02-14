@@ -13,7 +13,6 @@ import lombok.Setter;
 import processing.core.PFont;
 import processing.core.PImage;
 
-import javax.smartcardio.Card;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -300,12 +299,16 @@ public class GuiElements {
             drawableElementList.add(broadcastElement);
         }
 
+        if (p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false)) {
+            p.fill(0,255,0);
+            p.text("DYNAMIC ADJUSTMENTS", 22,700);
+        }
+
         p.fill(255);
         p.line(200,550,200,700);
         p.line(670,550,670,700);
         p.line(200,560,670,560);
         p.text("BROADCAST QUEUE", 205,555);
-
         p.line(670,560,1070,560);
         p.text("RESONATED RATES", 675,555);
         //p.text("X: " + p.getMousePoint().x + " Y: " + p.getMousePoint().y, 20,20);
@@ -325,6 +328,9 @@ public class GuiElements {
             if (currentTab.equals(drawableElement.getAssignedTabName())
                     || "global".equals(drawableElement.getAssignedTabName())) {
 
+                /*
+                BROADCAST of the circle elements happens here
+                 */
                 if (drawableElement instanceof BroadcastElement) {
                     BroadcastElement broadcastElement = (BroadcastElement) drawableElement;
                     if (broadcastElement.isStop()) {
@@ -401,6 +407,30 @@ public class GuiElements {
             // As long the broadcast element is inside a counterCheck loop, don't display a tray message
             if (broadcastElement.isStop() == true) {
                 p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
+            }
+
+            // Dynamic adjustments happens here
+            if (p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false)) {
+
+                int gvTarget = p.getGeneralVitality();
+                int gvRate = p.checkGeneralVitalityValue();
+
+                // Check if the broadcast result has a lower general vitality then the target GV
+                if (gvRate < gvTarget) {
+
+                    int seconds = broadcastElement.getSeconds();
+
+                    // reduce the broadcast time for each cycle
+                    if (seconds > 100) {
+                        seconds = seconds - 50;
+                    }
+
+                    System.out.println(gvRate + " < " + gvTarget + " --- " + broadcastElement.getSignature());
+                    BroadcastElement reBroadcastElement = new BroadcastElement(p, "BROADCAST", seconds, broadcastElement.getSignature());
+                    broadcastQueueList.add(reBroadcastElement);
+                } else {
+                    System.out.println(gvRate + " > " + gvTarget + " === " + broadcastElement.getSignature());
+                }
             }
         }
         drawableElementList.removeAll(removeElements);

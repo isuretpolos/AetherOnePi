@@ -1,7 +1,5 @@
 package de.isuret.polos.AetherOnePi.service;
 
-import static j2html.TagCreator.*;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
@@ -20,6 +18,8 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+
+import static j2html.TagCreator.*;
 
 @Service
 public class AnalysisService {

@@ -4,7 +4,6 @@ import de.isuret.polos.AetherOnePi.processing.communication.StatusNotificationSe
 import de.isuret.polos.AetherOnePi.service.PiService;
 import de.isuret.polos.AetherOnePi.utils.HttpUtils;
 import lombok.Data;
-import lombok.Setter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
