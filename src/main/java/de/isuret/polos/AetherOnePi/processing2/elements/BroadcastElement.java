@@ -5,7 +5,6 @@ import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.sound.Binaural;
 import lombok.Getter;
 import lombok.Setter;
-import processing.sound.SoundFile;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
@@ -25,11 +24,12 @@ public class BroadcastElement implements IDrawableElement {
     public static final int WIDTH = 320;
     public static final int HEIGHT = 180;
     private static final String ADDITIONAL_RATES[] = {
-            "ENERGY", "FIRE", "POWER", "WOOD", "GROUNDING", "EARTH", "RYTHM",
-            "METAL", "WATER", "DEEPNESS", "DO NO HARM!", "UNITY", "LOVE"
+            "ENERGY", "FIRE", "POWER", "WOOD", "GROUNDING", "EARTH", "RHYTHM",
+            "METAL", "WATER", "DEEPNESS", "DO NO HARM!", "UNITY", "LOVE", "BALANCE"
     };
     private AetherOneUI p;
     private String tabName;
+    @Getter
     @Setter
     private Integer seconds;
     @Getter
@@ -62,6 +62,7 @@ public class BroadcastElement implements IDrawableElement {
 
     private Binaural binaural = null;
     private boolean playingSound = false;
+    private boolean dynamicAdjustments = false;
 
     public BroadcastElement(AetherOneUI p, String tabName, int seconds, String signature) {
         this.p = p;
@@ -96,6 +97,8 @@ public class BroadcastElement implements IDrawableElement {
         if (!p.getSettings().getBoolean(SettingsScreen.PLAY_SOUND, false)) {
             playingSound = true;
         }
+
+        dynamicAdjustments = p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false);
     }
 
     public void start() {

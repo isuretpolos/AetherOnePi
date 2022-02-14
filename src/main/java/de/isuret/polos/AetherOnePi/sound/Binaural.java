@@ -1,11 +1,11 @@
 package de.isuret.polos.AetherOnePi.sound;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Binaural {
     private static final int SAMPLE_RATE = 16 * 1024; // 16KHz
