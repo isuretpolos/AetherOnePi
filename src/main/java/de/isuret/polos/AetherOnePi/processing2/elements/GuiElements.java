@@ -421,8 +421,14 @@ public class GuiElements {
                     int seconds = broadcastElement.getSeconds();
 
                     // reduce the broadcast time for each cycle
-                    if (seconds > 100) {
+                    if (seconds > 1000) {
+                        seconds = seconds - 200;
+                    } else if (seconds > 500) {
+                        seconds = seconds - 100;
+                    } else if (seconds > 200) {
                         seconds = seconds - 50;
+                    } else if (seconds > 100) {
+                        seconds = seconds - 25;
                     }
 
                     System.out.println(gvRate + " < " + gvTarget + " --- " + broadcastElement.getSignature());
