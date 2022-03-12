@@ -9,7 +9,7 @@
 You need Java 1.8 as a runtime. Download it from [java.com](https://www.java.com/en/download/) and install it before you run the AetherOnePi application on your PC or Raspberry Pi.
 
 ## Download
-Download [Version 1.2.6](https://github.com/isuretpolos/AetherOnePi/releases/tag/1.2.6) (Standalone Client)
+Download [Version 1.2.7](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.2.7) (Standalone Client)
 
 or download the Beta which is build after each change on the [Action tab](https://github.com/isuretpolos/AetherOnePi/actions). Just click on the Build Element and in the upper right corner you will see a Artifact Download Button if the build was a success.
 
@@ -28,6 +28,7 @@ Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 - 2021-07-14 Clinical symptoms comparing with the entire result (only for Clarke Materia Medica)
 - 2021-12-04 **Webcam** for hotbits integrated in AetherOnePi application
 - 2022-02-14 Dynamic adjustments feature (checks for GV after broadcast of a rate and reinserts it into the queue if necessary)
+- 2022-03-12 Resonance List Dialog
 
 # Resources
 ## Documentation
