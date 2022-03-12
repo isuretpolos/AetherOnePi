@@ -4,6 +4,7 @@ package de.isuret.polos.AetherOnePi.processing2;
  * Constants used through the entire application
  */
 public class AetherOneConstants {
+    public static final String SHOW_RESONANCE_LIST = "SHOW RESONANCE LIST";
     public static final String SESSION = "SESSION";
     public static final String SETTINGS = "SETTINGS";
     public static final String ANALYZE = "ANALYZE";

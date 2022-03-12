@@ -3,16 +3,14 @@ package de.isuret.polos.AetherOnePi.processing2;
 import com.github.sarxos.webcam.Webcam;
 import controlP5.ControlEvent;
 import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
-import de.isuret.polos.AetherOnePi.domain.AetherOnePiStatus;
-import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
-import de.isuret.polos.AetherOnePi.domain.Case;
-import de.isuret.polos.AetherOnePi.domain.RateObject;
+import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
 import de.isuret.polos.AetherOnePi.processing.communication.SocketServer;
 import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.processing.config.Settings;
+import de.isuret.polos.AetherOnePi.processing2.dialogs.ResonanceViewListDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.DashboardElement;
 import de.isuret.polos.AetherOnePi.processing2.elements.GuiElements;
 import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
@@ -114,6 +112,10 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
     @Getter
     @Setter
     private List<RateObject> resonatedList = new ArrayList<>();
+
+    @Getter
+    @Setter
+    private List<ResonanceObject> resonanceList = new ArrayList<>();
 
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
@@ -361,6 +363,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addButton(AetherOneConstants.BROADCAST_LIST)
                 .addButton(AetherOneConstants.STOP_CURRENT)
                 .addButton(AetherOneConstants.STOP_ALL)
+                .addButton(AetherOneConstants.SHOW_RESONANCE_LIST)
                 .setInitialBounds(border, posY + 24, 150f, 14f, true)
                 .addTextfield(AetherOneConstants.SIGNATURE)
                 .setInitialBounds(border, posY + 44, 20f, 14f, true)
@@ -615,5 +618,9 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 }
             }).start();
         }
+    }
+
+    public void showResonanceList() {
+        ResonanceViewListDialog.showList(resonanceList);
     }
 }

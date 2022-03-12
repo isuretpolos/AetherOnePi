@@ -81,7 +81,7 @@ public class BroadcastUnit extends PApplet {
 
     public void setup() {
         background(200);
-        setTitle(signature);
+        frame.setTitle(signature);
     }
 
     public void draw() {

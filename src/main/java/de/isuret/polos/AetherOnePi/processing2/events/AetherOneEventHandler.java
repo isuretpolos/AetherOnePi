@@ -353,8 +353,13 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("STOP ALL".equals(name)) {
+        if (AetherOneConstants.STOP_ALL.equals(name)) {
             p.getGuiElements().stopAllBroadcasts();
+            return;
+        }
+
+        if (AetherOneConstants.SHOW_RESONANCE_LIST.equals(name)) {
+            p.showResonanceList();
             return;
         }
 
@@ -689,6 +694,18 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                         .append(rateObject.getResonateCounter())
                         .append(";")
                         .append(rateObject.getNameOrRate())
+                        .append("\n");
+            }
+
+            str.append("===================\nDATE / TIME;NAME OR RATE\n");
+
+            SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            for (ResonanceObject resonanceObject : p.getResonanceList()) {
+                str
+                        .append(sdf2.format(resonanceObject.getDateTime().getTime()))
+                        .append(";")
+                        .append(resonanceObject.getRateObject().getNameOrRate())
                         .append("\n");
             }
 

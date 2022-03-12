@@ -1,6 +1,7 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import de.isuret.polos.AetherOnePi.domain.RateObject;
+import de.isuret.polos.AetherOnePi.domain.ResonanceObject;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.sound.Binaural;
 import lombok.Getter;
@@ -273,6 +274,14 @@ public class BroadcastElement implements IDrawableElement {
 
             boolean foundResonatedRate = false;
 
+            // For every resonance one resonanceObject with dateTime
+            ResonanceObject resonanceObject = new ResonanceObject();
+            RateObject r = new RateObject();
+            r.setNameOrRate(signature);
+            resonanceObject.setRateObject(r);
+            p.getResonanceList().add(resonanceObject);
+
+            // Cumulative
             for (RateObject rateObject : p.getResonatedList()) {
                 if (rateObject.getNameOrRate().equals(signature)) {
                     foundResonatedRate = true;
