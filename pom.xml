@@ -165,6 +165,73 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${maven-install-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>install-controlP5-lib</id>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <groupId>sojamo.de</groupId>
+                            <artifactId>controlP5</artifactId>
+                            <version>${controlP5.version}</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/libs/controlP5-2.3.0.jar</file>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>install-appleJar-lib</id>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <groupId>processing.org</groupId>
+                            <artifactId>appleJar</artifactId>
+                            <version>${appleJar.version}</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/libs/apple.jar</file>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>install-sound-lib</id>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <groupId>org.processing</groupId>
+                            <artifactId>sound</artifactId>
+                            <version>1.0</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/libs/sound.jar</file>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>install-unitgen-lib</id>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <groupId>com.jsyn</groupId>
+                            <artifactId>unitgen</artifactId>
+                            <version>1.0</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/libs/jsyn-20171016.jar</file>
+                            <generatePom>true</generatePom>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
