@@ -32,7 +32,6 @@ jobs:
           ls -l;
           ls -l target;
           cp target/AetherOnePi-1.3.0.jar aetherOnePi/beta/release/;
-          cp target/AetherOnePi-1.3.0-jar-with-dependencies.jar aetherOnePi/beta/release/;
           cp backgrounds/*.jpg aetherOnePi/beta/release/backgrounds/;
           cp data_images/IMAGE_CHAKRAS/*.* aetherOnePi/beta/release/data_images/IMAGE_CHAKRAS/;
           cp data_images/IMAGE_AURAS/*.* aetherOnePi/beta/release/data_images/IMAGE_AURAS/;
