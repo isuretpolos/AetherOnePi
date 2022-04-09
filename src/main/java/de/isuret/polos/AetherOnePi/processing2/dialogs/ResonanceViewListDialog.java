@@ -2,13 +2,9 @@ package de.isuret.polos.AetherOnePi.processing2.dialogs;
 
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.ResonanceObject;
-import lombok.Getter;
-import lombok.Setter;
-import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 import processing.core.PFont;
 
-import javax.swing.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +15,6 @@ public class ResonanceViewListDialog extends PApplet {
     public static final int HEIGHT = 720;
 
     private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-    @Getter
-    @Setter
     private List<ResonanceObject> resonanceList;
     private final int FIRST_COLUMN = 10;
     private final int SECOND_COLUMN = 150;

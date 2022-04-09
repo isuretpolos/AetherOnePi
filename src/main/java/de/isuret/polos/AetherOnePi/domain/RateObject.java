@@ -1,15 +1,8 @@
 package de.isuret.polos.AetherOnePi.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * The RateObject represents a single signature or rate in radionics analysis.
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class RateObject {
 
     /**
@@ -64,5 +57,91 @@ public class RateObject {
         url = r.url;
         recurring = r.recurring;
         potency = r.potency;
+    }
+
+    public RateObject(Integer energeticValue, String nameOrRate, String url, Integer gv, Integer recurring, Integer recurringGeneralVitality, Integer level, String potency, Integer resonateCounter) {
+        this.energeticValue = energeticValue;
+        this.nameOrRate = nameOrRate;
+        this.url = url;
+        this.gv = gv;
+        this.recurring = recurring;
+        this.recurringGeneralVitality = recurringGeneralVitality;
+        this.level = level;
+        this.potency = potency;
+        this.resonateCounter = resonateCounter;
+    }
+
+    public RateObject() {}
+
+    public Integer getEnergeticValue() {
+        return energeticValue;
+    }
+
+    public void setEnergeticValue(Integer energeticValue) {
+        this.energeticValue = energeticValue;
+    }
+
+    public String getNameOrRate() {
+        return nameOrRate;
+    }
+
+    public void setNameOrRate(String nameOrRate) {
+        this.nameOrRate = nameOrRate;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Integer getGv() {
+        return gv;
+    }
+
+    public void setGv(Integer gv) {
+        this.gv = gv;
+    }
+
+    public Integer getRecurring() {
+        return recurring;
+    }
+
+    public void setRecurring(Integer recurring) {
+        this.recurring = recurring;
+    }
+
+    public Integer getRecurringGeneralVitality() {
+        return recurringGeneralVitality;
+    }
+
+    public void setRecurringGeneralVitality(Integer recurringGeneralVitality) {
+        this.recurringGeneralVitality = recurringGeneralVitality;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public String getPotency() {
+        return potency;
+    }
+
+    public void setPotency(String potency) {
+        this.potency = potency;
+    }
+
+    public Integer getResonateCounter() {
+        return resonateCounter;
+    }
+
+    public void setResonateCounter(Integer resonateCounter) {
+        this.resonateCounter = resonateCounter;
     }
 }

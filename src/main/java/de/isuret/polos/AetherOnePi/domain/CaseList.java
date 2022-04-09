@@ -1,16 +1,23 @@
 package de.isuret.polos.AetherOnePi.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class CaseList {
 
     private List<Case> caseList = new ArrayList<>();
+
+    public CaseList() {}
+
+    public CaseList(List<Case> caseList) {
+        this.caseList = caseList;
+    }
+
+    public List<Case> getCaseList() {
+        return caseList;
+    }
+
+    public void setCaseList(List<Case> caseList) {
+        this.caseList = caseList;
+    }
 }

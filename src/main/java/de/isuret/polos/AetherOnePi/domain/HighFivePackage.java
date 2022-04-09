@@ -1,9 +1,5 @@
 package de.isuret.polos.AetherOnePi.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -12,9 +8,6 @@ import java.util.List;
  * The HighFivePackage containing the underderminite data collection of hotbits seeds for transmitting
  * nonlocal data retroactively
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class HighFivePackage {
 
     /**
@@ -61,6 +54,70 @@ public class HighFivePackage {
 
         return String.format("ID: %s\nDESCRIPTION: %s\nRawData Size: %s",
                 id,description,getHighFiveCharacters().size());
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Boolean getImprintingCopy() {
+        return imprintingCopy;
+    }
+
+    public void setImprintingCopy(Boolean imprintingCopy) {
+        this.imprintingCopy = imprintingCopy;
+    }
+
+    public Boolean getImprinted() {
+        return imprinted;
+    }
+
+    public void setImprinted(Boolean imprinted) {
+        this.imprinted = imprinted;
+    }
+
+    public Calendar getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Calendar creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Calendar getExpiringDate() {
+        return expiringDate;
+    }
+
+    public void setExpiringDate(Calendar expiringDate) {
+        this.expiringDate = expiringDate;
+    }
+
+    public List<HighFiveCharacter> getHighFiveCharactersForTest() {
+        return highFiveCharactersForTest;
+    }
+
+    public void setHighFiveCharactersForTest(List<HighFiveCharacter> highFiveCharactersForTest) {
+        this.highFiveCharactersForTest = highFiveCharactersForTest;
+    }
+
+    public List<HighFiveCharacter> getHighFiveCharacters() {
+        return highFiveCharacters;
+    }
+
+    public void setHighFiveCharacters(List<HighFiveCharacter> highFiveCharacters) {
+        this.highFiveCharacters = highFiveCharacters;
     }
 
     /**

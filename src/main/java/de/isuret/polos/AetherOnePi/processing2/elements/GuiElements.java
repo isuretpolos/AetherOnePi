@@ -5,11 +5,9 @@ import controlP5.ControlP5;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Rate;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
-import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
-import de.isuret.polos.AetherOnePi.processing.config.Settings;
+import de.isuret.polos.AetherOnePi.domain.Settings;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
-import lombok.Getter;
-import lombok.Setter;
+import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import processing.core.PFont;
 import processing.core.PImage;
 
@@ -24,35 +22,27 @@ import java.util.Map;
 
 public class GuiElements {
 
-    @Getter
     private final int border = 30;
 
     private AetherOneUI p;
-    @Getter
     private ControlP5 cp5;
     private CColor whiteStyleColor = new CColor();
     private CColor greenStyleColor = new CColor();
     private CColor textFieldStyleColor = new CColor();
     private Settings guiConf;
     private Map<String, PImage> backgroundImages = new HashMap<>();
-    @Getter
     private Map<String, PFont> fonts = new HashMap<>();
-    @Getter
     private Map<String, StatusLED> statusLEDMap = new HashMap<>();
     private List<IDrawableElement> drawableElementList = new ArrayList<>();
     private List<BroadcastElement> broadcastQueueList = new ArrayList<>();
-    @Getter
     private Float x;
     private Float y;
     private Float width;
     private Float height;
-    @Getter
-    @Setter
     private String currentTab = "default";
     private boolean verticalAlignment;
     private int backgroundOverlayAlpha = 120;
     private int foregroundOverlayAlpha = 80;
-    @Setter
     private IDrawableElement newDrawableElement;
     private Boolean stopAll = false;
     private Boolean stopCurrentBroadcast = false;
@@ -634,5 +624,185 @@ public class GuiElements {
     public GuiElements addHotbitsScreen() {
         drawableElementList.add(new HotbitsScreen(p));
         return this;
+    }
+
+    public int getBorder() {
+        return border;
+    }
+
+    public AetherOneUI getP() {
+        return p;
+    }
+
+    public void setP(AetherOneUI p) {
+        this.p = p;
+    }
+
+    public ControlP5 getCp5() {
+        return cp5;
+    }
+
+    public void setCp5(ControlP5 cp5) {
+        this.cp5 = cp5;
+    }
+
+    public CColor getWhiteStyleColor() {
+        return whiteStyleColor;
+    }
+
+    public void setWhiteStyleColor(CColor whiteStyleColor) {
+        this.whiteStyleColor = whiteStyleColor;
+    }
+
+    public CColor getGreenStyleColor() {
+        return greenStyleColor;
+    }
+
+    public void setGreenStyleColor(CColor greenStyleColor) {
+        this.greenStyleColor = greenStyleColor;
+    }
+
+    public CColor getTextFieldStyleColor() {
+        return textFieldStyleColor;
+    }
+
+    public void setTextFieldStyleColor(CColor textFieldStyleColor) {
+        this.textFieldStyleColor = textFieldStyleColor;
+    }
+
+    public Settings getGuiConf() {
+        return guiConf;
+    }
+
+    public void setGuiConf(Settings guiConf) {
+        this.guiConf = guiConf;
+    }
+
+    public Map<String, PImage> getBackgroundImages() {
+        return backgroundImages;
+    }
+
+    public void setBackgroundImages(Map<String, PImage> backgroundImages) {
+        this.backgroundImages = backgroundImages;
+    }
+
+    public Map<String, PFont> getFonts() {
+        return fonts;
+    }
+
+    public void setFonts(Map<String, PFont> fonts) {
+        this.fonts = fonts;
+    }
+
+    public Map<String, StatusLED> getStatusLEDMap() {
+        return statusLEDMap;
+    }
+
+    public void setStatusLEDMap(Map<String, StatusLED> statusLEDMap) {
+        this.statusLEDMap = statusLEDMap;
+    }
+
+    public List<IDrawableElement> getDrawableElementList() {
+        return drawableElementList;
+    }
+
+    public void setDrawableElementList(List<IDrawableElement> drawableElementList) {
+        this.drawableElementList = drawableElementList;
+    }
+
+    public List<BroadcastElement> getBroadcastQueueList() {
+        return broadcastQueueList;
+    }
+
+    public void setBroadcastQueueList(List<BroadcastElement> broadcastQueueList) {
+        this.broadcastQueueList = broadcastQueueList;
+    }
+
+    public Float getX() {
+        return x;
+    }
+
+    public void setX(Float x) {
+        this.x = x;
+    }
+
+    public Float getY() {
+        return y;
+    }
+
+    public void setY(Float y) {
+        this.y = y;
+    }
+
+    public Float getWidth() {
+        return width;
+    }
+
+    public void setWidth(Float width) {
+        this.width = width;
+    }
+
+    public Float getHeight() {
+        return height;
+    }
+
+    public void setHeight(Float height) {
+        this.height = height;
+    }
+
+    public String getCurrentTab() {
+        return currentTab;
+    }
+
+    public void setCurrentTab(String currentTab) {
+        this.currentTab = currentTab;
+    }
+
+    public boolean isVerticalAlignment() {
+        return verticalAlignment;
+    }
+
+    public void setVerticalAlignment(boolean verticalAlignment) {
+        this.verticalAlignment = verticalAlignment;
+    }
+
+    public int getBackgroundOverlayAlpha() {
+        return backgroundOverlayAlpha;
+    }
+
+    public void setBackgroundOverlayAlpha(int backgroundOverlayAlpha) {
+        this.backgroundOverlayAlpha = backgroundOverlayAlpha;
+    }
+
+    public int getForegroundOverlayAlpha() {
+        return foregroundOverlayAlpha;
+    }
+
+    public void setForegroundOverlayAlpha(int foregroundOverlayAlpha) {
+        this.foregroundOverlayAlpha = foregroundOverlayAlpha;
+    }
+
+    public IDrawableElement getNewDrawableElement() {
+        return newDrawableElement;
+    }
+
+    public void setNewDrawableElement(IDrawableElement newDrawableElement) {
+        this.newDrawableElement = newDrawableElement;
+    }
+
+    public Boolean getStopAll() {
+        return stopAll;
+    }
+
+    public void setStopAll(Boolean stopAll) {
+        this.stopAll = stopAll;
+    }
+
+    public Boolean getStopCurrentBroadcast() {
+        return stopCurrentBroadcast;
+    }
+
+    public void setStopCurrentBroadcast(Boolean stopCurrentBroadcast) {
+        this.stopCurrentBroadcast = stopCurrentBroadcast;
     }
 }

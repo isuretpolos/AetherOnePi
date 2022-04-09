@@ -2,15 +2,15 @@ package de.isuret.polos.AetherOnePi.service;
 
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.domain.CaseList;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class DatabaseServiceTest {
 
     private static DatabaseService databaseService;
 
-    @BeforeClass
+    @BeforeAll
     public static void setup() {
         databaseService = new DatabaseService();
         databaseService.setFilepath("target/test.db");
@@ -22,18 +22,18 @@ public class DatabaseServiceTest {
 
     @Test
     public void testGetFolderPath() {
-        Assert.assertNull(databaseService.getFolderPath(null));
+        Assertions.assertNull(databaseService.getFolderPath(null));
         String result = databaseService.getFolderPath("more/case/aetherone.db");
-        Assert.assertNotNull(result);
-        Assert.assertEquals("more/case",result);
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals("more/case",result);
     }
 
     @Test
     public void testCase() {
 
         CaseList cases = databaseService.getAllCases();
-        Assert.assertNotNull(cases);
-        Assert.assertEquals(0, cases.getCaseList().size());
+        Assertions.assertNotNull(cases);
+        Assertions.assertEquals(0, cases.getCaseList().size());
 
         Case caseObject1 = new Case();
         caseObject1.setName("Test Target 1");
@@ -43,21 +43,21 @@ public class DatabaseServiceTest {
 
         databaseService.createCase(caseObject1);
         int rowsAffected = databaseService.updateCase(caseObject1);
-        Assert.assertEquals(1, rowsAffected);
+        Assertions.assertEquals(1, rowsAffected);
         databaseService.createCase(caseObject2);
 
         cases = databaseService.getAllCases();
-        Assert.assertNotNull(cases);
-        Assert.assertEquals(2, cases.getCaseList().size());
-        Assert.assertEquals("Test Target 1", cases.getCaseList().get(0).getName());
-        Assert.assertEquals("Test Target 2", cases.getCaseList().get(1).getName());
+        Assertions.assertNotNull(cases);
+        Assertions.assertEquals(2, cases.getCaseList().size());
+        Assertions.assertEquals("Test Target 1", cases.getCaseList().get(0).getName());
+        Assertions.assertEquals("Test Target 2", cases.getCaseList().get(1).getName());
 
         Case findResult = databaseService.getCaseByName("Test Target 1");
-        Assert.assertNotNull(findResult);
-        Assert.assertEquals("Test Target 1", findResult.getName());
+        Assertions.assertNotNull(findResult);
+        Assertions.assertEquals("Test Target 1", findResult.getName());
 
         databaseService.deleteCase("Test Target 1");
         findResult = databaseService.getCaseByName("Test Target 1");
-        Assert.assertNull(findResult);
+        Assertions.assertNull(findResult);
     }
 }

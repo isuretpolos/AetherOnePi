@@ -1,7 +1,6 @@
 package de.isuret.polos.AetherOnePi.imagelayers;
 
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
-import lombok.Data;
 import processing.core.PImage;
 
 import java.io.File;
@@ -11,7 +10,6 @@ import java.util.List;
 /**
  * ImageLayersAnalysis contains an analysis of an image or layers of images
  */
-@Data
 public class ImageLayersAnalysis {
 
     private AetherOneUI p;
@@ -121,5 +119,77 @@ public class ImageLayersAnalysis {
             p.noTint();
             layer++;
         }
+    }
+
+    public AetherOneUI getP() {
+        return p;
+    }
+
+    public void setP(AetherOneUI p) {
+        this.p = p;
+    }
+
+    public List<ImageLayer> getImageLayers() {
+        return imageLayers;
+    }
+
+    public void setImageLayers(List<ImageLayer> imageLayers) {
+        this.imageLayers = imageLayers;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public static int getResizeHeight() {
+        return RESIZE_HEIGHT;
+    }
+
+    public static void setResizeHeight(int resizeHeight) {
+        RESIZE_HEIGHT = resizeHeight;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
+    }
+
+    public float getRelativeGVratio() {
+        return relativeGVratio;
+    }
+
+    public void setRelativeGVratio(float relativeGVratio) {
+        this.relativeGVratio = relativeGVratio;
+    }
+
+    public float getRelativeMax() {
+        return relativeMax;
+    }
+
+    public void setRelativeMax(float relativeMax) {
+        this.relativeMax = relativeMax;
     }
 }

@@ -1,8 +1,5 @@
 package de.isuret.polos.AetherOnePi.domain;
 
-import lombok.Data;
-
-@Data
 public class RateObjectWrapper {
 
     private Integer occurrence = 0;
@@ -28,5 +25,45 @@ public class RateObjectWrapper {
 
     private void addGV(Integer gv) {
         this.overallGV += gv;
+    }
+
+    public Integer getOccurrence() {
+        return occurrence;
+    }
+
+    public void setOccurrence(Integer occurrence) {
+        this.occurrence = occurrence;
+    }
+
+    public Integer getOverallEnergeticValue() {
+        return overallEnergeticValue;
+    }
+
+    public void setOverallEnergeticValue(Integer overallEnergeticValue) {
+        this.overallEnergeticValue = overallEnergeticValue;
+    }
+
+    public Integer getOverallGV() {
+        return overallGV;
+    }
+
+    public void setOverallGV(Integer overallGV) {
+        this.overallGV = overallGV;
+    }
+
+    public RateObject getRateObject() {
+        return rateObject;
+    }
+
+    public void setRateObject(RateObject rateObject) {
+        this.rateObject = rateObject;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -13,6 +13,7 @@ public class DashboardScreen implements IDrawableElement {
 
     public DashboardScreen(AetherOneUI p) {
         this.p = p;
+        p.getDataService().init();
 
         (new Thread() {
             public void run() {

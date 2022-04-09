@@ -4,8 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.domain.DashboardInformations;
 import de.isuret.polos.AetherOnePi.domain.Rate;
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -15,25 +13,19 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.StoredConfig;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-@Service
 public class DataService {
 
     private Log log = LogFactory.getLog(DataService.class);
 
     private Map<String, File> databases = new HashMap<>();
 
-    @Getter
-    @Setter
     private DashboardInformations dashboardInformations;
 
-    @PostConstruct
     public void init() {
 
         log.info("Initializing data repository ...");
@@ -227,5 +219,21 @@ public class DataService {
         }
 
         return list;
+    }
+
+    public Map<String, File> getDatabases() {
+        return databases;
+    }
+
+    public void setDatabases(Map<String, File> databases) {
+        this.databases = databases;
+    }
+
+    public DashboardInformations getDashboardInformations() {
+        return dashboardInformations;
+    }
+
+    public void setDashboardInformations(DashboardInformations dashboardInformations) {
+        this.dashboardInformations = dashboardInformations;
     }
 }

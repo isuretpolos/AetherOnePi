@@ -1,9 +1,9 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
-import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
-import de.isuret.polos.AetherOnePi.processing.config.Settings;
+import de.isuret.polos.AetherOnePi.domain.Settings;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
+import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 
 import java.awt.*;
 

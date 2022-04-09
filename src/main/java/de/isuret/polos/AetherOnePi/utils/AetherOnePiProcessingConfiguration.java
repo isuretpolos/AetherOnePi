@@ -1,4 +1,4 @@
-package de.isuret.polos.AetherOnePi.processing.config;
+package de.isuret.polos.AetherOnePi.utils;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import de.isuret.polos.AetherOnePi.domain.Settings;
 
 import java.io.File;
 import java.io.IOException;

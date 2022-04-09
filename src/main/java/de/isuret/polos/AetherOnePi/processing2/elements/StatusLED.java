@@ -1,14 +1,12 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
-import lombok.Setter;
 
 public class StatusLED implements IDrawableElement {
 
     private AetherOneUI p;
     private String tabName;
     private String text;
-    @Setter
     private boolean on = false;
     private float x;
     private float y;
@@ -47,5 +45,53 @@ public class StatusLED implements IDrawableElement {
     @Override
     public String getAssignedTabName() {
         return tabName;
+    }
+
+    public AetherOneUI getP() {
+        return p;
+    }
+
+    public void setP(AetherOneUI p) {
+        this.p = p;
+    }
+
+    public String getTabName() {
+        return tabName;
+    }
+
+    public void setTabName(String tabName) {
+        this.tabName = tabName;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public boolean isOn() {
+        return on;
+    }
+
+    public void setOn(boolean on) {
+        this.on = on;
+    }
+
+    public float getX() {
+        return x;
+    }
+
+    public void setX(float x) {
+        this.x = x;
+    }
+
+    public float getY() {
+        return y;
+    }
+
+    public void setY(float y) {
+        this.y = y;
     }
 }

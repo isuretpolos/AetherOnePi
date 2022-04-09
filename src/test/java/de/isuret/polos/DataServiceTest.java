@@ -3,7 +3,7 @@ package de.isuret.polos;
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.domain.Session;
 import de.isuret.polos.AetherOnePi.service.DataService;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Calendar;

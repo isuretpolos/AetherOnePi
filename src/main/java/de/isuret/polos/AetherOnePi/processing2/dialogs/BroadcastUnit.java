@@ -1,6 +1,5 @@
 package de.isuret.polos.AetherOnePi.processing2.dialogs;
 
-import lombok.Setter;
 import processing.core.PApplet;
 
 import java.io.File;
@@ -18,9 +17,7 @@ public class BroadcastUnit extends PApplet {
 
     public static final int WIDTH = 320;
     public static final int HEIGHT = 180;
-    @Setter
     private Integer seconds;
-    @Setter
     private String signature;
     private Long start;
     private Random random;
@@ -426,5 +423,69 @@ public class BroadcastUnit extends PApplet {
 
     public void mousePressed() {
         saveFrames = 100;
+    }
+
+    public Integer getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(Integer seconds) {
+        this.seconds = seconds;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public Long getStart() {
+        return start;
+    }
+
+    public void setStart(Long start) {
+        this.start = start;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public SecureRandom getRandom2() {
+        return random2;
+    }
+
+    public void setRandom2(SecureRandom random2) {
+        this.random2 = random2;
+    }
+
+    public Integer getSaveFrames() {
+        return saveFrames;
+    }
+
+    public void setSaveFrames(Integer saveFrames) {
+        this.saveFrames = saveFrames;
+    }
+
+    public Integer getMovingWaveAmount() {
+        return movingWaveAmount;
+    }
+
+    public void setMovingWaveAmount(Integer movingWaveAmount) {
+        this.movingWaveAmount = movingWaveAmount;
+    }
+
+    public static Long getLastBroadcast() {
+        return lastBroadcast;
+    }
+
+    public static void setLastBroadcast(Long lastBroadcast) {
+        BroadcastUnit.lastBroadcast = lastBroadcast;
     }
 }

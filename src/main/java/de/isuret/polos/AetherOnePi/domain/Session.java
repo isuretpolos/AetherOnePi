@@ -1,9 +1,5 @@
 package de.isuret.polos.AetherOnePi.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.Calendar;
 
 /**
@@ -15,9 +11,6 @@ import java.util.Calendar;
  * It is also possible to note only one description without any action.
  * A session object has only a created calender object and cannot be modified.
  */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Session {
 
     private String intention;
@@ -34,5 +27,47 @@ public class Session {
         intention = vo.intention;
         description = vo.description;
         created = Calendar.getInstance();
+    }
+
+    public Session() {}
+
+    public String getIntention() {
+        return intention;
+    }
+
+    public void setIntention(String intention) {
+        this.intention = intention;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Calendar getCreated() {
+        return created;
+    }
+
+    public void setCreated(Calendar created) {
+        this.created = created;
+    }
+
+    public AnalysisResult getAnalysisResult() {
+        return analysisResult;
+    }
+
+    public void setAnalysisResult(AnalysisResult analysisResult) {
+        this.analysisResult = analysisResult;
+    }
+
+    public BroadCastData getBroadCasted() {
+        return broadCasted;
+    }
+
+    public void setBroadCasted(BroadCastData broadCasted) {
+        this.broadCasted = broadCasted;
     }
 }

@@ -1,6 +1,6 @@
 package de.isuret.polos;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.Polygon;
 import org.locationtech.jts.io.ParseException;

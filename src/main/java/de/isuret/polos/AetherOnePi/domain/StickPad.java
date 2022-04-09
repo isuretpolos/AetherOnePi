@@ -4,19 +4,17 @@ import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.RateUtils;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.IOException;
 import java.util.*;
 
-@Data
-@NoArgsConstructor
 public class StickPad {
 
     private DataService dataService = new DataService();
     private List<StickPadPosition> positions = new ArrayList<>();
     private Boolean generalVitalityChecking = false;
+
+    public StickPad() {}
 
     public void addStickPadPosition(long x, long y) {
         positions.add(new StickPadPosition(x, y));
@@ -111,5 +109,29 @@ public class StickPad {
 
         p.setGvCounter(p.getGvCounter() + 1);
         positions.clear();
+    }
+
+    public DataService getDataService() {
+        return dataService;
+    }
+
+    public void setDataService(DataService dataService) {
+        this.dataService = dataService;
+    }
+
+    public List<StickPadPosition> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(List<StickPadPosition> positions) {
+        this.positions = positions;
+    }
+
+    public Boolean getGeneralVitalityChecking() {
+        return generalVitalityChecking;
+    }
+
+    public void setGeneralVitalityChecking(Boolean generalVitalityChecking) {
+        this.generalVitalityChecking = generalVitalityChecking;
     }
 }

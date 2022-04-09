@@ -1,8 +1,6 @@
 package de.isuret.polos.AetherOnePi.utils.cards;
 
-import de.isuret.polos.AetherOnePi.utils.cards.CardMaker;
-import de.isuret.polos.AetherOnePi.utils.cards.RadionicLine;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.io.File;

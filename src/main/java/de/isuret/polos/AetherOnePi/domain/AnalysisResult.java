@@ -1,10 +1,6 @@
 package de.isuret.polos.AetherOnePi.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.dizitart.no2.objects.Id;
 
 import java.io.Serializable;
@@ -13,10 +9,6 @@ import java.util.*;
 /**
  * The Analysis Result consists of single rate objects with general vitality checks and energetic values.
  */
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class AnalysisResult implements Serializable {
 
     @Id
@@ -34,6 +26,10 @@ public class AnalysisResult implements Serializable {
         for (RateObject rateObject : r.rateObjects) {
             rateObjects.add(new RateObject(rateObject));
         }
+    }
+
+    public AnalysisResult() {
+        // nothing here yet
     }
 
     @JsonIgnore
@@ -60,5 +56,29 @@ public class AnalysisResult implements Serializable {
         }
 
         return this;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public List<RateObject> getRateObjects() {
+        return rateObjects;
+    }
+
+    public void setRateObjects(List<RateObject> rateObjects) {
+        this.rateObjects = rateObjects;
+    }
+
+    public Integer getGeneralVitality() {
+        return generalVitality;
+    }
+
+    public void setGeneralVitality(Integer generalVitality) {
+        this.generalVitality = generalVitality;
     }
 }

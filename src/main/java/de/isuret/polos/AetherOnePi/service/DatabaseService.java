@@ -3,36 +3,22 @@ package de.isuret.polos.AetherOnePi.service;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.domain.CaseList;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.apache.commons.lang3.StringUtils;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.NitriteCollection;
 import org.dizitart.no2.WriteResult;
 import org.dizitart.no2.objects.Cursor;
 import org.dizitart.no2.objects.ObjectRepository;
 import org.dizitart.no2.objects.filters.ObjectFilters;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
 
-@Service
-@Setter
-@NoArgsConstructor
 public class DatabaseService {
 
-    @Value("${database.name}")
     private String databaseName;
-
-    @Value("${database.username}")
     private String username;
-
-    @Value("${database.password}")
     private String password;
-
-    @Value("${database.filepath}")
     private String filepath;
 
     private ObjectRepository<Case> caseRepository;
@@ -147,5 +133,51 @@ public class DatabaseService {
         caseRepository.remove(ObjectFilters.eq("name",name));
     }
 
+    public String getDatabaseName() {
+        return databaseName;
+    }
 
+    public void setDatabaseName(String databaseName) {
+        this.databaseName = databaseName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFilepath() {
+        return filepath;
+    }
+
+    public void setFilepath(String filepath) {
+        this.filepath = filepath;
+    }
+
+    public ObjectRepository<Case> getCaseRepository() {
+        return caseRepository;
+    }
+
+    public void setCaseRepository(ObjectRepository<Case> caseRepository) {
+        this.caseRepository = caseRepository;
+    }
+
+    public ObjectRepository<AnalysisResult> getAnalysisRepository() {
+        return analysisRepository;
+    }
+
+    public void setAnalysisRepository(ObjectRepository<AnalysisResult> analysisRepository) {
+        this.analysisRepository = analysisRepository;
+    }
 }

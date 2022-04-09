@@ -2,22 +2,18 @@ package de.isuret.polos.AetherOnePi.service;
 
 import com.pi4j.io.gpio.*;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
-import lombok.Getter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.HashMap;
 import java.util.Map;
 
-@Service
 public class PiService {
 
     private Log log = LogFactory.getLog(PiService.class);
 
-    @Getter
     private Boolean piAvailable = true;
     private Map<AetherOnePins,GpioPinDigitalOutput> digitalOutPins = new HashMap<>();
     private GpioController gpio;
@@ -115,5 +111,29 @@ public class PiService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public Boolean getPiAvailable() {
+        return piAvailable;
+    }
+
+    public void setPiAvailable(Boolean piAvailable) {
+        this.piAvailable = piAvailable;
+    }
+
+    public Map<AetherOnePins, GpioPinDigitalOutput> getDigitalOutPins() {
+        return digitalOutPins;
+    }
+
+    public void setDigitalOutPins(Map<AetherOnePins, GpioPinDigitalOutput> digitalOutPins) {
+        this.digitalOutPins = digitalOutPins;
+    }
+
+    public GpioController getGpio() {
+        return gpio;
+    }
+
+    public void setGpio(GpioController gpio) {
+        this.gpio = gpio;
     }
 }

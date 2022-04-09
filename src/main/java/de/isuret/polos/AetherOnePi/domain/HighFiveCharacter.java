@@ -2,21 +2,27 @@ package de.isuret.polos.AetherOnePi.domain;
 
 import de.isuret.polos.AetherOnePi.enums.HighFiveAlphabet;
 import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
 public class HighFiveCharacter {
 
-    @Getter
-    @Setter
     private List<HotBitIntegers> primaMateriaRawData = new ArrayList<>();
+
+    public HighFiveCharacter(List<HotBitIntegers> primaMateriaRawData) {
+        this.primaMateriaRawData = primaMateriaRawData;
+    }
+
+    public HighFiveCharacter() {}
+
+    public List<HotBitIntegers> getPrimaMateriaRawData() {
+        return primaMateriaRawData;
+    }
+
+    public void setPrimaMateriaRawData(List<HotBitIntegers> primaMateriaRawData) {
+        this.primaMateriaRawData = primaMateriaRawData;
+    }
 
     @Override
     public String toString() {

@@ -4,16 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
-import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
-import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
 import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
+import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.utils.RateUtils;
 import j2html.tags.ContainerTag;
-import lombok.Setter;
 import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,20 +17,11 @@ import java.util.*;
 
 import static j2html.TagCreator.*;
 
-@Service
 public class AnalysisService {
 
     public static final int MAX_RATELIST_SIZE = 5000;
-
-    @Setter
-    @Autowired
     private IHotbitsClient hotbitsClient;
-
-    @Setter
-    @Autowired
     private PiService piService;
-
-    @Setter
     private Integer maxValue = 100;
 
     private ClarkeMateriaMedica clarkeMateriaMedica;
@@ -364,5 +351,37 @@ public class AnalysisService {
             e.printStackTrace();
         }
         return file;
+    }
+
+    public IHotbitsClient getHotbitsClient() {
+        return hotbitsClient;
+    }
+
+    public void setHotbitsClient(IHotbitsClient hotbitsClient) {
+        this.hotbitsClient = hotbitsClient;
+    }
+
+    public PiService getPiService() {
+        return piService;
+    }
+
+    public void setPiService(PiService piService) {
+        this.piService = piService;
+    }
+
+    public Integer getMaxValue() {
+        return maxValue;
+    }
+
+    public void setMaxValue(Integer maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    public ClarkeMateriaMedica getClarkeMateriaMedica() {
+        return clarkeMateriaMedica;
+    }
+
+    public void setClarkeMateriaMedica(ClarkeMateriaMedica clarkeMateriaMedica) {
+        this.clarkeMateriaMedica = clarkeMateriaMedica;
     }
 }

@@ -4,8 +4,6 @@ import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.ResonanceObject;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.sound.Binaural;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
@@ -30,35 +28,21 @@ public class BroadcastElement implements IDrawableElement {
     };
     private AetherOneUI p;
     private String tabName;
-    @Getter
-    @Setter
     private Integer seconds;
-    @Getter
-    @Setter
     private String signature;
-    @Getter
-    @Setter
     private String target;
     private Long start;
     private Random random;
     private SecureRandom random2;
     private Integer saveFrames = 0;
-    @Getter
     private Integer movingWaveAmount = 0;
     private Integer offsetX = 0;
     private Integer offsetY = 0;
-    @Getter
     private Float progress;
-    @Getter
-    @Setter
     private Integer counterCheckGV = 500;
-    @Getter
-    @Setter
     private Boolean counterCheck = false;
 
     private static Long lastBroadcast = null;
-    @Getter
-    @Setter
     private boolean stop = false;
 
     private Binaural binaural = null;
@@ -547,5 +531,165 @@ public class BroadcastElement implements IDrawableElement {
 
     public void mousePressed() {
         saveFrames = 100;
+    }
+
+    public AetherOneUI getP() {
+        return p;
+    }
+
+    public void setP(AetherOneUI p) {
+        this.p = p;
+    }
+
+    public String getTabName() {
+        return tabName;
+    }
+
+    public void setTabName(String tabName) {
+        this.tabName = tabName;
+    }
+
+    public Integer getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(Integer seconds) {
+        this.seconds = seconds;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
+    }
+
+    public Long getStart() {
+        return start;
+    }
+
+    public void setStart(Long start) {
+        this.start = start;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public SecureRandom getRandom2() {
+        return random2;
+    }
+
+    public void setRandom2(SecureRandom random2) {
+        this.random2 = random2;
+    }
+
+    public Integer getSaveFrames() {
+        return saveFrames;
+    }
+
+    public void setSaveFrames(Integer saveFrames) {
+        this.saveFrames = saveFrames;
+    }
+
+    public Integer getMovingWaveAmount() {
+        return movingWaveAmount;
+    }
+
+    public void setMovingWaveAmount(Integer movingWaveAmount) {
+        this.movingWaveAmount = movingWaveAmount;
+    }
+
+    public Integer getOffsetX() {
+        return offsetX;
+    }
+
+    public void setOffsetX(Integer offsetX) {
+        this.offsetX = offsetX;
+    }
+
+    public Integer getOffsetY() {
+        return offsetY;
+    }
+
+    public void setOffsetY(Integer offsetY) {
+        this.offsetY = offsetY;
+    }
+
+    public Float getProgress() {
+        return progress;
+    }
+
+    public void setProgress(Float progress) {
+        this.progress = progress;
+    }
+
+    public Integer getCounterCheckGV() {
+        return counterCheckGV;
+    }
+
+    public void setCounterCheckGV(Integer counterCheckGV) {
+        this.counterCheckGV = counterCheckGV;
+    }
+
+    public Boolean getCounterCheck() {
+        return counterCheck;
+    }
+
+    public void setCounterCheck(Boolean counterCheck) {
+        this.counterCheck = counterCheck;
+    }
+
+    public static Long getLastBroadcast() {
+        return lastBroadcast;
+    }
+
+    public static void setLastBroadcast(Long lastBroadcast) {
+        BroadcastElement.lastBroadcast = lastBroadcast;
+    }
+
+    public boolean isStop() {
+        return stop;
+    }
+
+    public void setStop(boolean stop) {
+        this.stop = stop;
+    }
+
+    public Binaural getBinaural() {
+        return binaural;
+    }
+
+    public void setBinaural(Binaural binaural) {
+        this.binaural = binaural;
+    }
+
+    public boolean isPlayingSound() {
+        return playingSound;
+    }
+
+    public void setPlayingSound(boolean playingSound) {
+        this.playingSound = playingSound;
+    }
+
+    public boolean isDynamicAdjustments() {
+        return dynamicAdjustments;
+    }
+
+    public void setDynamicAdjustments(boolean dynamicAdjustments) {
+        this.dynamicAdjustments = dynamicAdjustments;
     }
 }

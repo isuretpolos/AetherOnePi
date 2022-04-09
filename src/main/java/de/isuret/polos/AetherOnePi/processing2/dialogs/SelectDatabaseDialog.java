@@ -2,7 +2,6 @@ package de.isuret.polos.AetherOnePi.processing2.dialogs;
 
 import de.isuret.polos.AetherOnePi.exceptions.AetherOneException;
 import de.isuret.polos.AetherOnePi.service.DataService;
-import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +15,6 @@ public class SelectDatabaseDialog extends JDialog implements ActionListener {
     private final static int HEIGHT = 700;
     private DataService dataService = new DataService();
 
-    @Getter
     private String selectedDatabase;
 
     public SelectDatabaseDialog(Dialog parentFrame) {
@@ -64,5 +62,21 @@ public class SelectDatabaseDialog extends JDialog implements ActionListener {
 
         System.out.println("Selected database is " + selectedDatabase);
         this.dispose();
+    }
+
+    public DataService getDataService() {
+        return dataService;
+    }
+
+    public void setDataService(DataService dataService) {
+        this.dataService = dataService;
+    }
+
+    public String getSelectedDatabase() {
+        return selectedDatabase;
+    }
+
+    public void setSelectedDatabase(String selectedDatabase) {
+        this.selectedDatabase = selectedDatabase;
     }
 }

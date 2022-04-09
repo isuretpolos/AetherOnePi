@@ -2,33 +2,20 @@ package de.isuret.polos.AetherOnePi.service;
 
 import de.isuret.polos.AetherOnePi.domain.BroadCastData;
 import de.isuret.polos.AetherOnePi.enums.AetherOnePins;
-import de.isuret.polos.AetherOnePi.processing.communication.StatusNotificationService;
-import lombok.Getter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * The Broadcast Service for the Raspberry Pi
  */
-@Service
 public class BroadCastService {
 
     private Log logger = LogFactory.getLog(BroadCastService.class);
 
-    @Autowired
     private PiService piService;
-
-    @Autowired
-    private StatusNotificationService statusNotificationService;
-
-    @Getter
     private Boolean broadcasting = false;
 
     private List<Integer> ultraviolet = new ArrayList<>();
@@ -73,15 +60,12 @@ public class BroadCastService {
 
         logger.info("Broadcasting " + data.toString());
 
-        statusNotificationService.getStatus().setText(String.format("Broadcasting signature = [%s]", data.getSignature()));
-        statusNotificationService.getStatus().setBroadcasting(true);
         // TODO implement a queue
         broadcastNow(data);
 
         return data;
     }
 
-    @Async
     public void broadcastNow(BroadCastData data) {
 
         broadcasting = true;
@@ -133,18 +117,6 @@ public class BroadCastService {
 
         piService.setAllLow();
         broadcasting = false;
-
-        statusNotificationService.getStatus().setText("");
-        statusNotificationService.getStatus().setBroadcasting(false);
-//        setProgress(0);
-    }
-
-    private void setProgress2(int progress) {
-        try {
-            statusNotificationService.setProgress2(progress);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void blinkLED(BroadCastData data, Integer n, List<Integer> numbers, AetherOnePins pin) {
@@ -153,5 +125,77 @@ public class BroadCastService {
             piService.delay(data.getDelay());
             piService.low(pin);
         }
+    }
+
+    public PiService getPiService() {
+        return piService;
+    }
+
+    public void setPiService(PiService piService) {
+        this.piService = piService;
+    }
+
+    public Boolean getBroadcasting() {
+        return broadcasting;
+    }
+
+    public void setBroadcasting(Boolean broadcasting) {
+        this.broadcasting = broadcasting;
+    }
+
+    public List<Integer> getUltraviolet() {
+        return ultraviolet;
+    }
+
+    public void setUltraviolet(List<Integer> ultraviolet) {
+        this.ultraviolet = ultraviolet;
+    }
+
+    public List<Integer> getReds() {
+        return reds;
+    }
+
+    public void setReds(List<Integer> reds) {
+        this.reds = reds;
+    }
+
+    public List<Integer> getGreens() {
+        return greens;
+    }
+
+    public void setGreens(List<Integer> greens) {
+        this.greens = greens;
+    }
+
+    public List<Integer> getBlues() {
+        return blues;
+    }
+
+    public void setBlues(List<Integer> blues) {
+        this.blues = blues;
+    }
+
+    public List<Integer> getWhites() {
+        return whites;
+    }
+
+    public void setWhites(List<Integer> whites) {
+        this.whites = whites;
+    }
+
+    public List<Integer> getInfrared() {
+        return infrared;
+    }
+
+    public void setInfrared(List<Integer> infrared) {
+        this.infrared = infrared;
+    }
+
+    public List<Integer> getInternal13() {
+        return internal13;
+    }
+
+    public void setInternal13(List<Integer> internal13) {
+        this.internal13 = internal13;
     }
 }

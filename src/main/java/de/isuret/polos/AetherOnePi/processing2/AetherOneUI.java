@@ -2,14 +2,9 @@ package de.isuret.polos.AetherOnePi.processing2;
 
 import com.github.sarxos.webcam.Webcam;
 import controlP5.ControlEvent;
-import de.isuret.polos.AetherOnePi.adapter.client.AetherOnePiClient;
 import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
-import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
-import de.isuret.polos.AetherOnePi.processing.communication.SocketServer;
-import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
-import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.ResonanceViewListDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.DashboardElement;
 import de.isuret.polos.AetherOnePi.processing2.elements.GuiElements;
@@ -19,9 +14,8 @@ import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
+import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
-import lombok.Getter;
-import lombok.Setter;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,84 +31,42 @@ import java.io.IOException;
 import java.util.List;
 import java.util.*;
 
-@Getter
-public class AetherOneUI extends PApplet implements IStatusReceiver {
+public class AetherOneUI extends PApplet {
 
-    @Getter
     private String titleAffix = "";
-    @Getter
     private Settings settings;
     private Settings guiConf;
     private GuiElements guiElements;
-    private SocketServer socketServer;
     private AetherOnePiStatus status;
     private AetherOneEventHandler aetherOneEventHandler;
-    private AetherOnePiClient piClient;
     private IHotbitsClient hotbitsClient;
     private HotbitsHandler hotbitsHandler;
-    @Getter
-    @Setter
     private boolean hotbitsFromWebCamAcquiring = false;
-    @Getter
-    @Setter
     private Webcam webcam = null;
-    @Getter
     private List<Webcam> webcamList;
-    @Getter
     private BufferedImage webcamImage;
-    @Getter
-    @Setter
     private Integer webCamNumber;
-    @Getter
     private Integer countPackages = 0;
-    @Getter
     private AnalysisService analyseService;
     private DataService dataService = new DataService();
     private List<MouseClickObserver> mouseClickObserverList = new ArrayList<>();
     private List<KeyPressedObserver> keyPressedObserverList = new ArrayList<>();
-    @Setter
     private Case caseObject = new Case();
-    @Setter
     private String selectedDatabase = "HOMEOPATHY_Clarke_With_MateriaMedicaUrls.txt";
-    @Getter
-    @Setter
     private String essentielQuestion;
-    @Setter
     private AnalysisResult analysisResult;
-    @Setter
     private ImageLayersAnalysis imageLayersAnalysis;
-    @Setter
     private Integer analysisPointer;
-    @Setter
     private Integer gvCounter = 0;
-    @Setter
     private Integer generalVitality = 0;
-    @Setter
     private Boolean stickPadMode = false;
-    @Setter
     private Boolean stickPadGeneralVitalityMode = false;
-    @Getter
     private TrayIcon trayIcon;
-    @Getter
-    @Setter
     private String trainingSignature = null;
-    @Getter
-    @Setter
     private Boolean trainingSignatureCovered = true;
-    @Getter
-    @Setter
     private Boolean autoMode = false;
-
-    @Getter
-    @Setter
     private PImage clipBoardImage;
-
-    @Getter
-    @Setter
     private List<RateObject> resonatedList = new ArrayList<>();
-
-    @Getter
-    @Setter
     private List<ResonanceObject> resonanceList = new ArrayList<>();
 
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
@@ -139,27 +91,7 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
         settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
         size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721));
 
-        piClient = new AetherOnePiClient();
         AetherOneUI p = this; // this or that
-
-        (new Thread() {
-            public void run() {
-                try {
-
-                    dataService.init();
-                    socketServer = new SocketServer();
-
-                    try {
-                        socketServer.start(5555, p);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
 
     }
 
@@ -377,7 +309,6 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
                 .addStatusLED(AetherOneConstants.CLEARING)
                 .addStatusLED(AetherOneConstants.GROUNDING)
                 .addStatusLED(AetherOneConstants.COPYING)
-                .addSlider(AetherOneConstants.HOTBITS, 100, 10, 100)
                 .addSlider(AetherOneConstants.PACKAGES, 100, 10, 100)
                 .addSlider(AetherOneConstants.CACHE, 100, 10, 20000)
                 .addSlider(AetherOneConstants.PROGRESS, 100, 10, 100)
@@ -424,24 +355,6 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
             }
         }
         ));
-    }
-
-    @Override
-    public void receivingStatus(AetherOnePiStatus status) {
-        this.status = status;
-        guiElements.getStatusLEDMap().get("PI").setOn(true);
-        guiElements.getStatusLEDMap().get("BROADCASTING").setOn(status.getBroadcasting());
-        guiElements.getStatusLEDMap().get("CLEARING").setOn(status.getClearing());
-        guiElements.getStatusLEDMap().get("GROUNDING").setOn(status.getGrounding());
-        guiElements.getStatusLEDMap().get("COPYING").setOn(status.getCopying());
-        guiElements.getCp5().get("PACKAGES").setValue(status.getHotbitsPackages());
-        guiElements.getCp5().get("PROGRESS").setValue(status.getProgress());
-        guiElements.getCp5().get("QUEUE").setValue(status.getQueue());
-    }
-
-    @Override
-    public void setHotbitsPercentage(Float percentage) {
-        guiElements.setValue("HOTBITS", percentage);
     }
 
     public void keyReleased() {
@@ -622,5 +535,285 @@ public class AetherOneUI extends PApplet implements IStatusReceiver {
 
     public void showResonanceList() {
         ResonanceViewListDialog.showList(resonanceList);
+    }
+
+    public String getTitleAffix() {
+        return titleAffix;
+    }
+
+    public void setTitleAffix(String titleAffix) {
+        this.titleAffix = titleAffix;
+    }
+
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public void setSettings(Settings settings) {
+        this.settings = settings;
+    }
+
+    public Settings getGuiConf() {
+        return guiConf;
+    }
+
+    public void setGuiConf(Settings guiConf) {
+        this.guiConf = guiConf;
+    }
+
+    public GuiElements getGuiElements() {
+        return guiElements;
+    }
+
+    public void setGuiElements(GuiElements guiElements) {
+        this.guiElements = guiElements;
+    }
+
+    public AetherOnePiStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AetherOnePiStatus status) {
+        this.status = status;
+    }
+
+    public AetherOneEventHandler getAetherOneEventHandler() {
+        return aetherOneEventHandler;
+    }
+
+    public void setAetherOneEventHandler(AetherOneEventHandler aetherOneEventHandler) {
+        this.aetherOneEventHandler = aetherOneEventHandler;
+    }
+
+    public IHotbitsClient getHotbitsClient() {
+        return hotbitsClient;
+    }
+
+    public void setHotbitsClient(IHotbitsClient hotbitsClient) {
+        this.hotbitsClient = hotbitsClient;
+    }
+
+    public HotbitsHandler getHotbitsHandler() {
+        return hotbitsHandler;
+    }
+
+    public void setHotbitsHandler(HotbitsHandler hotbitsHandler) {
+        this.hotbitsHandler = hotbitsHandler;
+    }
+
+    public boolean isHotbitsFromWebCamAcquiring() {
+        return hotbitsFromWebCamAcquiring;
+    }
+
+    public void setHotbitsFromWebCamAcquiring(boolean hotbitsFromWebCamAcquiring) {
+        this.hotbitsFromWebCamAcquiring = hotbitsFromWebCamAcquiring;
+    }
+
+    public Webcam getWebcam() {
+        return webcam;
+    }
+
+    public void setWebcam(Webcam webcam) {
+        this.webcam = webcam;
+    }
+
+    public List<Webcam> getWebcamList() {
+        return webcamList;
+    }
+
+    public void setWebcamList(List<Webcam> webcamList) {
+        this.webcamList = webcamList;
+    }
+
+    public BufferedImage getWebcamImage() {
+        return webcamImage;
+    }
+
+    public void setWebcamImage(BufferedImage webcamImage) {
+        this.webcamImage = webcamImage;
+    }
+
+    public Integer getWebCamNumber() {
+        return webCamNumber;
+    }
+
+    public void setWebCamNumber(Integer webCamNumber) {
+        this.webCamNumber = webCamNumber;
+    }
+
+    public Integer getCountPackages() {
+        return countPackages;
+    }
+
+    public void setCountPackages(Integer countPackages) {
+        this.countPackages = countPackages;
+    }
+
+    public AnalysisService getAnalyseService() {
+        return analyseService;
+    }
+
+    public void setAnalyseService(AnalysisService analyseService) {
+        this.analyseService = analyseService;
+    }
+
+    public DataService getDataService() {
+        return dataService;
+    }
+
+    public void setDataService(DataService dataService) {
+        this.dataService = dataService;
+    }
+
+    public List<MouseClickObserver> getMouseClickObserverList() {
+        return mouseClickObserverList;
+    }
+
+    public void setMouseClickObserverList(List<MouseClickObserver> mouseClickObserverList) {
+        this.mouseClickObserverList = mouseClickObserverList;
+    }
+
+    public List<KeyPressedObserver> getKeyPressedObserverList() {
+        return keyPressedObserverList;
+    }
+
+    public void setKeyPressedObserverList(List<KeyPressedObserver> keyPressedObserverList) {
+        this.keyPressedObserverList = keyPressedObserverList;
+    }
+
+    public Case getCaseObject() {
+        return caseObject;
+    }
+
+    public void setCaseObject(Case caseObject) {
+        this.caseObject = caseObject;
+    }
+
+    public String getSelectedDatabase() {
+        return selectedDatabase;
+    }
+
+    public void setSelectedDatabase(String selectedDatabase) {
+        this.selectedDatabase = selectedDatabase;
+    }
+
+    public String getEssentielQuestion() {
+        return essentielQuestion;
+    }
+
+    public void setEssentielQuestion(String essentielQuestion) {
+        this.essentielQuestion = essentielQuestion;
+    }
+
+    public AnalysisResult getAnalysisResult() {
+        return analysisResult;
+    }
+
+    public void setAnalysisResult(AnalysisResult analysisResult) {
+        this.analysisResult = analysisResult;
+    }
+
+    public ImageLayersAnalysis getImageLayersAnalysis() {
+        return imageLayersAnalysis;
+    }
+
+    public void setImageLayersAnalysis(ImageLayersAnalysis imageLayersAnalysis) {
+        this.imageLayersAnalysis = imageLayersAnalysis;
+    }
+
+    public Integer getAnalysisPointer() {
+        return analysisPointer;
+    }
+
+    public void setAnalysisPointer(Integer analysisPointer) {
+        this.analysisPointer = analysisPointer;
+    }
+
+    public Integer getGvCounter() {
+        return gvCounter;
+    }
+
+    public void setGvCounter(Integer gvCounter) {
+        this.gvCounter = gvCounter;
+    }
+
+    public Integer getGeneralVitality() {
+        return generalVitality;
+    }
+
+    public void setGeneralVitality(Integer generalVitality) {
+        this.generalVitality = generalVitality;
+    }
+
+    public Boolean getStickPadMode() {
+        return stickPadMode;
+    }
+
+    public void setStickPadMode(Boolean stickPadMode) {
+        this.stickPadMode = stickPadMode;
+    }
+
+    public Boolean getStickPadGeneralVitalityMode() {
+        return stickPadGeneralVitalityMode;
+    }
+
+    public void setStickPadGeneralVitalityMode(Boolean stickPadGeneralVitalityMode) {
+        this.stickPadGeneralVitalityMode = stickPadGeneralVitalityMode;
+    }
+
+    public TrayIcon getTrayIcon() {
+        return trayIcon;
+    }
+
+    public void setTrayIcon(TrayIcon trayIcon) {
+        this.trayIcon = trayIcon;
+    }
+
+    public String getTrainingSignature() {
+        return trainingSignature;
+    }
+
+    public void setTrainingSignature(String trainingSignature) {
+        this.trainingSignature = trainingSignature;
+    }
+
+    public Boolean getTrainingSignatureCovered() {
+        return trainingSignatureCovered;
+    }
+
+    public void setTrainingSignatureCovered(Boolean trainingSignatureCovered) {
+        this.trainingSignatureCovered = trainingSignatureCovered;
+    }
+
+    public Boolean getAutoMode() {
+        return autoMode;
+    }
+
+    public void setAutoMode(Boolean autoMode) {
+        this.autoMode = autoMode;
+    }
+
+    public PImage getClipBoardImage() {
+        return clipBoardImage;
+    }
+
+    public void setClipBoardImage(PImage clipBoardImage) {
+        this.clipBoardImage = clipBoardImage;
+    }
+
+    public List<RateObject> getResonatedList() {
+        return resonatedList;
+    }
+
+    public void setResonatedList(List<RateObject> resonatedList) {
+        this.resonatedList = resonatedList;
+    }
+
+    public List<ResonanceObject> getResonanceList() {
+        return resonanceList;
+    }
+
+    public void setResonanceList(List<ResonanceObject> resonanceList) {
+        this.resonanceList = resonanceList;
     }
 }

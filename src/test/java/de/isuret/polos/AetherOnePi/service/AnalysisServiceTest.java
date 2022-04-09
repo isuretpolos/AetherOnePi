@@ -4,8 +4,8 @@ import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Rate;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsClient;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -66,7 +66,7 @@ public class AnalysisServiceTest {
         System.out.println("========================================");
         System.out.println(analysisResult.toString().replaceAll(",","\n"));
 
-        Assert.assertEquals(0, counter.size());
+        Assertions.assertEquals(0, counter.size());
 
         System.out.println("========================================");
         analysisResult = analysisService.checkGeneralVitalityForAnalysis(analysisResult);

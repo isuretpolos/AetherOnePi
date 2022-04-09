@@ -1,15 +1,18 @@
 package de.isuret.polos.AetherOnePi.processing.config;
 
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+
+import de.isuret.polos.AetherOnePi.domain.Settings;
+import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.util.UUID;
 
 public class AetherOnePiProcessingConfigurationTest {
 
-    @BeforeClass
+    @BeforeAll
     public static void init() {
         File targetFolder = new File("target/");
         if (!targetFolder.exists()) {
@@ -26,7 +29,7 @@ public class AetherOnePiProcessingConfigurationTest {
         System.out.println(settings);
 
         Boolean testValue = settings.getBoolean("test", true);
-        Assert.assertTrue(testValue);
+        Assertions.assertTrue(testValue);
 
         AetherOnePiProcessingConfiguration.saveAllSettings();
     }

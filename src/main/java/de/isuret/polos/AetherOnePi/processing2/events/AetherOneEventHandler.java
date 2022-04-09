@@ -4,8 +4,6 @@ import controlP5.ControlEvent;
 import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
-import de.isuret.polos.AetherOnePi.processing.config.AetherOnePiProcessingConfiguration;
-import de.isuret.polos.AetherOnePi.processing.config.Settings;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.BroadcastUnit;
@@ -16,13 +14,14 @@ import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
 import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
+import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
 import de.isuret.polos.AetherOnePi.utils.cards.CardMaker;
 import de.isuret.polos.AetherOnePi.utils.cards.RadionicLine;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.util.StringUtils;
 import processing.core.PImage;
 
 import javax.swing.*;
@@ -46,9 +45,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     private Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 
     private AetherOneUI p;
-    private DataService dataService = new DataService();
+    private final DataService dataService = new DataService();
     private AnalysisService analyseService;
-    private List<RateObject> recurringRateList = new ArrayList<RateObject>();
+    private final List<RateObject> recurringRateList = new ArrayList<RateObject>();
 
     public AetherOneEventHandler(AetherOneUI p) {
         this.p = p;

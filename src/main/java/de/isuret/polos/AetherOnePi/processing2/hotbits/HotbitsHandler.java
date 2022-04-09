@@ -3,9 +3,7 @@ package de.isuret.polos.AetherOnePi.processing2.hotbits;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
-import de.isuret.polos.AetherOnePi.processing.communication.IStatusReceiver;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
-import de.isuret.polos.AetherOnePi.processing2.exceptions.AetherOnePiException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +11,6 @@ import java.io.File;
 import java.io.IOException;
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 
@@ -65,28 +62,7 @@ public class HotbitsHandler implements IHotbitsClient {
                         continue;
 
                     } else if (hotbits.size() < 1000) {
-                        try {
-                            // online mode ?
-                            retrieveHotbitsFromAetherOnePi();
-                        } catch (AetherOnePiException e) {
-                            logger.trace("loading from harddisk instead of server");
-                            loadHotbitsFromHarddisk();
-                            offlineForHowManyTime = 10;
-                        }
-                    } else if (offlineForHowManyTime == 0) {
-                        logger.trace("storing hotbits on harddisk for later use");
-                        try {
-                            if (hotbitsFolder.listFiles().length > 20000) {
-                                // there are enough hotbits packages, so stop
-                                waitMilliseconds(2000);
-                                continue;
-                            }
-
-                            saveHotbitsFromAetherOnePi();
-                        } catch (AetherOnePiException e) {
-                            logger.trace("no connection to AetherOnePi server, cannot collect hotbits", e);
-                            offlineForHowManyTime = 10;
-                        }
+                        loadHotbitsFromHarddisk();
                     } else if (offlineForHowManyTime > 0) {
                         offlineForHowManyTime = offlineForHowManyTime - 1;
                         logger.trace("offline mode counter = " + offlineForHowManyTime);
@@ -137,45 +113,6 @@ public class HotbitsHandler implements IHotbitsClient {
         }
     }
 
-    public synchronized void retrieveHotbitsFromAetherOnePi() throws AetherOnePiException {
-        try {
-            HotBitIntegers integers = p.getPiClient().getRandomNumbers(0, 100000, 10000);
-
-            if (integers == null) {
-                logger.warn("No hotbits available.");
-                return;
-            }
-
-            p.println("there are " + integers.getIntegerList().size() + " lines");
-
-            for (Integer number : integers.getIntegerList()) {
-
-                addHotBitSeed(number);
-            }
-
-            p.println("We have now " + hotbits.size() + " hot seeds!");
-        } catch (Exception e) {
-            throw new AetherOnePiException("unable to retrieve hotbits from AetherOnePi server", e);
-        }
-    }
-
-    public synchronized void saveHotbitsFromAetherOnePi() throws AetherOnePiException {
-        try {
-            HotBitIntegers integers = p.getPiClient().getRandomNumbers(0, 100000, 10000);
-
-            if (integers == null) {
-                logger.warn("No hotbits available.");
-                return;
-            }
-
-            ObjectMapper mapper = new ObjectMapper();
-            mapper.writeValue(new File("hotbits/hotbits_" + String.valueOf(Calendar.getInstance().getTimeInMillis()) + ".json"),integers);
-
-        } catch (Exception e) {
-            throw new AetherOnePiException("unable to retrieve hotbits from AetherOnePi server", e);
-        }
-    }
-
     public void addHotBitSeed(Integer seed) {
 
         if (hotbits.size() > 4000000) return;
@@ -186,7 +123,6 @@ public class HotbitsHandler implements IHotbitsClient {
         updateProcessBar++;
 
         if (updateProcessBar > 100) {
-            updateCp5ProgressBar();
             updateProcessBar = 0;
             simulation = false;
         }
@@ -195,16 +131,6 @@ public class HotbitsHandler implements IHotbitsClient {
     Integer getHotBitSeed() {
         Integer seed = hotbits.remove(0);
         return seed;
-    }
-
-    public void updateCp5ProgressBar() {
-
-        int count = hotbits.size();
-
-        if (count > 0) count = count / 100;
-        if (count > 100) count = 100;
-
-        ((IStatusReceiver) p).setHotbitsPercentage((float) count);
     }
 
     @Override

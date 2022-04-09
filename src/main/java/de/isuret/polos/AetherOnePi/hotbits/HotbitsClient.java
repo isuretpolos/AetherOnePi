@@ -1,15 +1,10 @@
 package de.isuret.polos.AetherOnePi.hotbits;
 
-import de.isuret.polos.AetherOnePi.processing.communication.StatusNotificationService;
-import de.isuret.polos.AetherOnePi.service.PiService;
 import de.isuret.polos.AetherOnePi.utils.HttpUtils;
-import lombok.Data;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
@@ -20,14 +15,11 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
 // TODO this need to be refactored, moved to the server project only
-@Data
-@Component
 public class HotbitsClient implements IHotbitsClient {
 
     private Log logger = LogFactory.getLog(HotbitsClient.class);
 
     private boolean pseudoRandomMode = false;
-    private boolean grounding = false;
 
     private byte[] currentData;
     private int currentPosition = 0;
@@ -35,19 +27,12 @@ public class HotbitsClient implements IHotbitsClient {
     private final List<Integer> randomOrgSeeds = new ArrayList<>();
     private final List<HotbitPackage> hotbitPackages = new ArrayList<>();
 
-    private String hotbitServerUrls;
     private Long lastCall = null;
 
     private int packageSize = 1000;
     private Integer storageSize = 100;
     private Integer storageBigCacheSize = 5000;
     private String packageFolder = "hotbits";
-
-    @Autowired
-    private PiService piService;
-
-    @Autowired
-    private StatusNotificationService statusNotificationService;
 
     private int errorCounter = 0;
     private HotbitsFactory hotbitsFactory;
@@ -63,11 +48,6 @@ public class HotbitsClient implements IHotbitsClient {
 
         actualizeLastCallValue();
 
-        if (piService != null && piService.getPiAvailable()) {
-            initAsynchronousGeneration();
-        } else {
-            logger.warn("Either piService is null or Pi is not available!");
-        }
     }
 
     private synchronized void actualizeLastCallValue() {
@@ -75,10 +55,6 @@ public class HotbitsClient implements IHotbitsClient {
     }
 
     private HotbitPackage downloadPackage() throws InterruptedException, IOException {
-
-        if (statusNotificationService != null) {
-            statusNotificationService.setHotbitsPackages(hotbitPackages.size());
-        }
 
         File hotbitFile = hotbitsFactory.createHotbitPackage(packageSize, packageFolder);
 
@@ -401,14 +377,6 @@ public class HotbitsClient implements IHotbitsClient {
             }
 
             private void makePause() {
-
-                if (piService == null) {
-                    return;
-                }
-
-                if (piService.getPiAvailable()) {
-                    return;
-                }
 
                 try {
 
