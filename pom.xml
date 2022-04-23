@@ -58,6 +58,13 @@
             <version>2.9.10.6</version>
         </dependency>
 
+        <!-- JAVALIN -->
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin</artifactId>
+            <version>4.4.0</version>
+        </dependency>
+
         <!-- processing -->
         <dependency>
             <groupId>com.pi4j</groupId>

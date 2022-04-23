@@ -19,6 +19,7 @@ jobs:
           mvn -B package --file pom.xml -Dmaven.test.skip=true
       - name: Upload Artifact - Make Directory
         run: |
+          mkdir -p aetherOnePi/beta/release/html;
           mkdir -p aetherOnePi/beta/release/backgrounds;
           mkdir -p aetherOnePi/beta/release/cases;
           mkdir -p aetherOnePi/beta/release/config;
