@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Balsamum Peruvianum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bronchitis. Catarrh. Cracks. Epistaxis. Hectic. Itch. Phthisis. Ulcers." ],
+    "Characteristics" : [ "Peruvian Balsam has been chiefly used empirically in catarrhal phthisis or bronchial catarrh with copious purulent expectoration. Sputa thick, creamy, yellowish white; loud rales, night sweats, hectic. Hale has used it with success in \"chronic, purulent, fetid anterior or posterior nasal catarrh, with or without ulceration.\" He says that a cerate of the Balsam is the best application next to Glycerole of Aloes for indolent ulcers, cracked nipples, cracks in fingers and palmer surfaces of hands, or fissured and chapped lips. The Balsam is also used externally for killing the acarus of itch. All parts affected are gently rubbed with it at night and a bath taken in the morning. A single application is sufficient. It has been proved by Lembke." ],
+    "Nose" : [ "Bleeding from r. nostril without coryza, or sneezing, or blowing nose; repeated at p.m.", "Profuse thick discharge from nose, whether chronic or otherwise.", "Ozaena with ulceration." ],
+    "Throat" : [ "Continued scraping of fauces." ],
+    "Stomach" : [ "Vomiting of food and mucus; catarrh of stomach.", "Mucous diarrhoea, &c." ],
+    "Stool" : [ "Copious liquid stool, painless.", "Passage of blood with normal stool (does not have piles)." ],
+    "Urinary Organs" : [ "Sticking and cutting in urethra.", "Urination more frequent and copious.", "Urine scanty, with mucous sediment; catarrh of bladder." ],
+    "Respiratory Organs" : [ "Scraping in larynx in forenoon; dry cough." ],
+    "Chest" : [ "Cough, mucous and purulent expectoration.", "Phthisis of mucous type; vomica in lungs." ],
+    "Upper Limbs" : [ "Oppressive pain in r. wrist." ],
+    "Lower Limbs" : [ "Severe pain in l. tibia.", "Boring in r. tibia." ],
+    "Generalities" : [ "Debility; rhagades of nipples and fingers." ]
+  }
+}

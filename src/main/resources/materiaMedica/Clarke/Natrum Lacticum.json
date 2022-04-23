@@ -1,0 +1,13 @@
+{
+  "remedyName" : "Natrum Lacticum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Gout. Gouty concretions. Rheumatism." ],
+    "Characteristics" : [ "Allen has collected a few observations on the effects of large doses, which I have schematised below. Skinner has removed with it, in potencies, gouty or rheumatic concretions (\"chalk stones\") in fingers." ],
+    "Relations" : [ "Compare: The Lacs, Lact. ac. In \"chalk stones,\" Lyc., Calc." ],
+    "Stomach" : [ "Unusual hunger and thirst.", "Vomiting (from very large doses)." ],
+    "Lower Limbs" : [ "Great weakness of lower limbs, analogous to anxietas tibiarum after great physical exertion." ],
+    "Generalities" : [ "Rheumatoid pains.", "Abnormal sense of fatigue, yawning and sleepiness." ],
+    "Sleep" : [ "Sleep more prolonged and sounder.", "Yawning and sleepiness." ]
+  }
+}

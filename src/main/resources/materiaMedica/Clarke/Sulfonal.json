@@ -1,0 +1,27 @@
+{
+  "remedyName" : "Sulfonal",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Albuminuria. Cramps. Cyanosis. Ears, noises in. Epilepsy. Headache, with tinnitus. Haematoporphyrinuria. Locomotor ataxy. Paralysis, ascending. Reflexes abolished." ],
+    "Characteristics" : [ "Sulfonal was at first regarded as one of the safest of hypnotics, but many cases of poisoning by medicinal doses have occurred, and my Schema is made up of reported effects produced on patients. The accounts will be found in recent numbers of H. W. Prominent symptoms were: Stupor. Headache, with noises in ears. Vomiting and diarrhoea. Urine retained, or secretion arrested; claret-coloured; containing albumen; porphyrin. Ataxic gait and diminished or abolished reflexes point to locomotor ataxy. Ascending paralysis has been observed. The heart is weak; fainting occurs; and death takes place by heart failure. Rashes have been noticed on the skin, purpuric, erythematous, &c. One man (H. W., xxxii. 174) observed uniform skin effects every time he took Sfo., more intense the larger the dose. This occurred from gr. v.: Patches of erythema appeared (1) first on inner side of first phalanx of right little finger; (2) next over proximal ends of metacarpal bones of left thumb and index; (3) on posterior surface of left forearm a little below elbow; (4) fourth on prepuce. The symptoms were > by cold douches." ],
+    "Mind" : [ "Stupidity.", "Unconscious, with dilated and fixed pupils and profuse sweat." ],
+    "Head" : [ "Headache and tinnitus aurium." ],
+    "Eyes" : [ "Pupils dilated and fixed." ],
+    "Ears" : [ "Tinnitus." ],
+    "Mouth" : [ "Breath smells of onions." ],
+    "Face" : [ "Face livid." ],
+    "Stomach" : [ "Vomiting, diarrhoea, and violent chills.", "Constant retching, vomiting, and soreness over epigastrium.", "Great disturbance of digestion with scanty urine." ],
+    "Abdomen" : [ "Spleen enlarged; hyperaemic." ],
+    "Stool and Anus" : [ "Diarrhoea and vomiting.", "Great constipation." ],
+    "Urinary Organs" : [ "Dark brown urine.", "Urine very scanty; albuminous; almost solid when cooled.", "Haematoporphyrinuria and death; urine oscillated between deep claret and light claret colour.", "Retention of urine; had to be drawn off; dark-coloured.", "Urine cherry-colour, later like dark port wine." ],
+    "Male Sexual Organs" : [ "Erythema on prepuce." ],
+    "Chest" : [ "OEdema of lungs.", "Signs of broncho-pneumonia." ],
+    "Heart" : [ "Death from heart failure and oedema of lungs.", "Heart's action feeble, occasionally intermittent." ],
+    "Back" : [ "Chronic leptomeningitis, circumscribed softening of dorsal portion of cord, with hypostatic pneumonia of r. lung, and cyanosis of liver and kidneys (post mortem of poisoning cases)." ],
+    "Lower Limbs" : [ "Gait ataxic; reeled about.", "Plantar reflex deficient.", "Paralysis of lower limbs.", "(Cramps of legs and single muscles.)" ],
+    "Generalities" : [ "The symptoms disappear slowly.", "Paralysis of body.", "> By cold water; cold douches.", "Great prostration.", "Progressive paralysis affecting legs first then arms.", "Paralysis sometimes progressive sometimes with hyperaesthesia and abnormal sensation.", "Twitching of muscles, esp. of face and flexors: < by voluntary movement, but always present in sleep.", "Reflexes abolished.", "(Epilepsy, inveterate cases with over-excitability of the cortical substance.).", "Fainted and vomited.", "Livid, esp. face.", "Cyanosis.", "Death by respiratory failure preceded by unconsciousness." ],
+    "Skin" : [ "Discoloured patches like purpura on skin.", "Patches of erythema, of intensity proportionate to dose:", "(1) On inner side of first phalanx of r. little finger; (2) over proximal ends of metacarpal bones of l. thumb and index; (3) on posterior surface of l. forearm, a little below elbow; (4) on prepuce.", "Erythematous measles-like eruption." ],
+    "Sleep" : [ "Stupor.", "Heaviness and drowsiness.", "Sleepiness and weariness with unsteady gait." ],
+    "Fever" : [ "Violent chills." ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "remedyName" : "Chloroformum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Arachnitis. Convulsions. Delirium tremens. Gall-stones. Muscae volitantes. Paralysis of sphincter vesicae. Puerperal convulsions. Sick headache. Smell, lost. Taste, lost. Tetanus. Typhus. Vertigo." ],
+    "Characteristics" : [ "Chloroform is the well-known anesthetic, the general effects of which in arresting sensation need no description. Unlike Ether and Nitrous oxide, which require to be administered without air, chloroform vapour must have abundance of air inhaled with it, or asphyxia results. Its most noteworthy effect is complete relaxation of all the voluntary muscles of the body. It may cause death by paralysing the respiration or the heart. Its use is contraindicated where there is brain softening; fatty heart; alcoholism; or albuminuria. Marcy cured with it a case of arachnitis ending in convulsions. It is especially indicated in delirium where excitement and violence predominate; desire to kill. Paralysis of voluntary and involuntary muscles and special senses. Chloroform will dissolve gall-stones, and cases have been treated by the injection of Chloroform into the gall-bladder." ],
+    "Relations" : [ "Compare: Chloralum. Antidoted by: Amyl. nit., Ipec., Brandy; Ice in rectum. It antidotes: Strychnine." ],
+    "Mind" : [ "Wild excitement, followed by complete insensibility.", "Sang comic songs; could scarcely be persuaded to leave the piano.", "Obscene language used under its influence, in two provers.", "Desire to kill." ],
+    "Head" : [ "Vertigo, rising from spine into occiput.", "Whirling in head as if he would fall forward.", "As if ground waving on closing eyes.", "Head drawn down on shoulders.", "Severe bursting headache in forehead.", "Headache with dizziness; with roaring in ears; with excessive nausea and vomiting." ],
+    "Eyes" : [ "Conjunctiva insensible.", "Pupils dilated, insensible to light.", "Eyes turned up.", "Sight gradually went out and returned gradually.", "Dark points and bright streaks.", "Small black points float before eyes.", "Large black spots; grey spots; float a few inches before the eye; follow the motion of the eye.", "Bright and dark points; sparks; flashes of light." ],
+    "Ears" : [ "Roaring in ears, like boiling water." ],
+    "Nose" : [ "Complete loss of smell (lasted two months)." ],
+    "Face" : [ "Face as if intoxicated; flushed; livid." ],
+    "Mouth" : [ "Teeth smooth, as after acids (fourth day).", "Soapy taste.", "Taste lost." ],
+    "Throat" : [ "Burning in throat; scraping.", "Violent scraping and coldness in fauces on inspiration." ],
+    "Stomach" : [ "Eructations.", "Burning in stomach; alternating with chilliness.", "Nervous hiccough.", "Nausea and vomiting, sea-sickness, or morning sickness, much acidity and great distension of stomach and bowels with gas; abdomen tense; rumbling." ],
+    "Urinary Organs" : [ "Paralysis of sphincter of bladder (after parturition)." ],
+    "Respiratory Organs" : [ "Stertorous breathing." ],
+    "Heart" : [ "Constantly increasing retardation and weakening of action of heart and arteries." ]
+  }
+}

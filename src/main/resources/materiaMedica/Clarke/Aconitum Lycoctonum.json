@@ -1,0 +1,30 @@
+{
+  "remedyName" : "Aconitum Lycoctonum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Breasts, inflammation of. Constipation. Diarrhoea. Glands, enlargement of. Hodgkin's disease. Liver, disorders of. Pork, effects of. Strangury." ],
+    "Characteristics" : [ "The symptoms of A. lycoct., whilst resembling those of the other aconites in some respects, show a marked absence of the cutaneous-nerve affections so prominent in their provings. The most notable symptoms are swelling of the cervical, axillary, and mammary glands. I have used it with good effect in cases of scrofulous glands, and even where Hodgkin's disease has been suspected. Diarrhoea after eating pork. Itching is prominent in the proving: of eyes, nose, anus, vulva. The skin of the nose is cracked. There is a cough leaving a taste of blood in the mouth. The symptoms are < in afternoon (like Lycop.); < from mental exertion; < during digestion, especially of pork, onions, and after wine." ],
+    "Relations" : [ "Compare: Cistus, Lap. alb., Con., Iod., Spo., Lyc., Carb. an.; Puls. (effects of pork)." ],
+    "Mind" : [ "Mania.", "Ferocity.", "Laughter.", "Distraction.", "Instability of ideas.", "Dread of work." ],
+    "Head" : [ "Vertigo with nausea.", "Lancinating pain in head extending across eyes.", "Sensation as if a nail were driven into head when moving it.", "Hammering in temples.", "Pain like rheumatism in scalp < by touch." ],
+    "Eyes" : [ "Lancinating pain in eyes from without inward.", "Painfulness of lids.", "Itching in lids.", "Pressure on lids and difficulty of raising them.", "Smarting in canthi; dryness at inner canthus." ],
+    "Ears" : [ "Purulent discharge from ears; redness behind them." ],
+    "Nose" : [ "Itching on nose; sensitiveness; lancinations.", "Compression at root of nose.", "Skin of nose cracked.", "Muco-purulent discharge from nose." ],
+    "Face" : [ "Face pale; shining.", "Pain of excoriation round mouth.", "Pain in facial bones.", "Tension in facial muscles.", "Hard tuberculous pimples on face.", "Pimples on lips.", "Skin of face becomes light brown.", "Numbness of jaw, like incipient paralysis, > by compression and by drinking wine." ],
+    "Teeth" : [ "Burning pain in upper teeth.", "Pressing in teeth.", "Tearing in lower teeth when opening mouth.", "Gums bluish; ulcerated." ],
+    "Mouth" : [ "Taste, clayey; astringent." ],
+    "Appetite" : [ "Strong relish for dainties, fruits, cabbage.", "Increased relish for tobacco in a smoker.", "Aversion to food in general esp. fatty things and milk; they cause uneasiness.", "Keen hunger very soon satisfied.", "Constant thirst even when drinking.", "Burning thirst.", "Thirst at night." ],
+    "Stomach" : [ "Risings: rancid; like rotten eggs, acid with weight on stomach.", "Painful eructations.", "Hiccough.", "Inclination to vomit after eating; with shivering; with vertigo.", "Vomiting: of mucus on getting out of bed; yellowish after drinking; with copious urination." ],
+    "Abdomen" : [ "R. hypochondrium: bruised pain; tearing pain; starting.", "When breathing both hypochondria feel bruised. Sensation of compression referred to diaphragm.", "Anxiety; beatings in abdomen.", "Lancinating pain after milk." ],
+    "Stool" : [ "Constipation; anus feels as if strongly contracted.", "Diarrhoea, with violent cutting after eating pork.", "Whitish stools.", "After stool, pain in anus as if there was a crack there; shivering.", "Cramp at anus.", "Itching at anus.", "Tenesmus during night." ],
+    "Urinary Organs" : [ "Desire to urinate with copious emissions.", "Urging with ineffectual efforts.", "Urine: hot; turbid, depositing a white sediment." ],
+    "Female Sexual Organs" : [ "Itching at vulva.", "Menstrual blood fetid.", "Excoriation of bend of thigh after menses.", "Leucorrhoea: viscid." ],
+    "Respiratory Organs" : [ "Difficult respiration.", "Slight cough with watery expectoration.", "After a slight chill, cough leaving a taste of, blood in the mouth." ],
+    "Chest" : [ "Swelling of the mammary glands." ],
+    "Neck and Back" : [ "Swelling of the cervical glands.", "The neck seems to grow larger.", "Swelling of the neck on one side only.", "Pressing pain at the nape of the neck.", "Shivering in the back.", "Jerking in the region of the kidneys." ],
+    "Upper Limbs" : [ "Swelling of axillary glands.", "Pressure; lancinating pains in shoulder joints.", "Tearing pain in elbow joints.", "Stiffness in elbows and wrists.", "Sensation of fulness in hands.", "Sweat on hands." ],
+    "Lower Limbs" : [ "On stretching legs ham-muscles feel as if much shortened.", "Jerking in legs.", "Itching at ankles in evening.", "Lancinating pain at instep when standing.", "Eruption of hot, red, slightly painful spots on legs and toes." ],
+    "Sleep" : [ "Drowsiness; he sleeps too long.", "Aberration of hearing during sleep.", "During sleep, numbness of the parts he lies on." ],
+    "Fever" : [ "Horripilation.", "Chilliness of one side only as soon as he is uncovered.", "In morning external coldness with feeling of heat.", "Coldness alternating with heat, succeeded by sweat.", "During heat, pale face, strong appetite, thirst, pain in bowels, restlessness.", "Sweat continues after fever." ]
+  }
+}

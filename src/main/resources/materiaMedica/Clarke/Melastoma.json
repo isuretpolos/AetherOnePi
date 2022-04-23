@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Melastoma",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Perinaeum, pains in. Prostatic affections." ],
+    "Characteristics" : [ "Mure figures and describes this plant. He made a proving of the leaves. On the second day of the proving the prover lost an inveterate diarrhoea with colic. The most notable symptoms were a pain in the perinaeum and testicles; and shuddering followed by heat without sweat." ],
+    "Head" : [ "Vertigo.", "Headache with sensitiveness of scalp." ],
+    "Mouth" : [ "Digging in teeth.", "White tongue.", "Copious saliva." ],
+    "Stomach" : [ "Sour stomach." ],
+    "Abdomen" : [ "Borborygmi.", "Pain in abdomen." ],
+    "Stool and Anus" : [ "Tenesmus with constriction of sphincter.", "Heat and pricking at anus.", "Fearful pain and pulling from perinaeum to anus when sitting; not ceasing in any position, lasting six hours.", "Lancinations in perinaeum, urethra, and testicles.", "(Inveterate diarrhoea and colic cured.)" ],
+    "Urinary Organs" : [ "Pricking in urethra.", "Urine: profuse; light foaming; red, odourless, with bloody clots; fetid; white sediment; albuminous." ],
+    "Male Sexual Organs" : [ "Hardness of penis without erection." ],
+    "Heart" : [ "Palpitation of heart." ],
+    "Back" : [ "Pain in loins." ],
+    "Lower Limbs" : [ "Weakness of thighs.", "OEdema of legs." ],
+    "Generalities" : [ "Prostration." ],
+    "Skin" : [ "Eruption on lips, esp. upper.", "Itching and heat at night.", "Pricking over feet, ankles, and wrists." ],
+    "Sleep" : [ "Drowsy in daytime." ],
+    "Fever" : [ "Chills followed by sweat.", "Violent chills followed by heat without sweat.", "Intense heat." ]
+  }
+}

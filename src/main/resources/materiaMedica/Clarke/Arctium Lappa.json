@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Arctium Lappa",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Acne. Bunion. Dupuytren's contraction. Eczema serpiginosa. Eruptions. Glands, affections of. Gonorrhoea. Gout. Impotence. Leucorrhoea. Phosphaturia. Rheumatism. Ringworm. Scrofula. Sterility. Ulcers. Uterus, prolapse of." ],
+    "Characteristics" : [ "Arctium lappa has been extensively proved, notably by Dr. Jeanes and Dr. S. A. Jones (H. R., 1893). The provings in the main confirm the teachings of antiquity in regard to this remedy. It has been given from the earliest times for prolapsus uteri, sterility, milky urine, and sores about the joints. A large number of the symptoms were observed in the skin (acne; eczema, especially scalp) and mucous membrane, eruptions and discharges. It is one of the remedies which have been successful in curing uterine prolapse. In skin affections it has been use externally as a glycerole, as well as internally. A writer in Amer. Homoeop. recommended the local use of the seedling roots in acne. The roots are softened by soaking in water for two hours; then the blunt end is rubbed on each individual pimple. It is not to be repeated oftener than once a week. It was one of Culpepper's remedies for fetid sweat of axillae." ],
+    "Relations" : [ "Compare: The Compositae, Arn., Calend., Cina, &c.; Bry. (rheumatism); Fraxinus Amer., Lil. t., and Sep. (in uterine prolapse); Calc. ph. (phosphaturia); Vinca minor, Viol. tric. (skin)." ],
+    "Head" : [ "Pain in head in region of veneration.", "Eczema of scalp." ],
+    "Eyes" : [ "Feeling as if the eye was small and constricted.", "Styes." ],
+    "Face" : [ "Inveterate acne.", "Spreading vesicular eruption, great tearing and itching.", "Herpetic eruption on r. ala nasi." ],
+    "Stomach" : [ "Flatulent dyspepsia, belching inodorous gas." ],
+    "Stools" : [ "Frequent yellow stools in forenoon, with nausea.", "Diarrhoea alternating with rheumatic symptoms." ],
+    "Urinary Organs" : [ "Milky phosphatic urine." ],
+    "Male Sexual Organs" : [ "Loss of sexual desire.", "Cutting, squeezed pain in whole length of urethra; scalding on micturition.", "Ringworm-like patch of eruption on thigh beside testicles; groins raw." ],
+    "Female Sexual Organs" : [ "Prolapse of uterus with much bearing down (Arct. l. has been called the \"uterine magnet\").", "Leucorrhoea." ],
+    "Respiratory Organs" : [ "Tickling in rima glottidis with loose-sounding cough, but no expectoration.", "Acute tingling, cutting pain under middle of sternum, extending across breast.", "Short breath on exertion." ],
+    "Heart" : [ "Pain in heart with indescribable movement under sternum; exceedingly rapid pulse with frequent intermissions." ],
+    "Back" : [ "Pains in back about eighth dorsal vertebra." ],
+    "Limbs" : [ "Rheumatic and gouty pains.", "Soreness of muscles.", "Dull pains, all < by motion; with high-coloured urine; weary and sleepy.", "Rheumatic pains entirely relieved by onset of diarrhoea.", "Pains in joints.", "Sharp, darting, fugitive pains in tendons (Dupuytren's contraction).", "Bunion." ],
+    "Generalities" : [ "Axillary glands suppurate.", "OEdema and dropsical swellings." ],
+    "Skin" : [ "Boils.", "Moist, offensive eruptions, greyish white crusts; esp. when glands are swollen.", "Old sores, esp. about joints." ]
+  }
+}

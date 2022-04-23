@@ -1,0 +1,17 @@
+{
+  "remedyName" : "Coccinella",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Face, neuralgia of. Hydrophobia. Tic douloureux. Toothache." ],
+    "Characteristics" : [ "Most of the symptoms of Coccinella appear in the teeth and nerves of the face and mouth. It has been used in hydrophobia, and therein its actions would appear to be analogous to that of Cantharis. Symptoms indicating it are: < by any bright object. Is awakened by profuse accumulation of Sativa; vomits and complains of sore throat. The neuralgia of Coccin. is < at night, accompanied by icy cold extremities and cold, moist skin; the right side is most affected. Pains extend from one part to another, and may jump from side to side. Its attacks recur periodically; are often of brief duration but quickly recurring, generally < at night; but may be entirely absent in the night. Returning every eight, ten, twelve, fourteen, or twenty days." ],
+    "Relations" : [ "Compare: in tic douloureux, Spi., Thuj." ],
+    "Head" : [ "Dull headache, as from an enlargement of the brain towards the occiput.", "Semi-lateral, tearing and shooting pains in the sinciput." ],
+    "Face" : [ "Faceache, the disappearance of which is attended by faintness, oppressed breathing, and intermittent pulse.", "Flush of blood (congestion) to face, like a transient heat; cheeks red, esp. r.", "Pressure and heaviness, esp. over r. eye, which is sensitive to least touch.", "During paroxysm, cannot open eyes, pain < by any bright object.", "Tearing, rhythmical with pulse, extending from r. upper jaw to the lobule of ear." ],
+    "Teeth" : [ "Chronic pain extending from superior molars to forehead; affected part paler; attack lasts only a minute but is instantly repeated, < at night, preventing sleep.", "Sensation of coldness in all the teeth; in the entire buccal cavity.", "Rhythmical, violent drawing in both rows of teeth while eating.", "Sensation as though the teeth would be drawn out; severe drawing in jerks.", "Jerking and tearing with stitches, extending to occiput with warmth through whole head.", "Painful sensation in back teeth as if they were hollow and air were forced into them.", "Pulsative jerking in back teeth.", "Swollen gum." ],
+    "Mouth" : [ "Tobacco bites the tongue severely." ],
+    "Throat" : [ "Sensation in the throat as though the uvula was too long (Nux vom. has this same sensation, when the uvula is bluish and inflamed)." ],
+    "Appetite" : [ "Appetite lost." ],
+    "Respiratory Organs" : [ "With disappearance of pain in face respiration becomes oppressed." ],
+    "Sleep" : [ "Nocturnal attacks of pain entirely preventing sleep, but could not sleep even when pain did not appear.", "Attack ends in a general heat and sleep of two or three hours, from which he wakes without any pain." ]
+  }
+}

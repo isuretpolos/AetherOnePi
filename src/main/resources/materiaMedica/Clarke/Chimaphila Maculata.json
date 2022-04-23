@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Chimaphila Maculata",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Angina pectoris. Diarrhoea. Headache. Sore-throat. Tongue, stiffness of. Toothache. Worm-fever." ],
+    "Characteristics" : [ "Chim. mac. has been proved independently of Chim. umb. Some symptoms of Chim. rotund. are included. An intense gnawing hunger is a leading symptom. Burning fever; blood feels heated. The throat and tonsils are strongly affected. Headache < on lying down. Feels better in warm room. Suited to mild, amiable, refined, sensitive, intellectual persons." ],
+    "Relations" : [ "Compare: Puls., Chim. umb." ],
+    "Mind" : [ "Becomes partially unconscious, feels like fainting, as if brain paralysed, mind gone (Chim. rotund.)." ],
+    "Head" : [ "Sudden headache above eyes; with dim vision; light-headed; lying down.", "Frontal headache with fulness in stomach and belching; with pain in bowels; wants head pressed on." ],
+    "Teeth" : [ "Hollow teeth ache, < eating." ],
+    "Mouth" : [ "Tongue feels stiff and thick in middle, cannot raise it Chim. rotund)." ],
+    "Throat" : [ "Tensive pain in throat on swallowing; swollen tonsils." ],
+    "10, Appetite and Stomach" : [ "Extreme gnawing hunger.", "Feels drunk as if stomach burnt up with liquor; as if hard, dry, and tough, and as if rennet would be good for it (Chim. rotund.)." ],
+    "Stool" : [ "Diarrhoea, with worm-fever." ],
+    "Urinary Organs" : [ "Rises in night to urinate." ],
+    "Heart" : [ "Angina with stupor." ],
+    "Limbs" : [ "Limbs feel full, as if distended.", "Sensation of swelling in armpits; pain from armpits to scapulae." ],
+    "Fever" : [ "Fever with burning hot skin and thirst.", "Blood as if heated with prickling.", "Cold, damp feet in evening." ]
+  }
+}

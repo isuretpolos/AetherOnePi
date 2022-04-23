@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Picrotoxinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Dysentery. Dyspepsia. Hernia. Locomotor ataxy. Night-sweats. Urine, excess of." ],
+    "Characteristics" : [ "Coc. ind. is used to stupefy fishes, and when Picro. is added to water in which fishes are swimming \"they make winding and boring movements of the body, alternating with quiet swimming, open their mouths and gill caverns frequently, fall on their side and rapidly die of asphyxia\" (Falk, quoted C. D. P.). J. H. Henry proved Picro. on himself. The symptoms were so severe that he was alarmed, and took Opium and Camphor to antidote them. Nausea with tendency to faint, violent intestinal pain and purging, dysenteric diarrhoea and excessive secretion of urine, cramps and paralytic sensations were experienced. The symptom which gave the most concern was the pain in the bowels and sensation as if the bowels would protrude at left inguinal ring. Brunton says the local application of Picro. as an ointment to the head for tinea capitis and to destroy pediculi has been followed by convulsions and death. Hansen mentions that it has been given at bedtime to relieve the night-sweats of phthisis. With Picrotoxicum acidum 3x Dorr cured in a few weeks a case of advanced locomotor ataxy with amaurotic amblyopia (B. J. H., xxxvii. 378)." ],
+    "Relations" : [ "Compare: Coccul. In tetaniform convulsions, Nux (with Picro. respiration is accelerated more from spasm of glottis than of respiration, and there is less susceptibility to slight touch; more choreic symptoms.", "Farrington)." ],
+    "Mind" : [ "Sad thoughts, desires sleep." ],
+    "Head" : [ "Nausea with headache." ],
+    "Stomach" : [ "Pressure on stomach, with coated tongue and eructations.", "Pain in pit of stomach." ],
+    "Abdomen" : [ "Pain extending all over bowels.", "Fainting, violent subacute irritation of intestinal lining membrane.", "Pain in bowels as if bruised.", "Soreness in l. inguinal ring as if bowels would protrude." ],
+    "Stool and Anus" : [ "Flatulence with fetid diarrhoea, followed by tenesmus, painful and continued.", "Diarrhoea and dysentery." ],
+    "Urinary Organs" : [ "Large quantity of clear urine passes twelve times a day." ],
+    "Respiratory Organs" : [ "Wants more breath; respiration impeded.", "(Asphyxia in fishes.)" ],
+    "Back" : [ "Bruised pain in back; drawing pain (l.)." ],
+    "Upper Limbs" : [ "Dragging sensation of r. arm.", "Pains in l. forearm running up to shoulder." ],
+    "Lower Limbs" : [ "Lower limbs feel bruised and paralysed (l.); have a tendency to draw back with the back, giving great > to limbs.", "Constrictive painless sensation.", "Cramp pains." ]
+  }
+}

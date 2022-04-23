@@ -1,0 +1,26 @@
+{
+  "remedyName" : "Cubeba",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Albuminuria. Aphthae. Croup. Diarrhoea. Dysentery. Enuresis. Gleet Gonorrhoea. Hernia. Leucorrhoea in children. Orchitis. Prostatitis. Rheumatism. Roseola. Urticaria." ],
+    "Characteristics" : [ "Cubeba corresponds to catarrh. It is an old-world remedy for gonorrhoea and gleet, but it affects the mucous membrane of the nose, air passages and intestines, as well as that of the urino-genital tract. It acts well in persons of bilious temperament with tendency to constipation. Some of its most characteristic symptoms are: Burning in throat with dryness, constant need to swallow saliva; burning in stomach; in abdomen; in rectum; in urethra; in fossa navicularis. Nash defines its place in gonorrhoea thus: \"After the inflammatory stage is passed under the usual remedies for that stage, if there still remains burning in the urethra after micturition, and the discharge remains thick, yellow, or pus-like (with Puls. the discharge is bland; with Merc. all symptoms are < at night). Thin (gleety) discharge does not correspond to any of the three.\" Prickling in soles of feet. There is a sensation of downward weight and pressure in region of femoral ring, < on walking, riding, or lifting. Stools and colic are < at night in bed; > getting up and walking about. Skin diseases concomitant with kidney affections. Urine foaming, albuminous, bloody. Acrid leucorrhoea in children." ],
+    "Relations" : [ "Compare: Copaiva (with which it is compatible). Piper methyst. Piper nigrum and Matico (botanical). Capsic; Canth. (irritable bladder in females); Tereb.; Cannab. sat.; Iod. (membranous croup)." ],
+    "Mind" : [ "Exaltation of temper and of the mental faculties.", "On violent agitations he was aroused for a moment; uttered some incoherent expression and sank back into a comatose sleep." ],
+    "Eyes" : [ "Eyes rolled upward, injected; pupils contracted to a pin-point." ],
+    "Face" : [ "Face red and swollen.", "Veins of forehead and temples turgid.", "Lips dark purple.", "Lips puffed, dry and shining.", "Extraordinary twist of mouth to one side every time he attempts to speak or smile." ],
+    "Teeth" : [ "Teeth slightly coated with brown sordes." ],
+    "Mouth" : [ "Mouth containing viscid frothy saliva.", "Aphthae of lips and gums.", "Tongue furred and moist or very white." ],
+    "Throat" : [ "Constant need to swallow saliva to relieve dryness and burning in throat and larynx." ],
+    "Stomach" : [ "Nausea and vomiting.", "Burning pain in stomach." ],
+    "Abdomen" : [ "Burning in abdomen.", "Femoral hernia.", "Colic." ],
+    "Stool and Anus" : [ "Diarrhoea, with rumbling and cutting in the abdomen and burning in the rectum.", "Suppuration of the rectum.", "Burning and itching of the anus.", "Stools: blackish, yellowish, fecal; bilious; yellow transparent mucus; mingled with whitish, shining particles like rice; bloody mucous (dysenteric); involuntary; < at night in bed; > from rising from bed and moving about." ],
+    "Urinary Organs" : [ "Foaming urine.", "Albuminous, bloody urine, with increased uroxanthine.", "Burning and itching in the fossa navicularis.", "Nocturnal enuresis." ],
+    "Male Sexual Organs" : [ "Discharge from the urethra of a dark-reddish colour (gonnorrhoea).", "Inflammation of the penis.", "Sensation of pressure and heaviness in the pelvis.", "Testicles swollen.", "Thick, yellow-green discharge, with frequent obstruction of urethra.", "Prostatitis." ],
+    "Female Sexual Organs" : [ "Urethro-vaginitis, severe and of long standing, with acute pains and abundant discharge.", "Leucorrhoea profuse, yellow, greenish, very acrid, very offensive; erythema of inner surfaces of thighs, pruritus vulvae, intense desire for coitus; small burning pimples; womb swollen and painful; menses too early, preceded and followed by leucorrhoea, or in small quantity and consisting mostly of leucorrhoea.", "Acrid leucorrhoea of children." ],
+    "Respiratory Organs" : [ "Respiration slow, short and gasping; hurried and noisy.", "Chest feels full.", "Sense of suffocation.", "False membranes in larynx.", "Voice harsh and wheezing.", "Incessant bronchial cough; < evening, by heat, in open air; throat dry and parched; hurried, noisy respiration.", "Harsh cough.", "Barking, croupy cough." ],
+    "Pulse" : [ "Pulse very slow, moderately full, but extinguished by least pressure." ],
+    "Limbs" : [ "Sensation of heat in the palms of the hands and soles of the feet.", "Numbness of fingers and toes." ],
+    "Skin" : [ "Skin warm, moist, clammy.", "Feverish tingling heat over whole body.", "A flush of red over whole body.", "General eruption of roseolous papules without fever or itching, confluent on face, buttocks and upper limbs, more scant on lower.", "Intense itching.", "Severe urticaria febrilis." ],
+    "Fever" : [ "Heat flushes on face soles of feet and palms of hands.", "Fever with heat at pit of stomach.", "Cold sweat in chest and back; burning in abdomen (in croup)." ]
+  }
+}

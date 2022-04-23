@@ -1,0 +1,30 @@
+{
+  "remedyName" : "Mercurius Sulphuricus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Dropsy. Dysuria. Hydrothorax." ],
+    "Characteristics" : [ "Lippe is the chief clinical authority for this medicine. He considers it as important as Ars. in dropsies of the chest. The symptoms on which it has been prescribed are clinical, and have been well confirmed. Among them is this: \"Pain in right chest extending to scapula; he can scarcely breathe; < to p.m.\" When Merc. sul. acts well, says Lippe, \"it produces a profuse watery diarrhoea with great relief to the patient.\" It is particularly suited to hydrothorax depending on liver or heart affections. Other confirmed symptoms are: Soreness of tip of tongue. OEdema of legs. Scanty and scalding urine, but clear. Among the Conditions of Merc. sul. the most peculiar is: < In afternoon; 4-5 p.m. > By profuse diarrhoea (dyspnoea). After diarrhoeic stools there is numbness of legs." ],
+    "Relations" : [ "Compare: Cinnabar., AEthiops antimonialis, and other Mercuries. Also in hydrothorax, Ars. < Afternoon, Lyc. Dropsy, Dig." ],
+    "Mind" : [ "Low-spirited; with chilliness and yawning.", "Ill-humour after eating." ],
+    "Head" : [ "Sensation of giddiness while standing, after headache.", "Fulness in head with occasional stitches.", "Soreness and heaviness through head (after breakfast and when walking about.).", "Violent itching of hairy scalp throughout the proving." ],
+    "Eyes" : [ "Oppression over eyes.", "Eyes < from sunlight." ],
+    "Ears" : [ "Burning in ears and in face, after a chill." ],
+    "Nose" : [ "Sneezing; in sunshine; with fluent coryza.", "Swelling and soreness of tip of nose.", "Itching of nose." ],
+    "Face" : [ "Pale, anxious countenance.", "Swelling of parotid gland." ],
+    "Mouth" : [ "Gums and palate dark bluish (black), ulcerated margins.", "Mouth clammy, and full of mucus in morning.", "Burning, smarting, stinging pain on tip of tongue (l. side, in evening).", "Tongue: Greenish yellow down middle; coated white heavily; yellowish at root; the enlarged papillae stand up like red points, with flat taste in mouth and a reduced pulse.", "Lips, gums, fauces, mouth, and tongue swollen; look dry and black.", "Salivation." ],
+    "Throat" : [ "Heat and sensation of constriction in throat.", "Dryness of tongue and throat.", "Burning in mouth and throat." ],
+    "Stomach" : [ "Violent yellow vomiting.", "Stomach so irritated nothing would stay on it an instant.", "Pain; weight in stomach; tenderness.", "Vomiting and diarrhoea." ],
+    "Abdomen" : [ "Coldness or burning in abdomen.", "Woke a.m. with severe pains along duodenum to umbilical region.", "Soreness in inguinal glands." ],
+    "Stool and Anus" : [ "After drinking coffee, pain in abdomen as if diarrhoea would set in.", "Stools soft and earlier in morning than usual.", "Sudden and violent pressing to stool while walking compelling him to stand still, causing an anxious perspiration; later the stools are forcibly gushing out in a hot, burning stream of yellow water; followed by great debility, hiccough and belching.", "After the diarrhoeic stools sensation of fulness as from congestion to legs, esp. feet, they feel numb when standing.", "Violent purging; rice-water motions, some yellow." ],
+    "Urinary Organs" : [ "Diminished secretion of urine, does not micturate frequently, but has constant pressure; urine dark, becoming turbid with a scum on it.", "Increased secretion of urine, without a sediment.", "Urine scanty and scalding, but clear." ],
+    "Male Sexual Organs" : [ "Gonorrhoea and syphilitic diseases, with great congestions to the parts.", "Swelling of testicles.", "Involuntary emission and lascivious dreams." ],
+    "Respiratory Organs" : [ "Roughness in throat and hoarseness.", "Sensation of heat in larynx.", "Increased expectoration of mucus from larynx\" and trachea." ],
+    "Chest" : [ "Burning in chest.", "Pain in chest prevents him from breathing.", "Pain in r, side of chest, extending to scapula, can scarcely breathe, < from to p.m.", "Pressure on chest.", "Dyspnoea; in children; hydrothorax." ],
+    "Upper Limbs" : [ "Numbness in l. forearm and hand, later numbness in r. hand.", "Hands icy cold with blue nails.", "Stiffness in arms." ],
+    "Lower Limbs" : [ "Pain in knees and lameness, esp. when walking.", "Foot-sweat with soreness at ends of the nails.", "Ulcers on ankles." ],
+    "Generalities" : [ "Most pains feel as if a dull stick pressed on the parts and were moving in diverse curved lines; feels as if this pain were in the bones.", "Debility with sleepiness.", "Rheumatic pains." ],
+    "Skin" : [ "Induration of the glands.", "Psoriasis: lepra." ],
+    "Sleep" : [ "Frequent yawning and great sleepiness in afternoon.", "Sleeplessness after midnight.", "Awakens with headache in morning." ],
+    "Fever" : [ "Chilliness running up back, with yawning and depression of spirits, followed by dull pain in forehead, burning in face and ears and slight fever.", "Chilliness, restlessness, and heaviness in upper part of abdomen, frequent yawning and diminished secretion of urine (afternoon)." ]
+  }
+}

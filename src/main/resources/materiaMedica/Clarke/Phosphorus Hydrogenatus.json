@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Phosphorus Hydrogenatus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Amblyopia. Diarrhoea. Hyperaesthesia. Locomotor ataxy. Stammering. Teeth, crumbling." ],
+    "Characteristics" : [ "Breunar (quoted by Allen) relates the effects of inhaling this gas, given off in the preparation of some \"hypophosphites.\" The symptoms began to appear after three months in visional disturbances, diarrhoea, paralysis, and a complete state of locomotor ataxia, < on closing eyes. The teeth crumbled without pain. Articulation and swallowing were difficult. The diarrhoea was accompanied by weakness of the anus." ],
+    "Relations" : [ "Electricity antidoted the effects. Compare: Locomotor ataxy, Arg. n., Alm., Helod. Visional defects, Benz. din., Carb. s." ],
+    "Eyes" : [ "Flickering points in field of vision, rapidly enlarging and rendering it impossible to fix vision on any object, esp. in reading.", "Optic nerves very irritable to reflex stimuli." ],
+    "Ears" : [ "Auditory hyperaesthesia." ],
+    "Mouth" : [ "Teeth, both healthy and carious, crumble, without pain.", "Ataxia of muscles of articulation, great effort of will required to form the word." ],
+    "Throat" : [ "Swallowing somewhat difficult." ],
+    "Abdomen" : [ "Shooting pains in limbs and abdomen." ],
+    "Stool and Anus" : [ "Diarrhoea with weakness and unsteadiness of arms." ],
+    "Upper Limbs" : [ "Weakness and unsteadiness of arms, making difficult to write." ],
+    "Lower Limbs" : [ "Limbs unsteady; gait tottering; associated with undercurrent shooting pains in limbs and abdomen." ],
+    "Generalities" : [ "Complete expression of ataxia stood with limbs separated; walking wholly impossible when eyes closed would stagger and fall.", "No anaesthesia; electric irritability of muscles greatly increased." ]
+  }
+}

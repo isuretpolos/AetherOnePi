@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Atropinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Blepharospasm. Convulsions. Enuresis. Epilepsy. Eyes, affections of. Gastric ulcer. Locomotor ataxy. Mania. Neuralgias. Pancreatitis. Spinal irritation. Stammering. Tetanus. Vision, disorders of. Wryneck." ],
+    "Characteristics" : [ "Atropine, as the most active principle in Belladonna, produces, as we should expect, most of the characteristic effects of that drug; but at the same time the two are not identical. Atrop. produces hyperaesthesia of the sensory nerves. The most numerous symptoms have been observed in the eyes. All kinds of illusions of vision. Everything appears large. Motes over everything. I once cured with it a lady who had an appearance of shadows passing over whatever she looked at. It has shown an affinity for the pancreas, which relates it to Iod., Kali iod., and Iris. A case of chronic wryneck, of three years' standing, was relieved and finally cured within two weeks by injections of 1/120 into the platysma, the dose being increased up to 1/20th. This was in old-school practice. It has caused difficulty of speech: frequent stuttering, especially at words difficult to pronounce; articulation indistinct, rapid and chattering." ],
+    "Relations" : [ "It antidotes: Muscarine and Opium. It is antidoted by: Op. and Physostigma. Like Bell., it is a right-side medicine." ],
+    "Mind" : [ "Frenzied with excitement.", "Spectral illusions; sees insects and crawling things and tries to catch them.", "Mania, tries to escape.", "When spoken to often turns his head to wrong side." ],
+    "Head" : [ "Vertigo on turning head suddenly.", "Feeling as if head were screwed up; walking caused the most severe sticking pains; > towards a.m., and disappeared by evening.", "Head very hot.", "Headaches of epileptics.", "Sticking pains in back of skull and over eyes, < every motion and stepping.", "Sticking l. temple on waking, extending into ear and eye; > moving in open air.", "Headache, with flushed face, blindness, and delirium." ],
+    "Eyes" : [ "Objects appear large, with red halo.", "Everything seems elongated, objects appear in a cloud.", "Clouds of flies; motes; bright spots; stars; flashes.", "Figures on carpet appear constantly and successively to rise in her face.", "Diplopia.", "Sharp neuralgic pains in and about eyes.", "At p.m. eyelids heavy, difficult to keep open." ],
+    "Face" : [ "Face hot and very red.", "Deathly pallor." ],
+    "Mouth" : [ "Mouth dry.", "Tongue thick; cannot articulate distinctly.", "Tongue semi-paralysed.", "Speech slow, embarrassed, stuttering, chattering." ],
+    "Throat" : [ "Burning caused by coughing.", "Dryness.", "Dysphagia; swallowing causes paroxysms of suffocation.", "Throat dark red." ],
+    "Stomach" : [ "Vomiting of food; after hot drinks; with severe sticking pains in umbilical region.", "> After vomiting.", "Region of stomach very sensitive; swelling in pyloric region." ],
+    "Urinary Organs" : [ "Frequent micturition.", "Involuntary, but scanty; nocturnal enuresis.", "Cutting, drawing pains in l. ovary, extorting screams, > bending; ovary swollen and tender during menses.", "Epilepsy from ovarian irritation." ],
+    "Heart" : [ "Failure of action from chloroform and other cardiac paralyzers.", "Accelerated pulse." ],
+    "Back" : [ "Burning in back under sternum and in region of stomach.", "Spinal irritation, pressure causes pallor, nausea, belching, and retching." ],
+    "Limbs" : [ "Numbness; heaviness; paralysis of limbs." ],
+    "Generalities" : [ "Hyperaesthesia of some nerves: ophthalmic, auditory, olfactory, vaginal, spinal, solar-plexus, nerves of uterus and bladder.", "Great desire for open air (faintness).", "Very weak in the open air.", "Giddiness and staggering.", "> From motion." ],
+    "Sleep" : [ "Disturbed by gastric pains.", "Restless through night.", "Waked by frightful dreams." ]
+  }
+}

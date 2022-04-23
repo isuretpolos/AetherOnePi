@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Kaolin",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Chest, soreness of. Croup. Diphtheria. Lead-poisoning. Nose, soreness of." ],
+    "Characteristics" : [ "According to J. Landesmann (quoted in Raue's Record, 1870, 171) AEgidi was the first to use Kaolin in cases of croup. Landesmann confirmed its efficacy and relates a case as an example. After Aco., Hep., Spo., Bro., Pho., and Iod. had failed to relieve, Kao. 6, four or five globules every half-hour, rapidly removed the labouring, sawing respiration, and the child was out of danger. \"It seems to be especially indicated where the croupous inflammation has its seat in the lower portion of the larynx or upper part of the trachea, which may be recognised by the much more labouring and sawing respiration.\" According to Farrington a leading indication is: Internal soreness along trachea and upper part of the chest; the child will not be touched. The use appears to be from the clinical side entirely. Kao. relieved symptoms of lead-poisoning in a case of mine. In old-school practice it is used \"as a completely inert (?) powder\" (Brunton) in the same way as fuller's earth, and also as a basis for making pills." ],
+    "Relations" : [ "Compare: Alum., Silic.; K. bi., Spo., Iod., Hep., Aco., Fuller's Earth." ],
+    "Head" : [ "Pain in forehead." ],
+    "Nose" : [ "Nostrils feel sore; scabs form in nose; scanty and blood-streaked secretion." ],
+    "Throat" : [ "Membranous covering of l. side of throat; of r. side." ],
+    "Respiratory Organs" : [ "Husky voice; metallic, rasping breathing, and suffocative cough.", "Croup dipping down into trachea; heavy, laboured, sawing respiration.", "Excessive soreness along trachea and chest." ],
+    "Generalities" : [ "Symptoms < towards evening and in the night." ],
+    "Skin" : [ "Dryness of skin." ]
+  }
+}

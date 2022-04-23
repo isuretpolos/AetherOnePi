@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Silphium",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asthma. Bladder, catarrh of. Bronchitis. Cancer." ],
+    "Characteristics" : [ "The leaves of this plant, when they first come up, present their faces uniformly north and south; later on, when the leaves become heavy, the winds carry them in different directions and the polarity is not to be observed. The stem of the plant exudes an abundance of resin, as some of its names indicate. Hale mentions that it has been used in all forms of asthma; and in chronic bronchitis with large quantities of stringy, frothy, light-coloured mucus, and in catarrh of the bladder. Hale made a proving of it, and his symptoms comprise the Schema. He gives this case: Mr. H., 55, had phthisis twenty years. On the slightest exposure or cold he would have congestion of mucous surfaces, followed with copious expectoration of stringy, frothy, light-coloured mucus (from one to three pints in twenty-four hours), causing rapid exhaustion and at times keeping him in bed for weeks. Silph. 2x trit. was used, gr. every two hours. During the next night less than a teacupful of mucus was raised, and its sudden decrease alarmed the patient so much that he left off the remedy until his doctor assured him that he was very much better, and that the remedy had been more successful than he himself had expected. Cooper has used Silph. (in single doses of O) with notable effect in cases of cancer of the throat and mouth. The great \"goneness\" of the proving shows a relation to the cancer cachexia." ],
+    "Nose" : [ "Irritation extends from throat up posterior nares to nose causing sneezing, followed by discharge of limpid, acrid mucus, attended with constriction and pressure in supraorbital region." ],
+    "Mouth" : [ "Tongue: whitish slimy coat, with dry sensation as if burned with hot soup." ],
+    "Throat" : [ "Scraping, tickling, and irritation of fauces and throat.", "Desire to hawk and scrape throat and throw off a thin viscid mucus.", "Engorgement and thickening of mucous membrane of throat extending down." ],
+    "Stomach" : [ "Nausea, sick, faint feeling, and a sense of goneness in epigastrium." ],
+    "Stool" : [ "Stool natural, but covered with slimy mucus." ],
+    "Urinary Organs" : [ "Urine: high-coloured, scanty.", "Frequent micturition, with sense of heat or burning at meatus during micturition." ],
+    "Respiratory Organs" : [ "Rough cough, attended with expectoration of yellow mucus." ],
+    "Chest" : [ "Constriction and tightness of lungs, with constant disposition to raise; hacking, spasmodic cough." ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Zincum Valerianicum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Angina pectoris. Asthma. Brain-fag. Deltoids, pain in. Diarrhoea. Emaciation. Epilepsy. Haemorrhoids. Hypochondriasis. Hystero-epilepsy. Priapism. Seminal emissions. Stiff-neck." ],
+    "Characteristics" : [ "Zn. v. is a favourite anti-hysteric medicine in old-school practice. There is one proving with substantial doses by C. B. Finney, which brought out a strong action on the genital sphere, the usual starting-point of hysteria. Finney had the brain-fag symptoms of Zn., and gastro-intestinal disturbance. The abdominal pains waked him from sleep, and he had to rise at to Stool, which was partly foecal and partly fluid. Later he was constipated and had tenesmus. Hale quotes C. Dradwick as saying that a considerable number of patients having piles, who were taking Zn. v. for other troubles, had their piles relieved by the remedy. Finney had distinct heart pains, and Hale mentions angina pectoris as having been cured by Zn. v. Other conditions named by him are: Prosopalgia, spinal neuralgia, sciatica, ovarian neuralgia, cerebro-spinal meningitis, and tubercular meningitis. Zn. v. is indicated in hysteria with fidgety feet; hypochondriasis; groundless fears. Hansen gives epilepsy without aura.\" Finney had \"Sensation as if a very heavy weight on chest and dull headache and stiffness of muscles of neck." ],
+    "Mind" : [ "Dulness of mind and headache with erections.", "Great fulness of head, with difficult thinking.", "Distressed mentally, mind all mixed up." ],
+    "Head" : [ "Slight pain in l. temple and l. mastoid process.", "Fulness in head, esp. occiput." ],
+    "Eyes" : [ "Slight pain over r. eye, with dull headache." ],
+    "Nose" : [ "Hard sneezing." ],
+    "Mouth" : [ "Tongue coated white." ],
+    "Stomach" : [ "No appetite.", "Belched up bitter fluid.", "Woke with empty feeling in pit of stomach." ],
+    "Abdomen" : [ "Rose a.m. with colicky pains.", "Abdominal pains > by passing flatus.", "Crampy pain in abdomen.", "Drawing pain at umbilicus and sense of pressure in rectum when standing.", "Pain in bowels while dressing and after breakfast." ],
+    "Stool and Anus" : [ "At p.m. evacuation of faecal matter, followed by watery flow, with pain in belly.", "Pressure on rectum when standing.", "At had to get up to stool, which was small, brown, and mushy, discharged with much wind.", "Ineffectual desire for stool.", "Stool scanty, much tenesmus." ],
+    "Male Sexual Organs" : [ "Tendency to erections all day.", "Strong erection a.m.; with dulness of mind and headache.", "Nocturnal emissions on several successive nights; after them weight and constriction in perinaeum." ],
+    "Respiratory Organs" : [ "Spell of coughing, with sense of fulness in chest." ],
+    "Chest" : [ "Sensation as if very heavy weight lying on chest." ],
+    "Heart" : [ "Cramp-like pain in heart." ],
+    "Neck" : [ "Dull headache and stiffness of muscles of neck, lasting all evening." ],
+    "Upper Limbs" : [ "Pain in l. deltoid; later in r." ]
+  }
+}

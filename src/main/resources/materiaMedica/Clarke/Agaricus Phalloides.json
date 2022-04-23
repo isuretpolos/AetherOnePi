@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Agaricus Phalloides",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Cholera. Chorea. Cramps. Diarrhoea. Gastritis. Trismus. Urine, suppression of. Vomiting." ],
+    "Characteristics" : [ "Symptoms observed in poisoning cases give a complete picture of Asiatic cholera. There is extreme prostration and chilliness; the sweat is cold; the hippocratic face is marked; the tongue is cold; and there is violent thirst. Very frequent bilious vomiting. Incessant cramps in stomach. Hard, tense abdomen. Frequent whitish watery stools; or bilious, bloody stools. The urine is suppressed; the voice is hoarse. Pulse small, intermittent, hardly perceptible. The extremities are cold, and there are violent cramps in legs, feet, and calves. Convulsions are another prominent feature. There is mental excitement, which has in some cases lasted for three days. Sometimes there is stupor, at other times consciousness remains till death." ],
+    "Colchicum" : [ "The effects do not come on till ten or twelve hours after taking the drug (in this it is like Colchicum). At times the development of choleraic symptoms saves the patient. General cholera symptoms are developed as with A. muscarius. Chilliness also predominates. Agaric. Phal. is a poison of great intensity and fatality." ],
+    "Head" : [ "Vertigo always on rising up.", "Frightful pains in head." ],
+    "Eyes" : [ "Pupils much dilated.", "Eyes sunken, weak, and lustreless." ],
+    "Face" : [ "Deathlike pallor; face sunken; cyanotic.", "Anxious countenance, hippocratic.", "Nose and mouth dry.", "Tetanic closure of jaws, with at times grating of the teeth." ],
+    "Mouth" : [ "Teeth and gums black.", "Cold tongue.", "Breath cold.", "Trismus.", "Speech slow, difficult.", "Stammering." ],
+    "Throat" : [ "Dry throat." ],
+    "11, Stomach and Abdomen" : [ "Violent thirst; nausea; vomiting; then diarrhoea.", "Very frequent mucous and bilious vomiting.", "Vomiting of an offensive greenish-coloured fluid; of blood.", "Pains in stomach and hypogastrium followed by anxiety and vomiting.", "Incessant cramps of stomach.", "Violent pains in epigastrium, which spread rapidly over the whole abdomen; greatly < by pressure.", "Abdomen tense; swollen; painful.", "Unendurable pain in hypogastrium and lumbar region." ],
+    "Stool and Anus" : [ "Anus inflamed.", "Stools: frequent, bilious; whitish as in Asiatic cholera; frequent, watery; bloody." ],
+    "Urinary Organs" : [ "Suppression of urine." ],
+    "Respiratory Organs" : [ "Voice hoarse.", "Respirations short." ],
+    "Heart and Pulse" : [ "Pulse: small and intermittent; hardly perceptible; slow and somewhat irregular; hard and frequent.", "Pulse full and rapid (later action)." ],
+    "Limbs" : [ "Cold extremities.", "Skin of extremities lost its elasticity.", "Upper extremities swell and become livid; finger-tips livid.", "Cramps of the legs; of the calves; of the feet with drawing back of the limbs." ],
+    "Generalities" : [ "Violent convulsions.", "Slight convulsive motions in the legs and arms, which generally extend to the muscles of the trunk and cause irregular distortions of the whole body.", "Constant restlessness.", "Debility; prostration.", "Malaise.", "Staggers as if intoxicated, and, with odd gesticulations, labours to express his sufferings but cannot articulate a syllable." ],
+    "Skin" : [ "Body covered with livid spots." ],
+    "Sleep" : [ "Somnolence." ],
+    "Fever" : [ "Marked chilliness.", "Sweat cold.", "Skin cool, afterwards hot." ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "remedyName" : "Gastein",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Amenorrhoea. Apoplexy. Calculi. Callosities. Cold, easily taken. Constipation. Debility. Diarrhoea. Gout. Haemorrhoids. Membranous dysmenorrhoea. Paralysis. Rheumatism. Scars. Sexual weakness. Typhlitis. Varicose ulcers." ],
+    "Characteristics" : [ "The effects of the baths are thus described by Constantin James: \"General unpleasant sensation. Instead of expanding [as would be expected in a warm bath] the skin is drawn up upon itself as if by a tight astringent. There is slight dyspnoea; the abdominal walls draw together; the testicles rise to the inguinal rings. Soon an unusual warmth, accompanied by shocks and tremors, spreads throughout all the limbs. The pulse becomes hard and vibrating; the face becomes suffused; there is humming in the ears. It is now time to leave the bath; to stay longer is attended with danger. . . . After the seventh to the fourteenth bath the thermal influence tends to concentrate itself entirely on the nervous system. Thus it seems to the patient that an increase of vitality spreads through his whole being; he feels more active than before; the longest walks cause hardly any fatigue, and that is promptly repaired by sleep. But this influence is particularly predominant in the sexual system; it shows itself in phlegmatic patients in an increase of force and tone, causing the disappearance of involuntary losses of semen. In energetic or irritable temperaments it will provoke erotic dreams and unwonted excitement, like cantharides; in such cases the waters are aphrodisiac.\"" ],
+    "<" : [ "Such is the general description of the effect of the baths. Among individual symptoms noted are: Diminished secretions. Activity of all the veins; excitement of the circulation. Weakness and weariness, with dragging sensation in the abdomen, as if it were too heavy. Exhaustion and inclination to sleep. Takes cold very easily (caused, then cured). Sensation of indescribable mental and physical comfort runs through all the fibres during the bath. Pulsation in the body, especially in the arms, with jumping in them. All symptoms < before a storm; or during the Sirocco. Contractive sensations predominate. Scar tissues and callosities are affected." ],
+    "Relations" : [ "Compare: Lap. alb., Fluor. ac., Sil., Canthar., Phosph." ],
+    "Mind" : [ "Lively mind; vivid fantasies; conversational." ],
+    "Head" : [ "Vertigo, as if apoplexy impending; rush of blood to head.", "Dizzy heaviness, as after a night's debauch; reeling forward; afterwards pressure in forehead, with nausea.", "Dull headache in morning." ],
+    "Ears" : [ "Noises: rumbling, thundering, singing, bells, trumpets." ],
+    "Nose" : [ "Sensation of constriction in mucous membrane of nose.", "Liability to take cold." ],
+    "Face" : [ "Expression becomes lively.", "Colour fresh and clear.", "Feeling of swelling in face, esp. nose." ],
+    "Teeth" : [ "On biting teeth together they feel as if coated with mucus.", "The teeth, esp. the carious ones, become sensitive and painful." ],
+    "Mouth" : [ "Slimy saliva.", "Dryness and contraction in mouth.", "Much mucus in mouth and spitting." ],
+    "Throat" : [ "Great dryness in throat." ],
+    "Stomach" : [ "Rising from the stomach in the morning; was obliged to keep it down by swallowing.", "Gastralgia and water-brash, continuing two months.", "A feeling of contraction in stomach." ],
+    "Abdomen" : [ "Feeling of uncertainty in abdomen.", "Most violent pain in region of caecum, almost causing faintness." ],
+    "Stool and Anus" : [ "Bleeding haemorrhoids.", "Feeling of contraction in rectum.", "Two violent stitches in left side of anus.", "Diarrhoea, greenish and bloody.", "Gall-stones passed.", "Constipation and moving of flatulence in abdomen, with ineffectual desire in rectum.", "Very hard stool." ],
+    "Urinary Organs" : [ "Passage of stones from kidneys and bladder.", "Excessive amount of watery, cloudy, odourless urine.", "Deposit: mealy, white, sand-like; brick-dust; slimy, purulent." ],
+    "Male Sexual Organs" : [ "Scrotum drawn up.", "Increased desire.", "Desire increased at first, disappears later, and coitus is not followed by emission." ],
+    "Female Sexual Organs" : [ "Passage of fibrous, membranous formation from uterus.", "Menstruation suppressed.", "Suppressed menstruation reappears." ],
+    "Respiratory Organs" : [ "Hoarseness.", "Profuse expectoration, with unpleasant dryness of throat." ],
+    "Heart" : [ "Pressive pain in region of heart in evening.", "Febrile, full, hard pulse." ],
+    "Limbs" : [ "Weakness and heaviness in limbs, with a sensation in arms as if compressed with iron band or forcibly drawn out.", "Tightness in limbs." ],
+    "Upper Limbs" : [ "Veins of hands swollen.", "Callous spot on palm of right hand becomes painful.", "Feeling as of a splinter in first phalanx of ring-finger." ],
+    "Lower Limbs" : [ "Pains in l. hip extending to knee, most violent when rising, and making her scarcely able to walk without support.", "Soles painful when stepping on them; a callous spot becomes painful." ],
+    "Skin" : [ "Skin becomes dry and red.", "Skin becomes soft and velvety.", "Old scars break out anew, and foreign bodies are thrown out.", "Urticaria; hydroa; pustules; erysipelas; itch-like eruption." ],
+    "Sleep" : [ "Great drowsiness.", "Confused dreams towards morning.", "Dreams of sexual excitement." ],
+    "Fever" : [ "Slight creeping chills over back.", "Warmth and turgescence increased.", "Perspiration pungent, clammy, staining linen red (staining it yellow in patients)." ]
+  }
+}

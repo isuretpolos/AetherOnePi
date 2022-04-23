@@ -1,0 +1,25 @@
+{
+  "remedyName" : "Doryphora",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Diphtheria. Dysentery. Erysipelas. Fevers. Gastric affections. Gleet. Gonorrhoea. Myxoedema. Parotitis. Spleen, pain in. Typhoid. Ulceration. Urethritis." ],
+    "Characteristics" : [ "Doryphora in its general effects bears a strong resemblance to Cantharis. An extensive proving has been made, and to this have been added the effects of poisoning from handling the insects, and from inhaling the vapour when they have been burned or scalded. Like Canth., Doryph. produces burning in mouth, throat, gullet, stomach, abdomen, rectum, and urinary passages; strangury, urethritis, and itching burning and inflammation of glans penis. It has been successfully used in urethritis in children under ten, provoked by local irritation. A feeling of weight or heaviness is common. Fainting, weakness, prostration, collapse; great trembling of extremities. Prostration after typhoid and diphtheria has been cured. The weakness is < by talking. Local application causes ulceration. The blood will not coagulate; blood globules disorganised; enormous swelling of whole body; swelling of feet with burning; elastic swelling of whole body which will not pit on pressure (suggesting its applicability in myxoedema). The symptoms are < by motion; < from smoking; < in warm room; > in open air; pressure < (pain in kidneys)." ],
+    "Relations" : [ "The local effect is antidoted by: Earth; other antidotes are: Vinegar and other vegetable acids, Stramon. Compare: Agar., Ailanth., Apis, Bellad., Canth., Crotal., Laches., and with the Solanaceae generally, as the beetle partakes of the properties of the plants it infests. In non-coagulation of the blood, Sanguisuga." ],
+    "Mind" : [ "Stupor; with muttering and loud rumbling in bowels.", "Delirium; talkative; red, bloated face, protruding eyes.", "Irritability." ],
+    "Eyes" : [ "Eyes red, sore; protruding; pupils much dilated; sight much impaired." ],
+    "Face" : [ "Face bloated and red, giving appearance of a confirmed drunkard." ],
+    "Mouth" : [ "Dark brown coating on tongue.", "Offensive taste.", "Violent heat in mouth; severe pain across kidneys; face red and bloated; constipation and retention of urine.", "(Parotitis.)" ],
+    "Throat" : [ "Dry feeling in throat with desire to swallow.", "Throat raw and constricted.", "Burning in throat and down oesophagus, with stomachache and cough." ],
+    "Stomach" : [ "Loss of appetite, great thirst.", "Craving for something sour; symptoms < by smoking.", "Nausea and vomiting; vomits dark, grumous acrid matter; of dirty brown fluid with diarrhoea." ],
+    "Abdomen" : [ "Pain in spleen.", "Rumbling in bowels (with stupor).", "Pain in bowels, < by eating and drinking and by deep inspiration.", "Abdomen feels heavy; sore and tender; burning." ],
+    "Stool and Rectum" : [ "Morning diarrhoea, with pain in abdomen and burning in rectum.", "Bloody, slimy stools.", "Heaviness; intense pain in rectum." ],
+    "Urinary Organs" : [ "Retention of urine.", "Dysuria, with burning, stinging pain." ],
+    "Male Sexual Organs" : [ "Itching and burning of glans penis, which is swollen and bluish red; urethra inflamed, with excruciating pain, esp. when urinating." ],
+    "Chest" : [ "Soreness and oppression of chest with sore throat." ],
+    "Back" : [ "Pain in lumbar region." ],
+    "Limbs" : [ "Great trembling in extremities; in r. arm and leg." ],
+    "Skin" : [ "An abraded surface on the wrist of one engaged in picking the bugs became painful, a deep sloughing ulcer developed, and the bones were laid bare." ],
+    "Sleep" : [ "Tossing about all night.", "Sleepless till 12, then restless sleep with terrifying dreams.", "While sleeping, wild dreams, screams as if in great distress." ],
+    "Fever" : [ "Skin alternately cold, clammy, and hot with fever.", "Coldness of hands and feet.", "High fever during night, restless and sleepless.", "Violent fever a.m. to p.m.", "Of children who inhaled vapour from a kettle in which some beetles had been placed, one died and the other recovered after a serious illness resembling typhoid fever." ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Boracicum Acidum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Antiseptic. Climacteric flushings. Erythema. Eyes, affections of. Headache. Impetigo. OEdema. Renal colic. Vomiting. Whitlow. Wounds." ],
+    "Characteristics" : [ "Poisonings and provings with Bor. ac. have caused: headache; vertigo; noises in the ears; prostration; cold saliva; vomiting of tough, greenish stuff; uncontrollable vomiting; sweat on scrobiculus cordis; hiccough; pasty stool; pain in region of ureters or increased urine and increased call to urinate; albuminuria; erythematous eruption on face, body, and thighs followed by pearly vesicles on face and neck. Three cases of poisoning have been reported from packing the vagina with the dry acid, kept in by tampons till liquefaction took place. Symptoms were: Formication of hands and feet, later of face. Sad spirits, great nervous depression. Burning skin; it became swelled and charred, and all motion was painful. One case went into collapse; temperature subnormal; sighing and weeping by turns. The patients were cold; vagina felt \"cold as if packed with ice.\" Coldness is a prominent feature, as cold saliva. In the 3x Cooper has found it give great relief in climacteric flushings. In connection with the skin effects may be mentioned the case of a woman who took gr. xxx per diem of the acid for a month, when there appeared a multiform erythema of trunk extending to upper limbs; at the same time there appeared a painful swelling of upper lids with conjunctivitis and photophobia. Finally the oedema was so intense as to close the eyes and give the appearance of sclerosed tissue. The symptoms began to abate when the Bor. ac. was discontinued, and disappeared in a week. Bor. ac. has been largely used as an antiseptic dressing for wounds, as a lotion for the eyes and for whitlow, and as a wash in catarrh of the bladder. It is much less irritating than Carbolic acid. But it also has produced skin eruptions. Symptoms > after walking in open air." ],
+    "Relations" : [ "Compare: Borax, Carbolic acid, Kali bi. (tough mucus)." ],
+    "Mind" : [ "Low spirits, nervous depression.", "Sighing and weeping by turns.", "Apathetic." ],
+    "Head" : [ "A gastric headache.", "Headache, vertigo, noise in ears." ],
+    "Eyes" : [ "Intense oedema closing eyes, conjunctivitis and photophobia." ],
+    "Mouth" : [ "Much cold saliva.", "Tongue dry, furred, difficulty in moving it; dryness in throat." ],
+    "Stomach" : [ "Nausea and heaviness in stomach > after walking in open air.", "Vomiting of tough mucus, strongly alkaline.", "Vomits greenish stuff." ],
+    "Urinary Organs" : [ "Pain in region of ureters.", "Frequent and urgent desire to urinate.", "Quantity of urine doubled.", "Albumen in urine." ],
+    "Female Sexual Organs" : [ "Vagina packed with it felt cold as if ice had been used.", "Climacteric flushings." ],
+    "Generalities" : [ "Collapse.", "Formication of hands and feet; later of face." ],
+    "Skin" : [ "Impetigo figurata first on r. thigh then on left.", "Burning skin.", "Multiform erythema and hard oedema." ],
+    "Fever" : [ "Coldness; temperature subnormal." ]
+  }
+}

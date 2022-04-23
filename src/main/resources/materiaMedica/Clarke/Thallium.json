@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Thallium",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Baldness. Conjunctivitis. Locomotor ataxy. Paraplegia." ],
+    "Characteristics" : [ "Thallium is a rare metal discovered by Crookes in the residuum left from the distillation of Selenium and named Thallium (θαλλος, a green shoot) from the green it gives in the spectrum (H. W., xxxiii. 242). It has been experimented with by Lamy and Marme. Some symptoms of Thal. sul., which is an energetic poison, are included (and distinguished) in the Schema. The symptoms observed on animals were from the sulphate, with which Lamy experimented (H. W., xxxiv. 82). Combermale, of Lille, used Thal. with success in the night-sweats of phthisis, but this treatment had the effect of causing profuse falling of the hair, so serious as to contraindicate its use. Huchard had patients become quite bald in several days. Hansen says Thal. relieves the violent pains of tabes dorsalis." ],
+    "Relations" : [ "Thal. belongs to the Lead group of metals, and approaches Plumb. closest in its symptoms. Compare: Baldness, jabor., Pilo., Petr. Baldness and phthisis, Pho." ],
+    "Head" : [ "Hair falls off with great rapidity." ],
+    "Eyes" : [ "Very frequent conjunctivitis with abundant production of mucus." ],
+    "Mouth" : [ "Ptyalism." ],
+    "Stomach" : [ "Loss of appetite.", "Nausea.", "Vomiting.", "Pain in stomach and bowels, terribly severe lancinations, following each other with the rapidity of electric shocks (Thal. sul.)." ],
+    "Abdomen" : [ "Gall-bladder distended (dog).", "Coating of liver white and granular-looking (duck).", "Pain in intestinal canal.", "Retraction or depression of abdomen (Thal. sul.)." ],
+    "Stool" : [ "Diarrhoea; bloody stools.", "Constipation (Thal. sul.)" ],
+    "Respiratory Organs" : [ "Slow and difficult breathing." ],
+    "Heart" : [ "Diminished frequency of pulse." ],
+    "Lower Limbs" : [ "Pain of tabes dorsalis.", "Trembling and more or less complete paralysis in lower extremities (Thal. sul.).", "Great lassitude.", "Paraplegia (dog)." ],
+    "Generalities" : [ "Emaciation.", "Hyperaemia, swelling, and excessive secretion.", "Anomalies of motion, chorea-like movements." ],
+    "Fever" : [ "Remedies profuse sweating in some cases of severe illness.", "Night-sweats of phthisis." ]
+  }
+}

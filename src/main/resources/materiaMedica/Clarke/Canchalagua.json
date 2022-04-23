@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Canchalagua",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Influenza. Intermittents." ],
+    "Characteristics" : [ "This is a popular Californian remedy. It is indicated in intermittents of most severe type of hot countries; general sore, bruised feeling, nausea and retching, the skin becomes wrinkled like a washerwoman's. It was proved by Dr. Richter, who experienced the following among other symptoms: Head feels congested. Scalp tight; feels as if drawn together by indiarubber. Stitches, pain, buzzing and roaring in ears. Constipation, hard, knotty stools. Chills repeatedly down back < in bed, at night. Sleeplessness. After the proving, a cold wind could be borne better than before." ],
+    "Relations" : [ "Compare: The Gentians, Chi., Ipec." ],
+    "Head" : [ "Head feels congested.", "Pressive pains in forehead.", "Scalp feels tight, as if drawn together with indiarubber." ],
+    "Eyes" : [ "Burning in eyes, first l. then r." ],
+    "Ears" : [ "Piercing or stitches in ears.", "Increased buzzing and roaring." ],
+    "Mouth" : [ "Spitting of white mucus, with trembling and nervousness." ],
+    "Stomach" : [ "Increased appetite.", "Eructations.", "Regurgitations.", "Water-brash." ],
+    "Abdomen" : [ "Flatus.", "Slight pain > by pressure." ],
+    "Stool and Anus" : [ "Several loose stools a day.", "Constipation.", "Hard, knotty, morning stool." ],
+    "Chest" : [ "It alleviated a catarrh produced by influenza." ],
+    "Generalities" : [ "That kind of pain in head and fingers which is concomitant with the attacks of intermittent fever." ],
+    "Sleep" : [ "Sleeplessness (from 1st trit.)." ],
+    "Fever" : [ "Chills repeatedly, down the spine and all over, esp. in bed at night.", "Heat in whole body; I could bear, after the proving, the cool trade wind, usually setting in, in San Francisco, in the afternoon, better than before." ]
+  }
+}

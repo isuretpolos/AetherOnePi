@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Rhus Glabra",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Debility. Diarrhoea. Dreams, annoying. Dysentery. Epistaxis. Haemorrhage. Head-ache. Mouth, ulcers in." ],
+    "Characteristics" : [ "Rhus glabra, R. tryphina, and R. coriaria have acid fruit and astringent bark, which is used in tanning. Rh. g. is a deciduous shrub with stem to feet high, and has terminal flowers, and fruit clothed with acid crimson hairs, like the other non-poisonous Rhoes. The tincture of the bark was proved by Dr. A. V. Marshall on himself with very substantial doses. The symptoms of the Schema are his, and they bear out the traditional uses of the remedy. One of these is, \"profuse perspiration arising from debility\" (Scudder); and Marshall had \"profuse sweat during sleep\" and such a degree of debility that he was obliged to leave off the proving. Hale mentions that an infusion of the root has a popular repute in diarrhoea and dysentery, especially when the discharges are fetid; and that the berries are used for chronic cough, wheezing cough, and laryngeal asthma. A tincture made of the whole pannicle (\"Sumach-bobs\") cured a patient of his who had every spring an attack of laryngeal cough with dyspnoea and almost complete loss of voice. Farmers place \"bobs\" in the mangers of horses who have \"heaves.\" Cooper observed an aggravation in a case of psoriasis: the patient felt irritable and despondent, and the skin became irritable. In the proving there were dull, heavy headaches, > by exercise. (Hale says it has cured occipital headaches.) There was < of stomach symptoms by either food or drink. < By touch (abdomen; ulcers in mouth). < After sleep. > By movement." ],
+    "Relations" : [ "Compare: Rh. a. and other Anacardiaceae, and the Xanthoxylaceae, which are an allied order." ],
+    "Mind" : [ "Distaste for society.", "Stupid; forgetful; indifferent to surrounding objects." ],
+    "Head" : [ "Dull, heavy headache on waking, > by exercise.", "Dull, heavy pain in front and top of head." ],
+    "Nose" : [ "Bleeding from l. nostril and mouth.", "Bloody scabs in l. nostril.", "L. nostril hot and dry." ],
+    "Mouth" : [ "Tongue furred white.", "Several small, very sensitive ulcers on mucous membrane opposite the bicuspids.", "Taste flat, alkaline.", "Taste of drug remains long.", "Bleeding from mouth." ],
+    "Throat" : [ "Expelled two clots of blood from throat soon after waking." ],
+    "Stomach" : [ "Loss of appetite Ord d.).", "Hunger (4th d.).", "At breakfast could eat but little though feeling as if he had fasted many days (6th d.).", "Distress in stomach, disturbed, very restless.", "Pain in stomach much < by all food or drink." ],
+    "Abdomen" : [ "Sharp cutting in umbilical region and abdomen.", "Umbilical region tender to pressure." ],
+    "Stool and Anus" : [ "Diarrhoea in afternoon, < towards evening (1st d.); later dry, hard stool; then first part dry, later moist; then natural; and again diarrhoea of short continuance." ],
+    "Urinary Organs" : [ "Scanty, high-coloured urine." ],
+    "Back" : [ "Pain in small of back." ],
+    "Lower Limbs" : [ "Aching and fatigue of lower limbs, can hardly stand." ],
+    "Generalities" : [ "Lost two pounds weight in three days.", "Exhaustion and painful fatigue compelled him to relinquish the proving." ],
+    "Sleep" : [ "Sleep: disturbed by annoying dreams; very restless.", "Dreams of flying through the air." ],
+    "Fever" : [ "Sense of coldness while there is actual increase of heat in the skin.", "Skin hot, dry, with thirst.", "Sweat, profuse during sleep." ]
+  }
+}

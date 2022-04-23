@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Calotropis",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Feet, pain in. Fever. Hands, pains in. Leprosy, tubercular. Lupus. Syphilis." ],
+    "Characteristics" : [ "The inspissated juice, root and bark have been extensively used in the East for their emetic, sudorific, alterative, and purgative qualities. The fresh juice is considered a valuable remedy in skin affections. A short proving brought out the following symptoms: Weak, tired feeling; coldness; dizziness; pain and confusion in head; nausea and vomiting of bile; frequent micturition; pain, soreness, and redness of thigh pain in both legs, swelling of knees, stiffness and inability to walk pains in hands and feet; first left then right, pains < movement or putting weight on them. Dr. Gramm, of Philadelphia (Minn. H. Mag., Aug., 1897), has used the tincture with great success in cases of syphilis when Mercury can no longer be given; in the anaemia of syphilis; secondary syphilis. A sense of warmth in the scrobiculus cordis is a leading indication for the remedy.", "In one case of severe and advanced syphilis, with enormous thickening of the ends of all the nails, Calo. effected a cure. The remedy was given in one- to five-drop doses of the tincture, or in pellets saturated with equal parts of the tincture and per cent. alcohol." ],
+    "Relations" : [ "Compare: Asclep. syr., Asclep. tub. (botanical relations). Ipec. (emetic). Berb. aquifol. (syphilis). Coffee caused vomiting when before there was only nausea, but antidoted many effects. Camph. also antidoted." ],
+    "Mind" : [ "Depressed, tired feeling." ],
+    "Head" : [ "Dizziness.", "Dull occipital headache from a.m. till midnight, very bad at times in evening.", "Head painful, throbbing, and confusion.", "Head and face hot." ],
+    "Face" : [ "Cheeks burning like fire.", "Lips and throat dry." ],
+    "Mouth" : [ "Slight soreness and swelling of r. palate, paining on moving jaws.", "Breath foul." ],
+    "Stomach" : [ "Constant eructations.", "Faint and giddy with inclination to vomit; after strong coffee vomited a wineglassful of yellow bile." ],
+    "Urinary Organs" : [ "Frequent urination.", "Urine dark red, like homebrewed beer, and with strong smell but no noticeable deposit." ],
+    "Respiratory Organs" : [ "Oppression at chest, and short breathing." ],
+    "Heart" : [ "Pulse quickened." ],
+    "Back" : [ "Frequent chills passing up spine." ],
+    "Upper Limbs" : [ "Cramp-like pain in centre of r. palm when grasping anything, lasting many days; pain in wrist when moving it." ],
+    "Lower Limbs" : [ "Slight pain when moving at inside of r. thigh just below groin: two days later back of thigh very sore and hard, making turning irksome; next morning thigh sore, swollen, and painful, so that he could not bend leg in walking, which gave him pain at every step.", "Slight pain in l. foot on movement, or when bearing on it; with deep tenderness as if up tarsal bone.", "Intermitting cramp-like pain, must keep foot moving about in bed.", "Pain in foot when at rest so severe as to bring pain into eyes; > after coffee; later, instep slightly red and swollen but not tender; unable to put foot to ground except by very slow degrees, could then stand without pain, but pain returns when taking weight off again.", "Some days after, r. foot began to pain and became the worse of the two." ],
+    "Sleep" : [ "Restless and feverish; tossing from side to side." ],
+    "Fever" : [ "Body cold, frequent chills passing up spine; at same time head and temples hot, cheeks burn like fire.", "Chill returned towards bedtime though he was close to the fire; continued in bed, running from feet up spine, movement of feet seemed to excite them.", "Fits of perspiration alternating with chills." ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "remedyName" : "Tradescantia",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Gonorrhoea. Orchitis." ],
+    "Characteristics" : [ "Mure proved Trad., which belongs to a genus of lily-like plants. It produced disorder of the genito-urinary organs, urethral discharge, and inflammation of the scrotum; also embarrassed breathing." ],
+    "Head" : [ "Vertigo." ],
+    "Stool" : [ "Diarrhoea." ],
+    "Urinary Organs" : [ "Whitish discharge from urethra.", "Pain when urinating.", "Stream thin.", "Urine: acid smelling; yellowish, copious, ash-coloured sediment." ],
+    "Male Sexual Organs" : [ "Scrotum inflamed, painful and red." ],
+    "Respiratory Organs" : [ "Breathing: very painful; embarrassed, difficult, sighing, as from want of air." ],
+    "Chest" : [ "Pain in l. side of chest." ]
+  }
+}

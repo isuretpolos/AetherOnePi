@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Rhamnus Frangula",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Anus, itching of. Appendicitis. Ardor urinae. Caecum, gurgling in. Diarrhoea. Flatulence. Urethritis. Vomiting." ],
+    "Characteristics" : [ "All parts of Rh. fr. appear to produce irritant and cathartic properties. The majority of the symptoms of the Schema were the result of the root bark, but the leaves were no less active. Stools of a dark-green colour were observed, copious, thin or pasty. With the stools there was much rumbling in the ileo-caecal region and along, the transverse colon with weakness after stool. (Rh. ca. has rumbling, griping, and cutting pains in ileo-caecal region.) There was more vomiting with Rh. fr. than with Rh. ca., and the former was abandoned as a cathartic because it so frequently produced vomiting instead. \"Burning in urethra while urinating and frequent micturition\" may prove an indication in gonorrhoea." ],
+    "Relations" : [ "Compare: Rh. ca., Cean., and Cascara (botan)." ],
+    "Mind" : [ "Depression of spirits." ],
+    "Head" : [ "Vertigo.", "Dulness of head.", "Frontal headache." ],
+    "Mouth" : [ "Dry tongue.", "Salivation.", "Coated tongue.", "Taste bitter (after stools)." ],
+    "Throat" : [ "Burning scraping taste and irritation along throat." ],
+    "Stomach" : [ "Thirst.", "Diminished appetite.", "Aversion to food.", "Eructations and efforts to vomit.", "Nausea, with increased salivation.", "Frequent vomiting instead of diarrhoea.", "Sourish vomiting.", "Constant inclination to vomit.", "Warmth in stomach and abdomen." ],
+    "Abdomen" : [ "Distension.", "Profuse emission of flatus.", "Rumbling.", "Increased sensitiveness.", "Increased peristalsis." ],
+    "Stool and Anus" : [ "Itching in anus.", "Violent tenesmus.", "Thin pasty stools.", "Fifteen thin stools with violent rumbling and gurgling, esp. in ileo-caecal region and along transverse colon, followed by distension of abdomen, thirst, coated tongue, bitter taste and weakness.", "Stools without great urging, thick, pasty, dark green, copious.", "Stools hard, scanty.", "Constipation at first followed by diarrhoea." ],
+    "Urinary Organs" : [ "Slight burning in urethra, while urinating.", "Frequent micturition." ],
+    "Heart" : [ "Accelerated pulse." ],
+    "Generalities" : [ "General exhaustion.", "Weakness; after stools." ],
+    "Sleep" : [ "Great sleepiness." ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "remedyName" : "Zincum Muriaticum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bright's disease. Constipation. Convulsions. Cramps. Diphtheria. Dysentery. Emaciation. Haematemesis. Hiccough. Hydrocephalus. Smell, perverted. Taste perverted. Typhoid fever. Wounds." ],
+    "Characteristics" : [ "The bulk of the symptoms of Zn. m. are derived from poisoning cases. Chloride of Zinc is an active poison and a powerful disinfectant., and being readily accessible in the form of \"Sir Wm. Burnett's Disinfectant Fluid,\" has occasioned many poisonings, both accidental and suicidal. Most of the symptoms are the usual effects of a corrosive poison, but some characteristic symptoms appear. One of them was the perversion of the senses of smell and taste: Things had a putrid smell and taste which were not putrid; and faeces had no odour at all. Quinine had no bitter taste, and acids and alkalies had no acid or alkaline taste. Insipid things were most relished. Other symptoms were: \"No natural appetite, but a morbid craving for something to allay the irritation at the stomach.\" \"Vomiting of all food except boiled milk.\" \"Occasional attacks of tetanic spasms of right forearm and hand.\" \"Emaciation; skin looked as if stretched tightly over bones of face and hands.\" \"Bluish and blue-mottled skin.\" \"Sleeps on right side with legs drawn up, grinds teeth.\" Spasmodic twitchings of face and hands, sprains and convulsions were prominent features. De Noe Walker used a dilution of Zn. m. as an application to fresh wounds, and found it very effectual in securing rapid healing." ],
+    "Mind" : [ "Excessive nervous derangement and prostration.", "Picks bedclothes.", "Anxiety, dulness.", "Depressed.", "Intellect clear by day, wanders at night.", "Semi-comatose." ],
+    "Head" : [ "Vertigo: and fainting; and rush of blood to head.", "Headache, occipital and frontal." ],
+    "Eyes" : [ "Eyes sunken.", "Pupils: widely dilated; contracted.", "Sight lost." ],
+    "Nose" : [ "Smell perverted: putrid and faecal matter had no odour; scents smelt like hemlock; meats if the least bit burnt smelt intolerably putrid." ],
+    "Face" : [ "Face: distorted with agony and livid; pale and anxious; dusky; flushed; convulsed and twitching.", "Swelling of lips, with thick, transparent mucus adhering.", "Vesication of lips and tongue." ],
+    "Mouth" : [ "Toothache in carious teeth.", "Gums: spongy; red and covered with white sordes.", "Tongue: coated with white fur; thick yellow fur; intensely red; covered with brown sordes.", "Frothing at mouth.", "Peculiar fetor of breath.", "Taste: astringent; metallic; perverted not less than the sense of smell, roast things intolerable, most foods, esp. raw oysters, tasted of burnt flour, quinine was not bitter, nor acids acid." ],
+    "Throat" : [ "Throat: inflamed; painful; burning.", "Diphtheritic-like membrane on fauces.", "Constriction of throat.", "Burning along oesophagus.", "Swallowing difficult." ],
+    "Stomach" : [ "No natural appetite, had a morbid craving to allay irritation of stomach.", "Anorexia.", "Constant thirst, but aversion to swallowing any fluids.", "Nausea.", "Vomiting: distressing; violent; of all food except boiled milk; of shreds of membrane; most offensive; of blood.", "In stomach: clawing and burning pain." ],
+    "Abdomen" : [ "Severe pain in l. hypochondrium, < by food.", "Abdomen shrunken, edge of liver sharply defined.", "Intense abdominal pain and tenderness." ],
+    "Stool and Anus" : [ "Diarrhoea: violent, with vomiting and collapse.", "Stools: thin, dark brown; fetid; coffee-ground; pitchy; olive-green; pale, clayey, dry, crumbling.", "Constipation." ],
+    "Urinary Organs" : [ "Nephritis (H. W., xxxii. 428).", "Urine excessive, seven pints in five hours." ],
+    "Respiratory Organs" : [ "Voice: in whispers; lost.", "Breathing: difficult; thoracic, rapid." ],
+    "Heart" : [ "Pain in praecordial region; pulse rapid, fluttering." ],
+    "Limbs" : [ "Tremor in limbs." ],
+    "Upper Limbs" : [ "Spasmodic pains at shoulders and back.", "Tetanic spasms occasionally in r. forearm and hand." ],
+    "Lower Limbs" : [ "Legs drawn up on belly.", "Severe cramps." ],
+    "Generalities" : [ "Emaciation extreme.", "Nervous prostration, hyperaesthesia.", "Spasmodic movements of muscles of face and arms.", "Convulsions.", "Faintness.", "Collapse." ],
+    "Skin" : [ "Skin: dusky; ghastly bluish green; harsh and dry, with odour as in starvation; bluish mottled; dry; hot.", "Skin of legs covered with thick scales." ],
+    "Sleep" : [ "Utter inability to sleep.", "Slept restlessly, lying always on r. side with legs drawn up, and ground teeth during sleep." ],
+    "Fever" : [ "Surface cold, wet, and clammy.", "Alternations of cold and heat.", "Complained of cold though skin moderately warm to touch.", "Forehead bathed in sweat, general surface warm.", "Cold, clammy sweat." ]
+  }
+}

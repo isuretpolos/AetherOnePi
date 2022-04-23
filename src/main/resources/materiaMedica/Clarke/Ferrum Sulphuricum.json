@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Ferrum Sulphuricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Aphthae. Bulimy. Cardialgia. Chorea. Constipation. Diarrhoea. Eczema. Gall-bladder, pain in. Gastritis. Gonorrhoea. Haemorrhages. Headache. Helminthiasis. Menorrhagia. Nettlerash. Scrofula. Spasms. Toothache. Worms." ],
+    "Characteristics" : [ "Ferr. sul. has the leading features of the other Ferrums, but many of the Sulphur characters appear, in the modalities especially. There is < from warmth or warm room (toothache); > from cold air or from ice (toothache) or from fresh air. It is like Sulph. also in acidity and eructations of food in particles. Other noteworthy symptoms are: Passive haemorrhages. Pain in gall-bladder. Pallor or flushing. Sensation as if all the blood were rushing into head and face. Sensation of fermentation or purring in stomach. Feeling of general heat and disposition to sweat, with sensation in skin of back as if he wore a stout woollen shirt. Muscular pains or contractions. Local atony; disposition to congestions; nettlerash; aphthae; eczema, with sluggish liver." ],
+    "Relations" : [ "Compare: Phos. (regurgitation of food in particles); Cina (worms). Bapt. (pain in region of gall bladder)." ],
+    "Head" : [ "Severe vertigo; with diarrhoea.", "Pressing throbbing headache, < in forehead, with ringing in ears, sensation of blood rushing into head and face; face scarlet, glowing; > in fresh open air; < warm room." ],
+    "Ears" : [ "Pain apparently in walls of meatus auditorius externus." ],
+    "7, Teeth and Mouth" : [ "Violent tearing toothache; teeth all sound; > from cold air or application of ice on cheek; headache.", "Very troublesome soreness of soft palate." ],
+    "Throat" : [ "Taste of salt, with smarting in throat." ],
+    "Stomach" : [ "Bulimia, cannot be satisfied, thirst not marked.", "Loss of appetite; aversion to meat.", "Eructation of flatus and food with acidity.", "Sickness, with vomiting.", "Sensation of fermentation, or of a noise or movement like purring of a cat in region of stomach.", "Cardialgia.", "Gastritis, with pain after eating, and regurgitation of food by mouthfuls." ],
+    "Abdomen" : [ "Pain in region of gall-bladder.", "Colicky pains, with flatulence and diarrhoea." ],
+    "Stool and Rectum" : [ "Watery, reddish-brown, odourless, painless diarrhoea, with great paleness of skin, emaciation, vertigo, oedema of scrotum and lower limbs, bulimy without thirst, venous murmurs.", "Constipation.", "Helminthiasis; tape worms; ascarides." ],
+    "Urinary Organs" : [ "Great weakness accompanying Bright's disease.", "Bloody urine, with albuminuria." ],
+    "Male Sexual Organs" : [ "OEdema of scrotum and lower limbs.", "Secondary gonorrhoea." ],
+    "Female Sexual Organs" : [ "Menstruation copious, five to six days' duration, with colic before and during the time; headache frequently between periods; pressing throbbing, esp. in forehead, with ringing in ear, rush of blood, scarlet glowing face > in fresh air, < in warm room; often accompanied by toothache.", "Metrorrhagia; leucorrhoea." ],
+    "Back" : [ "Pain shooting down r. side of back." ],
+    "Limbs" : [ "Limbs very painful, esp. feet and calves, where the pain is distracting.", "Contractions in arms, hands, and feet." ],
+    "Upper Limbs" : [ "Rheumatism and semi-paralysed condition of r. arm and shoulder.", "Arms bent at elbows, and fingers drawn towards forearm by flexure of wrist.", "Hands yield to forcible extension, but immediately return to same condition." ],
+    "Lower Limbs" : [ "Paralysis of lower limbs.", "Knees slightly flexed, toes drawn upwards rigidly.", "Pain in sole of left foot in middle of thick fleshy anterior part, and at same time an aching pain through lower part of leg." ]
+  }
+}

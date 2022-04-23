@@ -1,0 +1,17 @@
+{
+  "remedyName" : "Trachinus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asthma. Blood-poisoning. Neuralgia. Ulcers." ],
+    "Characteristics" : [ "Some very serious effects have been recorded from wounds inflicted with the fins of Trachinus. Intolerable pains, swelling of the part, and in some cases gangrene, fever, delirium, and symptoms of hydrophobia have been observed. It should be indicated in cases of acute blood-poisoning with intense pains." ],
+    "Mind" : [ "Raving.", "Hydrophobia.", "Anxiety.", "Fear of death." ],
+    "Head" : [ "Vertigo.", "Violent headache." ],
+    "Stomach" : [ "Violent thirst.", "Nausea.", "Green, bilious vomiting." ],
+    "Respiratory Organs" : [ "Paroxysms of suffocation." ],
+    "Heart" : [ "Palpitation." ],
+    "Generalities" : [ "Swelling: of whole body; of wounded arm then of head and chest.", "Stinging, burning, throbbing pain increasing to unendurable intensity lasting an hour and then decreasing.", "Violent burning pain extending from wound to chest." ],
+    "Skin" : [ "Skin of whole body became yellowish green.", "Gangrenous blisters on arms." ],
+    "Sleep" : [ "Sleeplessness." ],
+    "Fever" : [ "Constant fever with irregular pulse.", "Cold, clammy sweat." ]
+  }
+}

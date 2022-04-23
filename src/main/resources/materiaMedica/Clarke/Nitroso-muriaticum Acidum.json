@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Nitroso-muriaticum Acidum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Anus, constricted. Constipation. Digestion, slow. Gravel. Mouth, sore. Oxaluria. Salivation, intermittent. Scurvy." ],
+    "Characteristics" : [ "Nit. mur. ac. has been proved in the lower dilutions and in the 30th; and some experiments have been made by Dr. Scott (quoted C. D. P.), who acidulated his bath with the acid, and sponged his body with acidulated water. Sponging and bathing had the same effect, and I have marked his symptoms with (b) in the Schema. Scott noticed that the symptoms were more marked as the proportion of Muriatic acid was increased. Salivation and sore mouth and throat with dysphagia were produced in Scott and the provers. Scott noticed that the salivation was intermittent. Weakness was felt by all. Headache with drowsiness. Slow digestion. Pricking pains. Symptoms were < after eating and by exercise. Nat. mur. ac. has a clinical reputation in oxaluria and gravel." ],
+    "Mind" : [ "Nervous irritation and restlessness (b).", "Lowness, depression." ],
+    "Head" : [ "Headache and great sleepiness, < 1-3 p.m.", "Frontal headache with dizziness.", "Sensation in temples as if brain distended.", "While leaning to l. side, sudden sticking ache in l. temple, preceded by twitching of anterior fibres of temporal muscle.", "Sensation on rising from bed as if brain was all in occiput, making it feel heavy." ],
+    "Mouth" : [ "Odd sensation about gums, jaws, and teeth (b) gums somewhat reddened (b).", "Pain in some parts of palate or mouth small superficial ulceration over inside of mouth and tongue; excoriation with salivation and depression (b).", "Salivation intermittent, no foetor (b).", "Large blister inside lower lip; cannot help biting it.", "Immediately a sense of pressure or fulness in parotid, submaxillary and sublingual glands (in the order named), with some increase of saliva, < l. side.", "Extreme salivation, could not spit it out fast enough (soon after fluttering of heart).", "Metallic, coppery taste (b)." ],
+    "Throat" : [ "While writing at a very low table spasmodic, tremulous contractions in pharynx near levator palati muscles.", "Pain on swallowing all down oesophagus, with burning there and in roof of mouth (b)." ],
+    "Stomach" : [ "Evacuation of flatus and eructations.", "Food took longer to digest than usual." ],
+    "Abdomen" : [ "On rising, sensation from l. hypochondrium to rectum as of desire for stool.", "Slight colic in lower abdomen." ],
+    "Stool and Anus" : [ "Sudden increase of secretion of bile.", "Free, loose, yellowish, pappy stool, after breakfast.", "Constipation; p.m. desire for stool, unable to pass anything owing to constriction of sphincter ani; by pressing with finger at end of coccyx and pressing with abdominal muscles, a small amount of faeces evacuated." ],
+    "Urinary Organs" : [ "Urging in penis and bladder; aching in hips, thighs, and small of back; after a short delay some pale urine passed." ],
+    "Respiratory Organs" : [ "The fumes caught her breath and produced inflammation of larynx and bronchi (nearly proved fatal).", "Breathing easier than usual." ],
+    "Heart" : [ "Palpitation.", "Fluttering at heart; while eating; while moving." ],
+    "Neck and Back" : [ "Whilst taking a cold bath catching pain in back muscles (r.).", "Heavy pain in loins." ],
+    "Limbs" : [ "Sticking in various parts of limbs successively; whilst walking." ],
+    "Lower Limbs" : [ "Languid aching through hips and thighs (front) and small of back." ],
+    "Generalities" : [ "Weak, physically and mentally depressed." ],
+    "Sleep" : [ "Slept unusually well and felt better for it.", "Sleepy with headache." ],
+    "Fever" : [ "Chill passing upward; while sitting near stove.", "Slight feverishness.", "Perspiration increased, often to a great extent." ]
+  }
+}

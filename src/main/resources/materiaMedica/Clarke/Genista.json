@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Genista",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Earache. Headache." ],
+    "Characteristics" : [ "Genista was proved by E. B. Cushing. Its principal effects are: Sharp piercing pains in the head and ear. Brain feels loose and sensitive. Sensitive feeling in brain, eye, and throat. Urgent desire for stool, which is expelled suddenly. A peculiar eruption of dark red confluent spots. < Rising; turning quickly; shaking head; walking. In the night, water-brash. > In open air; in cool rooms; by eating (headache)." ],
+    "Relations" : [ "Compare: (Brain feels loose) Cic. v., Nat. s., Bar. c., Rhus." ],
+    "Head" : [ "Vertigo and headache on rising or shaking head, > after dinner.", "Sensation as if brain were loose and very sensitive.", "Frequent, sharp pain in r. temple from within outwards.", "Piercing pain in l. temple." ],
+    "Eyes" : [ "Eyes sensitive to touch in forenoon." ],
+    "Ears" : [ "Once a sensation in l. ear, as though some sharp instrument were thrust into it (forenoon)." ],
+    "Throat" : [ "Throat dry and sensitive." ],
+    "Stomach" : [ "Awakened several times in the night with water-brash." ],
+    "Stool and Anus" : [ "Desire for stool with violent sneezing as from snuff.", "Urgent desire for stool, lasting only a short time, soon after the dose.", "Stool soft and scanty.", "Stool tinged with blood; the faeces though large were expelled like a wad from a pop-gun (forty minutes after third dose)." ],
+    "Skin" : [ "Peculiar eruption, consisting of roundish, dark-red, confluent spots, scarcely elevated above the skin, which, itching very much, becomes scarlet-red, then pale, and disappears in twenty-four hours; it occurred on feet to knees, and hands to elbows." ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "remedyName" : "Nicotinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Aura of epilepsy. Brain-fag. Collapse. Epilepsy. Seasickness. Spasms. Tetanus. Tobacco, effects of." ],
+    "Characteristics" : [ "Nicotin. has had a very heroic proving by Falk, Wochenfeld, Wertheim, Schroff, and Reil. Very violent tonic and clonic spasms were produced; indistinctness of senses; loss of consciousness. Peculiar symptoms and sensations were: Great sensitiveness of eye to light, along with indistinct vision. Aura in upper jaw. As though a sharp brush had been drawn through oesophagus to stomach. Disagreeable sensation extending upwards and downwards from stomach. Emptiness and faintness in stomach. Coldness extends from tips of fingers and toes over trunk; and warmth streams into them from the stomach. Jerking respiration." ],
+    "Relations" : [ "Antidotes: See under Tabac. Compare: Tabac., Digit., Lobel., OEnanth., Absinth." ],
+    "Mind" : [ "Delirium with frightful visions.", "Inability to think or fix attention on any subject." ],
+    "Head" : [ "Vertigo and headache.", "Dulness of head, heaviness, dizziness, stupefaction.", "Head drawn back with rigidity of muscles of neck and back." ],
+    "Eyes" : [ "Eyelids feel too heavy.", "Lachrymation.", "Pupils dilated.", "Indistinct vision with sensitiveness of eye to light." ],
+    "Ears" : [ "Indistinct hearing; sensation as if ears filled with cotton." ],
+    "Nose" : [ "Expired air had odour of alcohol (to provers and others)." ],
+    "Face" : [ "Face pale, features drawn.", "Sensation of an aura in upper jaw." ],
+    "Mouth" : [ "Sharp burning sensation in tongue.", "Increased saliva.", "Scraping, burning taste, esp. low down in throat, causing hiccough and hawking." ],
+    "Throat" : [ "Dryness; and scraping in throat.", "Sensation as though a sharp brush drawn through oesophagus to stomach.", "Sensation of dysphagia." ],
+    "Stomach" : [ "Loss of appetite.", "Great aversion to tobacco and tobacco-smoking (one prover, a smoker, was unable to smoke more than a few whiffs; the other, a non-smoker, could not approach any one who was smoking).", "Eructation with some vomiting which >.", "Hiccough.", "Disagreeable sensation extending from stomach upwards and downwards.", "Persistent sensation of emptiness and faintness in stomach and intestines." ],
+    "Abdomen" : [ "Abdomen distended.", "Disagreeable sensation through whole intestinal canal." ],
+    "Stool and Anus" : [ "Excessive desire for stool, > by emission of flatus and urine.", "Stool retarded." ],
+    "Urinary Organs" : [ "Urgent desire; urine copious; increased." ],
+    "Respiratory Organs" : [ "Respiration very rapid; difficult." ],
+    "Chest" : [ "Oppression: compelling deep breathing; sensation of foreign body behind sternum." ],
+    "Heart" : [ "Pulse increased in frequency in direct proportion to dose.", "Pulse and respiration very irregular, sometimes becoming very rapid, sometimes sinking.", "Constant sinking of pulse." ],
+    "Upper Limbs" : [ "Formication, beginning in tips of fingers, extending to wrists and afterwards to elbows." ],
+    "Lower Limbs" : [ "Weakness of lower limbs, esp. going up stairs." ],
+    "Generalities" : [ "Peculiar clonic spasms that gradually increased for forty minutes; extremities began to tremble; the trembling extended at last over whole body, which became violently shaken; respiratory muscles most affected, breathing difficult and impeded, every respiratory effort consisting of a series of short jerks in quick succession; expiration accomplished in same manner as inspiration.", "Excitement.", "Uneasiness.", "So weak could scarcely hold up head.", "Paroxysms of faintness beginning with a vanishing of senses and ending with loss of consciousness." ],
+    "Skin" : [ "Skin dry." ],
+    "Sleep" : [ "Sleepy.", "Restless night; sleepless, hot and excited." ],
+    "Fever" : [ "Extremities icy cold.", "Coldness beginning in tips of fingers and toes and extending to trunk.", "Shaking chill.", "Sensation of warmth commencing in stomach, rapidly extending over chest and to head, and like a streaming into tips of fingers and toes; not followed by sweat.", "Cold sweat." ]
+  }
+}

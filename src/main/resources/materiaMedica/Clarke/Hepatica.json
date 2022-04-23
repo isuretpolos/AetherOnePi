@@ -1,0 +1,14 @@
+{
+  "remedyName" : "Hepatica",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bronchitis. Catarrh. Dyspepsia. Epistaxis. Throat, sore." ],
+    "Characteristics" : [ "This is an old remedy which received its name from a fancied resemblance of its leaves to the shape of the liver. All our definite knowledge of it began with an experiment made by Dr. D. G. Kimball, who chewed the leaves every day for \"a chronic irritation of the throat and lungs.\" A few symptoms were produced, and the symptoms he complained of were removed, notably: tickling irritation in throat and sensation about epiglottis as of particles of food remaining. Accumulation of viscid, tenacious phlegm, with frequent hawking. Lungs became much stronger and digestion more perfect. Hale, experiencing an attack of circumscribed pneumonia, with bloody expectoration; or else, profuse, yellow, creamy, exceedingly sweet, some pain and constriction in right chest, tickling in fauces < by eating; or from inhalation of dust; chewed the dry leaves, and in a few days was well. Stan., Lyc., Phos., Sul. had all failed to relieve. Wegge, of Copenhagen, according to Hansen, confirms its value in pharyngeal catarrh, with profuse serous sputa and hoarseness. In the subjoined Schema I give both caused and cured symptoms." ],
+    "Relations" : [ "Compare: Stan., Cist., Caust., Pho., Sang., Rumex, Lach., Kali bi." ],
+    "Eyes" : [ "Eyes somewhat sensitive to light; itching and smarting; slightly agglutinated in morning." ],
+    "Nose" : [ "Bloody mucus frequently blown from l. nostril for three or four days in succession.", "Soreness of end of nose at entrance of nostrils." ],
+    "Throat" : [ "Rough scraping, irritative and tickling sensation in throat and fauces disappears, also sensation about epiglottis and larynx as of particles of food remaining.", "Accustomed accumulation of phlegm, sometimes thick, viscid, and tenacious, inducing frequent hawking and disposition to hawk disappears.", "Pharyngeal catarrh, with profuse serous expectoration and hoarseness.", "An exceeding, annoying irritation of fauces (with pneumonia), tickling, itching, scraping, almost constant; < by eating or inhalation of dust (cured)." ],
+    "Stomach" : [ "Digestion more perfect." ],
+    "Respiratory Organs" : [ "The customary paroxysms of coughing, and somewhat abundant expectoration, mostly daily about midday, a portion of the expectoration being opaque, yellowish, of the consistence of cream, the rest mucous and frothy, disappear.", "State of lungs and throat much better.", "Bronchitis, with circumscribed pneumonia, sputa bloody and purulent; sputa profuse, yellow, creamy, and exceedingly sweet; some pain and constriction of r. chest; an exceedingly annoying irritation of fauces (cured).", "Uncommonly free and easy expectoration." ]
+  }
+}

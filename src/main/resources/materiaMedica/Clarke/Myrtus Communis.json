@@ -1,0 +1,14 @@
+{
+  "remedyName" : "Myrtus Communis",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Catarrhal fevers. Chest, stitches in. Coryza. Cough. Tuberculosis." ],
+    "Characteristics" : [ "Myrt. com. is an unproved remedy, the symptoms of the Schema being entirely clinical. Hering gives an account of it. It has a very powerful action on the left lung, especially the upper part. It is to the upper left lung what Oxal. ac. is to the lower. This is the keynote: Pain in upper left lung going right through from the front to the left scapula. Cases of phthisis, haemoptysis, hepatisation, lung syphilis having this symptom present have been cured with Myrt. The pain is mostly stitching, but may be throbbing, aching, or burning. It is < in morning, > evening, < by breathing, yawning, coughing. The cough is dry, hollow; excited by a tickling in upper anterior lobes. Hering has cured catarrhal fever with tickling cough < morning and > evening; with great lassitude in afternoon. This last symptom is important. So is evening > of cough and of tickling in lungs. < From change of atmosphere. Every atmospheric change = cough, coryza, and catarrhal fever." ],
+    "Relations" : [ "Compare: Pains through left chest to scapula, Therid., Illic., Pix., Sul. (Pain through lower lobe of left lung, Oxal. ac.) Compare also: Phos., Bry." ],
+    "Nose" : [ "Coryza with cough." ],
+    "Throat" : [ "Dryness in throat; pains in throat and chest, with expectoration of blood." ],
+    "Respiratory Organs" : [ "Dry, hollow cough, from tickling in upper anterior lobes of lungs; < morning; > evening; great lassitude in afternoon.", "Cough, coryza, and catarrhal fever setting in with every atmospheric change." ],
+    "Chest" : [ "Pain in chest; acute; pressing; cough with tightness.", "Pain in upper part of l. chest through to shoulder, < taking a deep breath and making a strong motion.", "Stitching in l. apex straight through to scapula, < breathing, yawning, coughing.", "Burning in l. chest with throbbing, aching, tickling.", "Hepatisation of l. lung.", "Haemoptysis.", "Phthisis, esp. from maltreated syphilis." ],
+    "Fever" : [ "Catarrhal fevers with pain in elbow and knee-joints, with dry, hollow cough, caused by tickling in upper and front part of lungs, esp. in morning, > evening, accompanied by lassitude in afternoon." ]
+  }
+}

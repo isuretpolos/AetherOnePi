@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Kerosolenum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Anaesthesia. Convulsions. Ecstasy. Laughter." ],
+    "Characteristics" : [ "The effects of Kerosol. have been observed on workmen, and also experiments have been made with it for the purpose of testing its anaesthetic properties. It causes a pleasurable kind of intoxication, but too much muscular rigidity, asphyxia, and intermittent pulse to render it a safe anaesthetic. Laughter was noticed in two cases, and this should prove an indication in some kinds of delirium and insanity. The symptoms are > in open air." ],
+    "Relations" : [ "Compare: Petrol., Paraff., Benzin." ],
+    "Mind" : [ "On breathing the vapour one seems to float away into a wavy maze with a sense of complete loneliness; there seems but one object in the universe, oneself; on recovery, the first object seen seems the only other object.", "Laughed (after tooth extraction) and only felt he had had a pleasant dream.", "Lost himself, but was inclined to laugh and would not keep still." ],
+    "Head" : [ "Peculiar lightness of head.", "Slight headache." ],
+    "Eyes" : [ "Eyes a little unnaturally open and staring." ],
+    "Face" : [ "Momentary dusky redness of face at each convulsion (as in epilepsy)." ],
+    "Chest" : [ "During the convulsions breathing somewhat checked by rigid contraction of chest muscles." ],
+    "Heart" : [ "Pulse: accelerated; intermittent; volume diminished during insensibility." ],
+    "Limbs" : [ "Weakness of the limbs." ],
+    "Generalities" : [ "Moderate convulsions.", "More muscular rigor than usual in favourable anaesthesia.", "Partially or wholly insensible, but rapidly recovers when brought into open air.", "Insensibility complete, though eyes not closed." ],
+    "Fever" : [ "Some sweating." ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Cainca",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bright's disease. Cough. Dropsies. Fatigue. Kidneys, pain in. Ophthalmia. Polyuria. Spleen, pain in. Travelling, effects of." ],
+    "Characteristics" : [ "Cainca is related botanically to China, Ipecac., and Coffea. Clinically it is very like Apocynum. It has not been used much, but has been given with success in dropsies, especially when associated with dry skin. It removes fatigue from too long riding on horseback. Polyuria while travelling. There is also sensitiveness of the abdomen to touch. Rest >. Motion <." ],
+    "Relations" : [ "Compare: Apocynum, Bry. Antidoted by: Colch., Rhus (gastralgia), Verat. Cainca follows well: Ars. Similar to: Coffea in relieving effects of fatigue; also Arn." ],
+    "Causation" : [ "Fatigue." ],
+    "Eyes" : [ "Inflammation of the eyes with fluent coryza." ],
+    "Abdomen" : [ "Lancinations through spleen region.", "Abdomen sensitive to touch." ],
+    "Urinary Organs" : [ "Pain in kidney regions in morning; cannot change position.", "Polyuria; whilst riding.", "Copious urination after drinking coffee." ],
+    "Respiratory Organs" : [ "Attacks of cough from p.m. till a.m., with rattling of phlegm. and short breath; accumulation of wind in abdomen, which feels like a pair of bellows set in motion; feels it putting hands there.", "Cough with weeping." ],
+    "Sleep" : [ "Somnolence; yawning." ]
+  }
+}

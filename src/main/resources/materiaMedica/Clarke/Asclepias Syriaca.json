@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Asclepias Syriaca",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Abortion. Bronchitis. Catarrhal fever. Dropsy. Dysmenorrhoea. Hay-fever. Headache. Indigestion. Influenza. Pleurisy. Rheumatism. Uraemia. Uterine pains." ],
+    "Characteristics" : [ "Asclep. syr. has especial influence on nervous tissues. Nervous headache; as if a sharp instrument were thrust through from one temple to the other; with vomiting; followed by sweating or profuse urination. Belching of food with its proper taste. Influenza and hay-fever. Dropsy after scarlatina or heart disease. Headache from checked sweat or retention of effete matters. Uraemia. Acute rheumatism confined to large joints with much pain and swelling. Intermittent, pressing, uterine pains; threatened miscarriage." ],
+    "Relations" : [ "Compare: Act. r., Bry., Colch., Asclep. tub." ],
+    "Head" : [ "Vertigo, dulness, and stupidity, with headache (l.).", "Violent headache between the eyes; sense of constriction across the forehead.", "Headache from suppressed perspiration, or from the retention of effete matters in the system.", "Nervous headaches, followed by sweating or profuse urination.", "When the drug did not cause sweating or profuse urination, it caused violent headache with quick, full pulse and nausea.", "A feeling (after vomiting) as if some sharp instrument were thrust from one temple to the other." ],
+    "Mouth" : [ "Tongue covered with a white fur." ],
+    "Throat" : [ "Burning and tickling in the fauces, with nausea and headache." ],
+    "Appetite" : [ "Great appetite even a few hours after a meal.", "Increased appetite, notwithstanding the vomiting and headache, with constipation." ],
+    "Stomach" : [ "Excessive nausea; with violent headache; violent vomiting and retching.", "Severe and long-continued vomiting, leaving behind it a sensation of rawness in the stomach and a slight pain, coldness of the surface of the skin, and feeble pulse, and a feeling as if a sharp instrument thrust through from one temple to the other." ],
+    "Stool and Anus" : [ "Increased secretion of bile.", "Slight inclination to evacuate the bowels; with nausea and diuresis.", "Diarrhoea, with nausea and vomiting, with excoriation of the anus.", "Copious stools of soft, fluid consistence, yellowish in colour, and attended with some griping pain.", "Constipation; pain in r. side, lower limbs, loss of appetite." ],
+    "Urinary Organs" : [ "Ardor urinae.", "Increased flow of urine.", "Pale coloured urine, with light specific gravity.", "Increase of solid matters in urine." ],
+    "Male Sexual Organs" : [ "Tickling sensation at the end of the penis." ],
+    "Female Sexual Organs" : [ "Intermittent, bearing-down, labour-like pains (during dropsy); pressing from sacrum to hypogastrium, with scanty flow.", "Suppression of menses (during dropsy)." ],
+    "Respiratory Organs" : [ "Increase of the bronchial secretions.", "Burning and tickling in fauces.", "(Influenza; catarrhal fevers; bronchitis; hay-fever.).", "Pain in l. side of chest on deep inspiration (pleurisy)." ],
+    "Heart and Pulse" : [ "Action of heart lessened; pulse slow.", "Feeble pulse after vomiting." ],
+    "Back" : [ "Cutting and aching about lowest dorsal vertebra." ],
+    "Limbs" : [ "Large joints affected." ],
+    "Sleep" : [ "Drowsy; sleepiness; hard sleep during the night." ],
+    "Fever" : [ "Coldness of surface after vomiting.", "Diaphoresis; profuse sweat." ]
+  }
+}

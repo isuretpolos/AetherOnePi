@@ -1,0 +1,30 @@
+{
+  "remedyName" : "Pediculus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Children, diseases of. Colic. Diarrhoea. Ganglion of foot. Hair, falling off. Irritation. OEdema. Psora, hereditary. Skin, affections of. Stammering." ],
+    "Characteristics" : [ "Pediculus belongs to the same class of remedies as Cimex and Trombidium. It was proved by Mure, who says that he thought that nature pointed to the Louse as a specific for hereditary psora, in which belief he was strengthened by the fact that Psorinum develops pediculosis in healthy persons, and he adds that he has found Pedic. one of the most useful agents in diseases of children. This is the only clinical observation I have met with in regard to the remedy. Five persons, took part in the proving, but no particulars are given as to the doses they took. All developed symptoms. Among these were: Eagerness and aptitude for study and work. One prover, a stammerer, had unusual fluency of words. Constriction of pharynx. Jerks and starts in evening when sitting or lying. Miliary eruptions, itching, and formication almost all over. The symptoms are < by contact; in evening; after dining; after eating; standing; stooping; walking." ],
+    "Relations" : [ "Antidoted by: Chi. (anasarca). Compare: Colic and diarrhoea after eating, Trombid. Skin, Pso., Sul." ],
+    "Mind" : [ "Excessive merriment, laughs at everything.", "Causeless melancholy.", "Irritability, causeless anger.", "Entire carelessness about present or future.", "Disposition for study; quick of apprehension; eager for work; writes with feverish rapidity.", "(Stammering improved.)" ],
+    "Head" : [ "Confusion, on rising, with beating in r. temple.", "Headache: with pressure on root of nose; on orbits; with lancinations.", "Hair ceases to fall out.", "Horripilation of l. half of scalp.", "Contraction of scalp.", "Sensation as if lifted up by the hair.", "Itching of scalp as if lice were running all over it." ],
+    "Eyes" : [ "Rings round eyes.", "Eyes: weary; smart as if from weeping.", "Sight dim; brain feels compressed." ],
+    "Ears" : [ "Heat in ears.", "Roaring in ears.", "Cracking in r. ear, when eating.", "Whizzing in ears when whistling." ],
+    "Nose" : [ "Inflammation of nasal fossae.", "Lancinations in root of nose." ],
+    "Face" : [ "Face deep red, scarlet.", "Swelling of l. cheek.", "Lips: dry, swollen, very red; black and cracked." ],
+    "Mouth" : [ "Burning and pricking on sides of tongue, which is red and much cracked." ],
+    "Throat" : [ "Dryness, scraping, soreness, constriction of throat.", "Constant swallowing of saliva." ],
+    "Stomach" : [ "Hunger with inability to swallow food; the pharynx feels contracted, followed by faintness and nausea.", "Constant nausea; difficult digestion with contraction in stomach." ],
+    "Abdomen" : [ "Violent colic making her scream and weep for half an hour at p.m.", "Colic and diarrhoea after dinner." ],
+    "Stool and Anus" : [ "Diarrhoea in evening, continuing next morning.", "Small, hard stool." ],
+    "Urinary Organs" : [ "Frequent and copious discharge of yellowish green urine, with stool almost every day (before the proving, was constipated).", "Urine light yellow and very odoriferous." ],
+    "Male Sexual Organs" : [ "Prolonged erection; without desire.", "Emission at night without amorous dreams." ],
+    "Female Sexual Organs" : [ "Very painful lancinations; great heat, and itching in uterus.", "Shifting pain in uterus; she cannot lean upon it, evening.", "Painful stitch in uterus.", "Leucorrhoea." ],
+    "Respiratory Organs" : [ "Dry; spasmodic cough.", "Suffocative feeling (4 to p.m.) in chest; which is painful to touch.", "Chest pains < by contact.", "Pain in breasts when drawing breath." ],
+    "Upper Limbs" : [ "Bruised pain in shoulders and arms, which are very sensitive to touch.", "Hands tremble so much she cannot sew." ],
+    "Lower Limbs" : [ "Great weakness of legs.", "Violent lancinations above r. and l. patella.", "Throbbing in l. patella.", "Ganglion under foot, very painful when walking.", "Skin comes off front of l. leg in patches." ],
+    "Generalities" : [ "Eleven days after all symptoms had disappeared, swelling of breast, face, and almost whole body set in, accompanied by several of symptoms of last days of proving, esp. constriction of pharynx; > by Chi. 10, but the itching and large pimples produced by the drug remained long after.", "Increased physical strength.", "Jerks and startings in evening.", "Numbness while drawing breath; shuddering and rigors.", "Great weariness when standing; dizziness and faint feeling." ],
+    "Skin" : [ "Red spots on cheeks; white spots on hands.", "Red face, hands, feet.", "Miliary pimples, on red base and swollen in centre, at nape of neck.", "Miliary eruption on inside of arms, forearms, and thighs.", "Small red pimples with black points.", "After putting feet in hot water they are covered with small red pimples.", "Horripilation all over.", "Itching and pricking all over.", "Itching r. on wrists; on beard; on nape; face and scalp; backs of hands; backs and soles of feet." ],
+    "Sleep" : [ "Yawning.", "Drowsy.", "Restless sleep.", "Dreams: frightful; monstrous; of a hospital, full of vermin; amorous; confused; of being pursued." ],
+    "Fever" : [ "Coldness with rigors.", "Heat and dryness of extremities.", "Heat: head burning hot, face bright red; of hands.", "Sweat of face.", "Sweat (cold) of feet, followed by great coldness." ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "remedyName" : "Ranunculus Glacialis",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Apoplexy. Cerebellum, pain in. Dyspnoea. Headache. Night-sweat. Thighs, sweat on." ],
+    "Characteristics" : [ "Dr. Codde, of Spoleto, proved the O tincture, and 3rd and 9th dilutions of this plant. It produced an enormous weight in the head with vertigo and feeling as if apoplexy were impending, > by Coffee; a right-sided early morning headache > by rising; dyspnoea < lying down, and compression of chest; intolerance of weight of coverlet (the < by touch and pressure of R. bulb.); coldness of thighs; general copious night-sweat, especially abundant on thighs." ],
+    "Head" : [ "Towards a.m., when walking in open air, enormous weight in head, vertigo; as if seized with incipient apoplexy; > cafe au lait.", "Behind head in region of cerebellum, sense of tension.", "Just before daybreak, headache, < r. side, ceased on getting up." ],
+    "Respiratory Organs" : [ "When lying in bed breathing became difficult." ],
+    "Chest" : [ "On turning in bed, internal pain in infero-posterior chest.", "Compression in whole chest, evening.", "A little before midnight could not endure coverlet on chest.", "Stitches r. chest." ],
+    "Sleep" : [ "Sleeplessness at night.", "Broken sleep." ],
+    "Fever" : [ "Coldness, even on thighs.", "General and copious nocturnal sweat, < on thighs.", "At daybreak, slight general sweat." ]
+  }
+}

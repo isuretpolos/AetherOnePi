@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Kousso",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Abortion. Tapeworm." ],
+    "Characteristics" : [ "The flowers of Kousso are a favourite remedy for tapeworm with the natives of Abyssinia, and the use of them in European practice for that purpose has led to the observation of the few symptoms recorded, among which thirst, nausea, and vomiting are prominent. In one case miscarriage was caused. The mode of administration as a taenifuge is as follows: Take a quarter of an ounce of the dried flowers, boiling distilled water four ounces. Infuse fifteen minutes without straining. The powder is to be taken with the infusion, in the morning, fasting. Two such draughts may be given. It is best to give a purgative before and an hour or two after the draught. A remark by Alexander Milne is significant to homoeopaths: \"Though Kousso leads to the expulsion of the worm, it seems not to improve the morbid condition which favours its production.\" (Living taenia placed in an infusion of Kousso mixed with milk were killed in about half an hour.) The prostration caused by the treatment is so great that Milne advises a course of Cinchona and Iron to follow." ],
+    "Relations" : [ "Compare: Cucurb., Granat., Filix m." ],
+    "Head" : [ "Headache." ],
+    "Stomach" : [ "Thirst.", "Nausea.", "Vomiting." ],
+    "Stool and Anus" : [ "Prolapsus ani.", "Watery diarrhoea.", "Stools loose and dark.", "Expulsion of lumbrici, of dead taenia solium and of bothriocephalus latus." ],
+    "Urinary Organs" : [ "Increased secretion of urine.", "Diuresis followed by scanty urine." ],
+    "Female Sexual Organs" : [ "Miscarriage." ],
+    "Generalities" : [ "Rapid and extreme prostration." ],
+    "Fever" : [ "Slight sensation of heat." ]
+  }
+}

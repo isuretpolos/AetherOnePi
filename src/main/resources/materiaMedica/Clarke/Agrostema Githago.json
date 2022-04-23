@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Agrostema Githago",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Gastritis. Paralysis. Tenesmus." ],
+    "Characteristics" : [ "Our knowledge of this plant is derived almost entirely from cases of poisoning in persons who have eaten bread containing the seeds. Sensations of burning predominate. There is also vertigo and headache and in some cases coma. Locomotion is impaired, and there is difficulty in remaining erect." ],
+    "Relations" : [ "Compare: Lathyrus, Secale." ],
+    "Head" : [ "Vertigo.", "Headache.", "Sensation of heat and burning rises into vertex from l. lower jaw; almost makes her crazy." ],
+    "Mouth" : [ "Mouth dry and hot.", "Palate has a red margin.", "Burning on palate in a short time (Githargin)." ],
+    "Stomach" : [ "Nausea and vomiting.", "Burning from stomach along oesophagus to throat and in chest.", "Knife-like pains in stomach at times." ],
+    "Stool and Rectum" : [ "Constipation with tenesmus.", "Diarrhoea with tenesmus.", "Burning in bowels and rectum." ],
+    "Back" : [ "Tearing along spine." ],
+    "Generalities" : [ "Difficult to remain erect.", "Locomotion impaired." ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Jacaranda Gualandai",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Blenorrhagia. Chancroids. Diarrhoea. Eye, inflammation of. Gonorrhoea. Leucorrhoea. Syphilis. Throat, sore." ],
+    "Characteristics" : [ "J. gualan. was first brought to the notice of homoeopathy by Dr. Julio F. Convers, of Bojota, Columbia, S. America (H. R., iv. 36; v. 149; ix. 343). Mr. Jose M. Reyes made a proving for Dr. Convers (see also Med. Adv., xxii. 244), taking considerable doses of the O tincture in the first instance; and later of the 3x. The chief symptom of the heavy dosing was a painless, blackish, and mulberry-coloured diarrhoea which persisted a long time and was finally cured with Merc. after Ars. had failed. This cure by Merc. is important in regard to the popular use of the plant in syphilis. Convers says the natives use it much in syphilitic affections and atonic ulcers, and he adds that \"the prostitutes are very, fond of it.\" The proving developed an action on the glans penis. When the 3x was taken there was very severe ophthalmia, chiefly affecting the left eye, \"a syphilitic-like ophthalmia.\" The pharynx and larynx were also affected, which organs are favourite loci of syphilis. Convers has confirmed these observations. He prefers it to any other remedy in ophthalmia with agglutination of the lids; blenorrhagia and chancroids; sore throat with redness and heat and vesicles on pharynx without swelling of tonsils; in catarrhal leucorrhoea. In the Schema I have put in brackets Convers' additions to Reyes' proving. Its symptoms are < at night and < by laughing or talking. Convers prefers the O tincture, locally and internally for sore throat, and the 3rd for ophthalmias and catarrhs. It is an innocent remedy. The symptoms develop first in the head, next in intestines, lastly in eye and throat." ],
+    "Relations" : [ "Antidoted by: Merc. Antidote to: Merc. Compare: Bell., Merc., Phytol." ],
+    "Mind" : [ "Loss of memory.", "Incapacity to study." ],
+    "Head" : [ "When raising head after stooping, vertigo, momentary, loss of sight, heaviness in forehead." ],
+    "Eyes" : [ "Irritation in eyes; become very red; sensation of sand in them.", "Pain, weariness and all sensations < in l. eye; lids adhere in morning; had to bathe them before they could be opened.", "Sight weak.", "Irritation of l. eye < towards inner canthus.", "(Syphilitic ophthalmia.)" ],
+    "Throat" : [ "Inflammation of l. tonsil.", "Small bladders on pharynx.", "(Sore throat with heat and redness and vesicles without swollen tonsils.)" ],
+    "Stool and Anus" : [ "Diarrhoea, blackish, mulberry-coloured stools with mucus, not fetid; lasted a long time after the proving, and was eventually cured with Merc. 12x." ],
+    "Urinary Organs" : [ "Urine increased." ],
+    "Male Sexual Organs" : [ "Much weakness in glans.", "(Blenorrhagia with discharge, staining linen a dull yellow.", "Chancroids.)" ],
+    "Female Sexual Organs" : [ "(Leucorrhoea.)" ],
+    "Respiratory Organs" : [ "Heat in larynx when reading aloud or laughing." ],
+    "Neck and Back" : [ "Pain between sacrum and coccyx.", "Pain and weakness in lumbar vertebrae during the night." ],
+    "Skin" : [ "(Atonic ulcers)." ]
+  }
+}

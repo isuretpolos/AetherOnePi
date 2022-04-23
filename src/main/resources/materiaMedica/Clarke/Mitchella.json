@@ -1,0 +1,29 @@
+{
+  "remedyName" : "Mitchella",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bladder, irritation of. Dysmenorrhoea. Dysuria. Kidneys, pain in. Metritis." ],
+    "Characteristics" : [ "Mitchella is a small trailing evergreen bearing a scarlet bean, and is common throughout the United States. It belongs to the same order as China, Coffea, and Ipecac., and shows its affinity with these in its power over haemorrhages. Indian women drink a decoction of it before confinement to make labour safe and easy. Eclectics use a concentrated decoction as an application to sore nipples. T. C. Duncan, in his proving, induced pains and burning in the kidneys, and H. P. Hale, who observed the effect on a woman, has recorded some characteristic symptoms in the urinary and uterine sphere. A leading indication is congestion of the uterus with bladder irritation as a concomitant." ],
+    "Relations" : [ "Compare: In congested cervix associated with irritation of neck of bladder, Sep. (Mitch. has no general resemblance to Sep.), Eu. pu. (vesical irritation in women), Hydrocot. (Hdrct. has in addition heat and itching in vagina), Apis, Vespa (Vesp. has ulcer round os); Caul., Chim., Act. r., Helon., Puls., Senec., Uva ursi." ],
+    "Mind" : [ "Depression, followed by buoyant spirits.", "Inability to concentrate mind." ],
+    "Head" : [ "Severe frontal headache on waking.", "Burning in vertex.", "Throbbing in occiput.", "Scalp sensitive to touch." ],
+    "Eyes" : [ "Eyes dull and heavy." ],
+    "Ears" : [ "Burning in l. pinna.", "Dull aching in r. ear." ],
+    "Mouth" : [ "Burning and prickling on tongue." ],
+    "Throat" : [ "Swallowing difficult; tonsils enlarged, esp. l., painless.", "Fauces dry.", "Pharynx feels constricted, impeding swallowing.", "Some enlargement of l. submaxillary gland." ],
+    "Stomach" : [ "Appetite impaired.", "Eructations; acid.", "Burning in stomach extending whole length of oesophagus." ],
+    "Abdomen" : [ "Rumbling.", "Whole alimentary tract feels cold; transverse colon tender to pressure.", "Distension with flatus.", "Griping." ],
+    "Stool and Anus" : [ "Urging; thin stools.", "Costive, faeces small, difficult; tenesmus." ],
+    "Urinary Organs" : [ "Heat in kidneys; dull pain in.", "Uneasiness in neck of bladder, urging to urinate; burning; a.m.", "Urethra (female) and neck of bladder swollen and irritated.", "Increased quantity of urine, 1040, acid.", "Urine high-coloured, white sediment.", "Catarrh of bladder, esp. in women.", "Dysuria accompanying uterine complaints." ],
+    "Male Sexual Organs" : [ "Pain, drawing in r. testicle, p.m." ],
+    "Female Sexual Organs" : [ "Uterus irritated, severe pain in it, cervix engorged, dark red, swollen.", "Engorged uterus; haemorrhage, bright; with dysuria.", "Amenorrhoea; dysmenorrhoea; menorrhagia; menses delayed.", "Slow, feeble, ineffective labour pains.", "False pains in last month of pregnancy." ],
+    "Respiratory Organs" : [ "Much mucus in bronchi.", "Dry, hacking cough in morning.", "Breathing difficult a.m." ],
+    "Heart" : [ "At heart: burning pains; uneasy feeling as if its action was being interfered with.", "Beats irregular." ],
+    "Neck and Back" : [ "Aching pains running down back.", "Dull pain: between shoulders; in kidney region." ],
+    "Limbs" : [ "All muscles feel sore.", "Lassitude." ],
+    "Upper Limbs" : [ "Aching and burning sensation in r. upper limbs." ],
+    "Lower Limbs" : [ "Walk unsteady, inclines to fall to r.", "Aching in lower limbs; in knee-joints." ],
+    "Sleep" : [ "Yawning, drowsy.", "Woke in a fright; frightful dreams." ],
+    "Fever" : [ "Chill over whole body with flushes of heat, very sensitive to cold air." ]
+  }
+}

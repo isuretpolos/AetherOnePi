@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Ferrum Picricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Albuminuria. Corns. Deafness. Ears, diseases of. Fatigue. Jaundice. Liver, disorders of. Lupoid warts. Lupus. Nose-bleed. Prostate, diseases of. Rheumatic arthritis. Rodent ulcer. Tinnitus. Voice, loss of. Warts." ],
+    "Characteristics" : [ "This is an unproved medicine, but Dr. Cooper, who introduced it, has given the leading indications for its use, and these are so clear that it has taken a definite position in the materia medica. It is a liver medicine, and is particularly suited to persons with dark hair and eyes, and bilious-looking patients. A dirty appearance about the joints indicates it; the stain being due to bile pigments. It has cured many cases of warts and corns, as I have repeatedly verified. Dr. Cooper has reported a case of lupoid wart cured by it. Dr. Cooper was led to give Fe. pic. in cases of warts by a symptom produced in a patient (to whom he was giving it for deafness), \"sensation as if a wart were growing on the thumb.\" He considers it specially indicated for warts on the hand, when they are multiple. Cooper has observed that warts, especially old pedunculated warts, frequently accompany chronic deafness. Referring to the effects of fatigue, Cooper describes it as the failure of an organ under exertion which would not ordinarily strain it", "e.g., failure of the voice in public speakers. The condition of the ear in the deafness which calls for Fe. Pic. is one of \"diffused vasculitis.\" Pic. ac. is also of use in the effects of fatigue, but in this case it is unusual fatigue that sets up the noises, &c., and the deafness is nervous deafness and unconnected with changes in the blood-vessels to which Fe. Pic. is homoeopathic. Pic. ac., again, suits blondes, Fe. Pic. dark-haired, plethoric people. Burnett has cured with it rheumatic arthritis in a dark-haired subject. P. C. Majumdar (Ind. Hom. Rev., October, 1899) cured a student, suffering from anaemia and malarious fever off and on for a year, who had these symptoms among others: Impaired hearing of both ears, buzzing, hissing, vertigo, indigestion, headache, and tired feeling after bodily or mental exertion. He considers Fe. Pic. suited to the results of malarious fever, sexual excesses, and loss of blood. Pullar has cured with it a case of albuminuria. Fe. Pic. is apt to aggravate if given too low. The symptoms it causes, or cures, I have arranged below in schema form. Dr. Mende considers Fe. pic. almost specific in nose-bleed. It has a specific action on the prostate gland. Dudley Wright has confirmed Cooper's observation here; it will frequently control senile hypertrophy. < From fatigue is a leading indication: overpowering effects of fatigue." ],
+    "Relations" : [ "Compare: Pic. ac., Nit. ac., Thuja., Amm. pic., Calc. pic., and the Ferrum preparations." ],
+    "Causation" : [ "Fatigue." ],
+    "Head" : [ "Giddiness with disturbance of cerebral circulation, pain in occiput, inability to walk." ],
+    "Ears" : [ "Diffused vasculitis; with liver symptoms.", "(Deafness in young people cutting wisdom teeth.)" ],
+    "Face" : [ "Lupoid wart on face." ],
+    "Abdomen" : [ "Liver sensitive, some icterus." ],
+    "Stool and Anus" : [ "Constipation." ],
+    "Male Sexual Organs" : [ "Prostate gland enlarged." ],
+    "Neck and Back" : [ "Pain in r. side of neck and down r. arm." ],
+    "Skin" : [ "Warts: multiple; pedunculated.", "Corns.", "Jaundice.", "Dirty looking skin about joints.", "Sensation as if a wart were growing on thumb." ],
+    "Sleep" : [ "Restless sleep with unpleasant (often erotic) dreams." ]
+  }
+}

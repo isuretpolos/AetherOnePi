@@ -1,0 +1,21 @@
+{
+  "remedyName" : "Colchicinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Fever. Intestinal catarrh. Prostration. Sleeplessness. Spasms." ],
+    "Characteristics" : [ "This alkaloid has been proved and the symptoms are sufficiently distinctive, though I am not aware of any clinical experience with it. The symptoms point strongly to its use in that form of intestinal catarrh characterised by the appearance of shreddy membranes; and the symptom, \"convulsive jerkings of right hand,\" should prove a valuable indication, if not a keynote." ],
+    "Relations" : [ "Compare: Ars., Caust., Colch." ],
+    "Eyes" : [ "Pupils widely dilated." ],
+    "Face" : [ "Tearing pains in face." ],
+    "Throat" : [ "Increased secretion of saliva." ],
+    "Stomach" : [ "On rising from bed, at night, nausea suddenly increased, and was followed by vomiting of undigested food, and afterwards of a bitter greenish fluid; the vomiting was repeated early in the morning.", "Vomiting of blood for nine or ten days.", "Pains and excessive sensitiveness in epigastrium." ],
+    "Abdomen" : [ "Distension and sensitiveness.", "Frequent rumbling." ],
+    "Stool and Anus" : [ "Urging, causing him to leave his bed, followed by copious pasty evacuation, with excessive tenesmus; this was repeated three times within a short period.", "Stools accompanied with tenesmus and consisting of a thin fluid with numerous flakes looking like the cooked white of egg in pieces from two to four inches long.", "Stools thin, yellowish green, slimy, accompanied by pain.", "Liquid stools." ],
+    "Urinary Organs" : [ "Urine turbid, depositing a copious white sediment." ],
+    "Heart" : [ "Pulse during the first two hours sank about eleven beats." ],
+    "Upper Limbs" : [ "Convulsive jerkings of r. hand." ],
+    "Generalities" : [ "Very great exhaustion on second day, increasing to feverish excitement lasting two days." ],
+    "Sleep" : [ "Slight somnolency and collapse.", "Awakened from sleep soon after midnight by uneasy dreams." ],
+    "Fever" : [ "Chill about noon on first day, followed by violent heat lasting several hours, with increased thirst, very rapid pulse, confusion of the head, uneasiness and sleeplessness." ]
+  }
+}

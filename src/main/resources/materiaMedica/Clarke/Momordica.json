@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Momordica",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Colic. Dysmenorrhoea. Flatulence. Leucorrhoea. Menorrhagia." ],
+    "Characteristics" : [ "Momordica was introduced by Dr. Mercier, whose wife made the proving with twenty-four drops of the tincture, producing some very well characterised symptoms. Griping and colic declared its relationship to Colocynth. and Elater., as also severe pains in back and hypogastrium with painful and excessive menses. A peculiar sensation is: \"As if the whole contents of the head had greatly diminished in weight.\" Farrington gives as a keynote (though it does not appear in the proving) \"distension and rumbling in splenic flexure of colon,\" which he compares with the effects of Lyc." ],
+    "Head" : [ "Dizziness, lightness in head; sensation as if whole contents of head had greatly diminished in weight.", "Slight headache." ],
+    "Eyes" : [ "Sensation of occasional mist or cloud passing before eyes." ],
+    "Face" : [ "Face at times red; but generally very pale." ],
+    "Stomach" : [ "Slight sickness at stomach." ],
+    "Abdomen" : [ "Griping, general colic pains, starting from back and spreading over whole abdomen; piercing, labour-like pains in hypogastrium.", "(Accumulation of flatus in splenic flexure of colon; rumbling.)" ],
+    "Stools" : [ "Two or three healthy stools [daily?] for several days." ],
+    "Female Sexual Organs" : [ "Painful and too profuse menses, but listing only usual time.", "Labour pains during menses followed by gushes of blood.", "White, light mucous discharge between periods." ],
+    "Heart" : [ "Pulse quick and weak." ],
+    "Back" : [ "Pain at small of back at time of menses, sometimes very acute, beginning at sacrum and coming towards front of pelvis." ],
+    "Generalities" : [ "Weak feeling, sometimes faintness." ]
+  }
+}

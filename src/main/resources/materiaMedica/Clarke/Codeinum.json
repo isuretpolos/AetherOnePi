@@ -1,0 +1,29 @@
+{
+  "remedyName" : "Codeinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Blepharospasm. Chorea. Cough. Diabetes. Eczema. Gastralgia. Numbness. Pruritus. Restlessness. Spasmodic twitchings. Vomiting of pregnancy." ],
+    "Characteristics" : [ "Codein possesses many of the properties of opium, from which it is derived, but it has characters sufficiently distinctive to entitle it to a separate description. Codein seems to possess in great degree the exhilarating properties some persons experience on taking opium, though it is not without strong soporific effects as well. There are many disorders of sensation, notably troublesome itching. The characteristic here is \"Itching with warmth.\" \"Itching and heat of face and head.\" \"A sensation of agreeable warmth\" is another characteristic symptom. Convulsive twitchings of muscles and limbs, and especially of orbital muscles, are very marked. Twitchings prevent sleep at night. Numbness and prickling. Codein has in many cases controlled diabetes. Headache is < in morning; restlessness and cough < at night. Symptoms in general are < by motion and > by rest." ],
+    "Relations" : [ "Compare: Opium in sickness, pains in stomach and region of solar plexus, constipation, sexual excitement. Agar. (twitching of eyelids; Ars. (pains in legs, nightly restlessness); Hyo. (twitching of eyelids after reading); Lach. (sensitiveness of surface); Rhus, Sul., Sul. ac. (trembling); Culex (vertigo on blowing nose)." ],
+    "Causation" : [ "Fatigue and excessive mental excitement = headache." ],
+    "Mind" : [ "Great exhilaration of spirits.", "Depression with desire to sleep, frightful dreams and dull headache on awaking.", "Increased or diminished power of fixing attention or applying mind.", "Bewildered on waking.", "Confusion." ],
+    "Head" : [ "Dizziness on blowing nose.", "When closing eyes objects appear to turn round.", "Dull headache in morning, gradually diminishes towards noon when it disappears.", "Dull headache soon after rising, < l. side, lasting about two hours.", "Dull headache with dry lips and constant desire to moisten them.", "Headache from fatigue and excessive mental excitement." ],
+    "Eyes" : [ "Involuntary twitching of l. eyelid, sometimes > by rubbing.", "Involuntary twitching of both eyelids whenever he attempted to read or write.", "Pupils contracted.", "Sudden failure of vision.", "On blowing nose sparks before eyes." ],
+    "Nose" : [ "Mucous discharge with irritation of the Schneiderian membrane.", "Entire loss of smell for several days." ],
+    "Mouth" : [ "Mouth dry.", "Unable to articulate." ],
+    "Throat" : [ "Strong pulsations in both carotids.", "Tickling sensation in throat, in afternoons and evenings." ],
+    "Stomach" : [ "Great thirst with a particular desire for bitter substances.", "Empty eructations with acute pains in stomach.", "Nausea and vomiting; sometimes preceded by an agreeable glow at epigastrium.", "Tenderness in stomach with violent pulsations of heart and carotids.", "Violent spasmodic pain at pit of stomach (solar plexus)." ],
+    "Stool" : [ "Constipation, with tenderness of bowels, esp. transverse and descending colon, and some flatulence." ],
+    "Urinary Organs" : [ "Semi-paralysis of bladder.", "Quantity of urine increased and saccharine." ],
+    "Male Sexual Organs" : [ "Sexual excitement during the night, leading to pollutions." ],
+    "Respiratory Organs" : [ "Tickling in larynx which causes a cough.", "Short, irritating cough < during night.", "Troublesome cough with copious mucous, and sometimes purulent, expectoration; with nervous excitability.", "Night cough of phthisis.", "On inspiration, pain in r. lung; pain below scapula; stitching pains in l. lung." ],
+    "Heart" : [ "Uneasy feeling about heart.", "Fluttering and oppression with great desire to walk in open air.", "Painful pulsation when attempting to study or write.", "Violent pulsations of heart and carotids." ],
+    "Neck and Back" : [ "Neuralgic pains from occiput to back of neck.", "Convulsions in muscles of back.", "Sharp pains extending from stomach and chest through to back, between shoulders, < on r. side." ],
+    "Limbs" : [ "Paralytic weakness in arms and legs.", "Spasmodic twitches in arms and legs.", "Numbness of hands and feet; prickling and numb sensation in various parts of the body." ],
+    "Upper Limbs" : [ "Pains in deltoids on moving arms.", "Jerking pain in arm.", "Pulsating pain in l. upper arm." ],
+    "Lower Limbs" : [ "In lower limbs involuntary twitchings; spasmodic jerkings; neuralgia and rheumatic pains.", "Paralytic affections with extreme restlessness." ],
+    "Generalities" : [ "Extreme restlessness.", "Trembling of whole body.", "Marked sensitiveness of surface.", "Choreic movements.", "Symptoms are periodic, paroxysmal; at times sudden." ],
+    "Skin" : [ "Itchy; prickling.", "Eczematous eruption with troublesome itching.", "Itching with feeling of warmth." ],
+    "Sleep" : [ "Sleepy and drowsy.", "Twitchings in sleep.", "Cough disturbing sleep.", "Frightful dreams." ]
+  }
+}

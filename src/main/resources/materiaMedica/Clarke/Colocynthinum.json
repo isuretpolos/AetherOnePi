@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Colocynthinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Colic. Cough. Debility. Diarrhoea. Feet, burning in. Genitals (male), congestion of; pain in. Headache. Neuralgia. Spinal pains. Travelling, effects of." ],
+    "Characteristics" : [ "Having had a separate proving, Colocynthinum must be considered apart from Colocynth., from which it is derived, although the symptoms of the two bear a close resemblance. Neuralgic symptoms are prominent. Stitches and sensations of heat are found in many parts. Pulsation in the pit of the stomach, with prickling stitches on back in neighbourhood of middle thoracic vertebrae. Diarrhoea and colic > bending forward. Congestion to male genital organs and pain in them. Burning pains in soles of the feet. < Evening; by motion; riding in cars. > By rest; bending over; black coffee. < By motion; > by rest:", "herein appears the relationship of the glucoside to Bryonia, the botanic relative of Colocynthis." ],
+    "Mind" : [ "Depression." ],
+    "Head" : [ "Painfulness of whole head, esp. temporal and frontal regions, scalp, and eyeballs, < moving eyes, straining sight, or bending forwards.", "Headache < by riding in railway cars, obliging to move slowly, and tread softly, otherwise the brain seems to shake about as if loose against the skull (in the median vertical region); accompanied by very sore pain and causing very bad humour.", "Stitches in brain; through occiput on heavy treading; through cerebellum, like lightning, on coughing.", "Sensitiveness of cerebellum on turning head." ],
+    "Eyes" : [ "Vision sharper.", "Painfulness and aching in eyeballs < straining sight, moving eyes rapidly, or turning head." ],
+    "Face" : [ "Pressure in left cheek-bone." ],
+    "Mouth" : [ "Pain in hollow molar and drawing in incisors, with sensation of swelling of l. cheek.", "Persistent, disgusting, bitter taste.", "Prickling and metallic taste on tip of tongue." ],
+    "Stomach" : [ "Continual burning pressure in stomach up into oesophagus.", "Sticking in epigastrium; which was tense and inflated.", "Pulsation in epigastrium accompanied by pricking stitches on back near middle thoracic vertebrae." ],
+    "Abdomen" : [ "Warm feeling followed by copious discharge of flatus.", "Colic with inflation in umbilical region; colic below umbilicus.", "Slight colic drawing from hypogastrium to hepatic region, with shuddering in scrotum, erections, and pain in buttock.", "Tension in r. groin and drawing along spermatic cord into r. testis, which was somewhat sensitive towards evening; < next morning, and < walking, bending over, and going upstairs.", "Stitches from small of back to groin when walking." ],
+    "Stool and Anus" : [ "Tickling in rectum.", "Feeling of moisture at anus.", "Irresistible inclination to stool; scanty brownish-red evacuation with painful tenesmus lasting ten minutes.", "Brown pappy evacuations, rapidly and easily discharged in quick succession, without tenesmus." ],
+    "Urinary Organs" : [ "Tenesmus in urethra and rectum after urinating." ],
+    "Male Sexual Organs" : [ "Congestion towards genital organs, esp. scrotum, with feeling of heat and burning in small spot on same, without erections.", "Cramp-like pain in penis with sensation as if it were bent double.", "Dark redness and painfulness of frenum.", "Crawling on penis with sexual desire.", "R. testis swollen and painful to touch.", "A pollution at night (very unusual with him)." ],
+    "Respiratory Organs" : [ "Short hacking cough excited by tickling in throat; whitish yellow mucus.", "Frequent cough in early morning." ],
+    "Neck and Back" : [ "Sharp in-pressing pain in some spots on nape, as if from a sprain < by movement; sensitive to pressure.", "Painfulness and feeling of heat along whole spine.", "Stitches in region of lowest dorsal vertebrae." ],
+    "Upper Limbs" : [ "Tearing in l. shoulder.", "Frequently repeated stitches from l. axilla down to l. elbow.", "Paralytic weakness of r. forearm while writing.", "Cramp-like pain in muscles of l. wrist." ],
+    "Lower Limbs" : [ "Stiffness and heaviness in tibiae.", "Burning, sticking, and sensation of warmth in dorsum of r. foot; pressing digging pain in external side of second toe of l. foot.", "Burning pain in both soles with feeling as if they were swollen." ],
+    "Generalities" : [ "Great desire to lie down; which relieves.", "Unusual debility towards evening." ],
+    "Sleep" : [ "Restless sleep with vivid dreams." ]
+  }
+}

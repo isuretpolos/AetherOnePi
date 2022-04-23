@@ -1,0 +1,25 @@
+{
+  "remedyName" : "Mygale",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Chordee. Chorea. Gonorrhoea." ],
+    "Characteristics" : [ "The pathogenetic data of Mygale consist of a proving by a young lady and the effect of a bite on a man. In the latter case, inflammation ensued which spread along the lymphatics, violet and afterwards green discoloration; chill followed by fever, dry mouth, and great thirst, trembling, dyspnoea, despondency, and fear of death. The prover developed sadness; dry mouth; nausea with great palpitation, dim sight, and great general weakness; increased flow of urine, hot, scalding, with stinging in urethra. This last symptom has led to the successful use of Myg. in gonorrhoea, chordee, and syphilis. The \"trembling\" observed in the man suggests its use in nervous cases, but the sphere of Myg. in chorea has been developed from the clinical side. In the cases cured with it, twitching and contractions of facial muscles have been very prominent; convulsive movements of head to right side; twitching of one side of body, mostly right. The twitchings may be so violent as to prevent walking. Limbs are quiet during sleep, movements < in morning. Nausea with strong palpitation should be an indication. Symptoms < by eating. < Sitting (legs in constant motion)." ],
+    "Relations" : [ "Compare: In chorea, Aga., Act. r., Ign., Stram., Ziz. Tarent., Ant. c." ],
+    "Mind" : [ "Delirious, talked about his business and was restless all night.", "Sad; despondent with anxious expression.", "Fear of death." ],
+    "Head" : [ "Frontal headache; dull.", "Head often jerked to one side (r.)." ],
+    "Eyes" : [ "Nausea with dimness of sight; weakness; palpitation." ],
+    "Ears" : [ "Acute aching in r. ear." ],
+    "Face" : [ "Constant twitching of muscles of face.", "Face flushed." ],
+    "Mouth" : [ "Grating of teeth at night.", "Tongue dry and parched; dry and brown-coated." ],
+    "Stomach" : [ "Aversion to food; no appetite whatever for dinner, took nothing till tea-time, then only a cup of tea and a small piece of bread; > after eating.", "Excessive thirst.", "Nausea with strong palpitation, dim sight." ],
+    "Urinary Organs" : [ "Urine: increased; stinging in urethra; burning hot, scalding." ],
+    "Male Sexual Organs" : [ "Chordee.", "Protracted gonorrhoea.", "Syphilis." ],
+    "Respiratory Organs" : [ "Difficult breathing.", "Words jerked out when effort is made to talk." ],
+    "Heart" : [ "Strong palpitation, accompanying nausea and dimness of sight and general weakness.", "Pulse" ],
+    "Back" : [ "Pain in back extending around to front." ],
+    "Limbs" : [ "Twitching and jerking of muscles of one arm and leg, usually r.", "Convulsive, uncontrollable movements of arms and legs." ],
+    "Lower Limbs" : [ "Intense redness in streaks in course of lymphatics, from calf up to body, with great anxiety, twitching of limbs.", "Local inflammation extensive, from foot to knee, leaving a large violet spot which changed in a few hours to green." ],
+    "Sleep" : [ "Restless all night with ridiculous dreams." ],
+    "Fever" : [ "Severe chill lasting thirty minutes; then fever with excessive thirst and trembling of limbs." ]
+  }
+}

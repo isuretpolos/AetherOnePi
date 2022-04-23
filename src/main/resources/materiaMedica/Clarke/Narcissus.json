@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Narcissus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bronchitis. Cough. Coryza. Diarrhoea." ],
+    "Characteristics" : [ "Ringer experimented with the alkaloid (sulphate and nitrate) obtained from flowers and bulbs of the daffodil, and produced the symptoms recorded in the Schema. A patient of mine once had a very severe cough set up by daffodils used in some profusion as a decoration of a dinner-table. In Ringer's experiments the bulb preparation produced the greater number of effects, including salivation, sinking, vomiting, and diarrhoea. The flower preparation acted on the head and eyes, and dried up a profuse perspiration of the hands. A fatal case of poisoning from eating the flowers is on record (H. W., xxxvi. 244). A salad of onions in which were mixed some bulbs of Narcissus poeticus caused tormina, burning, copious stools with dreadful griping, obtuse senses, fainting, cold hands, cold sweat, symptoms not distinguishable from the usual effects of Colchicum, and similar to those of Narc. Pseud. The one homoeopathic use of Narc. on record is that of J. Meredith (H. W., xxxi. 123). He made a conserve of flowers, buds, and stems by mashing them with six to ten times their weight of sugar in a Wedgwood mortar with a wooden pestle. Counting this as 1x, he made sugar attenuations to 4x, and with these he cured a case of bronchitis with continuous cough which had resisted many of the standard remedies." ],
+    "Relations" : [ "Compare: Cepa, Colch., Lil. t." ],
+    "Head" : [ "Frontal headache." ],
+    "Eyes" : [ "Running at eyes.", "Pupils unduly dilated.", "Pupils contracted at first, dilated later." ],
+    "Nose" : [ "Severe coryza." ],
+    "Mouth" : [ "Increased flow of saliva.", "Free salivation of very ropy saliva." ],
+    "Throat" : [ "Throat dry." ],
+    "Stomach" : [ "Hiccough; sinking, faint feeling.", "Sinking, sick sensation.", "Heartburn.", "Vomiting.", "Rumbling." ],
+    "Stool" : [ "Diarrhoea with severe aching below l. free ribs.", "Stools: watery; relaxed; loose; some solid." ],
+    "Heart" : [ "Pulse increased." ],
+    "Generalities" : [ "Faintness and drowsiness." ],
+    "Fever" : [ "Hand which was quite wet with perspiration became dry in twelve minutes." ]
+  }
+}

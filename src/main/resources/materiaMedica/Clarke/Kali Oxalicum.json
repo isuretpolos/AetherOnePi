@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Kali Oxalicum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Convulsions. Cramps. Eyes, inflamed. Lumbago. Vomiting." ],
+    "Characteristics" : [ "Only cases of poisoning have been observed with this salt. The main symptoms are those of violent irritation", "convulsions, violent and continuous vomiting, cramps, severe pain in the back, coldness, and collapse. One patient became insane. A peculiar symptom was throbbing in the head with great thirst. There were severe pains in the back recalling the action of Oxalic acid, with which (and with Rumex acet.) this remedy must be compared." ],
+    "Mind" : [ "Became insane.", "Extreme depression." ],
+    "Head" : [ "Swimming in head; heaviness; throbbing pain and great thirst." ],
+    "Eyes" : [ "Great soreness of eyes with dim vision.", "Conjunctivae injected; pupils dilated." ],
+    "Face" : [ "Countenance flushed.", "Face pale, anxious-looking, and covered with a cold sweat.", "Face and lips pate, with continual rigors over whole body." ],
+    "Mouth" : [ "Tongue and fauces red and irritable.", "Very strong acid taste of poison lasting two days.;" ],
+    "Throat" : [ "Scalding sensation in throat and stomach." ],
+    "Stomach" : [ "Great thirst and throbbing pain in head.", "Vomiting and faintness.", "Vomiting, continuing at intervals of ten minutes to an hour for nearly a week.", "It had scarcely reached the stomach when she was seized with excruciating pain, followed by violent convulsions and death within tell minutes.", "Very severe burning pain in stomach and bowels." ],
+    "Abdomen" : [ "Violent pains in abdomen and convulsions.", "Scalding sensation extended over abdomen, with tenderness on tolerably firm pressure." ],
+    "Urinary Organs" : [ "Micturition accompanied by a sensation of scalding." ],
+    "Back" : [ "Pain in back.", "Severe lumbar pain." ],
+    "Upper Limbs" : [ "Spasmodic contractions in hands.", "Nails and fingers blue as in cholera." ],
+    "Lower Limbs" : [ "Great weakness in lower limbs.", "Cramps in legs." ],
+    "Generalities" : [ "Convulsions and violent pains in abdomen.", "Great muscular weakness.", "Falls and utters loud cries.", "Tendency to faint.", "Lying on the floor quite faint." ],
+    "Fever" : [ "Skin cold and clammy.", "Sensations of coldness, succeeded by burning heat in chest and stomach, and general muscular weakness.", "Continued rigors affecting whole body." ]
+  }
+}

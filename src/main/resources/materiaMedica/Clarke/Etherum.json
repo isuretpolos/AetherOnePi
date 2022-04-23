@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Etherum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bronchitis. Catalepsy. Convulsions. Cough. Delirium tremens. Hiccough. Mania. Meningitis. Nausea. Vomiting." ],
+    "Characteristics" : [ "Ether is the well-known anaesthetic, and the effects are those observed in patients under the action of its vapour, administered for the purpose of operation, in habitual ether drinkers (of whom there are numbers in Ireland), and on some who have voluntarily experimented with the drug upon themselves. Closely allied to alcohol, it possesses very similar intoxicating properties, produces visions frequently pleasurable, hallucination, and, in some instances, a persistent maniacal condition. Convulsions, spasms, and a cataleptic state have also been observed. Bronchitis is a not uncommon after-result of ether anaesthesia, and for this Belladonna has been observed to be the best antidote. Chilliness is complained of by many. Macfarlan reports the cure of a woman of 60, who had been confined to bed for weeks with severe neuralgia of the head, raised welts on scalp like ridges accompanying the pain. Ether cured quickly." ],
+    "Mind" : [ "Exhilaration; furious excitement; flushed face.", "Pleasant dreams of rapid flight through the air, gorgeous visions and unearthly music.", "Frightful dreams; fancied he heard the ringing of his own funeral bell.", "Low-spirited, fearful of some disease, desponding (lasting some months).", "Complete loss of consciousness." ],
+    "Head" : [ "Muzziness; dizziness; headache with partial blindness follow ether anaesthesia.", "Meningitis.", "Temporal arteries enlarged; beat violently.", "Head drops to one side or is thrown back.", "Severe neuralgia of head with raised welts on scalp." ],
+    "Eyes" : [ "Eyes suffused; lids closed; conjunctivae injected.", "Pupils dilated.", "Dim vision as if mist or thin cloud before eyes." ],
+    "Ears" : [ "Sounds indistinct; seem far off, yet resound violently in the ears." ],
+    "Face" : [ "Face flushed." ],
+    "Mouth" : [ "Mouth often open.", "Salivation; slight frothing at mouth.", "Pronunciation difficult and indistinct." ],
+    "Stomach" : [ "Hiccough persistent.", "Nausea.", "Vomiting." ],
+    "Respiratory Organs" : [ "Violent cough from stinging or heat in bronchia.", "Expectoration of blood.", "Breathing quickened; stertorous.", "Congestion of lungs and brain.", "Extreme coldness of the chest, wants it covered.", "Tightness; irritation and pain." ],
+    "Heart" : [ "Excitement and invigoration of heart's action.", "Pulse full and bounding." ],
+    "Lower Limbs" : [ "Paralysis of lower extremities." ]
+  }
+}

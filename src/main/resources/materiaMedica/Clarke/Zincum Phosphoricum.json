@@ -1,0 +1,14 @@
+{
+  "remedyName" : "Zincum Phosphoricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Brain-fag. Delirium tremens. Headache. Herpes zoster. Impotence. Kidneys, irritable. Neuralgia. Paralysis. Sleeplessness. Tremors, mercurial." ],
+    "Characteristics" : [ "Ashburton Thompson gave pills, each containing 2/3 gr. of Zn. ph., to two patients, and both experienced a severe frontal headache with frequent stabs of pain backward, deep in the head, to occiput. Hale has used it on a combination of the indications of the elements, and especially in brain-fag of business men. Hammond has cured with it nervousness, and vertigo > lying down. In some patients the 3rd potency has caused sexual excitement and sleeplessness after a.m. According to him, Zn. ph. removes the mental depression and paralysis following cerebral congestion and apoplexy. J. E. Baldwin (N. A. J. H., xiii. 266) reports this case: A lady in perfect health prepared a long report and read it to a large audience without undue excitement. Next day had some pressure in occiput to cervical spine, lasting four days. Feeling of fatigue with disinclination to any mental exertion. Zn. Ph. 2x cured in a few doses. Zn. ph. 6x has cured irritable kidney with loss of memory in an old man." ],
+    "Head" : [ "(Vertigo > lying down.).", "Severe frontal headache, accompanied by frequent stabs of pain, apparently darting from before backward to occiput, but intra-cranial, and not attended with altered sensation in scalp.", "Bursting headache." ],
+    "Stomach" : [ "Vomiting." ],
+    "Urinary Organs" : [ "(Irritable kidneys with loss of brain-power even when calculus is present.)" ],
+    "Male Sexual Organs" : [ "Erections with unusual voluptuousness and desire.", "Emissions with voluptuous dreams and intense nervous thrill." ],
+    "Chest" : [ "Neuralgic pains and skin symptoms like those of zoster (Mohr, M. A., xxi. 259)." ],
+    "Sleep" : [ "Sleepless after a.m.; \"it wakes me at three, and I feel as if under the influence of pleasant and quick music\" (from third trit.)" ]
+  }
+}

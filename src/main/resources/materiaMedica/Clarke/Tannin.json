@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Tannin",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Constipation. Ileus." ],
+    "Characteristics" : [ "Tannin or Tannic acid, of which Gallic acid (C7H6O5) is a derivative, has produced effects on healthy persons, and on several taking it for diarrhoea. The chief effects were the production of a state of leathery dryness of mouth and intestinal canal; a condition like ileus; and a very aggravated state of constipation." ],
+    "Relations" : [ "Compare: Querc., Gall. ac., Op., Pb." ],
+    "Mouth" : [ "Tongue white, dry.", "Leathery dryness of mucous membrane of mouth and intestinal canal." ],
+    "Stomach" : [ "Loss of appetite.", "Thirst.", "Vomiting.", "Obstinate vomiting of bilious substances.", "Painful sensation in epigastric region and abdomen.", "Violent pains in stomach." ],
+    "Abdomen" : [ "The intestines could be felt like cylindrical enlargements through walls of abdomen.", "Ileus.", "Colic.", "Abdomen: distended; sensitive to pressure but not distended." ],
+    "Stool" : [ "Painless and bloody discharge from bowels.", "Obstinate constipation; lasted eight days; only dissipated on the ninth day by two drops of Croton oil.", "Foul stools." ],
+    "Urinary Organs" : [ "Urine scanty, dark-coloured." ],
+    "Heart" : [ "Palpitation." ],
+    "Generalities" : [ "Weakness." ]
+  }
+}

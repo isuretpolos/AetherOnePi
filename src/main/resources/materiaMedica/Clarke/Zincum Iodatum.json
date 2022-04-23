@@ -1,0 +1,27 @@
+{
+  "remedyName" : "Zincum Iodatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Constipation. Cough. Phthisis." ],
+    "Characteristics" : [ "Zn. i. has been proved by American provers, and some well-defined symptoms were produced (C. D. P.). Among them were: Splinter-like pain in throat. Coldness in stomach and bowels with tendency to perspire. A cough from tickling in the throat, and the more he coughed the worse the tickling became. A peculiar tingling in right side of face to vertex, with tension in skin of the part. Undulating pain at border of right free ribs, extending to third rib on same side." ],
+    "Relations" : [ "Compare: Splinter pain in throat, Hep., Arg. n. The more he coughs the < it tickles, Ign." ],
+    "Mind" : [ "Brain seems clouded, hard to remember what he reads." ],
+    "Head" : [ "Vertigo and belching of wind, attended with coldness in lumbar region." ],
+    "Nose" : [ "At a.m. constant tickling in nose, causing ineffectual desire to sneeze." ],
+    "Face" : [ "Peculiar tingling r. side of face, extending to vertex; skin of same region feels tense." ],
+    "Mouth" : [ "Taste in mouth like carbonate of soda." ],
+    "Throat" : [ "Splinter-like pain in throat at intervals." ],
+    "Stomach" : [ "Emptiness in pit of stomach accompanied all symptoms.", "Coldness in stomach and bowels, with tendency to perspire." ],
+    "Abdomen" : [ "Cold sweat in umbilical and lumbar regions.", "Lancinating pains in r. groin." ],
+    "Stool and Anus" : [ "Constipation; ineffectual efforts for stool; stool when passed scanty and insufficient." ],
+    "Respiratory Organs" : [ "Tickling in throat giving rise to a dry cough: the more he coughs the worse the tickling becomes." ],
+    "Chest" : [ "Painful undulation from free border of r. ribs up to 3rd r. rib.", "Tingling in region of l. nipple." ],
+    "Back" : [ "Slight pain in l. lumbar region.", "Coldness (and cold sweat) in lumbar region.", "Aching in lumbar vertebrae." ],
+    "Limbs" : [ "Trembling feeling in lower limbs, later in arms.", "Tired, aching sensation in legs and arms." ],
+    "Upper Limbs" : [ "Cold, clammy sweat of palms." ],
+    "Lower Limbs" : [ "Cramp-like pain in l. thigh.", "Shifting, crampy pains in muscles of legs.", "Creeping sensation in backs of legs and soles of feet." ],
+    "Skin" : [ "Skin very dry; scattered over face are scaling patches, giving the appearance of whitish spots." ],
+    "Sleep" : [ "Very sleepy, with slight headache.", "Slept very uneasily." ],
+    "Fever" : [ "Coldness: in stomach and bowels; umbilical and lumbar regions.", "Tendency to sweat.", "Cold sweat on palms." ]
+  }
+}

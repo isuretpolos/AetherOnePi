@@ -1,0 +1,13 @@
+{
+  "remedyName" : "Pimenta",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Chill. Neuralgia." ],
+    "Characteristics" : [ "\"Allspice\" is so named because its odour is said to resemble a combination of cinnamon, nutmeg, and cloves. A tincture was proved by Becket and developed one-sided neuralgias and disturbed sensations of heat and cold." ],
+    "Relations" : [ "Compare: Eucalyp., Eug." ],
+    "Head" : [ "Semi-lateral neuralgic lesions." ],
+    "Stomach" : [ "Very imperious desire to eat." ],
+    "Generalities" : [ "Semi-lateral neuralgic lesions, esp. of head." ],
+    "Fever" : [ "Disturbance in calorification and sensibility; parts of body burning hot, others cold.", "Peculiar cold sensation as if sponge filled with cold water passed here and there over the surface, succeeded by sensation of heat, as in the reaction after a cold bath." ]
+  }
+}

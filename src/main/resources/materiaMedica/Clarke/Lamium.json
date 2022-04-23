@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Lamium",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Haemorrhoids. Headache. Hernia. Leucorrhoea. Menstruation, too early." ],
+    "Characteristics" : [ "Lamium was proved by Hahnemann and others, including Stapf. It produced headaches of several kinds, one a \"deep-in\" headache like that of Bacil.; tightness of scalp; and a backward and forward motion of the head. Much uneasiness of mind and body; trembling of limbs; weakness during the chill. Tearing and drawing in the limbs. The menses appeared too early and were scanty. Much leucorrhoea, with biting sensation or without sensation, white mucus. Farrington says Lamium has been recommended for external piles. \"Hard stool with blood\" is the nearest symptom bearing on this. A characteristic symptom seenms to be \"backward and forward motion of head.\" Symptoms were < in morning on waking (headache); < while lying down in bed in morning, > on rising (headache); > on sitting (headache); < in open air (headache); < by drinking (burning in chest) < by eating (pressure beneath pit of stomach; burning in chest) < rising from stooping (indescribable headache)." ],
+    "Relations" : [ "Compare: Other members of the Mint tribe (Hedeoma, Ocimum canum, Origanum, Mentha piperita); \"deep-in\" headache, Bacil.; head moves backwards and forwards, Arn., Cham., Lyc." ],
+    "Mind" : [ "Whining mood, inclination to weep, feels as if abandoned.", "Great sadness, with lachrymose humour.", "Great agitation and anxiety, which permit no rest." ],
+    "Head" : [ "Aching in centre of brain, < on rising from a stooping posture.", "Headache, < by rising from a seat, > when seated.", "Cephalalgia, as if brain were compressed on all sides, with very violent pains in centre of brain.", "Excessive tightness of scalp, esp. near coronal suture.", "Great mobility of head, esp. from before backward.", "Sight and hearing are diminished." ],
+    "Mouth" : [ "Hawking up of thick mucus of an acid taste, which is detached from bottom of gullet." ],
+    "Stomach" : [ "Burning pain in middle of chest, or in oesophagus, after eating or drinking anything whatever.", "Nausea and vomiting of food, with heat, great lassitude, excessive dejection, and cloudiness of sight." ],
+    "Abdomen" : [ "Excessive distension of the abdomen.", "Pinching in the abdomen, as from incarcerated flatus, which is not > by expulsion of the wind.", "A dragging in l. side of abdomen down into pubic region as if a hernia would protrude there.", "Great agitation in the abdomen, as if catamenia were about to come on violently." ],
+    "Stool" : [ "Evacuations of the consistence of pap, hard, with emission of blood." ],
+    "Urinary Organs" : [ "Urgent want to urinate, with very scanty emission.", "Discharge of serum from the urethra." ],
+    "Female Sexual Organs" : [ "Catamenia too early and too scanty; eleven days too early at the new moon.", "Leucorrhoea, sometimes with a biting sensation in genitals.", "Leucorrhoea profuse, painless, white mucus." ],
+    "Respiratory Organs" : [ "Voice weak and faltering, as from mental agitation.", "Want of breath when speaking, with weakness of the chest.", "Anxious pressure on chest, with nausea." ],
+    "Back" : [ "Bruised pain in small of back." ],
+    "Upper Limbs" : [ "Torpor and crawling numbness of back of hand, and of the fleshy part of thumb, < by touch, with painful sensation of rawness in the parts on moving the hand.", "Tearing and drawing in fingers." ],
+    "Lower Limbs" : [ "Intermitting drawing, pressive tearing on lower posterior muscles of r. thigh (while sitting).", "Blister on heel from slight rubbing, afterwards bursting and changing to an ulcer with smarting and biting." ],
+    "Generalities" : [ "Tearing and drawing in limbs.", "Great restlessness of body and mind, with trembling of limbs." ],
+    "Skin" : [ "Smarting and stinging in the ulcer (< in evening when lying) with redness and swelling around it, and smarting early in morning in bed.", "Ulcers, with pain as from excoriation, and shootings." ],
+    "Fever" : [ "Shivering, with general weakness, or with anxiety.", "Burning heat in both cheeks, without redness, and without thirst.", "Constant thirst, except during shivering fit." ]
+  }
+}

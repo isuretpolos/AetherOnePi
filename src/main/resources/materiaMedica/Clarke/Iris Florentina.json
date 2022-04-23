@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Iris Florentina",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Convulsions. Delirium. Diarrhoea. Headache. Hemiplegia (r.)." ],
+    "Characteristics" : [ "Powdered orris-root has been used as an application to the hair, and in some young girls has produced violent symptoms. Headache and giddiness occurred on waking in the morning. Complete paralysis of right side. In one case convulsions and delirium, from which complete recovery did not take place for three months. It gives an odour of violets to the breath, and communicates to vinegar a flavour of raspberries, hence is used in manufacture of Raspberry Vinegar." ],
+    "Relations" : [ "Compare: Verat., Sabad., Iris v." ],
+    "Mind" : [ "Delirium and convulsions (lasting three months)." ],
+    "Head" : [ "Giddiness and violent headache, on awaking in the morning." ],
+    "Throat" : [ "Pain and heat in throat as after cantharides." ],
+    "Stomach" : [ "Disposition to vomit." ],
+    "Stool" : [ "Diarrhoea." ],
+    "Urinary Organs" : [ "Difficult urination." ],
+    "Neck" : [ "Redness of neck." ],
+    "Generalities" : [ "Convulsions (recurring for three months).", "Complete paralysis of r. side (lasting five hours)." ],
+    "Sleep" : [ "A kind of sleepiness.", "Uneasy sleep." ]
+  }
+}

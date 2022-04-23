@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Mercurius Praecipitatus Ruber",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Anus, burning in. Chancroid. Gonorrhoea. Mucous patches. Pemphigus neonatorum." ],
+    "Characteristics" : [ "This intensely irritating mercurial was investigated by Hahnemann. All the usual mercurial symptoms were intensified. Hansen has used it in practice, and gives these as indications [which are not all found in the provings]: Gonorrhoea when the urethra is felt as a hard string. Phagedaenic ulcer and bubo. Indurated ulcer, deep, with red, hard edges, and especially when spreading. Syphilitic iritis when the pains have ceased. Pemphigus neonatorum and intertrigo syphilitica. Mucous patches on scrotum and by anus, with or without fissures. Eczema, acute or chronic, much sero-purulent or purulent exudation, also externally (in ointment to of prepared lard). Tinea tonsurans, circinata and sycosis. Folliculitis barbae (internally and externally).", "These are Hansen's own observations. In the symptoms of the proving a sensation \"as of a hot iron in anus moving up and down\" looks like a possible keynote." ],
+    "Mind" : [ "Apprehension." ],
+    "Eyes" : [ "Fierce, intent look.", "Chemosis.", "Blepharitis (cured in a prover)." ],
+    "Face" : [ "Remarkable redness of face and eyes.", "Dropsical condition of face.", "Cheeks and lips enormously swollen." ],
+    "Mouth" : [ "Inflamed gums.", "Tongue enormously swollen and protruding.", "Two holes in tongue.", "Inside of mouth coated with a substance like decayed cheese.", "Whole anterior portion of mucous membrane of cheeks, gums, and under surface of tongue sloughed away, and four teeth were lost in the process of syringing.", "As the parts healed the jaws became completely closed by contracting cicatrices.", "Tongue was reduced and firmly adherent to floor of mouth and cheeks.", "Strong mercurial odour.", "Burning in mouth and throat; pains prevent sleep.", "Mouth very sore; flakes of epithelium separate.", "Itching over whole mouth without salivation.", "Profuse salivation.", "Blood and saliva of the most fetid odour flowed constantly from mouth." ],
+    "Throat" : [ "Throat inflamed.", "Burning like hot ashes on swallowing the powder." ],
+    "Stomach" : [ "Unquenchable thirst.", "Nausea; vomiting.", "Vomit: with cutting in abdomen; blackish blood; bloody mucus; followed by diarrhoea.", "Pains in stomach and whole abdomen.", "Agonising pain in stomach with burning heat and nausea." ],
+    "Abdomen" : [ "Occasional pain in l. hypochondrium.", "Abdomen distended and painful to contact.", "Agonising colic." ],
+    "Stool and Anus" : [ "Constant urging; gradually became <, and spread over whole intestinal canal, with constant sensation in anus as of a glowing hot iron moving up and down.", "Most excessive tenesmus, with scanty discharge of blood, with cutting, burning pains.", "Diarrhoea: excessively violent; with violent cramps.", "Stools: mainly blood; involuntary, greenish, and offensive." ],
+    "Respiratory Organs" : [ "Larynx inflamed and swollen, even outside.", "(Paroxysms of suffocation at night on lying down and while falling asleep; obliged to jump up suddenly, when it disappeared.).", "Oppression of chest." ],
+    "Heart" : [ "(Violent palpitation that seemed as if it would burst the chest.", "Small, hard pulse.)" ],
+    "Generalities" : [ "General trembling.", "Convulsions.", "Cramps of internal organs; and in legs.", "Spasmodic contraction of extremities." ],
+    "Fever" : [ "Cold, perspiring skin.", "Cold sweat." ]
+  }
+}

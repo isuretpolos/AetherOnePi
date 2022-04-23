@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Benzinum Nitricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Amaurosis. Convulsions. Cyanosis. Diuresis. Epilepsy. Nystagmus. Respiration, slow. Strabismus. Tetanus. Trismus." ],
+    "Characteristics" : [ "Nitro-benzene is a very poisonous substance, and our knowledge of its action is due to numerous cases of poisoning that have occurred. It produces faintness, sinking, convulsions, twitchings, stupor. It slows the respiration until death occurs. Rolling of the eyeballs in their vertical axis is a prominent feature, and the pupils are dilated. Blueness of lips, face, and finger-nails. Flapping of alae nasi. Head drawn backward and to the left side in spasms. Involuntary evacuations. Paralysis of all limbs. Punctiform ecchymoses. The odour of bitter almonds is strong in the secretions." ],
+    "Relations" : [ "Compare: Benzin., Amygd. am., Camph. Hydrocy., ac." ],
+    "Mind" : [ "Extreme mental excitement.", "Loquacity, followed by drowsiness, soon passing into stupor.", "Soon became unconscious with inarticulate, confused speech." ],
+    "Head" : [ "Vertigo; and headache.", "Trembles; staggers; falls unconscious.", "Sensation of formication under scalp, or as if the hair was bristling up." ],
+    "Eyes" : [ "Rolling of eyeballs.", "Constant slow movement of eyeballs from l. to r. under closed lids.", "The eyeballs showed a constant turning inward and outward in a slow, regular motion, with the visual axes perfectly parallel.", "Constantly rolling in vertical axes.", "Strabismus.", "Eyes staring.", "Great injection of conjunctiva of bulbs.", "Eyeballs seemed enlarged.", "Pupils dilated; insensible to light.", "Distorted vision and flashes of strange light and colours." ],
+    "Ears" : [ "Violent roaring in ears, and sounds." ],
+    "Face" : [ "Stupid expression.", "Cyanosis.", "OEdema.", "Covered with cold sweat.", "Trismus." ],
+    "Mouth" : [ "Tongue white and swollen; thick and soft.", "Burning taste, followed by numbness and tingling of tongue and lips.", "Stammering speech.", "Tenacious saliva flowed from the mouth." ],
+    "11, 12, Stomach, Abdomen, Stool" : [ "Burning in throat and stomach.", "Nausea, vomiting, of food eaten.", "Pains in abdomen.", "Involuntary evacuations." ],
+    "Urinary Organs" : [ "Diuresis; urine brownish red; odour of bitter almonds.", "Urine and faeces passed involuntarily." ],
+    "Respiratory Organs" : [ "Sighing respiration.", "Respiration frequently interrupted.", "Dyspnoea.", "Respiration exceedingly slow; shallow.", "Snoring.", "Respiration difficult, catching, accelerated." ],
+    "Heart" : [ "Pulse rapid, weak, irregular.", "Pulse full and slow.", "Pulse scarcely perceptible." ],
+    "Neck" : [ "Stiff-neck; trismus and fibrillary twitchings in masseter muscles." ],
+    "Limbs" : [ "Twitchings in hands and feet.", "Arms spasmodically flexed, sometimes extended.", "Arms spasmodically flexed at first, afterwards relaxed." ],
+    "Generalities" : [ "Gait as if intoxicated; staggering here and there.", "Violent convulsions; with unconsciousness.", "Fell unconscious; extremities paralysed; evacuations involuntary.", "Fainted from inhaling vapours.", "Over-powering odour of bitter almonds." ],
+    "Skin" : [ "Punctiform ecchymoses.", "Skin livid; bluish-grey.", "Ecchymosed spots, bluish-black, beneath scalp and on gluteal muscles." ],
+    "Fever" : [ "Skin cold.", "Sweat on forehead and face.", "Whole body covered with profuse cold sweat." ]
+  }
+}

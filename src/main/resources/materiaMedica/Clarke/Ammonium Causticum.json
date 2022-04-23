@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Ammonium Causticum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Aphonia. Nephritis. OEsophagitis. Rheumatism. Sloughing. Thirst. Timidity. Ulcerations. Vomiting." ],
+    "Characteristics" : [ "The symptoms of caustic ammonia closely resemble those of the carbonate. The caustic nature of the drug is exemplified in the burning sensations experienced, especially in throat, gullet, and rectum. White patches on tongue and inner side of cheeks. There is intense thirst, and excessively violent ejection of stomach contents. Voice low, weak. Speech broken. Aphonia, with debility; or with burning rawness in throat. (A good all-round remedy in aphonia.) Great oppression of breathing; the patient gasps for breath. As with the carbonate there is timidity", "great tendency to take fright. Shiverings. In a case of poisoning in a man who took a mouthful of a strong solution of \"household ammonia\" by mistake there was great swelling of mucous membrane of mouth and throat, stertorous breathing, voice muffled and husky; later, cough with blood-stained expectoration. One night there was headache and delirium, and at the same time the urine contained albumen and hyaline casts. It has been used in muscular rheumatism of the shoulders and thighs. Haemorrhages occur from mucous surfaces. Great excitement in evening.", "< After eating or drinking." ],
+    "Relations" : [ "Compare the Ammonias, especially Amm. carb. Antidoted by: Vinegar and vegetable acids." ],
+    "Mind" : [ "Timidity." ],
+    "Head" : [ "Sensation as if brain protruded at centre, forward, and on both sides, and the skull was quartered, but without pain and without confusion of the head." ],
+    "Nose" : [ "Peculiar redness of skin over nose and frontal sinuses.", "Nose stopped.", "Watery coryza." ],
+    "Face" : [ "Extremely pale face, expressive of the greatest suffering.", "Lower lip swollen three times its size; black coating in centre.", "Mucous membrane of lips and nose destroyed.", "Glands under angle of jaw, each side, swollen." ],
+    "Mouth" : [ "Profuse bloody salivation.", "Burning and scraping at root of tongue and back of gullet.", "Lips, gums, and tongue swollen." ],
+    "Throat" : [ "Burning and dryness of oesophagus; great difficulty in swallowing.", "Uvula retracted, covered with white membrane.", "Tonsils swallowing.", "Uvula elongated and swollen." ],
+    "Stomach" : [ "Intense thirst.", "Vomiting of mucus and blood and great tenderness over epigastric region.", "Violent ejection of stomach contents by nose, and mouth.", "Burning in track of oesophagus, none in stomach." ],
+    "Abdomen" : [ "Pains, tenderness, distension.", "Borborygmi." ],
+    "Stool and Rectum" : [ "Copious bloody stools.", "Tenesmus." ],
+    "Urinary Organs" : [ "Urine red, alkaline.", "Albuminuria, hyaline casts." ],
+    "Female Sexual Organs" : [ "Menses fifteen days too early and very profuse." ],
+    "Respiratory Organs" : [ "Bronchitis, with profuse expectoration; blood-stained.", "Voice deep, weak, or absent.", "Great difficulty in breathing.", "Gasping for breath." ],
+    "Upper Limbs" : [ "Convulsive twitches of r. arm.", "Muscular rheumatism of shoulders." ],
+    "Generalities" : [ "Bleedings from all orifices, which cause faintness.", "Affection of the mucous membranes and organs of the chest; contraction of the flexor muscles; contraction of the oesophagus and of the colon.", "Great exhaustion and muscular weakness; weakness which hardly admits of an upright posture; great trembling on making the slightest exertion.", "Skin hot and dry, afterwards moist, perspiration supervening.", "Disturbed sleep.", "Shiverings; fever towards evening; pulse, at first feeble and rather accelerated, afterwards quicker from hour to hour.", "Great tendency to take fright." ]
+  }
+}

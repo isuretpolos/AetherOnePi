@@ -1,0 +1,21 @@
+{
+  "remedyName" : "Anhalonium Lewinii",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Brain-fag. Delirium. Headache. Hallucinations. Megrim. Mental weakness. Neurasthenia. Paraplegia. Senses, disordered. Visions, disordered, of; coloured." ],
+    "Characteristics" : [ "The plant from which the mescal buttons are obtained grows in barren and rocky soil in the valley of the Rio Grande. It is used by some Indian tribes in their religious ceremonies. It has been recently tested scientifically, a notable proving having been made by Dr. Wier Mitchell. Dr. E. M. Hale has collected the facts about the drug in an article published in the Hahnemannian Monthly. The chief feature of the drug's action is the production of coloured visions of most over-powering brilliancy, associated with moving shapes of fantastic design, the motion being regulated somewhat in time by music. In the Indian ceremonies the constant beating of tom-toms is an essential feature. Other symptoms are loss of conception of time, occipital headache, tired feeling in head, nausea. Tremor of muscles, increased knee-jerk, and loss of power of co-ordination. One prover, Havelock Ellis, noted distinct slowing of the pulse, slight faintness and shallow breathing; but there were none of the terrible heart symptoms of the other Cacti. The most prominent condition is < on closing eyes. The nausea and faintness were < on movement. There is great disinclination to move. > Lying down." ],
+    "Relations" : [ "Compare: Can. ind. (time sense disordered; fantastic visions); Gelsem. (paralysis of accommodation); Bell., Stram., Op., Pic. ac., Piper methyst., Coffea, Coca; Plat. (objects seem small and distant); Pso. (> lying down)." ],
+    "Mind" : [ "Reverie.", "Time seems long; intervals between words and sentences seem inordinately long.", "Cannot find the right word, with difficulty of enunciation.", "Seems to have a double personality.", "Distrust and resentment; thinks companions are laughing at him; wants to do them violence.", "Consciousness of unusual energy and intellectual power (which, when tested, was found not to actually exist).", "Sense of superiority and well-being.", "Sense of depression and inferiority." ],
+    "Head" : [ "Frontal (l.) headache with visual zigzags.", "Occipital headache, with disturbed vision.", "Persistent ache and tired feeling in occipital region (lasting several days and making work impossible).", "(It rapidly removed headache in one prover.)" ],
+    "Eyes" : [ "Visions in all colours, moving, fantastic, of surpassing brilliance, in designs (sometimes grotesque), moving scenes, dances; affected by beating time; dissipated or modified by opening the eyes; partly under control by an effort of thought.", "Natural objects seem more brilliant, shadows deepened, flickering of lights greatly exaggerated.", "Pupils dilated.", "Accommodation impaired.", "Ptosis." ],
+    "Ears" : [ "Impressions of sound and visions heightened by any marked stimulation of skin.", "Exaggerated reverberation of ordinary sounds." ],
+    "Nose" : [ "The air seemed filled with vague perfume.", "Smell blunted; could not tell whether or not tincture of asafoetida was a perfume." ],
+    "Face" : [ "Disinclined to make the slightest movement; eyelids droop; they scarcely move the lips and jaws in articulating." ],
+    "Mouth" : [ "Great difficulty in talking, partly from paralysis of the tongue, partly from slowness of thought." ],
+    "Stomach" : [ "Nausea; < on movement; entirely > on lying down." ],
+    "Heart and Pulse" : [ "Pulse slowed.", "Respiration shallow.", "Faintness." ],
+    "Lower Limbs" : [ "A fine tremor in lower extremities." ],
+    "Generalities" : [ "Motor inco-ordination.", "Extreme muscular depression; don't want to stir; whole body feels relaxed.", "Lazy contentment; \"a land where it is always after noon.\".", "Fine tremor in lower extremities preluding the visions; unable to walk without assistance; can with difficulty sit up." ],
+    "Sleep" : [ "Drowsiness; followed by consciousness of unusual energy." ]
+  }
+}

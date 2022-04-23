@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Kali Tartaricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Paraplegia." ],
+    "Characteristics" : [ "A few symptoms of this well-known substance are collected in Allen, and among them pain in loins and paraplegia are very noticeable. There is vomiting of blackish green fluid; faeces like coffee-grounds; and pain in umbilical region with great thirst." ],
+    "Relations" : [ "Compare: Ant. t., Tart. ac." ],
+    "Mouth" : [ "Tongue brown and dry." ],
+    "Stomach" : [ "Great thirst and pain in umbilical region.", "Violent vomiting and diarrhoea.", "Vomits a blackish green fluid.", "Inflammation of stomach and intestines." ],
+    "Abdomen" : [ "Pain in umbilical region with thirst.", "Flatulence and griping.", "Diarrhoea; and violent vomiting.", "Faeces like coffee-grounds." ],
+    "Heart" : [ "Pulse feeble." ],
+    "Back" : [ "Pain in loins." ],
+    "Lower Limbs" : [ "Thighs and legs paralysed." ],
+    "Generalities" : [ "Emaciation.", "Extreme weakness, can scarcely walk." ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "remedyName" : "Vichy",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bladder, catarrh of. Constipation. Diabetes. Gall-stones. Gout. Gravel. Heartburn. Indigestion. Intermittent fevers. Liver, affections of. Neck, stiff. Rheumatism. Salivation. Skin, affections of. Uterus, affections of." ],
+    "Characteristics" : [ "The springs of Vichy are alkaline, both hot and cold. They are used in a large number of maladies, especially (1) diseases of the digestive tract; (2) diseases of the liver with or without calculi; (3) abdominal engorgements consequent on paludal fevers; (4) chronic engorgements of the uterus; (5) catarrh of the bladder; (6) gravel; (7) gout and rheumatism; (8) diabetes mellitus; (9) skin diseases (Constantin James). Croserio proved Vichy, taking the water, and triturations of the salt and dilutions. His symptoms make up the Schema. Among the most prominent symptoms were stitches: stitches below mastoid; in chest; in right loin and in heart. Across the chest there was a sensation as of a bar impeding breathing. Sinking sensation; and sensation as if about to be sick. Burning flatulence. In the nose there were illusions of smell; corpse-like odour; odour of cucumbers. After coitus there was excessive weakness as if from hunger. The symptoms are: < From cold; from draughts of air. < After eating; when eating. (Uneasiness is > by dinner.) < When seated. < After coitus." ],
+    "Relations" : [ "Compare: Nat. mur. Stitching pains, K. ca. Bar sensation, Haematox., Ars., Ox. ac. < From coitus, K. ca., K. bi., Staph. Illusory smells, Anac." ],
+    "Mind" : [ "Very low-spirited; felt as though some misfortune about to happen; causelessly anxious about the future." ],
+    "Head" : [ "Slight compressive pain in forehead and temples.", "Painful stitching in r. temple for some minutes.", "Stitching below r. mastoid process, followed by griping in middle abdomen, then return of stitching.", "Stitches in petrous portion of temporal bone.", "Pressure at occiput with general uneasiness, as if fever were coming on.", "Stitches in occiput below l. tuberosity.", "Itching of head: violent in morning on rising; in forehead." ],
+    "Eyes" : [ "Stinging in eyes with lachrymation.", "Pain below l. eye like pressure after breakfast.", "Different coloured sparks before eyes in morning." ],
+    "Ears" : [ "Stitches in bones below ears." ],
+    "Nose" : [ "Coryza.", "Fetid, corpse-like odour in nose, morning on rising.", "Very strong smell of cucumbers in nose, morning." ],
+    "Face" : [ "Sharp stitching between articulation of jaw and l. temple.", "Twisting pain in lower jaw, near ethmoid process, as if jaw was swollen, when masticating on that side.", "Red and sore pimples on upper lip." ],
+    "Mouth" : [ "Mouth very dry, with very bitter taste all day.", "Saliva: abundant, immediately; salty, with burning in stomach.", "Taste: bitter and clammy; bitter in evening with thirst; bitter, morning on rising." ],
+    "Stomach" : [ "Great hunger.", "Keen relish.", "Diminished thirst (in spite of hot weather).", "Longing for wine.", "Craving for food as from feebleness of stomach, with sick feeling without hunger.", "Heartburn.", "Transient nausea while eating.", "Acidity.", "Belching.", "Pinching; griping: burning in stomach.", "After the first swallow, cutting pain throughout whole stomach.", "Burning in stomach < afternoon." ],
+    "Abdomen" : [ "Shooting in liver.", "Compressive pain in l. hypochondrium.", "Emission of burning flatulence, with slight urging to stool.", "Borborygmus, with gripings, during day.", "Distension and uneasiness.", "Burning borborygmi.", "Griping and colic.", "Feeling of desire for stool, only wind passes.", "In evening sensation as if diarrhoea would come on, with sensation of hunger at an unusual hour." ],
+    "Stool and Anus" : [ "Ineffectual urging to stool, only wind passes.", "Very difficult stool with copious flatulence, followed by burning and uneasiness in rectum.", "Large, soft stool.", "Copious diarrhoeic stool." ],
+    "Urinary Organs" : [ "Griping in bladder, morning.", "Frequent urination during night.", "Urine: abundant, watery, foamy." ],
+    "Male Sexual Organs" : [ "Strong and long-lasting erections without desire.", "Excessive itching: at orifice of glans, fossa navicularis, scrotum.", "Desire diminished.", "Excessive weakness after coition, as if suffering from hunger." ],
+    "Respiratory Organs" : [ "Dry cough produced by a pricking or tickling in the neck; followed by fluent coryza.", "Cough at night with difficult expectoration." ],
+    "Chest" : [ "Painful uneasiness in chest followed by expectoration of purulent matter.", "Sensation in chest as if a bar across it preventing respiration, followed by a cough with expectoration of thick mucus.", "Tearing pain at border of false ribs on both sides.", "Stitches in r. chest, evenings.", "Very painful stitches in r. chest, corresponding to commencement of cartilaginous portion of two first false ribs, and extending below and behind breast towards back." ],
+    "Heart" : [ "Stitch in heart followed by stitch in r. lumbar region, when seated." ],
+    "Neck and Back" : [ "Painful stiffness of muscles of back of neck and l. scaleni as after making a false step; moving these parts is very painful.", "Stitch in r. loin when seated, following stitch in heart." ],
+    "Upper Limbs" : [ "Bruised pain in arms.", "Bruising pain in fingers and uneasiness as if a fever were coming on, after lunch." ],
+    "Lower Limbs" : [ "Stitch in r. tibia, extending from upper part of instep." ],
+    "Generalities" : [ "Uneasiness as if fever coming on.", "Weakness after coition.", "Very sensitive to cold and draughts." ],
+    "Skin" : [ "Pimples: on lip: back of neck, with pricking.", "Pricking and itching compelling scratching, which >, but itching returns." ],
+    "Sleep" : [ "Sleepy: after dinner; in evening; fatiguing dreams, but sleep more prolonged than usual." ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "remedyName" : "Ethylum Nitricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Heart, hypertrophy of. Vertigo." ],
+    "Characteristics" : [ "This is one of the anaesthetics experimented on by J. Y. Simpson and later by B. W. Richardson. It has produced a few definite symptoms." ],
+    "Relations" : [ "Compare: Glon., Amyl. nit." ],
+    "Head" : [ "A tendency to pitch forward.", "Sense of fulness in vessels of brain.", "Much headache and giddiness for some time after its employment." ],
+    "Face" : [ "Extreme suffusion of face." ],
+    "Heart" : [ "Excessive over-action of the heart.", "Rapid and painful respiration." ]
+  }
+}

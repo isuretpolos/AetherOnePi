@@ -1,0 +1,21 @@
+{
+  "remedyName" : "Sambucus Canadensis",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Albuminuria. Angina pectoris. Asthma. Blotches. Larynx, dry. Lumbago." ],
+    "Characteristics" : [ "The indigenous North American Elder grows in rich alluvial soils, flowers in July, and fruits in September. The species, says Millspaugh, is not sufficiently distinct from the European Elder (Samb. nigra, Linn.), differing only \"in being less woody, and having more loose cymes, larger flowers, and more compound leaves.\" It has, however, been proved separately by A. Uebelacker, whose symptoms are given in the Schema. The severe chest symptoms and blotched face recall symptoms of Samb. nig., with which it is probably identical in action. The chief Conditions were: < Lying down. > Getting out of bed. > By sweat." ],
+    "Mind" : [ "Depression and dread of undefined danger." ],
+    "Head" : [ "Severe drawing in head with fulness; motion = sensation as if water were undulating in it.", "Head heavy, confused, with drawing and darting pains." ],
+    "Face" : [ "Face flushed and broken out in blotches; he looks ill." ],
+    "Mouth" : [ "Mouth parched, dry; desire for drink." ],
+    "Throat" : [ "Pharynx and larynx felt dry and swollen, impeding free respiration." ],
+    "Urinary Organs" : [ "Pressure in kidney region, followed by profuse flow of clear urine.", "Frequent urination.", "Urine albuminous." ],
+    "Respiratory Organs" : [ "Breathing laboured, asthmatic; wheezing.", "Had to sit up in bed to get breath." ],
+    "Chest" : [ "Heaviness and constriction in chest, as from a heavy load; palpitation.", "Aroused from sleep by a terrible constriction of chest and heart; had to jump out of bed to get breath; could not lie down for fear of choking." ],
+    "Heart" : [ "Sharp pain in heart (region of valves) with palpitation, at times visible through the clothes.", "Constriction of chest and heart; must jump out of bed, lying down = choking.", "Heart labours heavily.", "Pulse rose to 100, but became normal at end of perspiration." ],
+    "Back" : [ "Back felt sprained.", "Pain (pressing) in lumbar region." ],
+    "Limbs" : [ "Sharp, darting rheumatic pains in hands and feet." ],
+    "Generalities" : [ "Exhaustion.", "Uneasiness; unrest.", "Recurrence of symptoms.", "All symptoms > by sweat." ],
+    "Fever" : [ "Sweat, soon becoming profuse, which gradually > all other symptoms (except exhaustion).", "Head perspired less than rest of body." ]
+  }
+}

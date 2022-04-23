@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Tartaricum Acidum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Gastritis. Heels, pain in." ],
+    "Characteristics" : [ "A proving by Nenning and some poisonings have furnished the pathogenesis of Tart. ac. One of the most marked symptoms was intense burning in throat and stomach, feeling \"as if on fire.\" Tongue brown and dry. Almost constant vomiting; vomited matter of deep green colour. Faeces coffee-ground colour. Difficult respiration. Paralytic debility: \"Weakness in the evening, can scarcely drag himself along.\" This should prove useful: \"Tearing pain on the soles of the feet, near the heel, which prevents him putting his foot on the ground, after luncheon.\" All the symptoms were > in open air. The pasty taste is > after eating." ],
+    "Head" : [ "Confusion in head; dizziness." ],
+    "Face" : [ "Face instantly became red as fire, and having exclaimed that he was poisoned, became speechless; died on tenth day (drank oz. in solution).", "Lips turn brown and blackish on their inner edges.", "Constant dryness of lips, must moisten them continually.", "Burning of lips." ],
+    "Mouth" : [ "Teeth set on edge.", "Brown and dry tongue.", "Taste, pasty, in morning, ceases on eating." ],
+    "Throat" : [ "Burning sensation in throat and stomach as if on fire." ],
+    "Stomach" : [ "Very urgent thirst.", "Eructations.", "Nausea.", "Vomiting, repeated and almost continuous.", "Vomited matter, deep green." ],
+    "Abdomen" : [ "Pain in umbilical region.", "Pinching below navel with emission of flatulence; cold feeling in abdomen." ],
+    "Stool" : [ "Many stools during night.", "Stools of colour of coffee grounds." ],
+    "Respiratory Organs" : [ "Hoarseness and scraping in larynx.", "Respiration: accelerated; then laborious and slow." ],
+    "Heart" : [ "Very weak action of heart.", "Feeble pulse." ],
+    "Back" : [ "Sharp pain in region of loins." ],
+    "Lower Limbs" : [ "Paralysis of thighs and legs.", "Tearing pains at soles, near the heel, which prevents him setting his foot on the ground, after luncheon." ],
+    "Generalities" : [ "Convulsions just before death.", "Extreme weakness.", "In evening feels very tired, can scarcely drag himself along.", "General bruised sensation, esp. of lower limbs." ],
+    "Sleep" : [ "Yawning and stretching.", "Frequent yawning." ],
+    "Fever" : [ "General cold feeling, evening in bed." ]
+  }
+}

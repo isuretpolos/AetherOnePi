@@ -1,0 +1,12 @@
+{
+  "remedyName" : "Thevetia",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Somnolence. Throat, affections of. Vomiting." ],
+    "Characteristics" : [ "J. Balfour observed the effect of eating the seeds on two boys, and 1/2. This peculiar symptom was noted: \"A tendency to sleep, disturbed every three to four minutes by irritation in the throat, and the discharge of a mouthful of frothy mucus with a sort of gulp; then the child would lie down and close his eyes until again disturbed.\"" ],
+    "Relations" : [ "Compare: Apocy. Stroph. Upas." ],
+    "Throat" : [ "Tendency to sleep, disturbed every three to four minutes by irritation in the throat and discharge of a mouthful of frothy mucus with a sort of gulp; then the child would lie down and close his eyes again until again disturbed." ],
+    "Stomach" : [ "Vomiting." ],
+    "Stool" : [ "Bowels moved twice or thrice." ]
+  }
+}

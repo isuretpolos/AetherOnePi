@@ -1,0 +1,29 @@
+{
+  "remedyName" : "Menispermum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Backache. Headache. Itching. Spine, pain in. Tongue, swelling of." ],
+    "Characteristics" : [ "Very considerable doses were taken in the proving of Menispermum. The most notable symptom was an intense headache combined with aching all down the back. Yawning and stretching were also a marked and frequent concomitant of headache and backache. Meni. is botanically related to Coccul., and the backache recalls the spinal action of the latter. But the Coccul. vertigo and intoxication were not elicited. Dryness was a common feature-mouth, throat, skin. Itching was very intense, as with Coccul. The Conditions were well marked: < At night. < By warmth of bed. > Walking in open air." ],
+    "Relations" : [ "Antidoted by: Bry., Chi. Compare: Coccul." ],
+    "Mind" : [ "Low-spirited, but attends to business rapidly.", "Low-spirited but absent-minded.", "Quick-tempered." ],
+    "Head" : [ "Headache, pressive from within out.", "Intense headache, feels as if it would burst, with pain whole length of back (4th d.); lasted three or four days; > by Bry.; > walking in open air.", "Headache: intense during night; with stretching and yawning; with feeling of fulness.", "Severe headache through temples and occiput." ],
+    "Eyes" : [ "Eyes feel dry and swollen; during the night." ],
+    "Nose" : [ "Much sneezing.", "Discharge of nasal mucus; excoriating.", "Nostrils: dry, esp. l.; itch painfully; are sore." ],
+    "Face" : [ "A few pimples on face." ],
+    "Mouth" : [ "Tongue: coated (yellow), thicker at back, with raised papillae; dry and parched; swollen; as if burnt.", "Mouth and throat dry during night." ],
+    "Throat" : [ "Throat dry and parched; without soreness." ],
+    "Stomach" : [ "Appetite and thirst increased.", "Some nausea on waking." ],
+    "Abdomen" : [ "Pain in umbilical region." ],
+    "Stool and Anus" : [ "Tenesmus with regular stool." ],
+    "Urinary Organs" : [ "Urine: high-coloured and scanty; yellow; white thready clouds floating through." ],
+    "Respiratory Organs" : [ "Morning expectoration less and of lighter colour (curative).", "Hurried respiration during the night." ],
+    "Back" : [ "Pain whole length of back, with intense headache; with yawning and stretching." ],
+    "Limbs" : [ "Aching in thighs, elbows, and shoulders; in external muscles of thigh and upper arm, also under l. scapula." ],
+    "Upper Limbs" : [ "Drawing in brachialis anticus.", "Jerking near l. elbow." ],
+    "Lower Limbs" : [ "Aching: in bones of legs; upper part of l. femur and l. hip-joint.", "Legs sore as if bruised, with pain in bones." ],
+    "Generalities" : [ "Stretching and yawning.", "Laziness.", "The pains were like those caused by large doses of Quinine and were > by China." ],
+    "Skin" : [ "Itching all over body, esp. buttocks, < warmth of bed." ],
+    "Sleep" : [ "Yawning and stretching with backache and headache.", "Sleeps late and heavy in morning, disinclined to rise.", "Restless; troubled and confused dreams; sudden starting from sleep.", "Dreams: pleasing; of innumerable rats which creep under clothes; of cannonading." ],
+    "Fever" : [ "Chilly.", "Skin cold and dry with some itching.", "Face not and the pimples bleed easily." ]
+  }
+}

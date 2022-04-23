@@ -1,0 +1,28 @@
+{
+  "remedyName" : "Calcarea Caustica",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Back, pains in. Coccygodynia. Corns. Feet (pains in heels). Hoarseness. Jaw, affection of. Malar bones, pain in. Neuralgia. Paralysis. Rheumatism. Spleen, affections of. Stiff-neck. Tapeworm. Toothache." ],
+    "Characteristics" : [ "Calc. Caust. has been extensively proved. The most marked symptoms are: Thought very difficult. Confusion in the head. Vertigo; as if room turning in a circle. Sticking, tearing, throbbing pains in various parts. Pain in right eye as if a foreign body were in it. Burning and tearing in eyes. Tearing in right cheekbone; and in right articulation of jaw. Toothache every night, a.m., with feeling as if teeth were fuzzy and too large (a fuzzy sensation was noticed in other parts). Mucus in throat; burning; sensation as if a bone were sticking in it. Burning in stomach. Tapeworm passes. Hoarseness, with pain in throat; rawness in trachea and cough. Stitches in chest. Stiffness and tearing in all regions of back and in coccyx. Tearing in either shoulder down arms. Tearing in left tendo Achillis; left heel. Sticking in corns. As an external application in the form of compresses, Lime-water has an ancient repute in allaying inflammation of many kinds. It has rapidly dispelled all inflammatory action in cases of appendicitis; and has removed all suffering in an aggravated case of phagedaenic piles. As with Calc. c., there is < of most symptoms in the evening. Toothache a.m. > From motion. < From hanging down limb. The Calc. < from working in water is paralleled by \"pains in hands and feet after a foot-bath.\"" ],
+    "Relations" : [ "Compare: Besides the Calcareas, Rhus (pain in joint of jaw); Mez. and Mag. c. (pain in malar bones); Valer. (pain in heel); Pic. ac. and Sep. (loins); Hep. and Nit. ac. (bone sensation in throat)." ],
+    "Mind" : [ "Thought very difficult.", "Weary and peevish on waking; as if he had been intoxicated." ],
+    "Head" : [ "Confusion of the head; esp. l. side.", "Vertigo, as if room turning in a circle; thinks she will fall from chair.", "Throbbing in frontal sinus > by contracting skin of forehead." ],
+    "Eyes" : [ "Burning in eyes, evening by candlelight.", "Pain in r. eye as if foreign body under upper lid; in l. eye on rising in morning as if a thorn in it." ],
+    "Face" : [ "Tearing in r. cheek-bone.", "Violent pain, swelling, stiffness of r. joint of Jaw.", "Lips unusually red." ],
+    "Teeth" : [ "Severe toothache every night, a.m., as if tooth was fuzzy and too large, with tensive pain in l. ear as if something was sticking in it.", "Teeth feel too large; fuzzy." ],
+    "Mouth" : [ "Mouth offensive; palate feels as if mucus were upon it, but none is expectorated." ],
+    "Throat" : [ "Mucus in throat, difficult to raise, almost causing vomiting.", "Hawking of granular, glutinous material like cooked rice.", "Burning in fauces and oesophagus caused by water.", "Sensation as of a bone sticking in pharynx." ],
+    "Stomach" : [ "Severe hunger three hours after eating.", "Nausea followed by vomiting of some fluid." ],
+    "Abdomen" : [ "Sticking in both hypochondria, esp. severe in l.", "Pain in l. side of region of spleen as if a ball were turning on its axis.", "Constrictive pain in abdomen; griping; stitches.", "Violent stitches in small intestines when bending forward." ],
+    "Stool and Anus" : [ "Three thin stools before breakfast and one immediately after.", "Painful stool as if a nail were scratching in anus.", "Thin, pasty stool with much mucus immediately after breakfast.", "Passed many pieces of tapeworm.", "Haemorrhoids.", "Sticking, tearing motions in rectum extending towards anus.", "Crawling in rectum and anus." ],
+    "Female Sexual Organs" : [ "Menses eight days too early." ],
+    "Respiratory Organs" : [ "Stitches in larynx; l. half.", "Hoarseness, with pain in throat; feeling of rawness in trachea; cough.", "Cough with stitches in chest, expectoration of mucus and blood.", "Sternum: oppression; pressive sticking under; stitches across.", "Stitches in l. chest." ],
+    "Neck and Back" : [ "Stiffness of neck; of back of neck; of all neck muscles.", "Tearing in nape.", "Violent pains in scapulae extending into small of back, when sitting; < on inspiration.", "Tearing between shoulders.", "Tearing in both scapulae, between shoulders, then through neck and occiput as far as forehead.", "Sensation in both shoulder-blades as if they were fuzzy and had gone to sleep (8 p.m.).", "Pain in small of back; on waking > by moving about.", "Pressive, drawing pains; sticking; tearing, in small of back.", "Tearing in coccyx." ],
+    "Limbs" : [ "Trembling in limbs; could not continue work; > by eating a piece of bread.", "Rheumatic pain alternating in all the joints.", "Wandering pains.", "Pains in hands and feet after a foot-bath." ],
+    "Upper Limbs" : [ "Tearing in shoulders, arms and axillae.", "Paralysed condition of r. hand.", "Stitches and tearing in l. wrist." ],
+    "Lower Limbs" : [ "Severe tension in lower extremities.", "Stitches in hip-joints.", "Tearing in knees; in r. side of r. tibia down to toes; in l. tendo Achillis; in l. heel.", "Sticking in a corn." ],
+    "Skin" : [ "Rash-like eruption on forehead.", "Biting, itching vesicles; on neck and back extending later to occiput and behind ears." ],
+    "Sleep" : [ "Restless; many dreams; nightmare." ],
+    "Fever" : [ "Violent chill with chattering teeth to p.m." ]
+  }
+}

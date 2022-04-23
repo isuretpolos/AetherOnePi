@@ -1,0 +1,27 @@
+{
+  "remedyName" : "Nitrogenum Oxygenatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Enuresis. Epilepsy. Hysteria. Lungs, congestion of." ],
+    "Characteristics" : [ "This well-known anaesthetic, introduced by Sir Humphrey Davy, has given rise to some pathological symptoms which I have collected in the Schema. Some of them were observed by myself on a girl of twelve who had congestion of the right lung setting in within a few hours of the anaesthesia (H. W., xxv. 64); and on a man, 30, who had blisters round his mouth, inside, on two occasions after being under gas; was troubled with drowsiness for weeks after, and had acneous spots on his face. Others are from the observations of Mr. Silk (H. W., xxv. 462); and the rest are from provings recorded by Allen. Silk observed that females were very much more liable to ill effects than males. One of his patients, an epileptic girl, otherwise healthy, when he removed the face-piece, struggled to get her hands up, and afterwards described her feelings as \"pain in the forehead where the aura commenced.\" In one epileptic patient (not Mr. Silk's) a fit actually did occur. Rhythmic movement of the arms or legs is a common occurrence. One prover had his piles cured as an incidental result of his experiments." ],
+    "Relations" : [ "Antidoted by: Bell. (?). Compare: Nit. ac. In congestion, Ver. v." ],
+    "Mind" : [ "Unusual exaltation of mind; most agreeable sensations and fancies; involuntary desire to laugh.", "No command over himself.", "Mental torture beyond endurance.", "Mind extremely susceptible to suggestion.", "After the giddiness, rapid rush of thoughts; afterwards unconsciousness." ],
+    "Head" : [ "On going into open air, vertigo and staggering to l.", "Giddiness after palpitation.", "A kind of waving of the head.", "Numb feeling on head, spreading thence over body, before the paroxysms.", "Aching in head and along spine as if they were asleep.", "Headache after return of consciousness." ],
+    "Eyes" : [ "Widely dilated pupils.", "Pupils first dilated, later contracted.", "Protruding eyeballs." ],
+    "Ears" : [ "On waking from unconsciousness, voices of others seemed to come from a great distance; or to be in a whisper." ],
+    "Face" : [ "Face livid with unconsciousness.", "Face swollen.", "Blue lips, ears, face; afterwards face dusky.", "Acne.", "Jaws firmly clenched." ],
+    "Mouth" : [ "Mouth and head feel numb, as though asleep.", "Eruption of blisters round mouth inside.", "Point of tongue thrust between teeth." ],
+    "Throat" : [ "Weakness and feeling of constriction in throat; dysphagia." ],
+    "Stomach" : [ "Pressure in epigastrium.", "Nausea and vomiting on return of consciousness; next day a bilious attack." ],
+    "Anus" : [ "(Haemorrhoidal pains from which he suffered entirely disappeared.)" ],
+    "Urinary Organs" : [ "Involuntary micturition." ],
+    "Female Sexual Organs" : [ "Erotic movements and sexual illusions.", "Anaesthesia in a nursing woman brought on a bilious attack next day, and the infant was made ill." ],
+    "Respiratory Organs" : [ "Breathing: quick; thick and stertorous.", "Suffocative feeling.", "Cough with haemoptysis.", "Cough early morning." ],
+    "Chest" : [ "Great pain at chest; cough with haemoptysis; > hot applications to chest; it seemed as if something which was obstructing the chest dropped down into stomach.", "Sharp pain in front of chest, < lying on r. side.", "R. chest congested and dull on percussion." ],
+    "Heart" : [ "Great lividity and tendency to faint (in a cardiac case).", "Palpitation of heart, afterwards felt and heard in head." ],
+    "Neck and Back" : [ "Tension in sides of neck in region of carotids.", "Drawing in neck, as though skin were contracted or cords shortened.", "Sensation of drawing in muscles, esp. lumbar muscles." ],
+    "Generalities" : [ "In a patient suffering from valvular disease heart there was a more than usual degree of lividity during anaesthesia, and a tendency to syncope afterwards.", "Rhythmic movement of arms or legs.", "Opisthotonos, most common in females; much struggling.", "Epileptic convulsion (in an epileptic) during the anaesthesia.", "Pain in forehead where the aura commenced (in an epileptic under the gas).", "Increased muscular rigor. Muscular weakness.", "Muscular pains in joints revived." ],
+    "Sleep" : [ "Sleepy.", "Drowsiness continued for weeks after the gas.", "Screamed whenever she fell asleep." ],
+    "Fever" : [ "Coldness of feet and legs to knees between the paroxysms of consciousness.", "Fever every afternoon from to 6.", "Delirium in evening.", "Face covered with perspiration after return of consciousness." ]
+  }
+}

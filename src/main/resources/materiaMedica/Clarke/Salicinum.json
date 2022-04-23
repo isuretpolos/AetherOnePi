@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Salicinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Deafness. Influenza. Meniere's disease. Tinnitus." ],
+    "Characteristics" : [ "Saln. is an active principle (glucoside?) obtained from different species of Willow. It has been used largely in the treatment of rheumatism in ordinary practice. It has had some fragmentary provings, and Ringer experimented with it on three boys. The characteristics of the Salicylic acid compounds were prominent", "giddiness, confusion of the head, flickering before the eyes, and tinnitus. The stomach was disordered, vomiting occurred. There was also great instability of temperature. Chilliness, high temperature, and low temperature were induced. Saln. has been commended in influenza by Stephen Mackenzie as less irritating than the Salicylates and more effective." ],
+    "Mind" : [ "Dulness, does not seem to understand questions.", "Dulness and heaviness." ],
+    "Head" : [ "Giddiness.", "Confusion of the head.", "Headache." ],
+    "Eyes" : [ "Flickering; fog and sparks before eyes.", "Slight congestion of conjunctiva." ],
+    "Ears" : [ "Tingling in r. ear.", "Persistent ringing in ears.", "Deafness." ],
+    "Face" : [ "Face flushed; and dull.", "Slight tremor of lips on speaking." ],
+    "Stomach" : [ "Vomited twice." ],
+    "Urinary Organs" : [ "Salicin. is excreted in the urine in the form of Salicylic hydride, which sinks to the bottom of the urine as a fine crystalline cloud." ],
+    "Respiratory Organs" : [ "Thick, husky voice.", "Breathing rather laboured." ],
+    "Upper Limbs" : [ "Slight spasmodic movements of upper limbs.", "Trembling of hands when held out." ],
+    "Lower Limbs" : [ "Slight jerks of lower limbs when they are raised from the bed." ],
+    "Generalities" : [ "Muscular twitches.", "Much irritability of the muscles on percussion.", "Muscular weakness; grasping power diminished." ],
+    "Fever" : [ "Malaise and chilliness evening; returned a.m. next day with headache, fugitive pains and fever (101° F.).", "Lowered temperature.", "Temperature rises from a.m. to p.m., and falls from p.m. to midnight." ]
+  }
+}

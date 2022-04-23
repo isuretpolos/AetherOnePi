@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Rosmarinus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Abortion. Baldness. Menses, too early." ],
+    "Characteristics" : [ "The most violent of the symptoms of Rosm. were observed on a woman who took a strong infusion for eight days, with the result that miscarriage occurred. In another woman it brought on the menses four days too soon. Chilliness predominated, the chill not being followed by heat. Oil of Rosemary has an ancient reputation as a remedy for baldness, headache, and flagging mental powers. Hence it has been called \"Herb of Memory.\" This Shakespere alludes to when he makes Ophelia say, \"There's Rosemary, that's for remembrance.\"" ],
+    "Relations" : [ "Compare: Hedeo., Menth. pul." ],
+    "Mind" : [ "Anxiety.", "(Memory deficient.)" ],
+    "Head" : [ "Vertigo.", "Headache.", "Heaviness and dulness of head.", "Weight and tension round head.", "(Baldness.)" ],
+    "Female Sexual Organs" : [ "Violent pains followed by uterine haemorrhage and miscarriage, succeeded by faintness, spasms of chest, cold hands and feet, small, rapid, irregular pulse.", "Menses four days too early." ],
+    "Respiratory Organs" : [ "Oppression of breathing.", "Spasms in chest." ],
+    "Sleep" : [ "Overpowering sleepiness with yawning.", "Sleeplessness." ],
+    "Fever" : [ "Coldness so that she could not leave the bed.", "Chill over whole body, legs icy cold, no thirst and no subsequent heat." ]
+  }
+}

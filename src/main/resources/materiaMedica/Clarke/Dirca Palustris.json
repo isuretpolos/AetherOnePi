@@ -1,0 +1,26 @@
+{
+  "remedyName" : "Dirca Palustris",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Colic. Constipation. Cough. Debility. Diarrhoea. Dyspepsia. Eyes, affections of. Flatulence. Headache. Heart, affections of. Neuralgia. Rheumatism." ],
+    "Characteristics" : [ "Dirca belongs to the same family as Daphne Indica and Mezereum, and is the only American member of the family. Its symptoms show its relationship to the other two, but it has not been used extensively in practice. It produces much vital depression; neuralgic pains in the head, trunk, and extremities, many of the pains proceeding from without inward. Digestion is disordered, there is weight at the stomach, and a peculiar white tongue, the coating being moist and even. Rumbling of flatulence. Colic > by bending forward, diarrhoea and tenesmus, later constipation. Oppression and pains in the chest, sweetish expectoration, and excitability of the heart's action from the slightest motion. Hot and restless at night; cannot sleep; dreams of dead bodies. Motion < most symptoms; walking < vertigo and pain in bowels. Colic is > by bending forward; headache > by pressure. Pains in the bowels are > by stool." ],
+    "Relations" : [ "Compare: Can. i. (time passes slowly); Ant. c. (tongue); Lyc. (constipation and flatulence); Bry., Puls., Abies. n., &c. (weight at stomach); Stan. (sweet expectoration)." ],
+    "Mind" : [ "Time seemed to pass slowly.", "Absent-minded." ],
+    "Head" : [ "Vertigo on walking; seems as if he would fall to l.", "Pains all through the head, vertex, and occiput, extending down into spine.", "Sensation as if lobes of cerebrum were drawn forward towards frontal sinuses.", "Headache in temples extending inwards; > by hard pressure.", "Headache, throbbing, and beating in l. half of head, < by coughing or moving.", "Pain high up in occiput extending inwards.", "Awoke with pain low down in occiput, much < on raising or accidentally moving head in morning; < towards noon, and went up over vertex to forehead, and there had a strong congestive headache, with throbbing of carotids, lasting till evening and gradually disappearing.", "Scalp feels dry and tight." ],
+    "Eyes" : [ "Eyes sore; and painful to touch.", "Sensation as if brows corrugated; and as if brain were also drawn down.", "Lids heavy.", "Much photophobia; on waking and continuing all day; esp. from gaslight." ],
+    "Face" : [ "Face red, full, and bloated in morning." ],
+    "Mouth" : [ "Tongue coated smoothly and evenly white.", "Smooth, dirty, white coat.", "Sour taste." ],
+    "Throat" : [ "Throat red, raw; acrid feeling; hurts to swallow food or liquids." ],
+    "Stomach" : [ "No thirst.", "Empty eructations.", "Uneasy feeling as if a lump or weight in stomach." ],
+    "Abdomen" : [ "Several lancinations in l. hypochondrium with tympanites.", "Burning below umbilicus.", "Rumbling in bowels.", "Colic > bending forward; and > by stool, but smarting in anus remains.", "Burning and uncomfortable sensation in bowels.", "Pain in bowels on walking, also painful on pressure.", "Dull ache low down in pelvis; bearing down, not > by sitting or lying, but > when headache >." ],
+    "Stool and Anus" : [ "Throbbing, stitching pains in anus.", "Soreness and smarting, < after stool.", "Tenesmus and straining.", "Diarrhoeic stools; sudden, gushing, watery; thin, yellowish faecal.", "Constipation; urgent desire, but passes only frothy mucus.", "Dry, sticky feces." ],
+    "Urinary Organs" : [ "Pain and soreness in region of bladder." ],
+    "Female Sexual Organs" : [ "Uterus seems too low, and as if it would prolapse during stool.", "Menses two days too early; less copious and prolonged than usual." ],
+    "Respiratory Organs" : [ "Stinging pains in larynx from without inwards; very sharp pricking pain and sensation of suffocation.", "Cough < morning.", "Raising sweetish-tasting mucus quite offensive.", "Great dyspnoea from exertion; from walking up a slight elevation.", "Sharp pain in r. thorax running down into abdomen and up into l. shoulder." ],
+    "Heart" : [ "Excitability of heart's action from least motion.", "Palpitation on going up slight elevation.", "Pulse suddenly becomes weak and irregular." ],
+    "Back" : [ "Heavy pain across back and through loins; in region of kidneys." ],
+    "Upper Limbs" : [ "Dull, neuralgic pain in both shoulders, cannot keep them still." ],
+    "Lower Limbs" : [ "Muscles of thighs sore and stiff.", "Neuralgic pains in legs." ],
+    "Sleep" : [ "Sleepy but unable to sleep.", "Dreams of dead bodies." ]
+  }
+}

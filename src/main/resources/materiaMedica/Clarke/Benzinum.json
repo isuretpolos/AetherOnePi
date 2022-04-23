@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Benzinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Dysentery. Fever. Headache. Insomnia. Sweat. Typhoid fever. Vision, disorders of." ],
+    "Characteristics" : [ "Our knowledge of this medicine is derived from observations on a worker in a rubber factory, who for weeks had his hands and arms daily bathed in benzine, and drank water impregnated with it. It caused profound disturbance of mind and body; weeping at trifles; irritability; pain darting upwards in occiput. Could not turn eyes upward without severe aching and throbbing. A sort of clairvoyant state, in which a great white hand appeared to him in the darkness, coming outspread towards his face, causing him in terror to scream for the watcher. A sense of falling through the bed and floor. Insomnia and photopsic illusions. Pains travel from below upward (headache, pain in anus); also chills." ],
+    "Relations" : [ "Compare: Bry. (< motion; moving eyes); Benz. nit.; Benz. dinit. (amblyopia and disorders of vision). Sul. (symptoms go from below upward)." ],
+    "Mind" : [ "Weeping at trifles and despairing of recovery.", "Extremely irritable and fault-finding." ],
+    "Head" : [ "Severe darting pains in occiput, from below upward, recurring in paroxysms, < by motion, and esp. by rising after sitting." ],
+    "Eyes" : [ "Could not turn eyes upward, or to one side without severe aching and throbbing.", "A great white hand seemed to appear to him in the darkness, coming outspread towards his face, causing him in terror to scream for the watcher.", "Photopsic illusions with wide-open eyes." ],
+    "Face" : [ "Occasional sudden puffing up of l. cheek and calf of l. leg, as though filled with air, going off in a few hours and returning again." ],
+    "Mouth" : [ "Teeth covered with sordes.", "Soreness and sensation of looseness in upper incisors.", "Tongue parched and brown.", "Painful round white ulcers in the mouth, esp. on inside of cheeks.", "Hot and very offensive breath." ],
+    "Appetite" : [ "Appetite lost.", "Craving for lemons and cider.", "Extreme thirst; for ice-water, satisfied with a sip, but wanting it again directly." ],
+    "Abdomen" : [ "Continual soreness to pressure in abdominal walls.", "Heat and grinding wearing pains in lower part of bowels, < just before stool." ],
+    "Stool and Anus" : [ "Several times an hour, a stool, smelling of benzine, of lead-coloured mucus, mixed with bright blood, accompanied with some tenesmus, and followed by throbbing in anus and rectum and lancinating pains from below upward, continuing about five minutes." ],
+    "Urinary Organs" : [ "Pressing pain in bladder, after passing urine, throbbing and smarting in neck of bladder and urethra for several minutes.", "Urine: dark, offensive; sediment like red sand." ],
+    "Respiratory Organs" : [ "Every few days continual, dry, hacking cough.", "Continual soreness and aching in clavicular region." ],
+    "Back" : [ "Continual aching and throbbing in lumbar region, < by a full inspiration.", "Extreme irritation of the kidneys." ],
+    "Upper Limbs" : [ "Continual soreness and aching in muscles of upper arm." ],
+    "Generalities" : [ "Wasted, pallid, exhausted; general prostration.", "At one time he sank very low, approaching a typhoid condition.", "Complained of sensation of falling through bed and floor." ],
+    "Sleep" : [ "For three nights, before the sweating began, complete insomnia, with unpleasant thoughts crowding the mind, and wide-open eyes, before which photopsic illusions floated continually." ],
+    "Fever" : [ "Chills seized remote parts and passed toward the head, from the thumbs to the elbows, and thence to shoulders; from small of back to shoulders and vertex.", "Cold compresses came off steaming in a few minutes, smelling of benzine and stained a deep yellow, which could only be removed by long exposure to the sun.", "For several nights copious, general, warm sweat toward morning, very exhausting, followed on several succeeding mornings by sweat only on breast, on side not lain upon, and in axillae." ]
+  }
+}

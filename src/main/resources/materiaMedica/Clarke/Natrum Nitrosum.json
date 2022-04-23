@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Natrum Nitrosum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Angina pectoris. Apoplexy. Cyanosis. Fainting. Gastro-enteritis." ],
+    "Characteristics" : [ "Ringer and Murrell (Lancet, November 3, 1883", "C. D. P.) administered ten grains of Na. ntrs., dissolved in an ounce of water, to fourteen men and four women. To twelve men and four women it was given in five-gr. doses. In almost all it produced alarming symptoms of the apoplectic order. A cat had c.c. of a per cent. aqueous solution injected under the skin, and died of the effects. Collischorm (quoted H. P., x. 469) relates two cases of accidental poisoning with Nat. nitros. (1) The first patient was affected with: Diarrhoea and fainting, bitter eructations, heavily coated tongue, and on the chest an eruption like syphilitic roseola. Traces of albumen in urine. During the night, copious alvine discharges with faintishness. The following day, intense cyanosis. Urine dark yellow, containing copious urates. Next day he took grin.; cyanosis diminished and the measly eruption spread all over the body except the face. (2) The second patient had the cyanosis, diarrhoea, and faintings in an aggravated form so that collapse threatened. Strong Coffee and omission of the drug removed the symptoms. < Motion. > Lying down. The concomitance of fainting with other affections may prove a keynote: \"Copious liquid stools at night with faintness.\"" ],
+    "Relations" : [ "Antidoted by: Coffee. Compare: Amyl. nit. Glon. < By motion, Bry." ],
+    "Mind" : [ "Thought she would have died.", "So much upset she feared she would never get over it." ],
+    "Head" : [ "Giddy, as if he would become insensible; lips, face, hands became blue, had to lie down half an hour before he dared move.", "Face and head seemed swollen throbbed violently till she thought they would burst.", "Head felt as if it would split in two.", "Terrible headache, < on motion, esp. going up stairs." ],
+    "Eyes" : [ "Staring eyes and livid lips.", "Pupils widely dilated (cat)." ],
+    "Face" : [ "Face lips, hands turned blue.", "Lips turned black and throbbed for hours.", "Deadly pale." ],
+    "Mouth" : [ "Tongue protruded, dark colour (cat).", "Heavily coated tongue." ],
+    "Stomach" : [ "Bitter eructations.", "Feels very sick, but did not actually vomit.", "Nausea and eructations.", "Vomiting (two cases from 5-gr. doses).", "The medicine kept rising, so he could not keep it down.", "Stomach firmly contracted (cat)." ],
+    "Abdomen" : [ "Intestines firmly contracted (cat).", "Liver of dark colour (cat)." ],
+    "Stool" : [ "Diarrhoea; copious stools with fainting; in the night." ],
+    "Urinary Organs" : [ "Bladder firmly contracted (cat).", "Urine: dark yellow; copious urates; trace of albumen; methaemoglobin." ],
+    "Heart" : [ "Heart came on beating very fast; he throbbed all over.", "L. ventrical contracted, r. dilated (cat).", "Blood very dark, almost like treacle (cat)." ],
+    "Generalities" : [ "Took all his strength away.", "Trembling sensation all over and suddenly fell on the floor.", "The women were more severely affected than the men.", "Ten minutes after the dose felt a trembling sensation all over and suddenly fell on the floor; whilst lying there she perspired freely; face and head felt swollen, throbbed violently; felt sick.", "Faintness, nervousness.", "Went off in hysterics, could not hold a limb still." ],
+    "Skin" : [ "Rash like roseola syphilitica on chest, measly, spreading to abdomen and thighs, covered gradually all the body except the face." ],
+    "Fever" : [ "Violent perspiration." ]
+  }
+}

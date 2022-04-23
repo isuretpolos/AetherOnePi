@@ -1,0 +1,9 @@
+{
+  "remedyName" : "Oreodaphne",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Headache, fronto-occipital; occipital." ],
+    "Characteristics" : [ "Oreodaphne Cal. is a tree which grows to a hundred feet in height. When bruised it emits a strong spicy odour which may cause sneezing. J. Murray Moore proved on himself and friends a tincture of the leaves and produced well-marked fronto-occipital headache < by movement, > by rest. The symptoms were more violent when the tincture was olfacted than when taken internally. The Med. Cent. (quoted H. W., xx. 84) gives the characteristics of one of its headaches thus: \"Dull ache in occipital and cervical regions, extending down to scapulae; great heaviness of the head, with a constant desire to move the head, which, however, gives no relief.\"" ],
+    "Head" : [ "Confusion of head.", "Dizziness < on stooping and moving about; followed by dull, pressive fronto-occipital headache; > after night's rest.", "Internal aching with pressure at inner angle of orbit, r. or l. (esp. l.), never in both simultaneously, extends through brain and across scalp to base of occiput; lasted fro\", minutes to hours; < by light; noise; motion; > closing eyes, and perfect quiet." ]
+  }
+}

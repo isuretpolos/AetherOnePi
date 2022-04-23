@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Gallicum Acidum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asthma. Constipation. Debility. Delirium. Haemorrhages. Phthisis. Urticaria." ],
+    "Characteristics" : [ "Gallic acid is the well-known astringent, derivative of Tannic acid, obtained from galls or oak-apples. It is used in old-school practice as a local application to arrest haemorrhages. A case is recorded (H. W., xxviii. 502) in which the application of an ointment containing Gallic acid, or the insertion of a tannin suppository for piles, caused an attack resembling hay-asthma, with an eruption of urticaria. The experience was repeated several times before the cause was found out. This is sufficient to show that Gall. ac. is truly homoeopathic to pulmonary cases, in which it has been largely used by the old school as well as the new. In pulmonary haemorrhage, and in the excessive expectoration and the night-sweats of phthisis it has been found of especial service. Marcy, of New York, has recorded the case of a young lady who had a cavity in the left lung, with copious purulent expectoration, night-sweats, evening fever, pulse Under the prolonged use of Gall. ac. 1x she recovered her normal health except that the left lung remained dull and she had great shortness of breath on the slightest exertion. Her flesh, strength, and general appearance were as when she was in perfect health. Bayles says it rapidly cheeks secretions, gives general tone to the stomach, increases appetite and removes constipation. This last must be a homoeopathic effect. Gall. ac. is used in popular practice to check excessive menstruation. Prominent symptoms in the proving are: Weakness with irritability. Excessive dryness of mouth and throat. Sense of contraction of anus. Jerking of limbs. Itching of skin." ],
+    "Relations" : [ "Compare: Quercus, Tannin., Bacil., Ars. iod., Phos., &c. Phos. relieved pain in right lung." ],
+    "Mind" : [ "Wild delirium at night; very restless; jumps out of bed; sweats profusely; afraid to be alone; insists on constantly being watched; is exceedingly rude and abuses every one, even his best friends; jealous of his nurse and curses every one who speaks to her (a patient taking massive doses for aneurism)." ],
+    "Eyes" : [ "Photophobia and burning itching of lids." ],
+    "Nose" : [ "Discharge thick and stringy.", "Nose-bleed." ],
+    "8, Mouth and Throat" : [ "Gums sore l. side around decayed tooth.", "Dryness of mouth, fauces, and throat; with bad taste in deep sleep and dreams at night.", "Increased roughness and secretion of phlegm in throat." ],
+    "11, Stomach and Abdomen" : [ "Appetite lessened; with astringent taste in mouth at noon.", "Slight nausea.", "Stool later than usual leaving smarting, aching, faint, sick, hungry, and gnawing sensation in bowels, extending to stomach, with nausea lasting most of afternoon.", "Gnawing, faint sick sensation in bowels and extending upward to stomach, with an astringent sensation in same." ],
+    "Stool and Anus" : [ "Sensation of contraction of anus, requiring a greater effort for expulsion at stool, which comes at length in bulk as if accumulated there.", "Stool delayed.", "Smarting, esp. in rectum." ],
+    "Urinary Organs" : [ "Urine increased.", "Some red sediment. (Hay-asthma.)" ],
+    "17, Respiratory Organs and Chest" : [ "Pain in r. lung, lessened on lying down p.m., not so severe in morning; < by coughing, yawning and full inspiration.", "(Cavity in l. apex; purulent expectoration.).", "Some aching middle and upper part of lungs, more in l., extending through muscles of neck and r. shoulder and down upper part of spine, < moving and turning head, morning." ],
+    "Limbs" : [ "Jerking of limbs." ],
+    "Skin" : [ "Itching in various parts.", "Urticaria." ]
+  }
+}

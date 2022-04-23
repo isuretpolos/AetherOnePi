@@ -1,0 +1,31 @@
+{
+  "remedyName" : "Arsenicum Iodatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Acne rosacea Aneurism. Angina pectoris. Breast, tumour of. Bronchitis. Cancer. Catarrh. Consumption. Debility. Dropsy. Epithelioma. Gastritis. Hay-fever. Heart, affections of. Hydrothorax. Laryngitis. Leucocythaemia. Lichen. Liver, affections of. Lungs, affections of. Measles. Otorrhoea. Pneumonia. Rheumatism. Scrofulous ophthalmia. Syphilis." ],
+    "Characteristics" : [ "This medicine was originally used by H. Nankivell, on analogical grounds, in cases of phthisis. It has had a short, independent proving, and symptoms observed on patients have increased the pathogenesis. The Conditions resemble more closely those of Arsen. than those of Iod.: < from cold wind; > warmth. Great vital prostration. < From any exertion." ],
+    "Ars iod" : [ "Ars. iod. has a marked action on the stomach, and when given low needs to be given after food, if unpleasant symptoms are to be avoided. In one patient there was nausea immediately after each dose. In another there was aggravation of a pain he had in the epigastrium, and vomiting one hour after food. An observer reported in the Lancet the following: \"At first appetite is increased but after taking it ten or twelve days pain is felt at epigastrium, with thirst, dry throat, slight fever, sometimes diarrhoea and tenesmus; skin becomes dry, and the quantity of urine increased. If continued the nervous system becomes extremely irritable and wakefulness supervenes.\" In several persons taking low attenuations I have observed headaches confirming those of the provers. From the 3x a woman experienced this: \"Violent, dull, heavy pain above root of nose, as if she would go silly.\" She never had anything of the kind before. From the 1x a man had \"a heavy headache, across forehead, as if he would like to go to sleep; so weak he could hardly move about.\" All ceased when he had finished the medicine. Wandering rheumatic pains were felt by one prover. Great vital prostration. Paralysis." ],
+    "Relations" : [ "Compare: Bacil.; in acrid discharges, Nit. ac., Ailanth., Arum, Ars., Arsen. metal. and its salts. Useful after: Sulph. in phthisis pulmonalis, and after Conium in sensitive lump in breast. Antidote: Bry. relieved pain and pyrosis. Complementary: Pho." ],
+    "Causation" : [ "Study (headache)." ],
+    "Mind" : [ "Irritability.", "Unable to study." ],
+    "Head" : [ "Dulness of head, with dull pain in l. malar bone and Occasional slight frontal headache all morning.", "Bad headache on waking, lasting all day; dull, heavy; pressing from within outwards, < on motion, stooping, or studying.", "Severe frontal headache with dulness of entire head during forenoon, with stiffness and soreness of l. side of neck, < when moving head.", "Pain over root of nose as if she would go silly.", "Head seemed enormously large and heavy with the pain.", "Scalp covered with inflammatory scaly eruptions." ],
+    "Eyes" : [ "Eyes weak, with burning pain; smarting; secretion of meibomian glands increased." ],
+    "Ears" : [ "Very sharp pain in forehead and ears (< l.), when riding in a sharp, cold wind." ],
+    "Nose" : [ "Chronic nasal catarrh, discharge gluey, like yellow honey, excoriating." ],
+    "Face" : [ "Face sallow; peaked; cadaverous, with purple, livid hue." ],
+    "Teeth" : [ "Intermittent pains in first r. upper molar." ],
+    "Throat" : [ "Throat dry.", "Hawking up from throat thick mucus and clotted blood; it seemed to come from head and relieve the pain." ],
+    "Appetite" : [ "Loss of appetite.", "Appetite at first increased, later pain in epigastrium.", "Intense thirst, with uncontrollable desire for cold water, which is almost immediately ejected." ],
+    "Stomach" : [ "Distressing nausea and vomiting.", "Pain and pyrosis unbearable; < rising after sitting; > raising wind and a greasy fluid as after eating pork.", "(Subacute gastritis.).", "Vomiting an hour after food." ],
+    "Abdomen" : [ "Abdomen hard and distended with flatus, which is constantly discharged.", "Cutting pains, obliging to bend double." ],
+    "Stool and Anus" : [ "Continual aching in anus, with seeming inability to keep sphincter closed; amounts to real dysenteric straining at stool.", "Excoriating diarrhoea.", "Diarrhoea or dysentery; stools not at all at night, but urging commencing on beginning to move in morning." ],
+    "Urinary Organs" : [ "Skin dry, urine increased.", "(Diseases in uro-genital organs, esp. in females with scrofulous taint.)" ],
+    "Female Sexual Organs" : [ "Lump in mamma, sensitive to touch and painful; nipple retracted." ],
+    "Respiratory Organs" : [ "Slight hacking cough, with dryness and stoppage of the nostrils.", "Asthmatic sensations; must sit up to breathe.", "Expectoration heavy night and morning.", "Frequent cough with muco-purulent and occasionally stringy expectoration.", "Greenish-yellow pus-like expectoration; haemorrhage (chronic induration of the lungs).", "Chronic bronchitis with difficult expectoration and short breath.", "Pneumonias that fail to clear up." ],
+    "Heart" : [ "Irregular pulse; cardiac weakness; pain either with or without valvular disease, esp. when accompanied with induration of lung tissue." ],
+    "Neck and Back" : [ "Soreness of back, esp. of back of neck, as if he had been beaten.", "Burning heat in lumbar region, as if the clothes were on fire." ],
+    "Limbs" : [ "Sharp pain in upper third of r. humerus while writing; after ten minutes shifted to metacarpal bones, and was then felt in l. femur.", "Cold limbs." ],
+    "Lower Limbs" : [ "Peculiar chilliness back of l. thigh, followed by formication and weight of l. foot, the latter extending later up the leg; clothes feel cold; partially > by walking; removed by applied warmth.", "Severe laming pain l. calf.", "Painful formication outer border l. foot, followed by burning on instep." ],
+    "Skin" : [ "Persistent itching of various parts of body, most of back.", "Chronic skin affections.", "Psoriasis." ]
+  }
+}

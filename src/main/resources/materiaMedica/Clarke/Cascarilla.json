@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Cascarilla",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Anaemia. Anus, bleeding from. Constipation. Cough. Diarrhoea. Dropsy. Haemoptysis. Haemorrhages. Intermittents." ],
+    "Characteristics" : [ "Cascarilla has a family resemblance to the other Euphorbians. It acts prominently on the digestive tract. Its leading symptoms are: Sensation of swelling deep down in throat. Accumulation of mucus in throat. Hunger after meals and feeling of emptiness. Aversion to smell of tobacco smoke. The concussion of every step is felt painfully in stomach. Griping preceding morning stool. The abdominal symptoms are > by warm drinks. Movings about in abdomen as if hot water undulating there. Boils in inguinal region. Diarrhoea with backache and lassitude. Lassitude and muscular weakness are marked throughout. Constant slight urging with gnawing pain high up in rectum. Constipation, stools hard, in pieces, covered with mucus. Passes bright blood with or without stool, in large quantities, causing weakness. Short, dry cough from tickling in trachea. Haemoptysis. Stitch upward in l. side of chest. Backache and weakness. Inclination to lie down. Sleep with clear consciousness. Heat with thirst for warm drinks (intermittents)." ],
+    "Relations" : [ "Compare: Crot. t. (> from warm drinks); Chi. (effects of loss of blood; intermittents); Graph. (mucus with stools)." ],
+    "Ears" : [ "Buzzing in the ears.", "Internal and external heat of the ears." ],
+    "Mouth" : [ "Roughness of the tongue.", "Bitter taste in the mouth and of tobacco smoke, for which a repugnance is felt." ],
+    "Throat" : [ "Sore throat on swallowing, as if from an internal swelling." ],
+    "Stomach" : [ "Heat with thirst and desire for hot drinks.", "Aversion to smell of tobacco smoke.", "Abortive risings.", "Pressure on the stomach, as if from fulness.", "Pain in the stomach as from concussion.", "Heat in the stomach and burning pain in the epigastrium." ],
+    "Abdomen" : [ "Tension and pressure on the hypochondria.", "Movement in the abdomen as if hot water were undulating there.", "Flatulent, aching colic." ],
+    "Stool and Anus" : [ "Evacuations difficult, hard, broken, and covered with mucus, preceded by pinchings in the abdomen.", "Discharge of clear blood from the rectum, with the evacuations, during and after hard, brown stool in large lumps; and without stool.", "Diarrhoea alternating with hard, lumpy stool." ],
+    "Urinary Organs" : [ "After the emission of urine, pain resembling excoriation in the glans." ],
+    "Respiratory Organs" : [ "Haemoptysis.", "Stitch upwards on l. side." ],
+    "Back" : [ "Backache and weakness; muscles pained violently." ]
+  }
+}

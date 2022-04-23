@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Voeslau",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Menstruation, disorders of. Seminal emissions. Urticaria. Vertigo." ],
+    "Characteristics" : [ "Rosenberg observed the effects of Voeslau on the healthy. His symptoms constitute the Schema. The waters produce: Orgasm of blood; pressure and tension. The throat was sensitive to swallowing warm food and drink. Nettlerash with desquamation. In males there was sexual excitement and emissions; and in females increased secretion of mucus in genitals and many troubles connected with menses." ],
+    "Mind" : [ "Mind restless and excited.", "Irritability, peevishness." ],
+    "Head" : [ "Vertigo and whirling in head.", "Reeling and tottering of whole body two or three hours after a bath.", "Congestion to head and orgasm of blood.", "Heaviness of head." ],
+    "Throat" : [ "Hoarseness and dryness in throat, painful sensitiveness swallowing warm food or drink." ],
+    "Stomach" : [ "Appetite is increased after the first bath.", "Heaviness and sensation of fulness in stomach.", "Sensitiveness and pressure in stomach after eating." ],
+    "Abdomen" : [ "Pressure and tension in hepatic region, extending to r. shoulder." ],
+    "Stool and Anus" : [ "Thin stools, increasing to diarrhoea, with a slight degree of tenesmus." ],
+    "Urinary Organs" : [ "Frequent desire and frequent micturition.", "Urine: first days red, afterwards watery and copious.", "Increased secretion from prostate." ],
+    "Male Sexual Organs" : [ "Erections.", "Rush of blood to genitals.", "Nocturnal emissions." ],
+    "Female Sexual Organs" : [ "Increased secretion of mucus from genitals.", "Menses: delayed; diminished, accompanied with numerous troubles; offensive; too frequent and copious." ],
+    "Respiratory Organs" : [ "Hoarseness and dryness in throat, painful sensitiveness on swallowing warm food and drink.", "Dry cough with slight pains in chest." ],
+    "Chest" : [ "Congestion to chest and other organs.", "Oppression; respiration difficult, rapid, short." ],
+    "Limbs" : [ "Weakness and falling asleep of limbs." ],
+    "Generalities" : [ "Emaciation of young people.", "Uneasiness and unsteadiness at work.", "Increased sensitiveness, esp. to external air." ],
+    "Skin" : [ "Itching nettlerash on whole body after fourteen baths, ending in desquamation.", "Itching, heat, biting, esp. towards midnight, previous to the outbreak of perspiration." ],
+    "Sleep" : [ "Overpowering sleepiness during day; esp. afternoon." ],
+    "Fever" : [ "Coldness and chilliness at times changing to heat, with increased thirst.", "Flushes of heat without thirst.", "Perspiration in bed towards morning." ]
+  }
+}

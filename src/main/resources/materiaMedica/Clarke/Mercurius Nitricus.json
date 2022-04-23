@@ -1,0 +1,28 @@
+{
+  "remedyName" : "Mercurius Nitricus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Condylomata. Eyes, affections of. Gonorrhoea. Malaria. Mucous patches. Syphilis of nerves. Vegetations." ],
+    "Characteristics" : [ "In the form of Liquor Hydrargyri Nitratis acidus and Unguentum Hydrargyri Nitratis of the old school this salt of mercury has achieved a reputation as \"a stimulating application\" to indolent ulcers, to the eyelids in ophthalmia, and in a variety of skin diseases such as herpes, ringworm, impetigo, lepra, psoriasis, rupia. The homoeopathic authority for it is Hansen, who considers that sticking pains are its special indication, and also sticking itching. Eye affections with burning, sticking pains, photophobia, and epiphora. Mucous patches with sticking pains. Gonorrhoea with frequent burning, sticking itch on corona glandis and in sulcus coronarius. Vegetations. Hansen says Donner commends it in syphilis of the nerves and of the bones. The Schema is compiled from poisoning cases. Among the symptoms are cachexia; tremors; frequent fainting; pains so intolerable he calls for a knife to kill himself. Coldness predominates, but there is the nitric acid flush of the face." ],
+    "Relations" : [ "Compare: Merc. dulc. in stinging and itching behind corona glandis." ],
+    "Mind" : [ "Delirious.", "Extreme anxiety.", "Rolled on the ground with excessive pain, and called for a knife to kill himself.", "Memory poor.", "Stupor approaching narcotism." ],
+    "Head" : [ "Dizziness.", "Headache." ],
+    "Eyes" : [ "Eyes sunk.", "Pupils somewhat dilated but react." ],
+    "Ears" : [ "Ringing in ears." ],
+    "Face" : [ "Face: flushed; pale and livid; pale, expressive of frightful anxiety.", "Features contracted.", "Lips bluish red." ],
+    "Mouth" : [ "Blue line round margin of gums (esp. round incisors and canines).", "Gums swollen and bleeding.", "Tongue: furred; cannot be protruded.", "Tongue and lips burned, parched, painful.", "Mucous membrane of mouth inflamed and swollen, painful.", "Salivation.", "Coppery taste." ],
+    "Throat" : [ "Throat: dry; sore, red, painful." ],
+    "Stomach" : [ "Much eructation and frothy discharge from mouth with occasional vomiting.", "Vomit: glairy tenesmus; bilious; bloody.", "Extreme epigastric pain." ],
+    "Abdomen" : [ "Considerable pain on pressure over region of stomach and abdomen generally.", "Pain in hypogastrium." ],
+    "Stool and Anus" : [ "Tenesmus.", "Severe diarrhoea with colic.", "Bloody stools followed by collapse and death.", "Constipation." ],
+    "Urinary Organs" : [ "Severe pain in voiding urine.", "Urine: high-coloured.", "Suppression of urine.", "Uraemia (urea was found in blood drawn from the arm during suppression of urine)." ],
+    "Male Sexual Organs" : [ "Marked diminution of sexual power." ],
+    "Female Sexual Organs" : [ "Severe pelvic pains and incessant passing of blood from bowels followed, as an aggravation, the local application of Merc. dulc. to womb." ],
+    "Respiratory Organs" : [ "Voice feeble; almost extinct." ],
+    "18, Chest and Heart" : [ "Continuous spasmodic movements of chest.", "Obscure heart sounds.", "Pulse small, thin." ],
+    "Limbs" : [ "Tremors severe, difficult prehension and walking.", "Spasms, twitchings, incoordination.", "Cramps in lower extremities." ],
+    "Skin" : [ "Where the liquid touched a brown eschar is left." ],
+    "Sleep" : [ "No sleep for several nights." ],
+    "Fever" : [ "Skin: cold; cold, clammy; cyanosed extremities.", "Violent chill.", "Hot skin; fever.", "Profuse perspiration." ]
+  }
+}

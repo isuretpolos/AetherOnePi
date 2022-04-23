@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Coniinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Eyes, heavy. Hearing, illusions of. Hemiplegia. Numbness. Tongue, paralysis of. Vertigo. Vision, disordered." ],
+    "Characteristics" : [ "Coniin. is a poison rivalling prussic acid in the intensity of action. It has had rather an extensive proving. It causes numbness, muscular paralysis, vertigo, disorders of sight, hearing, and touch, lethargy and overpowering sleepiness. A feeling as if one had been up all night, or after a debauch. Cramp in calves on ascending steps or drawing off boots. Vertigo is > in open air." ],
+    "Mind" : [ "Calm and tranquil; slowness of mental process.", "Inability to think or fix the attention.", "Loss of consciousness." ],
+    "Head" : [ "Vertigo and confusion with prostration > in open air.", "Weight, fulness, and pressure in head.", "Open air caused pain in supra-orbital and cutaneous malae nerves." ],
+    "Eyes" : [ "Lids heavy.", "Vision confused; objects swim.", "Dazzling of sight.", "Complete blindness.", "Objects seem large; one thinks he sees his own nose a shapeless mass." ],
+    "Ears" : [ "Hearing weakened; ears feel as if stopped with cotton wool.", "Illusions of hearing." ],
+    "Face" : [ "Face sunken, pale.", "Numbness of muscles about the jaws.", "Head and face very warm." ],
+    "Mouth" : [ "Tongue pale, paralysed, and numb.", "Epithelium denuded in many places, papillae very prominent.", "Violent burning in mouth.", "Accumulation of saliva." ],
+    "Throat" : [ "Scraping in throat." ],
+    "Stomach" : [ "Eructations; nausea; vomiting." ],
+    "Abdomen" : [ "Rumbling with distension of abdomen.", "Tendency to diarrhoea." ],
+    "Respiratory Organs" : [ "Voice thick; muddled words when speaking.", "Respirations frequently yawning." ],
+    "Neck and Back" : [ "Spasmodic distortion of neck with spasms of face which draw the mouth up to a point.", "Pain in l. lumbar region." ],
+    "Limbs" : [ "Heaviness of arms and legs, esp. l. arm." ],
+    "Upper Limbs" : [ "Numbness with tingling of arms.", "Tense cramp in muscles of ball of thumb with painful sensation on strongly adducting thumb.", "Hands bluish, cold.", "Moisture on finger-tips.", "Fingers and hands wet." ],
+    "Lower Limbs" : [ "Gait unsteady; weakness esp. marked on going out to walk.", "Carries body forward.", "Legs felt independent as if they did not care for him or anybody else.", "Cramp in calves on ascending steps." ]
+  }
+}

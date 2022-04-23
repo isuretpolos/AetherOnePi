@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Mercurius Sulphocyanatus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diphtheria. OEsophagus, stricture of." ],
+    "Characteristics" : [ "The well-known scientific toy called \"Pharaoh's serpents\" is composed of the sulphocyanide of mercury. A boy ate one \"serpent,\" and a man took one in water. The symptoms were observed on these two." ],
+    "Mind" : [ "Excessive anxiety." ],
+    "Head" : [ "Vertigo on attempting to rise." ],
+    "Face" : [ "Pallor, great weakness, cold skin, and frequent shivering." ],
+    "Mouth" : [ "Constant salivation.", "Disgusting metallic taste." ],
+    "Throat" : [ "Extreme redness of throat, with white membrane on tonsils.", "Most violent burning in fauces.", "Heat and constriction in oesophagus, with difficulty in swallowing and burning in epigastric region and nausea." ],
+    "Stomach" : [ "Vomiting.", "Epigastrium painful to pressure." ],
+    "Stool" : [ "Bloody stools." ],
+    "Respiratory Organs" : [ "Voice rough and hoarse.", "Tenacious expectoration." ],
+    "Heart" : [ "Pulse intermitting every three beats." ],
+    "Upper Limbs" : [ "Pain in shoulder-joint." ],
+    "Generalities" : [ "General prostration for some days." ]
+  }
+}

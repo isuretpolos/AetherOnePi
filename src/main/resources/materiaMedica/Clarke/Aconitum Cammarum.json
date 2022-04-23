@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Aconitum Cammarum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Catalepsy. Eruption. Headache. Neuralgia. Pollutions. Salivation. Tongue, paralysis of. Vomiting." ],
+    "Characteristics" : [ "The main symptoms, of Aconitine are reproduced in A. camm. Formication begins on tongue and lips and spreads to face and thence over whole body; with this are distortion of features and dry skin. There is headache < by bending body forward; and faceache accompanied by tinnitus aurium and vertigo. Walking causes weariness and, if continued, causes pains in elbows, knees, and hips. Violent eructations; inclination to vomit without vomiting; spasmodic contraction of stomach and abdominal muscles. Great sensitiveness to light. Erections and pollutions without voluptuous dreams. On lower extremities small papules and vesicles, filled with serous fluid, very painful. Memory weakened; sense of touch diminished." ],
+    "A neomont" : [ "A. neomont. produced: Peculiar sharp taste followed by violent shooting pains from lips to stomach. The eructations and rumbling in bowels of the alkaloid were reproduced, but in addition the mucous membrane of the mouth was red, studded with small whitish yellow vesicles surrounded with bright red areola; salivation came on. Pupils, at first mobile, became persistently dilated; vision dim; unable to look at highly illuminated objects without winking; near and distant objects seem to swim. Extreme restlessness; it seems as if it were a tickling which impels him to constant movement; > in equable temperature, < on entering warm air from cold and vice versa. Apathetic, indifferent to all the world. Sleep disturbed or impossible. Vomiting > all symptoms." ],
+    "Mind" : [ "Rage.", "Fear.", "Apathy and indifference.", "Thought and power of concentration disturbed.", "Memory weak." ],
+    "Face" : [ "Blackish blue colour of face; blue swollen lips.", "Most remarkable sensation of contraction of face." ],
+    "Mouth" : [ "Paralysis of tongue.", "Salivation.", "Fuzzy sensation where the crawling was.", "Taste and sensation diminished." ],
+    "Abdomen" : [ "Burning in abdomen and sensation of ants crawling round in it." ],
+    "Respiratory Organs" : [ "Voice hoarse and rough.", "Respiration slow, difficult, with sensation as if chest and throat constricted." ],
+    "Heart" : [ "Pulse frequent; afterwards depressed; slow; irregular; intermittent." ],
+    "Generalities" : [ "Subsultus tendinum.", "Twitchings.", "Catalepsy." ]
+  }
+}

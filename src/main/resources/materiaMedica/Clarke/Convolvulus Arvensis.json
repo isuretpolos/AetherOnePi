@@ -1,0 +1,11 @@
+{
+  "remedyName" : "Convolvulus Arvensis",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Colic. Diarrhoea." ],
+    "Characteristics" : [ "Very few, experiments have been made with this plant, and in those the resinoid of the root, and pure Convolvulin were used. The few symptoms recorded are all in the gastro-intestinal sphere." ],
+    "Stomach" : [ "Eructation after eating." ],
+    "Abdomen" : [ "Colic and liquid stool." ],
+    "Stool" : [ "Soft, semi-fluid evacuation, preceded by flatulence and violent colic.", "Stools with pain." ]
+  }
+}

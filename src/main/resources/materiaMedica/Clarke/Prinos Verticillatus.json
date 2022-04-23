@@ -1,0 +1,13 @@
+{
+  "remedyName" : "Prinos Verticillatus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Fever." ],
+    "Characteristics" : [ "The genus Prinos is very closely, allied to the hollies. \"The bark of P. vertic. is bitter, and has been used in the treatment of fever, and in the form of a lotion as an application in cases of gangrene. The berries are tonic and emetic \"(Treas. of Bot.). The only recorded experiment with Pri. v., the effects of swallowing twenty berries, bears out the last statement: the effect was to cause vomiting (and also an extremely profuse greenish diarrhoea); increased appetite and tense feeling of well-being in spite of great loss of weight." ],
+    "Throat" : [ "Acrimony in fauces." ],
+    "Stomach" : [ "Appetite and digestion better than usual after the liquid stools.", "Sensation of commotion in stomach, not exciting nausea, ate heartily in spite of it; walking precipitated vomiting of a little bile." ],
+    "Abdomen" : [ "Inclination to stool; had natural stool which > all sensations." ],
+    "Stool and Anus" : [ "Natural stool; half an hour later, most profuse stool consisting of natural faeces diluted with an immense quantity of greenish liquid; without pain or uneasiness; in another hour and a half similar stool but less in quantity." ],
+    "Generalities" : [ "Felt remarkably well after the diarrhoeic stool though had lost ten pounds in weight." ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "remedyName" : "Actaea Spicata",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Cancer of stomach Fright, effects of, Hepatitis. Pleurisy. Rheumatism. Toothache." ],
+    "Characteristics" : [ "This is a rheumatic remedy like the other Actaea, but affecting more prominently the small joints and wrists. I have several times cured wrist-rheumatism with it. The joints swell after slight fatigue. The pains are tearing, drawing. The right arm and right wrist are specially affected; and there are pains like rheumatism in face. Pains are of a violent, tearing, drawing character, < by touch or movement. Pains of this kind running from decayed tooth to temples. Swelling of the joints from slight fatigue may be regarded as very characteristic. It is especially suited to men (Act. r. to women). < From motion; from change of temperature; cold air." ],
+    "Relations" : [ "It follows well: Nux v. Compare: Other Ranunculaceae; Arn., Bry., Caulo. (rheumatism of fingers), Lyc., Rhus t., Salic. ac., and Sticta (small joints)." ],
+    "Causation" : [ "Fright. Fatigue." ],
+    "Mind" : [ "Fear of death, esp. at night in bed.", "Furious delirium; also during the fever.", "Effects of exertion of mind; fright mental anxiety." ],
+    "Head" : [ "A kind of drunkenness.", "Dizziness; forehead feels empty when stooping.", "Twitching in temples; pain from a decayed tooth to temples.", "Pressure in forehead after having been in sun.", "Head symptoms < at night; from walking; return periodically; also after fever.", "Warm sweat on head.", "Small pimples on scalp." ],
+    "Eyes" : [ "Objects seem coloured blue.", "Sharp pains through eyes into head." ],
+    "Ears" : [ "Twitching pain in ears when blowing nose or sneezing." ],
+    "Face" : [ "Pains as of rheumatism in face; violent tearing and drawing pains in the upper jaw; pulling, tearing from a decayed tooth to temples; < from slightest touch or movement of the muscles.", "The cheek he lies on sweats.", "Yellow round mouth.-Lips chapped.", "Submaxillary glands hurt when chewing." ],
+    "Mouth" : [ "Increased salivation.", "Fetid odour." ],
+    "Throat" : [ "Throat sore when speaking; when breathing cold air." ],
+    "Stomach" : [ "After drinking, shuddering.", "Sour vomiting.", "Tearing, darting pain in epigastric region with vomiting.", "Cancer of the stomach, with characteristic pains", "tearing, drawing, &c." ],
+    "Abdomen" : [ "Pain and tenderness in liver region." ],
+    "Urinary Organs" : [ "Throbbing in region of kidneys.", "Urine deposits a white sediment.", "Urinary calculi." ],
+    "Female Sexual Organs" : [ "Menses suppressed by fright; by cold." ],
+    "Respiratory Organs" : [ "Difficult inspiration; stitches in epigastrium during deep breathing or a painful shock; or pain in the hip." ],
+    "Heart" : [ "Urging sensation in heart towards abdomen and region of liver, with great anxiety at night.", "Pulse" ],
+    "Limbs" : [ "Swelling of joints after slight fatigue (after walking).", "Rheumatism of small joints (ankle, toe-joints, and esp. joints of hands).", "Pain as from paralytic weakness of hands.-Lameness of r. arm.-R. wrist pains intolerably, swollen, red, touch intolerable; motion impossible; pressure on palm intolerable." ],
+    "Fever" : [ "Shuddering after drinking.", "Belching during the chill.", "Shuddering followed by heat, during which vomiting supervenes." ]
+  }
+}

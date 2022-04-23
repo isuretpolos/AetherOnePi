@@ -1,0 +1,27 @@
+{
+  "remedyName" : "Stellaria Media",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Gout. Liver, inflammation of. Rheumatism. Psoriasis." ],
+    "Characteristics" : [ "The first mention of Stel. appeared in H. W., xxviii. (June, 1893). F. H. Brett gave an experience with the tincture applied externally, in the case of his wife to enlarged, inflamed gouty fingers-joints, and in his own case to painful, aching great toes. In each case a few applications removed the trouble. Brett was led to this use by having heard a rumour that \"chickweed poultices\" were good for gouty joints. In the same volume, p. 560, F. Kopp published a proving of the tincture on himself. The symptoms of the proving make up my Schema. Kopp took frequently repeated doses of the tincture, and also chewed some of the weed. The pains induced were of a rheumatic character, and were so severe that they had to be antidoted with Nux and Bry. Kopp confirms Brett's observations in the value of external applications of Stet. Internally he gave the 2x. The most prominent symptom, apart from the rheumatic effects, was the pain, swelling, and soreness of the liver. The pains were > by motion, and were accompanied by soreness. Bellairs (H. W., xxi. 24), published this case: \"E. B., 18, had had rheumatic fever which had left him in a hopeless state of chronic \"shifting\" rheumatism: pains now in ankle, now in knee, now in arm, wrist or fingers. Stel. 2x, taken three times a day, completely cured in a month. Bellairs suggests that \"shifting-pains\" may be a keynote; and Kopp confirms this. Brett (H. W., xxxiv. 93) cured himself with Stel. of a violent attack of sickness, with sharp pains in stomach, increasing in violence and culminating in an explosive vomit. The liver was much enlarged, hard to the touch. The pain began in the region of the gall bladder. Vomiting ceased after the first dose, and the liver enlargement quickly subsided. Cooper gave much relief with a single dose of O in the case of a woman, 55, who had psoriasis, dating from twenty-one years back, with irritation in the spots, chiefly on flexures of joints, with much irritation of scalp and soreness of eyeballs." ],
+    "Head" : [ "Rheumatic pains over r. side of head, esp. at back; sore to touch.", "Rheumatic pains; darting through whole head < r. side; through l. half of forehead, over eye; sore to touch." ],
+    "Eyes" : [ "R. eyeball sore to touch.", "Flushes of heat below r. lid.", "Darting pain in r. eye.", "Vision dim." ],
+    "Nose" : [ "Dryness of nostrils." ],
+    "Face" : [ "Neuralgic pains r. side of face.", "Burning on lower lips." ],
+    "Mouth" : [ "Persistent taste of the drug with slight acrid feeling.", "Heat and dryness of mouth; numbness of lower gums and tip of tongue.", "Sensation as if incisors set on edge." ],
+    "Throat" : [ "Numbness and dryness in throat, followed later by sharp stitches in l. tonsil." ],
+    "Stomach" : [ "Slight nausea with frequent eructations, tasting of the drug." ],
+    "Abdomen" : [ "Stomach and bowels sore, < by touch.", "Navel sore to touch.", "Soreness and dragging pains in lower bowels.", "Wandering pains around navel, settling between navel and liver.", "Sensation as if liver too large for body.", "Burning pains all over liver.", "Liver sore to touch.", "Burning pressure in region of liver.", "Bilious feeling.", "Pains in r. groin." ],
+    "Stool" : [ "Stools loose, dark brown, attended with slight pain." ],
+    "Urinary Organs" : [ "Kidney region sore to touch." ],
+    "Respiratory Organs" : [ "Short cough from tickling on upper chest, < deep inspiration.", "Hawking of viscid, saltish mucus." ],
+    "Chest" : [ "In chest: tickling, upper part; constricted; oppression; heat." ],
+    "Back" : [ "Rheumatic pains across small of back, < bending.", "Loins stiff and sore.", "Dull pain under r. scapula." ],
+    "Limbs" : [ "Joints stiff." ],
+    "Upper Limbs" : [ "Darting, rheumatic pain: down r. arm, and in middle of index finger of l. hand." ],
+    "Lower Limbs" : [ "Rheumatic pains: in r. hip; l. foot; ankle; l. knee, gradually extending along thigh; below r. knee-cap; in calves which are sensitive." ],
+    "Generalities" : [ "Pains < on motion; parts sore to touch.", "Symptoms come on rapidly after taking the drug; next morning on rising bruised feeling all over thighs as from over-exertion." ],
+    "Sleep" : [ "Sleeps well but unrefreshed on waking." ],
+    "Fever" : [ "Pulse slightly raised but temperature normal." ]
+  }
+}

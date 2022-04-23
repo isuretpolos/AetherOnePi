@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Benzinum Dinitricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Amblyopia. Anaemia. Colour-blindness. Impotence. Peripheral neuritis. Retinitis. Spastic paralysis. Urine, black." ],
+    "Characteristics" : [ "Benz. dinit. is used in the manufacture of the higher explosives. The effects on workpeople have been recorded by Simeon Snell in the British Medical Journal of March 3, The symptoms observed strongly resemble those of Benz. nit., viz.: Headache, giddiness, staggering; numbness and paralytic sensations. But the following:", "Anaemia, with a murmur in the pulmonary artery. Impotence observed in men (in women there was no-alteration in menstrual functions); distaste for tobacco", "are not mentioned under Benz. nit., but were marked in those under the influence of Benz. dinit.: The knee-jerks were, if anything, somewhat exaggerated. Dyspnoea was marked in all, accounting partly for the inability to smoke. In the eyes the symptoms were very marked, and were very carefully observed. Ordinary vision was greatly impaired; the field of vision contracted, and partial colour-blindness, \"a small central scotoma for red and green.\" The retinal veins were found much engorged; probably part of the general venous engorgement and cyanosis. The blood is altered and turned black, and the urine is black without containing blood." ],
+    "Relations" : [ "Compare: Benz., Benz. nit., Hydrocy. ac., Ars. Antidoted by: Strychnine." ],
+    "Mind" : [ "Raving and unconscious from p.m. to p.m.; the doctor gave him up, but he recovered.", "Delirious, complaining of great pain in head." ],
+    "Head" : [ "Giddiness, compelling to sit down.", "Reels like one drunk; even fell off a stool when sitting; stumbled getting into a trap.", "Could not walk many yards without falling.", "Occipital headache; unable to work on account of headache.", "Frontal headache with delirium.", "Colour of hair altered from golden to a sort of red." ],
+    "Eyes" : [ "Blindness.", "Colour-blindness, \"central scotoma for red and green.\".", "Disc pale; greyish; edges defined; retinal vessels full, esp. the veins.", "Retinal hyperaesthesia.", "Veins much larger than the arteries.", "Conjunctivae jaundiced." ],
+    "Face" : [ "Face pale, lips blue.", "Face bluish, asphyxiated look." ],
+    "Stomach" : [ "Occasional nausea and vomiting.", "Intolerance of alcohol, \"it made him feel so bad.\"" ],
+    "Urinary Organs" : [ "Urine dark, like ink; sp. gr. 1,029." ],
+    "Male Sexual Organs" : [ "Sexual desire lost, power diminished (restored when taking liq. strychniae after leaving off the work)." ],
+    "Respiratory Organs" : [ "Breath very short; rendering smoking very difficult.", "Short breath with giddiness.", "Asphyxia." ],
+    "Heart" : [ "Engorgement of venous system.", "Bruit in pulmonary artery.", "Pulse very frequent (115), small, and compressible.", "Anaemia.", "Blood black." ],
+    "Limbs" : [ "Want of sensation in arms and legs; prickly feeling.", "Legs numb to knees and arms to elbows.", "Stiffness about hands and feet, but esp. the fingers.", "Hands and feet cold; feet numb and also sore.", "Finger-tips feel cold to the touch, though she herself is not aware of it." ]
+  }
+}

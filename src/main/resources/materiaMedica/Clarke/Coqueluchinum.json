@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Coqueluchinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Cough, paroxysmal. Whooping-cough." ],
+    "Characteristics" : [ "In Messrs. Epps published a little book of mine dealing with this nosode, to which I then gave the name of Pertussin. But it appeared that a German firm of chemists had registered in England a patent medicine under that name, and threatened the publishers with an action unless the book was withdrawn! As the matter was not worth a law-suit, I adopted the French name for the nosode, and a second revised and enlarged edition was brought out by the Homoeopathic Publishing Co. under the title Whooping-cough Cured with Coqueluchin. Since that date later experience has fully confirmed all that was then written, and many patients, old as well as young, have experienced the virtues of Coqueluchin. In all cases of whooping-cough suspected or defined I give the remedy in the 30th attenuation every four hours as a matter of routine, and as a rule it quickly assumes control of the case and does all that is necessary. In my experience it agrees well with all other whooping-cough remedies, and when their specific indications appear I give them also in alternation, or else alone. Coqueluchin is an \"unproved\" remedy, except in the sense that every case of the disease is a \"proving,\" but I have noted a few special symptoms removed by it, and I have arranged them in a subjoined \"Schema.\" It is equally applicable to cases of cough of the same type, though not caused by the same infection, such as appear in some cases of influenza." ],
+    "Relations" : [ "Compare: Bell., Cocc. c., Coral. r., Dros., etc." ],
+    "Eyes" : [ "Coryza with hacking cough." ],
+    "Face" : [ "Intense flushing with cough." ],
+    "Mouth" : [ "Itching of the palate on lying down at night." ],
+    "Throat" : [ "Intense tickling in throat causing cough." ],
+    "Stomach" : [ "Vomiting or nausea at end of cough." ],
+    "Respiratory Organs" : [ "Dyspnoea with cough.", "Sobbing or sighing at end of cough.", "Strangling sensation with cough on waking.", "Cough provoked by intense tickling in throat-fauces or trachea.", "Hacking cough; with coryza.", "Deep-sounding croupy cough.", "Spasmodic choking cough.", "Spasmodic cough with intense flushing of face.", "Cough in frequently repeated paroxysms." ],
+    "Chest" : [ "Stinging pain in or on the chest with cough." ]
+  }
+}

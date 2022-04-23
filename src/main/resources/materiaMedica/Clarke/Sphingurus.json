@@ -1,0 +1,27 @@
+{
+  "remedyName" : "Sphingurus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Hair falling out (head; beard). Jaw-joint, pains in. Stammering. Zygoma, pain in." ],
+    "Characteristics" : [ "The Old World porcupines have the name Histricinae, those of the New World Sphingurinae. Mure proved the 3x trituration of the prickles. The most noteworthy symptoms were", "failing out of the hair, of whiskers especially; pain in the jaw-joint and right zygoma. Itching of the pubes after taking tea. Embarrassed speech. Nausea at sight of food. The symptoms are: < Lying down. < After tea. > Walking in open air. > After dinner." ],
+    "Mind" : [ "Capricious mood.", "Everything is disagreeable to him." ],
+    "Head" : [ "Dizziness behind the head.", "Prickings on vertex.", "Darting through l. skull-bones.", "Hemicrania.", "Boring pain in skull after breakfast.", "The hair falls off." ],
+    "Eyes" : [ "Lachrymation." ],
+    "Ears" : [ "Deafness in l. ear.", "Whizzing and buzzing in ears." ],
+    "Face" : [ "Pain in articulation of jaw.", "Pain in right zygoma.", "Desquamation of whiskers." ],
+    "Mouth" : [ "Bleeding of gums.", "Bitter mouth, with salt taste.", "Embarrassed speech." ],
+    "Stomach" : [ "Nausea, with piercing pain in back.", "Desire to vomit at sight of food.", "Drowsy after dinner.", "Constrictive pain in stomach.", "Dry and full feeling in stomach at night.", "Shootings in epigastrium." ],
+    "Abdomen" : [ "Sense of fulness in abdomen.", "Painful swelling of abdomen before dinner.", "Pain around navel." ],
+    "Urinary Organs" : [ "Violent pains in l. kidney.", "Pain in urethra after urinating, < stooping.", "Itching of pubes after taking tea." ],
+    "Respiratory Organs" : [ "Cough with pain in chest." ],
+    "Chest" : [ "Pain in intercostal muscles.", "Pain in r. side as from a plug." ],
+    "Heart" : [ "Stitch in heart." ],
+    "Neck" : [ "Constriction from neck to diaphragm." ],
+    "Upper Limbs" : [ "Pain in r. arm, as if broken.", "Pain at lower end of r. forearm.", "Pain in r. arm as if extension were prevented by a string." ],
+    "Lower Limbs" : [ "Knees give way.", "Heat and numbness of feet.", "Cracks between toes.", "Lancing pain in r. big toe." ],
+    "Generalities" : [ "Passing pains in toes, r, temple, and one canine tooth.", "Weakness.", "Numbness.", "Symptoms < lying down; > walking in open air; > after dinner." ],
+    "Skin" : [ "Itching all over with bleeding after scratching." ],
+    "Sleep" : [ "Yawning.", "Morning dream about a serpent.", "Merry dreams." ],
+    "Fever" : [ "Shuddering.", "Shuddering with chattering of teeth." ]
+  }
+}

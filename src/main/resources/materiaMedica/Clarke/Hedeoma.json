@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Hedeoma",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Amenorrhoea. Dysmenorrhoea. Leucorrhoea." ],
+    "Characteristics" : [ "Both the American and the British \"Pennyroyals\" have a popular reputation as \"female regulators,\" which is by no means undeserved. Homoeopaths have verified the relation of the drug to uterine ailments, and an observation by Dr. Toothaker of a case of poisoning affords valuable ground for homoeopathic prescribing. Bearing-down pains were most marked, < by any movement, and accompanied by almost paralytic weakness of the legs. Nervous symptoms were very prominent, jerkings and twitchings. Weak, faint, > lying down; inability to sit up. Pains in abdomen < after eating or drinking. < By touch and pressure." ],
+    "Relations" : [ "Compare: Mentha pulegium, Sep., Sabi., Lil. t. Veratrum antidoted some of its effects." ],
+    "Head" : [ "Dull, heavy feeling in head in morning, not continued through day.", "Sore pain in l. temporal ridge, as of a cut or wound, lasting about six weeks." ],
+    "Throat" : [ "Sensation of something rising in throat, or as if her breast were coming up into her mouth.", "Great difficulty in swallowing, it nearly took her breath away." ],
+    "Stomach" : [ "Nausea, a rising-up sensation from stomach, producing occasional retching.", "Excessive retching, nausea and straining." ],
+    "Abdomen" : [ "Abdomen very sore and sensitive to touch and pressure." ],
+    "Stool and Anus" : [ "Obstinate constipation; painful evacuations every four or five days." ],
+    "Urinary Organs" : [ "Frequent urgent desire to pass water; passes very little; cutting, burning pains with tenesmus of sphincter urinarius." ],
+    "Female Sexual Organs" : [ "Excessive bearing-down pains with pressure outward towards vulva, from whole lower abdomen, accompanied by almost unendurable pains in back, drawing down from upper sacral spine, extending also to epigastrium and stomach; like veritable labour-pains; returning with regular periodicity if she remained at rest; greatly < by the least movement; she lay on the floor on a small mattress, and could not be removed, on account of the aggravation, until the following day; < by the least food or drink.", "Leucorrhoea with itching and burning (commenced sixth day and lasted some weeks)." ],
+    "Respiratory Organs" : [ "Shortness of breath as if from an asthmatic attack.", "Frequent, periodical dyspnoea with oppression of thorax." ],
+    "Back" : [ "Unendurable pains in back, esp. in sacral spine near the upper vertebrae, dragging down from that point to uterus.", "Excessive pains in back and head." ],
+    "Limbs" : [ "Semi-paralysis of limbs; could not stand or move, or bear the pain of movement.", "Pain and coldness of limbs, esp. of feet." ],
+    "Generalities" : [ "Affected all her nerves; nervous twitchings and jerkings in all the fibres of the body, sensible in the pulse or wherever the observer's fingers touched the flesh.", "Semi-paralysis.", "Prostration following retching.", "General soreness." ]
+  }
+}

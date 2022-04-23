@@ -1,0 +1,29 @@
+{
+  "remedyName" : "Mercurius Dulcis",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Catarrh. Condylomata. Conjunctivitis. Deafness. Diarrhoea. Eustachian tube, affections of. Gastro-malachia. Meningitis. Peritonitis, plastic. Prostatitis. Throat, sore." ],
+    "Characteristics" : [ "Merc. dulc. is responsible for a large amount of the mercurialisation of the past and for some of the present. As a comparatively mild and slow-acting form of mercurial, it has none of the corrosive effects of the perchloride, but it has all the power of the metal in it nevertheless, and it has had its own share of disasters. For constipation and any affection which could be ascribed to the liver, blue pill was at one time about the only recognised remedy. Some homoeopaths have adopted a modification of this by prescribing Merc. dulc. 1x in two- or three-grain doses as a direct purgative. But as Merc. dulc. has caused both constipation and diarrhoea, it is probable that the action is roughly homoeopathic. The Schema is made up for the most part of toxicological and clinical symptoms; though a proving of potencies has been made. It is especially scrofulous children who are liable to remittent bilious attacks who are benefited by Merc. dulc. The keynote of Merc. dulc., in this as in other complaints is pallor: \"pallid as a corpse,\" and with this a \"flabby bloatedness\" of appearance. Pale, scrofulous children who have swelling of cervical and other glands. Skin flabby and ill-nourished. Another leading feature of Merc. dulc. is inflammation with plastic exudation. I have seen Calomel in old-school practice rapidly resolve and cure a violent meningitis, with wild delirium, in a girl of five. In this case there was probably plastic exudation on the membranes. Plastic peritonitis. Gluing up of Eustachian tube with catarrh. Scrofulous inflammation in general and particularly of the eyes. Soreness round anus is a leading indication in many affections when it occurs as a concomitant." ],
+    "Relations" : [ "Antidoted by: Hep. Compare: In stringy stools, Sul. ac. Catarrhal inflammation of middle ear, Kali m. Eustachian tube closed; deafness of old age, Kali m." ],
+    "Mind" : [ "Agitated.", "Apprehensive." ],
+    "Head" : [ "Heaviness across forehead.", "Falling off of hair." ],
+    "Eyes" : [ "Gummy secretion on edges of lids; later, smarting and indistinct vision.", "Eyes: red; dry; photophobia.", "Symptoms < after exercise, and when heated from exercise.", "Scrofulous ophthalmia.", "Ciliary blepharitis." ],
+    "Ears" : [ "Deafness, occasioned by a swelling, which compresses Eustachian tube.", "(Deafness of old age.).", "Scrofulous otitis.", "Itching in external meatus.", "Sudden fluttering in l. ear for a few moments." ],
+    "Nose" : [ "Violent epistaxis.", "Dry, crusted nostrils.", "Sore r. nostril." ],
+    "Face" : [ "Face flushed.", "Pallid as a corpse.", "Swelling of cheeks.", "Exfoliation of lower jaw and death." ],
+    "Teeth" : [ "Violent burning in teeth; teeth become bare, shake, and fall out; gums swollen and bleeding when touched." ],
+    "Mouth" : [ "Difficulty to open mouth.", "Ulcers in mouth, bleeding throughout night.", "Aphthae on tongue.", "Salivation sometimes with haemorrhage.", "Flow of horribly fetid, dark saliva, which attacks lips and cheeks; tongue and whole mouth have black appearance." ],
+    "Throat" : [ "Excessive ulceration of throat.", "Difficulty of swallowing." ],
+    "Stomach" : [ "No appetite.", "Urgent thirst.", "Vomiting.", "Weight and pain at epigastrium." ],
+    "Abdomen" : [ "Violent pain in abdomen; griping; tenderness.", "Bloated, hot, painful abdomen (gastro-malachia)." ],
+    "Stool and Anus" : [ "Diarrhoea; with vomiting.", "Stools-watery, greenish; coppery green, like chopped eggs; grass-green; stringy; mucous, bloody, dysenteric; black with great epigastric oppression, sinking.", "Constant disposition to stool.", "Obstinate constipation.", "Rectum: burning; tenesmus.", "Soreness round anus.", "Condylomata round anus." ],
+    "Urinary Organs" : [ "Urine increased (2nd d.); diminished (3rd, 4th, and 5th d.)." ],
+    "Male Sexual Organs" : [ "Acute inflammation of prostate, after suppressed gonorrhoea; burning, pressing pains; intense dysuria; urine scanty.", "Stinging and itching just back of corona glandis." ],
+    "Female Sexual Organs" : [ "Broad, moist, burning condylomata around external genitals, perinaeum and anus, of exceedingly offensive smell." ],
+    "Chest" : [ "Great oppression in chest and in region of heart." ],
+    "Limbs" : [ "Trembling of hands and feet." ],
+    "Upper Limbs" : [ "Rheumatic stiffness and catching pain in muscles of legs and knee-joints.", "Cramps in calves at night." ],
+    "Skin" : [ "Desquamation of skin, esp. of hands and feet.", "Phagedaenic ulcers, with white bases, and painful and inflamed margins, in mouth, palate, face, genital and other parts.", "Copper-coloured eruption." ],
+    "Fever" : [ "Feverish heat, profuse nocturnal sweat, tearing pains in limbs, prostration of strength, and trembling.", "Fever, sometimes hot, putrid." ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Anilinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Anaemia. Cancer. Cholera. Eczema rubrum." ],
+    "Characteristics" : [ "The symptoms of Anilinum have been observed on workpeople poisoned by inhalation of the fumes, and on persons who have worn aniline-dyed articles next the skin. The symptoms are in many respects like those of Arsenic. There are vomiting, purging, bursting headache, epileptiform attacks; cyanosis is very marked; swelling and irritation of the skin. In old-school practice injections of aniline blue have been used with some success to destroy cancerous growths, aniline having a marked affinity for cell nuclei, hence its use in staining microscopic specimens. In poisoning cases evacuants, the inhalation of oxygen, the free use of stimulants", "brandy, ammonia, chloric ether", "cold affusions to the head, and sinapisms on legs and thighs, have been used with success." ],
+    "Relations" : [ "Compare: Antipyrinum, Antifibrinum, Phenacetinum, Glon., Ars." ],
+    "Mind" : [ "Hebetude." ],
+    "Head" : [ "Vertigo.", "Bursting pains in head." ],
+    "Eyes" : [ "Eyes irritated.", "Burning, injected.", "Lower lids puffed." ],
+    "Mouth" : [ "Bitter taste." ],
+    "Stomach" : [ "Intense burning in stomach and head, \"could not get her breath\"; later, vomiting, purging; extremities icy cold intense pain over stomach, which is very hard." ],
+    "Male Sexual Organs" : [ "Pain in penis and scrotum, later, swelling, still later, impotence." ],
+    "Generalities" : [ "Swelling of various parts.", "Irritation of tissues.", "Epileptic attacks.", "Tetanic spasms." ],
+    "Skin" : [ "Vesicular eruption forming a bracelet round wrist.", "Eczematous eruption affecting both knees.", "Swelling, redness, intolerable itching of skin; eczema rubrum." ],
+    "Sleep" : [ "Somnolence." ]
+  }
+}

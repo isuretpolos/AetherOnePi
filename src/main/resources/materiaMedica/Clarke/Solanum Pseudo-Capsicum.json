@@ -1,0 +1,12 @@
+{
+  "remedyName" : "Solanum Pseudo-Capsicum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Pupils, dilated. Somnolence." ],
+    "Characteristics" : [ "The few symptoms of this medicine were observed on a child who ate three or four of the berries." ],
+    "Eyes" : [ "Dilatation of the pupils." ],
+    "Stomach" : [ "Nausea." ],
+    "Abdomen" : [ "Very acute pains in lower abdomen." ],
+    "Sleep" : [ "Somnolence." ]
+  }
+}

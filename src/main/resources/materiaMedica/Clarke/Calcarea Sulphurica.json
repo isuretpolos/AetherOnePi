@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Calcarea Sulphurica",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Abscess. Anus, abscess near. Boils. Buboes. Burns. Carbuncles. Chilblains. Cornea, ulceration of. Cough. Crusta lactea. Cysts. Dropsy. Dysentery. Eczema. Fistula. Glandular swellings. Gonorrhoea. Haemorrhages. Injuries, effects of. Pneumonia. Polypi. Scarlatina. Spermatorrhoea. Syphilis. Tonsillitis. Tumours. Ulcers." ],
+    "Characteristics" : [ "Calc. sulph. is closely related to Hepar sulph. calc., which is an impure sulphide of calcium, but has a wider sphere and deeper action in suppurative processes. It is Schussler's \"Connective-tissue salt,\" and most of the indications for its use are derived from his clinical experience. In the last edition of his Biochemic Therapy Schussler discards Calc. sul. because it is not an actual constituent of the tissues, and he distributes its functions between Silicea and Nat. Phos. Homoeopaths, having no Biochemic theory to support, may continue its use without scruple, especially as it has been proved by Hering and others. It is indicated in all kinds of cases after pus has found a vent. Nash has cured a case of suppurating kidney with it. It differs from Hepar in sensitiveness to air: Hepar cannot bear the slightest exposure; Calc. sul. has > in open air; better walking in it; desire for it. Both have < from change of weather. Calc. sul. has not the excessive sensitiveness to touch found in Hepar. Hansen recommends it in dry eczema in children. Cystic tumours, fibromata and polypi have been cured with Calc. sul." ],
+    "Relations" : [ "Compare: Calend., Hep., Kali mur., Nat. sul. (postscarlatinal dropsy); Sil. (hard, or suppurating glands, ulcers of cornea, tonsillitis, mastitis, frostbites). Follows well: Kali m., Nat. sul., Sil." ],
+    "Head" : [ "Sensation round head as if he had his hat on.", "Painful pimples; hard swellings at edge of hair, bleeding when scratched.", "Crusta lactea.", "Cranio-tabes." ],
+    "Eyes" : [ "Sees only half an object.", "Ophthalmia with purulent discharge.", "Ulceration of cornea.", "Eyes protrude." ],
+    "Nose" : [ "Coryza, with thick, yellow, lumpy, mattery discharge.", "Influenza and sneezing > in open air; coryza r. side after a bath, > out of doors.", "Edges of nostrils sore, excoriated." ],
+    "Face" : [ "Swollen cheek with toothache.", "Herpetic eruptions; pimples; pustules.", "Exceedingly pale, sickly appearance (gypsum workers).", "Blister-like sores on lower lip." ],
+    "Teeth" : [ "Rheumatic toothache; swollen, tender, easily-bleeding gums." ],
+    "Mouth" : [ "Taste soapy.", "Tongue coated yellow at base.", "Glossitis." ],
+    "Throat" : [ "Diphtheria of soft palate; scarlatinal sore throat.", "Tonsillitis with suppuration." ],
+    "Stool and Anus" : [ "Diarrhoea with discharge of pus or bloody pus.", "Dysentery with pus-like slime.", "Painful abscesses about anus in cases of fistula.", "Costiveness with hectic fever; with difficult breathing." ],
+    "Urinary Organs" : [ "Chronic nephritis.", "Red urine with hectic fever." ],
+    "Male Sexual Organs" : [ "Spermatorrhoea with impotency.", "Gonorrhoea in suppurative Stage.", "Chronic syphilis." ],
+    "Respiratory Organs" : [ "Croup.", "Catarrh with thick, lumpy, white-yellow or pus-like secretion.", "Asthma or cough with hectic fever.", "Pain in chest and headache.", "Pneumonia third stage.", "Emphysema." ],
+    "Upper Limbs" : [ "Whitlow, when suppuration begins." ],
+    "Lower Limbs" : [ "Itching and podagra.", "Pain in knee from a blow.", "Stitches in knee.", "Legs tender to touch, feet slightly swollen.", "Burning and itching in soles of feet." ],
+    "Skin" : [ "Suppurating chilblains.", "Burns and scalds when suppuration takes place.", "Scarlet rash.", "Skin affections with greenish, brownish or yellowish scabs.", "Greyish lead-coloured skin.", "(Dry eczema in children.)" ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "remedyName" : "Ficus Religiosa",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Haemorrhages. Menorrhagia. Metrorrhagia." ],
+    "Characteristics" : [ "We owe this remedy to Dr. Sarat Chandra Ghose, of Midnapore, who made the first proving and thereby discovered its power to cause and cure haemorrhages of many kinds. Dr. Ghose kindly sent me a supply of the remedy, and I have had very satisfactory results with the 1x potency in controlling menorrhagia. The provers were Dr. Ghose himself, his wife, and a dog. As the experiments are quite remarkable I will give them in detail. The dog, which was perfectly strong and healthy, received drops of the tincture one morning. No result followed that day, and the dose was repeated next morning, and the animal commenced and continued to vomit blood of a bright red colour. It kept very quiet and was unwilling to move. After three doses of five drops of the tincture given in quick succession, the vomiting ceased. It is remarkable that the same treatment (minute doses of the same remedy) was effectual in arresting the effects of the drug in the other two provings. Mrs. G. took the tincture in 20-drop doses repeatedly throughout two days. On the third day dysentery and menorrhagia set in simultaneously. The blood was bright red. Other symptoms were: Headache; very weak and restless; sight dim; burning at the top of the head. The face became yellowish; breathing difficult. She became sad and melancholy. With the profuse discharge of bright red blood there were bearing-down pains in lower abdomen. Dr. G. took drops in one dose. The result was: Frequent desire to pass water, which gradually became bloody, and contained much blood. Then inclination to cough, causing him to spit blood. Slight headache; giddiness and nausea. Sight dim. Very weak and restless. The tincture was taken three drops every two hours, and after the third dose the symptoms vanished. Dr. Ghose relates some striking cases cured with the remedy", "dysentery, haematemesis, haemorrhage of typhoid, bleeding piles, and epistaxis." ],
+    "Relations" : [ "Compare: Acalypha, Ipec., Arn., Phos., Sanguisuga, Cactus, Ferrum, &c." ],
+    "Mind" : [ "Quiet and disinclined to move.", "Sad and melancholy." ],
+    "Head" : [ "Nausea, vertigo, and slight headache.", "Headache (with haemorrhages).", "Burning at vertex." ],
+    "Eyes" : [ "Sight dim." ],
+    "Nose" : [ "Epistaxis." ],
+    "Face" : [ "Face became yellow." ],
+    "Stomach" : [ "Vomiting of bright red blood." ],
+    "Abdomen" : [ "Bearing-down pains in lower part of abdomen." ],
+    "Stool and Anus" : [ "Dysentery, with menorrhagia.", "Dysentery, blood bright red." ],
+    "Urinary Organs" : [ "Frequent desire to micturate.", "Urine contains much blood." ],
+    "Female Sexual Organs" : [ "Menorrhagia, bright red blood, bearing-down pains in lower abdomen." ],
+    "Respiratory Organs" : [ "Difficulty of breathing.", "Inclination to cough, causing him to spit blood." ],
+    "Generalities" : [ "Very weak and restless." ]
+  }
+}

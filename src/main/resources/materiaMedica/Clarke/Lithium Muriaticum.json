@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Lithium Muriaticum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Heartburn. Heart, pains in. Nose, sore. Tongue, numb." ],
+    "Characteristics" : [ "Hering, who proved Li. c., proved also this salt. He put one drop on his tongue. It had a salt taste, but different from common salt; a fatty-salt taste. The tongue became numb as if fat were on it. Pains in the head, back teeth, and heart. Gohrwisch, who took the 3rd dilution, had pains in heart region and notably: Hot, burning uprising in the throat and pit of stomach like heartburn. He also had pains in teeth. The tip of the nose was red, sore, and somewhat swollen." ],
+    "Relations" : [ "Compare: Li. carb." ],
+    "Head" : [ "Painful dulness r. side of head; also l.; with heat of face.", "Pain in middle of vertex.", "Pain in forehead above r. eye.", "Dull pain through whole head." ],
+    "Eyes" : [ "Spasmodic twitching of r. upper lid." ],
+    "Nose" : [ "Difficult breathing through nose as in catarrh.", "Tip of nose red, sore, and somewhat swollen, with a rather sensitive pain, disappeared without suppurating." ],
+    "Face" : [ "Frequent heat in face." ],
+    "Mouth" : [ "Painful dulness in l. lower back teeth.", "Pains in hollow teeth l. side.", "Salty taste but not like common salt.", "Upper surface of tongue numb, as if fat were on it." ],
+    "Throat" : [ "Uprising of something acid and stringy in throat, frequently." ],
+    "Stomach" : [ "Increased appetite.", "Uprising of food and sour water.", "Warmth in stomach, more l. side.", "Frequent eructations.", "Hot, burning uprising in throat and pit of stomach like heartburn.", "Feeling of heat and weakness of stomach, as after a purge, as though diarrhoea would ensue." ],
+    "Stool and Anus" : [ "Prickling in anus." ],
+    "Chest" : [ "Sharp but not violent pain in lower l. chest, transient, frequently recurring." ],
+    "Heart" : [ "Pain in upper and inner part of heart." ],
+    "Neck and Back" : [ "Dull pressure from between shoulders and lower down on each side of spine between shoulders and small of back.", "Constant pain in back; < after remaining seated long in one position.", "Aching between shoulders extending through to chest." ],
+    "Upper Limbs" : [ "Trembling pain in l. humerus, extending upward from middle, at different intervals, as if something were dropping or slipping outward." ],
+    "Lower Limbs" : [ "Throbbing in r. ankle." ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Jalapa",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Anus, soreness of. Coryza. Diarrhoea. Gout. Fainting. Restlessness." ],
+    "Characteristics" : [ "Jalap. is the well-known purgative of old-school practice. It has had a short proving by Noack and Trinks, and a later one by Jeanes. The characteristic stools of Jalap. are: Watery, sour-smelling, and bloody. There is cutting colic before and during the stool. The most marked < is at night. A child may be quite quiet all day, but screams and tosses about all night. In such a case Jalap. is very likely to be the remedy whether the child is suffering from diarrhoea or other complaint. Allen gives this as cured: Coryza in an infant, violent attacks of crying and intense pain; quiet during the day, but screaming all night. Nash cured with Jalap. a desperate case of entero-colitis in which there was screaming all day as well as all night. With the screaming there were constant contortions of the body, bending forward, backward, and sideways alternately. There is great restlessness and anxiety with Jalap. General coldness and blueness of the face. The abdominal pain is very severe: \"as if the abdomen would be Cut to Pieces\"; severe griping, cutting pains. Pain in sigmoid flexure. There is great weakness; fainting fits; excessive uneasiness and tossing about of limbs. There is > of pain by eructations of frothy matter and flatulence." ],
+    "Relations" : [ "Compare: Camph. (diarrhoea with coldness); Coloc. (colic). Ir. t. (pain in caecum)." ],
+    "Mind" : [ "Great restlessness with anxiety." ],
+    "Head" : [ "Violent headache.", "Pain in head; smarting in skin of forehead." ],
+    "Ears" : [ "Humming in ears." ],
+    "Face" : [ "Dryness of lips." ],
+    "Mouth" : [ "Biting and smarting of tongue.", "Stinging on tongue and in fauces." ],
+    "Stomach" : [ "Flatulent and frothy eructations with abatement of pain.", "Nausea." ],
+    "Abdomen" : [ "Pain in r. hypochondrium.", "Severe griping, cutting pain in bowels, < at night.", "Pain in middle of abdomen and in region of l. superior flexure of colon.", "Pain in caecum.", "Flatulent rumbling in bowels.", "Colic: violent pain in small intestines, as if abdomen would be cut to pieces.", "Inflammation of intestines." ],
+    "Stool and Anus" : [ "Stools: violent, excessive; bloody; watery, with weak pulse; sour-smelling; with great restlessness and anxiety.", "Before and during stool: cutting colic.", "Pain in sigmoid flexure of colon.", "Soreness of anus.", "Diarrhoea in infants: child is quiet all day, but screams and tosses about all night (severe cutting, griping pain in bowels).", "Infantile diarrhoea, general coldness, blueness of face." ],
+    "Urinary Organs" : [ "Pain and pressure in region of bladder." ],
+    "Male Sexual Organs" : [ "Thrilling sensation in urethra whilst urinating." ],
+    "Back" : [ "Severe pain about superior margin of l. scapula." ],
+    "Limbs" : [ "Aching in arms and legs, most r. side." ],
+    "Lower Limbs" : [ "Pain in thighs.", "Smarting on inside edge and at root of l. great toenail, with beat, tearing and pulsation.", "Pain in large joint of great toe.", "Burning of soles of feet." ],
+    "Generalities" : [ "Fainting fits; weakness.", "Excessive uneasiness and tossing about of limbs." ],
+    "Fever" : [ "General coldness and blueness of face.", "Febrile attacks.", "Great disposition to perspiration of head and superior parts of body." ]
+  }
+}

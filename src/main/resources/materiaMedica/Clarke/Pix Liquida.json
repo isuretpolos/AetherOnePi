@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Pix Liquida",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Acne. Ardor urinae. Bronchitis. Desquamation. Diarrhoea. Eczema. Enuresis. Eruptions. Hands, eruptions on. Phthisis. Psoriasis. Vomiting, black." ],
+    "Characteristics" : [ "In old-school practice Tar is known as a \"stimulant expectorant\" in chronic bronchitis and phthisis, a stimulant to the skin in psoriasis and scaly eczema. Buckley (quoted by Allen) has recorded severe constitutional effects following the local application of preparations of tar in skin affections. Among these are: High fever; black vomit; black stools; dark-coloured urine; acute eczema; acne. Homoeopaths (led by Jeanes) have brought out the special indications for the remedy; and chief among them is a pain at the third left costal cartilage, where it joins the rib. This is really a pain of the left bronchus (Hering), and when associated with offensive muco-purulent expectoration the indications for Pix are complete. Cases of phthisis and chronic bronchitis with these characteristics have been cured by it. A case of chronic bronchitis in a merchant, 55, is recorded in Hom. News (xxix. 414). The cough was < nights, breath short, copious expectoration, some fever and night-sweats. Ill three years and growing worse. Raynaud's prescription of Wood Tar, a teaspoonful four times a day, after meals and at bedtime, cleared up most of the symptoms.", "Pix often cures the enuresis somni of children (R. T. C.)." ],
+    "Relations" : [ "Compare: Tereb., Pinus syl., Kre., Eupn., Petrol. In chest pains, Illic. (Illic. has pain at third right costal cartilage; occasionally also left), Myrica, Therid. Desquamation, Chi. sul." ],
+    "Head" : [ "Fulness and pain in head." ],
+    "Stomach" : [ "Pain in stomach.", "Vomiting: constant; of blackish fluid (from application to skin)." ],
+    "Abdomen" : [ "Excessive pain in bowels and loins." ],
+    "Stool and Anus" : [ "Dark-coloured stools (from application)." ],
+    "Urinary Organs" : [ "Ardor urinae.", "Dark-coloured urine (from application)." ],
+    "Respiratory Organs" : [ "Expectoration of purulent matter, offensive in odour and taste, and accompanied by pain referred to third l. costal cartilage (really in l. bronchus); pain may or may not go through to back.", "(Third stage of phthisis.).", "Pain at third l. costal cartilage where it joins the rib; rales; muco-purulent expectoration.", "Suppuration of l. lung with pain at third rib.", "Cough chronic, < night; expectoration purulent; fever at night." ],
+    "Generalities" : [ "Great exhaustion." ],
+    "Skin" : [ "Acute eczema.", "Acne.", "Eruptions, esp. on backs of hands, itching intolerably at night and bleeding when scratched.", "Skin cracked, bleeding when scratched, with sleeplessness.", "Violent itching.", "Desquamation." ],
+    "Fever" : [ "Occasionally high fever (from application)." ]
+  }
+}

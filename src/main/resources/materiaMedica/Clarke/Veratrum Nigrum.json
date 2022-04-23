@@ -1,0 +1,11 @@
+{
+  "remedyName" : "Veratrum Nigrum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Headache. Menstruation, protracted. Tinnitus aurium." ],
+    "Characteristics" : [ "Cooper has given me a few observations with Ver. nig., which I have arranged in Schema form. The plant, he says, has much the same botanical characters as Ver. alb., but the flowers are dark-coloured. It is native to Austria and Siberia." ],
+    "Head" : [ "Constant headache when attempting to move or exert the brain (cured).", "Fierce headache threatening acute mania (cured)." ],
+    "Ears" : [ "Constant buzzing of l. ear for two weeks with tenderness of meatus and intense sensitiveness of the head to the motion of an omnibus with beclouding of the brain; can hardly tell which instrument to take up (in his work as a dentist), and pain in nape of neck (agg.)." ],
+    "Female Sexual Organs" : [ "Period continually returning; sometimes light-coloured and slight in quantity, and sometimes profuse; with weak feeling in back." ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "remedyName" : "Euphorbia Peplus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Ecthyma. Erysipelas. Sore throat." ],
+    "Characteristics" : [ "The application of the juice and leaves sets up intense and painful inflammation, erysipelatous, phlegmonous, pustular, with intense burning pain. In one of the cases observed, a boy applied the juice of the stein to an inflamed gum. In another, a boy applied the leaves as a poultice to a black eye. Burnett produced a sore throat in himself by chewing the herb; and he cured with the 3x a case of simple sore throat with swelling and painful swallowing." ],
+    "Face" : [ "After a week, phlegmonous erysipelas under l. eye, spreading downwards and forwards.", "Five or six pustules are on forehead, one on each ala nasi, one on root of nose, one on l. elbow, burning pain in all.", "Lower half of nose red, swollen, inflamed, shiny.", "Lips parched, slightly swollen, covered with a crop of small pustules; another large pustule appears on upper lip midway between mouth and nose." ],
+    "Mouth" : [ "Mouth so much inflamed the doctor thought it due to mercurial remedies.", "In several days pain intolerable, compelling cries and indescribable agitation, patient unable to sleep or drink." ],
+    "Throat" : [ "Sore throat; throat swollen with painful swallowing." ],
+    "Neck" : [ "More pustules developed l. side of neck, becoming hard boils, and slowly going away without breaking." ]
+  }
+}

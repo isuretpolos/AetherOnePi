@@ -1,0 +1,14 @@
+{
+  "remedyName" : "Euphorbia Corollata",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Cholera. Cholera infantum. Cholerine. Diarrhoea. Gastritis. Sea-sickness." ],
+    "Characteristics" : [ "E. Corol. produces gastro-enteric disturbances like other Euphorbias, but with peculiarities especially in the sequence and character of the vomit: (1) deadly nausea, (2) sudden and powerful vomiting of food in stomach, (3) throws up large quantities of water mixed with mucus, (4) then of clear fluid like rice-water, (5) copious watery evacuations of the bowels. These symptoms are accompanied by great anxiety, deadly prostration, and cold sweat. Attacks recur after short intermissions." ],
+    "Mind" : [ "Great anxiety.", "Wants to die." ],
+    "Stomach" : [ "Sudden deathly nausea and prostration, without previous pain.", "Sudden powerful vomiting of food, then quantities of water mixed with mucus, then clear rice-water-like fluid; followed almost immediately by diarrhoea.", "Inflammation of stomach and bowels." ],
+    "12, Abdomen and Stool" : [ "Great commotion in bowels, followed immediately by copious watery evacuations." ],
+    "Heart" : [ "Pulse soft; sinks to" ],
+    "Generalities" : [ "Death-like faintness and exhaustion.", "Felt like an attack of sea-sickness.", "Symptoms pass away in a short time." ],
+    "Fever" : [ "Cool skin covered with beaded sweat.", "Cold hands, feet, and nose.", "Diaphoresis." ]
+  }
+}

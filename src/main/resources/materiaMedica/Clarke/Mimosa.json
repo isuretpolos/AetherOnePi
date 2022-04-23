@@ -1,0 +1,26 @@
+{
+  "remedyName" : "Mimosa",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Ankles, swelling of. Conjunctivitis, rheumatic. Rheumatism." ],
+    "Characteristics" : [ "Mimosa is one of the remedies introduced and proved by Mure. The most notable symptoms were lancinations in the back and limbs, and \"swelling and redness of left ankle with tension and lancination.\" This last symptom has been confirmed. The \"sensitive plant\" of our hothouses is M. Pudica, but the leaves of M. humilis, says Mure, \"close at the least contact.\"" ],
+    "Mind" : [ "Indolent indifference." ],
+    "Head" : [ "Sensation: of heat in head; as if enlarged." ],
+    "Eyes" : [ "Inflammation of eyes; of l. eye.", "Itching.", "Vision dim halo round candle." ],
+    "Ears" : [ "Whizzing in ears." ],
+    "Nose" : [ "Sneezing and coryza." ],
+    "Mouth" : [ "Bleeding of gums.", "Salivation." ],
+    "11, Stomach and Abdomen" : [ "Stomach-ache.", "Borborygmi.", "Flatulent colic." ],
+    "Stool" : [ "Diarrhoea.", "Frequent stools with colic." ],
+    "Male Sexual Organs" : [ "Inflammatory swelling of scrotum." ],
+    "Respiratory Organs" : [ "Dry cough in morning.", "Difficult breathing." ],
+    "Back" : [ "Violent lancinations in back." ],
+    "Limbs" : [ "Lancinations in legs and hands; now in arm, now in leg." ],
+    "Upper Limbs" : [ "Twitching of arm, extending to chest.", "Numbness of arm and r. hand, ceasing on movement.", "Inflammatory swelling of l. hand.", "Numbness of hands." ],
+    "Lower Limbs" : [ "Trembling of legs.", "Smarting pain in legs, with paralysis of knee.", "Stiffness of bends of knees.", "Swelling of l. ankle, with redness, tension, and lancination." ],
+    "Generalities" : [ "Prostration.", "Pressure in nape and r. temple." ],
+    "Skin" : [ "Pimples and pimply excrescences about legs and arms." ],
+    "Sleep" : [ "Yawning.", "Drowsy in evening, with frequent waking at night." ],
+    "Fever" : [ "Horripilation." ]
+  }
+}

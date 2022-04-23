@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Eserinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Blepharospasm. Ciliary spasm. Glaucoma. Headache. Pupil, contracted. Salivation. Sweat, excessive." ],
+    "Characteristics" : [ "Eserine is best known as used by oculists to procure contraction of the pupils in glaucoma. It has been used by Fenoch of Berlin (H. R., iv. 127) in a case of chorea in a child of nine. Half a millegramme of Eser. sulph. was injected into the right upper arm, and the following proving was the result: In fifteen minutes the child cried out loudly, vomited profusely, and complained of violent headache. Soon the face and upper part of the body became covered with profuse sweat. Half an hour later the flow of saliva was increased. The heart-beats sank to 64, radial artery contracted, pulse small and thready. After repeated vomitings signs of cardiac weakness increased in spite of remedies, whilst sweat and saliva decreased, and in one half-hour had disappeared. A moderate contraction of the pupil took place, reaction slow. The child lay apathetic on the bed, pale and collapsed. Antidotes were administered, and the child was well next morning. A remark of Mittendorf that \"spasm of the accommodation is also produced artificially by Eserin.\" led R. B. Leach (Med. Adv., xix. 262) to prescribe successfully the 6x trituration in cases of ciliary spasm, and of astigmatism due to irregular action of the ciliary muscles. Eserin. has also produced blepharospasm. A solution of one grain to the drachm (mixed in mistake for a grain to the ounce) was instilled into the eye of a lady of suffering from cataract. Sweating and lachrymation followed, and, as these passed off, in a quarter of an hour \"clonic spasm of the eyelids\" set in, \"the upper lid failing down on the lower every few seconds.\" Spasmodic feeling in lips and the same sensation under jaw of left side followed. Feeling of tremor and spasm, without retinal movement, followed in an hour. Pupils contracted to small point." ],
+    "Relations" : [ "Compare: Physostigma, Pilocarpine." ],
+    "Mind" : [ "Child cried out loudly.", "Apathetic." ],
+    "Head" : [ "Violent headache with repeated vomiting." ],
+    "Eyes" : [ "Moderate contraction of pupils; reaction slow, by shading the eyes they did not enlarge; on exposure to strong light they contracted slightly, but returned to their normal size.", "Spasm of accommodation; ciliary spasm.", "Pain and irritation of eyes on continued reading.", "Blepharospasm." ],
+    "Face" : [ "Face pale." ],
+    "Mouth" : [ "Saliva, first increased, later arrested." ],
+    "Stomach" : [ "Vomited profusely and complained of headache.", "Repeated vomiting with signs of cardiac weakness." ],
+    "Heart" : [ "After repeated vomiting signs of cardiac weakness increased.", "Heart-beats sank to 64; radial artery contracted; pulse small and thready." ],
+    "Generalities" : [ "The child lay apathetic on the bed, pale and collapsed." ],
+    "Fever" : [ "Face and upper part of the body covered with profuse perspiration." ]
+  }
+}

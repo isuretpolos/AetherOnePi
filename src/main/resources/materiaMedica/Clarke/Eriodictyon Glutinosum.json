@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Eriodictyon Glutinosum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asthma. Bronchitis. Catarrh. Influenza. Phthisis." ],
+    "Characteristics" : [ "Eriodyct., says Allen, \"has a strong terebenthine taste, and abounds in a resinous matter which sometimes exudes so copiously that, in drying, the specimens stick firmly together and to the paper.\" \"Yerba Santa\" (holy plant) is a popular expectorant remedy in Mexico and California. By homoeopaths it has been chiefly used in phthisical conditions, especially bronchial phthisis. Asthmatic breathing with accumulation of mucus; the asthma being relieved when the mucus is got rid of. Wasting, night-sweats, intolerance of food. Phthisis the result of frequent bronchial catarrhs. Coryza and catarrh. J. Perry Seward gave it with great success in two cases of cough remaining after influenza (Amer. Hom., xxiv. 248). G. M. Payne's proving brought out marked preference for the right lung. Foul mouth in the morning on rising. Most symptoms < in afternoon. Nausea < on running. Symptoms come at intervals; or on any sudden changes of position." ],
+    "Relations" : [ "Compare: Balsam of Peru, Pix liquida, Stannum; (afternoon aggravation) Lycop.; Grindelia, Phos., Hep., Rumex, Caust., Dros." ],
+    "Head" : [ "Dizziness and sense of intoxication.", "Aching at base of cranium, a.m.", "Sensation of pressure outwards on all sides of head, greatest at cerebellum upwards.", "Intense, dull, heavy pain in back of head and over eyes.", "Burning in occiput; heavy pain as if occiput was being pressed out." ],
+    "Ears" : [ "Sharp pain in r. ear at intervals; or on suddenly changing position of head to r. or l.", "Shooting pains, after changing to just below external ear, removed to just above and back of it at intervals of one or two minutes." ],
+    "Nose" : [ "Sneezing.", "Catarrh, yellowish-green.", "Coryza permanent; with more or less dizziness." ],
+    "Mouth" : [ "Foul mouth on rising in the morning." ],
+    "Throat" : [ "Burning sensation in fauces and throat." ],
+    "Stomach" : [ "Great appetite.", "Deathly sickness; < by running." ],
+    "Male Sexual Organs" : [ "Sore, dragging, tender feeling of testicles (< l.); could not bear any pressure, and dreaded to move because of its tenderness; > by gentle support, felt in after part of day.", "Slight fluttering at intervals at bottom of testicles." ],
+    "Respiratory Organs" : [ "Wheezing voice, p.m.", "Asthmatic symptoms; with coryza and mucous secretions.", "Dull pain in r. lung, front.", "Sharp pain in r. lung in front, near nipple, occurring at short intervals or on sudden changes of position." ],
+    "Fever" : [ "Slight fever, cheeks flushed and burning." ]
+  }
+}

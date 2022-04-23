@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Quassia",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Intermittent fever. Worms." ],
+    "Characteristics" : [ "The Quassia now found in the shops in the form of \"Quassia chips\" is the wood of Picraena, the Jamaica Quassia. The name \"Quassia\" was given by Linnaeus to Quassia excelsa, of Surinam, from the name of a negro, Quassi or Coissi, who employed its bark as a remedy for fever. The wood of this tree was formerly employed in this country under the name of Surinam Quassia. The wood is very bitter, and yields its properties best to cold distilled water. In the old school the infusion is used as a bitter tonic in dyspepsia, and as a clyster for clearing the rectum of threadworms. There is a short homoeopathic proving: J. O. Muller took a single dose of the tincture; Eidherr four doses of 30x. Lembke took the extract. The most peculiar characteristic symptoms were: Drawing in hypochondria and sensation as if abdomen were empty and retracted; with sensation as if he would have a stool; stool at first hard, with effort, later pasty (Eidh.). Sticking in liver and abdomen (Mul.). Peculiar beating through abdomen, extending into extremities (Mul.). Eidherr had \"coldness running over back, with constant inclination to yawn and desire to stretch out the feet,\" which gives a clue to its action in fevers." ],
+    "Relations" : [ "Compare: Cedron, Botan. Fevers, Cedron. Worms, Cina." ],
+    "Mind" : [ "Awoke with great anxiety a.m., unable to sleep or read; next day could not perform any mental labour from absence of thought." ],
+    "Head" : [ "Constant dulness of head." ],
+    "Stomach" : [ "Qualmishness.", "Drawing in stomach, with sensation as if stomach full of hot water." ],
+    "Abdomen" : [ "Slight drawing in both hypochondria, with sensation as if abdomen empty and retracted to spinal column; < by deep breathing, with sensation as if he would have a stool.", "Very acute sticking in hepatic region; followed by dull pain.", "Sticking pains between umbilicus and stomach.", "Abdomen hard and distended.", "Peculiar beating through abdomen extending into extremities, with general nervous troubles." ],
+    "Stool" : [ "Stools at first hard, with great effort, afterwards pasty, once very thin." ],
+    "Urinary Organs" : [ "Secretion of urine increased, solid constituents diminished." ],
+    "Neck and Back" : [ "Severe drawing pains in cervical muscles." ],
+    "Lower Limbs" : [ "Drawing pain in calves." ],
+    "Generalities" : [ "General discomfort." ],
+    "Fever" : [ "Sensation of coldness running over back, with constant inclination to yawn and stretch out the feet." ]
+  }
+}

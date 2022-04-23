@@ -1,0 +1,26 @@
+{
+  "remedyName" : "Artemisia Vulgaris",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Catalepsy. Chorea. Convulsions. Dysmenia. Epilepsy. Hydrocephalus. Hysteria. Somnambulism. Worms." ],
+    "Characteristics" : [ "Like the other Artemisias this remedy has a prominent place in convulsive diseases. It is indicated where the patient is excitable and irritable before attack of epilepsy. Epilepsy after fright or grief; after a blow on the head; with menstrual disturbances; with teething. Attack accompanied or followed by profuse offensive sweat; by seminal ejaculations. Profuse sweat, having a peculiar fetid, cadaverous or garlic-like odour is a characteristic of the remedy. Attacks frequently repeated, then followed by a long interval of rest. Somnambulism. Catalepsy after fright. Spasms. Chorea; swallowing difficult, hungry but cannot get the food down. Right side convulsed, left paralysed. Nocturnal pollutions. Violent cramps in abdomen with irregular, insufficient menstruation. Irregular or deficient menstruation with epileptic convulsions. Nervous chlorosis with a very dry skin. Worms." ],
+    "Relations" : [ "Artem. v. acts better when given with wine than with water. Compare: Abrot., Absinth. (nearest relative), Cina, Cham., Arn., Millef. Compatible: Stram., Puls., Aur. (in alternation). Compatible after: Aco., Bell., Bry., Helleb., Cina, Iod. Compatible before: Caust. Similar to: Cicut. (staring, jerking head, &c.); Cina (eyes); Apis, Helleb., Bufo (irritable before fit); Caust., Cham., Ruta, Secale, Bry. (chewing motion of jaw)." ],
+    "Causation" : [ "Blow on head. Fright or grief or bad news." ],
+    "Mind" : [ "Stupor following convulsions.", "Somnambulism.", "Inclination to steal.", "Effects of fright.", "Catalepsy induced by bodily exertion or by alluding to the disease." ],
+    "Head" : [ "Sharp shooting pains through the head.", "Head drawn back by spasmodic twitchings.", "Head bent backwards and sideways." ],
+    "Eyes" : [ "Coloured light, as light falling through stained-glass windows, makes head dizzy (white light does not).", "Eyes turned up before attack." ],
+    "Face" : [ "Twitchings in face; mouth drawn to l.", "Face looks oldish.", "Lower jaw pressed forward.", "Chewing motion of gums; grinding teeth." ],
+    "Teeth" : [ "Grinding of teeth, froth at mouth, thumbs drawn into fist, eyes half open, drawn upwards." ],
+    "Mouth" : [ "Bites tongue in spasms.", "Speech unintelligible, can utter but single words, and these only with great exertion." ],
+    "Throat" : [ "Swallowing difficult; food escapes from the mouth." ],
+    "Stomach" : [ "Hunger, but cannot get the food down.", "Nausea and vomiting.", "Cramp in stomach." ],
+    "Abdomen" : [ "Violent cramps in abdomen; irregular, insufficient menses." ],
+    "Stool and Anus" : [ "Greenish diarrhoea.", "Passes faeces and urine with the spasms.", "Worms." ],
+    "Urinary Organs" : [ "Urine increased; yellowish.", "Obstinate strangury in a child." ],
+    "Male Sexual Organs" : [ "Nightly pollutions.", "Seminal ejaculations with the spasm." ],
+    "Female Sexual Organs" : [ "Prolapsus uteri.", "Violent contractions of uterus.", "Spasms during menses.", "Irregular or deficient menstruation with epileptic convulsions.", "Nervous chlorosis with a very dry skin.", "Violent contractions of pregnant uterus; threatened miscarriage.", "Checked lochia.", "Eclampsia of sucklings." ],
+    "Respiratory Organs" : [ "Rattling breathing with the spasms.", "Breathing checked; suddenly a deep inspiration ends the attack (catalepsy)." ],
+    "Lower Limbs" : [ "Over-fatigue or weakness of the feet after long walks or long illness." ],
+    "Generalities" : [ "Convulsions of sucklings or teething children.", "Epileptic spasms after cooling off while over-heated from dancing.", "Epilepsy from menstrual disturbances.", "Nightly epilepsy with violent trismus injuring teeth.", "During epileptic attacks violent sweat of offensive odour.", "Long and deep sleep after a fit.", "Somnambulism.", "Congestion of brain and spine.", "Hydrocephalus." ]
+  }
+}

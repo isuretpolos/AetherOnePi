@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Chenopodium Vulvaria",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Constipation. Enuresis. Scapula, pain under. Spleen pain." ],
+    "Characteristics" : [ "Chenop. v. has an odour of decaying fish, and contains Trimethylamene. It constantly gives off ammonia. It has been proved, and seems to affect the left side more than the right, but the following recalls the characteristic of Chen. anth.: Pain in middle of back on right side of spinal column, increasing gradually to a pressing wedge-like pain, beneath right scapula, < when sitting. There is also a pain over spine of left scapula. Pressure on the left side of the head. Constipation with external piles. Nocturnal enuresis. Sensations of dulness and fulness appear in many parts. Cold saliva; cooling sensation in abdomen. There is restlessness caused by pricking pains. Sitting < pain in back; this is > by bending backwards. Walking < stitches in spleen and pain in right knee." ],
+    "Relations" : [ "Compare: Am. c., Trimeth., Chen. a., Aphis." ],
+    "Head" : [ "Feeling of dulness, beginning both sides of head behind ears, going upward; in upper occiput; returning in waves.", "Tenderness left parietal region." ],
+    "Ears" : [ "Dull, muffled, obstructed feeling in ears." ],
+    "Mouth" : [ "Peculiar sensation in tongue, as if enveloped by saliva.", "Constant cold saliva.", "Saliva feels cold, esp. left side of mouth." ],
+    "Stomach" : [ "Unusual thirst.", "Dulness and yawning,> after eating.", "Better after drinking wine.", "Acidity with pain in stomach and epigastrium, extending to l. side into chest." ],
+    "Abdomen" : [ "Stitches in upper part of region of spleen while walking.", "Cooling sensation, felt first in mouth, then hypochondriac region, then abdomen.", "Twitching in l. abdomen, extending toward groins, followed by pain in l. forearm." ],
+    "Stool and Anus" : [ "Urging to stool; stool softer than usual.", "(Constipation improved.).", "Constipation for three or four days and then with difficulty; external piles." ],
+    "Urinary Organs" : [ "Urine increased, offensive.", "Urging to urinate.", "(Nocturnal enuresis improved the first night.)" ],
+    "Male Sexual Organs" : [ "Increased desire, followed by diminished desire and erectile power, but undiminished secreting power." ],
+    "Female Sexual Organs" : [ "Amenorrhoea." ],
+    "Chest" : [ "Fulness in chest, in region of last ribs.", "Feeling in lower lobe r. lung as if some fluid wanted to discharge itself into region of duodenum." ],
+    "Neck and Back" : [ "Severe stitching-pressing r. side of back, > bending backward.", "Sensitive spot in back, region l. hypochondrium, soon after having eructated.", "Pain directly over spinous process of l. scapula, as if pressed by two or three fingers.", "Pain middle of back r. side spinal column, increasing gradually to a pressing, wedge-like pain beneath r. scapula, < when sitting.", "Painful weariness and weakness in lumbar and lower dorsal region." ],
+    "Upper Limbs" : [ "Weakness in hands and arms.", "Twitching in l. forearm while sitting still.", "Jerking pain like electric shocks through l. forearm, from forearm to fingers, but without muscular contraction.", "Pain deep in inner side l. forearm.", "Pain in middle of l. radius, particularly severe in small spot." ],
+    "Lower Limbs" : [ "Pricking here and there in legs and other places, compelling him to move." ],
+    "Sleep" : [ "Yawning; preceding lassitude and heaviness.", "Somnolence." ]
+  }
+}

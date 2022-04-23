@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Kali Aceticum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diabetes. Diarrhoea. Dropsy. Haemorrhoids. Urine, alkaline." ],
+    "Characteristics" : [ "Kali acet. is a well-known diuretic (and in less degree cathartic) in allopathic practice. These actions are positive and direct; and the homoeopathic uses are chiefly in cases of over-secretion of urine and in diarrhoea. One of the main purposes for which its diuretic and cathartic properties are sought by allopaths is as derivative in cases of dropsy, chiefly ascites and hydrothorax. It is quite possible that this action may be specific, that is homoeopathic, and not merely derivative; for both Acet. ac. and the Kali cause great disturbance in the circulation of fluids in the tissues. A few provings have been made, and these have brought out a preponderance of abdominal and urinary symptoms", "griping, diarrhoea, bleeding of haemorrhoids, increased flow of urine, which was more watery and alkaline. Weakness; trembling; profuse perspiration, especially about the head. Symptoms generally were < in morning, but there was a headache, < p.m." ],
+    "Relations" : [ "Compare: Acet. ac., Kali c., Am. ac.; Lyc. (< p.m.)." ],
+    "Head" : [ "Headache about p.m.", "Dull headache in morning.", "Much perspiration of head, esp. to" ],
+    "Stomach" : [ "Constrictive, dull pain in stomach, extending to low down in abdomen, gradually disappearing after two hours.", "Dull, pressive, pinching, and constrictive pain in epigastric region, coming on a few minutes after each dose, and lasting an hour." ],
+    "Abdomen" : [ "Pains in region of umbilicus, lasting without cessation until going to bed, when they suddenly disappeared, and I was able to sleep through the night.", "Unnatural distension of abdomen after supper.", "Griping.", "An indefinite gnawing pain in abdomen lasting an hour in afternoon.", "Gnawing sensation in abdomen at a.m., which became painful after fifteen minutes and lasted till evening." ],
+    "Stool" : [ "Discharge of haemorrhoidal blood several times during day.", "Diarrhoea.", "Two stools in evening." ],
+    "Urinary Organs" : [ "Urine very much increased in quantity and very watery.", "Urine: ounces in twenty-four hours, containing grains of solids; after three drachms had been taken, in the course of twenty-four hours she passed ounces of urine containing grains of solids, with an excess of grains of urea over the amount in the ounces of urine passed when no medicine was taken.", "During the proving the urine evolved ammonia.", "Urine strongly alkaline; sweetish odour; yellow colour." ],
+    "Limbs" : [ "Great weariness of all limbs, with some headache.", "Extreme weariness and trembling in all limbs, in morning." ],
+    "Lower Limbs" : [ "The weariness in lower limbs and the dull headache disappeared half an hour after the afternoon nap." ],
+    "Generalities" : [ "Trembling and anxiety in whole body of transient duration." ],
+    "Fever" : [ "Much perspiration on head, esp. from a.m. to p.m. (4th d.).", "Profuse perspiration, which was very offensive, during a walk of two hours (7th d.)." ]
+  }
+}

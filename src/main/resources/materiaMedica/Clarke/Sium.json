@@ -1,0 +1,17 @@
+{
+  "remedyName" : "Sium",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Convulsions. Tetanus." ],
+    "Characteristics" : [ "Our knowledge of Water-parsnip is derived from cases of poisoning through eating the root. The symptoms bear a strong resemblance to those of the other poisonous Umbelliferae. The most pronounced features of the convulsions of Sium were the drawing of the arms to the middle of the body, flexure of the fingers, and the preponderance of the contractions on the left side. The lack of mental energy recalls the action of AEthusa." ],
+    "Mind" : [ "Much excited.", "Fear of death.", "Lack of mental activity." ],
+    "Head" : [ "Dizziness; headache." ],
+    "Eyes" : [ "Pupils dilated, responded steadily to bright light." ],
+    "Throat" : [ "Burning along alimentary tract, esp. oesophagus." ],
+    "Stomach" : [ "Nausea and vomiting, at end of which he fell into a convulsion." ],
+    "Abdomen" : [ "Sense of swelling and flatulence about bowels." ],
+    "Respiratory Organs" : [ "Breathing slow and stertorous." ],
+    "Generalities" : [ "Muscles in a state of tonic contraction; arms drawn to middle of body; fingers flexed; opisthotonos; greater contraction of muscles of l. side than of r.", "Every few minutes spasms, at first violently clonic, diminishing with each succeeding convulsion till they became little more than tremors; by degrees the character changed until the last one (in which circulation and respiration ceased), which was a pure tonic spasm.", "Loss of voluntary motion.", "Prostration." ],
+    "Fever" : [ "Skin cold and clammy.", "Head hot, rest of body cold.", "Wet with perspiration." ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "remedyName" : "Plumbum Chromicum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Colic. Convulsions. Cramps. Diarrhoea. Dysphagia. Erythema. Screaming. Tenesmus." ],
+    "Characteristics" : [ "Several cases of poisoning by Chrome Yellow have been observed. The symptoms present the cardinal features of lead poisoning-cramps, convulsions, retracted abdomen. Characteristic features were a violent diarrhoea of yellow colour. Yellow stools with constipation. Convulsions with terrible pains. Erythematous redness of chest and abdomen. Pupils enormously dilated. The face was red and hot, and there was heat of the body generally. The symptoms were < towards evening. > By drinking warm milk." ],
+    "Mind" : [ "Apathetic, but when questioned knew what was going on around.", "Apathetic, almost soporous." ],
+    "Head" : [ "Headache with ringing in ears, pains in chest, loss of appetite, inclination to vomit." ],
+    "Eyes" : [ "Pupils enormously dilated.", "Eyeballs fixed, staring." ],
+    "Ears" : [ "Ringing in ears with headache." ],
+    "Face" : [ "Face pale.", "Face red and hot.", "Face livid during convulsions.", "Expression of most profound prostration.", "Lips violet.", "Lips dry.", "Jaws firmly closed." ],
+    "Mouth" : [ "Tongue coated yellow.", "Point of tongue red.", "Bad odour from mouth." ],
+    "Throat" : [ "Swallowed with difficulty; shortly before death." ],
+    "Stomach" : [ "Appetite lost.", "Great thirst.", "Nausea and vomiting.", "Softening of coats of stomach.", "Pain in epigastric region." ],
+    "Abdomen" : [ "Abdomen hard and forcibly retracted.", "Pain in umbilical region.", "Violent cramps in abdomen with constipation." ],
+    "Stool and Anus" : [ "Violent diarrhoea.", "Yellow diarrhoea.", "Constipation with yellow faeces.", "Constipation." ],
+    "Respiratory Organs" : [ "Respiration short; laboured." ],
+    "Chest" : [ "Pain in chest.", "Redness of chest and abdomen." ],
+    "Heart" : [ "Pulse tumultuous.", "Pulse irregular and intermittent." ],
+    "Back" : [ "Pain in spine." ],
+    "Generalities" : [ "Frequent convulsions, during which face becomes livid.", "Frequent screaming.", "Convulsions with terrible pains.", "Prostration.", "Restlessness." ],
+    "Skin" : [ "Skin of chest and abdomen remarkably erythematous." ],
+    "Sleep" : [ "Sleeplessness." ],
+    "Fever" : [ "Whole body hot." ]
+  }
+}

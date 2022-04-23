@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Cypripedium",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Brain affections. Chorea. Convulsions. Debility and sleeplessness.", "Delirium tremens. Ecstasy. Epilepsy. Mental despondency. Nervous debility. Neuralgia. Post-influenzal debility. Sleeplessness. Spermatorrhoea. Stye." ],
+    "Characteristics" : [ "Cypr. has great repute as a \"nervine\" among eclectics, and in domestic practice. It ranks with Scutellaria and Valerian. A strong infusion causes exhilaration followed by calmness; and is much resorted to by women whose nerves are shattered by long illness, or excessive indulgence in green-tea or coffee (Hale). It is suited to nervous disorders from mental over-excitement, or reflex nervous excitement; to nervous weakness following influenza. It is indicated in the brain-hyperesthesia of children who wake in the night lively and full of play. Ecstasy, preliminary to incipient brain disorder. Epilepsy from reflex irritation. Jactitation and trembling; twitching of limbs." ],
+    "Relations" : [ "Compare: Ambra, Coca, Ign., Kali bro., Paull., Thea, Scutel., Valer., Zinc. In ecstasy, Coffea. Antidote to: Rhus poisoning." ],
+    "Mind" : [ "Irascibility and fitfulness; hysterical symptoms; sleeplessness; agitation.", "Indifference." ],
+    "Head" : [ "Vertigo followed by heaviness and dragging of l. foot." ],
+    "Eyes" : [ "Stye on r. lower lid." ],
+    "Male Sexual Organs" : [ "Spermatorrhoea with great nervous prostration and dejection of spirits." ],
+    "Female Sexual Organs" : [ "Amenorrhoea, with hysteria.", "Great nervous debility and despondency.", "Irritability of vagina; hysterical symptoms, sleeplessness and agitation." ],
+    "Sleep" : [ "Sleeplessness: with desire to talk, a constant crowding of pleasant ideas; with restlessness of body; twitching of limbs; after miscarriage for several nights in succession.", "Ecstasy; children awaken in night from sleep, \"wide-awake,\" unnaturally playful, with no desire to go to sleep again (often a preliminary to some brain affection)." ]
+  }
+}

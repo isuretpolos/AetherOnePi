@@ -1,0 +1,10 @@
+{
+  "remedyName" : "Scammonium",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Gastro-enteritis." ],
+    "Characteristics" : [ "Scam. is a drastic cathartic, producing copious watery evacuations, and griping a good deal. Sprengel records a case of fatal poisoning in an infant whose mother took a large quantity of Scam., and herself suffered no effects. Scam. must be compared with Jalap., another purging convolvulus." ],
+    "11, Stomach and Abdomen" : [ "Sudden vomiting and copious green stools, distension and sensitiveness of abdomen and death (in an infant whose nursing mother took a large dose of Scam. and herself experienced no symptoms).", "Slight pain in stomach with evacuation of faeces.", "Violent pain and rapid succession of stools, leaving inactivity of lower intestines for several days.", "Inflammation of mucous membrane attended with loss of appetite and headache." ],
+    "Stool" : [ "Loose evacuation of faeces with slight pain in stomach.", "Green stools.", "Rapid succession of stools." ]
+  }
+}

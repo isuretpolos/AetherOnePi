@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Arsenicum Hydrogenisatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Collapse of cholera. Hiccough. Suppressed menses. Yellow fever." ],
+    "Characteristics" : [ "Arsen. hydro. was used by Drysdale as a substitute for Arsenic in the collapse stage of cholera. The symptoms set in suddenly but develop slowly. In poisoning cases death often took place in the second week, and one person, who recovered, suffered seven weeks. Though like Ars. alb. in general symptoms, the gas has symptoms of its own. A striking case of sudden suppression of menses was cured with it after failure of Ars. a." ],
+    "Relations" : [ "Compare: Arsen. alb. antidoted by: Am. acet. (breathing); Sinapisms (breathing); Nux v. (fever); drinks containing sulphuretted hydrogen." ],
+    "Head" : [ "Stupefying feeling in the head as if a load were there." ],
+    "Face" : [ "Face looks old and has an expression of pain." ],
+    "Stomach" : [ "Loss of appetite.", "Tormenting hiccough with oversensitive epigastrium." ],
+    "Abdomen" : [ "Abdomen burning outside; cold feet.", "Constipation, with a feeling of heaviness and stiffness like a weight in the abdomen." ],
+    "Anus" : [ "Frequent flying pains in perineum to anus or upwards in anterior wall of rectum." ],
+    "Urinary Organs" : [ "Pressure in kidneys extending to shoulder-blades.", "Discharge at times of large quantities of pale urine.", "Haematuria." ],
+    "Male Sexual Organs" : [ "Foreskin and glans covered with numerous pustules leaving round superficial ulcers." ],
+    "Female Sexual Organs" : [ "Sudden suppression of menses with internal chills for three days, followed by tearing pains in hands and feet, confused head, ringing in ears; red diarrhoea; dry, red, cracked tongue; night cough, causing retching (Ars. h. cured immediately after failure of Ars. a.)." ],
+    "Respiratory Organs" : [ "Ammoniacal breath.", "Constriction of chest." ],
+    "Back" : [ "Pain as if something sticking behind r. shoulder-blade." ],
+    "Generalities" : [ "Coldness of limbs.", "Great prostration and malaise.", "< From cold and damp; general chilliness on slight exposure in change of temperature." ],
+    "Skin" : [ "Dark-brown, sallow look of skin.", "Deadness from hands up to middle of forearm, and feet to knees, then nose and region of eyebrows, with cessation of pulse.", "Hair becomes white over the \"deadened\" parts." ],
+    "Fever" : [ "Much heat and burning in different parts of the body, particularly over renal region." ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "remedyName" : "Spigelia Marilandica",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Mania. Strabismus (r.)." ],
+    "Characteristics" : [ "The symptoms of Spi. m. are mainly from overdosing. A state of mania was induced in a boy from large and frequent doses of a decoction of the root. Strabismus of right eye was noted in one case." ],
+    "Mind" : [ "Suddenly affected with complete mental derangement, exactly like that of Stram., countenance distorted, running and skipping, fits of laughing and crying, pupils greatly dilated, talk wild and incoherent, (lasted 24h.)." ],
+    "Head" : [ "Vertigo." ],
+    "Eyes" : [ "Wild, staring, ludicrous expression.", "Irregular movement of adductors and abductors of eyes.", "Strabismus of r. eye.", "Pain in and about the eyes.", "Sensation of stiffness of eyelids.", "Pupils dilated." ],
+    "Face" : [ "Much swelling of face and about eyes.", "Face flushed." ],
+    "Mouth" : [ "Tongue pointed and tremulous." ],
+    "Heart" : [ "Pulse: accelerated; irregular." ],
+    "Generalities" : [ "On attempting to assume erect position, seized with general tremor lasting a few seconds and leaving her exhausted." ],
+    "Sleep" : [ "Drowsiness." ],
+    "Fever" : [ "Skin hot and dry." ]
+  }
+}

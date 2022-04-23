@@ -1,0 +1,14 @@
+{
+  "remedyName" : "Platinum Muriaticum Natronatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Flatulence. Polyuria. Salivation." ],
+    "Characteristics" : [ "Hofer experimented with Plat. m. n. on the same man who took Plat. mur. The chief additional symptom was decided by increased secretion of urine and saliva." ],
+    "Head" : [ "Slight headache." ],
+    "Mouth" : [ "Decided increase in saliva." ],
+    "Stomach" : [ "Feeling of warmth and heaviness in stomach.", "Eructation of gas.", "Nausea and inclination to vomit." ],
+    "Abdomen" : [ "Rumbling in abdomen.", "Transient colic." ],
+    "Stool" : [ "Emission of flatus." ],
+    "Urinary Organs" : [ "Decidedly increased secretion of urine." ]
+  }
+}

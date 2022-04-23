@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Scolopendra",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Angina pectoris. Convulsions. Malignant pustule." ],
+    "Characteristics" : [ "The effects of Centipede bites have been observed on several persons. Swelling, pain, inflammation, and gangrene of the bitten part, with appearance like malignant pustule in one case, were constant symptoms. Vomiting and praecordial anxiety occurred, and in one fatal case the paroxysms of vomiting increased in intensity till the child in a convulsive struggle ceased to breathe. A symptom worth noting is \"No perspiration of the right arm for three months.\"" ],
+    "Head" : [ "Vertigo.", "Headache." ],
+    "Stomach" : [ "Nausea.", "Vomiting of a pale yellow, glairy matter, continued at short intervals with increasing violence, till the child in a convulsive struggle ceased to breathe." ],
+    "Heart" : [ "Praecordial anxiety." ],
+    "Upper Limbs" : [ "Arm greatly swollen; erysipelatous blush extending half over arm; black dotted impression in two rows three-quarters of an inch apart, raised in dark lines extending from dot to dot, inches long, thus showing the entrance of every foot; pain deep and dull; no perspiration on r. (bitten?) arm for three months." ],
+    "Generalities" : [ "Instant complaint which grew rapidly worse, which was described by the child as being all over (from S. heros.", "The child, a girl of four, died in h.)." ],
+    "Skin" : [ "A large red spot, becoming black, in the middle of which an eschar forms as large as a five-franc piece.", "The whole affection resembled a malignant pustule, and was associated with swelling of lymphatic glands.", "Violent itching, followed by violent pain in bitten part." ],
+    "Fever" : [ "No perspiration of r. arm for three months." ]
+  }
+}

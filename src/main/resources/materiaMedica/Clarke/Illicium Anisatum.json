@@ -1,0 +1,29 @@
+{
+  "remedyName" : "Illicium Anisatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Catarrh. Colic. Cough. Haemoptysis. Lungs, affections of. Stomach, catarrh of. Rheumatism. Thigh, pain in." ],
+    "Characteristics" : [ "Illicium is a genus of Magnoliaceous shrubs or low trees with smooth entire leaves, exhaling when, bruised a strong odour of aniseed, owing to the volatile oil contained in minute pellucid dots, which may be seen by the aid of a lens. The fruit is used throughout China, Japan, and India as a condiment, and is chewed in small quantities after a meal for sweetening the breath. It has also a local repute as a stomachic and carminative. Provings were made by Franz and Mure. Both showed the action of the drug on the nose, mouth, and stomach. Franz had many symptoms on the face, especially lips, skin, and extremities. A very remarkable symptom of Franz' has been confirmed by Flora A. Waddell (H. P., vii. 427). A man suffering from rheumatism of two years' duration came limping into Dr. Waddell's office, asking if she could do anything for his limb. He complained that when he sat down he couldn't rest in that position at all. Asked why, he replied: \"Whenever I sit down my limb feels as if broken off right here,\" pointing to the middle of his thigh). He said he often got up to straighten himself in order to make sure. He also had some pain in his arm, and severe \"sore pain\" in his back. Illic. 30x cured all the symptoms. Mure's symptoms were noted on head, abdomen, chest, and back. Tough white expectoration appears to be a characteristic; and this symptom has been frequently confirmed: Pain in region of third rib, about one or two inches from sternum (Junction of rib with its cartilage), generally on right side, but occasionally on left. Hering says it is useful for old asthmatics, and the stomach catarrh of old drunkards. Colic of babies. The pain in thigh is < sitting, > rising. Pains in the head are < in morning, > in evening." ],
+    "Relations" : [ "Compatible after: Aco. and Bry. in haemoptysis Compare: In chest pains, Pix, Menth. pu. Botanical, Magnol." ],
+    "Head" : [ "Pains in head; > evenings, < mornings." ],
+    "Ears" : [ "Buzzing in ears.", "Ringing in ears followed by sleep.", "Itching over l. ear, going off when touching the place." ],
+    "Nose" : [ "Acute catarrh.", "Watery discharge from nostrils.", "Warm, smarting sensation in nose, succeeded by sneezing.", "Sharp stitches in tip of nose." ],
+    "Face" : [ "Stinging sensation in upper lip, as if blood would press out, > from touch.", "Dryness of upper lip, which is drawn closer to teeth.", "Burning in inner surface of lower lip, with sensation as if it had gone to sleep." ],
+    "Mouth" : [ "Tongue covered with aphthae; most on edges.", "Edges of tongue folded like little bags." ],
+    "Throat" : [ "Tough, viscid phlegm from stomach; with old drunkards." ],
+    "Appetite" : [ "Rye bread tastes good, its odour is refreshing.", "Satiety after eating but little.", "All food, except rye bread, tastes too salty or bitter, yet appetite is good." ],
+    "Stomach" : [ "Nausea in stomach, extends to chest, then ceases.", "Nausea, with gagging and inclination to vomit.", "Bloating of stomach; acidity." ],
+    "Abdomen" : [ "Pain in splenic region.", "Three months' colic, esp. if it recurs at regular hours; bowels disturbed.", "Violent wind colic.", "Rumbling in abdomen." ],
+    "Stool" : [ "Stools: bilious; compact and dark-coloured." ],
+    "Urinary Organs" : [ "Retention of urine." ],
+    "Respiratory Organs" : [ "Dyspnoea in old asthmatics.", "After coughing, feeling of emptiness.", "Frequent cough, with pain.", "Spitting blood in small quantities and with pus-like phlegm, pain in r. chest.", "Whitish expectoration.", "Tough, viscous phlegm, with old drunkards." ],
+    "Chest" : [ "Pain in region of third rib, about one or two inches from sternum, generally on r. side, but occasionally l.", "Pain about junction of third rib with its cartilage; haemorrhage; cough; congestion; enlarged liver." ],
+    "Heart" : [ "Palpitation, with aphthae and weakness." ],
+    "Back" : [ "Pain in back and chest.", "Cramp-like drawing, as from a cold, in l. side of dorsal vertebrae." ],
+    "Upper Limbs" : [ "Jerking and tearing in bend of l. elbow and at same time in palm; a feeling as if an artery had been injured by a blow.", "Pressure back of r. hand, between the two middle metacarpal bones, as though something hard lying between them; < pressing hand against anything hard, not by touch." ],
+    "Lower Limbs" : [ "L. thigh feels as if broken in the middle while sitting; it disappears on standing." ],
+    "Skin" : [ "Stitches as with pins in l. palm, between first and second fingers; > by scratching, but afterwards return with burning.", "Dull, painful stitches in skin of lower forearm.", "Crawling, itching stitches in r. palm.", "Itching in front and above left ear; > by touch." ],
+    "Sleep" : [ "Sleepless at nightfall.", "Disturbed sleep." ],
+    "Fever" : [ "Heat from abdomen to stomach and chest, running over different places, and abating during day." ]
+  }
+}

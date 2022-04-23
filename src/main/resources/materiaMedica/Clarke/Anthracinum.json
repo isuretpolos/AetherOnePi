@@ -1,0 +1,17 @@
+{
+  "remedyName" : "Anthracinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Acne. Boils. Carbuncles. Cynanche cellularis. Erysipelas. Gangrene. Malignant pustule. Parotitis gangrenosa. Phlegmonous inflammation and ulceration. Small-pox. Splenic fever. Ulcers. Whitlow." ],
+    "Characteristics" : [ "Anthracinum is indicated in all conditions of boils and boil-like eruptions (as acne in some forms, and in carbuncles). It was introduced into homoeopathic practice by Lux the veterinarian long before the experiments of Pasteur. The keynote for its employment is \"succession of boils\" or carbuncles, but it is also of the greatest use in other cases. \"Terrible burning\" with carbuncle. The potentised virus is the best remedy for the disease from which it is obtained", "\"Splenic fever\" in animals, and \"Malignant pustule\" in human beings. Erysipelas of a foul kind, and gangrenous erysipelas; cellulitis. \"Hard, stony\" swelling in region of right lower jaw and submaxillary gland. Anthrax-quinsy. Whitlow and sloughing. Glands painfully swollen. Induration of cellular tissue. Black or blue blisters. Horribly offensive gangrenous ulcers. A number of symptoms have been recorded from human patients affected with the anthrax disease." ],
+    "Relations" : [ "Compare: Anthracinum bovum, Anthracinum suum, Laches., Tarent. c., Arsen., Carb. v. It follows well: Arsen. (burning and ulceration), Phos. ac. Is followed well by: Aur. mur. nat. (periosteal swelling of lower jaw), Silic. (cellulitis). Antidoted by: Camph., Ars., Rhus, Silic., Laches., Carb. v., Puls., Kreos., Carbol. ac., Salicyl. ac., Apis." ],
+    "Head" : [ "Headache, as if a smoke with a heating pain was passing through the head.", "Headache with chill.", "Swelling of head." ],
+    "Face" : [ "Parotitis gangrenosa.", "Stony swelling around lower jaw.", "Gland under chin painfully swollen." ],
+    "Abdomen" : [ "Sensation as if diaphragm were pushed forward.", "Enlargement of spleen.", "Bellyache with chill." ],
+    "Stool and Anus" : [ "Vomiting followed by a painless, often bloody diarrhoea.", "Diarrhoea with fever.", "Cholera-like collapse." ],
+    "Heart and Circulation" : [ "Heart-beats frequent but weak.", "Cyanosis.", "Blood does not coagulate." ],
+    "20, Back and Limbs" : [ "Axillary glands swollen.", "Severe pains in limbs and joints with the fever.", "OEdema; ulcers; gangrene; sloughing whitlows." ],
+    "Generalities" : [ "Restlessness.", "Clonic and tetanic spasms (marked rigor mortis after death).", "Exhaustion and collapse.", "Terrible burning pains." ],
+    "Skin" : [ "Crusty oozing eruption.", "Itching with dry skin.", "Black or blue blisters.", "Carbuncles.", "Boils.", "Sloughing ulcers.", "Small-pox." ]
+  }
+}

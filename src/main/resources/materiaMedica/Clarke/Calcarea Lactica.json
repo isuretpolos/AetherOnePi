@@ -1,0 +1,14 @@
+{
+  "remedyName" : "Calcarea Lactica",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Chilblains. Headache. Migraine. Rhinitis. Sprue." ],
+    "Characteristics" : [ "With the introduction of colloidal preparations of the metals preparations of Calcium and its salts have come into much more general use in old-school practice of late, and valuable experiences have resulted which may be utilised by homoeopaths, since they are all in agreement with the uses of the Calcareas of the Materia Medica. Remedies for sprue are not very numerous, and as Calc. lact. has been credited with cures of this troublesome complaint it should be kept in mind. It has been prescribed in the crude, but homoeopaths may begin with eight-grain doses of the 3x trit. three or four times a day. Migraine is another sphere of its action. A Danish writer, C. I. Baastrup (quoted Homoeopathic World, September 1923), described a type in which he found Calc. lact. \"dramatically successful.\" It is accompanied by slight oedema affecting the eyelids, upper lip, or one hand. This is apt to run in families. The oedema is associated with no abnormal sensations. Baastrup suggests that the migraine may be due to an oedema of the meninges. He gives gramme of Calc. lact. once or twice a day for three weeks. It not only removes the headache, \"but also such troublesome symptoms as vasomotor rhinitis.\" That the action is homoeopathic is proved by an experience recorded in British Medical journal, December 22, 1923, and quoted Homoeopathic World, July The writer was subject to a dull headache with sickness. Two years previously he took ten grains thrice daily of Calc. lact. \"as a blood tonic.\" One day, \"while conscientiously and methodically finishing my second bottle, I experienced a severe attack of migraine, starting with visual phenomena (zigzag lines and balls of light before the left eye), and finishing up with dizziness and a diabolical headache in r. temple.\" He had never had eye-symptoms with headache before, and a later repetition of the drug produced a similar effect." ],
+    "Relations" : [ "Compare: Kali bich. and Iris in migraine and Apis in oedema." ],
+    "Head" : [ "Migraine with oedema, visual disorders and dizziness." ],
+    "Eyes" : [ "Zigzags and balls of light before left eye, followed by dizziness and violent headache in r. temple." ],
+    "Nose" : [ "Vasomotor rhinitis." ],
+    "Face" : [ "OEdema of eyelids, upper lip and hand." ],
+    "Abdomen" : [ "Sprue." ]
+  }
+}

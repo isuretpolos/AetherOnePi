@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Sulphur Hydrogenisatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asphyxia. Asthma. Convulsions. Delirium. Mania. Tetanus. Typhoid fever." ],
+    "Characteristics" : [ "Sul. h. is a colourless, inflammable gas, having a sweetish taste and an exceedingly fetid smell resembling rotten eggs. It is extremely poisonous when inhaled. It is evolved when animal or vegetable tissues containing Sulphur decays; and it also occurs in mineral springs, being liberated by the reduction of gypsum or other sulphates through the action of a microbe (Cent. Dict.). Sul. h. is one of the agents which give rise to \"blood poisoning\" when bad smells are encountered. Asphyxia, tetanus, delirium, low continued fever have been observed as resulting from the gas J. Wiglesworth (B. M. J., July 16, 1892) has recorded two cases of insanity, one certainly, and both probably, due to inhaling the gas: R. H., 32, engineman at chemical works, had been kept at home with an attack of bronchitis for ten days. A few days after his return to work he became \"gassed\" (i.e., accidentally inhaled Sul. h.). This caused headache, stupor, prostration, compelling him to stay at home for a few days, when he became wildly delirious. He passed rapidly into a very excited state, shouting and gesticulating; said he was Jesus Christ, &c.; tried to bury his head in the floor and to raise his feet above his head. Three days later he was admitted to Rainhill Asylum, and was there still very violent and excited, gesticulating and talking incoherently, chiefly on religious subjects. At the end of a month there was some improvement, and he was discharged, recovered, five months after admission. In the other case, that of a labourer at chemical works, Wiglesworth is not quite certain that Sul. h. was the poison inhaled. This patient was greatly excited; threw his arms about; shouted and laughed by turns was excited and talkative. He remained permanently insane." ],
+    "Mind" : [ "Loss of consciousness.", "Coma commencing as natural sleep.", "Three days after exposure became delirious; passed rapidly into a violent excited state, shouting and gesticulating; said he was Jesus Christ, &c., tried to bury his head in the floor and raise his feet above his head.", "Gesticulating and talking incoherently on religious subjects (the mania lasted three weeks; complete recovery in five months)." ],
+    "Head" : [ "Headache; and prostration." ],
+    "Eyes" : [ "Eyes sunk with darks rings round them." ],
+    "Face" : [ "Face pale.", "Lips blue." ],
+    "Stomach" : [ "Nausea.", "Sickness and debility.", "Vomiting and diarrhoea, both very painful." ],
+    "Abdomen" : [ "Diffused pains in abdomen." ],
+    "Respiratory Organs" : [ "Respiration: rapid and irregular; laboured; spasmodic attempts to get air into lungs.", "Immediate asphyxia." ],
+    "Heart" : [ "Pulse: rapid; at first weak then hard and rapid; irregular: a feeble flutter." ],
+    "Generalities" : [ "Blood brownish black.", "Muscular system flabby and emaciated.", "Convulsions.", "Spasms.", "Tetanic spasms, sometimes preceded by delirium, sometimes by pains in stomach, faintness and difficult breathing, and the mouth fills with white froth, while the pulse sinks.", "Trembling.", "Sudden weakness and loss of motion and sensation." ],
+    "Fever" : [ "Skin cold; deathly.", "Low fever and delirium." ]
+  }
+}

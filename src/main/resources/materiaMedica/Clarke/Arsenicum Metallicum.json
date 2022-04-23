@@ -1,0 +1,28 @@
+{
+  "remedyName" : "Arsenicum Metallicum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Constipation. Coryza. Diarrhoea. Eyes, affections of. Haemorrhoids. Headache. Itching. Sciatica. Syphilis." ],
+    "Characteristics" : [ "The symptoms of metallic arsenic are very like those of Ars. alb., but not entirely. The following may be regarded as the most peculiar: Symptoms recur every days; coryza every days. Pains extend from one part to another; or leave one part and appear in another. Attacks come suddenly and go slowly, or vice versa. Enlarged or swollen feeling of brain, head, eyelids, hands, and fingers. Cutting, burning, stinging pains. Itching in many parts, skin peels off in small scales. Hot bathing < pain in hip. > Lying on l. side (heart). Washing > itching of anus. Cold bathing > itching of face. < On waking in morning. Thinking of symptoms < Many symptoms appear on r. side. Ars. met. lights up syphilis after being many years dormant." ],
+    "Relations" : [ "Compare: Iod., Merc., Nat. c. in syphilis; Nux v. (drowsy after sound sleep); Rhus (pain in back, hips, &c.); Sul. (pulse); Ars. alb. Useful in pterygium after failure of Nux v. and Spigel. Antidoted by: Bell. (sore throat); Nat. c. (syphilitic symptoms)." ],
+    "Causation" : [ "Laughing (headache). Thinking (headache)." ],
+    "Mind" : [ "Memory weak, esp. of what is read; cannot take in what he reads.", "Fears will be poisoned." ],
+    "Head" : [ "Heavy, dull feeling in forehead above frontal sinuses in morning.", "Fulness; on waking at night.", "As if brain were too large and it would burst.", "Glow over l. brow.", "Pain l. side extending to ear and eye, with nausea.", "Headache when writing, thinking, laughing.", "Hair falls off." ],
+    "Eyes" : [ "Soreness of eyes; irritated and red or sore.", "Upper lid sore and feels swollen.", "Pterygium (r)." ],
+    "Nose" : [ "Coryza and hoarseness < in morning.", "Eyes red, excoriating tears, nose swollen, head feels enlarged, full as if tied up; sneezing and dyspnoea increase every second day; return every two weeks." ],
+    "Face" : [ "Swelling, itching, burning, stinging of forehead and face, < at night, > by cold washing." ],
+    "Mouth" : [ "Tongue coated white; imprinted with teeth.", "Mouth sore; ulcerated." ],
+    "Throat" : [ "Inflamed and ulcerated, several small ulcers.", "Violently inflamed throat, pain on swallowing, heat < r. side, after coryza." ],
+    "11, Stomach and Abdomen" : [ " < From brandy.", "Takes away, or causes desire for alcohol.", "Sore pain in liver goes through to shoulders and spine.", "Pain in spleen down to groin, evening.", "Pain in breast extends to region of spleen.", "Bloated abdomen.", "On waking, cutting, shooting, tormenting belly-ache, followed by burning, watery stool and cessation of pain.", "Painful swelling in r. groin < on extending leg." ],
+    "Stool and Anus" : [ "Diarrhoea, burning watery stools with, relief of pain, but leaving much debility falls asleep sitting.", "Constipation.", "Piles exceedingly painful, bleed a little itching in an us < after rubbing; extending to perineum and scrotum; > washing with very hot water." ],
+    "Urinary Organs" : [ "Urine hot in evening.", "Red, sandy sediment." ],
+    "Male Sexual Organs" : [ "Pain in groins; morning, r., evening, l.", "Bubo r. < stretching leg; > walking; < sitting.", "Itching in glans, prepuce swollen.", "Chancres, with burning pain.", "Offensive sweat on genitals.", "Itching on scrotum." ],
+    "Female Sexual Organs" : [ "Catamenia too early and too scanty.", "Heat in uterus and vagina; burning when touched.", "Pain in uterus and vagina during period." ],
+    "Chest" : [ "Stitches in breasts; extending to hip; to spleen.", "As if heavy load lying on chest all night; dreams of danger on water." ],
+    "Heart" : [ "Cutting pain in heart (4 p.m.); can only lie on l. side.", "Pulse accelerated in morning (Sul.)." ],
+    "Limbs" : [ "Hands and fingers feel swollen; feel stiff as if they could not be closed.", "Cracking of finger-joints.", "Icy coldness or burning of hands and feet.", "Lameness in r. hip-joint, and down thigh, < moving from seat, > continuing to walk; < bathing; < lying on r. side; throbbing < morning, > evening.", "Sensation of dryness in r. knee-joint." ],
+    "Generalities" : [ "Prostration of strength, weariness." ],
+    "Skin" : [ "Peels off in small scales.", "Rash on face; or abdomen.", "Small boils on face.", "Syphilitic symptoms reproduced." ],
+    "Sleep" : [ "Excessive drowsiness all day after an unusually sound sleep at night.", "Sleepy, but can't sleep (Bell)." ]
+  }
+}

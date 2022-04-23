@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Scorpio",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Salivation. Strabismus. Tetanus." ],
+    "Characteristics" : [ "Scorpion stings are attended with a certain amount of danger, especially to children. The symptoms of the Schema are from effects of stings. Scorp. has not been proved in the attenuations. Pain and swelling of the injured part are first experienced, and constitutional symptoms follow. These include sleepiness, prostration, and possibly tetanus. Strabismus has been observed in some cases; and the pupils are dilated." ],
+    "Relations" : [ "Compare: Vespa., Scol., Tarent., Apis." ],
+    "Eyes" : [ "Pupils dilated.", "Slight strabismus." ],
+    "Nose" : [ "Frequent sneezing." ],
+    "Face" : [ "Trismus." ],
+    "Mouth" : [ "Saliva abundant." ],
+    "Abdomen" : [ "Meteorism." ],
+    "Generalities" : [ "Bitten part much swollen, with violent pains lasting from one to three days.", "Heat and pain at bitten spot, sleepiness, sneezing, restlessness; later, abundant saliva, meteorism; later, trismus or tetanus.", "Complete prostration.", "Always acute pains in and diminished temperature of the part bitten." ]
+  }
+}

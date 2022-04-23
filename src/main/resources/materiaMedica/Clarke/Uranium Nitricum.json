@@ -1,0 +1,29 @@
+{
+  "remedyName" : "Uranium Nitricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Albuminuria. Anus, pruritus of. Diabetes, mellitus and insipidus. Duodenum, ulcer of. Enuresis, nocturnal. Gastric ulcer. Impotence. Milk, excessive secretion of. Ophthalmia. Phosphaturia. Seminal emissions. Sleeplessness. Stomatitis. Stye. Urine, fishy odour of; incontinence of." ],
+    "Characteristics" : [ "Uranium belongs to the Chromium group of elements. Ur. nit. was proved by E. T. Blake, whose monograph on the salt forms part of the Hahnemann Materia Medica. Blake's proving was suggested by the observation of an old-school experimenter, Leconte, who found sugar in the urine of dogs slowly poisoned with Ur. nit. Blake was not very successful in producing sugar, but his proving is not any less valuable on that account, and clinical use has filled out the picture. Many cases of diabetes have been relieved or cured by Ur. nit., usually in the lower attenuations. In a case of diabetes insipidus of mine, in a young girl, Ur. nit. gave more relief than any other remedy. Excessive thirst, polyuria, and dry tongue are the indications. Glycosuria is by no means an essential part of the indications for Ur. nit. In some of the animals experimented on by Blake the pylorus was found to be affected. With this the symptoms of the proving correspond, and Ur. nit. has cured both pyloric and gastric ulcer. One case (N. A. J. H., Aug., 1890) in a married woman was cured with 5-gr. doses of the 2x. Patient was weak and emaciated; vomited mucus mixed with blood and coffee-ground matter, and passed dark, tarry stools; sensitive and tender over region of pylorus. Sensations are: As if blood were flowing to head. As if he had taken cold with headache. The left side was more affected than the right. Many symptoms were < at night. Head < walking. > Deep inspiration." ],
+    "Relations" : [ "Compare: Elemental relatives; gastro-duodenal affections, Chrom., and K. bi. Diabetes, Ph. ac., Syzyg., Thyr., Lac def., Lact. ac. Sinking immediately after meals, Ars., Cin., Lyc., Sil., Stp. Craves tea, Selen." ],
+    "Mind" : [ "Ill-humour; and not feeling well all day." ],
+    "Head" : [ "Vertigo twice in evening.", "Head heavy on waking.", "Pain: in forehead; over l. eye; in forehead and occiput in evening; in temple; in occipital protuberances; in occiput on walking.", "Neuralgia on posterior edge of l. temporal bone (formerly on r.) from till p.m. leaving dull aching, neuralgia woke me at a.m. that night, lasted an hour and prevented sleep, ill from the pain during next day, two days later pain in old place (r. side) came on gradually, > by dinner." ],
+    "Eyes" : [ "Stye in l. upper lid.", "(OEdema of lower lids worse than usual.).", "Lids inflamed, agglutinated.", "Shooting from r. orbit to occipital protuberance in evening.", "Pain over l. eye." ],
+    "Nose" : [ "Itching in nose.", "L. nostril stuffed.", "Dry coryza." ],
+    "Mouth" : [ "Painless ulcer, with one elevated side, in mouth opposite l. anterior upper molar, < evening.", "Acid saliva." ],
+    "Throat" : [ "Hawking of tenacious mucus.", "Contracted feeling in throat." ],
+    "Appetite" : [ "Appetite lost; (during menses).", "Craves raw ham and tea." ],
+    "Stomach" : [ "Eructations; tasteless; putrid at and o'clock.", "Indigestion in afternoon a quarter of an hour before dinner, with gnawing sinking at cardiac end of stomach, not hungry nor faint.", "Dyspepsia, flatus after food, acidity, pain from cardiac end of stomach to suprarenal region, > movement, lasted all day, bowels slightly moved, pale clay-coloured faeces (query, if from the drug, as I had had similar but slighter attacks), afterwards epigastric pain as above returned, > by food, with occasional twisting-screwing feeling lower down.", "(Gastric and duodenal ulcers.", "Recurring haematemesis.)" ],
+    "Abdomen" : [ "Flatus; abdomen bloated.", "Borborygmi.", "Sharp colic, with tenesmus and with raw feeling in rectum, afterwards in sleep unconscious seminal emission.", "Enteritis and peritonitis with meteorism; great prostration." ],
+    "Stool" : [ "Urging in rectum and bladder, waking me at a.m., borborygmi, soft stool.", "Stool twice in one day.", "Constipation.", "Pruritus ani." ],
+    "Urinary Organs" : [ "Sore pain in vesical region in evening.", "Urine contained bile.", "Urine high-coloured, a few lithates on standing.", "It produces acute parenchymatous nephritis; sugar is found in the urine, this generally does not come on until after albumen has appeared; glycosuria is very characteristic and persistent; it also produces at times a large amount of oxalate of lime.\".", "Profuse nocturnal urination.", "Urination profuse, painful, pale milky.", "Acute and chronic diseases of adults.", "Diabetes insipidus.", "Diabetes mellitus.", "Nocturnal enuresis.", "Urine greenish and smelling fishy." ],
+    "Male Sexual Organs" : [ "Completely impotent with nocturnal emissions; organs cold, relaxed, sweaty." ],
+    "Female Sexual Organs" : [ "During menses: vertigo; faint; flushing of upper part of body.", "No menstrual flow during diabetic attack; pale, anaemic; craves raw ham and tea.", "Excessive secretion of milk." ],
+    "Respiratory Organs" : [ "Bronchitis, with copious mucous expectoration and much emaciation; chronic colds.", "Cough with purulent discharge from l. nostril; lung infiltrated with grey tubercle." ],
+    "Chest" : [ "Intermittent pain radiating from l. side to ensiform cartilage; < fasting." ],
+    "Back" : [ "Loins stiff.", "(Pain at lower angle of l. scapula < deep inspiration.)" ],
+    "Limbs" : [ "White vesicles on arms and legs with red areolae; burn and itch." ],
+    "Generalities" : [ "Extreme languor; on rising from bed.", "Feeling as if he had taken cold." ],
+    "Skin" : [ "Epithelioma; lupus excedens; ecchymoses." ],
+    "Sleep" : [ "Night restless with shivering and heat.", "Languor." ]
+  }
+}

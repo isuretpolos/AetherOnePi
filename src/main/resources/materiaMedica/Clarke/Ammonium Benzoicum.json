@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Ammonium Benzoicum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Albuminuria. Dropsy. Gout. Indigestion. Ranula. Rheumatism." ],
+    "Characteristics" : [ "The chief symptoms of this salt (which has been proved) are: Head heavy, stupid. Urine scanty; smoky. Pight kidney sensitive to pressure. Gout with fluid in great toe-joint or with lithates. The right side is most affected." ],
+    "Relations" : [ "It is similar in its action to the Ammonias and to Benzoic acid. Also to Gnaphal. (gouty concretions), Caustic., Tereb., Urtica." ],
+    "Eyes" : [ "Feeling of swelling and soreness, apparently in the puncta and saccus lachrymalis.", "Lids swollen." ],
+    "Tongue" : [ "Swelling under tongue, r. side, like ranula." ],
+    "Stomach" : [ "Eructation of food without acidity, with apparent weakness of digestion, or acid eructations.", "Increased warmth in stomach." ],
+    "Urinary Organs" : [ "Sensation of internal soreness on pressure in leaning the back against the cushioned back of a carriage in region of r. kidney.", "Bloated face, eyelids swollen, head heavy, stupid; urine scanty smoky.", "(Albuminuria.).", "Urine smoky-looking, scanty, strong-smelling." ],
+    "Respiratory Organs" : [ "Increased mucus in larynx causes frequent hawking and spitting." ],
+    "Back" : [ "Pains across sacrum, with urgency to stool." ]
+  }
+}

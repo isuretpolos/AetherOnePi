@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Guarana",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Alcohol, effects of. Coffee, effects of. Diarrhoea. Eyelids, twitching of. Headache." ],
+    "Characteristics" : [ "Guarana is a climbing shrub of Brazil, the seeds of which contain Coffeine, and are used by the natives for making a beverage. In medicine it has found its principal use in conditions of nervous exhaustion; sick headache in those who have abused tea and coffee, the headache being followed by vomiting and excited by any error in diet or depression of mind. Throbbing, congestive headache after excessive use of liquor. Persistent twitching of eyelids is one of its indications. Diarrhoea." ],
+    "Relations" : [ "Compare: Agar. (twitching of eyelids); Ign., Nux in sick headache; Coff., Coca., Thea." ],
+    "Mind" : [ "Gaiety; extravagant behaviour.", "Mental hyperaesthesia; intellectual excitement." ],
+    "Head" : [ "Sick headache in those who have abused tea and coffee, or in whom nervous headaches followed by vomiting are excited by any error in diet or depression of mind.", "Throbbing, congestive headache after excessive use of alcohol." ],
+    "Eyes" : [ "Persistent twitching of eyelids." ],
+    "Stool" : [ "Profuse, green, odourless mucous stools.", "Diarrhoea of phthisis." ],
+    "Urinary Organs" : [ "Spasm of bladder." ],
+    "Generalities" : [ "Restlessness, nervousness, weariness.", "Neuralgia.", "Reduced vital powers; grief; depression of spirits; loss of appetite.", "Debility after prostrating diseases.", "Paralysis.", "Chlorosis." ],
+    "Skin" : [ "Urticaria.", "Prurigo." ]
+  }
+}

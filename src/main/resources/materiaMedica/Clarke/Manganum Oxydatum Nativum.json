@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Manganum Oxydatum Nativum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Colic. Diarrhoea. Tibia, pain in." ],
+    "Characteristics" : [ "Lembke proved this. It caused a good deal of painful disturbance in the abdomen, with loose stools, pressive heat in the head, and pains in the leg bones. A tendency to become fatigued and heated were noticeable features. Burning and pressing pains predominate." ],
+    "Head" : [ "Dulness in fore-part of head, caused by pressure on head.", "Heaviness and heat in sinciput.", "Jerking burning in skin of forehead, obliging scratching, with heat in skin.", "Pressure on forehead with vertigo.", "Tearing in side of head and face." ],
+    "Eyes" : [ "Violent burning sensation below eyes (though the skin was cool)." ],
+    "Ear" : [ "A peculiar pressure deep in l. ear." ],
+    "Stomach" : [ "Nausea several times towards noon.", "Pressure in stomach.", "Cutting in stomach." ],
+    "Abdomen" : [ "Violent persistent stitches in l. hypochondrium < by inspiration and pressure.", "Violent cutting in umbilical-region shooting upward.", "Violent colic and thin, light stool, after which the pain, esp. in umbilical region, continued and was < by pressure; other stools followed." ],
+    "Stool" : [ "Light-coloured, thin stool, followed by cutting in umbilical region; in morning (13th d.).", "Stool harder than usual (9th and 10th d.); delayed, hard and scanty (1st d.)." ],
+    "Urinary Organs" : [ "Urine rather increased." ],
+    "Respiratory Organs" : [ "Very frequent scraping and scrapy tickling in larynx, followed by dry cough." ],
+    "Chest" : [ "A peculiar pressure deep behind sternum." ],
+    "Back" : [ "Peculiar sensation of heaviness and pressure in l. lumbar region < bending to l." ],
+    "Upper Limbs" : [ "Prickling in l. hand." ],
+    "Lower Limbs" : [ "Boring in bones below r. (and l.) knee.", "Very violent pinching pain in r. ankle, standing = pain, < by motion." ],
+    "Generalities" : [ "More easily made tired, hot and perspiring.", "Pressure and boring in several bones." ],
+    "Fever" : [ "Much heat of whole body.", "Much internal heat and much less sensitiveness than usual to cold air generally." ]
+  }
+}

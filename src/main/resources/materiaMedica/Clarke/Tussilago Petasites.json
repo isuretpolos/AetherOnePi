@@ -1,0 +1,27 @@
+{
+  "remedyName" : "Tussilago Petasites",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Gonorrhoea. Headache. Lumbago. Night-sweat. Pylorus, affections of. Throat, sore. Tibia, pain in. Uvula, burning in." ],
+    "Characteristics" : [ "Petasites is \"a genus of Compositae established for three or four species of Tussilago, which have the flower-heads partially dioeceous in racemes, sometimes branching into panicles. The essential characters which separate them from the common Coltsfoot (Tussilago farfara) are very slight, and the foliage is the same\" (Treas. of Bot.). I retain the name of Tussilago petasites under which it is best known. Tussilago grows on river-banks that are little trodden on. \"The roots are an admirable medicine in the worst kind of fevers with boils or buboes\" (Green's Herbal). Kuchenmeister and five others took substantial doses. Most noticeable among the symptoms are: a lumbago of very great severity. Tightness of the chest. (Tussilago means \"cough-wort\".) A headache shifting from one part of the head to another during two days. A pain about the pylorus. A urethritis, with yellow discharge. The last has been confirmed clinically. Hansen gives the indication: \"Acute or chronic gonorrhoea, yellow or white, thick discharge.\" Crawling in urethra; jerking in spermatic cord, and drawing in r. testicle are additional symptoms of the proving. [Ivatt's (H. W., xxxvi. 381) reports cures of gonorrhoea with T. farfara, common Coltsfoot.] Rosenberg (H. R., ix. 501) gives some experiences: (1) An extremely violent gonorrhoea; penis swollen, painful; emission of urine extremely painful, mixed with blood, patient feverish and restless. Tuss. p. was given in water. There was a great aggravation of all symptoms in thirty-six hours. The remedy was discontinued and marked amelioration followed. Resumed again, much diluted, rapid cure followed. The remedy was used externally as well in this case. (2) Chronic ophthalmia, the result of gonorrhoea \"cured\" with turpentine. Tuss. p. restored the discharge and then cured. Rosenberg refers to a writer who says of the plant that if it is macerated in water, the water will not spoil even if kept for years. The symptoms are < By pressure (pains in pylorus). < Standing; stooping; walking going up stairs; especially < rising from a seat (lumbago). Drinking = eructations. < Walking." ],
+    "Relations" : [ "Compare: Pain in pylorus (Tus. fg. is as if a morsel had lodged at bottom of cardia). Lumbago, Ant. t., Act. r. gonorrhoea, Thuj." ],
+    "Head" : [ "Severe confusion of head, more l. side, in evening.", "Vertigo; on waking.", "Dulness and heaviness of head.", "Headache l. upper forehead, thence extending slowly over vertex, as if under dura mater like a tearing pain; after two hours pain seated over r. eye, with sensation as if supraorbital muscles would be drawn upward, obliging him to wink; in afternoon headache returned to vertex; in evening again in temporal region; next day on waking, in l. side of vertex extending forward to r. eye." ],
+    "Ears" : [ "(Otorrhoea with enlarged cervical glands.", "R. T. C.)" ],
+    "Mouth" : [ "(Toothache all day, < by cold drink, esp. violent in bed; > by Merc.)." ],
+    "Throat" : [ "Pain and burning in uvula.", "Sore throat and pain on swallowing." ],
+    "Stomach" : [ "Eructations; frequent; numerous always after drinking.", "Nausea.", "Pain in pit of stomach.", "Burning in epigastrium.", "Pain about pylorus, at the point where sternum and ribs form a triangle, < by pressure." ],
+    "Abdomen" : [ "Colic; > by emission of flatus." ],
+    "Stool and Anus" : [ "In afternoon, a second soft but formed stool followed by desire for stool.", "Absence of usual stool after dinner.", "Several unsatisfactory stools in one day." ],
+    "Urinary Organs" : [ "Pressed out a drop of yellow mucus from urethra before urinating, though the urethra was not congested.", "Crawling in urethra, obliging scratching, with erections.", "Urine very profuse; but not evacuated often." ],
+    "Male Sexual Organs" : [ "Jerking pain in spermatic cord causing him to bend backward.", "Drawing in r. testis." ],
+    "Chest" : [ "Tightness of chest.", "Oppression in r. chest." ],
+    "Heart" : [ "Sudden stitch in l. side of praecordium on deep breathing." ],
+    "Back" : [ "Pain in small of back: on standing or stooping; walking; going up stairs; esp. on rising from a seat." ],
+    "Limbs" : [ "Increased stiffness of limbs at night." ],
+    "Lower Limbs" : [ "Pain in middle of r. tibia confined to a small spot." ],
+    "Generalities" : [ "Weakness." ],
+    "Skin" : [ "Itching on forehead and in beard." ],
+    "Sleep" : [ "Restless sleep.", "Many dreams." ],
+    "Fever" : [ "Cold feet.", "Morning sweat.", "Sweat at night; profuse." ]
+  }
+}

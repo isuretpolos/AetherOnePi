@@ -1,0 +1,25 @@
+{
+  "remedyName" : "Jacaranda Caroba",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Balanorrhoea. Chancre. Chordee. Gonorrhoea. Gonorrhoeal rheumatism. Muscular rheumatism. Phimosis. Syphilis." ],
+    "Characteristics" : [ "Several species of Jacaranda (\"especially J. procera,\" says the Treasury of Botany) have the reputation of being curative in syphilis. Mure proved J. caroba, and the symptoms of the proving certainly point to this. Hering gives these symptoms as having been confirmed: \"Contact of urine with chancre = tearing pains, which affect whole organism.\" \"Prepuce much swollen, could not be drawn over glans; on attempting to do so, copious discharge of yellowish green pus.\" \"Chordee in gonorrhoea.\" \"Dull pain under sternum on raising head and drawing breath.\" Among other symptoms noted are: Lancinations in the heart. Rheumatic pains in the limbs. Itching at anus. Mahony has confirmed these symptoms: \"Food tastes insipid; nausea during eating.\" Motion <. Symptoms come on when walking; raising head; sitting. J. S. Whittinghill (H. R., xii. 279) has cured several cases of muscular rheumatism characterised by a peculiar soreness and stiffness of muscles in the morning < by any motion." ],
+    "Relations" : [ "Compare Thuja (gonorrhoea; Gonorrhoeal rheumatism); Coral. r. (red and sensitive chancre and chancroids); jac. g." ],
+    "Head" : [ "Dull pain between the forehead and r. temple, shifting to the other side and then disappearing.", "Fulness in the head.", "Fulness in the r., later in the l. temple, going to the nape of the neck, where it disappears.", "Pain, as if a plug were pressing on the r. side of the forehead." ],
+    "Ears" : [ "Flapping in the ears, as of wings.", "Stoppage and heat in the l. ear, with burning, digging pain extending to the l. nostril." ],
+    "Nose" : [ "Sneezing and fluent coryza.", "Coryza, with heaviness and weariness at the vertex, forehead, and eyes." ],
+    "Mouth" : [ "Food tastes flat or acid.", "Dry mouth in the morning, in bed.", "Raw pain at the l. side of the tongue.", "Mouth dry and clammy." ],
+    "Throat" : [ "Sore throat, with constriction of the pharynx and difficult deglutition.", "Constrictive sensation at the throat." ],
+    "Stomach" : [ "Nausea when eating.", "Fulness at the pit of the stomach, with hurried breathing.", "Pressure at the pit of the stomach.", "Painful stitch between the pit of the stomach and the umbilicus." ],
+    "Abdomen" : [ "Painful stitch in the r. and l. side of the navel.", "Swelling of the r. groin painful to the touch.", "Acute pain at the hypogastrium when pressing upon it." ],
+    "Stool and Anus" : [ "Constipation.", "Itching at the anus while sitting.", "Acute pain, with lancinations in the anus.", "Prickings around the anus.", "Excrescence at the anus." ],
+    "Male Sexual Organs" : [ "Heat and pain of the penis.", "The orifice of the urethra looks like two inflamed lips, itching on being touched.", "Discharge of yellowish white liquid from the prepuce.", "Prickling in the prepuce.", "Pain in the prepuce, as if a small bundle of fibres were seized.", "Phimosis.", "The prepuce cannot be drawn back.", "Suppuration between the glans and prepuce.", "Itching and pricking at the margin of the prepuce.", "Itching pimple at the glans, suppurating like a chancre, and leaving a red point when dry.", "Acute pain in the left testicle when walking.", "Heat and swelling of the scrotum.", "Painful erections caused by the swelling of the prepuce.", "The contact of the urine causes tearing pains, which affect the whole organism.", "Syphilis." ],
+    "Respiratory Organs" : [ "Dull pain under the sternum on raising the head and drawing breath.", "Prickings under the sternum." ],
+    "Heart" : [ "Sensation as if the heart beat in the pit of the stomach.", "Lancinating pain in region of heart.", "Painful stitch at the heart, extending to the r. side.", "Stitch at the heart, which seems to beat slowly." ],
+    "Neck and Back" : [ "Pain in nape.", "Neck so painful that the head cannot be turned to r.", "Stiffness in loins." ],
+    "Upper Limbs" : [ "Rheumatic pains in the left arm in the morning.", "Pain from the left elbow through the forearm.", "Red spot with a yellowish pellicle on the wrist." ],
+    "Lower Limbs" : [ "Ulcers on the legs.", "Rheumatic pain in the right knee, disappearing on motion." ],
+    "Sleep" : [ "Restless sleep with frightful dreams." ],
+    "Fever" : [ "Internal chill.", "Dry, pricking heat all over." ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "remedyName" : "Convallaria",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Heart, affections of. Herpes. Pruritus vulvae. Vomiting (of pregnancy)." ],
+    "Characteristics" : [ "Convallaria is a popular remedy in Russia for heart affections, and it has been introduced into old-school medicine principally as a heart remedy. It compares closely in its action with Lilium tigrinum, and also resembles its other botanical relatives, Aloe, Allium cepa, and Allium sativum. It is strongly purgative and causes morning vomiting. It has been proved, and the symptoms produced snow that its nearest analogue is Lilium tigrinum. Nash has used it in 30th with very satisfactory results in women complaining of great soreness in uterine region with sympathetic palpitation of the heart. He has also removed cardiac dropsy when this uterine soreness has been present as well. Berridge credits it with this symptom: \"Movement in the abdomen as from the fist of a child,\" like sul., Thuj., Croc. In the case of Conval. the symptom occurs \"when lying on the back.\" Sleepiness accompanies many symptoms. > In open air, < in warm room (like Cepa)." ],
+    "Mind" : [ "Depression.", "Mind wanders from subject when reading.", "Dull, can hardly think.", "Irritable when asked a question." ],
+    "Head" : [ "Dull, heavy pains at vertex > open air.", "Headache with fever, < jarring, > rest." ],
+    "Eyes" : [ "Sees imaginary grey spots about in. square in different parts of the room on coming in from a walk.", "When reading sees small words (as \"the,\" \"it,\" \"too,\") before beginning of sentence, when they are not there.", "P is substituted for other letters.", "About every fifteen minutes, dull pains from r. eye over top of head and down r. side of neck.", "Eyelids heavy." ],
+    "Face" : [ "Face and lips sore, crop of small hydroa, feel raw." ],
+    "Mouth" : [ "Fine red points on tip of tongue.", "Intense redness and soreness of tongue, looks like raw beef; granular and quite clean, with tenderness of stomach.", "Coppery taste in mouth.", "Water tastes bitter." ],
+    "Stomach" : [ "Morning sickness and vomiting." ],
+    "Abdomen" : [ "Severe colic; pains come quickly and pass off slowly.", "Dull aching pain and sore feeling in hypogastrium, < when coughing.", "Labour-like pains.", "Movement in abdomen like the fist of a child." ],
+    "Stool and Anus" : [ "Tenesmus.", "Slightly thin stool, brown, offensive with tenesmus and heat at anus after stool.", "Sensation in rectum as if full of gas, not > by passing flatus." ],
+    "Female Sexual Organs" : [ "Labour-like pains in sacro-iliac joints, worse r. side, running down leg intermittently.", "Sensation as if a large cord extended from sacro-iliac synchondrosis to inguinal region, and this cord was pulled down by pelvic organs (< r. side); sensation as if uterus descended and retroverted, pressing on rectum and anus, pain continuous and unbearable.", "Soreness in uterine region with palpitation of the heart.", "Itching at urinary meatus and orifice of vagina." ],
+    "Heart" : [ "When exercising, fluttering at heart, lasting about a minute, then face would get red, with sensation as if heart stopped beating and would start again very suddenly, with faint, sick feeling.", "Pulse full, compressible, intermittent.", "Symptoms > after lying down." ],
+    "Back" : [ "Bruised aching in back.", "Pain in back and wrists, gradually passing off.", "Chills run along back at every movement." ],
+    "Limbs" : [ "Aching in wrists and ankles." ],
+    "Skin" : [ "Blotches like mosquito-bites, itching violently, on undressing scratches till the skin comes off." ]
+  }
+}

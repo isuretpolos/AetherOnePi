@@ -1,0 +1,27 @@
+{
+  "remedyName" : "Zincum Aceticum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Erysipelas. Gastritis. Night-watching, effects of. Toothache." ],
+    "Characteristics" : [ "Zn. ac. was proved by Hahnemann and others. The most Peculiar Symptoms were these: \"Brain feels sore and as if sprinkled with salt.\" \"Throat seems too tight and tongue too short.\" There was toothache < by touch. Shaking chill during and after vomiting. Empty, hungry sensation. Pain and paralytic condition of arms. The symptoms were < in evening. < By motion. < Walking in open air. The only clinical uses of Zn. ac. I am acquainted with I learned from Burnett. He used Rademacher's solution of Zinc in Acetic Acid, and gave 5-drop doses three times a day in water to nurses and others who were compelled to work on an insufficient amount of sleep. I have verified the great utility of this. Another use to which Burnett put it was in erysipelas of old people. In the provers it produced a pustular eruption on forehead and knee; and the latter was attended with voluptuous itching." ],
+    "Causation" : [ "Night-watching." ],
+    "Mind" : [ "Anxious, quiet, does not speak a word; asked how she feels, says, \"Let me alone, I shall soon be better.\"" ],
+    "Head" : [ "Heaviness of head.", "Throbbing headache, as if it would come out at forehead.", "Frontal headache, as if brain sore and sprinkled with salt.", "Dull, sticking, painful sensation in forehead.", "Stitches: in forehead; needle-like in l. temple." ],
+    "Ears" : [ "L. ear swollen internally, painful on inserting finger and on external touch." ],
+    "Face" : [ "Face pale; look anxious." ],
+    "Mouth" : [ "Tearing pain in teeth, esp. when touched.", "Blister on forepart of gum, painful as if burnt.", "Mouth feels burnt.", "Bitter taste in mouth." ],
+    "Throat" : [ "Throat feels too tight and tongue too short." ],
+    "Stomach" : [ "Eructations: empty; ineffectual; sour, with shaking chill; tasting of food eaten three hours before.", "Nausea followed by needle-like stitches in throat, then vomiting of bitter, sour mucus, whereby the sticking was <; afterwards chilliness of back.", "Vomit with salivation.", "Sensation of a small swelling in pit of stomach, painful to touch, previous to menses.", "Pressure; and sticking in pit of stomach, < by motion, late in evening.", "Empty, hungry sensation two hours after dinner." ],
+    "Abdomen" : [ "Violent griping in abdomen, obliged to lie down." ],
+    "Stool and Anus" : [ "Urging to stool a few times at night, followed by pasty stool.", "Diarrhoea every hour during day.", "Diarrhoea of black colour after dinner." ],
+    "Urinary Organs" : [ "Urethra: contraction of; biting in.", "Frequent increased desire to urinate and irritation to urinate (like a burning).", "Much watery urine." ],
+    "Chest" : [ "Much mucus comes from chest in afternoon, with a kind of nausea." ],
+    "Back" : [ "Back much affected, on stooping sudden shooting in it as if all strength had left him." ],
+    "Upper Limbs" : [ "Weakness in both arms.", "Pain in l. arm, heavy, wrist hurts, no position easy at night (from injection into urethra).", "Drawing, trembling, loss of power in r. arm.", "Pressing, tearing, and stitches in muscles of r. arm during rest and motion.", "Pressing pain in ball of r. hand." ],
+    "Lower Limbs" : [ "Pressive sticking in muscles of l. thigh while walking in open air.", "Tensive pain in upper r. calf while walking in open air." ],
+    "Generalities" : [ "She wishes to walk, contrary to habit.", "Frequent alternation between sitting and walking about.", "Feels bad in afternoon.", "(Effects of insufficient sleep.)" ],
+    "Skin" : [ "Papular eruption filled with pus on forehead and neck; when opened it discharged pus and blood (from external application to urethra).", "Red, papular eruption about both knees, which caused a tickling and voluptuous itching.", "(Erysipelas of old people.)" ],
+    "Sleep" : [ "Sleepy during day, frequent yawning." ],
+    "Fever" : [ "Shaking chill; during and after vomiting.", "Several times a day feels hot, as though throat had been burnt with alcohol.", "Burning heat in face, evening, and heat over whole face and redness of cheeks without sweat.", "Night-sweat." ]
+  }
+}

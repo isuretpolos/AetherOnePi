@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Ostrya",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Headache, dull. Head, numb. Intermittent fever. Liver, affections of. Lumbago. Malaria. Malarial anaemia." ],
+    "Characteristics" : [ "The Hop-hornbeam, Ostrya virginica, is sometimes regarded as a variety of the common Hornbeam naturalised in America, though native to Southern Europe. The chief difference between them is that Ost. vulg. has pendulous and Ost. virg. upright catkins. The wood, from preparations of which the provings by Burt and others were made, is exceedingly hard and heavy. The symptoms show a marked action on the liver, with the usual dull headache and pain in back and shoulders; cutting, sinking pains in abdomen. Allen put in italics the following: \"Tongue coated yellow at root.\" \"Loss of appetite for breakfast and dinner.\" \"Frequent nausea with the dull frontal headache.\" On the other hand there is increased appetite; hunger wakes the patient at a.m.; and sinking at epigastrium. Sickening pains were much complained of. Some of the stools were very black. The symptoms were < moving; stooping; walking. < a.m.; a.m.; p.m." ],
+    "Relations" : [ "Antidoted by: Macro., Bry., Nux (lumbago). Compare: Waking in night hungry, Ign., Lyc. Black stools, Lept." ],
+    "Mind" : [ "Very nervous, with dull headache." ],
+    "Head" : [ "Light feeling in head (with stomach symptoms); < walking.", "Dull headache with numb, prickly feeling in head, face, and hands; < head.", "Sharp pain from within out back of mastoid process.", "Severe throbbing frontal headache, < stooping.", "Dull frontal headache with nausea.", "Severe pressing pain r. temple; and r. molars.", "R.", "side headache, morning." ],
+    "Ear" : [ "Drawing pain deep in l. ear." ],
+    "Face" : [ "Moist freckles in face, head, and hands." ],
+    "Mouth" : [ "Boring and sharp pain in r. lower molars.", "Tongue coated yellow at root.", "Taste: coppery, slimy; sweet, shiny; bitter; rough." ],
+    "Stomach" : [ "Appetite greatly increased.", "Woke with hunger a.m.", "Loss of appetite.", "Frequent nausea with the dull frontal headache.", "Sour stomach.", "Burning distress in epigastrium.", "Sensation as if indigestible substance in stomach; > by eating.", "Nausea and distress after riding in cold air.", "Hard sickening pains in epigastric and umbilical region; awaking him at night.", "Sinking in epigastrium." ],
+    "Abdomen" : [ "Dull pain in r. hypochondrium, < by walking; with nervousness and dull headache.", "Dull pains in r. lobe of liver with sour eructations.", "Retraction of umbilicus.", "In umbilical region: frequent, hard sickening, cutting pains; extending into hypogastrium; with desire for stool; with borborygmi and tenesmus; neuralgic pain; constant distress.", "Rumbling; flatus; pain waking him in night.", "Bowels felt as if bound by lead poisoning." ],
+    "Stool and Anus" : [ "Rectum feels sore; protruded feeling after stool.", "Stool: loose; bilious with tenesmus and straining; loose without tenesmus; tenesmus followed by diarrhoeic stool; mushy with burning at anus and tenesmus; small, natural; dark-coloured, natural; black, dry lumps p.m.; very black." ],
+    "Back" : [ "Back so painful, can hardly turn in bed; cannot sit up (> by Macro., Bry., Nux).", "Dull pain in whole dorsal region; extending into l. hypochondrium.", "Constant lumbar and sacral pain, < stooping or walking." ],
+    "Limbs" : [ "Arms and legs: aching; dull pains." ],
+    "Upper Limbs" : [ "Fine drawing rheumatic pains in l. fingers, morning." ],
+    "Lower Limbs" : [ "Awoke several times with cramp-like pain in lower limbs, < walking.", "Drawing pains in r. ankle." ],
+    "Generalities" : [ "Nervous, languid, weak, uneasy." ],
+    "Sleep" : [ "Constant desire to yawn.", "Sleep restless, as after strong tea." ],
+    "Fever" : [ "Cold, chilly about shoulders.", "Gentle sweat over entire surface, with feeling of weakness." ]
+  }
+}

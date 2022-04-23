@@ -1,0 +1,17 @@
+{
+  "remedyName" : "Platinum Muriaticum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Caries. Chancre. Condyloma. Laryngismus. Mercury, abuse of. OEsophagus, stricture of. Stomach, cancer of." ],
+    "Characteristics" : [ "Plat. mur. was experimented with by Hofer, of Pau, who applied locally a saturated solution and administered solutions internally. Fever, headache, constricting sensations and fibrillary twitchings were induced by internal doses; the local application produced acute irritation of the skin and glans penis, with an eruption on the latter like commencing chancre. Plat. mur. has been used in cases of caries (especially of nasal bones and bones of tarsus); of syphilitic caries; syphilitic rheumatism; chronic gonorrhoea; condylomata; gastric carcinoma; acne." ],
+    "Mind" : [ "Thinks he has been poisoned." ],
+    "Head" : [ "Some headache, with slight acidity of stomach.", "Severe headache, esp. in occiput, with fever." ],
+    "Mouth" : [ "Metallic taste." ],
+    "Stomach" : [ "Acidity of stomach with headache.", "Warmth and heaviness in epigastrium.", "Nausea and inclination to vomit." ],
+    "Male Sexual Organs" : [ "[From application of saturated solution to the parts.].", "Violent itching on glans and prepuce, with sensation of warmth and very troublesome sticking; symptoms of acute inflammation of urethra, pain on urinating, slight dysuria; after some hours an eruption about glans penis, somewhat livid, slightly raised, size of pin head, looks like commencing syphilitic sore, but disappears in twelve hours." ],
+    "Respiratory Organs" : [ "Violent constriction of larynx, so that speech and swallowing were decidedly impeded." ],
+    "Generalities" : [ "Involuntary movement of fibres of muscles of nape, back, and extremities for several hours." ],
+    "Skin" : [ "Skin discoloured yellow, becoming covered with rosy red eruption that disappears after a few minutes (from local application)." ],
+    "Fever" : [ "Slight shuddering, pulse accelerated, warmth in epigastrium." ]
+  }
+}

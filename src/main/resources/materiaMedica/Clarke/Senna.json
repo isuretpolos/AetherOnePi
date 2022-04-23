@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Senna",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Colic; flatulent, of infants. Exhaustion. Nitrogenous waste. Sleeplessness. Sneezing, with heat." ],
+    "Characteristics" : [ "Used as a laxative in ordinary practice, Senna has proved an excellent remedy in the colic of infants, with incarcerated flatulence and sleeplessness. Infantile colic when the patient seems full of wind.", "The symptoms of the Schema are mostly derived from overdosings. A peculiar symptom is: \"Repeated sneezing, which caused heat (especially of hands), exhaustion, and panting breathing,\" Exhaustion is typical of Senna. Farrington says it is one of the best remedies in the materia medica for \"simple exhaustion with excess of nitrogenous waste.\" The exhaustion is exemplified in the sinking immediately after meals. The pods caused a nasty unclean smell from the body of a woman taking them for constipation (R. T. C.)." ],
+    "Relations" : [ "Compare: Infantile colic and sleeplessness, jal. Exhaustion, K. ca. Sinking after meals, Ars., Cin., Lyc., Sil., Stp., Ur. nit., Calc., Iod., Sep., Tab." ],
+    "Head" : [ "Heaviness of the head when stooping, as if it were pressed down." ],
+    "Nose" : [ "Repeated sneezing, which caused heat (esp. of hands), exhaustion, and panting breathing." ],
+    "Face" : [ "Livid lips.", "Commissurae of lips covered with small burning vesicles." ],
+    "Stomach" : [ "Anorexia.", "Thirst.", "Empty, or watery and fetid, risings.", "Loathing and nausea, with inclination to vomit.", "Sinking immediately after meals." ],
+    "Abdomen" : [ "Colic, esp. in little children.", "Painful colic from incarcerated flatulence (particularly in young children).", "Sensation of coldness in the abdomen, with emptiness and uneasiness in the stomach.", "Accumulation of flatus, with grumbling and fermentation in the abdomen, and discharge of fetid flatus." ],
+    "Stool and Anus" : [ "Two liquid stools with griping pains.", "Loose evacuation, with tenesmus, and followed by a burning sensation in the anus.", "Diarrhoea with straining and prolapsed rectum and sore anus (cured in children.", "R. T. C.)." ],
+    "Generalities" : [ "Universal swelling.", "Exhaustion.", "Unclean body swell." ],
+    "Sleep" : [ "Ebullition of blood, esp. at night, disturbing the sleep.", "Sleeplessness, with cries and tossing, esp. in the case of infants." ],
+    "Fever" : [ "Heat (esp. of hands)." ]
+  }
+}

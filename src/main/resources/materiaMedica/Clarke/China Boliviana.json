@@ -1,0 +1,26 @@
+{
+  "remedyName" : "China Boliviana",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Aphthae. Corns. Coryza. Hands, red. Mouth, commissures ulcerated. Pneumonia. Wry-neck." ],
+    "Characteristics" : [ "China Bol. was proved by Modiedo, and the proving is accepted by Hering. It presents the main features of Chi. off., but some are peculiar and deserve separate mention. Among these are: Ulceration of commissures of mouth. Cough with dagger-like pains in base of right lung. Rigidity of nape of neck. Hands red; hot; or cold and sticky. There is also sticky sweat about anus. Flatulence, disturbed and dreamful sleep, and sensitiveness to touch are common to both." ],
+    "Mind" : [ "Cowardice.", "Gloom alternating with serenity.", "Alternation of bad and good humour.", "Fits of rage, blasphemes." ],
+    "Head" : [ "Vertigo as after a drunken fit, voracious appetite.", "Headache in morning on awaking; leaves during the day, or lasts all day and leaves during sleep." ],
+    "Eyes" : [ "Violent pains like a stab in l. eye, followed by itching and tears." ],
+    "Ears" : [ "Detonation as of a cannon in r. ear.", "Ringing, humming, whistling sounds." ],
+    "Nose" : [ "Much sneezing on awaking with smell of fresh pus.", "Sensation of incipient cold with tight feeling and pain in throat.", "Violent cold in head.", "Mucus from posterior nares." ],
+    "Face" : [ "Aphthae on inner surface of lips; ulceration of commissures." ],
+    "Mouth" : [ "Mouth bitter, morning on waking." ],
+    "Throat" : [ "Constriction and burning in throat." ],
+    "Appetite" : [ "Hunger, or lack of appetite; repugnance to meat.", "After eating: weight in stomach; cold; sneezing; sleepy and desire to sleep in evening." ],
+    "Stomach" : [ "Much gas rises from stomach." ],
+    "Abdomen" : [ "Pain in both hypochondria and under ribs on waking in the morning.", "Pain in splenic region." ],
+    "Anus" : [ "Biting in anus as from worms; excoriated sensation.", "Viscous sweat on anus." ],
+    "Male Sexual Organs" : [ "Pollutions exceedingly weakening.", "Excoriation on inner and lower part of prepuce.", "Gleet and ulceration of prepuce." ],
+    "Respiratory Organs" : [ "Cough with pain in r. lung, as from a dagger buried there; at times makes breathing laborious; burning in eyes; extremities cold.", "Unbearable pain in r. lung, extends to region of liver, sensitive to touch." ],
+    "Neck and Back" : [ "Nape of neck rigid, cannot turn head to r.; any sudden movement causes a snap or crack.", "Wry-neck.", "Pain in: l. shoulder; in l. buttock, and also in r. hip-bone on sitting up in bed." ],
+    "Upper Limbs" : [ "Hands red; vessels distended.", "Hands hot, even in cold and rainy weather.", "Hands cold, sticky." ],
+    "Lower Limbs" : [ "Legs and feet icy cold, as if blown on by wintry wind.", "Painful corns." ],
+    "Sleep" : [ "Dreams: of sea; of fishes; of swimming; of bathing; of journeys by land and sea; of vomiting worms." ]
+  }
+}

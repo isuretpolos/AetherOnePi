@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Guaco",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Cholera. Diarrhoea. Hydrophobia. Leucorrhoea. Paralysis. Phosphaturia. Rheumatism. Spine, affections of. Tongue, paralysis of." ],
+    "Characteristics" : [ "Guaco has a local repute as a remedy for the bites of serpents, for hydrophobia, cholera, and cancer. In the homoeopathic provings rice-water stools occurred; and difficulty of swallowing as in hydrophobia. One proving also showed an action on the bladder and urinary organs, producing excess of phosphates. A lady who took a decoction for four months steadily, was obliged to discontinue because it produced: Copious, corrosive, putrid leucorrhoea, causing great debility, tanning the inside of the thighs and staining linen yellow. She felt as if fire was running out of her. Terrible itching and smarting. Another prover had severe spinal and occipital pains; paresis of tongue and difficult deglutition. Burning and tearing in soles. Pains as if beaten. Pains extend to other parts, mostly from above downwards. < At night. Motion <." ],
+    "Relations" : [ "Antidoted by: Kre. and Sul. (leucorrhoea). Compare: Alum., Bell. (menstrual flow feels hot); Phos. ac. (phosphaturia). Leucorrhoea staining yellow, Carb. an., Kre., Nit. ac." ],
+    "Mind" : [ "An excited condition." ],
+    "Head" : [ "Severe aching in occiput which sometimes extends over upper half of back.", "Headache and heat of head." ],
+    "Ears" : [ "Deafness." ],
+    "Mouth" : [ "Tongue heavy, difficult to move." ],
+    "Throat" : [ "Difficult deglutition." ],
+    "Abdomen" : [ "Pain and rumbling in bowels followed by watery stools." ],
+    "Stool and Anus" : [ "Awakened a.m. with pain and sudden call to stool of dark brown faecal matter, thin and watery. Slept till 6, when he had another stool, sudden, forcible, profuse, with appearance as of rice-water; some pain in back afterwards, with feeling of weakness and fatigue.", "Congestion of haemorrhoidal vessels." ],
+    "Urinary Organs" : [ "Unusual flow of urine with excess of phosphates; pain over region of bladder and weight and weariness through hips and loins." ],
+    "Female Sexual Organs" : [ "Leucorrhoea, copious, corrosive, debilitating; tanning thighs, staining linen yellow; felt as if fire running out of her; terrible itching < at night." ],
+    "Respiratory Organs" : [ "Constriction of larynx and trachea." ],
+    "Neck and Back" : [ "Burning in nape extending to shoulders.", "Tearing stiffness, drawing-tearing extending to axilla.", "Drawing-tearing in and between scapulae extending into forearm.", "Frequent fine stitches, tearing and violent drawing pains along spine, < bending.", "Aching and pressure forward in the lumbo-sacral region.", "Weight and weariness through hips and loins.", "Pain in sacrum and back with feeling of weakness and fatigue (after diarrhoea)." ],
+    "Upper Limbs" : [ "Aching drawing and simple drawing pains in deltoid with a paralysed sensation extending to forearm.", "Tearing and dislocation pains in shoulders extending to forearm.", "Burning in shoulder-joint.", "Tearing in elbows and fingers." ],
+    "Lower Limbs" : [ "Soreness and pains as if beaten about hip-joint.", "Drawing in thigh.", "Drawing and swollen feeling in calves.", "Uneasiness and drawing in legs.", "Tearing in ankle-joints.", "Burning and tearing in sales." ]
+  }
+}

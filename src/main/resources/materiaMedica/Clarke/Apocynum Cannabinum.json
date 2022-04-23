@@ -1,0 +1,29 @@
+{
+  "remedyName" : "Apocynum Cannabinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Ascites. Catarrh. Coryza. Diabetes insipidus. Diarrhoea. Dropsies. Enuresis. Heart, affections of. Hydrocephalus. Menorrhagia. Metrorrhagia. Nausea. Neuralgia. Snuffles. Tobacco-heart. Urinary difficulties. Vomiting." ],
+    "Characteristics" : [ "The clinical effects of Strophanthus and the symptoms produced on patients to whom it has been given in large doses, clearly show the relationship between it and Apocynum. Both produce intense gastric disturbance, extreme depression of the heart's action, and both control dropsical effusions and produce diuresis. Apo. c. depresses the heart, kidneys, and intestines, relaxing sphincters. It causes an intense sinking sensation; drowsiness and a bewildered state of mind. Dizziness. Haemorrhages. The dropsies of Apocynum are general dropsies with or without organic disease; swelling of every part of the body; cardiac dropsies. The excretions are diminished, especially urine and sweat. Hydrocephalus has been cured with it: \"Child lying in stupor, with constant involuntary motion of one arm and leg.\" \"Paralysis of left side; one eye motionless, one rolling.\"" ],
+    "<" : [ "Diarrhoea is < immediately after eating. Food or water is immediately ejected, though hungry. There is < on waking in the morning. Many of the symptoms are < after sleep." ],
+    "Relations" : [ "Compare: Apoc. andr., Alstonia const., Strophanth., Acet. ac., Apis (thirstless in dropsies), Arsen., Bell., Bry., Chi., Colch., Digit. (dropsy; slow pulse), Elat., Helleb. (hydrocephalus; ascites); Alo., Gamb., and Trombid. (diarrhoea), K. ca., Lyc., Merc., Merc. sul., the Loganiaceae", "Nux v., Ignat., Curare; Spig., Scill., Sul., Verat." ],
+    "Mind" : [ "Bewildered; nervous, low-spirited." ],
+    "Head" : [ "Dizzy.", "Very marked piercing pain in r. temple followed by vertigo.", "Vertigo suddenly appearing and disappearing.", "Hydrocephalus: stupor, sight of one eye totally lost, the other nearly so; forehead projecting; sutures open; stage of exudation." ],
+    "Eyes" : [ "Eyes inflamed; < morning and evening.", "As if sand in them." ],
+    "Nose" : [ "Violent coryza.", "Nose and throat filled with thick yellow mucus on waking in morning.", "(\"Snuffles\" in infants.).", "Peculiar dryness of mucous membranes of nose with sensation of stiffness, followed by secretion of thick yellow mucus, preceded in some cases by a thin, irritating discharge." ],
+    "Face" : [ "Face pale, covered with cold sweat (diarrhoea).", "Dry lips." ],
+    "Mouth" : [ "Dry tongue, immoderate thirst.", "Tongue coated.", "Constant spitting, increase of mucus and saliva." ],
+    "Stomach" : [ "Thirst on waking.", "Great thirst; but water disagrees, causing pain, and is immediately thrown off (Ars.).", "Cannot tolerate food or drink, which is immediately ejected.", "Distension after a moderate meal.", "Feels hungry, but when she eats it settles in epigastrium, turns sour, and hurts.", "Extreme epigastric sinking.", "Oppression at epigastrium and chest excessive, can hardly, get breath enough to smoke a cigar.", "Ascites, often with chronic diarrhoea." ],
+    "Stool and Anus" : [ "Gentle diarrhoea in the morning, no pain.", "Diarrhoea explosive, involuntary immediately after eating.", "Stool copious, yellow or brownish, like mush; sometimes containing undigested food.", "Extreme prostration after stool.", "Constipation though faeces not hard.", "Piles with feeling as of a wedge being hammered into anus.", "Tenesmus of rectum.", "Bearing-down pain in anus.", "Evacuations very scanty.", "Watery stools.", "Symptoms always immediately after eating." ],
+    "Urinary Organs" : [ "Urinary organs torpid, urine scanty, but flows as easily as oil.", "Severe expulsive pains of bladder.", "Urine copious and almost involuntary from relaxed sphincters.", "Profuse light-coloured urine; no sediment.", "Enuresis." ],
+    "Male Sexual Organs" : [ "Penis and scrotum swollen, dropsical." ],
+    "Female Sexual Organs" : [ "Exhausting menorrhagia (continuous or paroxysmal).", "Blood expelled in large clots, sometimes in fluid state.", "Amenorrhoea in young girls; abdomen and legs bloated." ],
+    "Respiratory Organs" : [ "Oppression; can scarcely speak; speaks in sharp staccato; must take deep breaths.", "Violent hoarse cough, < at night.", "Haemoptysis.", "Cough short and dry, loose and rattling with oppression.", "Short, unsatisfactory respirations." ],
+    "Heart" : [ "Flutterings, dartings, prostrated feeling in cardiac region.", "Quick, sharp, catching pain in heart with palpitation.", "Pulse slow, laboured.", "Irregular, intermittent, at times feeble, then slow.", "Pulse quick, feeble when moved.", "Fainting on moving the head.", "Palpitation troublesome on walking; heart action scarcely perceptible." ],
+    "Limbs" : [ "Rheumatic condition.", "Joints stiff, esp. on moving in the morning.", "Constant involuntary motion of one leg and one arm." ],
+    "Upper Limbs" : [ "Finger nails of bluish red colour." ],
+    "Lower Limbs" : [ "Aching in both knees.", "OEdema of feet, ankles, and legs." ],
+    "Generalities" : [ "Excretions diminished, esp. urine and sweat." ],
+    "Sleep" : [ "Drowsy in afternoon, restless at night.", "Stupor.", "On going to bed desire to sleep, but inability to do so.", "Drowsy before and after nausea and vomiting." ],
+    "Fever" : [ "Body covered with large drops of cold sweat.", "Dropsy after scarlet fever; after abuse of quinine." ]
+  }
+}

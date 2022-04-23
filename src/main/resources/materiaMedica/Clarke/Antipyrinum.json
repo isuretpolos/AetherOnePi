@@ -1,0 +1,29 @@
+{
+  "remedyName" : "Antipyrinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Dysmenia. Enuresis. Epilepsy. Epistaxis. Erythema. German measles. Headache. Heart, paralysis of. Mind, deranged. Respiration, Cheyne-Stokes. Scarlatina. Throat, sore. Toothache. Urticaria." ],
+    "Characteristics" : [ "Antipyrine is known from the poisonous effects it has produced in old-school practice. Many fatal cases have been recorded, and there can be little doubt that its injudicious use has determined a fatal issue in many cases that have remained unrecorded. Its action is very like that of Antifebrin in producing collapse, but it has more effect on the skin, causing scarlet rash and oedema. A young lady patient of mine who took Antipyrin on her own account, whenever she thought she might be going to have a headache, developed intense dysmenorrhoea (to which she was not subject), with depression. This was only removed after she had discontinued the drug. Later on she took Phenacetin, with the result that an eruption of erythema appeared on both cheeks, which peeled after a few days, and recurred persistently. It would seem from the above that the drug is homoeopathic to some forms, at least, of neuralgia. One patient had Cheyne-Stokes respiration. Erythema appears first on face and arms, last on legs. Hansen mentions its use in enuresis and epistaxis. > Hot drinks." ],
+    "Relations" : [ "Compare: Anilinum (skin). Antefeb.; Ars.; Chloral; Acon. (numbness; rapidity of attack). Antidoted by: Bell. The symptoms are much intensified in persons addicted to coffee in excess." ],
+    "Mind" : [ "Loss of consciousness.", "Fear of impending insanity (mental balance did not return for some months).", "Excitement.", "Continual crying.", "Nervous anxiety." ],
+    "Head" : [ "Headache, with toothache; pain behind both ears of tearing character.", "Snapping sensation in head." ],
+    "Eyes" : [ "Complete loss of vision.", "Eyelids swollen so that eyes were almost closed.", "Coryza." ],
+    "Ears" : [ "Buzzing in ears." ],
+    "Nose" : [ "Tingling burning in nose, with sneezing and running from eyes and nose; nose and face swollen.", "Coppery smell which comes and goes." ],
+    "Face" : [ "OEdema; dusky red face." ],
+    "Teeth" : [ "General toothache, together with headache; pain behind both ears of a tearing character." ],
+    "Mouth" : [ "Tingling burning in gums, mouth, and throat.", "Lump in mouth about an inch thick just below level of upper teeth (passed away in half-hour)." ],
+    "Throat" : [ "Dryness, burning, swelling, l. side of throat with aphonia; l. tonsil white and swollen.", "Tight, constricted feeling." ],
+    "Stomach" : [ "Attacks of excitement accompanied by vomiting (in a child).", "Epigastric pain, causing to bend double and cry out.", "Expanding sensation rising from stomach." ],
+    "Urinary Organs" : [ "Incontinence of urine.", "Amount diminished." ],
+    "Respiratory Organs" : [ "Cheyne-Stokes breathing.", "Hoarseness following aphonia." ],
+    "Chest" : [ "Sensation as though contents of thorax and abdomen were being forcibly drawn up towards throat, and r. testicle to abdomen.", "Dyspnoea; tightness of chest.", "Sensation of tumour over notch of sternum.", "Inability to lie down." ],
+    "Heart" : [ "Pulse feeble and rapid.", "Fainting spells." ],
+    "Neck and Back" : [ "Feeling of numberless pins pricking him down each side of neck." ],
+    "Limbs" : [ "Pains in limbs.", "Limbs swollen." ],
+    "Upper Limbs" : [ "Cramp in r. arm.", "Fingers of r. hand clenched in the form of a claw." ],
+    "Generalities" : [ "Feeling of numberless pins pricking him down each side of the neck, extending down r. chest and abdomen, particularly severe r. side of scrotum and r. testicle, also in legs and feet, severely r., slightly l.", "Sensation as if contents of chest and abdomen drawn upwards, felt he was \"drawn in a ruck,\" and, being unable to stand, fell on the floor.", "Trembled violently all over, had cramp in r. arm.", "Epileptic attacks, with partial unilateral twitching; contraction of muscles; chattering of teeth; jactitation.", "Cyanosis.", "Collapse.", "Throbbing all over body.", "Sensation as if inside of body were filled with ice." ],
+    "Skin" : [ "Rash, erythema or urticaria, with troublesome itching; chiefly between fingers.", "Irregular rounded pimples lying close together, in some places confluent, forming patches, between which skin was normal, giving a marbled appearance, lasted five days, turned brownish and desquamated slightly.", "Eruption thickest on body and extremities, extensor more covered than flexor surfaces.", "Eruption begins on face and arms, last on legs.", "Scarlet macular eruption." ],
+    "Fever" : [ "Excessive perspiration.", "Throbbing all over body, coldness of hands and feet, nervous shuddering without chill.", "Pulse goes up and down with the temperature." ]
+  }
+}

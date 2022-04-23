@@ -1,0 +1,17 @@
+{
+  "remedyName" : "Ranunculus Repens",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Back, pulsation in. Eyes, smarting of; inflammation of. (Feet, weakness of.) Sleep, short but refreshing." ],
+    "Characteristics" : [ "Franz reports a number of symptoms experienced from preparing the juice of this plant. The symptom of phantasmagoria appears in brackets as though there were a doubt about it, and I therefore leave it so. There is quoted in Jahr an account of the effects of eating R. rep. observed in a flock of sheep. Several fell down as if struck by lightning; eyes rolled; breathing hurried. Some reeled and died with their heads bent towards left groin. Mucous membranes of eyes injected; mouth dry; abdomen slightly distended; ruminations ceased. Some raised themselves, reeled, fell down again, bleated piteously; most were in profound coma. Bleeding <; ether in milk gave much >. Great weakness in feet remained behind. R. rep. has furrowed flower-stalks like R. bulb., but it has a spreading calyx and creeping scions." ],
+    "Mind" : [ "(In evening, in bed, he dreams while yet awake that he is in a large city, and sees well-dressed people, masquerades, Turks, &c.).", "Profound coma (sheep)." ],
+    "Head" : [ "Evening in bed, crawling sensation on forehead and region of hair, > sitting up." ],
+    "Eyes" : [ "Smarting in eyes; profuse lachrymation.", "Eyes rolled; conjunctiva injected (sheep)." ],
+    "Mouth" : [ "Mouth dry (sheep)." ],
+    "Abdomen" : [ "Abdomen sligthly distended (sheep).", "Reeled and died with heads bent towards l. groin (sheep)." ],
+    "Back" : [ "Evening in bed, beating like full, strong pulsation in sacral region." ],
+    "Lower Limbs" : [ "Great weakness of feet remained behind (sheep)." ],
+    "Generalities" : [ "Fell as if struck by lightning (sheep).", "Died with heads bent towards l. groin (sheep).", "Raised themselves, reeled, fell again, bleated piteously (sheep)." ],
+    "Sleep" : [ "Wide awake and feeling extremely well in morning, though he slept only a few hours." ]
+  }
+}

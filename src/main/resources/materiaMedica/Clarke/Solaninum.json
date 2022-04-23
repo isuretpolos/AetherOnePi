@@ -1,0 +1,26 @@
+{
+  "remedyName" : "Solaninum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Lungs, paralysis of. Tetanus. Ticklishness." ],
+    "Characteristics" : [ "My first practical acquaintance with Solan. was through seeing the excellent effect of Solan. acet. in solution given by Dr. Hughes to a diabetic and semi-paralytic man of 60, who had frequent threatenings of respiratory paralysis with accumulations of mucus which he was unable to expel. Solan. acet. more than any other remedy rescued him from danger and prolonged his life. From that time I have frequently had occasion to use it in similar conditions. Solan. is obtained from many of the Solanaceae, and especially from Dulcamara. It exists in potatoes, and under certain conditions of germination potatoes may contain a poisonous amount. An accident of the kind occurred to soldiers at Pfuhl who were supplied with potatoes containing about per cent. of Solan. (Med. Press, June 5, 1901). Sixty-six soldiers had marked poisoning symptoms: Shivering, fever, vomiting, syncope, and in one case convulsions. Skin and conjunctivae were tin-red yellow. Solan. was proved by Clarus and Schroff and others. Experiments were also made on animals. Slowed and oppressed respiration was a marked feature. Respiration was slowed in inverse proportion to the increase in the pulse rate. There was cerebro-spinal irritation; hyperaesthesia and convulsions < by touch. Skin more easily tickled than usual. In animals the hind limbs were rigid and paralysed; and in the provers the lower limbs were weakened." ],
+    "Relations" : [ "Compare: Dulc., Bell., S. car., S. nig., S. tub., S. t. aegrot. (Botan). In respiratory paralysis, Dulc., Bell. Sleepy but cannot sleep, Bell. Hyperaesthesia, Nux, Tetanin." ],
+    "Mind" : [ "Stupefaction without previous excitement." ],
+    "Head" : [ "Vertigo.", "Head: hot, heavy, dull, painful.", "Pain in occiput.", "[(In rabbits:) Injection of cerebro-spinal passages, esp. of medulla oblongata; spasms < by touch; pendulum-like swinging of head and snapping with the mouth.]" ],
+    "Eyes" : [ "Pupils slightly contracted." ],
+    "Mouth" : [ "Salivation.", "The pure alkaloid has a cooling, acid, and salt taste, and when chewed causes a glutinous sensation in pharynx and throat, with scraping which extends to stomach, where it becomes a peculiar sticking pain.", "Bitter taste." ],
+    "Throat" : [ "Scraping in throat." ],
+    "Stomach" : [ "Constant eructations.", "Nausea, and diarrhoea; and vomiting.", "Nausea, violent, ineffectual efforts to vomit.", "About p.m., vomiting three times without previous nausea, or pain, or any intestinal symptoms." ],
+    "Abdomen" : [ "Rumbling in abdomen." ],
+    "Urinary Organs" : [ "Albumen in urine." ],
+    "Respiratory Organs" : [ "Hoarseness.", "Respiration: slow; superficial; difficult; oppressed; distressed, esp. on inspiration.", "[Decreased frequency of respiration in inverse proportion to increase of pulse.", "Moist rattle during inspiration.", "Frequent violent outcry (from action on medulla oblongata).", "Masses of mucus in larger air-passages (post mortem).", "Paralysis of respiration. (Rabbits poisoned with S.)]" ],
+    "Chest" : [ "[Convulsions of muscles of thorax, with which were soon associated tonic spasms of extremities, at first gentle, gradually increasing, and a short time before death suddenly attaining an enormous height; < by touch. (Rabbits.)]" ],
+    "Heart" : [ "Pulse: increased in rapidity; weak; thready.", "Pulse and respiration slowed.", "[Increased pulse rate; respiration slowed.", "Post-mortem, rigidity of heart muscle, all its cavities full of dark, cherry-red coagulated blood. (Rabbits.)]" ],
+    "Neck and Back" : [ "[Cerebro-spinal meningitis. (Rabbits.)]" ],
+    "Lower Limbs" : [ "Slight tonic spasms of lower limbs.", "Weakness of lower limbs.", "[Incapable of moving hinder feet forward.", "Hind legs quite stiff, toes stretched out; then great dejection, retching, and signs of pain. (Rabbits, from the sulphate.)]" ],
+    "Generalities" : [ "Weakness.", "Sensitiveness to light, noise, and touch.", "Convulsions.", "Fainting.", "[Sudden rapidity and convulsive embarrassment of respiration, general convulsions, tetanic spasms, and strong dilatation of pupil. (Dog.)]" ],
+    "Skin" : [ "Skin dry.", "Hyperaesthesia; creeping along spine when touching the skin; more easily tickled than natural.", "Itching.", "Yellow discolouration of skin." ],
+    "Sleep" : [ "Frequent yawning.", "Great sleepiness with inability to sleep.", "Sleep restless, frequently disturbed by frightful dreams.", "Sleep frequently interrupted without dreams." ],
+    "Fever" : [ "Extremities cold.", "Shivering, fever, vomiting, and syncope.", "Profuse perspiration without weakness." ]
+  }
+}

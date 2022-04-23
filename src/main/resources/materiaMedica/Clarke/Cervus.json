@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Cervus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Sciatica. Taste, altered. Tongue, painful." ],
+    "Characteristics" : [ "Mure proved this substance, and one symptom appears to be peculiar: \"Taste of doughy bread in the mouth.\"" ],
+    "Relations" : [ "Compare:", "Carb. an. (charred ox-hide)." ],
+    "Eyes" : [ "Sensitive to light, esp. sunlight." ],
+    "Face" : [ "Face mottled." ],
+    "Mouth" : [ "Taste of doughy bread.", "Coppery taste with heat in throat when taking the drug." ],
+    "Abdomen" : [ "Pricking in navel when lying.", "Needle-like pain, intermitting in r. groin, in direction of joint, after walking." ],
+    "Upper Limbs" : [ "Numbness of arm on which he lies; of hand and legs." ],
+    "Lower Limbs" : [ "Frequent pain, now in l. buttock now in thigh." ],
+    "Sleep" : [ "Drowsiness and yawning." ]
+  }
+}

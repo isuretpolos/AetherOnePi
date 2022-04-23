@@ -1,0 +1,25 @@
+{
+  "remedyName" : "Apium Graveolens",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Fidgets. Headache. Heartburn. Otorrhoea. Post-nasal catarrh. Rumination. Toothache. Urine, retention of. Urticaria." ],
+    "Characteristics" : [ "A proving of tincture of seeds produced the following symptoms: Unpleasant feeling at stomach, with belchings tasting of celery. Heartburn. Spitting up of food. Gone feeling at pit of stomach lasting for hours and partially relieved by eating.", "Effects of eating the root: during the following day and night, most obstinate retention of urine, which could only be relieved by the catheter. On another person this was observed: Inability to sit still or lie still in bed from feeling of \"fidgets\"; cannot keep mind from I thinking. In a proving under the direction of W. P. Wesselhoeft (Med. Advance, April, 1886) a remarkable symptom was: a dull ache in sacrum < when lying down, > when moving about. Another symptom was \"sensation as if both eyes were sunken back into their sockets.\" Throbbing headaches, < by slightest motion; > by rest, mostly left-sided. Urticaria, always appearing with shuddering; intense stinging itching with rapid change of location. Pressure in stomach preceding urticaria, and relieved when it appears. Toothache in left molars > by holding cold water in the mouth. Hering cured with Apium g. an old abscess near the umbilicus. Allen mentions: \"Profuse discharge from granulating ulcers, intense constriction over sternum, with drawing feeling through to back on lying down,\" as having been cured by it." ],
+    "Mind" : [ "Cannot keep mind from thinking." ],
+    "Head" : [ "Frontal headache; over r. eye and r. temple; < during night.", "Dull pain r. temple with nausea.", "Pain in l. temple spreads over l. side of face and top of head.", "Pain as from a jar or blow deep in l. temporal region, a throbbing ache.", "Painful throbbing < by expiring through nose.", "Headaches: > while eating; in open air; closing eyes; complete rest drinking cold water; by hot compresses. < After eating; by light; by reading or studying; by slightest motion or nodding head." ],
+    "Eyes" : [ "Eyeballs feel as if sunken into sockets." ],
+    "Ears" : [ "Partial deafness (< l.), painless pulsation.", "Troublesome otorrhoea." ],
+    "Nose" : [ "Tough pearl-coloured discharge from nostrils.", "Sudden dropping of mucus into posterior nares.", "Tickling in nostrils with sneezing, forenoon.", "Tickling in r. nostril with watery discharge and sneezing.", "Nostrils stuffed, with pain in forehead." ],
+    "Mouth" : [ "Sore spot on tip of tongue.", "Dull, sore pain on upper and lower teeth.", "Toothache > by cold water." ],
+    "Throat" : [ "Soft palate and fauces sore, dark red and swollen.", "Air rushing down posterior nares hurts back of throat." ],
+    "Stomach" : [ "Unpleasant feeling at stomach with belchings tasting of celery.", "Heartburn.", "Spitting up of food.", "Sore feeling at pit of stomach lasting for hours and partially relieved by eating.", "Desire for oranges; for oatmeal." ],
+    "Stool and Anus" : [ "Three urgent well-formed stools during the day.", "Before stool sharp pain from abdomen directly into rectum, with feeling that she cannot retain stool a moment." ],
+    "Urinary Organs" : [ "Obstinate retention of urine, could only be relieved by catheter." ],
+    "Respiratory Organs" : [ "Tickling in top of windpipe causing dry cough.", "Wheezing breathing during the night.", "Can count heart-beats by hearing and feeling it in chest." ],
+    "Neck and Back" : [ "Muscles of back of neck painful on motion, sore to pressure.", "Dull pain in sacrum with slight bellyache.", "Pain in sacrum more to l. side extending to lumbar region.", "Pain in sacrum > after rising from bed and moving about; < lying down.", "Red, intensely itching blotches on l. sacral region." ],
+    "Lower Limbs" : [ "Growing pains in r. leg during night.", "Burning on inside of thighs.", "Raw, excoriated surfaces on inner thighs extending into groins, < l. side.", "Red itching blotches on inside l. foot, and outside ankle." ],
+    "Generalities" : [ "Inability to sit still, or lie still in bed from feeling of fidgets; cannot keep mind from thinking." ],
+    "Skin" : [ "Itching on all parts.", "Red elevated pimples like stings of insects; intense itching; itching changes location by scratching; < after undressing in evening; during night till a.m." ],
+    "Sleep" : [ "Sleepless; not fatigued by loss of sleep.", "Sleep broken by bruised pain in l. temporal region." ],
+    "Fever" : [ "Perspiration on forehead on awaking a.m." ]
+  }
+}

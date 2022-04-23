@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Salix Purpurea",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Fever. Parotitis. Vertigo." ],
+    "Characteristics" : [ "T. C. Duncan and his wife proved Sal. purp., taking drachm doses of the infusion of the bark. The chief symptoms produced were: Giddiness; loose stools; fever; swelling of the right parotid gland. The fever was marked by heat preceding chill and perspiration. Duncan chewed the bark on one occasion, and this caused the astringent effect on the mucous membrane of the mouth. The only rheumatic symptom was aching in right acetabulum." ],
+    "Mind" : [ "Very nervous, irritable, and despondent all day.", "Dulness of intellect." ],
+    "Head" : [ "In a few minutes dizzy feeling commencing just in front of ears and passing up to vertex, like a wave; compelled to sit down." ],
+    "Face" : [ "Swelling of r. parotid gland." ],
+    "Mouth" : [ "Peculiar astringent taste, puckering mucous membrane and closing Steno's duct.", "Taste of undigested food." ],
+    "Abdomen" : [ "Flatulence.", "Pain in abdomen." ],
+    "Stool and Anus" : [ "Bowels loose; two stools in one day; with griping." ],
+    "Urinary Organs" : [ "Urine slightly acid; excess of triple and earthy phosphates and epithelium; less uric acid crystals (?)." ],
+    "Heart" : [ "Pulse feeble; circulation torpid." ],
+    "Lower Limbs" : [ "Aching in r. acetabulum." ],
+    "Sleep" : [ "Rested poorly; waked often; first too hot, then too chilly." ],
+    "Fever" : [ "First too hot, then chilly, and at last, towards morning, in a profuse perspiration." ]
+  }
+}

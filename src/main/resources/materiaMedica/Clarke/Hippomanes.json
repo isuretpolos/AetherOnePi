@@ -1,0 +1,30 @@
+{
+  "remedyName" : "Hippomanes",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Chorea. Melancholia. Prostatitis. Wrist, paralysis of; rheumatism of." ],
+    "Characteristics" : [ "The clinical experience with this remedy has been so limited, that but few characteristic indications have been made out. These, however, are peculiar: Icy coldness in stomach. Violent pain in wrists. Paralysis of wrist in morning in bed. Weakness of hands and fingers so that he cannot hold anything. A case of chorea was cured on these last symptoms. There is weakness, restlessness, melancholy. The headache is > lying on painful side, < walking in sun. Chilliness, > from being covered. A peculiar sensation is as if the head would fall forward on walking; as of a plug in the throat; as if a swelling retarded the flow of the urine. There is desire to lie down, but no relief on doing so." ],
+    "Relations" : [ "Antidoted by: Coffee. Caust. relieved the paralysis of wrist. Compare: Anac. (plug sensation)." ],
+    "Mind" : [ "Melancholy; a young man sits in the corner and does not want to have anything to do with the world.", "Restlessness; must move from place to place." ],
+    "Head" : [ "Sensation of lightness in head.", "Pressive pain in temples.", "Headache, with giddiness, heat in head, sleepiness, yawning, thirst.", "Violent headache; heaviness on vertex; when walking it feels as if head would fall forward.", "Headache > when lying on painful side; < when walking in sun.", "The head feels so heavy that it falls forward if he raises himself.", "The hair becomes nearly dry; falling off of hair." ],
+    "Eyes" : [ "The light of the candle looks blue.", "Stitches in eyes (with headache).", "Painfulness of eyes when moving them, with headache." ],
+    "Nose" : [ "Sensation of coldness when drawing the air in.", "Bleeding of nose in morning." ],
+    "Face" : [ "Involuntary twitching of under lip." ],
+    "Mouth" : [ "Bitter taste in mouth.", "Tongue coated white, with redness of tip.", "Increased secretion of saliva, with headache or sore throat." ],
+    "Throat" : [ "Painfulness of l. tonsil.", "Sensation of plug in throat (l. side)." ],
+    "Appetite" : [ "Desire for acids, and aversion to sweet things." ],
+    "Stomach" : [ "Nausea, esp. in a draught of air.", "Icy coldness in stomach.", "Sensation of emptiness in stomach (and head)." ],
+    "Stool and Anus" : [ "Soft stool, with vomiting; discharge of prostatic fluid after micturition.", "Hard stool, in balls.", "Spasmodic contraction of sphincter ani." ],
+    "Urinary Organs" : [ "Frequent discharge of watery urine.", "Urine discharged in a small stream, with straining", "it feels as if a swelling retarded it; prostatitis.", "Drawing pain from anus through urethra." ],
+    "Male Sexual Organs" : [ "Sexual desire increased.", "Prostatitis.", "Drawing pain in testicles." ],
+    "Female Sexual Organs" : [ "Menstruation too early." ],
+    "Respiratory Organs" : [ "Larynx feels raw, as if air were too cold.", "Tickling in throat when breathing.", "Cough, barking, during sleep." ],
+    "Chest" : [ "Stitches in l. side of chest." ],
+    "Limbs" : [ "Heaviness in limbs." ],
+    "Upper Limbs" : [ "Left arm feels as if paralysed.", "Violent pain in wrists.", "Paralysis of wrist, every morning in bed.", "Sensation in wrist as if sprained, esp. l.", "Great weakness of hands and fingers, so that he cannot hold anything.", "Formication on r. hand." ],
+    "Lower Limbs" : [ "Weakness, and as if sprained, in knees.", "Weakness and sensation of dryness in foot joints and soles of feet.", "Cramps in soles of feet, in evening.", "Cold feet." ],
+    "Generalities" : [ "Great weakness of body and mind.", "Great weakness and debility, with pale face.", "Desire to lie down, with no relief on doing so.", "Chorea." ],
+    "Skin" : [ "Itching as from flannel on skin, esp. on chest and between shoulders." ],
+    "Fever" : [ "Chill, beginning in back.", "Chill, > being warmly covered in bed.", "Heat in evening, with dull headache." ]
+  }
+}

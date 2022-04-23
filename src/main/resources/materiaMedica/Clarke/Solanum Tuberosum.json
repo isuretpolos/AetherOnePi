@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Solanum Tuberosum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Amaurosis. Cramps. Iritis, rheumatic. Stammering. Trismus. Tumours." ],
+    "Characteristics" : [ "The poisonous properties of the berries and leaves of the potato plant are well known, and the tubers are popularly believed to have anti-scorbutic properties when eaten as food. Under some conditions the tubers have been known to contain poisonous quantities of Solanin. The symptoms of the Schema are the result of eating new potatoes, green potatoes, an extract, and the berries. The last proved fatal in a number of instances. Sickness and diarrhoea with tenesmus, giddiness, dilated pupils and indistinct vision, a paralytic condition of the tongue, cramps, and tetanic spasms are the main features of the poisonings. Cooper relieved with a single dose of Sol. t. O a case of rheumatic iritis. Burnett cured a case of tumours feeling like masses of potatoes in the abdomen with Sol. t.; and it assisted him in the cure of a case of tumours all round the cervix uteri. Urt. ur. finished this cure." ],
+    "Relations" : [ "Compare: Solanin. In paralysis of tongue, Dulc. Iritis, Bell. Stammering, Stram." ],
+    "Mind" : [ "Almost lost consciousness." ],
+    "Head" : [ "Vertigo; headache; stupor." ],
+    "Eyes" : [ "Eyes deep in sockets.", "Staring look.", "Eyes for most part open.", "Pupils dilated.", "Vision indistinct." ],
+    "Face" : [ "Hippocratic face.", "Expression anxious." ],
+    "Mouth" : [ "Constantly spitting through the closed teeth viscid, frothy phlegm.", "Tongue covered with brown, moist fur.", "Tongue heavy, difficult to move; hardly able to articulate.", "Speech thick.", "Speechless." ],
+    "Stomach" : [ "Violent retching followed by vomiting and diarrhoea.", "Felt sick, a darkness over her eyes, skin cold, cramped all over.", "Epigastric region sensitive to pressure." ],
+    "Abdomen" : [ "Violent colic and vomiting.", "Pain in bowels.", "Tumours." ],
+    "Stool and Anus" : [ "Diarrhoea with tenesmus.", "Tends to relax bowels." ],
+    "Female Sexual Organs" : [ "(Tumours round cervix uteri.)" ],
+    "Respiratory Organs" : [ "Respiration: hurried; irregular; at times suppressed; usually short and incomplete, only seldom slow and sighing; difficult." ],
+    "Heart" : [ "Pulse small, rapid, scarcely perceptible." ],
+    "Limbs" : [ "Cramps, esp. in calves, with spasmodic contractions of fingers and thumbs." ],
+    "Generalities" : [ "Tossing to and fro in bed.", "General rigidity.", "Patient exceedingly weak.", "Faintness." ],
+    "Skin" : [ "Skin livid." ],
+    "Fever" : [ "Skin cold.", "Face, chest, and extremities cold.", "Skin bedewed with cold, clammy sweat." ]
+  }
+}

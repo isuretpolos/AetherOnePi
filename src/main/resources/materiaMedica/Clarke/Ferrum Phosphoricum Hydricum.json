@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Ferrum Phosphoricum Hydricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Conjunctivitis. Writer's cramp." ],
+    "Characteristics" : [ "This salt has been proved by Dr. J. C. Morgan. The symptoms resemble those of Ferr. phos. alb. and the other Ferrum preparations. Malaise; feeling as if he had not had sufficient sleep; aching in occipito-cervical region; sensitiveness to cool air and desire for warmth. Right side most affected. Symptoms < bending forward." ],
+    "Mind" : [ "Intolerance; annoyed by obstacles." ],
+    "Head" : [ "Dull r.", "sided headache.", "Every concussion (as coughing or hard smacking of lips) is felt as a dull, painful sensation at base of skull." ],
+    "Eyes" : [ "Painful smarting in edges of r. eyelids." ],
+    "Ears" : [ "Sticking in r. ear as from large-pointed stick on going to bed." ],
+    "Stomach" : [ "Irritating rising, greasy flavour.", "At p.m., sitting at table, bent forward reading, most intense heartburn, with rising so irritating as to cause cough." ],
+    "Neck and Back" : [ "Aching in sacro-iliac symphysis when walking, > by pressure." ],
+    "Sleep" : [ "Drowsy, eyes feel it much, feeling extends upward into head; soon after, he was compelled to lie down and take a nap." ],
+    "Fever" : [ "Heat and dryness of face and palms while sitting." ]
+  }
+}

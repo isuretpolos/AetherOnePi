@@ -1,0 +1,14 @@
+{
+  "remedyName" : "Leonurus Cardiaca",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Dysentery. Haemorrhages." ],
+    "Characteristics" : [ "The popular name of this plant sufficiently indicates its traditional virtues. The only experience with it is an involuntary proving recorded by Clarence Bartlett (Med. Adv., xx. 280). A married woman, 40, took an infusion to produce miscarriage. Twenty-four hours later Bartlett saw her, and found her vomiting and retching, passing bloody stools, suffering severe abdominal pains, which were provoked by drinking anything more than a small quantity of water, which she did to allay her great thirst. Dry conjunctivae, dry, cracked tongue were noted. The bowel symptoms were < midnight to a.m. Ars. 3x relieved all symptoms. She did not miscarry." ],
+    "Relations" : [ "Antidoted by: Ars. Compare: Mentha pulegium, Hedeoma puleg." ],
+    "Eyes" : [ "Conjunctivae had a very dry appearance; looked as if wiped dry." ],
+    "Mouth" : [ "Tongue dry, coated or brownish white; covered with cracks in arborescent arrangement, main crack down centre." ],
+    "Stomach" : [ "Intense thirst, yet drinking more than a very slight quantity of water, warm or cold, provoked epigastric pains.", "Shortly after taking the drug seized with vomiting and retching, more retching." ],
+    "Abdomen" : [ "Very severe abdominal pains, with soreness to touch; when lying on side > drawing up legs; when on back > with legs out straight." ],
+    "Stool and Anus" : [ "During the (first) night frequent calls to stool; stools dark brown at first, afterwards bloody.", "Later stools contained larger quantities of blood, never any mucus." ]
+  }
+}

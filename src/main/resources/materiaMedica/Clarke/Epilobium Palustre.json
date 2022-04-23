@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Epilobium Palustre",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Dysphagia. Fever. Larynx, affections of. Ptyalism. Throat, sore." ],
+    "Characteristics" : [ "Epil. p. was proved by Dr. J. S. Wright, a tincture of the root being used. Symptoms of filling up of throat, inability to swallow, fever and headache were produced. A boy poisoned with the flowers of Epil. hirsutum had strong epileptiform convulsions in rapid succession." ],
+    "Head" : [ "Headache with fever." ],
+    "Face" : [ "Face red." ],
+    "Mouth" : [ "Ptyalism.", "Dull and sleepy but could not sleep, the saliva would choke him." ],
+    "Throat" : [ "In morning throat began filling up; at noon could not swallow water; larynx sore to pressure with hard lumps on each side externally." ],
+    "Stools" : [ "Three loose stools on eighth day; none the day after." ],
+    "Urine" : [ "Urine red." ],
+    "Fever" : [ "Hard chill began a.m., lasted an hour; high fever came on with aching all over and severe headache; this lasted all night; could not sleep." ]
+  }
+}

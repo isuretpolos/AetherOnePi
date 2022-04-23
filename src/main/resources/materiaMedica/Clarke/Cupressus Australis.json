@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Cupressus Australis",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Gonorrhoea. Headache. Rheumatism." ],
+    "Characteristics" : [ "Cupress. Aust. has had a proving, which, though not extensive, is sufficient to show the analogue of its action with that of Thuja. Sharp, piercing and pricking pains are prominent. General feeling of warmth." ],
+    "Relations" : [ "Compare: Abies, Sabina, Thuja." ],
+    "Mind" : [ "Is in much better spirits." ],
+    "Head" : [ "Sharp, piercing pain from l. occiput to l. temple." ],
+    "Stomach" : [ "Increased appetite followed by loathing of food.", "Voracious appetite.", "Feeling of warmth in stomach." ],
+    "Urinary Organs" : [ "Pricking pains from kidneys to bladder, with increased desire to urinate, stream smaller than usual.", "Constriction along course of urethra, esp. towards neck of bladder." ],
+    "Male Sexual Organs" : [ "Itching of glans penis, and orifice of urethra.", "Aching pains in perineum and spermatic vessels with feeling of weight in testes." ],
+    "Back" : [ "Dull, aching pain in lumbar region." ],
+    "Upper Limbs" : [ "Pain in shoulders, esp. on joint of r. shoulder, extending down to elbow." ],
+    "Lower Limbs" : [ "Pinching, drawing pain in knees and along lymphatics of legs.", "Sharp, shooting pain in patellae and in bend of knees.", "Tension in calves, with occasional spasmodic twitchings and general malaise." ],
+    "Fever" : [ "Increased heat of body without thirst." ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "remedyName" : "Aurum Muriaticum Natronatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Ascites. Carcinoma. Haemorrhoids. Hair, falling out. Headache. Hectic fever. Jaundice. Phthisis. Rhinoscleroma. Sycosis. Syphilis. Tongue, affections of. Tumours. Uterus, indurations of; scirrhus of. Warts." ],
+    "Characteristics" : [ "Boring pains are very marked in the pathogenesis of this salt; over left eye, skull, chest, tibiae, and bones generally. Symptoms < cold wet weather; from October to spring (headache). Warts on tongue. White stools (Jaundice). Bright's disease. Chancres; ulcers; warts. Bubo. Enormous induration of an ovary. Induration of one part, softening of another part of the uterus. Corrosive leucorrhoea; pustules on genitals. Scirrhus or carcinoma of breast or uterus. A case of rhinoscleroma has been reported cured by it in 5x by Kranz-Busch. Old cases of rheumatism or gouty pains. Scrofula. All symptoms are < by rest. According to Hale, this is the most active of all the preparations of gold. In toxic doses it causes \"violent gastro-enteritis,\" accompanied by cramps, convulsive trembling, insomnia, priapism and insensibility. In pathogenetic doses it causes \"epigastric pain, nausea, loss of appetite, and constipation.\" The constipation is like that of Hydrastis, being accompanied with catarrh. Hale has used it with success in nervous dyspepsia with a tendency to diarrhoea after eating; in gastric and duodenal catarrh, with or without jaundice. The same authority states that the primary effect of the salt is to cause \"congestion, irritation of uterus and ovaries, subacute metritis, ovaritis, profuse and premature menses, habitual abortion, nymphomania, ulceration of uterus, endocervicitis.\" For these the attenuations are suitable. The secondary effects are: \"Atonic amenorrhoea, scanty and delaying menses, deficient sexual desire, sterility from ovarian torpor, ovarian dropsy;\" for these he recommends the lowest triturations. He suggests its use in puerperal mania with sexual excitement, ovaritis, gastro-intestinal irritation, and suicidal impulses. Also in corresponding states in men. Aur. mur. nat. has been proved, but it has been chiefly used on general Aurum indications. Burnett considers it to have more power over uterine tumours than any other gold preparation." ],
+    "Relations" : [ "Suited to: Carbo-nitrogenoid and mercurio-syphilitic constitutions. Compare: Arg. n., Ars., Bad., Bry., Crot., Con., Graph., Hep., Iod., Kali bich., Kali iod., Lyc., Merc., Nit. ac., Pho., Sul., Thuj." ],
+    "Causation" : [ "Vexation (Jaundice)." ],
+    "Head" : [ "Violent (boring) pains on whole side of head, mostly over eye.", "Every morning pressure over eyes, pains in forehead, dulness in head, lasting until afternoon; > in evening; nasal discharge bloody, fetid, ichorus.", "Hair falls out." ],
+    "Eyes" : [ "Amaurosis.", "Ophthalmia: scrofulous; cancerous; at same time nose scurfy." ],
+    "Nose" : [ "Ulcers; caries; ozaena.", "Nose swollen, hard, shining (scrofulous); if he takes cold, erysipelas sets in." ],
+    "Teeth" : [ "Teeth get loose, look dirty, gums recede." ],
+    "Mouth" : [ "Tongue white.", "Warts on tongue.", "Burning on tip of tongue.", "Redness and swelling of palate behind upper incisors.", "Salivation." ],
+    "Abdomen" : [ "Pressure in r. hypochondrium.", "Dropsy." ],
+    "Stool and Anus" : [ "Clay-like faeces.", "Appearance of haemorrhoid which protrudes and is painful." ],
+    "Male Sexual Organs" : [ "Ulcers on foreskin; warts around them; ulcers on glans eating deeply." ],
+    "Female Sexual Organs" : [ "Ulcers with induration of uterus.", "Enlargement of ovary.", "Leucorrhoea, corroding the parts.", "Pustules on genitals.", "Abortion from uterine indurations.", "(Given to syphilitic mothers, it prevents the disease in her off spring.).", "Scirrhus of uterus and mammae." ],
+    "Heart" : [ "Irregular heart-beats with anxiety and short breath; while sleeping.", "Severe violent beats of the heart, with sensation of pressure while standing." ],
+    "Neck and Back" : [ "Cracking in cervical vertebrae on bending head.", "Burning pain in skin of nape.", "Heat in nape rising into head and cheeks.", "Burning and drawing; tension and pressure in muscles to l. of nape extending to shoulder, < bending head to r.; at times unbearable during rest.", "Pustular eruption on back." ],
+    "Upper Limbs" : [ "Burning in skin of r. axilla.", "Pressure in r. deltoid.", "Boring and pressing pains in arms and elbow-joints; boring in bones.", "Painful stitching in finger-tips." ],
+    "Lower Limbs" : [ "Boring in thighs, knees, tibiae (first r. then l.).", "Boring in both sides r. tendo Achillis when sitting.", "Stitches in tips of toes; in bunion." ],
+    "Skin" : [ "Intolerable itching all over body; sores followed by an eruption of little lumps, several covered with dark-looking scabs.", "Jaundice." ],
+    "Fever" : [ "Remarkable coldness of back.", "Remarkable heat in skin.", "Sweats only on r. side; l. (affected) side of head remains dry.", "Excessive perspiration." ]
+  }
+}

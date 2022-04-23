@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Ferrum Bromatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Headache. Leucorrhoea. Spermatorrhoea. Uterus, prolapse of." ],
+    "Characteristics" : [ "Hale mentions this remedy as having been highly commended to him in cases of spermatorrhoea with anaemia, debility, and depression. It has been since proved by Dr. Sarah N. Smith, of New York, who took the sixth dilution of Boericke and Tafel's make (Amer. Hom., xxi. 302). It produced (in this order): Very distinct symptoms in the head and eyes; dry mouth and nose, relieved by coryza; a feeling that she might die; diarrhoea; burning in urethra when urinating; sticky, excoriating leucorrhoea weight and discomfort in uterus. The symptoms which made the most impression on the prover were the \"dead, numb\" feeling of the scalp; the unconscious moaning after stool; and the sticky, excoriating leucorrhoea. The heaviness and discomfort in the uterus was so severe that she declined to continue the proving as it interfered with her work." ],
+    "Relations" : [ "Heavy eyes, Con., Caust., Gels. Smarting while urinating, Can. s. (Can. s. has burning while urinating and after)." ],
+    "Mind" : [ "Woke at a.m. with the feeling that I might die, which lasted for a few moments and passed away. Recurred three different mornings at the same hour (9 o'clock)." ],
+    "Head" : [ "Severe internal pressure in occiput, producing a painful sensation in ears, as if they were pressed from within outwards; after a few hours the same feeling extended to vertex, producing a dead, numb feeling of the scalp extending from occiput to vertex.", "Head feels enlarged in all directions, the ears seeming to stand out from the head." ],
+    "Eyes" : [ "Heavy feeling in the eyes and drooping of lids, could not keep eyes open.", "Dull appearance of eyes." ],
+    "Nose" : [ "Dryness of nose.", "Dryness of nose and mouth > by coryza." ],
+    "Mouth" : [ "Mouth very dry.", "Tongue dry and stiffened on waking." ],
+    "Abdomen" : [ "Much rumbling in l. hypochondrium, accompanied with diarrhoea." ],
+    "Stool" : [ "Diarrhoea followed with a bloody mucus and tenesmus, with the sensation that the lower bowel protruded.", "After the diarrhoeic stool, unconscious moaning, heard in the next room, accompanied with a distressed noise in the head.", "Stools excoriating and frequent." ],
+    "Urinary Organs" : [ "Burning, smarting pain in urethra while urinating (appeared near end of week of proving and continued after it)." ],
+    "Male Sexual Organs" : [ "Spermatorrhoea." ],
+    "Female Sexual Organs" : [ "As the excoriating stools decreased in frequency, a sticky mucus-like excoriating leucorrhoea came on; with the appearance of the discharge came the descent of the uterus, which continued for a week or more, and the discharge several days beyond.", "\"The uterus seems heavy and uncomfortable, so that it interferes with my work. I call scarcely get up and down stairs.\"" ]
+  }
+}

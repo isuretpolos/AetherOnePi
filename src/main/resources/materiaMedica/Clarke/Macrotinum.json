@@ -1,0 +1,26 @@
+{
+  "remedyName" : "Macrotinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Dysmenorrhoea. Eyes, affections of. Headache. Lumbago. Melancholy. Myalgia. Rheumatism." ],
+    "Characteristics" : [ "I have already mentioned Macrot. under Act. r., from which it is derived; but as Dr. Scipio's proving (with the 3rd trit., from to grains being taken daily) brought out some features not noted in the Act. r. proving, I think it best to give it an independent mention. Muscular weakness, excessive restlessness, > by moving about in spite of the weakness; melancholy, and irritable; dulness of intellect", "these were prominent general features. But the most important distinctive feature is > of symptoms (other than dysmenorrhoea, pains) by onset of menses. C. A. Howell (Med. Adv., xxi. 231) cured with Macr. 2x, every two hours, a woman, 63, who, after an interval of eleven years, began again to menstruate at 60, slightly but regularly, and who had the following symptoms, which appeared suddenly at the time the flow was due, but failed to come on: Intense pain at occiput < at every throb of heart. Retraction of head and neck. Neuralgic pains in limbs. Pulse 96; temperature 99°. The pain was relieved by Macr. in a few hours and the flow came on.", "Symptoms of the mind, eyes, and breasts are < before menses and > as soon as flow sets in. (Act. r. has < of mental symptoms during menses). Backache is > after menses." ],
+    "Mind" : [ "Melancholy; at times irritable; > when menses come on.", "Fear: apprehensive, of impending danger, or incurable disease.", "Sits for a long time thoughtless; moving hands and feet; frequent sighing." ],
+    "Head" : [ "Headache in evening, > as soon as eructations and nausea set in.", "Dull headache commencing in occiput, gradually extending to vertex and forehead; temporarily > by pressure; by sleep; next day soreness in eyeballs, < by pressure.", "Severe, sharp pains over l. eye, extending through head to occiput." ],
+    "Eyes" : [ "Dark circles round eyes week before menses, disappearing when menses come on.", "Twitching of upper lids.", "Eyeballs feel enlarged and to pressure.", "Muscae volitantes before r. eye, morning." ],
+    "Face" : [ "Face suddenly becomes flushed and hot." ],
+    "Mouth" : [ "Sense of taste impaired.", "Dry, sticky feeling in mouth." ],
+    "Throat" : [ "Dryness in throat, causing frequent trembling and coughing." ],
+    "Stomach" : [ "Nausea and eructation in evening.", "Faint feeling in epigastrium, extending over whole chest and head, followed immediately by throbbing sensation over whole body.", "Faintness in epigastrium (as from a sudden fright) brought on by meeting an acquaintance." ],
+    "Abdomen" : [ "Sharp cutting in umbilical region, early in morning, > by stool.", "During menses, bearing down with tight sensation round hips." ],
+    "Stool" : [ "Alternate constipation and diarrhoea." ],
+    "Urinary Organs" : [ "Frequent desire, with profuse flow of pale urine." ],
+    "Female Sexual Organs" : [ "Menses scant and dark; clotted; afterwards increased in quantity.", "Suppression of menses for six weeks.", "Dysmenia; pain not > for several hours after flow has begun." ],
+    "Chest" : [ "Darting pains in chest (both sides), with palpitation of heart.", "Sudden, sharp pains a little below l. nipple.", "Breasts feel sore; heaviness in limbs before menses." ],
+    "Heart" : [ "Pain in the heart, extending down l. arm to fingers, with palpitation.", "Wakes at night with palpitation." ],
+    "Neck and Back" : [ "Sensation in neck as if muscles too short.", "Pain in whole back as if muscles bruised.", "Pulsating pains in back; > by pressure; > after menstruation." ],
+    "Upper Limbs" : [ "Weakness in both arms and inability to move them.", "Pain in l. shoulder, shooting down to fingers." ],
+    "Lower Limbs" : [ "Heaviness of legs as if very tired.", "Muscles of calves feel too short." ],
+    "Generalities" : [ "Whole muscular system seems exhausted after the least exertion.", "Great restlessness." ],
+    "Sleep" : [ "Disturbed sleep.", "When failing asleep starts up suddenly for fear of falling, or to avoid danger.", "Dreams of being on high places and in danger of falling." ]
+  }
+}

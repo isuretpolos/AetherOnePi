@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Nyctanthes",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Fevers, bilious; remittent. Rheumatism. Sciatica." ],
+    "Characteristics" : [ "Nyctanthes is a small tree of the jasmine family, having brilliant, highly fragrant flowers, white and yellow, which do not expand till evening and which fall off about sunrise. Thus during the day the tree loses all its brightness, and hence is called \"The Sad Tree\" (Arbor tristis). \"Nyctanthes\" means \"Night-flowering.\" S. C. Ghose has given an account of the medicinal properties of this plant (H. W., xxxvi. 24). He has used it extensively in cases of bilious and remittent fevers, rheumatism and sciatica, and the constipation of children. It is \"bitter, tonic, and expectorant, and a mild purgative.\" In the fever there is thirst before and during chills, and bitter vomiting at close of chill. Not much sweat. Ghose compares it with Eupat. perf. He has made a short proving of it." ],
+    "Mind" : [ "Anxious and restless." ],
+    "Head" : [ "Headache." ],
+    "Mouth" : [ "Tongue enveloped with a thick, whitish or yellowish pus." ],
+    "Stomach" : [ "Severe burning in stomach, > from cold applications.", "Bilious vomiting occurs every time he takes a drink." ],
+    "Abdomen" : [ "Liver tender.", "Stitches in liver region, which is very sensitive to touch." ],
+    "Stool" : [ "Profuse bilious stools with nausea; or there may be constipation." ],
+    "Urinary Organs" : [ "Urine high-coloured." ],
+    "Fever" : [ "Insatiable thirst before and during chill and fever.", "Bitter vomiting at close of chill.", "Constant nausea may or may not be present.", "Drinking = vomiting; patient very restless.", "Constipation or bilious stools.", "Sweat not generally marked." ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Aristolochia Serpentaria",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Dyspepsia. Flatulence." ],
+    "Characteristics" : [ "Serpentary was proved by Jorg's provers and others. Its chief effects were noticed in the gastro-enteric organs, nausea, vomiting, abdominal distension, flatulence, and urging to stool. Increased and afterwards lost appetite. Irritation of the urinary and genital organs with frequent desire to micturate. As with A. milhomens, there was disturbed rest; also heat of the head." ],
+    "Mind" : [ "Peevish mood.", "Disinclination for work." ],
+    "Head" : [ "Sticking in forehead extending to base of brain.", "Increased warmth of head." ],
+    "Mouth" : [ "Copious salivation with frequent spitting." ],
+    "Stomach" : [ "Increased appetite; yet able to eat little, since the first morsels satisfy.", "Loss of appetite.", "Nausea and vomiting; vomiting did not cease till stomach was entirely emptied.", "Distended feeling as if too full.", "Heaviness > by emission of much flatus." ],
+    "Abdomen" : [ "Colic in umbilical region.", "Distension, rumbling, uneasiness, cutting pains, with at times emission of flatus and eructations which relieve." ],
+    "Stool and Anus" : [ "Distressing itching about anus.", "Frequent desire for stool, with evacuation of scanty, hard, tenacious faeces, with much flatulence.", "Frequent desire with evacuation of more gas than faeces." ],
+    "Urinary Organs" : [ "General irritation of urinary and genital organs.", "Violent desire to urinate with great increase in quantity of urine.", "Frequent desire but only a little brownish urine passed." ],
+    "Neck" : [ "Pressive pain in nape of neck." ]
+  }
+}

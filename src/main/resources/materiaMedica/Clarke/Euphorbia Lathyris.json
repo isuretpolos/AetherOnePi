@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Euphorbia Lathyris",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Cholera. Diarrhoea. Dysentery." ],
+    "Characteristics" : [ "The chief symptoms of E. lath. are: Retching and vomiting and bloody stools with brilliant eyes, flushed face; the abdomen is drawn inward. The whole body is stiff and icy cold. Uneasiness." ],
+    "Eyes" : [ "Brilliant eyes.", "Staring look.", "Pupils dilated with wide-open eyes." ],
+    "Face" : [ "Deadly pale.", "Glowing hot cheeks." ],
+    "Stomach" : [ "Retching and vomiting.", "Sudden violent vomiting with bloody stools." ],
+    "Abdomen" : [ "Abdomen drawn inward." ],
+    "Stools" : [ "Copious, frequent; violent purgation.", "Bloody stools." ],
+    "Heart" : [ "Pulse small, irregular." ],
+    "Fever" : [ "Pallor and coldness of surface.", "Skin burning hot; glowing hot cheeks." ]
+  }
+}

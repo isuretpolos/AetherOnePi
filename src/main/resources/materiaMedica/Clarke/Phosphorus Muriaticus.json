@@ -1,0 +1,13 @@
+{
+  "remedyName" : "Phosphorus Muriaticus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asthma. Coryza. Ophthalmia." ],
+    "Characteristics" : [ "J. Meredith (H. W., xxxiii. 127) has recorded the effects observed on a science student from grinding up this salt and inhaling the fumes. Eye-soreness, coryza, sore throat and chest with difficult breathing, were the main symptoms. They lasted fourteen days from the exposure; and were cured by Bell. 3x internally and a one per cent. Iodine lotion locally as a compress at night." ],
+    "Eyes" : [ "Great soreness of mucous membranes of eyes and nose, with copious intermittent runnings; lasts all night.", "Shades eyes from light reflected from tablecloth at dinner.", "Whites of eyes congested." ],
+    "Nose" : [ "Irritation and copious intermittent running.", "The intolerable smell of the fumes cannot be forgotten at night, and sleep is impossible." ],
+    "Throat" : [ "Throat and chest sore." ],
+    "Respiratory Organs" : [ "In morning breathing difficult; lungs wheezy; chest and throat sore." ],
+    "Sleep" : [ "Symptoms kept him awake all night." ]
+  }
+}

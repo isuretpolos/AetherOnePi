@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Fagus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Epilepsy. Headache. Hydrophobia. Vertigo." ],
+    "Characteristics" : [ "Our knowledge of this remedy is derived from the ill effects of eating the nuts; among which are dread of liquids and salivation. It is this which has suggested its use in hydrophobia. In addition, trembling, convulsions with periodic spasms, stiffness and coldness have been observed, pointing to the same kind of nerve irritation as is caused by the poison of rabies. Swelling of the mouth and headache were noted in one case. In some instances death has resulted from the effects of the nuts." ],
+    "Relations" : [ "Compare: Epiphegus (which grows on the beech and partakes of its properties) in headache and salivation." ],
+    "Mind" : [ "Intoxication.", "Dread of water.", "Terrified; apprehensive of death.", "Gloomy and torpid." ],
+    "Head" : [ "Dizziness and stupefaction lasting all night; reeling.", "Intoxication.", "Headache; lasting several hours; dull; frontal.", "Swelling of mouth, and headache." ],
+    "Mouth" : [ "Salivation; mouth flowing with froth and saliva.", "Swelling of mouth, and headache." ],
+    "Stomach" : [ "Mouth flowing with froth and saliva; intolerable thirst; entreating for drink, but as soon as any liquid was brought he seemed to shudder as after eating unripe grapes; soon after eating the nuts had been seized with gloominess, torpor, and dread of liquids; urine fiery red, depositing copious turbid white sediment.", "A few hours before death vomited a porracious bile. (This patient, a boy, had not been bitten by a rabid animal.).", "Nausea." ],
+    "Chest" : [ "Seized with pleurisy, soon became delirious, and died in convulsions on eleventh day." ],
+    "Fever" : [ "Ardent fever.", "Skin burning violently." ]
+  }
+}

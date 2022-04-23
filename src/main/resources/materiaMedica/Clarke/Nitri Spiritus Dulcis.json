@@ -1,0 +1,31 @@
+{
+  "remedyName" : "Nitri Spiritus Dulcis",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Gall-stones. Mouth, sore. Prosopalgia. Tibiae, pains in. Typhoid. Warts." ],
+    "Characteristics" : [ "Nit. spi. dulc. has been proved by Lembke. It has been found to be an antidote to several medicines (an instance is given under Nat. m.). It was recommended by Hahnemann for hospital typhoid with apathy, and has been used with success in typhoid fevers with symptoms of cerebral paralysis; in diarrhoea and sore mouth of salt caters. Poisonings with N. s. d. give a perfect picture of the typhoid state. It has been used as a remedy for incarcerated gall-stones, given beaten up with yolk of egg, and applied outwardly in the same form. The symptoms of N. s. d. go from below upward. They are much < on passive motion, riding in carriage. Catching cold in stormy weather = prosopalgia. Cold <. Walking < breathing and heart. < Afternoon. Among the effects of salt cured by N. s. d. are: Sore mouth; scurvy; bloody diarrhoea; hands covered with warts. < From cheese. In fevers Hahnemann advised that N. s. d. should be given thus: a few drops dissolved in an ounce of water, a teaspoonful every three hours." ],
+    "Relations" : [ "Antidote to: Nat. m. (crude or in potencies); Nat. c.; Phyt. Antidoted by: Calc., Carb. v., Caust., Con., Kali c., Nat. c., Nat. m., K. nit., Op., Sep. Incompatible: Dig., Ran. b. Compare: Lyc. (< afternoon; fulness after meals). Coloc. (< from cheese). Hell., Phos. ac. (typhoid, sensorial apathy, stupor", "Phos. ac. has apathy more pronounced than N. s. d., Hell. most of all)." ],
+    "Causation" : [ "Cheese. Salt. Stormy weather." ],
+    "Mind" : [ "Complete apathy, without desire for anything.", "Delirious and incoherent in manner; dizzy as if intoxicated; when roused could answer questions, complained of headache, and said he found it difficult to walk straight of late.", "Excessive ill-humour, irascibility, passion, and quarrelsome disposition, with tendency to weep, dislike to labour and conversation." ],
+    "Eyes" : [ "Black spots and rings float before eyes; pupils contracted.", "Stitches in eyes and lids; burning on margins.", "Pupils somewhat dilated, acting feebly." ],
+    "Face" : [ "Sensation as of a cloud over upper part of face.", "Haggard look.", "Paleness of face, with eyes sunken, and surrounded by livid circles.", "Chronic soreness at corners of mouth (in salt eaters).", "Boring and pressure in bones of face." ],
+    "Mouth" : [ "Tongue dry.", "Heat in mouth; sour taste.", "Cankers after eating cheese.", "Accumulation of water in mouth." ],
+    "Throat" : [ "Sensation of contraction in throat, with pain, as of a plug, in gullet." ],
+    "Appetite" : [ "Want of appetite." ],
+    "Stomach" : [ "Continued nausea and loathing.", "After a meal, vomiting of sour matter and mucus, followed by headache.", "Vomiting and purging.", "Pyrosis.", "Contractive pain and aching in stomach, with sensation of fulness, immediately after a meal." ],
+    "Abdomen" : [ "Shootings, cuttings, and burning pains in abdomen.", "Gall-stones." ],
+    "Stool" : [ "Epidemic dysentery with lethargy.", "Bloody diarrhoea after purging (from salt).", "Constipation marked." ],
+    "Urinary Organs" : [ "Urine very scanty." ],
+    "Male Sexual Organs" : [ "Stitches in glans." ],
+    "Female Sexual Organs" : [ "Catamenia scanty and irregular." ],
+    "Respiratory Organs" : [ "Inhalations intermit.", "Stertorous breathing.", "Breathing slow, regular; on walking a short distance it becomes very hurried; if persisted in, quick, difficult, painful, and a most distressing sense of painful constriction is felt under sternum.", "Short, dry cough." ],
+    "Chest" : [ "Cramp rising up in oesophagus, extending to upper chest wall.", "Pressure in and under sternum." ],
+    "Heart" : [ "Pulse 60, small, hard.", "Violent, tumultuous beating, < walking; frequently in evening on lying down." ],
+    "Neck and Back" : [ "Violent pressure in nape and cervical vertebrae.", "Sensation as of hot water creeping through back from below upward." ],
+    "Upper Limbs" : [ "Weakness, heaviness, stitches through shoulders, arms, hands, and fingers.", "Nails blue." ],
+    "Lower Limbs" : [ "Boring, pressing pains in lower limbs.", "Boring in tibiae.", "Stitches in toes.", "Nails blue." ],
+    "Generalities" : [ "Great fatigue; a recumbent position can alone mitigate and tranquillise it.", "Excessive emaciation.", "Swelling of veins.", "< Afternoon.", "Very sensitive to cold." ],
+    "Skin" : [ "Shiverings and acute drawing pains in the bones.", "Skin and tongue dry." ],
+    "Fever" : [ "Chilliness: internal with cold hands; frequent; creeping, under skin, from small of back to lower limbs.", "Heat: in head and face; nape and occiput; with swollen veins; from cervical spine into occiput; in head and face with chilliness in back and cold hands; in back; with inclination to perspire.", "Typhoid with sensorial apathy and semi-paralysis of brain; wild, staring eyes.", "Adynamic fevers, with nervous symptoms such as shootings, jerkings, &c." ]
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Linaria",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Diarrhoea. Enuresis. Fainting. Haemorrhoids. Ophthalmia. Tongue, roughness of; prickling on." ],
+    "Characteristics" : [ "Linaria has been proved by Muller, Raidl, and others. It produced confusion in the head; thirst, with rough tongue; constriction of the throat; nausea, vomiting, and diarrhoea; profuse urination; oppression of the breathing and stitches in the chest. Farrington commends it for cardiac fainting: \"faints dead away without apparent cause\"; and also in enuresis: \"enuresis with frequent painful urging to urinate causing patient to rise at night.\" Carleton (H. P., xii. 526) has seen it produce,: \"fainting feeling three or four times a day; fainted away completely once.\" Coldness was a prominent feature, and the symptoms were much < by walking in open air; > by taking tea with milk. In domestic practice Linar. has long been used as a lotion for inflamed eyes, and as an application for painful piles. It is said to be purgative and diuretic." ],
+    "Relations" : [ "Antidoted by: tea in milk. Compare: Digit. (fainting), and other Scrophulariae. Caust., Eu. purp., Equiset. (enuresis)." ],
+    "Mind" : [ "Peevish mind.", "Indifference.", "Stupid feeling of indifference, ill-humour, with dull pain in forehead, with heat after the sleep, lasting till midnight." ],
+    "Head" : [ "Confusion of the head with irresistible sleepiness.", "Pressure in forehead." ],
+    "Mouth" : [ "Dryness of tongue, morning on waking, with thirst for water before rising, water tasted badly, seemed rough, glided unpleasantly over tongue, papillae elevated.", "Burning prickling on tongue, extending down into throat, smoking = tickling irritation to cough, could scarcely continue to smoke.", "Saliva increased, frequent spitting.", "Taste of blood in mouth." ],
+    "Throat" : [ "Sensation of constriction in throat; as if a ball lodged in it which should be swallowed." ],
+    "Stomach" : [ "Appetite: diminished; lost.", "Thirst.", "Eructations: frequent, preceding and following usual stool; of odourless air, afterwards also of water; sweetish; bitter.", "General sick feeling with sleepiness and sleep for two hours (10 a.m. to 12).", "Vomiting of thin, mucous substances followed by disappearance of all gastric symptoms.", "Very acute pressure in stomach < by touch." ],
+    "Abdomen" : [ "Griping about umbilicus, increasing in intensity from time to time.", "Rumbling, and in the course of two hours five watery stools with very little pigment.", "Griping, half an hour afterwards a watery stool." ],
+    "Stool and Anus" : [ "Burning in anus.", "Diarrhoea; stools thin; ten watery, bileless stools with much flatus.", "Very dark-coloured faeces." ],
+    "Urinary Organs" : [ "Great desire; frequent inclination; quantity increased and frothy.", "Urine very high-coloured, like dark beer, passed more frequently.", "(Enuresis.)" ],
+    "Female Sexual Organs" : [ "Menses a few days early.", "Menses which had just ceased returned the same day she took a new dose." ],
+    "Respiratory Organs" : [ "Violent paroxysm of cough, obliged to stand quite still to cough it out and regain breath." ],
+    "Chest" : [ "Oppression, making respiration difficult and causing cough.", "Transient stitches here and there, deep in chest and abdomen." ],
+    "Generalities" : [ "General prostration.", "Symptoms > for short time after drinking tea with milk; severely and persistently < on walking in open air." ],
+    "Skin" : [ "Itching in throat, chest, and upper back." ],
+    "Sleep" : [ "Frequent yawning and stretching with feeling of weakness and prostration.", "Irresistible sleepiness.", "Sleep forepart of night, quiet and refreshing as if he had slept all night; rest of night sleepless with confused dreams towards morning." ],
+    "Fever" : [ "Coldness.", "Alternations of chills and heat." ]
+  }
+}

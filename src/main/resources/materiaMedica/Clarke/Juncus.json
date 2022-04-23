@@ -1,0 +1,30 @@
+{
+  "remedyName" : "Juncus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asthma. Backache. Calculus. Catarrh. Dropsy. Flatulence. Headache. Kidney, diseases of. Rheumatism. Scars, affections of." ],
+    "Characteristics" : [ "Juncus was proved by Dr. Wahle, and a number of symptoms were produced. The most notable were bubbling sensations in various parts; and a number of pains pressive and sticking were noted in the chest. Pulling in cervical vertebrae; in neck muscles. There was much rumbling of flatus in abdomen, and marked > to abdominal symptoms when flatus was emitted. According to Jahr, quoting Noack and Trinks, Junc. is diuretic, and has been used in dropsical, calculous, and renal diseases. Hartmann used J. conglomeratus with success in dysury, strangury, and ischury. In Livonia a decoction of J. pilosus is used for stone and gravel. The exact preparation used in the proving was not recorded. Fresh plant tinctures should be used in any further experiments. The pains were < on l. side; appeared or were < at night and came on again in morning and evening. < Flexing parts; < bending sideways; > stretching out arm. Rheumatic pains < by rest, > by motion. Chilliness < on uncovering; > emission of flatus." ],
+    "Relations" : [ "Compare. Rhus (< rest, and uncovering; > stretching); Berb. (bubbling sensations); Sil. (scars)." ],
+    "Mind" : [ "Anxiety in morning, during a partial slumber, like the orgasm of blood, with frequent palpitation so that he was obliged to sit up, when it disappeared." ],
+    "Head" : [ "Vertigo: as if everything were turning in a circle during rest; with nausea while walking.", "Pressive drawing headache, extending from before backward.", "Pressing-asunder headache, in forehead, on stooping, on rising up in bed in morning, a burrowing pain as in suppuration in forehead and occiput, which immediately disappears on lying down again.", "Bubbling sensation in r. side of occipital bone, which extends to r. ear, where it leaves a dull, pressive sensation." ],
+    "Eyes" : [ "Itching on margins of lids, > rubbing." ],
+    "Ears" : [ "Cramp-like pain in external ear.", "Feeling as if inner meatus were swollen." ],
+    "Nose" : [ "Stopped catarrh; feels like sneezing.", "Itching on inner surface of l. nostril.", "Dry coryza." ],
+    "Face" : [ "Sticking-itching pain above l. corner of mouth, as if a splinter sticking into it, morning.", "Bubbling sensation in r. jaw-joint, leaving swollen feeling in the parts." ],
+    "Mouth" : [ "Tongue: coated white; yellow; with slimy taste." ],
+    "Throat" : [ "Throat dark and scrapy.", "Pressure in throat during swallowing, as if tonsils swollen.", "Hawks much yellow mucus without coughing.", "Painful laming, drawing, stretching, and pulling in neck muscles." ],
+    "Stomach" : [ "Swelling in region of stomach pit.", "Tightness in stomach pit." ],
+    "Abdomen" : [ "Constant rumbling, obliges him to go to stool, but no stool follows, only emission of flatulence.", "Sharp stitch extending deep inward above crest of ilium, taking away breath.", "Unusual feeling of relief of abdominal symptoms after emission of flatulence." ],
+    "Stool and Anus" : [ "Itching in rectum.", "A thin stool consisting of small lumps." ],
+    "Urinary Organs" : [ "Tension in urethra with sensation as of something alive in it.", "Slight itching; burning in urethra.", "Urine: like clay-water deposits red sediment." ],
+    "Male Sexual Organs" : [ "Itching in penis and scrotum." ],
+    "Chest" : [ "Violent pressive pain in lower chest, < on expiration and by bending body sideways.", "Sticking commences in l. third false rib extending to r. nipple.", "Pain as if lower sternum were pressed inwards." ],
+    "Neck and Back" : [ "Pressive drawing in cervical vertebrae as if it would draw head to r.", "Drawing and pulling in dorsal vertebrae as if he would be bent backward; frequently repeated.", "Aching pain in small of back, causing an anguish, or attended with asthma." ],
+    "Limbs" : [ "Painless cracking in joints." ],
+    "Upper Limbs" : [ "Dull sticking pain in l. axilla, evening in bed.", "Visible twitching of deltoid muscles.", "Pressive paralytic pain in head of r. elbow, gradually disappears on stretching out arm, but renewed immediately on flexing it.", "Painful burrowing in bones of wrist, during both rest and motion." ],
+    "Lower Limbs" : [ "While walking, stiffness in r. hip as if tendons too short.", "Twitching in l. gluteal muscles, as if something alive beneath them.", "Very painful drawing in bones of lower legs, during rest, > on motion.", "Bubbling and drawing in muscles of calves.", "Bubbling pain in bones of l. lower leg.", "Itching and jerking in knee.", "Tension in tendo Achillis as if swollen and too short, on bending l. foot forwards." ],
+    "Skin" : [ "Itching, crawling in scar of incised wound several years old, with elevation of scar as if it would break out.", "Itching on penis, scrotum, thighs, knees." ],
+    "Sleep" : [ "Wakes very early, cannot sleep again.", "Dreams of hunting; of jests; laughs aloud in his sleep." ],
+    "Fever" : [ "Chilliness over whole body, immediately on getting out of bed in morning.", "Becomes chilly over whole body on raising bed covering and allowing a little air to come to the feet.", "Repeated shivering." ]
+  }
+}

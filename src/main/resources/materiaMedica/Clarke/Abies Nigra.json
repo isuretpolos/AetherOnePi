@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Abies Nigra",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Constipation. Cough. Dyspepsia. Eructations. Haemorrhages. Hypochondriasis. Malarial fevers. Tea, effects of. Tobacco, effects of." ],
+    "Characteristics" : [ "The grand characteristic of Abies nig. is a sensation in the cardiac end of the stomach or in the oesophagus where it enters the stomach, as if a hard body, as a hard-boiled egg, had lodged there. (China has the lump under the sternum, but higher up. Feeling in the epigastrium as if food were lying there, Pul., Bry.) Where, this symptom is present, whether in dyspepsia, lung disease (when the sensation is as if there was a hard substance to be coughed up) with or without haemoptysis, constipation, &c. Ab. n. will be, the most likely remedy. The dyspepsias caused by abuse of tea or tobacco have been cured by it. Wakeful at night with hunger. Distress in the head, with flushed cheeks, often accompanies the dyspeptic symptoms of this remedy. In one patient to whom I gave it chilliness round stomach was removed and general chilliness greatly lessened. < After eating. \"Pain in the stomach always comes after eating,\" says Guernsey." ],
+    "Relations" : [ "Compare: Abies can., Cupressus, Thuja, Sabina (all have painful indigestion), and other Conifers; Nux v., Bry., Puls., Kali c., Nat. m.; (effects of tea) Thuja." ],
+    "Causation" : [ "Tea. Tobacco." ],
+    "Mind" : [ "Very low-spirited and melancholy.", "Nervousness.", "Unable to think or study." ],
+    "Head" : [ "Dizziness.", "Bad feeling in head.", "Dull headache; severe.", "Head hot, with flushed cheeks." ],
+    "Ear" : [ "Pain in l. external meatus." ],
+    "Throat" : [ "Choking sensation in throat.", "Sensation of something sticking in oesophagus toward its lower end." ],
+    "Appetite" : [ "Hungry and wakeful at night.", "Total loss of appetite in the morning, but great craving for food at noon and night." ],
+    "Stomach" : [ "Pain in the stomach always comes after eating.", "Painful sensation as if something were lodged in chest, mostly on r. side of sternum, which had to be coughed up, though nothing comes, after taking food that disagreed.", "Frequent eructations.", "Continual distressing sensation about stomach as if everything was knotted up; worse whenever debilitated.", "Sensation of an undigested hard-boiled egg in the stomach." ],
+    "Stool" : [ "Constipation." ],
+    "Female Sexual Organs" : [ "Menstruation delayed three months." ],
+    "Respiratory Organs" : [ "Easily gets out of breath." ],
+    "Heart" : [ "Heavy, slow beating of heart; sharp, cutting pains." ],
+    "Back" : [ "Pain in small of back." ],
+    "Generalities" : [ "Rheumatic pains, and aching in the bones.", "Alternate heat and cold." ],
+    "Sleep" : [ "Sleepy during the day, but wakeful and restless at night.", "Very bad dreams." ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "remedyName" : "Pyrethrum Parthenium",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Convulsions. Delirium. Dysentery. Fevers. Loquacity. Rheumatism." ],
+    "Characteristics" : [ "Pyr. p. \"has bitter tonic properties like those of Chamomile (Anthemis nobilis); and is a popular remedy in slight fevers (whence the name 'Feverfew'). The smell of the whole herb is said to be particularly offensive to bees\" (Treas. of Bot.). Some popular \"insect powders\" are made of the dried flowers of Pyrethrum roseum. Radix Pyrethri, or Pellitory of Spain, which is used as an irritant and as a toothache cure, is the root of Anacyclus pyrethrum. The roots of the genus have a hot taste, whence the name Pyrethrum (πυρ, fire). One observation has been recorded with Pyr. p. A boy, 1/2, took minims of the tincture. It nearly proved fatal, causing diarrhoea, convulsions of a tetanic nature, twitchings, loquacious delirium, restless, rapid, and weak pulse, and profuse sweat at night. Some observations of Cooper's will be found in the Schema. Cooper has also cured cases of subacute rheumatism with P. roseum." ],
+    "Relations" : [ "Compare: Cham., Cin., Absin., Artemis, and other Compositae." ],
+    "Mind" : [ "Very excited, talked incessantly for four hours.", "Lying in state of stupor; easily roused but quickly relapsing." ],
+    "Mouth" : [ "Soreness of tongue." ],
+    "Stool" : [ "Diarrhoea, a.m., with pain; at first profuse and exhausting, with tenesmus; afterwards involuntary evacuations of mucus slightly tinged with blood; better next morning." ],
+    "Heart" : [ "Pulse very rapid (120 to 130) and feeble; became normal the fifth day." ],
+    "Limbs" : [ "Old subacute rheumatism of hands and small bones (relieved.", "R. T. C.)" ],
+    "Generalities" : [ "Twitching of muscles of limbs (not those of face); subsided by morning of third day.", "At violent convulsions lasting all hour and leaving the child apparently moribund, but he gradually recovered.", "Convulsive movements like those of tetanus.", "Restlessness.", "Feet, legs and body, which were swollen, decidedly reduce, and next menstrual period is dark and deficient (in a gouty woman, 50.", "R. T. C.)" ],
+    "Fever" : [ "Profuse perspiration; and restlessness (first night)." ]
+  }
+}

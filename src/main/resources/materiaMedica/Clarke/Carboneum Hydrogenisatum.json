@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Carboneum Hydrogenisatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Apoplexy. Eyes, convulsions of. Tetanus. Whooping-cough." ],
+    "Characteristics" : [ "This gas, which was experimented with by Sir Humphrey Davy, produces a condition almost resembling an apoplectic attack. Stupefaction: comatose; surface cold and completely insensible. Spasm as in lock-jaw. Arms flexed at elbows. One mental symptom is peculiar: an extraordinary sensation of contentment, so that life seems exalted; all his thoughts appear in a moment as if seen in an inner mirror. Many eye symptoms were noted: steady and extreme oscillation of the eyeballs. Eyes distorted. Lids half closed. Dark bodies moving before eyes. > By open air (vertigo, convulsions). It is a popular custom to take children suffering from whooping-cough to breathe the air at a gas-works. A case has been recorded in which an accidental escape of gas in a child's bedroom affected a prompt cure of its whooping-cough. Illuminating gas is a complex gas, carburetted hydrogen being the leading ingredient. In the Schema are included some symptoms produced by illuminating coal gas." ],
+    "Relations" : [ "Compare: Chloroform, AEther, Amyl nit., Carboneum." ],
+    "Mind" : [ "Contentment; life seems exalted; all his thoughts appear in a moment as if seen in an inner mirror.", "Answers questions slowly.", "Fell unconscious.", "Coma." ],
+    "Head" : [ "Vertigo; < going into open air; with nausea, loss of memory and sensation.", "Excruciating pain in forehead and between eyes.", "Pressure in brain." ],
+    "Eyes" : [ "Eyes distorted; half closed.", "Eyeballs oscillate steadily; synchronously with breathing (illuminating gas).", "Dark bodies moving before eyes." ],
+    "Face" : [ "Staring look.", "Face turgid.", "Cheeks flap.", "Some degree of trismus; interrupted by yawning." ],
+    "Stomach" : [ "Violent cramps in stomach.", "Nausea and vomiting." ],
+    "Stool" : [ "Involuntary passage of stool and urine.", "Stools: rice-water; thin faeces mixed with dark blood and mucus." ],
+    "Respiratory Organs" : [ "Voice feeble and indistinct.", "Paroxysms of cough.", "Dyspnoea.", "Violent tearing pains in thorax." ],
+    "Heart" : [ "Beating of heart scarcely perceptible.", "Pulse: strong, rapid, regular; or small and extremely weak." ],
+    "Back" : [ "Violent spasm in the extensors of the back." ],
+    "Limbs" : [ "Spasmodic stitching and trembling of limbs; felt paralysed." ],
+    "Generalities" : [ "Rapid fluctuation of symptoms (coal gas).", "Immovable; later regained power in l. arm and hand, but r. arm and leg remained paralysed (coal gas).", "Lying as if dead cold and pale, as soon as the windows were open violent convulsions set in.", "Anaesthesia." ],
+    "Sleep" : [ "Sleep prolonged and very deep, interrupted by cramps in jaws and toes." ],
+    "Fever" : [ "Skin icy cold.", "Sweating copiously; sweat smells of gas (coal gas)." ]
+  }
+}

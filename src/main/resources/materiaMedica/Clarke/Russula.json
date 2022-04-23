@@ -1,0 +1,17 @@
+{
+  "remedyName" : "Russula",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Blindness. Chorea. Convulsions. Enuresis." ],
+    "Characteristics" : [ "Some species of Russula are edible, and are much esteemed as a food on the Continent. Alphonse Barrelet observed the effects of eating cooked Russula foetens, which produced a very severe poisoning. Hallucinations, muscular tremors, and clonic spasms recall the effects of Agaric. The eye symptoms were even more pronounced, complete blindness lasting many days occurred, with this peculiarity of the pupil, that it was sometimes normal, sometimes dilated, and sometimes contracted." ],
+    "Mind" : [ "Unconsciousness.", "Muscular spasms, deathly anxiety, dyspnoea.", "Hallucinations constant for three days after spasms ceased." ],
+    "Eyes" : [ "Pupils at one time normal, at another: dilated, at another contracted.", "Consciousness returned on third day, patient could hear but was completely blind." ],
+    "Face" : [ "Cyanosis." ],
+    "11, 12, Stomach, Abdomen, and Stool" : [ "Nausea, colic, vomiting, diarrhoea, cold extremities." ],
+    "Urinary Organs" : [ "Involuntary micturition." ],
+    "Respiratory Organs" : [ "Dyspnoea." ],
+    "Heart" : [ "Pulse small and contracted." ],
+    "Generalities" : [ "Constant trembling of muscles, at times interrupted by tonic contractions, increasing to general clonic spasms with complete loss of consciousness.", "Patient recovered after two or three weeks." ],
+    "Skin" : [ "The attack was followed by pseudo-erysipelas on elbows and painless furuncles over whole body, esp. on scapulae and small of back." ]
+  }
+}

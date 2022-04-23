@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Carboneum Oxygenisatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Cramps. Headache. Herpes zoster. Paralysis. Pemphigus. Sciatica. Trismus." ],
+    "Characteristics" : [ "The effects of Carb. ox. have been noted in persons poisoned by the gas. It produces a state like intoxication. The person is confused, stupid. There is loss of consciousness. Anaesthesia, but the slightest touch with a hot iron recalls sensibility. Convulsions and cramps. Great sleepiness lasting for several days; interrupted by cramps in cheeks and toes. Great coldness of surface, hands icy cold. Marked > of symptoms, especially of chest, in open air." ],
+    "Relations" : [ "Compare: Carb. hydro." ],
+    "Mind" : [ "Depressed: stupid; apathetic.", "Anxiety, with desire for air but too paralysed to seek it." ],
+    "Head" : [ "Vertigo; inclination to turn in a circle.", "Headache, violent, persistent, with throbbing in temporal arteries.", "Frontal headache which extends over the whole head, but chiefly felt in forehead, which seems pushed out.", "Weight; throbbing; compression; sticking headache." ],
+    "Eyes" : [ "Eyes protrude; sight dim with vertigo, and fluttering and flickering before sight." ],
+    "Ears" : [ "Roaring in ears." ],
+    "Face" : [ "Trismus; jaws firmly clenched." ],
+    "Mouth" : [ "Paralysis of tongue." ],
+    "Stomach" : [ "Stomach so irritable that everything eaten was immediately vomited." ],
+    "Stool" : [ "Involuntary evacuations." ],
+    "Urinary Organs" : [ "Paralysis of bladder.", "Urine contains sugar." ],
+    "Respiratory Organs" : [ "Rattling of mucus in air-passages.", "Bloody mucus raised.", "Expired air feels cool to back of observer's hand.", "Breathing stertorous, slow.", "Sense of suffocation." ],
+    "Heart" : [ "Intolerable pain in region of heart.", "Violent palpitation." ],
+    "Back" : [ "Burning pain at right scapula." ],
+    "Lower Limbs" : [ "Shooting pains in r. natis and down sciatic nerve to foot, not < by pressure or movement." ],
+    "Skin" : [ "Whole skin covered with large and small vesicles of pemphigus.", "Purple maculation of skin.", "Herpes zoster l. side of face along branches of trigeminus." ],
+    "Sleep" : [ "Great sleepiness for several days.", "Never slept so long before.", "Sleep deep, prolonged, interrupted by cramps in cheeks and toes." ]
+  }
+}

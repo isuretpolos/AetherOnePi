@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Rhamnus Catharticus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Appendicitis. Colic. Constipation. Diarrhoea. Tympanites. Typhlitis." ],
+    "Characteristics" : [ "The common Buckthorn produces black, shiny, four-sided berries, with an acrid taste. From these a syrup is made, and forms the Rhamni succus of the old school. It produces \"copious watery stools and occasions a good deal of nausea and severe tormina. Was formerly given in dropsy, but owing to the severity of the drug is now little used\" (Milne). The Schema is made up of symptoms observed in a boy poisoned by eating the berries. The ileo-caecal symptoms seem to point to it as a possible remedy in cases of appendicitis. Homoeopaths have found Rham. cath. O in doses of a few drops a useful palliative in cases of constipation." ],
+    "Relations" : [ "Compare: Cascara, Cean. In appendicitis, Ir. t." ],
+    "Eyes" : [ "Eyes glistening and injected." ],
+    "Face" : [ "Trembling of lips.", "Commencing trismus." ],
+    "Mouth" : [ "Coated tongue.", "Extremely bitter taste." ],
+    "Throat" : [ "Scraping in throat." ],
+    "Stomach" : [ "Complete loss of appetite." ],
+    "Abdomen" : [ "Violent rumbling and griping, esp. cutting pains in ileo-caecal region and in transverse colon.", "Colic.", "Abdomen hard; tympanites." ],
+    "Stool" : [ "Diarrhoea.", "Liquid stools." ],
+    "Urinary Organs" : [ "Urine highly coloured." ],
+    "Respiratory Organs" : [ "Respiration short, anxious." ],
+    "Heart" : [ "Pulse variable." ],
+    "Limbs" : [ "Weakness and prostration in all limbs." ],
+    "Generalities" : [ "Unable to rise; seemed to desire to press his head against the wall." ],
+    "Fever" : [ "Violent chilliness.", "Skin at one time warm, at another cold." ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "remedyName" : "Triosteum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asthma. Backache. Fever; gastric. Headache; bilious. Influenza. Infra-mammary pain. Joints, stiff. Typhoid. Urticaria." ],
+    "Characteristics" : [ "Triost. is an energetically acting drug, and has been proved by Williamson, Neidhard, Gatchell, and; other experienced provers. The name \"fever-wort\" tells its traditional reputation. Hale says it is one of the ingredients of the \"fever powder\" of the eclectics. Talmadge, one of the provers, found it of great value in typhoid and gastric fevers. It produced acute rheumatic symptoms and an intense urticaria. Talmadge says of the effect on himself: \"It acted promptly and emphatically, causing aching pains in nearly every part of the body, especially of lower limbs and head.\" The right side of the head was more affected than the left. The stomach was very much disordered. The vomiting and pain in the stomach were very severe. At the anus there was itching and exudation of mucus. A peculiar concomitant of the evacuations was: numbness of the lower limbs after stool. Many symptoms came on in the early morning hours. One prover, though sleepy, could not sleep after midnight. The symptoms were: < Early morning, 3, 4, 5, and a.m. < Sitting up; rising from bed; turning in bed; lying. < After sleep. < Drinking cold water." ],
+    "Relations" : [ "Gastric fever, Bapt. Rheumatism, Bry., Rhus. Load at epigastrium, Ab. n. Sleepy but cannot sleep, Bell." ],
+    "Mind" : [ "Greater cheerfulness.", "Dulness and drowsiness, with disinclination for active business." ],
+    "Head" : [ "Giddiness when rising at midnight, with extreme drowsiness.", "Headache < sitting up.", "Headache < r. forehead and r. temple.", "Boring pain in r. temple a.m.", "Pain back of head with feeling of weight." ],
+    "Eyes" : [ "Slight pain in l. eyeball." ],
+    "Nose" : [ "Sneezing." ],
+    "Mouth" : [ "Soreness as if from swelling of pharynx, and pain in oesophagus on swallowing." ],
+    "Stomach" : [ "Increased appetite through day.", "Loathing of all food.", "Thirst.", "Nausea; on rising, which was immediately followed by copious vomiting of very sour ingesta, attended with cramp in stomach and followed by sweat and pain in forehead which was < l. side.", "Vomiting: am. on rising to stool; drawing in calves.", "Load and oppression in epigastrium a.m., throbbing and undulating sensation all through system.", "Pain in epigastrium, < by drinking water.", "Soreness in epigastric region." ],
+    "Abdomen" : [ "Flatulence confined to stomach.", "Sharp pains in bowels and stomach.", "Heat and sharp pain in r. side of abdomen in evening.", "The evacuations seemed to proceed from small intestines." ],
+    "Stool and Anus" : [ "Irritation of anus with exudation of mucus.", "Stools most frequent in evening.", "Stool a.m. preceded by pain in abdomen.", "Stool: watery, frothy, without pain, followed by exhaustion; at a.m. followed by numbness of lower limbs." ],
+    "Male Sexual Organs" : [ "Discharge of semen during sleep without erection." ],
+    "Respiratory Organs" : [ "Asthmatic troubles." ],
+    "Heart" : [ "Audible beating of heart and slight pain under l. breast." ],
+    "Neck and Back" : [ "Pain in nape with perspiration.", "Pain in nape and back.", "Pain in nape and occiput with coldness and stiffness in feet.", "Rheumatic pain in back from stooping.", "Pain and stiffness in loins (l. side)." ],
+    "Limbs" : [ "Stiffness in all joints of her upper and lower limbs." ],
+    "Upper Limbs" : [ "Pain in r. shoulder from lying on it." ],
+    "Lower Limbs" : [ "Remarkable stiffness in lower limbs, with slight coldness and tingling sensation.", "Stiffness in knees when attempting to rise.", "Pain in r. knee.", "Drawing and shrinking sensation in legs; most decided pricking in soles.", "Calves numb.", "Penetrating pain under and behind l. external malleolus, after sleeping.", "Stiffness of all joints when lying." ],
+    "Generalities" : [ "Aching in all bones.", "Acted promptly and energetically, causing aching pains in nearly every part of the body, esp. lower limbs and head." ],
+    "Skin" : [ "Vesicular eruption on forehead, over l. eye, on middle of chest, and on r. arm.", "Violent itching eruption on skin.", "Great itching at night with welts all over surface." ],
+    "Sleep" : [ "Sleepiness with inability to sleep soon after midnight." ],
+    "Fever" : [ "Coldness and stiffness in the feet.", "Fever.", "Drying up of perspiration and development of fever, with hot skin and increased thirst.", "General sweat." ]
+  }
+}

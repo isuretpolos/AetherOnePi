@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Kali Sulphuratum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Gastric fever. Gastritis. Hiccough. OEsophagitis." ],
+    "Characteristics" : [ "Observations have been made on two persons with large doses, and violent effects ensued, which are recorded by Allen. The violence of the gastric intestinal irritation was the chief feature. An accompanying redness of the face may prove a guiding symptom. The vomiting was at first ineffectual, and afterwards convulsive. Great chilliness at first, followed tardily by fever and sweat with burning skin and very strong and rapid pulse." ],
+    "Relations" : [ "Compare: Hep. s. calc." ],
+    "Mind" : [ "Stupid and unconscious, with small, contracted, irregular pulse, deathlike paleness, and sunken face." ],
+    "Face" : [ "Redness of face gradually came on, at first momentary and partial, afterwards persistent and general, with symptoms of violent inflammation of stomach." ],
+    "Mouth" : [ "Great heat in mouth, throat, oesophagus, and stomach." ],
+    "Throat" : [ "Throat and fauces dry and reddish brown, with burning pain.", "Constriction in throat.", "OEsophagus painful to pressure on neck." ],
+    "Stomach" : [ "Thirst.", "Hiccough.", "Constant inclination to vomit without being able; followed by vomiting of contents of stomach; afterwards frothy substances streaked with blood; afterwards clots of blood, even purulent pieces of membrane 1/2 inches long seemingly detached from walls of stomach.", "Constant efforts to evacuate, up and down.", "Convulsive vomiting.", "Violent pain and heat (burning) in stomach; and round navel." ],
+    "Stools" : [ "Copious stools." ],
+    "Respiratory Organs" : [ "Suffocation; could not expand chest." ],
+    "Heart" : [ "Pulse irregular, very small, almost suppressed, slower than natural." ],
+    "Generalities" : [ "Great weakness and paleness." ],
+    "Fever" : [ "Skin and limbs extremely cold.", "Fever developed only after several hours, when patient became restless with all the symptoms of inflammation of the bowels.", "Violent fever, soon.", "General profuse sweat, burning skin, very strong pulse." ]
+  }
+}

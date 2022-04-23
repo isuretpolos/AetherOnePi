@@ -1,0 +1,13 @@
+{
+  "remedyName" : "Fucus Vesiculosus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Corpulence. Dyspepsia. Goitre." ],
+    "Characteristics" : [ "Fucus is a tissue-remedy of great power and must be compared with Iodine, of which it contains a large proportion. The symptoms have been obtained from patients taking the medicine for the reduction of obesity. The rapidity of digestion is increased and flatulency diminished. Goitre has been cured with it in teaspoonful doses of the tincture given two or three times a day." ],
+    "Head" : [ "Intolerable headache; forehead felt as if compressed by an iron ring." ],
+    "Stomach" : [ "Stomach acts with more rapidity, and the hour of repast is more impatiently looked for.", "The act of digestion is no longer accompanied by flushings of the face, fulness, weight in epigastric region and fits of heat towards head." ],
+    "Abdomen" : [ "Flatulency diminished and then disappears." ],
+    "Stool" : [ "Obstinate constipation." ],
+    "Respiratory Organs" : [ "Sense of suffocation, esp. during menses." ]
+  }
+}

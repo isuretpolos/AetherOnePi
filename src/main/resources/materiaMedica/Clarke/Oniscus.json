@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Oniscus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Colic. (Epilepsy.) Haemoptysis. Strangury. Toothache." ],
+    "Characteristics" : [ "In Germany Onis. has a popular reputation as a remedy for epilepsy. Hering proved a tincture, and Wolff recorded the effect of swallowing three \"cellar-worms\" in a glass of brandy before an attack of fever. This experience has provided the most characteristic symptoms of the remedy, showing it to be related to Cantharis, Apis, and their cognates. These symptoms were noted: Pale face, wild expression, constant vomiting. Very severe colic with meteorism and tension of abdomen. Tenesmus of bladder and rectum. Cutting burning in urethra. The symptoms of Hering's proving showed pains in the head, over the eyes, and down the nose. Constriction of gullet and stomach. Burning in anus. Many erections with disinclination to work. Hawking up of blood-streaked mucus. The last two symptoms again recall Canth. Frequent yawning and desire to stretch." ],
+    "Head" : [ "Dull heaviness of the head.", "Boring pain from behind r. ear on mastoid process, with violent pulsation in the arteries.", "Painful pressure above eyebrows and on margin of nose, first l. side, afterwards r.", "Painful pressure above the root of the nose." ],
+    "Ears" : [ "Boring behind the r. ear, with increased arterial action." ],
+    "Face" : [ "Pale face; wild expression." ],
+    "Mouth" : [ "Toothache, which had disappeared, returned.", "Pressure on soft palate, posteriorly as if it would close." ],
+    "Throat" : [ "Cramps in the gullet, as if it were about to close.", "Hawking up of mucus streaked with blood." ],
+    "Stomach" : [ "Nausea, with continued pressure at the orifice of the stomach.", "Continual vomiting." ],
+    "Abdomen" : [ "Very severe colic, with meteorism and tension of abdomen." ],
+    "Stool and Anus" : [ "Urgent and sudden want to evacuate, with prompt and liquid evacuation.", "Burning pain in anus." ],
+    "Urinary Organs" : [ "Tenesmus of bladder and rectum, with absence of stool and urine.", "Cutting boring in urethra with excessive bodily restlessness." ],
+    "Male Sexual Organs" : [ "Frequent erections, with aversion to labour." ],
+    "Generalities" : [ "In. young patients haemoptysis is induced by the salt with which these insects abound.", "Inclination to stretch." ],
+    "Sleep" : [ "Frequent yawning." ]
+  }
+}

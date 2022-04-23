@@ -1,0 +1,28 @@
+{
+  "remedyName" : "Linum Catharticum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Amenorrhoea. Bronchitis. Cough. Diarrhoea. Haemorrhoids. Laryngitis. Rheumatism." ],
+    "Characteristics" : [ "The proving of L. cath. (by Stokes and Galston) shows that it deserves its name. Colic and diarrhoea of loose, bright yellow stools, and also of slender, feculent stools were most marked. The sexual functions were depressed; in men absence of desire; in women menses were omitted or delayed. There was much nasal and respiratory catarrh, stuffed-up condition of nose and chest, troublesome cough and difficult expectoration of frothy, yellow mucus. The cough was < walking in open air. Headache > in open air, and > by eating." ],
+    "Relations" : [ "Antidoted by: Sul. (headache). Compare: Lin. usitatiss." ],
+    "Mind" : [ "Dulness and depression.", "Irritable." ],
+    "Head" : [ "After sleep, confusion of head; malaise as from cold.", "Congestion and vertigo on throwing head back.", "Headache: > open air; > after eating.", "Severe frontal headache, obliging to lie down after dinner (> by Sul. O).", "Dull headache, as of weight on brow, < holding head back and after reading." ],
+    "Ears" : [ "Singing in l. ear for some hours in evening." ],
+    "Nose" : [ "Sneezing; at night.", "Mucus from nose, occasionally rose colour.", "Fluent coryza.", "Nose stopped, and running a clear, profuse mucus from first one nostril for several days, then the other." ],
+    "Mouth" : [ "Tongue: deeply furred; foul.", "Mouth dry without thirst.", "Taste: insipid; foul; bilious." ],
+    "Throat" : [ "Much hawking of yellow mucus, sometimes tinged with blood.", "Rawness in throat when out in open air after breakfast." ],
+    "Stomach" : [ "Eructations tasting of bile.", "Rising of food, evening.", "Repletion." ],
+    "Abdomen" : [ "Rumbling and slight uneasiness.", "Colicky pains.", "Occasional griping and distension, < after food.", "Tormina and tenesmus.", "Abdomen tender on pressure." ],
+    "Stool and Anus" : [ "At night pressing in rectum as if swollen.", "Smarting at anus after stool.", "Smarting stinging in anus as if piles were coming, in evening.", "Tenesmus.", "Several motions of small, slender-formed faeces.", "Stools free; urging compelling to obey instantly; rectum seemed to have little grasp of the faeces, which pass as if pushed out from the colon.", "Uneasiness in abdomen, followed by a very loose, bright yellow, mucous stool, with some urging, forenoon.", "Full, soft, formed stool.", "Feculent stool of slender coils, sinking to bottom of utensil.", "Difficult stool with pressing down in rectum; faeces covered with epithelial-like shreds resembling worms; gelatinous mucus in form of rolls; evening.", "Bowels continued costive several days, then relaxed with pressive force of rectum, then alternately costive and relaxed.", "Costive stool with much pressure.", "No stool for several days." ],
+    "Urinary Organs" : [ "Itching at orifice of urethra.", "Frequent desire to urinate.", "Urine straw-coloured, strong-smelling." ],
+    "Male Sexual Organs" : [ "Feeble erections; diminished desire." ],
+    "Female Sexual Organs" : [ "Menses: delayed; missed." ],
+    "Respiratory Organs" : [ "Voice hoarse.", "Cough: dry, hard; tickling teasing with frothy mucous sputa; < in, or returning from, open air.", "Expectoration, with much difficulty, of frothy, and some yellow, mucus." ],
+    "Chest" : [ "Great pain in chest, < by any movement, on deep inspiration.", "Chest: much stuffed sore." ],
+    "Heart" : [ "Pulse full and quickened." ],
+    "Upper Limbs" : [ "Slight shooting down muscles of arms in evening.", "Slight shooting pains in l. and r. shoulder-joints." ],
+    "Generalities" : [ "Languor towards night; on waking." ],
+    "Sleep" : [ "Sleepy after dinner.", "Sleep profound.", "Insomnia.", "Dreams: lascivious; of travelling; of cholera." ],
+    "Fever" : [ "A cold feeling in streets as from a blast of cold air.", "Much heat of body and moderate sweat.", "Sweats freely." ]
+  }
+}

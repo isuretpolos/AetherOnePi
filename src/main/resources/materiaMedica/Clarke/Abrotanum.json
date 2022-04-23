@@ -1,0 +1,29 @@
+{
+  "remedyName" : "Abrotanum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Boils. Chilblains. Epilepsy. Gout. Haemorrhoids. Hectic fever. Hydrocele. Indigestion. Lienteria. Marasmus. Myelitis, chronic. Nose-bleed. Paralysis. Rheumatism. Umbilicus, oozing from. Worms." ],
+    "Characteristics" : [ "The most prominent symptom of Abrot. is the wasting it causes, most marked in lower extremities. It has also an intense indigestion and morbid appetite. There are burning, gnawing, constricting pains, and sometimes vomiting of offensive matters. A peculiar sensation is as if the stomach were hanging or swimming its water. After a checked diarrhoea, rheumatism may ensue. Another great characteristic of Abrot. is metastasis; metastatic rheumatism. Metastasis of rheumatism from joints to heart; to spine. There is a sudden aching pain in back > by motion. Symptoms are < at night and in cold air. The face is wrinkled, pale, old-looking; feels cold; blue rings round eyes. It is suited to affections of newborn children, and especially little boys; hydrocele; epistaxis; emaciation. Oozing of blood and moisture from navel of newborn. I have cured with it indigestion with vomiting of large quantities of offensive fluid in a middle-aged woman." ],
+    "Relations" : [ "Compare: Absinth., Cham., Cina, Gnaphal., and other Compositae; Nux and Agar. (chilblains); Bry., Bar. c. Follows well: Acon. and Bry. (pleurisy); Hep. (boils)." ],
+    "Mind" : [ "Great anxiety and depression.", "Child cross, depressed, very peevish.", "Feels she would like to do something cruel; no humanity.", "Thinking difficult.", "Feels as if brain softening.", "Excited, loquacious, like shouting, good-humoured, happy (secondary, after ceasing the drug)." ],
+    "Head" : [ "Cannot hold the head up.", "The l. brain seems esp. weak, easily tired by conversation or mental effort.", "Sensation as of creeping chills along the convolutions of the brain, accompanied by prickling sensation.", "Scalp sore, esp. l. side; itching." ],
+    "Eyes" : [ "Blue rings around dull-looking eyes." ],
+    "Nose" : [ "Nose dry.", "Nose-bleed with boys." ],
+    "Face" : [ "Face wrinkled, as if old.", "Comedones, with emaciation." ],
+    "Mouth" : [ "Slimy taste; acid." ],
+    "Appetite" : [ "Gnawing hunger, craves bread boiled in milk.", "Ravenous appetite, and all the while emaciating.", "Gastralgia with loss of appetite." ],
+    "Stomach" : [ "Sensation as if stomach were hanging or swimming in water, with coldness.", "Pains cutting, gnawing, burning; < at night." ],
+    "Abdomen" : [ "Great distension of abdomen.", "Weak, sinking feeling in bowels.", "Hard lumps in different parts of abdomen." ],
+    "Stool and Anus" : [ "Food passes undigested.", "Rheumatism after suddenly checked diarrhoea.", "Alternate diarrhoea and constipation.", "Protruding piles, with burning, from touch or when pressing.", "Piles appeared, and became worse as rheumatic pains abated, with frequent inclination to stool, hardly anything but blood being passed.", "Destroys worms, esp. ascarides." ],
+    "Male Sexual Organs" : [ "Hydrocele of children." ],
+    "Female Sexual Organs" : [ "Darting pain in left ovary.", "Twitching in both ovarian regions, seems to extend to back.", "Blood and moisture oozing from navel of newborn." ],
+    "Respiratory Organs" : [ "Cold air causes a raw feeling in respiratory tract.", "In pleurisy when a pressing sensation remains in affected side, impeding free breathing (after Acon. and Bry.)." ],
+    "Heart and Pulse" : [ "Pain across chest sharp and severe in region of heart; rheumatism.", "Metastasis of rheumatism to heart.", "Pulse weak and small." ],
+    "Back" : [ "Pains in sacrum." ],
+    "Limbs" : [ "Inability to move.", "Marasmus of lower extremities only.", "Soreness and lameness; worse mornings.", "Chilblains itch; frost-bitten limbs.", "Gout in wrists and ankles.", "Inflammatory rheumatism before swelling begins." ],
+    "Generalities" : [ "Weak, sickly feeling when excited, trembling.", "Lame and sore all over.", "Weak and prostrated after influenza.", "Inability to move.", "Numbness." ],
+    "Skin" : [ "Flabby; hangs loose; marasmus.", "Furunculus; after Hep. s." ],
+    "Sleep" : [ "Restless; frightful dreams." ],
+    "Fever" : [ "High fever (rheumatism).", "Hectic fever, with chilliness, very weakening; (marasmus)." ]
+  }
+}

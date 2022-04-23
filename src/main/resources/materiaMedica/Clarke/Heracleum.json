@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Heracleum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Debility. Dyspepsia. Gout. Headache. Seborrhoea capitis. Skin, affections of. Spleen, pain in." ],
+    "Characteristics" : [ "Heracl. has been proved. It was found to exercise a pronounced action on the digestion, producing hunger, with inability to eat, nausea, vomiting; colic, diarrhoea, and pains in the spleen. It also affected the sexual organs and the skin. A characteristic is \"Headache with drowsiness; < on moving in open air; > tying up the head with a cloth.\" Exhaustion, indolence, and weakness were complained of." ],
+    "Relations" : [ "Compare: Con., Abies n., Cean.; in headache with drowsiness, Brucea, Ginseng, Gels., Nat. s., Nux mos., Sul." ],
+    "Mind" : [ "Prostration of strength, indolence, moral depression; fits of hypochondriasis.", "Ill-humour, capriciousness." ],
+    "Head" : [ "Vertigo, on reading while seated.", "Cephalalgia, esp. in the sinciput and occiput, with inclination to vomit, and drowsiness, esp. < on walking in open air; > by wrapping up the head.", "Violent itching on the scalp, on scratching which, the fingers become greasy; much fatty perspiration on the head." ],
+    "Eyes" : [ "Lachrymation and fatigue of the eyes while reading." ],
+    "Nose" : [ "Frequent sneezing, with stitches in region of spleen." ],
+    "Throat" : [ "Pressure in the throat, as from mucus, which it is impossible to detach; accumulation of mucus, tickling roughness and scraping in the throat." ],
+    "Stomach" : [ "Bitter taste; sweet bitter risings, with regurgitation of bitter liquid; craving, with loathing and horror of all kinds of food; increased thirst; nausea; vomiting, bitter, bilious, with pains in the stomach, and much congestion in the head.", "Pressure at the stomach, with nausea, or else in the scrobiculus, as from a stone (after a meal); the pains in the stomach are always accompanied by an inclination to vomit." ],
+    "Abdomen" : [ "Lancinating and pinching colics, which force the patient to writhe; pulsation and pains in region of spleen; flatus and colic, with nausea and disgusting risings.", "Frequent sneezing, with lancination in the region of the spleen." ],
+    "Stool and Anus" : [ "Stools tardy, with pressure and pain in the anus.", "Slimy, fetid stools." ],
+    "Male Sexual Organs" : [ "Drawing pain in the penis; shootings in the glans.", "Itching and smarting in the scrotum; pollutions." ],
+    "Female Sexual Organs" : [ "Transient sticking in the labiae." ],
+    "Respiratory Organs" : [ "Dry, hacking cough, with feeling of soreness in the chest and shooting pains." ],
+    "Chest" : [ "Oppression of the chest, with chilliness, or else with palpitation of the heart; difficulty of respiration on ascending a staircase.", "Stitches in chest during inspiration; dry eruption on chest, burning after scratching." ],
+    "Limbs" : [ "Gouty tearing in the limbs.", "Shooting and burning pains in the feet." ],
+    "Skin" : [ "Violent itching in the skin and moist itch-like eruption." ],
+    "Fever" : [ "Chilliness, with frequent yawning and inclination to sleep in afternoon." ]
+  }
+}

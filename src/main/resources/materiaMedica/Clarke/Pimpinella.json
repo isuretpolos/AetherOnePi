@@ -1,0 +1,30 @@
+{
+  "remedyName" : "Pimpinella",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Chilliness. Corns. Epistaxis. Fever. Headache. Lumbago. Stiff neck. Tinnitus." ],
+    "Characteristics" : [ "The majority of the symptoms of Pimpinella were obtained by Schelling from chewing the fresh root. The rest were contributed by Berridge, who proved the 1x on a man. Chilliness was a marked symptom, chilly in the back even in a warm room, and much < if a window was opened. Sensitive to draughts. Sensation of coldness in occiput as from a cutting wind behind. Cold stream from hip and into right leg. The pains and sensations extended from one part to another, principally from above downward and from before backward (temples to nape; forehead to eyes; nape to shoulders), from within outward; or alternated between different parts. There was rush of blood to head, followed by nose-bleed; whizzing in head, roaring in ears. Sinking sensation in intestines. Weariness and falling asleep of parts rested on. Frequent yawning and desire to take a long breath, which was difficult. Great drowsiness. The symptoms were < morning (vertigo sweat); afternoon (heat and rush of blood to head); by chewing reading; writing; reflecting; rest (weary pain in limbs); standing; stooping; after stooping; walking; by opening window; in warm room." ],
+    "Relations" : [ "Compare: Rush of blood preceding nose-bleed, Graph. Occipital pains, Hell. n., Nat. s., Glon." ],
+    "Head" : [ "Vertigo: inclination to one side, morning, on rising; dizzy confusion.", "Heat, rush of blood and confusion of head, soon followed by nose-bleed; afternoon.", "Rushing in whole head, esp. down back part, with pressure.", "Whizzing in head and sounds as in an empty barrel.", "Dulness and heaviness in head, with drowsiness when reading.", "Head feels tied up and compressed.", "Sticking in forehead, extending to both sides along eyes.", "Sticking burning from vertex to both sides and down over temples.", "Pressing and pushing from temples to occiput and nape.", "Sensation of coldness in occiput as though a sharp draught constantly blowing from behind; in a closed room.", "Tension and pressive pain from occiput into nape.", "Pain in occiput, < reading or thinking.", "Acute stitches in occiput concentrated in protuberance.", "Itching on vertex.", "Shivering of scalp, hair bristles." ],
+    "Eyes" : [ "Smarting pain in r. eye.", "Burning in eyes, esp. upper surface of eyeballs; disagreeable coolness.", "Smarting in lids.", "Vision dim, misty." ],
+    "Ears" : [ "Fine stitches extending out through r. ear, with roaring.", "Roaring in ears as from a distant sound." ],
+    "Nose" : [ "Dry, stopped catarrh." ],
+    "Face" : [ "Pain as from an ulcer in r. cheek." ],
+    "Mouth" : [ "Sore, pressive pain in stump of tooth, l. lower jaw.", "Burning aroma on tongue, palate, and throat.", "Saliva increased during and after chewing.", "Collection of mucus in mouth and fauces, obliging hawking.", "Taste: acrid, burning, earthy; penetrating while chewing, later spreading a warmth through whole body; mouldy." ],
+    "Throat" : [ "Hawking of tenacious whitish mucus from arch of palate, and a crumbly, cheesy, offensive concretion from fauces." ],
+    "Stomach" : [ "Eructations: frequent, of gas; with vertigo and yawning; tasteless; acid, after stooping." ],
+    "Abdomen" : [ "Fine stitches just above navel.", "Rumbling and gurgling.", "Sensation as if intestines would sink down from their own weight." ],
+    "Stool" : [ "Purging.", "Stool dry, harder than usual." ],
+    "Respiratory Organs" : [ "Oppression whilst walking, in open air and in house.", "Breathing short, difficult; feeling of apprehension in chest.", "Frequently impelled to take a long breath, which is difficult." ],
+    "Chest" : [ "The portion of the chest against which he leans becomes painful as if weary.", "Transient, needle-like stitches, back and forth in sides of chest, back, small of back, and walls of abdomen." ],
+    "Heart" : [ "Sensation of heaviness in praecordial region and abdomen as if intestines would sink down of their own weight." ],
+    "Neck and Back" : [ "Stiff neck.", "Pressive, tensive pain from nape to shoulder.", "Constant, pressive, contractive pain alternately in nape, side of neck, and r. shoulder.", "Constant tension and sticking in nape and occiput.", "Constrictive, cramp-like pain in small of back, esp. on stooping; on standing upright; on walking.", "Tension and tearing in small of back, extending into hips and back.", "Burning in loins and small of back.", "Pressive stitches in loins.", "Tensive pain in back, esp. sacral region." ],
+    "Limbs" : [ "Weary pain in limbs while at rest." ],
+    "Upper Limbs" : [ "Pressive, sticking pains in r. shoulder; stitches shoot deep into r. chest.", "The arm that is resting on the table feels weary and falls asleep.", "Fine sticking, drawing from r. upper arm to hand, with a shivering extending through the limb.", "Stinging as from nettles on last joint of r. ring finger." ],
+    "Lower Limbs" : [ "Pain in hips and pelvis as if broken.", "A cold stream, extending into r. leg and foot, with fine stitches now and them.", "Painful burning in corns (quite unusual)." ],
+    "Generalities" : [ "The whole body feels weak and weary.", "Weakness and general sick feeling." ],
+    "Skin" : [ "Fine stinging as from nettles deeply piercing the skin on last joint of r. ring finger, while writing." ],
+    "Sleep" : [ "Frequent yawning; with eructations.", "Overpowering sleepiness (for an hour after chewing the drug).", "Sleep dreamy." ],
+    "Fever" : [ "Unusual chilliness over whole body (in warm room).", "Chilliness and shivering of scalp, the hair bristles (in warm-room).", "Chill runs up middle of back; rest of body warm, and icy cold hands.", "Great sensitiveness to every cool temperature, shivering in back when window is opened.", "Violent catarrhal fever.", "Sweat every morning." ]
+  }
+}

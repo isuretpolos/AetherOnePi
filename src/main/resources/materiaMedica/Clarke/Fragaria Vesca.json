@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Fragaria Vesca",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Anasarca. Biliousness. Chilblains. Convulsions. Erysipelas. Gonorrhoea. Psilosis (or Sprue). Tapeworm. Tongue, strawberry; swollen. Urticaria. Weaning." ],
+    "Characteristics" : [ "It is well known that many persons are unable, to eat strawberries, and the poisonous effects resulting from them on those who are sensitive to their action have been utilised in homoeopathy. Faintness; suffocation like apoplexy; convulsions and death have resulted; general anasarca, and especially swollen tongue. The well-known \"strawberry tongue\" is an indication for its use. Dr. Burnett gives it as \"pippy tongue.\" An infusion of the root is used for drying up the breasts in women who wish to wean their children; it diminishes the size of the breasts and dries up the milk. Profuse viscid sweat has been observed. Lippe mentions: \"Tapeworm. Pain in chilblains in hot weather.\" In old physic Fragaria vesca (in decoctions of leaves, root, or fruit ripe or unripe, or combinations of these) had a very large place assigned to it. It is commended by W. Salmon as a wash for sore-mouth; as a haemostatic arresting the menses and stopping \"bloody-flux;\" swelling of the spleen; many forms of skin eruption and for \"clearing the complexion.\" In two instances I have known indulgence in strawberries to revive symptoms of gonorrhoea in men who thought themselves cured. A number of cases of sprue or psilosis have been cured by a diet of strawberries ad libitum (H. W., xxxiv. 440)." ],
+    "Relations" : [ "Compare: Hydrocy. ac., Apis, Arsen., Crataeg." ],
+    "Face" : [ "Face reddish blue.", "Livid countenance." ],
+    "Mouth" : [ "Tongue swollen so that it hung from the mouth.", "Pippy or strawberry tongue." ],
+    "11, Stomach and Abdomen" : [ "Vomiting followed by relief.", "Stomach and abdomen distended.", "Violent colic." ],
+    "Male Sexual Organs" : [ "Gonorrhoeal discharge lighted up after long cessation." ],
+    "Female Sexual Organs" : [ "Breasts diminished in size and milk dried up (root)." ],
+    "Respiratory Organs" : [ "Attacks of suffocation like apoplexy." ],
+    "Heart" : [ "Small intermittent pulse.", "Failure of the heart's action and prolonged, leaving the patient weak and languid. (Death occurred later.)" ],
+    "Neck" : [ "Neck very much distended with fine veins." ],
+    "Generalities" : [ "Swelling of the whole body.", "Swelling of the whole body with faintness.", "Complete prostration.", "Convulsions." ],
+    "Skin" : [ "Petechial eruption.", "Erysipelatous eruption.", "Urticaria-like eruption." ],
+    "Fever" : [ "Profuse viscous sweat." ]
+  }
+}

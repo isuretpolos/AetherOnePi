@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Aurum Sulphuratum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Enuresis. Goitre. Head, nodding of. Impotence. Jaundice. Mammae, affections of. Nightmare. Nose, swelling of. Paralysis agitans. Pruritus vulvae. Staggering." ],
+    "Characteristics" : [ "This is a valuable gold preparation which I have used with success in Aurum cases with some Sulphur indications. It has been proved, and the most striking symptoms are the following: Constant nodding of head (suggesting paralysis agitans). Lancinations in occiput. Redness and swelling of nose; crusts; dry coryza; great sensitiveness to least contact. Sensitiveness to touch was observed in other parts. Inclined to vomit after eating. Nocturnal enuresis. Impotence. Lancinations in penis. Heaviness in genitals. Heat, lancinations, and itching of vulva. There is swelling of the breasts; they are painful to touch; nipples are cracked; lancinating pain in point of nipples. Thick yellowish leucorrhoea, especially in morning. Staggering gait. Weariness. Frightful dreams: thieves, &c." ],
+    "Mind" : [ "Desire for solitude.", "Disgust for life." ],
+    "Head" : [ "Constant nodding of head.", "Continual rush of blood to head.", "Lancinations in occiput.", "Itching of scalp, < night.", "Burning and smarting of scalp.", "Falling out of hair." ],
+    "Eyes" : [ "Redness of lids.", "Morning agglutination.", "Stye near outer canthus.", "Photophobia." ],
+    "Nose" : [ "Redness and swelling of nose.", "Crusts on nose.", "Sensitiveness to least contact." ],
+    "Face" : [ "Cracked lips." ],
+    "Mouth" : [ "Redness, swelling and bleeding of gums.", "Aphthae." ],
+    "Throat" : [ "Swelling of thyroid." ],
+    "Stomach" : [ "Great thirst.", "Watery eructations tasting of ingesta.", "Frequent hiccough.", "Very slow digestion." ],
+    "Urinary Organs" : [ "Nocturnal enuresis.", "Thick, yellow, red and sandy urine." ],
+    "Male Sexual Organs" : [ "Frequent erections with desire for embrace, but ceasing immediately.", "Impotence." ],
+    "Female Sexual Organs" : [ "Thick, yellowish leucorrhoea, esp. in the morning.", "Irregular menstruation.", "Sensitiveness of uterus to touch.", "Swelling of breasts; painful to touch.", "Cracks on nipples." ],
+    "Respiratory Organs" : [ "Nightly paroxysms of loud cough.", "Hard cough with scanty expectoration of pure blood.", "Suffocating attacks at night." ],
+    "Heart" : [ "Palpitation when ascending a height." ],
+    "Generalities" : [ "Staggering gait." ],
+    "Sleep" : [ "Troublesome frightful dreams; of thieves; of assassins." ]
+  }
+}

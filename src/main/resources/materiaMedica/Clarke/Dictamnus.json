@@ -1,0 +1,12 @@
+{
+  "remedyName" : "Dictamnus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Constipation. Flatulence. Leucorrhoea. Metrorrhagia." ],
+    "Characteristics" : [ "The authorities for Dictamnus are Stoerck, and Noack and Trinks. The few symptoms recorded show relationship to Ruta." ],
+    "Stool and Anus" : [ "Frequent emission of copious, offensive flatus.", "Itching in anus.", "Increased stools.", "Constipation." ],
+    "Urinary Organs" : [ "Greatly increased secretion of urine." ],
+    "Female Sexual Organs" : [ "Discharge of much tenacious mucus from uterus, at first brown, afterwards white; at last streaked with blood.", "Increase of leucorrhoea with distressing tenesmus and painful erosion of genitals.", "Profuse metrorrhagia for nine days (recurring after ten days, upon the continued use of the drug, and lasting several days with physical weakness)." ],
+    "Fever" : [ "Profuse perspiration." ]
+  }
+}

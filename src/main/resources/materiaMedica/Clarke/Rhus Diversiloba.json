@@ -1,0 +1,19 @@
+{
+  "remedyName" : "Rhus Diversiloba",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Chicken-pox. Eczema. Erysipelas. Skin, sensitive." ],
+    "Characteristics" : [ "Murray Moore observed the effect of Rh. d. on three persons: (1) Miss M., 25, of brown hair and fair complexion, walked up a hill one warm morning, and whilst perspiring gathered ferns which grew among the Rh. d. trees, the leaves of which she must have touched, though she did not pull any. The result was a very severe poisoning, which provided the majority of the symptoms of the Schema. (2) J. W., light-haired, robust Englishman, 23, lay down whilst sweating among the bushes and was smartly poisoned. Ver. v. O internally and a lotion of Magnesia sulph. externally checked the spread of the disease. (3) Boy, 10, pure blond type with thin, freckled skin, plucked some of the leaves, and in eighteen hours the poisoning symptoms came on, facial esysipelas with extreme oedema, closing both eyes, itching and burning. The symptoms became general. M. Moore relates also the case of a man who was poisoned in California in September and returned to the Eastern States and there had an annual eruption for six successive years. During the seventh attack he was carried off with pneumonia, which Moore thinks would not have been the case but for the Rhus complication. (C. D. P.)" ],
+    "Head" : [ "Dull frontal headache.", "Head hot." ],
+    "Eyes" : [ "L. eye closed entirely by swelling; r. partially." ],
+    "Face" : [ "Vesicular erysipelatous rash with great oedema and swelling of glands in neck; vesicles dried into a crust so dense that movements of mouth and face were painful." ],
+    "Stomach" : [ "Loss of appetite; nausea; vomiting.", "Whole digestive system deranged for three weeks." ],
+    "Stool" : [ "Bowels costive." ],
+    "Urinary Organs" : [ "Urine scanty, high-coloured; felt hot when passed." ],
+    "Male Sexual Organs" : [ "Heat and itching of scrotum and adjacent surfaces of thigh, < on hairy parts." ],
+    "Limbs" : [ "Stiffness of limbs; of all joints on first moving them." ],
+    "Generalities" : [ "Extreme languor.", "On rising from bed fainted; again later in day." ],
+    "Skin" : [ "Eruption very like chicken-pox.", "After the erysipelatous condition of the skin subsided extreme irritability (to flannel) remained, and hypersensitiveness to cold air.", "Five months after the poisoning there was a recurrence (without fresh exposure) shortly after taking a bath rather too hot.", "The day after he had been among the bushes heat and itching commenced on scrotum and adjacent surfaces of thighs, < on hairy parts; next day papules on red oedematous base appeared on forehead and neck, rapidly spreading in all directions, with heat, itching, and burning, but very little pyrexia; itching > by cold; < by heat, warmth, rubbing, or scratching." ],
+    "Fever" : [ "In afternoon chills and feverishness by turns, and general malaise.", "Slight pyrexia." ]
+  }
+}

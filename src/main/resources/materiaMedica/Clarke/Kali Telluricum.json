@@ -1,0 +1,13 @@
+{
+  "remedyName" : "Kali Telluricum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Breath, offensive. Salivation. Tongue, swelling of." ],
+    "Characteristics" : [ "A few symptoms of this salt have been observed, of which the garlicky odour of the breath was the most noticeable and persistent. The tongue was coated white and swollen, and there was salivation. The appetite was increased." ],
+    "Relations" : [ "Compare: Tellur., Phos., and Kali phos. (garlicky odour)." ],
+    "Mouth" : [ "Tongue coated white and somewhat swollen.", "Garlicky odour in mouth (appeared soon after first dose, lasted seven weeks, was so offensive to others he was obliged to avoid society).", "Copious secretion of saliva." ],
+    "Stomach" : [ "Appetite increased at first; later diminished; finally lost.", "Inclination to vomit." ],
+    "Heart" : [ "Oppression in cardiac region (7th d)." ],
+    "Sleep" : [ "Sleepiness; during first days." ]
+  }
+}

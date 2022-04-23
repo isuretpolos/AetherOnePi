@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Prunus Padus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Headache. Heart, affections of. Rectum, pains in." ],
+    "Characteristics" : [ "Prunus padus was proved by Lembke. The plant is now classed with the Cherries, but I retain it under its old name. \"In Scotland it is known as the Hayberry. The fruit is small, black, and nauseous to the taste. In the North of Europe it enters into the formation of a palatable liqueur; the juice is also expressed and drunk with milk, while the residue of the fruit is kneaded up into cakes\" (Treas. of Bot.). Lembke's proving brought out marked symptoms in head, rectum, chest, and heart. Pains were pressive in head, sticking in rectum, pressive beneath sternum. Heart-beats were tumultuous. The symptoms were < by pressure; sitting; standing; stooping, and walking." ],
+    "Relations" : [ "Compare: Heart, Crataeg., Pru. sp., Pru. v., Lauroc." ],
+    "Head" : [ "Dulness, with dull pressure in forehead.", "Momentary sensation as if head would sink to r. side.", "Head heavy, confused.", "Pressure at base of brain.", "Pressure; on forehead with external heat; in l. temple.", "Heaviness of occiput with dull pain extending transversely through occiput." ],
+    "Eyes" : [ "Pupils much dilated." ],
+    "Nose" : [ "Pulsating feeling under skin at root of nose, with visible trembling movement < by stooping." ],
+    "Throat" : [ "Sore throat with frequent swallowing of saliva." ],
+    "Stomach" : [ "Great nausea." ],
+    "Abdomen" : [ "Drawing pain in hypochondrium and umbilical region, < by pressure.", "Abdomen greatly distended by gas." ],
+    "Stool and Anus" : [ "Sticking in rectum while sitting and walking; repeated and lasting all day.", "Stitches in rectum." ],
+    "Urinary Organs" : [ "Profuse bright-yellow urine." ],
+    "Respiratory Organs" : [ "Some dull stitches in larynx compelling to swallow." ],
+    "Chest" : [ "Pressure behind sternum with difficult respiration.", "Pressure behind lower sternum, as if heavy weight lying on it, no > by deep inspiration; < walking.", "Some sudden violent stitches beneath r. ribs." ],
+    "Heart" : [ "Oppression of heart while standing.", "Every beat felt in chest while sitting.", "Beats tumultuous, felt in neck and actually shake head.", "Violent, irregular beats.", "Pulse very slow; and small." ],
+    "Upper Limbs" : [ "Weakness in elbow joints." ],
+    "Generalities" : [ "Sensation of general weakness; of weakness extending from side of neck into r. arm, soon followed by similar sensation l. side." ],
+    "Fever" : [ "Frequent sensation of coldness in back.", "Heat deep in small of back." ]
+  }
+}

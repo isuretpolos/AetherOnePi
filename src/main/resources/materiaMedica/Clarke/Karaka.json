@@ -1,0 +1,14 @@
+{
+  "remedyName" : "Karaka",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Paralysis." ],
+    "Characteristics" : [ "G. Bennett has recorded a few symptoms observed in the case of a Maori chief poisoned with the seeds of Karaka, which contain a tasteless farinaceous substance and are eaten in times of scarcity. But the raw seeds are poisonous and produce spasmodic pains, giddiness, and partial paralysis. To obviate this they are steamed for twenty-four hours, and then either buried in the ground or allowed to soak in water for some days (Treas. of Bot.). C. F. Fischer (H. W., xxviii. 515) proved Karaka and used it clinically in cases of convulsions. He quotes an account of its effect from the Proceedings of the New Zealand Institute:", "Violent spasms and convulsions of whole body, arms and legs stretched violently and rigidly out; great flushings of heat; protrusion of eyes and tongue; gnashing of jaws. The poison proves rapidly fatal if the patient is not attended to immediately; and the limbs are permanently and rigidly distorted if they are not fixed in proper positions until the crisis is passed. The general treatment is to bind the patient (generally a child), with the limbs in right position, dig a pit and place him in it, standing, buried up to the chin with a gag in his mouth. The writer describes a youth, aet. 12, who had recovered after being poisoned, but whose limbs had not been properly secured and were ever after absolutely useless. One leg was curved up behind his loins, the other bent up with the foot outwards; one arm inclined behind his shoulder, the other slightly bent and extended forward, and all, as to muscles, inflexibly rigid. He could not move himself or even drive away the flies." ],
+    "Head" : [ "Giddiness." ],
+    "Eyes" : [ "Protrusion of eyes." ],
+    "Ears" : [ "Deafness (soon)." ],
+    "Face" : [ "Gnashing of jaws." ],
+    "Mouth" : [ "Protrusion of tongue." ],
+    "Generalities" : [ "Spasm with pains.", "Violent pain lasting a week (soon).", "Partial paralysis.", "Heat-anaesthesia; when warm water was applied he did not feel any warmth from it.", "Violent spasms and convulsions of whole body, arms and legs stretched violently and rigidly out.", "Permanent rigid distortion." ]
+  }
+}

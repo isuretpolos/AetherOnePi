@@ -1,0 +1,20 @@
+{
+  "remedyName" : "Fel Tauri",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asthma. Constipation. Diarrhoea. Gall-stones. Headache. Indigestion. Rheumatism." ],
+    "Characteristics" : [ "Ox gall is a remedy of very ancient use. It is used in the old-school mostly as a purgative; for preventing putrefactive changes in the intestines, and for increasing peristalsis. It is sometimes given along with Opium to prevent the constipating effect of that drug. In the stomach bile is a foreign body, precipitating pepsin and causing irritation of the stomach. It does not aid the digestion either of albumen or of farinaceous substances. Fel. t. has been proved homoeopathically by Buchner, and has produced a few characteristic symptoms: disordered digestion, diarrhoea, headache, pains in joints, and cramps. It removed a tendency to sleep after eating. Several symptoms were noticed in nape of neck." ],
+    "Relations" : [ "Compare: Cholesterinum, Merc. dulc." ],
+    "Mind" : [ "Peevish, irritable mood.", "Greatly inclined to all kinds of business; unpleasant impressions did not affect him." ],
+    "Head" : [ "Confusion.", "Violent headache in morning, on pressure upon r. temple, extending on to occiput and nape of neck." ],
+    "Mouth" : [ "Tongue white." ],
+    "11, Stomach and Abdomen" : [ "Increased thirst.", "Odourless and tasteless eructations.", "Gurgling in stomach and epigastric region.", "Rumblings and motions in abdomen.", "Violent peristaltic movements." ],
+    "Stool and Anus" : [ "Stool thin with urging and sensation of warmth in anus.", "Stool thin, pasty, followed by pressing although with crumbling faeces." ],
+    "Urinary Organs" : [ "Urging.", "Urine offensive." ],
+    "Male Sexual Organs" : [ "Scrotum itching and afterwards becomes moist." ],
+    "Chest" : [ "Anxiety in chest.", "Constriction; on waking at a.m. cannot sleep again for tightness of breath and cannot remain lying; it seems as though something in throat prevented free passage of the air; > by deep inspiration and sitting upright." ],
+    "Neck" : [ "Tension in nape." ],
+    "Limbs" : [ "Some tearings in l. shoulder-joint, extending up to nape of neck.", "Cramp in r. toe." ],
+    "Sleep" : [ "Sound sleep in morning with some perspiration.", "No inclination to sleep after eating, as he was accustomed to do." ]
+  }
+}

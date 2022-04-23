@@ -1,0 +1,22 @@
+{
+  "remedyName" : "Lonicera Xylosteum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Coma vigil. Convulsions." ],
+    "Characteristics" : [ "Lon. xylost. is known from the effect of poisoning by its berries. Vomiting and purging; trembling and jerking of the limbs, convulsions and coma were the chief symptoms. Peculiar symptoms were: Contraction of one pupil and dilatation of the other. Abdomen retracted especially in umbilical region. Slow pulse." ],
+    "Relations" : [ "Compare: Dig. (slow pulse). Cad. s. and Rhod. (one pupil contracted, the other dilated). For botan. relations see Lon. peri." ],
+    "Mind" : [ "Stupefaction.", "Coma." ],
+    "Head" : [ "Great congestion of head and chest." ],
+    "Eyes" : [ "Conjunctiva red.", "Pupils dilated.", "Contraction of one pupil, dilatation of the other.", "Everything foggy and indistinct to vision for half an hour.", "Photophobia." ],
+    "Face" : [ "Face red.", "Pallor.", "Lips dry." ],
+    "Mouth" : [ "Tongue moist; coated with mucus." ],
+    "Stomach" : [ "Excessive thirst.", "Profuse vomiting; and purging." ],
+    "Abdomen" : [ "Abdomen retracted, esp. in umbilical region; soft.", "Violent colic." ],
+    "Stool" : [ "Bloody stools." ],
+    "Respiratory Organs" : [ "Respiration rapid and deep." ],
+    "Heart" : [ "Violent impulse of heart.", "Pulse: slow; small, soft, irregular." ],
+    "Generalities" : [ "Frequent jerking of limbs.", "Trembling and jerking of whole body.", "Violent convulsions.", "Seemed neither to hear nor see; unable to make answer.", "When raised from bed, limbs and head fall over as if paralysed." ],
+    "Sleep" : [ "Sleepy.", "Constant deep sleep with half-open eyes; red face." ],
+    "Fever" : [ "Extremities cold.", "Fever.", "Profuse cold sweat." ]
+  }
+}

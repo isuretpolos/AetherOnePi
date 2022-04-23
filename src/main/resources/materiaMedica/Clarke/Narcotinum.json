@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Narcotinum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bladder, paralysis of." ],
+    "Characteristics" : [ "Narcotinum has been rather extensively proved, but very few distinctive symptoms were elicited. The most notable symptoms were dry, clammy mouth; thick, indistinct speech, and paralysis of bladder. The vertiginous symptoms were like those of Morphin., and the general symptoms those of Opium and its other alkaloids." ],
+    "Mind" : [ "Calm, placid, pleasurable sensation.", "Difficulty in fixing attention." ],
+    "Head" : [ "Mazy, confused sensation.", "Vertigo and nausea < on motion or exertion.", "Headache and roaring in head." ],
+    "Eyes" : [ "Eyes congested.", "Vision blurred.", "Pupils contracted." ],
+    "Face" : [ "Expression dull.", "Face red." ],
+    "Mouth" : [ "Mouth dry and clammy.", "Speech thick and indistinct." ],
+    "Stomach" : [ "No appetite; no thirst.", "Sudden nausea and vomiting on least exertion.", "Paroxysms of easy vomiting.", "Vomiting > all symptoms." ],
+    "Stool" : [ "Constipation; but less than Morphine." ],
+    "Urinary Organs" : [ "Slow evacuation of urine from deficient contractile power.", "Torpor of bladder, quite unable to empty it.", "Urine diminished." ],
+    "Respiratory Organs" : [ "Voice changed, hoarse.", "(Chronic cough removed.).", "Breathing short, hurried." ],
+    "Chest" : [ "Agreeable warmth in chest with deep breathing." ],
+    "Heart" : [ "Pulse accelerated; later retarded." ],
+    "Lower Limbs" : [ "Staggering gait." ],
+    "Generalities" : [ "Languor and lassitude." ],
+    "Skin" : [ "Peculiar disagreeable crawling in limbs.", "Considerable itching of whole surface, esp. nose and inside of thighs." ],
+    "Sleep" : [ "Somnolence.", "When dozing, all sorts of grotesque figures dance before the sight; or sensation of falling into an immense fire in company of same figures; with the falling sensation there was starting." ],
+    "Fever" : [ "Chilliness; chattering of teeth; coldness.", "Universal sensation of warmth.", "Heat and redness of face.", "Much sweat, wetting all clothes next the skin." ]
+  }
+}

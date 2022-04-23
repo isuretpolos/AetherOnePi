@@ -1,0 +1,24 @@
+{
+  "remedyName" : "Itu",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Ears, reports in. Eyes: muscae volitantes. (Hernia.) Stiff-neck. Toothache. Vulvitis." ],
+    "Characteristics" : [ "Itu is one of the remedies proved by Mure. All he tells about the source of it is that \"This rosin, which comes to us from the province of St. Paul, is used empirically for hernia.\" Among the most peculiar symptoms are: \"Sudden report in the ear, with frightful pain extending to teeth for several minutes, repeated as many as eight times in a day; profuse sweat after the reports.\" \"Chilliness at hypogastrium, especially in evening.\" \"Earache when the least dampness sets in.\" \"Toothache < after a cold drink.\"" ],
+    "Head" : [ "Stupefying pain in the head, < when stooping.", "Vertigo as if one would fall to the r. (1st day).", "Aching pain in the forehead and eyes.", "Beating in r. temple; the pain extends to the ear and the articulation of the Jaw.", "Lancination in the forehead r. side (2nd day).", "Heaviness of the head, it inclines forwards (8th day)." ],
+    "Eyes" : [ "Heaviness at the eyes when walking.", "Burning in lids.", "Muscae volitantes like pins' heads.", "Twinkling of the eyes.", "Lancinating pain in orbit, extending to the eyebrow (8th day)." ],
+    "Ears" : [ "Earache when the least dampness sets in, extending to the articulation of the jaw (1st day).", "Sudden report in the ear, with frightful pain extending to the teeth, for several minutes; this paroxysm recurs four times in the morning, from hour to hour (7th day); repeated eight times the following day; profuse sweats after the reports; air < the pain." ],
+    "Nose" : [ "Repeated sneezing.", "Coryza (9th day)." ],
+    "7, Teeth and Mouth" : [ "Toothache < when taking a cold drink (8th day).", "The tongue feels big, as if it filled the whole mouth, though the swelling is but trifling.", "Red tongue.", "Difficulty of moving the tongue and talking (12th day)." ],
+    "Throat" : [ "Inflammation of the tonsils.", "Pain in throat and sensation as of a lump in pharynx (12th day)." ],
+    "Stomach" : [ "Nausea < during motion.", "Continual hiccough." ],
+    "Abdomen" : [ "Pain in the abdomen, from within outwards.", "Sense of chilliness at the hypogastrium, esp. in evening (1st day).", "Pain in l. hypochondrium, when inclining forwards (2nd day). Lancinating pain in region of liver, < when walking or stooping (8th day)." ],
+    "Stool and Anus" : [ "Involuntary stools (6th day).", "Profuse painless diarrhoea.", "Copious, yellow, diarrhoeic stools (7th day).", "Burning pain at the anus after sitting (8th day).", "Bright yellow stool, which cannot be retained as soon as one stands up (9th day)" ],
+    "Female Sexual Organs" : [ "Burning at the vulva followed by violent itching (9th day)." ],
+    "Chest" : [ "Violent itching near the sternal extremity of the r. clavicle, followed by a moist tetter, which scatters in six hours.", "Pain in the l. breast < when walking.", "Itching at the l. breast and nipple, esp. in the morning." ],
+    "Neck and Back" : [ "Pain on the l. side like wry-neck.", "Pimples on the l. side of the neck; they itch as much, though less inflamed.", "Stiffness of nape of neck, which prevents one from rising or inclining head.", "Pain at the nape of neck, penetrating to forehead and causing a numbness and heaviness which carries the head forward.", "Pain at the posterior iliac spine when stretching the leg or rising, several days in succession." ],
+    "Upper Limbs" : [ "Violent itching at r. arm; it is covered with red pimples, round like pin's head; the itching ceases in the daytime, but the eruption lasts all day." ],
+    "Lower Limbs" : [ "Numbness at the tarsal joint, after sitting.", "Numbness of the legs.", "On rising from a chair one is unable to stand straight.", "Cramps at the l. tarsal joint.", "Numbness in the tarsal joint every time one rises from a seat. Crampy pain in tendo-Achillis.", "Crampy pain from the calf to the heel.", "Heaviness of the legs and weariness towards evening.", "Acute pain in the knee-joint." ],
+    "Sleep" : [ "Light sleep at night, but unbroken." ],
+    "Fever" : [ "Profuse sweat after reports in the ears." ]
+  }
+}

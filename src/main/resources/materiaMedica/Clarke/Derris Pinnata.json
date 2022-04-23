@@ -1,0 +1,30 @@
+{
+  "remedyName" : "Derris Pinnata",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Asthma. Blepharospasm. Diarrhoea. Dysentery. Eyes, inflammation of. Locomotor ataxy. Mania. Ozaena. Smell, sense of, affected. Tic-douloureux." ],
+    "Characteristics" : [ "Dr. X. Roussel is the authority for this plant, and some of the symptoms are of a very peculiar nature. \"He walks as if stepping on down.\" \"He is afraid of killing some one with a knife.\" Both kinds of tic are noted", "painful and convulsive. Sense of smell is exalted. \"He perceives celestial odours;\" also \"intolerable smells, after frequent sneezing.\" Viscid urine, and viscid saliva. Electric shocks and cramps. Heat > toothache. Many symptoms, including diarrhoea, come on at night. < From touch." ],
+    "Relations" : [ "Compare: Anacard. (sense of smell); Sticta, &c. (levitation); Ign. (ball in throat, hysteria)." ],
+    "Mind" : [ "Fancies he is sea-sick.", "Suicidal.", "Is afraid of killing some one with a knife.", "Disposed to strike, and inveighs against his dearest friends.", "Weeping and singing alternately; great flow of ideas.", "Loss of memory." ],
+    "Head" : [ "Vertigo; is afraid of falling if he turns his head to r. or l.", "Sensation as if needles and nails were being driven into head (6 p.m. at evening meal).", "Painful lancinations l. side of head with vomiting of mucus and burning along oesophagus.", "Scalp excessively painful; slightest touch < the pain." ],
+    "Eyes" : [ "Cannot raise lids or eyebrows.", "Painful lancinations in both eyes, extending to bottom of orbits.", "Swelling of l. caruncula lachrymalis with large ecchymosis of l. eye.", "Vision dim; black points before eye." ],
+    "Ears" : [ "Swelling, redness and heat of auricle.", "Hearing impaired or excessively acute.", "Cracking in ears when swallowing." ],
+    "Nose" : [ "Tip of nose red.", "Fluent coryza.", "Sense of smell exalted; celestial odours.", "Intolerable smells after frequent sneezing." ],
+    "Face" : [ "Face puffy.", "Tic-douloureux and tic convulsive.", "Burning in l. cheek.", "Pain in whole lower jaw as if the teeth were being pulled out." ],
+    "Teeth" : [ "Teeth become loose; previously loose teeth become very painful.", "Toothache at night, < by cold, > by heat." ],
+    "Mouth" : [ "Formication and trembling of tongue.", "Painful, dry, cracked tongue.", "Salivation with engorged submaxillary glands.", "Copious salivation, with aphthae, and thready, viscid mucus." ],
+    "Throat" : [ "Red swelling of tonsils, uvula and velum; tickling of uvula.", "Sensation as of ball in oesophagus with cramps there." ],
+    "Stomach" : [ "Bad-smelling eructations.", "Hiccough with deep anguish and burning in stomach." ],
+    "Abdomen" : [ "Sensation of swelling in liver and spleen.", "Cramp-like pains; diarrhoea with anguish.", "Fetid flatulence.", "Griping, > lying on abdomen." ],
+    "Stool and Anus" : [ "Haemorrhoids; constriction; formication.", "Sensation of foreign body in anus.", "Diarrhoea and weakness after vomiting.", "Involuntary stools at night, white or yellowish.", "Burning or sharp pains with bloody stools." ],
+    "Urinary Organs" : [ "Pains in kidneys; in bladder; injury; sometimes incontinence.", "Gluey, fetid urine discharged guttatim." ],
+    "Female Sexual Organs" : [ "Swelling of uterus; weight behind uterus; feeling as if about to prolapse.", "Leucorrhoea, with menstruation twice a month.", "Cramp-like pains during menses." ],
+    "Respiratory Organs" : [ "Feeling of suffocation with fetid breath; must sit up in bed at night.", "Cramp-like pains, and lancinations behind sternum." ],
+    "Heart" : [ "Violent palpitation; heart seems to be beating in water." ],
+    "Neck and Back" : [ "Violent pains in nape and neck with swelling.", "Feeling as if a small stream of water was running from one ear to the other across nape of neck, causing terrible pain." ],
+    "Upper Limbs" : [ "Paralytic pains, commencing in entire l. upper extremity (also in r. less frequently).", "Rheumatic pains from shoulder to finger-tips.", "Cramp-like pains at insertion of deltoid > by pressure." ],
+    "Lower Limbs" : [ "Electric shocks in muscles of leg.", "Intense sciatic pains.", "Staggers; he walks as if stepping on down." ],
+    "Skin" : [ "Skin of abdomen painful." ],
+    "Sleep" : [ "Sleep after a meal." ]
+  }
+}

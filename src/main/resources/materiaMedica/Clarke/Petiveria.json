@@ -1,0 +1,32 @@
+{
+  "remedyName" : "Petiveria",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Conjunctivitis. Paralysis. Paraplegia." ],
+    "Characteristics" : [ "Mure proved Petiv., and I have given his terminology. Allen says in a note that it is probably identical with the Mexican and West Indian species, P. alliacea. Mure's figure corresponds to this, and he says the roots, which are branching and fibrous, \"smell strongly of garlic.\" P. alliac. (according to Treas. of Bot.) is called \"Guinea-hen Weed\" in West Indies,\" and \"Raiz de Guine\" in Brazil, in which country \"it is put into warm baths to restore motion to paralysed limbs.\" Mure does not mention these names or this fact; but his proving brings out some strongly confirmative symptoms in numbness and paralytic sensations; weariness and weight of eyelids. Cold saliva; internal coldness; coldness inside bones were experienced. The symptoms in general were < by movement; in the morning on waking and on rising; after breakfast and during and after dinner; bending backward." ],
+    "Relations" : [ "Compare: Botan., Phytolacc. In paralysis, Rhus. Cold saliva, Cist." ],
+    "Mind" : [ "Excessive gaiety; inclination to sing, laugh, jest; followed by sadness and tears.", "Vanishing of thought." ],
+    "Head" : [ "Head heavy.", "Compressed feeling as if head bound with a warm cloth.", "Head feels as if it would split.", "Headache > by motion.", "Sensation of hot water on scalp penetrating to brain.", "Weight at vertex pressing into brain." ],
+    "Eyes" : [ "Eyes half-closed, swollen, surrounded by blue rings, esp. next to nose.", "Rapid inflammation of l. eye while at dinner, lasts three days.", "Weight on lids compelling to close eyes; on doing so sees a variety of figures.", "Pain in eyes as if the balls were pushed out of their sockets.", "Painful burning at margin of lids, < on closing them.", "Lachrymation.", "Conjunctivitis.", "Dim sight." ],
+    "Ears" : [ "R. ear deaf, as if stopped." ],
+    "Nose" : [ "Coryza.", "Veins of nose swollen, bluish.", "Redness of l. wing of nose and cheek.", "Dull pain over root of nose, evening.", "Nose slightly inflamed and shining.", "Intense and sudden itching of bridge of nose." ],
+    "Face" : [ "Redness of l. cheek.", "Bruised pain in zygomatic process.", "Sensation as if needle stuck in upper lip from within out." ],
+    "Mouth" : [ "Burning tongue as if scalded, morning, on rising.", "Dry mouth.", "Flow of watery cold saliva, depositing ashy sediment and whitish granules.", "Offensive breath." ],
+    "Throat" : [ "Sensation in throat as after eating something astringent.", "Pain in throat with difficulty of swallowing saliva." ],
+    "Stomach" : [ "Sharp lancinations in epigastrium from within out; evening; after dinner; on rising.", "Stomachache with sensation, of internal coldness." ],
+    "Abdomen" : [ "Long blue horizontal spots on r. hypochondrium.", "Lancinations: in hypochondria; through spleen from below up.", "Borborygmi, on moving in bed.", "Dull pain in hypogastrium.", "Circumscribed acute pains in groins.", "Colic of descending colon." ],
+    "Stool" : [ "Diarrhoea of dark mucus, mixed with fecal matter in separate hard pieces.", "Constipation." ],
+    "Urinary Organs" : [ "Micturition every five minutes from a.m. till evening, with heat in urethra.", "Urine: pale, copious." ],
+    "Respiratory Organs" : [ "Voice seems to come from afar.", "Voice hoarse from coughing.", "Suffocation, with cold feet." ],
+    "Chest" : [ "Deep-seated, dull pain beneath sternum, < moving neck or bending head forward.", "Violent lancinations under r. breast at each inspiration." ],
+    "Heart" : [ "Contraction and throbbing in region of heart, evening." ],
+    "Back" : [ "Strained feeling in spine, g,: sitting upright and bending back, > bending forward." ],
+    "Limbs" : [ "Paralytic numbness, heaviness, and weariness in all limbs; after rising from bed.", "Bruised pains in arms and legs." ],
+    "Upper Limbs" : [ "Twitching sensation in shoulder-joint on stooping.", "Pricking, burning, crampy pains in arms; with inflammatory redness.", "Numbness; at r. arm; at wrist; at fingers (r.); at finger-tips.", "Lancinating and heat as from whitlow at tip of r. thumb.", "Itching in l. palm." ],
+    "Lower Limbs" : [ "Weakness of lower limbs.", "Sudden numbness of knees with dull pain in tibia.", "Numbness, itching and weakness of legs; from knees to soles." ],
+    "Generalities" : [ "General rigor when lying down.", "Prostration as from drowsiness but without inclination to sleep.", "When walking seems as if she does not touch the ground and would fall.", "On lying down body numb." ],
+    "Skin" : [ "Itching, pricking, and formication of skin." ],
+    "Sleep" : [ "Drowsy: all day; with frequent yawning; after dinner.", "Sleep deep and prolonged.", "Dreams: of corpses and starts up in cold sweat; sad; unpleasant; of quarrels." ],
+    "Fever" : [ "Excessive coldness of hands and feet piercing to bones.", "Cold feeling in interior of bones.", "Febrile heat with pale face and cold hands.", "Dry heat all over, esp. of palms.", "Profuse cold sweat all over, with shuddering, after first sleep.", "Sweat in palms." ]
+  }
+}

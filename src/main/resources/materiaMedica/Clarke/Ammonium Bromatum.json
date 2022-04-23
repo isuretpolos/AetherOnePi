@@ -1,0 +1,25 @@
+{
+  "remedyName" : "Ammonium Bromatum",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Ciliary neuralgia. Corpulency. Coryza. Cough. Epilepsy. Kidney, pain in. Larynx, catarrh of. Nails, biting. Ophthalmia, scrofulous. Ovaries, affections of. Pharyngitis. Pterygium. Whooping-cough." ],
+    "Characteristics" : [ "This salt has been well proved by A. M. Cushing. The eyes and ovaries are markedly affected. In the morning the eyes are red and sore, with mucus in corners (< left eye). There is pain in left ovary, dull, with hard swelling. Chronic laryngeal catarrh of speakers. A sudden desire to cough", "so sudden it causes strangling. Sudden short cough when rising in morning, from accumulation of mucus in throat. Cough at a.m. The mucus of Am. bro. is apt to be stringy. It is indicated in epilepsy when the aura begins with a fainting or suffocating sensation at epigastrium, rising up both sides of sternum to throat. There is an irritable feeling under linger nails, > only by biting them The known conditions are: > warmth, warm drinks; < in open air, cold air. Many symptoms occur on waking, a.m. Must walk about for fear of suffocation." ],
+    "Relations" : [ "Compare: Kali bro., Arg. n., Caust., Bufo, Cepa (coryza < in warm room); Lach. (< after sleep). Cough from accumulation of mucus in throat, AEsc. h., Atrop., Grat., Kre., Seneg." ],
+    "Mind" : [ "Feared he might die (with stomach symptoms).", "Timid, discouraged; lack of self-confidence.", "While writing mis-spelled words or numbers." ],
+    "Head" : [ "Sensation of band round head pressing hardest just above ears.", "Pain in side of head (l.) near eye; as if a nail driven in.", "R.", "sided headache < by coughing." ],
+    "Eyes" : [ "In evening eyes (esp. r.) feet large, with constant blur before them.", "Eyes as if sand in them.", "R. eye feels as if bathed in hot water; stringy mucus in it.", "Pterygium.", "Eyes red and sore in morning, with white mucus in corners.", "Lids swollen; droop, difficult and painful to raise; adhere.", "Pains round eyes into head.", "In evening, difficult vision and hemiopia." ],
+    "Nose" : [ "Sneezing on moving about in cold room, or on raising arms; thin discharge from r. nostril (next day thicker).", "Sneezing on going into warm room; stoppage of nose in warm room." ],
+    "Mouth" : [ "Mouth and tongue smart severely as if just burned; morning.", "Must hold mouth open when walking on account of heat in throat and lungs.", "Stringy, tasteless mucus in mouth.", "Tastes food eaten several hours before." ],
+    "Throat" : [ "During day filled with white sticky mucus, streaked with blood.", "Throat sore, mottled look.", "Preparing to swallow is painful, the act is not.", "Sensation of hot air passing up throat, r. side, though stomach feels cold.", "Fauces and tongue feel scalded.", "Stinging and irritation in fauces with inclination to cough > by sneezing." ],
+    "Stomach" : [ "Belching > faint stomach.", "Dyspnoea, with distress in upper epigastrium." ],
+    "Abdomen" : [ "Sharp twisting pain just above crest of r. ilium." ],
+    "Stool and Anus" : [ "Sudden urgent desire with loose stool.", "Transient return of old haemorrhoid." ],
+    "Urinary Organs" : [ "Feeling over r. kidney as if something were pressed hard against it; > by pressure, but leaving a pulling sensation." ],
+    "Female Sexual Organs" : [ "Dull, constant pain and hard swelling in l. ovary." ],
+    "Respiratory Organs" : [ "An almost continuous cough for hours, > lying down at night; sensation of tickling irritation with heat and burning.", "Sudden desire to cough, coming on so suddenly it strangles one.", "Sudden short cough when rising from bed in morning, from sensation of mucus in throat.", "Tickling in trachea and bronchial tubes, attended by cough and slight scraping in throat while coughing.", "Waked a.m. with cough." ],
+    "Chest" : [ "Waked a.m. with pain from sternum to spine, > by changing position." ],
+    "Heart" : [ "After fatiguing walk, late in evening, irregular action of heart." ],
+    "Generalities" : [ "Malaise and fatigue < lying down, < after emission of flatus while urinating.", "Nervous restlessness.", "Pains in legs at intervals, < after motion." ],
+    "Fever" : [ "Chilly feeling in back of chest and nape of neck." ]
+  }
+}

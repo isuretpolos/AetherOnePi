@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Brachyglottis Repens",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Bright's disease. Dysmenorrhoea." ],
+    "Characteristics" : [ "Brachyglottis was proved by C. L. Fischer. The Maories use the leaves to apply to old sores and ulcers. Horses eating young shrubs lose all power over hind legs and spine. It causes lassitude; weakness; loss of flesh. A large number of symptoms were produced in all regions of body, but few have been tested clinically. This appears to be the most marked: Urgency in passing urine; pain in neck of bladder; pain in bladder after urinating, and in urethra and stinging in penis; a large quantity of pale-coloured urine voided, of low specific gravity and containing albumen. Throbbing pains are very prominent in the proving. Dysmenorrhoea with fluttering in abdomen and right ovary has been cured with it. Pains in the back and limbs. Chilliness predominates." ],
+    "Relations" : [ "Compare: Eupatoriaceae, Apis (soreness, stinging in urethra); Arn. (bruised, sore feeling); Bovist. (albuminuria); Helon. (albuminuria); Merc. cor. (albuminuria, urging to urinate and defecate); Nux (urging to urinate and defecate); Op. (constipation); Plumb. (faeces like balls, painful micturition, albuminuria)." ],
+    "Head" : [ "Confusion in head and pain in forehead; giddiness and flushed face.", "Throbbing: l. side; forehead; around r. ear, and passing from ear to eyes and then to neck.", "Headache and faceache very severe, preventing sleep at night.", "Cold sensation and tightness about scalp.", "Soreness all over head and stiffness in neck." ],
+    "Ears" : [ "Tingling, itching, pricking in ears.", "Throbbing about r. ear, from ear to eyes, and throat to neck." ],
+    "Nose" : [ "Nostrils, sore; itching and irritation in nose." ],
+    "Face" : [ "Twitching in l. side of face (evening).", "Soreness r. zygomatic, process.", "Flushed face.", "Faceache l. side, submaxilliary glands affected." ],
+    "Mouth" : [ "Pain, numbness, pricking, soreness of tongue.", "Heat in mouth." ],
+    "Throat" : [ "Soreness, rawness, scraping in throat < by swallowing." ],
+    "Stomach" : [ "Nausea in stomach.", "Fluttering.", "Evening, after tea soreness, throbbing in stomach, r. side." ],
+    "Abdomen" : [ "Isolated throbbing l. groin.", "Fluttering sensation in abdomen." ],
+    "Stool and Anus" : [ "Ineffectual urging.", "Stool dry; like balls; evacuated with sore constrictive pain in anus; evening." ],
+    "Urinary Organs" : [ "Pressure and soreness in neck of bladder.", "By passing urine, pain in bladder and soreness in urethra; feeling as if urine could not be retained.", "Passing urine preceded by pains in bowels.", "Urine abundant, contains mucus and albumen.", "Throbbing in penis and desire to pass urine; pressure in bladder." ],
+    "Respiratory Organs" : [ "Oppression of breathing; > by sighing." ],
+    "Chest" : [ "Pains flying about chest and precordial region.", "Throbbing in sternum." ],
+    "Back" : [ "First dorsal vertebra sore to touch.", "Cutting under l. shoulder.", "Aching in lumbar region.", "Isolated throbbing r. side of back.", "Feeling as if whole back would contract backward, and muscles of neck were affected." ],
+    "Limbs" : [ "Great weakness in limbs; weariness and prostration." ]
+  }
+}

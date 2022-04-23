@@ -1,0 +1,23 @@
+{
+  "remedyName" : "Euphorbia Amygdaloides",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Antrum, pain in. Anus, spasm of; prolapse of. Debility. Diarrhoea. Dysentery. Haemorrhoids. Skin, eruptions of. Smell, illusion of. Spleen, affections of. Throat, soreness of." ],
+    "Characteristics" : [ "Euphorb. amyg. has the same general characteristics as Euphorbium, producing irritation and burning sensations of the intestinal tract, with vomiting and diarrhoea and skin affections. Peculiar symptoms are: An illusion of smell, \"odour of mice\", and seething sensation in the head and thigh. Rheumatic pains come on when heated. Cold water relieves burning in back of throat (burning < from cold water Caps.). Symptoms go from right to left. Malaise; tired weak feeling during and after walking. Restlessness all night, turning about half awake and half asleep. Many symptoms are < evening; < walking; > after eating. For comparisons see under Euphorbium." ],
+    "Head" : [ "Seething sensation backwards and forwards in head, extending down back and going off during sleep." ],
+    "Nose" : [ "Strong odour of mice in nose." ],
+    "Face" : [ "Burning pain in l. antrum, extending upwards to floor of orbit and into head." ],
+    "Throat" : [ "Burning in back of throat, > by cold water, > by breakfast; followed by heat all over chest and in stomach.", "Stinging and peppery sensation back of throat." ],
+    "Stomach" : [ "Nausea; < moving about indoors; > sitting still; > by supper." ],
+    "Abdomen" : [ "Severe stitches in liver; when walking up hill.", "Tightness in region of spleen.", "Stitch in region of spleen.", "Sensation as if a long worm writhing in region of transverse colon or duodenum.", "Throbbing in groins." ],
+    "Stool and Anus" : [ "Stool difficult from painful spasm of anus, which was continued after the evacuation; faeces small, lumpy, slimy; with prolapsus, though there had been no straining.", "Slight prolapsus after the stool.", "Offensive diarrhoeic stool, preceded by griping and followed by prolapsus.", "Diarrhoea returns at lengthened intervals.", "Feeling of action of the liver, followed soon by griping and passing of offensive flatus, then offensive diarrhoea, after which the feeling of the liver passes off, followed by slight prolapse rendering sitting uneasy, going off gradually.", "Dark brown, watery, mucous stool, sometimes mixed with solid faeces, sometimes offensive, sometimes with blood, mostly in afternoon from to p.m. If it lasts two or three days there is prolapsus returning very gradually; if replaced within half an hour the bowel generally prolapses again; if the diarrhoea lasts longer external piles appear, not returning with the prolapsus." ],
+    "Urinary Organs" : [ "Urine hot during micturition." ],
+    "Respiratory Organs" : [ "Hoarseness.", "Heat in chest; radiating from stomach.", "Feeling as if lungs remained partly inflated." ],
+    "Heart" : [ "Slight throbbing in region of heart." ],
+    "Back" : [ "Peculiar seething sensation in region of spine, sometimes extending from occiput to loins." ],
+    "Upper Limbs" : [ "Rheumatic pains in r. arm just above olecranon, on becoming warm and perspiring.", "Rheumatic pains in elbows and elbow joints." ],
+    "Lower Limbs" : [ "Seething sensation in lymphatics of r. leg, at times, from foot to groin, as if circulation were felt; afterwards to a less extent in l. leg; chiefly felt from foot to knee, only when sitting, < in evening.", "Sudden sharp pain about middle of r. tibia, which was tender to touch." ],
+    "Skin" : [ "Pimple just under lobe of r. ear.", "Hard white itching vesicular pimples on r. internal malleolus and foot." ],
+    "Fever" : [ "Chill p.m., increased to violent rigor when undressing; lasted till next morning, and was not followed by heat or sweat." ]
+  }
+}

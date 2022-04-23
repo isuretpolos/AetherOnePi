@@ -1,0 +1,31 @@
+{
+  "remedyName" : "Primula Veris",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Apoplexy, threatened. Eczema. Fevers. Migraine. Neuralgia. Vertigo. Voice, affections of." ],
+    "Characteristics" : [ "The flowers of Prim. veris are said to be narcotic (Treas. of Bot.). \"Cowslip wine\" is a favourite remedy in the country for many small disorders. Cooper cured with P. ver. O a case of eczema of the hands after P. obc. had failed. He also cured with it eczema palmaris of years' duration in a man aet. Schier, of Mentz (Univ. Hom. Ann., p. 99), proved a tincture of fresh plant including root. The duration of action is only a few days in healthy persons. The conditions in which Schier commends it, and which are borne out by the symptoms, are: Threatened apoplexy, arising apart from psychic depression; as an external application when there is no skin lesion, \"as this remedy has a certain relation with the skin. Prudence is necessary here, especially for persons with sensitive and easily vulnerable skin.\" The symptoms are < by bent position; stooping; movement; in room; in closed carriage; travelling by rail. < In open air." ],
+    "Relations" : [ "Compare: P. obc., P. vulg., Cycl., Anag." ],
+    "Mind" : [ "Happy disposition.", "Stubbornness.", "Heat with anxiety." ],
+    "Head" : [ "Vertigo; whirling; sensation of falling backward; as if brain moved, wanted to get out of skull; as of heavy weight on head.", "Fear of falling on standing up.", "Fulness and heaviness of head.", "Head hot with rush of blood to head; red spots on cheeks.", "Hammer-like, boring, beating, sometimes dull headache, in both temples, occiput, and above forehead, < r. temple in morning; > by pressure; < stooping, movement travelling by rail; > in open air; < indoors.", "Sensation as if band across forehead and occiput; cannot keep hat on.", "Tension of skin of forehead.", "Burning itching of scalp, in r. temporal region and occiput." ],
+    "Eyes" : [ "Flies flying before eyes, violent vertigo as if everything revolving.", "Burning and pricking pains in orbital cavities.", "Sensitive to light; > in darkness." ],
+    "Ears" : [ "Buzzing and ringing in l. ear." ],
+    "Nose" : [ "Pressure at root of nose < r. side." ],
+    "Face" : [ "Face hot; pale." ],
+    "Mouth" : [ "Tongue clear but imprinted with teeth, papillae of edges very red.", "Salivation.", "Dull sensation in r. half of tongue and digestive tract." ],
+    "Throat" : [ "Burning pains r. side of throat.", "Pricking when breathing in r. side of thyroid body." ],
+    "Stomach" : [ "Tendency to vomiting.", "Sensation of emptiness and burning at orifice of stomach and in duodenum." ],
+    "Abdomen" : [ "Rumbling in bowels." ],
+    "Stool and Anus" : [ "Painless liquid stools; with malaise < by pressure on head.", "During stool: fever, goose-flesh.", "After stool: tenesmus." ],
+    "Urinary Organs" : [ "Turbid earth-coloured urine smelling of violets or of strong urine.", "Tenesmus, painful irritation of ureter." ],
+    "Respiratory Organs" : [ "Dull sensation r. side of larynx, pharynx, tongue, and digestive tract.", "Cough with burning and pricking in respiratory tracts.", "Voice remarkably fine, clear, and strong, the high notes easily given out.", "Sensation as if r. half of larynx stopped up." ],
+    "Heart" : [ "Palpitation with feeling of weakness." ],
+    "Neck and Back" : [ "Stiffness r. side of neck.", "Short, intense pain beside insertion of r. sterno-mastoid muscle." ],
+    "Limbs" : [ "Weight and lassitude of limbs, esp. shoulders.", "Twitching in throat going to forearm, and in great toe going to calf." ],
+    "Upper Limbs" : [ "Burning in r. axillary joint preventing movement of r. arm > in bed, lying on painful part.", "Pricking in fourth and fifth finger of both hands.", "Itching in palms.", "Burning in hollow of r. hand, in arm, esp. in l. side." ],
+    "Lower Limbs" : [ "Tearing in l. leg and thigh.", "Sensation as if l. leg was swollen with tearing and drawing.", "Itching in l. little toe." ],
+    "Generalities" : [ "Beating, tearing, burning, and drawing sensations.", "Trembling of hands and feet.", "Malaise of head > in open air. < In bent position; by movement; in a room; riding in closed carriage.", "Weight and lassitude of limbs." ],
+    "Skin" : [ "Sensitive, easily vulnerable skin.", "Itching." ],
+    "Sleep" : [ "Sleeps well with pleasant dreams." ],
+    "Fever" : [ "Febrile excitement.", "Intense heat with anxiety as if fearing a stroke of apoplexy.", "Wants to get cool.", "Sweat on forehead, feet and hands cold.", "Head hot with red spots on cheeks.", "Feet and hands sweat, rest of body cold." ]
+  }
+}

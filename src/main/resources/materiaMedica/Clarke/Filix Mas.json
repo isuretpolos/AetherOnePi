@@ -1,0 +1,21 @@
+{
+  "remedyName" : "Filix Mas",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Abdomen, bloated. Abortion. Blindness. Sterility. Tapeworm." ],
+    "Characteristics" : [ "Male fern has been recognised as a vermifuge from the time of Galen, and Dioscorides credits it with the power of causing sterility and abortion. A fragmentary proving in Allen's Appendix records a case in which to drops of the tincture given three times a day to a woman suffering from bloated abdomen with more or less pain caused diminution of the bloating, but also: Severe prolapse of vagina, pain and tenesmus of bladder with copious and frequent emission of urine with intense pain. Filix was discontinued and then Chimaphila relieved. The symptoms did not return afterwards, except after much walking and standing. Hering says the best time to give the drug for expulsion of tapeworm is in the summer when the fresh root can be obtained. If an ounce of the grated root is given in the forenoon, usually the tapeworm comes away in the afternoon. Among the leading symptoms are: Pale face with blue rings round eyes; gnawing, boring pains in abdomen, < after sweet things. Blindness has been caused in a number of cases from atrophy of the optic nerve. C. S. Spencer records this effect from taking capsules each containing ten minims of the oil of male fern for tapeworm: \"A feeling of nausea; abdomen became painfully distended with colicky pains. Menses returned after only one week's absence, and continued profusely for three weeks. Very sick after taking her food. The worm was got rid of and the capsules stopped when these symptoms passed away." ],
+    "Relations" : [ "Compare: Areca, Granat., Kousso and Cuc. pep. sem. (tape-worm); Gels., Carb. s., Ben. din. (vision). Teste places Filix mas in his Ipecac. group along with Nux vom., Ant. crud., Ant. tart., &c." ],
+    "Mind" : [ "Irritable and cross.", "Confusion, stupor, coma." ],
+    "Head" : [ "Vertigo." ],
+    "Eyes" : [ "Blindness; first mydriasis and amaurosis with normal fundus; eight days later, atrophy of optic nerve.", "Immobility of pupil.", "After violent vomiting and diarrhoea, soporific condition lasting thirty hours; awakening, her l. eye was blind, and r. eye had lost some of its acuteness of vision. Being kept in the dark, perception of light by l. eye returned after forty-eight hours and recovery took place." ],
+    "Nose" : [ "Itching of nose." ],
+    "Face" : [ "Pale face; blue rings round eyes." ],
+    "Stomach" : [ "Nausea.", "Sick after taking food." ],
+    "Abdomen" : [ "Bloating of abdomen.", "Gnawing and boring in bowels, < eating sweet things.", "Great pain in abdomen, with diarrhoea and constant vomiting." ],
+    "Stool and Rectum" : [ "Ineffectual urging to stool.", "Pappy stools.", "Violent vomiting and diarrhoea.", "Worm symptoms, esp. with constipation.", "Worm colic." ],
+    "Female Sexual Organs" : [ "Menstruation stimulated.", "Menses returned after nearly one week's absence, continued profusely for three weeks.", "Prolapse of vagina; with pains and tenesmus of bladder and copious frequent emission of urine with internal pains (relieved by Chimaph.).", "Abortion.", "Sterility." ],
+    "Generalities" : [ "Great feeling of weakness, trembling, cramp-like feelings in hands and feet.", "Somnolent, with spasmodic symptoms, ending in death." ],
+    "Sleep" : [ "Soporific condition." ],
+    "Fever" : [ "Violent rigor, fever, great pain in abdomen with diarrhoea and constant vomiting." ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "remedyName" : "Haematoxylon",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Angina pectoris. Colic. Diarrhoea. Dysmenorrhoea. Headache. Indigestion. Ptosis. Throat, sore." ],
+    "Characteristics" : [ "Logwood is the well-known dye of commerce. The tincture was proved by Jouve in 1839, and some very distinctive symptoms were produced. Constriction appears in many parts, culminating in the stomach and abdomen in colic and in the chest in symptoms very like many cases of angina pectoris. This is the most characteristic of all the symptoms of Haem.: Sensation as if a bar lay transversely across from region of heart to right side, with acute pain in left upper portion of chest.\" This bar sensation has been frequently removed by Haem.; and in a case of zona with agonising pain as if a bar lay across the chest, arresting the breathing, Haem. did signal service for me. Disordered digestion accompanies and complicates most other conditions. Chilliness predominates, but the symptoms are > in open air. < At night; on stooping; by pressure; by touch. There is much general sensitiveness." ],
+    "Relations" : [ "Antidoted by: Camph. Compare: (in compressive pains) Cact., Lil. t., Coloc., Aur., Naja." ],
+    "Mind" : [ "Ill-humour; sadness; melancholy; vexation.", "Inclination to repose; desire to weep." ],
+    "Head" : [ "Head heavy, painful, with difficulty in reflecting, and expressing one's ideas.", "Vertigo, so as to occasion falling, and dulness of ideas.", "Constriction in the forehead, and in the occiput, with burning heat in the head.", "Headache at night, as from indigestion, with swelling of the stomach and abdomen, anxiety, inclination to vomit, sour risings of food.", "Headache, esp. in the forehead, with inclination to vomit on stooping.", "Pain in l. forehead, spreading over face and affecting l. teeth." ],
+    "Eyes" : [ "Eyes downcast and surrounded by a livid circle.", "Painful pressure on the eyes, with sensation of constriction of the aperture of the eye-lids.", "Redness of the conjunctiva, and of the lachrymal caruncula.", "Redness of the eyes with blue margins.", "Sensation as if sand were introduced into the eyes.", "Heaviness of the eyelids, which compels them to close.", "Heaviness in the eyes, and appearance as of a veil before the sight.", "Pupils contracted, and sight confused.", "Mist before the eyes; on reading, the letters vanish.", "Amelioration of the symptoms of the sight in the open air." ],
+    "Ears" : [ "Violent pain in r. ear, extending to throat; throat feels contracted, with burning pain during deglutition." ],
+    "Face" : [ "Face pale, dejected, and changed, face discomposed.", "Pain in the lower jaw, with stinging in the teeth and cheek." ],
+    "Throat" : [ "Sore throat, with difficulty of swallowing, sensation of contraction, inclination to swallow, salivation, and smarting.", "Sensation of a foreign substance in the throat, with yawning and stretching." ],
+    "11, Stomach and Abdomen" : [ "Painful swelling in the stomach, with pressure at the epigastrium, and risings of flatus.", "Pain in the abdomen, with yawning, inclination to vomit, and stretchings.", "Painful digging, which proceeds from the abdomen to the throat, and which causes a convulsive pain in the region of the heart, increased by the touch, and accompanied by oppression.", "Attacks of tearing pains in the stomach and the abdomen, as if caused by poisonous substances.", "Colic, with painful sensibility of the abdomen to the touch, inflation, tension and digging in the abdomen, borborygmi, soft faeces, with cuttings, lassitude in the limbs, palpitation of the heart, and uneasiness, with anguish.", "Tympanitic distension of the abdomen and rising of air.", "After the colic, general cold, with burning heat in the palms of the hands.", "Colic, with pains in the loins, and nausea." ],
+    "Stool and Anus" : [ "Borborygmi, colic, and diarrhoea in morning." ],
+    "Urinary Organs" : [ "Urine red, scanty, and burning." ],
+    "Female Sexual Organs" : [ "Colic, as if the catamenia were going to appear, with slimy, whitish discharge from the vagina." ],
+    "Chest" : [ "Constriction, extending from the chest to the epigastrium, with smarting and burning pain, increased by the touch.", "Sensation as if a bar lay transversely across, from region of heart to r. side, with acute pain in l. upper portion of chest." ],
+    "Heart" : [ "Convulsive pain in the region of the heart, increased by the touch, and accompanied by oppression.", "Great soreness in the region of the heart, with anguish, redoubled throbbing, small pulse, burning in the hands, and shivering of the body.", "Palpitations of the heart, with diminished perspiration of the feet." ],
+    "Back" : [ "Pain and chilliness between the shoulders." ],
+    "Limbs" : [ "The limbs are painful and languid.", "Pain in l. shoulder, as if inflamed.", "Suppression of the habitual sweat of the feet." ],
+    "Generalities" : [ "Painful sensibility of the limbs, with lassitude.", "General uneasiness, with anxiety arising from the stomach, and colic." ],
+    "Sleep" : [ "Irresistible drowsiness.", "Frequent yawning." ],
+    "Fever" : [ "Chilliness predominates, shuddering, goose-flesh.", "Dry skin." ]
+  }
+}

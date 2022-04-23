@@ -1,0 +1,15 @@
+{
+  "remedyName" : "Uva-Ursi",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Cystitis. Dysuria. Haematuria. Urinary affections." ],
+    "Characteristics" : [ "A few experiments have been made with Uva, and these have seemed to accentuate its traditional reputation as an \"astringent used to check excessive secretion of mucus, as in urinary and bronchial affections, and even in calculus.\" The keynote indications are: Painful micturition with burning sensation. Burning after the discharge of slimy urine. Slime passes with blood. In one cured case there were pains shooting through from hip to hip. The bladder symptoms are > lying on the back." ],
+    "Relations" : [ "Compare: Arbut., Gaulther., and Ericaceae generally." ],
+    "Head" : [ "Slight vertigo and headache." ],
+    "Nose" : [ "Fluent coryza with rawness." ],
+    "Face" : [ "Flushing." ],
+    "Stomach" : [ "Weak, sick at stomach, sore all over as if bruised." ],
+    "Urinary Organs" : [ "Slimy urine; slime passes with blood.", "Painful micturition; burning after the slime passes.", "Haematuria; slimy, purulent urine.", "Green urine.", "Constant urging and straining.", "Shooting pain from hip to hip, bladder and urethra sensitive." ],
+    "Respiratory Organs" : [ "Hoarseness with pain in bowels; stopped up in throat; no appetite.", "Throat tickles, feels like coughing all the time; sore and bruised all over; cough; nose raw and burning; cutting and burning on urinating." ]
+  }
+}

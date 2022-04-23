@@ -1,0 +1,11 @@
+{
+  "remedyName" : "Toxicophis",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "OEdema. Periodic neuralgia." ],
+    "Characteristics" : [ "Some effects of bites with this snake have been recorded. A peculiar feature of the cases was that the symptoms of pain and fever recurred annually at exactly the same period for many years with decreasing intensity each year. In one case the pains spread to other parts after some years." ],
+    "Lower Limbs" : [ "R. leg became painful and swelled rapidly.", "For several years the pain was confined to the knee of the bitten limb; in a few years it left the knee and seized the hip, and finally attacked the shoulder." ],
+    "Generalities" : [ "For the last eighteen years annual recurrence of symptoms with severe pain but without swelling; occurred at precisely the same time of year; decreased in intensity each year." ],
+    "Skin" : [ "Skin rather dry." ]
+  }
+}

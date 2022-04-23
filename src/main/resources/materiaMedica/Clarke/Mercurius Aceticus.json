@@ -1,0 +1,18 @@
+{
+  "remedyName" : "Mercurius Aceticus",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Chancre. Eyes, affections of. Dyspnoea. Dysuria. Favus. Sternum, pressure on. Throat, sore. Ulcers." ],
+    "Characteristics" : [ "Hahnemann made a separate proving of Merc. ac., which has furnished a few symptoms, not greatly differing from those of Merc. The throat lancinations were < by coughing rather than by swallowing. Cold water < the inflammation of the penis; bathing with tepid water >. Hahnemann has bracketed a symptom referring to the menses which came on at the new moon, four days before their proper time. The medicines whose action is influenced by the moon's phases are not numerous, and this is worth remembering. \"Pressure in lower sternum and dyspnoea on standing erect\" is a noteworthy symptom. \"Margins of ulcers become painful.\" Hansen says that \"burning in the urethra during urination and at other times\" has been confirmed in practice; and that Donner of Stuttgart has cured with it a very painful syphilitic ulcer in urethra. Hansen commends it in tinea favosa on a syphilitic base; and for lancinating pains in tabes syphilitica." ],
+    "Relations" : [ "See Merc. Compare also: Luna." ],
+    "Eyes" : [ "Inflammation of angles of eyes, with burning itching, morning and evening." ],
+    "Throat" : [ "Dryness in throat, which impedes speech, with cough; pressive lancinations in lower part of throat, rather when coughing than when swallowing." ],
+    "Urinary Organs" : [ "Burning in urethra when making water.", "Frequent emission of urine.", "Copious emission in morning, but slow, as if duct were compressed, and with tenesmus.", "Cutting pain on emitting last drop of urine." ],
+    "Male Sexual Organs" : [ "Penis inflamed and swelled at extremity, with burning and lancinations which awaken patient at night; are < by cold water and > by tepid water.", "Contractive pain in testes." ],
+    "Female Sexual Organs" : [ "Internal swelling of the labia majora.", "(Menses four days before the time, at the new moon.)" ],
+    "Chest" : [ "Pains in chest as though it were raw, or as if an ulcer were within.", "Pressure on sternum, just above scrobiculus, with difficulty of breathing when standing upright, even when he did not walk." ],
+    "Upper Limbs" : [ "Tearing in hands with enlargement and redness of the joints." ],
+    "Skin" : [ "Itching eruption on skin, and burning sensation after scratching; the margins of ulcers become painful." ],
+    "Fever" : [ "Shuddering in morning, preceded by drawing pains in limbs, heat at night, esp. after midnight, with a sensation of perspiring; profuse perspiration while moving about." ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "remedyName" : "Franzensbad",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Chlorosis. Constipation. Debility. Diarrhoea. Dyspepsia. Nervous derangement." ],
+    "Characteristics" : [ "The Franzensbad waters are resorted to for their tonic effect, especially in chronic derangement of the digestion, obstinate constipation and inertia of the lower bowel, anaemia following passive haemorrhages, chlorosis, and nervous disturbances caused by debility. The waters of each of the three principal springs", "Franzens-quelle (F.), Salz-quelle (S.), and Wiesen-quelle (W.).", "have been proved by Dr. Watzke. Sodium sulphate is by far the most predominant ingredient in each, the chloride and carbonate of soda coming next. The waters are also highly charged with carbonic acid gas. Great sense of weakness, physical and mental, was produced by all. Under F. there was increased sensitiveness to cold. Contractive sensations were noticed, as: Contractive pain in whole forehead; sensation of contraction of skin of forehead between eyebrows. Many symptoms of disordered stomach and bowels occurred, and some peculiar symptoms in the penis and generative organs. Sensitiveness of the surface generally." ],
+    "Relations" : [ "Compare: Nat. sul.; Kali iod. (diffused sensitiveness)." ],
+    "Mind" : [ "Great ill-humour." ],
+    "Head" : [ "Contractive pain in whole of forehead.", "Occiput near vertex warm to touch.", "Sensitiveness of whole head and eyeball, < by reflecting long on a subject, not < by stooping, shaking head, or walking." ],
+    "Eyes" : [ "Sensation of great dryness and hardness of lids." ],
+    "Nose" : [ "Fluent coryza in moving after rising, with constant tickling in l. nostril, lachrymation of l. eye and frequent sneezing." ],
+    "Mouth" : [ "Tongue coated white.", "Dryness of palate and throat.", "Earthy or burnt taste in mouth." ],
+    "Throat" : [ "Constriction in throat; > after supper; with nausea." ],
+    "Stomach" : [ "Appetite diminished.", "Repeated, empty violent eructations." ],
+    "Abdomen" : [ "Aching, distension, and marked sensitiveness of the whole abdomen.", "Stitches in region of gall-bladder.", "Gurgling; painless rumbling; colic; slight griping, followed by diarrhoea.", "Painful drawing in groin on micturition." ],
+    "Stool and Anus" : [ "Contractive, at times jerking pain in anus nearly whole forenoon.", "Constant empty urging to stool.", "Semi-fluid evacuations; after eating; preceded and followed or not by pain.", "Constipation." ],
+    "Urinary Organs" : [ "Distressing (slow) drawing through the whole urethra.", "Stitches in orifice of urethra; followed by unpleasant itching.", "Frequent micturition." ],
+    "Male Sexual Organs" : [ "Erection without sexual desire; desire diminished.", "Sensitiveness, at times painful drawing in penis; frequently returns, is apparently seated in mucous membrane of urethra (S.).", "Violent tickling in prepuce and glans." ],
+    "Respiratory Organs" : [ "Voice rough and deep; hoarseness.", "Dry, tickling cough, frequently repeated, caused by tickling in soft palate (S)." ],
+    "Chest" : [ "Sensitiveness, external painfulness; constriction in chest." ],
+    "Back" : [ "Severe long-lasting pain in back and loins; a disagreeable sensation of heaviness and pressure, towards morning, while lying in bed, only > after rising; < by motion; by turning to one side.", "Pinching beneath r. scapula." ],
+    "Skin" : [ "Sticking itching in various places." ],
+    "Sleep" : [ "Frequent waking with unusually vivid and remembered dreams." ]
+  }
+}

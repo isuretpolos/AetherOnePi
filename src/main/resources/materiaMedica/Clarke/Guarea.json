@@ -1,0 +1,28 @@
+{
+  "remedyName" : "Guarea",
+  "remedyAlternativeNames" : "",
+  "categories" : {
+    "Clinical" : [ "Apoplexy. Asthma millari. Bones, affections of. Chemosis. Dysphagia. Eyes, affections of. Hernia. Intermittent fever. Liver-spots. Lupus. Pterygium. Ptosis. Tongue, affections of. Tonsils, swollen. Vertigo. Whooping-cough." ],
+    "Characteristics" : [ "Petroz is the authority for this drug, which produces a number of symptoms in the eyes, and cases of chemosis and pterygium have been reported cured with it. R. K. Ghosh (H. R., viii. 459) cured a number of cases of both. He found a lotion of Guarea O (gtt i. to one drachm) of great assistance. In the head there is a sensation as if the brain were falling forward; and a sensation as of a blow on the head leaving numbness and diminished thinking power. The eye symptoms alternate with diminished hearing. A number of symptoms were experienced in the umbilicus and inguinal rings. Flow of blood between menses. Pains in periosteum. On the skin there were liver-spots, and an eruption with burning vesicles. Sleepy in open air. Aromatic-smelling sweat. Sensations of constriction are common. Sudden shocks of whole body. Bruised pains. Acids and cold water <; hot drinks, and wrapping warmly >. Sweat when eating or after. Bone pains < at night." ],
+    "Relations" : [ "Bov. (flow of blood between menses); Crotal. (as if had a blow on the head); Anac. (peg in ear); Gels. (vertigo, ptosis); Azadiracta indica (botan.) Apis (chemosis, asthma millari); Arn. (injuries); Phos. (steatoma) Ign. (nerves); Merc. and Silic. (bone-pains, suppuration)." ],
+    "Mind" : [ "Anxiety.", "Fear of losing reason." ],
+    "Head" : [ "Vertigo; when stooping; objects appear upside down.", "Whirling dizziness.", "Sensation as if the brain were falling forward.", "Sensation as if from blow on the head, leaving a kind of numbness and diminished thinking power; as after apoplectic seizure.", "Constriction, heaviness, shocks; in forehead.", "Constriction, hammering in occiput." ],
+    "Eyes" : [ "Sickly look round eyes and within orbits.", "Swelling beneath eyes.", "Swelling of lachrymal gland.", "Pain in eyes during fever.", "Twitching of eyebrows.", "Paralysis of lids.", "Pressure on lids.", "Lachrymation.", "Inflammation of conjunctiva, which is swollen.", "Pain in ball as after weeping.", "Tearing pain in eyeballs; tension; forced-out feeling.", "Pupils dilated.", "Objects appear grey; during vertigo they appear upside down.", "Eye symptoms alternate with diminution of hearing." ],
+    "Ears" : [ "Swelling of periosteum behind ears.", "Sensation in ears as of a peg; of a worm; pushing-out feeling.", "Roaring in ears." ],
+    "Nose" : [ "Coryza; with hardened secretion; with heat.", "Nose stuffed; ineffectual desire to sneeze; constriction at root of nose." ],
+    "Face" : [ "Suppurating swellings on face.", "Swelling of upper lip." ],
+    "7, Teeth and Mouth" : [ "Pains in teeth accompanied by pain in zygoma, excited by draught of air, by pressure of tongue; < lying on painful side; by hot food; by walking.", "Tongue coated during the fever.", "Tongue coated greyish yellow; swollen; paralysed; bleeding.", "Tongue feels cold and dry.", "Lancinations in tongue.", "Mouth smells of cheese.", "Taste, sweet.", "Food tastes insipid." ],
+    "Throat" : [ "Tonsils swollen.", "OEsophagus: raw pain; sensation of contraction and burning heat.", "Swallowing difficult." ],
+    "Appetite" : [ "Canine hunger in evening; speedy satiety.", "Aversion to milk, fish, and hot, greasy, cooked food." ],
+    "Stomach" : [ "Sour eructations with tension and pressure at stomach.", "Inclination to vomit during fever.", "Vomiting, sour; green.", "Stomach: constriction in; bruised feeling in." ],
+    "Abdomen" : [ "Hardness at umbilicus.", "Abdomen distended with lancination in groins and inguinal ring.", "Bruised pain externally." ],
+    "Stool and Anus" : [ "Constriction of anus and rectum.", "Urging to stool.", "Constipation." ],
+    "Female Sexual Organs" : [ "Labour pains suppressed.", "Lochia scanty.", "Leucorrhoea after menses; fetid.", "Flow of blood between menstrual periods.", "Itching of pudenda." ],
+    "Respiratory Organs" : [ "Cough: dry barking; violent deep-seated; with expectoration.", "The cough is accompanied by sweat, pain, soreness, tightness of chest; comes after a crying spell; on falling asleep; after getting chilled; is excited by itching in throat, by irritation in larynx.", "Breathing, sobbing; difficult during chill.", "Sensation of hollowness and dilatation of chest.", "Respiratory symptoms < from putting hand to throat." ],
+    "Limbs" : [ "Jactitation of limbs.", "Cracking in joints.", "Nightly pains in bones.", "Bruised pain in bones.", "Caries." ],
+    "Generalities" : [ "Steatoma; hot swelling; swelling of affected parts.", "Suppuration of glands." ],
+    "Skin" : [ "Yellow spots on temples.", "Liver-spots on arms.", "Eruptions behind ears.", "Herpes.", "Itching.", "Lupus of ochre-red colour." ],
+    "Sleep" : [ "Sleepy in open air.", "Dreams, anxious, melancholy, full of strife." ],
+    "Fever" : [ "Coldness followed by heat with sweat.", "Heat of upper part of body, coldness of bones.", "Sweat chiefly during and after eating.", "Sweat aromatic." ]
+  }
+}
