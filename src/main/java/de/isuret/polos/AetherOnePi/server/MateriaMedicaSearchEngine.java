@@ -75,13 +75,12 @@ public class MateriaMedicaSearchEngine {
             query = new QueryParser(inField, analyzer)
                     .parse(queryString);
         } else {
-            Term term = new Term("body", queryString);
-            query = new FuzzyQuery(term);
+            query = new QueryParser("body", analyzer).parse(queryString);
         }
 
         IndexReader indexReader = DirectoryReader.open(memoryIndex);
         IndexSearcher searcher = new IndexSearcher(indexReader);
-        TopDocs topDocs = searcher.search(query, 10);
+        TopDocs topDocs = searcher.search(query, 20);
         List<Document> documents = new ArrayList<>();
 
         for (ScoreDoc scoreDoc : topDocs.scoreDocs) {

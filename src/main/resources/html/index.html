@@ -35,8 +35,8 @@
             </thead>
             <tbody>
                 <tr v-for="entry in resultData">
-                    <td>{{entry.values['remedyName']}}</td>
-                    <td>{{entry.values['Clinical']}}</td>
+                    <td v-html="entry.values['remedyName']"></td>
+                    <td v-html="entry.values['Clinical']"></td>
                 </tr>
             </tbody>
         </table>

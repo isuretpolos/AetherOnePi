@@ -59,7 +59,14 @@ public class AetherOneServer {
                 SearchResult searchResult = new SearchResult();
 
                 for (IndexableField fieldName : doc.getFields()) {
-                    searchResult.getValues().put(fieldName.name(), doc.get(fieldName.name()));
+                    String content = doc.get(fieldName.name());
+                    String queryParts[] = query.split("[,\\s]\\s*");
+
+                    for (String queryPart : queryParts) {
+                        content = content.replaceAll(queryPart,"<b>" + queryPart + "</b>");
+                    }
+
+                    searchResult.getValues().put(fieldName.name(), content);
                 }
 
                 searchResultJsonWrapper.getSearchResults().add(searchResult);
