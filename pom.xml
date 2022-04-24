@@ -27,6 +27,7 @@
         <maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
         <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
         <slf4j.version>2.0.0-alpha7</slf4j.version>
+        <lucene-core.version>7.1.0</lucene-core.version>
     </properties>
 
     <dependencies>
@@ -157,6 +158,17 @@
             <groupId>org.dizitart</groupId>
             <artifactId>nitrite</artifactId>
             <version>${nitrite.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+            <version>${lucene-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+            <version>${lucene-core.version}</version>
         </dependency>
 
         <dependency>

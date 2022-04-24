@@ -12,10 +12,12 @@ import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
 import de.isuret.polos.AetherOnePi.processing2.events.KeyPressedObserver;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
+import de.isuret.polos.AetherOnePi.server.AetherOneServer;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
+import io.javalin.http.staticfiles.Location;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,7 +70,7 @@ public class AetherOneUI extends PApplet {
     private PImage clipBoardImage;
     private List<RateObject> resonatedList = new ArrayList<>();
     private List<ResonanceObject> resonanceList = new ArrayList<>();
-
+    private AetherOneServer aetherOneServer = new AetherOneServer(Location.CLASSPATH);
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
     public static void main(String[] args) {
@@ -815,5 +817,13 @@ public class AetherOneUI extends PApplet {
 
     public void setResonanceList(List<ResonanceObject> resonanceList) {
         this.resonanceList = resonanceList;
+    }
+
+    public AetherOneServer getAetherOneServer() {
+        return aetherOneServer;
+    }
+
+    public void setAetherOneServer(AetherOneServer aetherOneServer) {
+        this.aetherOneServer = aetherOneServer;
     }
 }
