@@ -9,7 +9,6 @@ import io.javalin.http.staticfiles.Location;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexableField;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AetherOneServer {
@@ -29,7 +28,14 @@ public class AetherOneServer {
      * Main Server application which runs parallel to AetherOnePi Processing App
      */
     public AetherOneServer(Location location) {
-        // init
+        try {
+            init(location);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void init(Location location) {
         materiaMedicaSearchEngine.init();
 
         Javalin app = Javalin.create(config -> {
