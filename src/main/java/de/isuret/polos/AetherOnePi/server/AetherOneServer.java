@@ -35,7 +35,7 @@ public class AetherOneServer {
         }
     }
 
-    private void init(Location location) {
+    public void init(Location location) {
         materiaMedicaSearchEngine.init();
 
         Javalin app = Javalin.create(config -> {
