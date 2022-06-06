@@ -11,8 +11,8 @@
     "Mouth" : [ "Bloody foam from nose and mouth." ],
     "Throat" : [ "Spasm of muscles of deglutition on presenting anything to mouth." ],
     "Stomach" : [ "Nausea and vomiting; frothy, glairy fluid." ],
-    "12, Abdomen and Stool" : [ "Pain in bowels; ineffectual desire for Stool." ],
-    "20, Back and Limbs" : [ "Falls backward in convulsions.", "Every muscle in the body in powerful clonic spasm.", "Body and extremities cold." ],
+    "Abdomen and Stool" : [ "Pain in bowels; ineffectual desire for Stool." ],
+    "Back and Limbs" : [ "Falls backward in convulsions.", "Every muscle in the body in powerful clonic spasm.", "Body and extremities cold." ],
     "Sleep" : [ "During intervals of vomiting lay in deep sleep." ],
     "Fever" : [ "Head hot.", "Profuse sweat over whole body." ]
   }

@@ -11,7 +11,7 @@
     "Ears" : [ "Heat, itching and neuralgic pains in external ears.", "Itching along Eustachian tubes." ],
     "Nose" : [ "Soreness of nose.", "Nose red and sore externally.", "Septum deeply cracked.", "Fluent coryza.", "Crusts in nostrils." ],
     "Face" : [ "Face flushed.", "Soreness of l. malar bone, also of temporal region.", "Lips dry and cracked; longitudinal crack on upper lip." ],
-    "7, Teeth and Mouth" : [ "Soreness of teeth in closing them; < by cold water.", "Gums sore and bleed easily.", "Swelling in roof of mouth.", "Bad taste in mouth in morning.", "Taste of ingesta after dinner with eructations." ],
+    "Teeth and Mouth" : [ "Soreness of teeth in closing them; < by cold water.", "Gums sore and bleed easily.", "Swelling in roof of mouth.", "Bad taste in mouth in morning.", "Taste of ingesta after dinner with eructations." ],
     "Throat" : [ "Thick mucus collects in throat on rising.", "Throat sore, dry, raw, inflamed, aching; feeling as if a lump in oesophagus; painful on swallowing.", "Tonsils swollen; badly-smelling cheesy mass coughed up.", "Throbbing of carotids.", "Parotid and submaxillary glands swollen, sore, and painful." ],
     "Stomach" : [ "During the day occasional eructations of scalding, acid, watery substance, so hot as almost to cause strangulation.", "Nausea > by eating.", "Uneasy, empty feeling in stomach.", "Bruised, sore feeling in stomach." ],
     "Abdomen" : [ "Pain in region of liver on stooping, and a bruised, sore feeling at a.m.; < lying on r. side.", "Sharp sticking through liver from before backward.", "Abdomen distended with flatulence; tympanitic; < by pressure of clothes.", "Soreness in hypogastrium; sharp pains through hypogastric region extending into l. inguinal region." ],
@@ -27,6 +27,6 @@
     "Lower Limbs" : [ "Pain from hips up to small of back; also down to feet.", "Numbness from knees down.", "Feet numb and pricking, esp. toes.", "Pain in l. os calcis." ],
     "Skin" : [ "General and excessive itching, with or without eruption, most marked on pubes, pudenda, whiskers and hairy portions of body generally; < in afternoon, to" ],
     "Sleep" : [ "Constant desire to yawn and stretch, to p.m.", "Restless night; wakes a.m. and sleeps again; many dreams." ],
-    "Fever" : [ "Chills along back in afternoon.", "Heat to 6, soon perspiring.", "Heat and restlessness after retiring.", "Face, head, and hands burn in afternoon.", "Hands and feet alternately hot and cold.", "Cold, clammy sweat at night; very profuse.", "Sweat of hands, though cold.", "Soles of feet moist; disagreeable odour in axillae." ]
+    "Fever" : [ "Chills along back in afternoon.", "Heat to soon perspiring.", "Heat and restlessness after retiring.", "Face, head, and hands burn in afternoon.", "Hands and feet alternately hot and cold.", "Cold, clammy sweat at night; very profuse.", "Sweat of hands, though cold.", "Soles of feet moist; disagreeable odour in axillae." ]
   }
 }

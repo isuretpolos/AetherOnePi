@@ -44,7 +44,7 @@ public class AetherOneServer {
             } else {
                 config.addStaticFiles("src/main/resources/html", location);
             }
-        }).start(7070);
+        }).start(7070); // FIXME add dynamic port if this one is already in use!
 
         app.get("/settings", ctx -> {
             Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);

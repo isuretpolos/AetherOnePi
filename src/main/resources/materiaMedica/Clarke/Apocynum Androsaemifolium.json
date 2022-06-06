@@ -8,9 +8,9 @@
     "Head" : [ "Pains and stiffness in back of head and neck." ],
     "Nose" : [ "Everything smelled like honey." ],
     "Face" : [ "Twitching in face.", "Violent pain in l. zygoma." ],
-    "7, Teeth and Mouth" : [ "Pains in all teeth of l. lower jaw.", "Most delightful taste in the mouth." ],
-    "11, Stomach and Abdomen" : [ "Vomiting and purging; > from copious evacuation.", "Shooting pain in l. groin.", "Constipation." ],
-    "14, Urinary and Sexual Organs" : [ "Profuse flow of clear urine.", "Profuse menstruation lasting eight days with violent pressing pain." ],
+    "Teeth and Mouth" : [ "Pains in all teeth of l. lower jaw.", "Most delightful taste in the mouth." ],
+    "Stomach and Abdomen" : [ "Vomiting and purging; > from copious evacuation.", "Shooting pain in l. groin.", "Constipation." ],
+    "Urinary and Sexual Organs" : [ "Profuse flow of clear urine.", "Profuse menstruation lasting eight days with violent pressing pain." ],
     "Limbs" : [ "Swelling of hands and feet.", "Most violent pains in all the joints.", "Much pain in knee and r. shoulder.", "Cramps and burning in soles.", "Severe pain in joint of l. big toe." ]
   }
 }

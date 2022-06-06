@@ -10,7 +10,7 @@
     "Eyes" : [ "Complete loss of vision.", "Eyelids swollen so that eyes were almost closed.", "Coryza." ],
     "Ears" : [ "Buzzing in ears." ],
     "Nose" : [ "Tingling burning in nose, with sneezing and running from eyes and nose; nose and face swollen.", "Coppery smell which comes and goes." ],
-    "Face" : [ "OEdema; dusky red face." ],
+    "Face" : [ "Oedema; dusky red face." ],
     "Teeth" : [ "General toothache, together with headache; pain behind both ears of a tearing character." ],
     "Mouth" : [ "Tingling burning in gums, mouth, and throat.", "Lump in mouth about an inch thick just below level of upper teeth (passed away in half-hour)." ],
     "Throat" : [ "Dryness, burning, swelling, l. side of throat with aphonia; l. tonsil white and swollen.", "Tight, constricted feeling." ],
@@ -22,7 +22,7 @@
     "Neck and Back" : [ "Feeling of numberless pins pricking him down each side of neck." ],
     "Limbs" : [ "Pains in limbs.", "Limbs swollen." ],
     "Upper Limbs" : [ "Cramp in r. arm.", "Fingers of r. hand clenched in the form of a claw." ],
-    "Generalities" : [ "Feeling of numberless pins pricking him down each side of the neck, extending down r. chest and abdomen, particularly severe r. side of scrotum and r. testicle, also in legs and feet, severely r., slightly l.", "Sensation as if contents of chest and abdomen drawn upwards, felt he was \"drawn in a ruck,\" and, being unable to stand, fell on the floor.", "Trembled violently all over, had cramp in r. arm.", "Epileptic attacks, with partial unilateral twitching; contraction of muscles; chattering of teeth; jactitation.", "Cyanosis.", "Collapse.", "Throbbing all over body.", "Sensation as if inside of body were filled with ice." ],
+    "Generalities" : [ "Feeling of numberless pins pricking him down each side of the neck, extending down r. chest and abdomen, particularly severe r. side of scrotum and r. testicle, also in legs and feet, severely r., slightly l.", "Sensation as if contents of chest and abdomen drawn upwards, felt he was \"drawn in a ruck, \", and, being unable to stand, fell on the floor.", "Trembled violently all over, had cramp in r. arm.", "Epileptic attacks, with partial unilateral twitching; contraction of muscles; chattering of teeth; jactitation.", "Cyanosis.", "Collapse.", "Throbbing all over body.", "Sensation as if inside of body were filled with ice." ],
     "Skin" : [ "Rash, erythema or urticaria, with troublesome itching; chiefly between fingers.", "Irregular rounded pimples lying close together, in some places confluent, forming patches, between which skin was normal, giving a marbled appearance, lasted five days, turned brownish and desquamated slightly.", "Eruption thickest on body and extremities, extensor more covered than flexor surfaces.", "Eruption begins on face and arms, last on legs.", "Scarlet macular eruption." ],
     "Fever" : [ "Excessive perspiration.", "Throbbing all over body, coldness of hands and feet, nervous shuddering without chill.", "Pulse goes up and down with the temperature." ]
   }

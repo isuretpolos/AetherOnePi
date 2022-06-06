@@ -3,11 +3,11 @@
   "remedyAlternativeNames" : "",
   "categories" : {
     "Clinical" : [ "Constipation. Cystitis. Haemorrhoids (bleeding)." ],
-    "Characteristics" : [ "Jenner (M. H. R., ix. 549) proved the tincture of Banana flowers and produced costiveness and sensation of fulness about anus, in a person of regular habits; and he cured with it a bad case of bleeding haemorrhoids. It also produced pain in the bladder and passage of mucus with urine. Crichton Campbell commends bananas baked in their skins as an ideal food, or even a \"cure,\" for brain workers, nervous persons, and anaemics (H. W., xxxii. 478). A syrup made with the juice of bananas extracted by heat is commended as a remedy in chronic bronchitis with insufficient expectoration and marked dyspnoea." ],
+    "Characteristics" : [ "Jenner (M. H. R., ix. 549) proved the tincture of Banana flowers and produced costiveness and sensation of fulness about anus, in a person of regular habits; and he cured with it a bad case of bleeding haemorrhoids. It also produced pain in the bladder and passage of mucus with urine. Crichton Campbell commends bananas baked in their skins as an ideal food, or even a \"cure, \", for brain workers, nervous persons, and anaemics (H. W., xxxii. 478). A syrup made with the juice of bananas extracted by heat is commended as a remedy in chronic bronchitis with insufficient expectoration and marked dyspnoea." ],
     "Head" : [ "Dull, heavy, frontal headache." ],
-    "8, Mouth and Throat" : [ "Dry, rough, and extremely astringent taste and feeling in mouth, tongue, and fauces, but afterwards an increase of saliva." ],
-    "11, Stomach and Abdomen" : [ "Rumbling in stomach and bowels with expulsion of flatus." ],
-    "Stool and Anus" : [ "Costiveness (in a person of very regular habits) with feeling of fulness about anus.", "(Improvement and ultimate cure of profusely bleeding haemorrhoids; in a case which had resisted every kind of treatment,)" ],
+    "Mouth and Throat" : [ "Dry, rough, and extremely astringent taste and feeling in mouth, tongue, and fauces, but afterwards an increase of saliva." ],
+    "Stomach and Abdomen" : [ "Rumbling in stomach and bowels with expulsion of flatus." ],
+    "Stool and Anus" : [ "Costiveness (in a person of very regular habits) with feeling of fulness about anus.", "(Improvement and ultimate cure of profusely bleeding haemorrhoids; in a case which had resisted every kind of treatment, )," ],
     "Urinary Organs" : [ "Discharge of large quantities of mucus with the urine, with dull, aching pain in bladder region." ]
   }
 }
