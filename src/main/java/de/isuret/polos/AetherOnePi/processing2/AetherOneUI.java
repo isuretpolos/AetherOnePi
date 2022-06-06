@@ -85,8 +85,6 @@ public class AetherOneUI extends PApplet {
                 logger.info("Seems that the parent folder has no meaningful name ;)");
                 titleAffix = "";
             }
-
-            aetherOneServer.init(Location.CLASSPATH);
         } catch (Exception e) {
             logger.error("Error reading the parent folder name", e);
         }
