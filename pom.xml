@@ -28,7 +28,7 @@
         <maven-assembly-plugin.version>3.1.1</maven-assembly-plugin.version>
         <slf4j.version>2.0.0-alpha7</slf4j.version>
         <lucene-core.version>7.1.0</lucene-core.version>
-        <jackson-databind.version>2.12.6.1</jackson-databind.version>
+        <jackson-databind.version>2.13.4.1</jackson-databind.version>
     </properties>
 
     <dependencies>
