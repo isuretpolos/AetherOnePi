@@ -839,8 +839,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                 return;
             }
 
-            // CTRL = 17
-            if (p.keyCode == 17) {
+            if (p.keyCode == p.CONTROL) {
                 analyzeCurrentDatabase();
                 return;
             }
@@ -850,7 +849,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         // Paste CTRL+V
-        if (p.keyCode == 86 && p.getGuiElements().getCurrentTab().equals(AetherOneConstants.BROADCAST)) {
+        if (p.keyEvent.getKeyCode() == p.CONTROL && p.getGuiElements().getCurrentTab().equals(AetherOneConstants.BROADCAST)) {
+
             String text = getTextFromClipboard();
             if (text == null) return;
             ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText(text);
