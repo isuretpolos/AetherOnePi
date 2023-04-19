@@ -3,9 +3,11 @@ package de.isuret.polos.AetherOnePi.utils;
 import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class CaseToHtml {
 
@@ -31,15 +33,28 @@ public class CaseToHtml {
             File htmlFile = new File("cases/" + caseObject.getName().replaceAll(" ", "") + ".html");
 
             StringBuilder html = new StringBuilder();
+            String htmlString = "";
 
-            html.append(FileUtils.readFileToString(new File("src/main/resources/templates/caseHeader.html"), UTF_8).replaceAll("#TITLE#", caseObject.getName()));
+            try {
+                htmlString = FileUtils.readFileToString(new File("src/main/resources/templates/caseHeader.html"), UTF_8).replaceAll("#TITLE#", caseObject.getName());
+            }catch (Exception e){
+                htmlString = IOUtils.toString(CaseToHtml.class.getClassLoader().getResourceAsStream("templates/caseHeader.html"));
+            }
+
+            html.append(htmlString);
 
             for (Session session : caseObject.getSessionList()) {
 
                 writeSession(html, session);
             }
 
-            html.append(FileUtils.readFileToString(new File("src/main/resources/templates/caseFooter.html"), UTF_8));
+            try {
+                htmlString = FileUtils.readFileToString(new File("src/main/resources/templates/caseFooter.html"), UTF_8).replaceAll("#TITLE#", caseObject.getName());
+            }catch (Exception e){
+                htmlString = IOUtils.toString(CaseToHtml.class.getClassLoader().getResourceAsStream("templates/caseFooter.html"));
+            }
+
+            html.append(htmlString);
 
             FileUtils.writeStringToFile(htmlFile, html.toString(), UTF_8);
         } catch (IOException e) {
