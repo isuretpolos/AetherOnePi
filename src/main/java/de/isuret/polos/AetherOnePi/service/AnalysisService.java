@@ -268,6 +268,7 @@ public class AnalysisService {
         List<String> clinicalSymptoms = new ArrayList<>();
         Map<String, List<Symptom2Remedies>> otherRemediesClinicalSymptoms = new HashMap<>();
         Map<String, List<Symptom2Remedies>> otherRemediesClinicalSymptoms2 = new HashMap<>();
+        TreeMap<String, Integer> symptomsCounter = new TreeMap<>();
 
         for (Symptom2Remedies symptom2Remedies : clarkeMateriaMedica.getClinicalSymptoms()) {
             // collect the clinical symptoms for the one remedy
@@ -278,6 +279,14 @@ public class AnalysisService {
                 for (RateObject rateObject : analysisResult.getRateObjects()) {
                     if (nameOrRate.equals(rateObject.getNameOrRate())) continue;
                     if (symptom2Remedies.getRemedies().contains(rateObject.getNameOrRate())) {
+
+                        if (symptomsCounter.containsKey(symptom2Remedies.getSymptom())) {
+                            Integer c = symptomsCounter.get(symptom2Remedies.getSymptom());
+                            symptomsCounter.put(symptom2Remedies.getSymptom(), c + 1);
+                        } else {
+                            symptomsCounter.put(symptom2Remedies.getSymptom(), 1);
+                        }
+
                         if (otherRemediesClinicalSymptoms.containsKey(rateObject.getNameOrRate())) {
                             otherRemediesClinicalSymptoms.get(rateObject.getNameOrRate()).add(symptom2Remedies);
                         } else {
@@ -287,21 +296,34 @@ public class AnalysisService {
                         }
                     }
                 }
-            } else {
-                // and the symptoms of the other remedies that they do not have in common
-                for (RateObject rateObject : analysisResult.getRateObjects()) {
-                    if (symptom2Remedies.getRemedies().contains(rateObject.getNameOrRate())) {
-                        if (otherRemediesClinicalSymptoms2.containsKey(rateObject.getNameOrRate())) {
-                            otherRemediesClinicalSymptoms2.get(rateObject.getNameOrRate()).add(symptom2Remedies);
-                        } else {
-                            List<Symptom2Remedies> symptoms = new ArrayList<>();
-                            symptoms.add(symptom2Remedies);
-                            otherRemediesClinicalSymptoms2.put(rateObject.getNameOrRate(), symptoms);
-                        }
+            }
+
+            // and the symptoms of the other remedies that they do not have in common
+            for (RateObject rateObject : analysisResult.getRateObjects()) {
+                if (symptom2Remedies.getRemedies().contains(rateObject.getNameOrRate())) {
+
+                    if (symptomsCounter.containsKey(symptom2Remedies.getSymptom())) {
+                        Integer c = symptomsCounter.get(symptom2Remedies.getSymptom());
+                        symptomsCounter.put(symptom2Remedies.getSymptom(), c + 1);
+                    } else {
+                        symptomsCounter.put(symptom2Remedies.getSymptom(), 1);
+                    }
+
+                    if (otherRemediesClinicalSymptoms2.containsKey(rateObject.getNameOrRate())) {
+                        otherRemediesClinicalSymptoms2.get(rateObject.getNameOrRate()).add(symptom2Remedies);
+                    } else {
+                        List<Symptom2Remedies> symptoms = new ArrayList<>();
+                        symptoms.add(symptom2Remedies);
+                        otherRemediesClinicalSymptoms2.put(rateObject.getNameOrRate(), symptoms);
                     }
                 }
             }
+
         }
+
+        List<SymptomCounter> symptomCounterList = new ArrayList<>();
+        symptomsCounter.keySet().forEach( symptom -> symptomCounterList.add(new SymptomCounter(symptom, symptomsCounter.get(symptom))));
+        symptomCounterList.sort((o1, o2) -> o2.getCounter().compareTo(o1.getCounter()));
 
         for (String remedy : otherRemediesClinicalSymptoms.keySet()) {
             if (!otherRemediesClinicalSymptoms2.containsKey(remedy)) {
@@ -338,7 +360,17 @@ public class AnalysisService {
                                                         symptom2Remedies -> span(attrs(".badge .bg-dark"), text(symptom2Remedies.getSymptom()))
                                                 ).toArray(ContainerTag[]::new))
                                         )
-                                ).toArray(ContainerTag[]::new))
+                                ).toArray(ContainerTag[]::new)),
+                                table(attrs(".table .table-striped .table-hover")).with(
+                                        thead(attrs(".table-dark")).with(
+                                            tr().with(
+                                                th().with(span("COUNTER")),
+                                                th().with(span("SYMPTOM")))),
+                                        tbody().with(
+                                                symptomCounterList.stream().limit(20).map(s ->
+                                                        tr().with(
+                                                                td().with(span(String.valueOf(s.getCounter()))),
+                                                                td().with(span(s.getName()))))))
                         )
                 )
         ).renderFormatted();
@@ -383,5 +415,31 @@ public class AnalysisService {
 
     public void setClarkeMateriaMedica(ClarkeMateriaMedica clarkeMateriaMedica) {
         this.clarkeMateriaMedica = clarkeMateriaMedica;
+    }
+
+    private class SymptomCounter {
+        private String name;
+        private Integer counter;
+
+        public SymptomCounter(String name, Integer counter) {
+            this.name = name;
+            this.counter = counter;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getCounter() {
+            return counter;
+        }
+
+        public void setCounter(Integer counter) {
+            this.counter = counter;
+        }
     }
 }

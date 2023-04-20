@@ -16,6 +16,7 @@ or download the Beta which is build after each change on the [Action tab](https:
 Subscribe to my blog(s) and join the [community](https://vk.com/aetherone).
 
 # Feature History
+- 2023-04-20 Some bugfixes and Clarke Analysis Count feature
 - 2020-06-12 Divided project into modules (not really a new feature, but necessary)
 - 2020-05-23 Image Layers Analysis
 - 2020-05-21 [Hotbits from WebCam](https://radionics.home.blog/2020/05/21/hotbits-from-webcam-for-the-aetheronepi/)
