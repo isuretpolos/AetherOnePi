@@ -51,7 +51,15 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.text("SELECTED DATABASE: " + p.getSelectedDatabase(), 35, 88);
 
             if (p.getGeneralVitality() > 0) {
-                p.text("GENERAL VITALITY: " + p.getGeneralVitality(), 35, 510);
+                if (p.getGvCounter() == 0) {
+                    p.fill(0, 255, 0);
+                    p.text(">> CHECK GENERAL VITALITY <<", 35, 510);
+                } else {
+                    p.text("GENERAL VITALITY: " + p.getGeneralVitality(), 35, 510);
+                }
+            } else if (p.getAnalysisResult() != null){
+                p.fill(0, 255, 0);
+                p.text(">> CHECK GENERAL VITALITY <<", 35, 510);
             }
         }
 
@@ -282,6 +290,15 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
         if (p.getTrainingSignature() != null && !p.getTrainingSignatureCovered()) {
             p.fill(255);
             p.text(p.getTrainingSignature(),600,510);
+        }
+
+        if (p.getGvCounter() > 0 && p.getGvCounter() <= AnalyseScreen.MAX_ENTRIES) {
+            p.fill(0, 255, 0);
+            p.noStroke();
+            p.rect(0, 94 + (p.getGvCounter() * 18), 10, 18);
+            p.stroke(0,255,0);
+            p.line(0, 94 + (p.getGvCounter() * 18),900, 94 + (p.getGvCounter() * 18));
+            p.line(0, 112 + (p.getGvCounter() * 18),900, 112 + (p.getGvCounter() * 18));
         }
     }
 
