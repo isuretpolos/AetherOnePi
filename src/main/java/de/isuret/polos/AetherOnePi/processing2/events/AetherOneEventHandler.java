@@ -637,7 +637,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         // replaced by the embedded BroadcastElement
-        boolean broadCastEmbedded = settings.getBoolean("broadcast.embedded", true);
+        boolean broadCastEmbedded = settings.getBoolean(SettingsScreen.BROADCAST_EMBEDDED, true);
 
         if (broadCastEmbedded) {
             p.getGuiElements().addBroadcastElement(signature, seconds);
