@@ -15,10 +15,8 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class GuiElements {
 
@@ -46,6 +44,8 @@ public class GuiElements {
     private IDrawableElement newDrawableElement;
     private Boolean stopAll = false;
     private Boolean stopCurrentBroadcast = false;
+    private Calendar lastAnalysis = null;
+    private List<Integer> automodeGvAverage = new ArrayList<>();
 
     public GuiElements(AetherOneUI p) {
         this.p = p;
@@ -294,6 +294,17 @@ public class GuiElements {
             p.text("DYNAMIC ADJUSTMENTS", 22,700);
         }
 
+        if (p.getAutoMode()) {
+
+            if (automodeGvAverage.size() > 0) {
+                double average = automodeGvAverage.stream().mapToInt(v -> v).average().getAsDouble();
+                double dgv = (average / 1000) * 255;
+                int gv = (int) dgv;
+                p.fill(gv,100 + gv,gv);
+                p.text("AUTO MODE ON -- GV = " + (int) average, 22,715);
+            }
+        }
+
         p.fill(255);
         p.line(200,550,200,700);
         p.line(670,550,670,700);
@@ -441,13 +452,27 @@ public class GuiElements {
         if (!p.getAutoMode()) return;
 
         // if nothing is broadcast ...
-        if (broadcastQueueList.size() < 8) {
+        if (broadcastQueueList.isEmpty()) {
+            Calendar now = Calendar.getInstance();
+
+            if (lastAnalysis != null && now.before(lastAnalysis)){
+                return;
+            }
+
+            lastAnalysis = Calendar.getInstance();
+            int countActiveBroadcasts = countActiveBroadcastElements();
+            lastAnalysis.add(Calendar.MILLISECOND, (countActiveBroadcasts * countActiveBroadcasts * 111));
             // analyse automatically
             List<Rate> rates = null;
-            int gv = p.checkGeneralVitalityValue();
+            p.setGeneralVitality(p.checkGeneralVitalityValue());
 
-            // no need for auto mode if gv is higher than 100 (which means it is not optimal, but not critical either)
-            if (gv > 100) return;
+            automodeGvAverage.add(p.getGeneralVitality());
+            if (automodeGvAverage.size() > 10) {
+                automodeGvAverage.remove(0);
+            }
+
+            // no need for auto mode if gv is higher than 200 (which means it is not optimal, but not critical either)
+            if (p.getGeneralVitality() > 300) return;
 
             try {
                 rates = p.getDataService().findAllBySourceName(p.getSelectedDatabase());
@@ -456,8 +481,8 @@ public class GuiElements {
                 for (RateObject rateObject : result.getRateObjects()) {
                     // check GV
                     int gvOfRate = p.checkGeneralVitalityValue();
-                    // if gv of rate is higher as of target + 500 or generally higher than 1400 than broadcast
-                    if (gvOfRate > 1400 || gvOfRate > gv + 700) {
+                    // if gv of rate is higher as of target + 700 or generally higher than 1400 than broadcast
+                    if (gvOfRate > 1400 || gvOfRate > p.getGeneralVitality() + 700) {
                         int seconds = p.getHotbitsHandler().getInteger(10,1000);
                         addBroadcastElement(rateObject.getNameOrRate(), seconds);
                         break;
@@ -804,5 +829,13 @@ public class GuiElements {
 
     public void setStopCurrentBroadcast(Boolean stopCurrentBroadcast) {
         this.stopCurrentBroadcast = stopCurrentBroadcast;
+    }
+
+    public List<Integer> getAutomodeGvAverage() {
+        return automodeGvAverage;
+    }
+
+    public void setAutomodeGvAverage(List<Integer> automodeGvAverage) {
+        this.automodeGvAverage = automodeGvAverage;
     }
 }

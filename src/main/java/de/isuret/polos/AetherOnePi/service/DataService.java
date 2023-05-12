@@ -23,6 +23,7 @@ public class DataService {
     private Log log = LogFactory.getLog(DataService.class);
 
     private Map<String, File> databases = new HashMap<>();
+    private Map<String, File> scripts = new HashMap<>();
 
     private DashboardInformations dashboardInformations;
 
@@ -53,6 +54,7 @@ public class DataService {
 
     public void refreshDatabaseList() {
         databases.clear();
+        scripts.clear();
         searchForRateFiles(new File("data/"));
     }
 
@@ -78,6 +80,10 @@ public class DataService {
 
             if (file.getName().endsWith(".txt")) {
                 databases.put(file.getName(), file);
+            }
+
+            if (file.getName().endsWith(".rscript")) {
+                scripts.put(file.getName(), file);
             }
         }
     }
@@ -120,15 +126,11 @@ public class DataService {
 
     public List<String> getAllDatabaseNames() {
 
-        List<String> list = new ArrayList<>();
+        return new ArrayList<>(databases.keySet());
+    }
 
-        for (String name : databases.keySet()) {
-            list.add(name);
-        }
-
-        Collections.sort(list);
-
-        return list;
+    public List<String> getAllScriptNames() {
+        return new ArrayList<>(scripts.keySet());
     }
 
     public void getRepository(String url, String targetFolderName) throws GitAPIException, IOException {
@@ -235,5 +237,13 @@ public class DataService {
 
     public void setDashboardInformations(DashboardInformations dashboardInformations) {
         this.dashboardInformations = dashboardInformations;
+    }
+
+    public Map<String, File> getScripts() {
+        return scripts;
+    }
+
+    public void setScripts(Map<String, File> scripts) {
+        this.scripts = scripts;
     }
 }

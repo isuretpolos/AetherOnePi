@@ -217,6 +217,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         if (AetherOneConstants.BROADCAST_AUTO_ON.equals(name)) {
             p.setAutoMode(true);
+            p.getGuiElements().getAutomodeGvAverage().clear();
             return;
         }
 

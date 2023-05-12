@@ -447,7 +447,6 @@ public class AetherOneUI extends PApplet {
                     Integer lastPixelArray [] = new Integer[pixelArraySize];
                     String bits = "";
                     Integer countIntegers = 0;
-                    Random random = null;
                     List<Integer> integerList = new ArrayList<>();
                     hotbitsFromWebCamAcquiring = true;
 
@@ -477,7 +476,7 @@ public class AetherOneUI extends PApplet {
 
                             if (bits.length() >= 24) {
                                 Integer randomInt = Integer.parseInt(bits, 2);
-                                random = new Random(randomInt);
+                                Random random = new Random(randomInt);
 
                                 randomInt += random.nextInt(100000);
 
