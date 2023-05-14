@@ -68,6 +68,7 @@ public class AetherOneUI extends PApplet {
     private Boolean trainingSignatureCovered = true;
     private Boolean autoMode = false;
     private PImage clipBoardImage;
+    private List<PImage> clipBoardImages = new ArrayList<>();
     private List<RateObject> resonatedList = new ArrayList<>();
     private List<ResonanceObject> resonanceList = new ArrayList<>();
     private AetherOneServer aetherOneServer = new AetherOneServer(Location.CLASSPATH);
@@ -824,5 +825,9 @@ public class AetherOneUI extends PApplet {
 
     public void setAetherOneServer(AetherOneServer aetherOneServer) {
         this.aetherOneServer = aetherOneServer;
+    }
+
+    public List<PImage> getClipBoardImages() {
+        return clipBoardImages;
     }
 }

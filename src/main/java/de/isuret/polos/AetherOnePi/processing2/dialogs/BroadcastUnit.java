@@ -1,11 +1,14 @@
 package de.isuret.polos.AetherOnePi.processing2.dialogs;
 
 import processing.core.PApplet;
+import processing.core.PImage;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -27,11 +30,16 @@ public class BroadcastUnit extends PApplet {
 
     private static Long lastBroadcast = null;
 
+    private List<PImage> imageList;
+
     public static void main(String[] args) {
         startBroadcastUnit(480, "Sulfur");
     }
 
     public static void startBroadcastUnit(int seconds, String signature) {
+        startBroadcastUnit(seconds, signature, null);
+    }
+    public static void startBroadcastUnit(int seconds, String signature, List<PImage> imageList) {
 
         Long now = Calendar.getInstance().getTimeInMillis();
 
@@ -41,6 +49,7 @@ public class BroadcastUnit extends PApplet {
         }
 
         BroadcastUnit broadcastUnit = new BroadcastUnit(seconds, signature);
+        broadcastUnit.imageList = imageList;
         String[] args2 = {""};
         PApplet.runSketch(args2, broadcastUnit);
 
@@ -222,6 +231,14 @@ public class BroadcastUnit extends PApplet {
 
         paintRadionicCard(3, 2);
         paintRadionicCardWave(3, 2);
+
+        if (imageList != null && !imageList.isEmpty()) {
+            for (PImage image : imageList) {
+                if (random2.nextInt(1000) >= 998) {
+                    blend(image, 0, 0, WIDTH, HEIGHT, 0,0, WIDTH, HEIGHT, DIFFERENCE);
+                }
+            }
+        }
 
         if (random2.nextInt(6765) >= 6764) {
             movingWaveAmount = 1;

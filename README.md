@@ -9,13 +9,14 @@
 You need Java 1.8 as a runtime. Download it from [java.com](https://www.java.com/en/download/) and install it before you run the AetherOnePi application on your PC or Raspberry Pi.
 
 ## Download
-Download [Version 1.3.2](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.3.2) (Standalone Client)
+Download [Version 1.3.3](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.3.3) (Standalone Client)
 
 or download the Beta which is build after each change on the [Action tab](https://github.com/isuretpolos/AetherOnePi/actions). Just click on the Build Element and in the upper right corner you will see a Artifact Download Button if the build was a success.
 
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with Thalia on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
+- 2023-05-14 Broadcast Image(s)
 - 2023-05-11 Bugfixes, Auto Mode enhanced, better feedback
 - 2023-04-20 Some bugfixes and Clarke Analysis Count feature
 - 2020-06-12 Divided project into modules (not really a new feature, but necessary)

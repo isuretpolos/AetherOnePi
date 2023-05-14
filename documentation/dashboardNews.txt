@@ -1,6 +1,6 @@
 Welcome to AetherOnePi, free Radionics for everyone!!!
 
-The most current version is the 1.3.2 with a lots of new
+The most current version is the 1.3.3 with a lots of new
 features and improvements!
 
 Read the documentation by clicking on the button "DOCUMENTATION".

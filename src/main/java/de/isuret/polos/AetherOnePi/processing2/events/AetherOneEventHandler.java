@@ -231,6 +231,31 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
+        if (AetherOneConstants.PASTE_IMAGE.equals(name)) {
+            Transferable clipData = clipboard.getContents(clipboard);
+            if (clipData != null) {
+                if (clipData.isDataFlavorSupported(DataFlavor.imageFlavor)) {
+                    try {
+                        PImage image = new PImage((Image) clipData.getTransferData(clipData.getTransferDataFlavors()[0]));
+                        p.getClipBoardImages().add(image.copy());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            return;
+        }
+
+        if (AetherOneConstants.CLEAR_IMAGE.equals(name)) {
+            p.getClipBoardImages().clear();
+            return;
+        }
+
+        if (AetherOneConstants.BROADCAST_IMAGE.equals(name)) {
+            BroadcastUnit.startBroadcastUnit(60, "energy", p.getClipBoardImages());
+            return;
+        }
+
         if (AetherOneConstants.WEBCAM_LIST_SHOW.equals(name)) {
             p.initWebcamsList();
             return;
@@ -643,7 +668,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         if (broadCastEmbedded) {
             p.getGuiElements().addBroadcastElement(signature, seconds);
         } else {
-            BroadcastUnit.startBroadcastUnit(seconds, signature);
+            BroadcastUnit.startBroadcastUnit(seconds, signature, p.getClipBoardImages());
         }
 
         BroadCastData broadCastData = new BroadCastData();
@@ -655,6 +680,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         saveResonanceProtocol();
 
+        p.setClipBoardImage(null);
+        p.getClipBoardImages().clear();
         p.setEssentielQuestion(null);
         p.setImageLayersAnalysis(null);
         p.setTrainingSignature(null);
