@@ -235,7 +235,8 @@ public class BroadcastUnit extends PApplet {
         if (imageList != null && !imageList.isEmpty()) {
             for (PImage image : imageList) {
                 if (random2.nextInt(1000) >= 998) {
-                    blend(image, 0, 0, WIDTH, HEIGHT, 0,0, WIDTH, HEIGHT, DIFFERENCE);
+                    image.resize(width, height);
+                    blend(image, 0, 0, width, height, 0,0, width, height, DIFFERENCE);
                 }
             }
         }
