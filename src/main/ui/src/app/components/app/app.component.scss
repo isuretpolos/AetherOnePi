@@ -11,6 +11,23 @@
   color: #6aa185;
 }
 
-li { cursor: pointer; }
+li {
+  cursor: pointer;
+}
 
-.copyrightInfo { font-size: 0.5rem}
+.copyrightInfo {
+  font-size: 0.5rem
+}
+
+.serverOnline {
+  font-weight: bolder
+}
+
+.serverOffline {
+  font-weight: bolder;
+  color: red !important;
+}
+.serverOfflineInfo {
+  font-weight: lighter;
+  color: #fe1c1c !important;
+}

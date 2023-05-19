@@ -71,7 +71,7 @@ public class AetherOneUI extends PApplet {
     private List<PImage> clipBoardImages = new ArrayList<>();
     private List<RateObject> resonatedList = new ArrayList<>();
     private List<ResonanceObject> resonanceList = new ArrayList<>();
-    private AetherOneServer aetherOneServer = new AetherOneServer(Location.CLASSPATH);
+    private AetherOneServer aetherOneServer;
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
     public static void main(String[] args) {
@@ -93,9 +93,6 @@ public class AetherOneUI extends PApplet {
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
         settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
         size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721));
-
-        AetherOneUI p = this; // this or that
-
     }
 
     public void initWebcamsList() {
@@ -169,14 +166,12 @@ public class AetherOneUI extends PApplet {
 
         // TODO add dynamic more elements with resizing the screen and adjust some of the graphics which are too static
         surface.setResizable(true);
-
         hotbitsHandler = new HotbitsHandler(this);
         hotbitsClient = hotbitsHandler;
         analyseService = new AnalysisService();
         analyseService.setHotbitsClient(hotbitsClient);
         aetherOneEventHandler = new AetherOneEventHandler(this);
         keyPressedObserverList.add(aetherOneEventHandler);
-
         guiElements = new GuiElements(this);
 
         final float border = guiElements.getBorder() + 5f;
@@ -331,6 +326,7 @@ public class AetherOneUI extends PApplet {
         }
 
         hotbitsHandler.loadHotbits();
+        aetherOneServer = new AetherOneServer(Location.CLASSPATH, this);
     }
 
     public void draw() {

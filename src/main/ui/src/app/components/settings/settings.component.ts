@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AetherOnePiService} from "../../services/aether-one-pi.service";
+import {Settings} from "../../domains/Settings";
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() { }
+  settings:Settings;
+  constructor(private aetheOnePiService:AetherOnePiService) { }
 
   ngOnInit(): void {
+    this.aetheOnePiService.loadSettings().subscribe( settings => this.settings = settings)
   }
 
+  switchBooleanSetting(key: string) {
+    console.log(key)
+    console.log(Object.keys(this.settings.booleans))
+    /*let value:boolean = this.settings.booleans.
+    this.settings.booleans.set(key, value);*/
+  }
 }

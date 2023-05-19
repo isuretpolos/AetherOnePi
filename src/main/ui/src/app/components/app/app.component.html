@@ -1,21 +1,30 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">AetherOnePi</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#"
+       [class.serverOnline]="serverOnline"
+       [class.serverOffline]="!serverOnline">AetherOnePi</a> <span class="serverOfflineInfo" *ngIf="!serverOnline">is offline</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="serverOnline">
         <li class="nav-item" *ngFor="let link of links" style="background-color: {{link.color}}">
-          <a class="nav-link active" aria-current="page" href="#{{link.name}}" (click)="navigate(link.name)" [class.activeLink]="link.active" [class.inactiveLink]="!link.active">{{link.name}}</a>
+          <a class="nav-link active" aria-current="page" href="#{{link.name}}" (click)="navigate(link.name)"
+             [class.activeLink]="link.active" [class.inactiveLink]="!link.active">{{link.name}}</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <form class="d-flex" role="search" *ngIf="serverOnline">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
   </div>
 </nav>
-
-<router-outlet></router-outlet>
+<div class="container-fluid" *ngIf="serverOnline">
+  <router-outlet></router-outlet>
+</div>
+<div class="container-fluid" *ngIf="!serverOnline">
+  <h1 class="serverOffline">OFFLINE</h1>
+  <p>This means the AetherOne application is not started. Just restart if you wish to use the application.</p>
+</div>

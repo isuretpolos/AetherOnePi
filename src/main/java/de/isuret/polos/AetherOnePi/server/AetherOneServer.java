@@ -3,6 +3,7 @@ package de.isuret.polos.AetherOnePi.server;
 import de.isuret.polos.AetherOnePi.domain.SearchResult;
 import de.isuret.polos.AetherOnePi.domain.SearchResultJsonWrapper;
 import de.isuret.polos.AetherOnePi.domain.Settings;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
@@ -13,6 +14,8 @@ import java.util.List;
 
 public class AetherOneServer {
 
+    private AetherOneUI p;
+
     private MateriaMedicaSearchEngine materiaMedicaSearchEngine = new MateriaMedicaSearchEngine();
 
     /**
@@ -21,13 +24,16 @@ public class AetherOneServer {
      * @param args
      */
     public static void main(String[] args) {
-        new AetherOneServer(Location.EXTERNAL);
+        new AetherOneServer(Location.EXTERNAL, null);
     }
 
     /**
      * Main Server application which runs parallel to AetherOnePi Processing App
      */
-    public AetherOneServer(Location location) {
+    public AetherOneServer(Location location, AetherOneUI p) {
+
+        this.p = p;
+
         try {
             init(location);
         } catch(Exception e) {
@@ -36,17 +42,34 @@ public class AetherOneServer {
     }
 
     public void init(Location location) {
+
         materiaMedicaSearchEngine.init();
 
-        Javalin app = Javalin.create(config -> {
-            if (Location.CLASSPATH.equals(location)) {
-                config.addStaticFiles("html", Location.CLASSPATH);
-            } else {
-                config.addStaticFiles("src/main/resources/html", location);
-            }
-        }).start(7070); // FIXME add dynamic port if this one is already in use!
+        Javalin app;
+        int port = 80;
 
-        app.get("/settings", ctx -> {
+        while (true) {
+            try {
+                app = Javalin.create(config -> {
+                    if (Location.CLASSPATH.equals(location)) {
+                        config.addStaticFiles("ui", Location.CLASSPATH);
+                    } else {
+                        config.addStaticFiles("src/main/resources/ui", location);
+                    }
+                    config.enableCorsForAllOrigins();
+                }).start(port);
+                break;
+            } catch (Exception e) {
+                System.out.println("Port " + port + " is already in use, try the next one");
+                port++;
+            }
+        }
+
+        app.get("ping", ctx -> {
+            ctx.json("{\"result\":\"pong\"}");
+        });
+
+        app.get("settings", ctx -> {
             Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
             ctx.json(settings);
         });

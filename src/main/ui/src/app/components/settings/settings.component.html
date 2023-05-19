@@ -1,1 +1,18 @@
-<p>settings works!</p>
+<h1>Settings</h1>
+<table class="table" *ngIf="settings">
+  <thead>
+  <tr>
+    <th scope="col">NAME</th>
+    <th scope="col">VALUE</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let b of settings.booleans | keyvalue">
+    <td>{{b.key}}</td>
+    <td>
+      <input type="checkbox" *ngIf="b.value" checked (click)="switchBooleanSetting(b.key)">
+      <input type="checkbox" *ngIf="!b.value" (click)="switchBooleanSetting(b.key)">
+    </td>
+  </tr>
+  </tbody>
+</table>

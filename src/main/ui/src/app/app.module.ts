@@ -8,6 +8,8 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { HomeComponent } from './components/home/home.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { BroadcastComponent } from './components/broadcast/broadcast.component';
+import { WeaverComponent } from './components/weaver/weaver.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { BroadcastComponent } from './components/broadcast/broadcast.component';
     AnalysisComponent,
     HomeComponent,
     SettingsComponent,
-    BroadcastComponent
+    BroadcastComponent,
+    WeaverComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })

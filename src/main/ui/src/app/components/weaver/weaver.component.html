@@ -1,0 +1,9 @@
+<textarea rows="10" cols="120" [formControl]="text" (ngModelChange)="weave()"></textarea>
+<p>
+  <span *ngIf="weavingVowels">... WEAVING VOWELS ...</span><br/>
+  <span *ngIf="weavingDublettes">... WEAVING DUBLETTES ...</span>
+</p>
+<p *ngFor="let t of weavingText">{{t}}</p>
+<div>
+  <span *ngFor="let color of colorPalette" [style.color]="color">.</span>
+</div>
