@@ -1,3 +1,17 @@
-textarea {
-  margin: 1rem;
+.weaverDiv {
+  margin-top: 1rem;
+}
+
+input {
+  font-weight: bolder;
+  font-family: "Arial Black";
+  color: #f5bf09;
+}
+.weaverLine {
+  display: flex;
+}
+.cube {
+  width: 0.8rem;
+  height: 0.8rem;
+  position: relative;
 }

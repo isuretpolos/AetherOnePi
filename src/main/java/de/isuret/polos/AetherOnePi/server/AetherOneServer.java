@@ -1,5 +1,8 @@
 package de.isuret.polos.AetherOnePi.server;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import de.isuret.polos.AetherOnePi.domain.BroadcastRequest;
 import de.isuret.polos.AetherOnePi.domain.SearchResult;
 import de.isuret.polos.AetherOnePi.domain.SearchResultJsonWrapper;
 import de.isuret.polos.AetherOnePi.domain.Settings;
@@ -15,6 +18,7 @@ import java.util.List;
 public class AetherOneServer {
 
     private AetherOneUI p;
+    private ObjectMapper objectMapper = new ObjectMapper();
 
     private MateriaMedicaSearchEngine materiaMedicaSearchEngine = new MateriaMedicaSearchEngine();
 
@@ -33,6 +37,7 @@ public class AetherOneServer {
     public AetherOneServer(Location location, AetherOneUI p) {
 
         this.p = p;
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         try {
             init(location);
@@ -102,6 +107,12 @@ public class AetherOneServer {
             }
 
             ctx.json(searchResultJsonWrapper);
+        });
+
+        app.post("broadcast", ctx -> {
+            String json = ctx.body();
+            BroadcastRequest request = objectMapper.readValue(json, BroadcastRequest.class);
+            p.getAetherOneEventHandler().broadcast(request.getSignature(), request.getSeconds());
         });
     }
 }

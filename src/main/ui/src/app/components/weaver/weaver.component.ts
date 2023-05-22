@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormControl} from "@angular/forms";
+import {WeaverLine} from "../../domains/weaver";
+import {BroadcastRequest} from "../../domains/BroadcastRequest";
+import {AetherOnePiService} from "../../services/aether-one-pi.service";
 
 @Component({
   selector: 'app-weaver',
@@ -8,21 +11,29 @@ import {FormControl} from "@angular/forms";
 })
 export class WeaverComponent implements OnInit {
 
-  weavingText:string[] = [];
+  weavingLines:WeaverLine[] = [];
   text = new FormControl('');
+  seconds = new FormControl('20');
   weavingVowels:boolean = false;
   weavingDublettes:boolean = false;
+  stillTyping:boolean = false;
   colorPalette: string[] = [];
+  @ViewChild('weaverText') weaverText: ElementRef;
 
-  constructor() { }
+  constructor(private aetheOnePiService:AetherOnePiService) { }
 
   ngOnInit(): void {
-    const paletteSize = 25;
+    const paletteSize = 28;
     this.colorPalette = this.generateColorPalette(paletteSize);
+  }
+
+  ngAfterViewInit() {
+    this.weaverText.nativeElement.focus();
   }
 
   weave() {
 
+    this.stillTyping = true;
     if (this.text.getRawValue().length == 0) return;
     if (this.weavingVowels || this.weavingDublettes) {
       console.log("still weaving")
@@ -38,6 +49,14 @@ export class WeaverComponent implements OnInit {
 
   private weavingProcessing() {
 
+    if (this.stillTyping) {
+      this.stillTyping = false;
+      setTimeout(() => {
+        this.weavingProcessing();
+      }, 250);
+      return;
+    }
+
     let t = this.text.getRawValue();
     let beginnLength = t.length;
     t = this.removeFirstVowelFromString(t);
@@ -46,7 +65,7 @@ export class WeaverComponent implements OnInit {
       this.text.setValue(t);
       setTimeout(() => {
         this.weavingProcessing();
-      }, 1000);
+      }, 250);
     } else {
 
       this.weavingVowels = false;
@@ -58,11 +77,11 @@ export class WeaverComponent implements OnInit {
         this.text.setValue(t);
         setTimeout(() => {
           this.weavingProcessing();
-        }, 1000);
+        }, 250);
       } else {
         this.weavingDublettes = false;
         if (t.length > 0) {
-          this.weavingText.push(this.removeNonLetterNonVowel(t));
+          this.weavingLines.push(this.transformToWeaverLine(this.removeNonLetterNonVowel(t).toLowerCase()));
           this.text.setValue('')
         }
       }
@@ -126,5 +145,36 @@ export class WeaverComponent implements OnInit {
     }
 
     return colors;
+  }
+
+  private transformToWeaverLine(input: string):WeaverLine {
+
+    let w = new WeaverLine();
+    let pos = 0;
+    while (input.length < 21) {
+      input += input[pos];
+      pos++;
+    }
+
+    w.signature = input;
+
+    for (let i = 0; i < input.length; i++) {
+      w.text.push(input.charCodeAt(i) - 98);
+    }
+
+    return w;
+  }
+
+  broadcast() {
+
+    this.weavingLines.forEach( w => {
+      let broadcastRequest = new BroadcastRequest();
+      broadcastRequest.signature = w.signature;
+      broadcastRequest.seconds = +this.seconds.getRawValue();
+      this.aetheOnePiService.broadcast(broadcastRequest).subscribe(()=>{
+        console.log("broadcasting")
+      })
+    });
+
   }
 }

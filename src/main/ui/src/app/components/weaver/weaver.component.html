@@ -1,9 +1,14 @@
-<textarea rows="10" cols="120" [formControl]="text" (ngModelChange)="weave()"></textarea>
+<div class="input-group weaverDiv">
+  <input #weaverText [formControl]="text" (ngModelChange)="weave()" type="text" class="form-control" placeholder="weaving text">
+  <input [formControl]="seconds" (ngModelChange)="weave()" type="text" class="form-control" placeholder="seconds">
+  <button class="btn btn-danger" (click)="weavingLines = []; weaverText.focus()" type="button">RESET</button>
+  <button class="btn btn-success" (click)="broadcast()" type="button">BROADCAST</button>
+</div>
 <p>
-  <span *ngIf="weavingVowels">... WEAVING VOWELS ...</span><br/>
+  <span *ngIf="weavingVowels">... WEAVING VOWELS ...</span>
   <span *ngIf="weavingDublettes">... WEAVING DUBLETTES ...</span>
 </p>
-<p *ngFor="let t of weavingText">{{t}}</p>
-<div>
-  <span *ngFor="let color of colorPalette" [style.color]="color">.</span>
+<div class="weaverLine" *ngFor="let line of weavingLines">
+  <div class="cube" *ngFor="let t of line.text" [style.background-color]="colorPalette[t]"></div>
 </div>
+

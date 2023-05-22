@@ -663,6 +663,15 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         // replaced by the embedded BroadcastElement
+        broadcast(signature, seconds);
+
+        BroadCastData broadCastData = new BroadCastData();
+        broadCastData.setSignature(signature);
+        saveBroadcast(broadCastData);
+    }
+
+    public void broadcast(String signature, Integer seconds) {
+        Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
         boolean broadCastEmbedded = settings.getBoolean(SettingsScreen.BROADCAST_EMBEDDED, true);
 
         if (broadCastEmbedded) {
@@ -670,10 +679,6 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         } else {
             BroadcastUnit.startBroadcastUnit(seconds, signature, p.getClipBoardImages());
         }
-
-        BroadCastData broadCastData = new BroadCastData();
-        broadCastData.setSignature(signature);
-        saveBroadcast(broadCastData);
     }
 
     private void clearForNewCase() {
