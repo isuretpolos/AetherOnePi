@@ -2,6 +2,7 @@ package de.isuret.polos.AetherOnePi.processing2;
 
 import com.github.sarxos.webcam.Webcam;
 import controlP5.ControlEvent;
+import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
@@ -100,7 +101,7 @@ public class AetherOneUI extends PApplet {
             logger.info("Get list of Webcams ...");
             webcamList = Webcam.getWebcams();
         } catch (Exception e) {
-            logger.error("Error searching webcam(s)",e);
+            logger.error("Error searching webcam(s)", e);
         }
     }
 
@@ -158,7 +159,7 @@ public class AetherOneUI extends PApplet {
 
         AetherOneUI ui = this;
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            public void run () {
+            public void run() {
                 System.out.println("SHUTDOWN HOOK");
                 ui.stop();
             }
@@ -294,10 +295,12 @@ public class AetherOneUI extends PApplet {
                 .addButton(AetherOneConstants.STOP_CURRENT)
                 .addButton(AetherOneConstants.STOP_ALL)
                 .addButton(AetherOneConstants.SHOW_RESONANCE_LIST)
-                .setInitialBounds(border, posY + 24, 150f, 14f, true)
+                .setInitialBounds(border, posY + 24, 100f, 14f, true)
                 .addTextfield(AetherOneConstants.SIGNATURE)
-                .setInitialBounds(border, posY + 44, 20f, 14f, true)
+                .setInitialBounds(border + 450, posY + 24, 20f, 14f, true)
                 .addTextfield(AetherOneConstants.SECONDS)
+                .setInitialBounds(border + 650, posY + 24, 20f, 14f, true)
+                .addTextfield(AetherOneConstants.MULTIPLIER)
                 .addBroadcastScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.DEFAULT)
@@ -441,7 +444,7 @@ public class AetherOneUI extends PApplet {
                     final int HOW_MANY_FILES = 20000;
                     final int HOW_MANY_INTEGERS_PER_PACKAGES = 10000;
                     final int pixelArraySize = screen_width * screen_height;
-                    Integer lastPixelArray [] = new Integer[pixelArraySize];
+                    Integer lastPixelArray[] = new Integer[pixelArraySize];
                     String bits = "";
                     Integer countIntegers = 0;
                     List<Integer> integerList = new ArrayList<>();
@@ -508,7 +511,7 @@ public class AetherOneUI extends PApplet {
                     hotbitsFromWebCamAcquiring = false;
                 }
             }).start();
-            
+
         }
     }
 
@@ -825,5 +828,13 @@ public class AetherOneUI extends PApplet {
 
     public List<PImage> getClipBoardImages() {
         return clipBoardImages;
+    }
+
+    public Integer getMultiplier() {
+        try {
+            return Integer.parseInt(((Textfield) getGuiElements().getCp5().get(AetherOneConstants.MULTIPLIER)).getText());
+        } catch (Exception e) {
+            return 1;
+        }
     }
 }

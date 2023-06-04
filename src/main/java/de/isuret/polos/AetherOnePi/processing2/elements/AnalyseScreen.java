@@ -369,11 +369,11 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
     }
 
     public void performClickEvent(RateObject rate) {
-        ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText(rate.getNameOrRate());
+        ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SIGNATURE)).setText(rate.getNameOrRate());
         if (rate.getGv() > 0) {
-            ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText(String.valueOf(rate.getGv()));
+            ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SECONDS)).setText(String.valueOf(rate.getGv()));
         } else {
-            ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
+            ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SECONDS)).setText("60");
         }
 
         if (p.mouseButton == p.RIGHT || (p.mouseX >= 935 && p.mouseX < 1030)) {

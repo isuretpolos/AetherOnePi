@@ -98,14 +98,14 @@ public class GuiElements {
         return this;
     }
 
-    public GuiElements addBroadcastElement(String signature, int seconds) {
-        BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
+    public GuiElements addBroadcastElement(String signature, int seconds, Integer multiplier) {
+        BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature, multiplier);
         broadcastQueueList.add(broadcastElement);
         return this;
     }
 
-    public GuiElements addBroadcastElement(String signature, int seconds, Boolean counterCheck, Integer counterCheckGV) {
-        BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature);
+    public GuiElements addBroadcastElement(String signature, int seconds, Boolean counterCheck, Integer counterCheckGV, Integer multiplier) {
+        BroadcastElement broadcastElement = new BroadcastElement(p, "BROADCAST", seconds, signature, multiplier);
         broadcastElement.setCounterCheck(counterCheck);
         broadcastElement.setCounterCheckGV(counterCheckGV);
         broadcastQueueList.add(broadcastElement);
@@ -436,13 +436,13 @@ public class GuiElements {
                     }
 
                     System.out.println(gvRate + " < " + gvTarget + " --- " + broadcastElement.getSignature());
-                    BroadcastElement reBroadcastElement = new BroadcastElement(p, "BROADCAST", seconds, broadcastElement.getSignature());
+                    BroadcastElement reBroadcastElement = new BroadcastElement(p, "BROADCAST", seconds, broadcastElement.getSignature(), p.getMultiplier());
                     broadcastQueueList.add(reBroadcastElement);
                 } else {
                     System.out.println(gvRate + " > " + gvTarget + " === " + broadcastElement.getSignature());
                 }
             } else if (p.getSettings().getBoolean(SettingsScreen.POWER_SWITCH, false)) {
-                BroadcastElement reBroadcastElement = new BroadcastElement(p, "BROADCAST", 100, broadcastElement.getSignature());
+                BroadcastElement reBroadcastElement = new BroadcastElement(p, "BROADCAST", 100, broadcastElement.getSignature(), p.getMultiplier());
                 broadcastQueueList.add(reBroadcastElement);
             }
         }
@@ -492,7 +492,7 @@ public class GuiElements {
                     // if gv of rate is higher as of target + 700 or generally higher than 1400 than broadcast
                     if (gvOfRate > 1400 || gvOfRate > p.getGeneralVitality() + 700) {
                         int seconds = p.getHotbitsHandler().getInteger(10,1000);
-                        addBroadcastElement(rateObject.getNameOrRate(), seconds);
+                        addBroadcastElement(rateObject.getNameOrRate(), seconds, p.getMultiplier());
                         break;
                     }
                 }

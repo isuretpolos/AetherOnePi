@@ -20,6 +20,7 @@ public class BroadcastUnit extends PApplet {
 
     public static final int WIDTH = 320;
     public static final int HEIGHT = 180;
+    private Integer multiplier;
     private Integer seconds;
     private String signature;
     private Long start;
@@ -33,13 +34,13 @@ public class BroadcastUnit extends PApplet {
     private List<PImage> imageList;
 
     public static void main(String[] args) {
-        startBroadcastUnit(480, "Sulfur");
+        startBroadcastUnit(480, "Sulfur",1);
     }
 
-    public static void startBroadcastUnit(int seconds, String signature) {
-        startBroadcastUnit(seconds, signature, null);
+    public static void startBroadcastUnit(int seconds, String signature, Integer multiplier) {
+        startBroadcastUnit(seconds, signature, null, multiplier);
     }
-    public static void startBroadcastUnit(int seconds, String signature, List<PImage> imageList) {
+    public static void startBroadcastUnit(int seconds, String signature, List<PImage> imageList, Integer multiplier) {
 
         Long now = Calendar.getInstance().getTimeInMillis();
 
@@ -48,7 +49,7 @@ public class BroadcastUnit extends PApplet {
             return;
         }
 
-        BroadcastUnit broadcastUnit = new BroadcastUnit(seconds, signature);
+        BroadcastUnit broadcastUnit = new BroadcastUnit(seconds, signature, multiplier);
         broadcastUnit.imageList = imageList;
         String[] args2 = {""};
         PApplet.runSketch(args2, broadcastUnit);
@@ -66,9 +67,10 @@ public class BroadcastUnit extends PApplet {
         System.out.println("CLOSED");
     }
 
-    public BroadcastUnit(int seconds, String signature) {
+    public BroadcastUnit(int seconds, String signature, Integer multiplier) {
         this.seconds = seconds;
         this.signature = signature;
+        this.multiplier = multiplier;
 
         try {
             random2 = SecureRandom.getInstanceStrong();
@@ -430,7 +432,9 @@ public class BroadcastUnit extends PApplet {
         for (int c = 0; c < random.nextInt(9) + 1; c++) {
             int pos = random.nextInt(signature.length());
             String one = signature.substring(pos, pos + 1);
+            textSize(12 + random.nextInt(multiplier));
             text(one, random.nextInt(WIDTH), random.nextInt(HEIGHT));
+            textSize(12);
         }
     }
 

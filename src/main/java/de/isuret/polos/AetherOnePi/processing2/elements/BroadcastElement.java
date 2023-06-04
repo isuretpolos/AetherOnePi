@@ -28,6 +28,7 @@ public class BroadcastElement implements IDrawableElement {
     };
     private AetherOneUI p;
     private String tabName;
+    private Integer multiplier;
     private Integer seconds;
     private String signature;
     private String target;
@@ -49,11 +50,17 @@ public class BroadcastElement implements IDrawableElement {
     private boolean playingSound = false;
     private boolean dynamicAdjustments = false;
 
-    public BroadcastElement(AetherOneUI p, String tabName, int seconds, String signature) {
+    public BroadcastElement(AetherOneUI p, String tabName, int seconds, String signature, Integer multiplier) {
         this.p = p;
         this.seconds = seconds;
         this.signature = signature;
         this.tabName = tabName;
+
+        if (multiplier != null) {
+            this.multiplier = multiplier;
+        } else {
+            this.multiplier = 1;
+        }
 
         try {
             random2 = SecureRandom.getInstanceStrong();
@@ -519,7 +526,9 @@ public class BroadcastElement implements IDrawableElement {
         for (int c = 0; c < random.nextInt(9) + 1; c++) {
             int pos = random.nextInt(signature.length());
             String one = signature.substring(pos, pos + 1);
+            p.textSize(20 + random.nextInt(multiplier));
             p.text(one, random.nextInt(width) + offsetX, random.nextInt(height) + offsetY);
+            p.textSize(12);
         }
     }
 

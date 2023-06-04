@@ -270,7 +270,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         if (AetherOneConstants.BROADCAST_IMAGE.equals(name)) {
-            BroadcastUnit.startBroadcastUnit(60, "energy", p.getClipBoardImages());
+            BroadcastUnit.startBroadcastUnit(60, "energy", p.getClipBoardImages(), p.getMultiplier());
             return;
         }
 
@@ -446,7 +446,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         for (RateObject rateObject : rateObjectList) {
             p.getGuiElements().addBroadcastElement(
                     rateObject.getNameOrRate() + " " + rateObject.getEnergeticValue() + " " +
-                            rateObject.getPotency(), rateObject.getGv() - gv);
+                            rateObject.getPotency(), rateObject.getGv() - gv, p.getMultiplier());
         }
     }
 
@@ -628,10 +628,10 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                         if (duration.contains("H")) {
                             seconds = Integer.parseInt(duration.replace("H", "")) * 3600;
                         }
-                        p.getGuiElements().addBroadcastElement(signature, seconds);
+                        p.getGuiElements().addBroadcastElement(signature, seconds, p.getMultiplier());
                     } else {
                         log.info(line);
-                        p.getGuiElements().addBroadcastElement(line, 20);
+                        p.getGuiElements().addBroadcastElement(line, 20, p.getMultiplier());
                     }
                 }
             } catch (IOException e) {
@@ -648,7 +648,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         // The counterCheck should top this value!
         Integer gvOfOperator = p.checkGeneralVitalityValue();
 
-        p.getGuiElements().addBroadcastElement(signature, 10, true, gvOfOperator);
+        p.getGuiElements().addBroadcastElement(signature, 10, true, gvOfOperator, p.getMultiplier());
 
         BroadCastData broadCastData = new BroadCastData();
         broadCastData.setSignature(signature);
@@ -667,17 +667,17 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         if (p.getCaseObject().getName() != null) {
             sessionName = p.getCaseObject().getName();
         }
-        String signature = sessionName + " " + ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).getText();
+        String signature = sessionName + " " + ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SIGNATURE)).getText();
         Integer seconds = 60;
 
         try {
-            seconds = Integer.parseInt(((Textfield) p.getGuiElements().getCp5().get("SECONDS")).getText());
+            seconds = Integer.parseInt(((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SECONDS)).getText());
 
             if (settings.getBoolean(SettingsScreen.BROADCAST_DELTA_TIME, false)) {
                 seconds -= p.getGeneralVitality();
             }
         } catch (Exception e) {
-            ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
+            ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SECONDS)).setText("60");
         }
 
         // replaced by the embedded BroadcastElement
@@ -693,9 +693,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         boolean broadCastEmbedded = settings.getBoolean(SettingsScreen.BROADCAST_EMBEDDED, true);
 
         if (broadCastEmbedded) {
-            p.getGuiElements().addBroadcastElement(signature, seconds);
+            p.getGuiElements().addBroadcastElement(signature, seconds, p.getMultiplier());
         } else {
-            BroadcastUnit.startBroadcastUnit(seconds, signature, p.getClipBoardImages());
+            BroadcastUnit.startBroadcastUnit(seconds, signature, p.getClipBoardImages(), p.getMultiplier());
         }
     }
 
@@ -714,10 +714,10 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         p.getResonatedList().clear();
         p.getResonanceList().clear();
         p.setTitle(AetherOneConstants.TITLE + p.getTitleAffix() + " - New Case ... enter name and description");
-        ((Textfield) p.getGuiElements().getCp5().get("NAME")).setText("");
-        ((Textfield) p.getGuiElements().getCp5().get("DESCRIPTION")).setText("");
-        ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText("");
-        ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
+        ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.NAME)).setText("");
+        ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.DESCRIPTION)).setText("");
+        ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SIGNATURE)).setText("");
+        ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SECONDS)).setText("60");
         recurringRateList.clear();
         p.setAnalysisResult(null);
         p.setGeneralVitality(0);
@@ -905,9 +905,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
             String text = getTextFromClipboard();
             if (text == null) return;
-            ((Textfield) p.getGuiElements().getCp5().get("SIGNATURE")).setText(text);
-            ((Textfield) p.getGuiElements().getCp5().get("SECONDS")).setText("60");
-            return;
+            ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SIGNATURE)).setText(text);
+            ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SECONDS)).setText("60");
         }
     }
 

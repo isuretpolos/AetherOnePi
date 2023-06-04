@@ -36,6 +36,7 @@ public class AetherOneConstants {
     public static final String STOP_ALL = "STOP ALL";
     public static final String SIGNATURE = "SIGNATURE";
     public static final String SECONDS = "SECONDS";
+    public static final String MULTIPLIER = "MULTIPLIER";
     public static final String DEFAULT = "default";
     public static final String PI = "PI";
     public static final String WEBCAM_LIST_SHOW = "SHOW WEBCAMS";
