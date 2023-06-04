@@ -6,10 +6,10 @@
     <artifactId>AetherOnePi</artifactId>
     <version>${aether.version}</version>
     <name>AetherOnePi</name>
-    <description>Open Source Radionics for the Rasperry Pi</description>
+    <description>Open Source Radionics</description>
 
     <properties>
-        <aether.version>1.3.3</aether.version>
+        <aether.version>1.3.4</aether.version>
         <java.version>1.8</java.version>
         <commons-io.version>2.7</commons-io.version>
         <pi4j-core.version>1.2</pi4j-core.version>

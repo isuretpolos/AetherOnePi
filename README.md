@@ -1,49 +1,47 @@
 ![Logo](src/main/resources/icons/aetherOnePi.png)
 
 # AetherOnePi
-## Open Source Radionics for the Raspberry Pi
+## Open Source Radionics
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
 
 ## Java 1.8 runtime
-You need Java 1.8 as a runtime. Download it from [java.com](https://www.java.com/en/download/) and install it before you run the AetherOnePi application on your PC or Raspberry Pi.
+You need Java 1.8 as a runtime. Download it from [java.com](https://www.java.com/en/download/) and install it before you run the AetherOnePi application on your PC (Windows / Linux), Mac or Raspberry Pi.
 
 ## Download
-Download [Version 1.3.3](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.3.3) (Standalone Client)
+Download [Version 1.3.4](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.3.4) (Standalone Client)
 
 or download the Beta which is build after each change on the [Action tab](https://github.com/isuretpolos/AetherOnePi/actions). Just click on the Build Element and in the upper right corner you will see a Artifact Download Button if the build was a success.
 
-Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with Thalia on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
+Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
+- 2023-06-04 **Power-Switch** button, Load single image from file, Overlay Setting
 - 2023-05-14 Broadcast Image(s)
 - 2023-05-11 Bugfixes, Auto Mode enhanced, better feedback
 - 2023-04-20 Some bugfixes and Clarke Analysis Count feature
-- 2020-06-12 Divided project into modules (not really a new feature, but necessary)
-- 2020-05-23 Image Layers Analysis
-- 2020-05-21 [Hotbits from WebCam](https://radionics.home.blog/2020/05/21/hotbits-from-webcam-for-the-aetheronepi/)
-- 2020-05-16 General Vitality check for the virtual StickPad
-- 2020-05-01 Training Mode
-- 2020-12-18 Broadcast Mix button, Settings for broadcast only delta of necessary time between rate and GV of target
-- 2020-12-23 Level analysis  
-- 2021-05-16 Auto Broadcasting Mode
-- 2021-07-12 Binaural sounds when rate resonates during broadcast, some minor adjustments and improvements
-- 2021-07-14 Clinical symptoms comparing with the entire result (only for Clarke Materia Medica)
-- 2021-12-04 **Webcam** for hotbits integrated in AetherOnePi application
-- 2022-02-14 Dynamic adjustments feature (checks for GV after broadcast of a rate and reinserts it into the queue if necessary)
 - 2022-03-12 Resonance List Dialog
+- 2022-02-14 Dynamic adjustments feature (checks for GV after broadcast of a rate and reinserts it into the queue if necessary)
+- 2021-12-04 **Webcam** for hotbits integrated in AetherOnePi application
+- 2021-07-14 Clinical symptoms comparing with the entire result (only for Clarke Materia Medica)
+- 2021-07-12 Binaural sounds when rate resonates during broadcast, some minor adjustments and improvements
+- 2021-05-16 Auto Broadcasting Mode
+- 2020-12-23 Level analysis
+- 2020-12-18 Broadcast Mix button, Settings for broadcast only delta of necessary time between rate and GV of target
+- 2020-05-01 Training Mode
+- 2020-05-16 General Vitality check for the virtual StickPad
+- 2020-05-21 Hotbits from WebCam, proof of concept
+- 2020-05-23 Image Layers Analysis
+- 2020-06-12 Divided project into modules (not really a new feature, but necessary)
 
 # Resources
-## Documentation
-- [Documentation](documentation/documentation.md)
-- [AetherOnePi Standalone Handbook for v1.1](https://radionics.home.blog/2020/01/13/aetheronepi-standalone-handbook-for-v1-1/)
-## Blogs
-- [Radionics](https://radionics.home.blog)
-- [Isuret Polos](https://isuretpolos.wordpress.com)
-- [Open Source Radionics on Tumblr](https://aetheronepi.tumblr.com)
-## Communities
-- [Open Source Radionics](https://vk.com/aetherone)
-- [Youtube](https://www.youtube.com/channel/UCFVTNpzycFUoF4h0CbRS92Q)
+## AetherOnePi User Manual
+Documentation and tutorials: **[AetherOnePi User Manual](https://radionics.home.blog/aetheonepi/)**
+
+## Blogs and Communities
+- [Radionics, The Science of Nonlocality and Synchronicity](https://radionics.home.blog)
+- [Open Source Radionics on Youtube](https://www.youtube.com/@opensourceradionics)
+- [Digital Radionics on Reddit](https://www.reddit.com/r/digitalradionics/)
 
 # Participation
 Please note that we have a strict [code of conduct](CODE_OF_CONDUCT.md) in our open source radionics project.

@@ -18,6 +18,8 @@ public class SettingsScreen implements IDrawableElement, MouseClickObserver {
     public static final String ANALYSIS_VERY_HIGH_MAX_HIT = "analysis.very.high.max.hit";
     public static final String PLAY_SOUND = "play.binaural.sound";
     public static final String DYNAMIC_ADJUSTMENTS = "dynamic.adjustments";
+    public static final String POWER_SWITCH = "power.switch";
+    public static final String OVERLAY = "use.overlay";
     private AetherOneUI p;
     private boolean mouseClicked = false;
 
@@ -32,6 +34,8 @@ public class SettingsScreen implements IDrawableElement, MouseClickObserver {
         settings.getBoolean(ANALYSIS_VERY_HIGH_MAX_HIT, false);
         settings.getBoolean(PLAY_SOUND, false);
         settings.getBoolean(DYNAMIC_ADJUSTMENTS, false);
+        settings.getBoolean(POWER_SWITCH, false);
+        settings.getBoolean(OVERLAY, true);
         AetherOnePiProcessingConfiguration.saveAllSettings();
     }
 

@@ -246,6 +246,24 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
+        if (AetherOneConstants.LOAD_IMAGE.equals(name)) {
+            JFileChooser chooser = new JFileChooser();
+            chooser.setCurrentDirectory(new File("data_images"));
+            FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                    "Images", "jpg","jpeg","png","tiff","bmp");
+            chooser.setFileFilter(filter);
+            int returnVal = chooser.showOpenDialog(null);
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+
+                File imageFile = chooser.getSelectedFile();
+                log.info("You chose to open this image: " +
+                        imageFile.getAbsolutePath());
+
+                p.getClipBoardImages().add(p.loadImage(imageFile.getAbsolutePath()));
+            }
+            return;
+        }
+
         if (AetherOneConstants.CLEAR_IMAGE.equals(name)) {
             p.getClipBoardImages().clear();
             return;

@@ -436,7 +436,6 @@ public class BroadcastElement implements IDrawableElement {
     private void paintPoint(int offsetX, int offsetY, int width, int height) {
         p.stroke(random.nextInt(255), random.nextInt(255), random.nextInt(255));
         p.fill(random.nextInt(255), random.nextInt(255), random.nextInt(255));
-
         p.point(random.nextInt(width) + offsetX, random.nextInt(height) + offsetY);
     }
 

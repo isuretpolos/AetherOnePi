@@ -60,7 +60,7 @@ public class GuiElements {
             e.printStackTrace();
         }
 
-        whiteStyleColor.setBackground(p.color(32,156,238))
+        whiteStyleColor.setBackground(p.color(0, 84, 173))
                 .setForeground(p.color(0))
                 .setCaptionLabel(p.color(255))
                 .setValueLabel(p.color(255))
@@ -84,9 +84,9 @@ public class GuiElements {
 
         cp5.getTab("default")
                 .activateEvent(true)
-                .setColorBackground(p.color(32,156,238))
+                .setColorBackground(p.color(29, 0, 61))
                 .setColorLabel(p.color(255))
-                .setColorActive(p.color(0,166,70))
+                .setColorActive(p.color(56, 0, 117))
                 .setColorForeground(p.color(0))
                 .setLabel("DASHBOARD")
                 .setId(1)
@@ -130,9 +130,9 @@ public class GuiElements {
     public GuiElements addTab(String name) {
         PFont font = fonts.get("default");
         cp5.addTab(name)
-                .setColorBackground(p.color(32,156,238))
+                .setColorBackground(p.color(61, 0, 47))
                 .setColorLabel(p.color(255))
-                .setColorActive(p.color(0,166,70))
+                .setColorActive(p.color(118, 0, 161))
                 .setColorForeground(p.color(0))
                 .setId(2)
                 .activateEvent(true)
@@ -292,6 +292,9 @@ public class GuiElements {
         if (p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false)) {
             p.fill(0,255,0);
             p.text("DYNAMIC ADJUSTMENTS", 22,700);
+        } else if (p.getSettings().getBoolean(SettingsScreen.POWER_SWITCH, false)) {
+            p.fill(0,255,0);
+            p.text("POWER SWITCH ON !!!", 22,700);
         }
 
         if (p.getAutoMode()) {
@@ -410,7 +413,7 @@ public class GuiElements {
                 p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
             }
 
-            // Dynamic adjustments happens here
+            // Dynamic adjustments happens here (disable it for the POWER_SWITCH)
             if (p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false)) {
 
                 int gvTarget = p.getGeneralVitality();
@@ -438,14 +441,19 @@ public class GuiElements {
                 } else {
                     System.out.println(gvRate + " > " + gvTarget + " === " + broadcastElement.getSignature());
                 }
+            } else if (p.getSettings().getBoolean(SettingsScreen.POWER_SWITCH, false)) {
+                BroadcastElement reBroadcastElement = new BroadcastElement(p, "BROADCAST", 100, broadcastElement.getSignature());
+                broadcastQueueList.add(reBroadcastElement);
             }
         }
         drawableElementList.removeAll(removeElements);
 
         // Overlay
-        p.noStroke();
-        p.fill(10, 0, 30, foregroundOverlayAlpha);
-        p.rect(0, 0, p.width, p.height);
+        if (p.getSettings().getBoolean(SettingsScreen.OVERLAY, false)) {
+            p.noStroke();
+            p.fill(10, 0, 30, foregroundOverlayAlpha);
+            p.rect(0, 0, p.width, p.height);
+        }
     }
 
     private void handleAutoMode() {
