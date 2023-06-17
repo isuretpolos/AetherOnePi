@@ -673,7 +673,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         try {
             seconds = Integer.parseInt(((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SECONDS)).getText());
 
-            if (settings.getBoolean(SettingsScreen.BROADCAST_DELTA_TIME, false)) {
+            if (settings.getBoolean(SettingsScreen.BROADCAST_DELTA_TIME, false) && p.getGeneralVitality() < seconds) {
                 seconds -= p.getGeneralVitality();
             }
         } catch (Exception e) {
