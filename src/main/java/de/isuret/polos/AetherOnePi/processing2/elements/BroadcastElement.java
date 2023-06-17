@@ -260,7 +260,7 @@ public class BroadcastElement implements IDrawableElement {
         paintRadionicCard(3, 2);
         paintRadionicCardWave(3, 2);
 
-        if (random2.nextInt(6765) >= 6764) {
+        if (random2.nextInt(6765 + multiplier) >= 6764 + multiplier) {
             movingWaveAmount = 1;
 
             boolean foundResonatedRate = false;
