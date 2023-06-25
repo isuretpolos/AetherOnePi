@@ -268,7 +268,12 @@ public class AnalysisService {
         List<String> clinicalSymptoms = new ArrayList<>();
         Map<String, List<Symptom2Remedies>> otherRemediesClinicalSymptoms = new HashMap<>();
         Map<String, List<Symptom2Remedies>> otherRemediesClinicalSymptoms2 = new HashMap<>();
+        Map<String, String> remedy2url = new HashMap<>();
         TreeMap<String, Integer> symptomsCounter = new TreeMap<>();
+
+        for (RateObject rateObject : analysisResult.getRateObjects()) {
+            remedy2url.put(rateObject.getNameOrRate(), rateObject.getUrl());
+        }
 
         for (Symptom2Remedies symptom2Remedies : clarkeMateriaMedica.getClinicalSymptoms()) {
             // collect the clinical symptoms for the one remedy
@@ -337,11 +342,11 @@ public class AnalysisService {
         String htmlString = html(
                 head(
                         title("Clinical Materia Medica - " + nameOrRate),
-                        link().withRel("stylesheet").withHref("https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css")
+                        link().withRel("stylesheet").withHref("https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css")
                 ),
                 body(
                         div(attrs(".container"),
-                                h1("== " + nameOrRate + " =="),
+                                h1( a().withHref(remedy2url.get(nameOrRate)).withText("== " + nameOrRate + " ==") ),
                                 h3("Clinical symptoms"),
                                 div(attrs(".alert .alert-secondary"),
                                         clinicalSymptoms.stream().map(
@@ -352,7 +357,7 @@ public class AnalysisService {
                                 p("Other remedies that have the clinical symptoms in common:"),
                                 div(otherRemediesClinicalSymptoms.keySet().stream().map(
                                         remedy -> div(attrs(".alert .alert-secondary"),
-                                                h4(remedy),
+                                                h4(a().withHref(remedy2url.get(remedy)).withText(remedy)),
                                                 div(otherRemediesClinicalSymptoms.get(remedy).stream().map(
                                                         symptom2Remedies -> span(attrs(".badge .bg-success"), text(symptom2Remedies.getSymptom()))
                                                 ).toArray(ContainerTag[]::new)),
