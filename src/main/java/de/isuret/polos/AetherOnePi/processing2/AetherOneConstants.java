@@ -28,6 +28,7 @@ public class AetherOneConstants {
     public static final String CLEAR_AREA = "CLEAR AREA";
     public static final String SCAN_FOR_TARGET = "SCAN FOR TARGET";
     public static final String AGRICULTURE = "AGRICULTURE";
+    public static final String CLEAR = "CLEAR";
     public static final String GROUNDING = "GROUNDING";
     public static final String STATISTICS = "STATISTICS";
     public static final String BROADCAST_NOW = "BROADCAST NOW";

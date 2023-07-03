@@ -226,6 +226,11 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
+        if (AetherOneConstants.CLEAR.equals(name)) {
+            clearAetherOnePiUV();
+            return;
+        }
+
         if (AetherOneConstants.GROUNDING.equals(name)) {
             grounding();
             return;
@@ -417,6 +422,10 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             System.out.println(p.getTrainingSignature());
             return;
         }
+    }
+
+    private void clearAetherOnePiUV() {
+        p.setClearUv(70);
     }
 
     private void broadcastMix() {

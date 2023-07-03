@@ -62,6 +62,7 @@ public class AetherOneUI extends PApplet {
     private Integer analysisPointer;
     private Integer gvCounter = 0;
     private Integer generalVitality = 0;
+    private Integer clearUv = 0;
     private Boolean stickPadMode = false;
     private Boolean stickPadGeneralVitalityMode = false;
     private TrayIcon trayIcon;
@@ -233,6 +234,7 @@ public class AetherOneUI extends PApplet {
                 .setInitialBounds(getGuiElements().getX(), posY, 100f, 14f, false)
                 .addButton(AetherOneConstants.GV)
                 .setInitialBounds(border, posY + 465, 120f, 14f, false)
+                .addButton(AetherOneConstants.CLEAR)
                 .addButton(AetherOneConstants.GROUNDING)
                 .addButton(AetherOneConstants.BROADCAST_MIX)
                 .addButton(AetherOneConstants.BROADCAST_AUTO_ON)
@@ -334,6 +336,14 @@ public class AetherOneUI extends PApplet {
 
     public void draw() {
         guiElements.draw();
+
+        if (clearUv > 0) {
+            clearUv = clearUv - 1;
+            if(clearUv % 2 == 0) {
+                fill(238, 0, 255);
+                rect(0, 0, width, height);
+            }
+        }
     }
 
     public void stop() {
@@ -836,5 +846,13 @@ public class AetherOneUI extends PApplet {
         } catch (Exception e) {
             return 1;
         }
+    }
+
+    public Integer getClearUv() {
+        return clearUv;
+    }
+
+    public void setClearUv(Integer clearUv) {
+        this.clearUv = clearUv;
     }
 }

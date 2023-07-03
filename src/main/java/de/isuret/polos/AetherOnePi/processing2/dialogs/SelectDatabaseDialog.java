@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Collections;
 import java.util.List;
 
 public class SelectDatabaseDialog extends JDialog implements ActionListener {
@@ -35,6 +36,9 @@ public class SelectDatabaseDialog extends JDialog implements ActionListener {
 
         dataService.refreshDatabaseList();
         List<String> list = dataService.getAllDatabaseNames();
+        list.sort((o1, o2) -> {
+            return o1.compareTo(o2);
+        });
 
         int y = 0; int x = 0;
 
