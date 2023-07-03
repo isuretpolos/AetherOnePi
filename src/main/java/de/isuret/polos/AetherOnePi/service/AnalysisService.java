@@ -59,6 +59,7 @@ public class AnalysisService {
 
             int max = rateList.size() / 10;
             if (max > MAX_RATELIST_SIZE) max = MAX_RATELIST_SIZE;
+            if (max < 21) max = 21;
             int count = 0;
 
             /**
