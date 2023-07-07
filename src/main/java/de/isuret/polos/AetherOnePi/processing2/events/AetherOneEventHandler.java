@@ -386,7 +386,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("BROADCAST NOW".equals(name)) {
+        if (AetherOneConstants.BROADCAST_NOW.equals(name)) {
             broadcastNow();
             return;
         }

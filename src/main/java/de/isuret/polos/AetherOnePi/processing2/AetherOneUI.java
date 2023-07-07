@@ -357,6 +357,22 @@ public class AetherOneUI extends PApplet {
         }
     }
 
+    public String generateRate(String input) {
+        // Convert user input to a string and remove any whitespace
+        String inputStr = input.trim();
+
+        // Calculate the radionic rate as a numerical value
+        double rate = 0;
+        for (char c : inputStr.toCharArray()) {
+            rate += (int) c;
+        }
+        rate = Math.sqrt(rate);
+
+        // Format the radionic rate as a string and return it
+        String rateStr = String.format("%.2f", rate);
+        return rateStr;
+    }
+
     private void prepareExitHandler() {
 
         Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {

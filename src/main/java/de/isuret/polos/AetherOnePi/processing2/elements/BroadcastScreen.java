@@ -1,5 +1,7 @@
 package de.isuret.polos.AetherOnePi.processing2.elements;
 
+import controlP5.Textfield;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 
@@ -13,9 +15,12 @@ public class BroadcastScreen implements IDrawableElement, MouseClickObserver {
 
     @Override
     public void draw() {
-//        p.noStroke();
-//        p.fill(198, 220, 255, 50f);
-//        p.rect(40,120,1205,410);
+        p.fill(255);
+
+        String signature = ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SIGNATURE)).getText();
+        if (signature.length() > 0) {
+            p.text("Rate: " + p.generateRate(signature), 900, 90);
+        }
     }
 
     @Override
