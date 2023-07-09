@@ -371,6 +371,11 @@ public class GuiElements {
                     text = text.substring(0,20);
                 }
                 p.text(text, 205,570 + (15 * countOrderBroadcastElements));
+
+                if (p.mouseX >= 205 && p.mouseX < 205 + 200 && p.mouseY >= 570 + (15 * countOrderBroadcastElements) - 12 && p.mouseY < 570 + (15 * countOrderBroadcastElements)) {
+                    p.text(broadcastElement.getSignature(), 40,530);
+                }
+
                 countOrderBroadcastElements++;
                 p.fill(255);
                 p.rect(340,550 + (15 * countOrderBroadcastElements),broadcastElement.WIDTH, 5);
