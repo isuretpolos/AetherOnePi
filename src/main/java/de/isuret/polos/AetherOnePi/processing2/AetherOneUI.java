@@ -19,6 +19,7 @@ import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
 import io.javalin.http.staticfiles.Location;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,6 +76,10 @@ public class AetherOneUI extends PApplet {
     private List<ResonanceObject> resonanceList = new ArrayList<>();
     private AetherOneServer aetherOneServer;
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
+
+    private List<Rate> watchlist = new ArrayList<>();
+    public AnalysisResult watchlistAnalysis;
+    public boolean watchlistRequiresAttention = false;
 
     public static void main(String[] args) {
         AetherOneUI.main(AetherOneUI.class.getName());
@@ -156,6 +161,7 @@ public class AetherOneUI extends PApplet {
     }
 
     public void setup() {
+
         background(200);
 
         AetherOneUI ui = this;
@@ -332,6 +338,50 @@ public class AetherOneUI extends PApplet {
 
         hotbitsHandler.loadHotbits();
         aetherOneServer = new AetherOneServer(Location.CLASSPATH, this);
+
+        File watchlistFile = new File("watchlist.csv");
+
+        if (watchlistFile.exists()) {
+            try {
+                List<String> lines = FileUtils.readLines(watchlistFile, "UTF-8");
+                lines.stream().forEach(s -> {
+                    Rate rate = new Rate();
+
+                    if (s.contains(",")) {
+                        String[] parts = s.split(",");
+                        for (int i = 0; i < parts.length; i++)
+                            if (i == 0) {
+                                rate.setName(parts[i]);
+                            } else {
+                                Rate subRate = new Rate();
+                                subRate.setName(parts[i]);
+                                rate.getSubRates().add(subRate);
+                            }
+                    } else {
+                        rate.setName(s);
+                    }
+
+                    watchlist.add(rate);
+                });
+
+                logger.info("Reading watchlist.csv successful! " + watchlist.size() + " entries read!");
+                watchlistAnalysis = analyseService.analyseRateList(watchlist);
+                watchlistAnalysis.getRateObjects().forEach( r -> {
+                    r.setGv(checkGeneralVitalityValue());
+                });
+                Collections.sort(watchlistAnalysis.getRateObjects(), (o1, o2) -> {
+                    return o1.getGv().compareTo(o2.getGv());
+                });
+                for (RateObject rate : watchlistAnalysis.getRateObjects()) {
+                    if (rate.getGv() < 500) {
+                        watchlistRequiresAttention = true;
+                        break;
+                    }
+                }
+            } catch (IOException e) {
+                logger.error("Error reading watchlist CSV file!", e);
+            }
+        }
     }
 
     public void draw() {
@@ -339,7 +389,7 @@ public class AetherOneUI extends PApplet {
 
         if (clearUv > 0) {
             clearUv = clearUv - 1;
-            if(clearUv % 2 == 0) {
+            if (clearUv % 2 == 0) {
                 fill(238, 0, 255);
                 rect(0, 0, width, height);
             }

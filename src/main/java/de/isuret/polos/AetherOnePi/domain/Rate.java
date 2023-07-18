@@ -1,5 +1,8 @@
 package de.isuret.polos.AetherOnePi.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A rate from a database
  */
@@ -26,6 +29,8 @@ public class Rate {
     private String jsonObject;
 
     private byte[] base64File;
+
+    private List<Rate> subRates = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -89,5 +94,9 @@ public class Rate {
 
     public void setBase64File(byte[] base64File) {
         this.base64File = base64File;
+    }
+
+    public List<Rate> getSubRates() {
+        return subRates;
     }
 }
