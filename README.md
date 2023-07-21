@@ -1,21 +1,25 @@
-![Logo](src/main/resources/icons/aetherOnePi.png)
-
-# AetherOnePi
-## Open Source Radionics
+# AetherOnePi ![Logo](src/main/resources/icons/aetherOnePi.png)
+Open Source Radionics
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
+
+## User manual (READ IT)
+**Please read first the [AetherOnePi User Manual](https://radionics.home.blog/aetheonepi/)**, because it explains **step by step** the most important features and techniques for analysis and broadcasting.
+
+A video series explaining the software will follow.
 
 ## Java 1.8 runtime
 You need Java 1.8 as a runtime. Download it from [java.com](https://www.java.com/en/download/) and install it before you run the AetherOnePi application on your PC (Windows / Linux), Mac or Raspberry Pi.
 
 ## Download
-Download [Version 1.3.5](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.3.5) (Standalone Client)
+Download [Version 1.3.6](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.3.6)
 
 or download the Beta which is build after each change on the [Action tab](https://github.com/isuretpolos/AetherOnePi/actions). Just click on the Build Element and in the upper right corner you will see a Artifact Download Button if the build was a success.
 
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
+- 2034-07-21 watchlist.csv, notification setting, calculate rate from signature
 - 2023-07-03 CLEAR button, minor Bugfixes
 - 2023-06-04 **Power-Switch** button, Load single image from file, Overlay Setting
 - 2023-05-14 Broadcast Image(s)
@@ -35,9 +39,7 @@ Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [
 - 2020-05-23 Image Layers Analysis
 - 2020-06-12 Divided project into modules (not really a new feature, but necessary)
 
-# Resources
-## AetherOnePi User Manual
-Documentation and tutorials: **[AetherOnePi User Manual](https://radionics.home.blog/aetheonepi/)**
+# More Resources
 
 ## Blogs and Communities
 - [Radionics, The Science of Nonlocality and Synchronicity](https://radionics.home.blog)

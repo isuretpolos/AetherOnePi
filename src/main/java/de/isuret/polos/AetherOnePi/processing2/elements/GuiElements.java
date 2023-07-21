@@ -25,7 +25,7 @@ public class GuiElements {
     private final int border = 30;
 
     private AetherOneUI p;
-    private ControlP5 cp5;
+    public ControlP5 cp5;
     private CColor whiteStyleColor = new CColor();
     private CColor greenStyleColor = new CColor();
     private CColor textFieldStyleColor = new CColor();
@@ -416,7 +416,7 @@ public class GuiElements {
             BroadcastElement broadcastElement = (BroadcastElement) removeElements.get(0);
 
             // As long the broadcast element is inside a counterCheck loop, don't display a tray message
-            if (broadcastElement.isStop() == true) {
+            if (broadcastElement.isStop() == true && p.getSettings().getBoolean(SettingsScreen.NOTIFICATION, false)) {
                 p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
             }
 

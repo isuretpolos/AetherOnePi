@@ -708,7 +708,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
     }
 
-    private void clearForNewCase() {
+    public void clearForNewCase() {
 
         saveResonanceProtocol();
 
@@ -1026,7 +1026,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
     }
 
-    private void cleanAnalysisForNewGvCheck() {
+    public void cleanAnalysisForNewGvCheck() {
         p.setGvCounter(0);
 
         // set everything to zero
