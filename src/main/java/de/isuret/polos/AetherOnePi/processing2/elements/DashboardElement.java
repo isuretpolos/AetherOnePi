@@ -38,7 +38,7 @@ public class DashboardElement implements IDrawableElement {
             p.line(600,y+2,1200,y+2);
 
             for (RateObject rate : p.watchlistAnalysis.getRateObjects()) {
-                if (rate.getGv() < 900) {
+                if (rate.getGv() < 500) {
                     y += 20;
                     //p.noFill();
                     if (p.mouseX > 658 && p.mouseX < 1000 && p.mouseY > y-17 && p.mouseY < y) {
