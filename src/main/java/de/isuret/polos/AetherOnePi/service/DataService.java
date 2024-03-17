@@ -16,6 +16,8 @@ import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class DataService {
@@ -167,6 +169,14 @@ public class DataService {
     public void saveCase(Case caseObject) throws IOException {
 
         ObjectMapper mapper = new ObjectMapper();
+        if (caseObject.getName() == null) {
+            LocalDateTime currentDateTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd-HHmmss");
+            caseObject.setName(currentDateTime.format(formatter));
+        }
+        if (caseObject.getMapDesign().getUuid() == null) {
+            caseObject.getMapDesign().setUuid(UUID.randomUUID());
+        }
         mapper.writeValue(new File("cases/" + caseObject.getName().replaceAll(" ","") + ".json"), caseObject);
     }
 
@@ -229,6 +239,14 @@ public class DataService {
 
     public void setDatabases(Map<String, File> databases) {
         this.databases = databases;
+    }
+
+    public List<String> getDatabaseNames() {
+        List<String> names = new ArrayList<>();
+        for(String name : databases.keySet()) {
+            if (name != null) names.add(name.replace(".txt",""));
+        }
+        return names;
     }
 
     public DashboardInformations getDashboardInformations() {

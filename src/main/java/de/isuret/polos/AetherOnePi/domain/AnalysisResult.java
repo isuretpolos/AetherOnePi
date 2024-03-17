@@ -81,4 +81,21 @@ public class AnalysisResult implements Serializable {
     public void setGeneralVitality(Integer generalVitality) {
         this.generalVitality = generalVitality;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("--- ANALYSIS ---\n");
+        sb.append("General Vitality: ").append(generalVitality).append("\n");
+
+        for (RateObject rateObject : rateObjects) {
+            sb.append(rateObject.getNameOrRate());
+            if (rateObject.getGv() >= generalVitality) {
+                sb.append(" >> ");
+            } else {
+                sb.append(" < ");
+            }
+            sb.append(rateObject.getGv()).append("\n");
+        }
+        return sb.toString();
+    }
 }

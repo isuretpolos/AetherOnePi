@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="#"
        [class.serverOnline]="serverOnline"
-       [class.serverOffline]="!serverOnline">AetherOnePi</a> <span class="serverOfflineInfo" *ngIf="!serverOnline">is offline</span>
+       [class.serverOffline]="!serverOnline">AetherOnePi</a> - <b style="margin-right: 1rem">{{case.name}}</b> <span class="serverOfflineInfo" *ngIf="!serverOnline">is offline</span>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

@@ -1,1 +1,41 @@
-<p>analysis works!</p>
+<h1>Analysis</h1>
+
+<div class="collapseContainer collapsedRates">
+  <h5 class="collapseHeader" data-bs-toggle="collapse" href="#sorted" role="button" aria-expanded="false" aria-controls="sorted">
+    Rates
+  </h5>
+  <div class="collapse" id="sorted">
+    <button class="btn btn-sm btn-success rate" *ngFor="let rate of rates">{{rate}}</button>
+  </div>
+</div>
+
+<table class="table table-sm table-striped table-hover">
+  <thead>
+  <tr>
+    <th>NO</th>
+    <th>EV</th>
+    <th>RATE/SIGNATURE</th>
+    <th>POTENCY</th>
+    <th>LEVEL</th>
+    <th>HIT</th>
+    <th>GV</th>
+    <th>GV RE</th>
+    <th>REC</th>
+    <th>ACTIONS</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let r of analysis.rateObjects; index as i">
+    <td>{{i + 1}}</td>
+    <td>{{r.energeticValue}}</td>
+    <td>{{r.nameOrRate}}</td>
+    <td>{{r.potency}}</td>
+    <td>{{r.level}}</td>
+    <td></td>
+    <td>{{r.gv}}</td>
+    <td>{{r.recurringGeneralVitality}}</td>
+    <td>{{r.recurring}}</td>
+    <td><button class="btn btn-sm btn-success" (click)="broadcast(r)">BROADCAST</button> </td>
+  </tr>
+  </tbody>
+</table>

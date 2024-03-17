@@ -6,7 +6,6 @@ import processing.core.PImage;
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;

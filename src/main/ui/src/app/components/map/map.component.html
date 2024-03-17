@@ -1,0 +1,17 @@
+<div id="map" style="top: 0px; left:0px;width: 100%; height: 100%; position:fixed; background-color: #125699"></div>
+<div style="position: fixed; top:10px; left: 10px;">
+  <button class="btn btn-sm btn-primary toolbar-button" (click)="navigate('HOME')" title="BACK TO HOME"><i-bs name="house-fill"></i-bs></button>
+  <button class="btn btn-sm btn-info toolbar-button" (click)="setHomeCoordinates()" title="SET HOME XY"><i-bs name="x-square"></i-bs></button>
+  <button class="btn btn-sm btn-primary toolbar-button" (click)="draw('Polygon')" title="DRAW A POLYGON OR MAP">POLY <i-bs name="pencil-fill"></i-bs></button>
+  <button class="btn btn-sm btn-primary toolbar-button" (click)="draw('LineString')">LINE <i-bs name="pencil"></i-bs></button>
+  <button class="btn btn-sm btn-primary toolbar-button" (click)="draw('Circle')">CIRCLE <i-bs name="dot"></i-bs></button>
+  <button *ngIf="modeSelected != 'edit'" class="btn btn-sm btn-warning toolbar-button" (click)="editFeature()" title="EDIT AN EXISTING MAP"><i-bs name="pencil-square"></i-bs></button>
+  <!--<button class="btn btn-sm btn-info toolbar-button" (click)="setNavigateMode()" title="NAVIGATION MODE (NO EDIT)"><i class="bi bi-eye"></i></button>
+  <button *ngIf="featureModified && territoryNumberSet()" class="btn btn-sm btn-warning toolbar-button" (click)="saveMap()">SAVE MODIFICATION!</button>
+  <button *ngIf="featureModified && !territoryNumberSet()" class="btn btn-sm btn-warning toolbar-button" disabled>SAVE MODIFICATION!</button>
+  <button *ngIf="!hideImportedFeature" (click)="hideImportedFeature = !hideImportedFeature; vectorLayer.getSource().changed();" class="btn btn-sm btn-info toolbar-button" title="hide outline polygon"><i class="bi bi-easel-fill"></i></button>
+  <button *ngIf="hideImportedFeature" (click)="hideImportedFeature = !hideImportedFeature; vectorLayer.getSource().changed();" class="btn btn-sm btn-primary toolbar-button" title="show outline polygon"><i class="bi bi-easel2"></i></button>
+  <button *ngIf="!showOsmData" (click)="showOsmData = !showOsmData; vectorLayer.getSource().changed();" class="btn btn-sm btn-success toolbar-button" title="show OsmData"><i class="bi bi-easel-fill"></i></button>
+  <button *ngIf="showOsmData" (click)="showOsmData = !showOsmData; vectorLayer.getSource().changed();" class="btn btn-sm btn-primary toolbar-button" title="hide OsmData"><i class="bi bi-easel2"></i></button>
+  <button class="btn btn-sm btn-danger toolbar-button" (click)="deleteMap()" title="DELETE MAP"><i class="bi bi-trash3-fill"></i></button>-->
+</div>

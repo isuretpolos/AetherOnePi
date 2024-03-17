@@ -7,7 +7,6 @@ import org.apache.commons.io.IOUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 
 public class CaseToHtml {
 

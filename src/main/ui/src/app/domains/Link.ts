@@ -1,5 +1,5 @@
 export class Link {
-  name:string;
+  name:string = "";
   active:boolean=false;
   color:string="#ff0000";
 }

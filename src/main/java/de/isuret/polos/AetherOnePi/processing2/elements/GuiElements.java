@@ -2,12 +2,10 @@ package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import controlP5.CColor;
 import controlP5.ControlP5;
-import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Rate;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.Settings;
-import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import processing.core.PFont;
@@ -17,8 +15,8 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 
 public class GuiElements {
 

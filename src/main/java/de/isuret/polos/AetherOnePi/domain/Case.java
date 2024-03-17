@@ -1,5 +1,7 @@
 package de.isuret.polos.AetherOnePi.domain;
 
+import de.isuret.polos.AetherOnePi.domain.osm.MapDesign;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -21,6 +23,7 @@ public class Case {
     private String description;
     private Calendar created;
     private Calendar lastChange;
+    private MapDesign mapDesign;
 
     /**
      * A list of sessions / actions
@@ -42,6 +45,14 @@ public class Case {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public MapDesign getMapDesign() {
+        return mapDesign;
+    }
+
+    public void setMapDesign(MapDesign mapDesign) {
+        this.mapDesign = mapDesign;
     }
 
     public String getDescription() {

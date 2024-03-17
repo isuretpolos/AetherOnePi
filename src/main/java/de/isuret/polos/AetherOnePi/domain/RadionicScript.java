@@ -2,7 +2,10 @@ package de.isuret.polos.AetherOnePi.domain;
 
 import de.isuret.polos.AetherOnePi.exceptions.RadionicsScriptException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class RadionicScript {

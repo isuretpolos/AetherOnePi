@@ -18,7 +18,7 @@ export class WeaverComponent implements OnInit {
   weavingDublettes:boolean = false;
   stillTyping:boolean = false;
   colorPalette: string[] = [];
-  @ViewChild('weaverText') weaverText: ElementRef;
+  @ViewChild('weaverText') weaverText: ElementRef | undefined;
 
   constructor(private aetheOnePiService:AetherOnePiService) { }
 
@@ -28,13 +28,13 @@ export class WeaverComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.weaverText.nativeElement.focus();
+    this.weaverText?.nativeElement.focus();
   }
 
   weave() {
 
     this.stillTyping = true;
-    if (this.text.getRawValue().length == 0) return;
+    if (this.text.getRawValue()?.length == 0) return;
     if (this.weavingVowels || this.weavingDublettes) {
       console.log("still weaving")
       return;
@@ -58,37 +58,40 @@ export class WeaverComponent implements OnInit {
     }
 
     let t = this.text.getRawValue();
-    let beginnLength = t.length;
-    t = this.removeFirstVowelFromString(t);
-
-    if (t.length != beginnLength) {
-      this.text.setValue(t);
-      setTimeout(() => {
-        this.weavingProcessing();
-      }, 250);
-    } else {
-
-      this.weavingVowels = false;
-      this.weavingDublettes = true;
-      t = this.removeFirstDoubleCharacter(t);
+    let beginnLength = t?.length;
+    if (t) {
+      t = this.removeFirstVowelFromString(t);
 
       if (t.length != beginnLength) {
-        console.log(t)
         this.text.setValue(t);
         setTimeout(() => {
           this.weavingProcessing();
         }, 250);
       } else {
-        this.weavingDublettes = false;
-        if (t.length > 0) {
-          this.weavingLines.push(this.transformToWeaverLine(this.removeNonLetterNonVowel(t).toLowerCase()));
-          this.text.setValue('')
+
+        this.weavingVowels = false;
+        this.weavingDublettes = true;
+        t = this.removeFirstDoubleCharacter(t);
+
+        if (t.length != beginnLength) {
+          console.log(t)
+          this.text.setValue(t);
+          setTimeout(() => {
+            this.weavingProcessing();
+          }, 250);
+        } else {
+          this.weavingDublettes = false;
+          if (t.length > 0) {
+            this.weavingLines.push(this.transformToWeaverLine(this.removeNonLetterNonVowel(t).toLowerCase()));
+            this.text.setValue('')
+          }
         }
       }
     }
   }
 
   private removeFirstVowelFromString(input: string): string {
+
     console.log("remove first vowel: " + input)
     const vowelsRegex = /[aeiou]/i; // Regular expression to match any vowel (case-insensitive)
 
@@ -170,6 +173,7 @@ export class WeaverComponent implements OnInit {
     this.weavingLines.forEach( w => {
       let broadcastRequest = new BroadcastRequest();
       broadcastRequest.signature = w.signature;
+      // @ts-ignore
       broadcastRequest.seconds = +this.seconds.getRawValue();
       this.aetheOnePiService.broadcast(broadcastRequest).subscribe(()=>{
         console.log("broadcasting")

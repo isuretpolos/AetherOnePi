@@ -9,7 +9,7 @@ import {Settings} from "../../domains/Settings";
 })
 export class SettingsComponent implements OnInit {
 
-  settings:Settings;
+  settings:Settings = new Settings();
   constructor(private aetheOnePiService:AetherOnePiService) { }
 
   ngOnInit(): void {

@@ -144,4 +144,19 @@ public class RateObject {
     public void setResonateCounter(Integer resonateCounter) {
         this.resonateCounter = resonateCounter;
     }
+
+    @Override
+    public String toString() {
+        return "RateObject {\n" +
+                "  energeticValue=" + energeticValue +
+                "\n  nameOrRate='" + nameOrRate + '\'' +
+                "\n  url='" + url + '\'' +
+                "\n  gv=" + gv +
+                "\n  recurring=" + recurring +
+                "\n  recurringGeneralVitality=" + recurringGeneralVitality +
+                "\n  level=" + level +
+                "\n  potency='" + potency + '\'' +
+                "\n  resonateCounter=" + resonateCounter +
+                "\n}";
+    }
 }

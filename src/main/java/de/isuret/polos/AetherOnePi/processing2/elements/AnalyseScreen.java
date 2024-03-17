@@ -270,7 +270,9 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
             p.stroke(255,0,0);
             p.fill(255);
-            p.text(highestGV, 764, highestY);
+            if (highestGV != null && highestY != null) {
+                p.text(highestGV, 764, highestY);
+            }
         }
 
         if (mouseClickOccurred) {

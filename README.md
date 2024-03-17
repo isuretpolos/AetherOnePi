@@ -12,14 +12,16 @@ A video series explaining the software will follow.
 You need Java 1.8 as a runtime. Download it from [java.com](https://www.java.com/en/download/) and install it before you run the AetherOnePi application on your PC (Windows / Linux), Mac or Raspberry Pi.
 
 ## Download
-Download [Version 1.3.6](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.3.6)
+Download [Version 1.3.7](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.3.7)
 
 or download the Beta which is build after each change on the [Action tab](https://github.com/isuretpolos/AetherOnePi/actions). Just click on the Build Element and in the upper right corner you will see a Artifact Download Button if the build was a success.
 
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
-- 2034-07-21 watchlist.csv, notification setting, calculate rate from signature
+- 2024-03-15 Map Analysis, browser UI
+- 2024-02-17 bugfixes and experimental features that will be revealed in the next version
+- 2023-07-21 watchlist.csv, notification setting, calculate rate from signature
 - 2023-07-03 CLEAR button, minor Bugfixes
 - 2023-06-04 **Power-Switch** button, Load single image from file, Overlay Setting
 - 2023-05-14 Broadcast Image(s)

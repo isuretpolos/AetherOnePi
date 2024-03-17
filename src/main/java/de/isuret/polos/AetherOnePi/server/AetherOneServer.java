@@ -2,10 +2,7 @@ package de.isuret.polos.AetherOnePi.server;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.isuret.polos.AetherOnePi.domain.BroadcastRequest;
-import de.isuret.polos.AetherOnePi.domain.SearchResult;
-import de.isuret.polos.AetherOnePi.domain.SearchResultJsonWrapper;
-import de.isuret.polos.AetherOnePi.domain.Settings;
+import de.isuret.polos.AetherOnePi.domain.*;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import io.javalin.Javalin;
@@ -17,6 +14,7 @@ import java.util.List;
 
 public class AetherOneServer {
 
+    private int port = 80;
     private AetherOneUI p;
     private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -51,7 +49,6 @@ public class AetherOneServer {
         materiaMedicaSearchEngine.init();
 
         Javalin app;
-        int port = 80;
 
         while (true) {
             try {
@@ -77,6 +74,17 @@ public class AetherOneServer {
         app.get("settings", ctx -> {
             Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
             ctx.json(settings);
+        });
+
+        app.get("case", ctx -> {
+           ctx.json(p.getCaseObject());
+        });
+
+        app.post("case", ctx -> {
+            String json = ctx.body();
+            Case caseObject = objectMapper.readValue(json, Case.class);
+            p.getDataService().saveCase(caseObject);
+            p.setCaseObject(caseObject);
         });
 
         app.get("materiaMedicaSearch", ctx -> {
@@ -109,10 +117,31 @@ public class AetherOneServer {
             ctx.json(searchResultJsonWrapper);
         });
 
+        app.get("rates", ctx-> ctx.json(p.getDataService().getDatabaseNames()));
+        app.get("analysis", ctx-> ctx.json(p.getAnalysisResult()));
+
         app.post("broadcast", ctx -> {
             String json = ctx.body();
             BroadcastRequest request = objectMapper.readValue(json, BroadcastRequest.class);
             p.getAetherOneEventHandler().broadcast(request.getSignature(), request.getSeconds());
         });
+
+        //--- WebSocket
+
+        app.ws("/analysisUpdate/{id}", ws -> {
+            ws.onConnect(wsConnectContext -> {
+                String id = wsConnectContext.pathParam("id");
+                WebSocketManager.addSession(id, wsConnectContext.session);
+                System.out.println("WebSocket connected for id: " + id);
+            });
+
+            ws.onClose((session) -> {
+                System.out.println("WebSocket closed!");
+            });
+        });
+    }
+
+    public int getPort() {
+        return port;
     }
 }

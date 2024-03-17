@@ -81,11 +81,15 @@ public class AetherOneUI extends PApplet {
     public AnalysisResult watchlistAnalysis;
     public boolean watchlistRequiresAttention = false;
 
+    public static AetherOneUI p;
+
     public static void main(String[] args) {
         AetherOneUI.main(AetherOneUI.class.getName());
     }
 
     public void settings() {
+
+        p = this;
 
         try {
             titleAffix = " " + new File(FilenameUtils.getFullPathNoEndSeparator(new File(".").getAbsolutePath())).getName();
@@ -200,14 +204,13 @@ public class AetherOneUI extends PApplet {
         guiElements
                 .selectCurrentTab(AetherOneConstants.DEFAULT)
                 .setInitialBounds(border, posY, 140f, 14f, false)
+                .addButton(AetherOneConstants.BROWSER)
+                .addButton(AetherOneConstants.PATREON)
                 .addButton(AetherOneConstants.DOCUMENTATION)
-                .addButton(AetherOneConstants.WEBSITE)
-                .addButton(AetherOneConstants.REDDIT)
                 .addButton(AetherOneConstants.BOOKS)
-                .addButton(AetherOneConstants.COMMUNITY)
                 .addButton(AetherOneConstants.GITHUB)
                 .addButton(AetherOneConstants.YOUTUBE)
-                .addButton(AetherOneConstants.TWITTER)
+
                 .addDashboardScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.SESSION)
@@ -783,6 +786,7 @@ public class AetherOneUI extends PApplet {
     }
 
     public AnalysisResult getAnalysisResult() {
+        if (analysisResult == null) return new AnalysisResult();
         return analysisResult;
     }
 

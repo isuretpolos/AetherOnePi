@@ -12,6 +12,7 @@ import de.isuret.polos.AetherOnePi.processing2.dialogs.SessionDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
 import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
 import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
+import de.isuret.polos.AetherOnePi.server.WebSocketManager;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
@@ -65,18 +66,23 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         String name = theEvent.getName();
 
-        if ("DOCUMENTATION".equals(name)) {
-            openWebsiteInDefaultBrowser("https://radionics.home.blog/2020/01/13/aetheronepi-standalone-handbook-for-v1-1/");
+        if (AetherOneConstants.DOCUMENTATION.equals(name)) {
+            openWebsiteInDefaultBrowser("https://radionics.home.blog/aetheonepi/");
             return;
         }
 
-        if ("GITHUB".equals(name)) {
+        if (AetherOneConstants.GITHUB.equals(name)) {
             openWebsiteInDefaultBrowser("https://github.com/isuretpolos/AetherOnePi");
             return;
         }
 
-        if ("WEBSITE".equals(name)) {
+        if (AetherOneConstants.WEBSITE.equals(name)) {
             openWebsiteInDefaultBrowser("https://radionics.home.blog");
+            return;
+        }
+
+        if (AetherOneConstants.PATREON.equals(name)) {
+            openWebsiteInDefaultBrowser("https://patreon.com/aetherone");
             return;
         }
 
@@ -100,12 +106,17 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("BOOKS".equals(name)) {
+        if (AetherOneConstants.BOOKS.equals(name)) {
             openWebsiteInDefaultBrowser("https://isuretpolos.wordpress.com/literature");
             return;
         }
 
-        if ("LOAD".equals(name)) {
+        if (AetherOneConstants.BROWSER.equals(name)) {
+            openWebsiteInDefaultBrowser("http://localhost:" + p.getAetherOneServer().getPort());
+            return;
+        }
+
+        if (AetherOneConstants.LOAD.equals(name)) {
 
             clearForNewCase();
 
@@ -814,6 +825,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
             p.setAnalysisResult(result);
             p.setSelectedDatabase(databaseName);
+            WebSocketManager.updateAnalysis();
 
             saveCase();
         } catch (IOException e) {
@@ -882,7 +894,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         return nameOrRate;
     }
 
-    private void openWebsiteInDefaultBrowser(String url) {
+    public void openWebsiteInDefaultBrowser(String url) {
         if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
             try {
                 Desktop.getDesktop().browse(new URI(url));

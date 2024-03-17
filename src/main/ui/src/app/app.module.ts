@@ -10,6 +10,9 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { BroadcastComponent } from './components/broadcast/broadcast.component';
 import { WeaverComponent } from './components/weaver/weaver.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { MapComponent } from './components/map/map.component';
+import {allIcons, NgxBootstrapIconsModule} from "ngx-bootstrap-icons";
+import {ToastrModule} from "ngx-toastr";
 
 @NgModule({
   declarations: [
@@ -18,12 +21,15 @@ import {ReactiveFormsModule} from "@angular/forms";
     HomeComponent,
     SettingsComponent,
     BroadcastComponent,
-    WeaverComponent
+    WeaverComponent,
+    MapComponent
   ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ToastrModule.forRoot(),
+        NgxBootstrapIconsModule.pick(allIcons)
     ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

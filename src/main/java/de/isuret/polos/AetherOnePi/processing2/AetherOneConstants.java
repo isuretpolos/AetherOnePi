@@ -69,6 +69,7 @@ public class AetherOneConstants {
     public static final String DESCRIPTION = "DESCRIPTION";
     public static final String DOCUMENTATION = "DOCUMENTATION";
     public static final String WEBSITE = "WEBSITE";
+    public static final String PATREON = "PATREON";
     public static final String BOOKS = "BOOKS";
     public static final String COMMUNITY = "COMMUNITY";
     public static final String GITHUB = "GITHUB";
@@ -88,4 +89,5 @@ public class AetherOneConstants {
     public static final String BROADCAST_AUTO_OFF = "AUTO MODE OFF";
     public static final String REDDIT = "REDDIT";
     public static final String TITLE = "AetherOnePi";
+    public static final String BROWSER = "BROWSER";
 }

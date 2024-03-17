@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {Settings} from "../domains/Settings";
 import {BroadcastRequest} from "../domains/BroadcastRequest";
+import {Analysis} from "../domains/Analysis";
+import {Case} from "../domains/Case";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ import {BroadcastRequest} from "../domains/BroadcastRequest";
 export class AetherOnePiService {
 
   baseUrl:string = environment.baseUrl;
-  settings:Settings;
+  settings:Settings = new Settings();
 
   constructor(private http:HttpClient) { }
 
@@ -25,5 +27,21 @@ export class AetherOnePiService {
 
   broadcast(broadcastRequest:BroadcastRequest):Observable<any> {
     return this.http.post<any>(`${this.baseUrl}broadcast`, broadcastRequest);
+  }
+
+  getAnalysis():Observable<Analysis> {
+    return this.http.get<Analysis>(`${this.baseUrl}analysis`);
+  }
+
+  getRates():Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}rates`);
+  }
+
+  getCase():Observable<Case> {
+    return this.http.get<Case>(`${this.baseUrl}case`);
+  }
+
+  saveCase(caseObject:Case):Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}case`,caseObject);
   }
 }
