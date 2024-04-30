@@ -1,2 +1,2 @@
-call java -jar AetherOnePi-1.3.6.jar
+call java -jar AetherOnePi-1.3.7.jar
 rem pause
