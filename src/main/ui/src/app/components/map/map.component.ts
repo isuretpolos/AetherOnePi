@@ -1,32 +1,49 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
 import olMap from 'ol/Map';
 import TileLayer from 'ol/layer/Tile';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM.js';
-import {DragAndDrop, Draw, Select} from "ol/interaction";
+import {DragAndDrop, Draw, Modify, Select} from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
 import {Fill, Stroke, Style, Text} from "ol/style";
 import {Feature} from "ol";
-import {GeoJSON, GPX, IGC, TopoJSON} from "ol/format";
-import KML from "ol/format/KML";
+import {GeoJSON, GPX, IGC, KML, TopoJSON, WKT} from "ol/format";
 import {NavigationService} from "../../services/navigation.service";
 import {Case, MapDesign} from "../../domains/Case";
 import {AetherOnePiService} from "../../services/aether-one-pi.service";
 import {ToastrService} from "ngx-toastr";
-import {fromLonLat, toLonLat} from "ol/proj";
+import {toLonLat} from "ol/proj";
 import {Coordinate} from "ol/coordinate";
+import {Extent, intersects} from "ol/extent";
+import {Circle, Geometry} from "ol/geom";
+import {Analysis, RateObject} from "../../domains/Analysis";
+import {BroadcastRequest} from "../../domains/BroadcastRequest";
+import interactionDoubleClickZoom from 'ol/interaction/DoubleClickZoom';
+import {FormControl} from "@angular/forms";
+import {bookmarks} from "ngx-bootstrap-icons";
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit,AfterViewInit {
+export class MapComponent implements OnInit, AfterViewInit {
 
-  case:Case = new Case()
+  @HostListener('document:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    if ("Enter" == event.key) {
+      event.preventDefault();
+      this.checkGV()
+    }
+
+    console.log('Key pressed:', event.key);
+  }
+
+  case: Case = new Case()
   map: olMap | null = null;
   view: View = new View();
+  greyScale:string = 'grayscale(80%) invert(100%)'
   vectorLayer: VectorLayer<any> = new VectorLayer<any>();
   source = new VectorSource();
   interaction: any = null;
@@ -34,6 +51,12 @@ export class MapComponent implements OnInit,AfterViewInit {
   selectInteraction = new Select();
   dragAndDropInteraction = new DragAndDrop({formatConstructors: [GPX, GeoJSON, IGC, KML, TopoJSON]});
   modeSelected = '';
+  wktFormat = new WKT();
+  analysis:Analysis|undefined
+  generalVitality:number=-1
+  checkGvPos:number=-1
+  savePositionText = new FormControl('');
+  bookmarks:string[] = []
 
   styleRedOutline: Style = new Style({
     fill: new Fill({
@@ -61,12 +84,12 @@ export class MapComponent implements OnInit,AfterViewInit {
 
   constructor(
     private navigationService: NavigationService,
-    private aetherOnePiService:AetherOnePiService,
+    private aetherOnePiService: AetherOnePiService,
     private toastr: ToastrService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
-    this.loadCase()
     const osmLayer = new TileLayer({
       source: new OSM()
     });
@@ -75,7 +98,7 @@ export class MapComponent implements OnInit,AfterViewInit {
       // return
       if (evt.context) {
         const context = evt.context as CanvasRenderingContext2D;
-        context.filter = 'grayscale(80%) invert(100%) ';
+        context.filter = this.greyScale;
         context.globalCompositeOperation = 'source-over';
       }
     });
@@ -110,6 +133,16 @@ export class MapComponent implements OnInit,AfterViewInit {
       view: this.view,
       controls: []
     });
+
+    // find DoubleClickZoom interaction
+    this.map.getInteractions().forEach(x => {
+      if (x instanceof interactionDoubleClickZoom) {
+        x.setActive(false)
+      }
+    });
+
+    this.loadCase()
+
   }
 
   ngAfterViewInit(): void {
@@ -125,8 +158,6 @@ export class MapComponent implements OnInit,AfterViewInit {
 
       this.lastSelectedFeature = e.selected[0];
     });
-
-    this.setCoordinates()
   }
 
   navigate(url: string) {
@@ -154,10 +185,15 @@ export class MapComponent implements OnInit,AfterViewInit {
   }
 
   loadCase() {
-    this.aetherOnePiService.getCase().subscribe( c =>  {
+    this.aetherOnePiService.getCase().subscribe(c => {
       this.case = c
 
-      if (!this.case.mapDesign) this.case.mapDesign = new MapDesign()
+      if (!this.case.mapDesign) {
+        this.case.mapDesign = new MapDesign()
+      } else {
+        this.map?.getView().setCenter([this.case.mapDesign.coordinatesX, this.case.mapDesign.coordinatesY]);
+        this.map?.getView().setZoom(this.case.mapDesign.zoom);
+      }
     })
   }
 
@@ -166,7 +202,7 @@ export class MapComponent implements OnInit,AfterViewInit {
     this.addInteraction(featureType);
   }
 
-  private addInteraction(featureType:string) {
+  private addInteraction(featureType: string) {
 
     this.removeInteraction();
 
@@ -212,16 +248,164 @@ export class MapComponent implements OnInit,AfterViewInit {
   }
 
   editFeature() {
+    if (this.interaction != null) {
+      this.removeInteraction();
+    }
 
-  }
+    this.interaction = new Modify({
+      source: this.source
+    });
 
-  setCoordinates() {
-    let webMercatorCoordinates = fromLonLat(<number[]>[this.case.mapDesign.coordinatesY, this.case.mapDesign.coordinatesX]);
-    this.map?.getView().setCenter(webMercatorCoordinates);
+    let modify: Modify = this.interaction;
+
+    modify.on('modifyend', evt => {
+
+    });
+
+    this.map?.addInteraction(this.interaction);
+    this.modeSelected = 'edit';
   }
 
   getCoordinates(coordinates: number[] | undefined): Coordinate {
     if (coordinates == undefined) return [0, 0];
     return toLonLat(coordinates)
+  }
+
+  setNavigateMode() {
+    this.modeSelected = 'navigate'
+    this.removeInteraction();
+  }
+
+  analyze() {
+    this.generalVitality = -1
+    this.checkGvPos = -1
+    this.aetherOnePiService.performAnalysis().subscribe( result => {
+      console.log(result)
+      this.analysis = result
+      this.analysis.rateObjects = this.analysis.rateObjects.slice(0,20)
+    })
+  }
+
+  doFeaturesIntersect(feature1: Feature<Geometry>, feature2: Feature<Geometry>): boolean {
+    // @ts-ignore
+    const extent1 = feature1.getGeometry().getExtent();
+    // @ts-ignore
+    const extent2 = feature2.getGeometry().getExtent();
+    return intersects(extent1, extent2);
+  }
+
+  getCenterOfExtent(extent: Extent) {
+    var X = extent[0] + (extent[2] - extent[0]) / 2;
+    var Y = extent[1] + (extent[3] - extent[1]) / 2;
+    return [X, Y];
+  }
+  clearAllFeatures() {
+    this.lastSelectedFeature = undefined
+    this.analysis = undefined
+    this.source.clear()
+    this.generalVitality = -1
+    this.checkGvPos = -1
+  }
+
+  protected readonly undefined = undefined;
+
+  checkGV() {
+
+    this.aetherOnePiService.checkGV().subscribe( gv => {
+      if (this.checkGvPos < 0) {
+        this.generalVitality = gv.gv
+      } else if (this.checkGvPos < 20) {
+        let rate:RateObject | undefined = this.analysis?.rateObjects[this.checkGvPos]
+        if (rate) {
+          rate.gv = +gv.gv
+        }
+      } else {
+        this.generalVitality = -1
+        this.checkGvPos = -1
+        return
+      }
+
+      this.checkGvPos += 1;
+    })
+  }
+
+  searchAnomaly() {
+    let data = ""
+
+    if (this.lastSelectedFeature?.getGeometry()?.getType() == 'Circle') {
+      let extent:Extent|undefined = this.lastSelectedFeature?.getGeometry()?.getExtent()
+      if (extent) {
+
+        this.source.removeFeature(this.lastSelectedFeature)
+        this.lastSelectedFeature = undefined
+        this.clearAllFeatures()
+
+        let radius:number = (extent[0] - extent[2]) / 20
+
+        for (let x:number=0; x < 10; x++) {
+          for (let y:number=0; y < 10; y++) {
+            let center: Array<number> = new Array<number>()
+            center.push(extent[0] - (x * (radius * 2)) - radius)
+            center.push(extent[3] + (y * (radius * 2)) + radius)
+            let circle: Circle = new Circle(center, radius, "XY")
+            let circleFeature: Feature<Circle> = new Feature({
+              geometry: circle
+            });
+            this.source.addFeature(circleFeature)
+          }
+        }
+
+        try {
+          this.map?.getView().fit(extent, {duration: 777});
+        } catch (e) {
+          this.map?.getView().fit(this.source.getExtent(), {duration: 777});
+        }
+
+      }
+
+    } else {
+      data = this.wktFormat.writeGeometry(<Geometry>this.lastSelectedFeature?.getGeometry());
+    }
+  }
+
+  broadcast(r: RateObject) {
+    let broadcastRequest = new BroadcastRequest();
+    broadcastRequest.signature = r.nameOrRate;
+    broadcastRequest.seconds = r.gv;
+    if (broadcastRequest.seconds == 0) {
+      broadcastRequest.seconds = 20
+    }
+    this.aetherOnePiService.broadcast(broadcastRequest).subscribe(()=>{
+      console.log("broadcasting")
+    })
+  }
+
+  savePositionBookmark() {
+    let center = this.map?.getView().getCenter();
+    let zoom = this.map?.getView().getZoom();
+
+    // @ts-ignore
+    localStorage.setItem(`bookmarkPosition_${this.savePositionText.getRawValue()}`, `${center[0]},${center[1]},${zoom}`)
+  }
+
+  initBookmarks() {
+    this.bookmarks = []
+    for (let localStorageKey in localStorage) {
+      if (localStorageKey.startsWith("bookmarkPosition_")) {
+        this.bookmarks.push(localStorageKey.replace("bookmarkPosition_",""))
+      }
+      console.log(localStorageKey)
+    }
+  }
+
+  openBookmark(bookmark: string) {
+    let bookmarkText = localStorage.getItem("bookmarkPosition_" + bookmark)
+    if (bookmarkText) {
+      let x = bookmarkText.split(",")[0]
+      let y = bookmarkText.split(",")[1]
+      let zoom = bookmarkText.split(",")[2]
+      this.map?.getView().setCenter([+x,+y])
+      this.map?.getView().setZoom(+zoom)
+    }
   }
 }

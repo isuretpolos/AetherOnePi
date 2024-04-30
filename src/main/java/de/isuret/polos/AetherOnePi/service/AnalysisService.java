@@ -59,7 +59,7 @@ public class AnalysisService {
 
             int max = rateList.size() / 10;
             if (max > MAX_RATELIST_SIZE) max = MAX_RATELIST_SIZE;
-            if (max < 21) max = 21;
+            if (max < 120) max = 120;
             int count = 0;
 
             /**
@@ -84,9 +84,12 @@ public class AnalysisService {
             /**
              * Add energetic value
              */
+            int trials = 0;
+
             while (!analysisFinished) {
                 for (String rate : ratesValues.keySet()) {
 
+                    trials++;
                     Integer energeticValue = ratesValues.get(rate);
 
                     energeticValue += hotbitsClient.getInteger(10);
@@ -109,6 +112,8 @@ public class AnalysisService {
                 }
             }
 
+            analysisResult.setNumberOfTrials(trials);
+
             if (piService != null) {
                 piService.high(AetherOnePins.CONTROL);
             }
@@ -117,7 +122,7 @@ public class AnalysisService {
                 RateUtils.insertRate(analysisResult, ratesValues, rate);
             }
 
-            AnalysisResult sortedResult = analysisResult.sort().shorten(AnalyseScreen.MAX_ENTRIES);
+            AnalysisResult sortedResult = analysisResult.sort().shorten(AnalyseScreen.MAX_ENTRIES_INTERNAL);
 
             // now check the level, from physical to spiritual, 1 to 12
             for (RateObject rateObject : sortedResult.getRateObjects()) {

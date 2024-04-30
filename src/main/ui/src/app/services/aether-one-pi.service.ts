@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {Settings} from "../domains/Settings";
 import {BroadcastRequest} from "../domains/BroadcastRequest";
-import {Analysis} from "../domains/Analysis";
+import {Analysis, GV} from "../domains/Analysis";
 import {Case} from "../domains/Case";
 
 @Injectable({
@@ -31,6 +31,14 @@ export class AetherOnePiService {
 
   getAnalysis():Observable<Analysis> {
     return this.http.get<Analysis>(`${this.baseUrl}analysis`);
+  }
+
+  performAnalysis():Observable<Analysis> {
+    return this.http.post<Analysis>(`${this.baseUrl}analysis`,undefined);
+  }
+
+  checkGV():Observable<GV> {
+    return this.http.post<GV>(`${this.baseUrl}gv`,undefined);
   }
 
   getRates():Observable<string[]> {

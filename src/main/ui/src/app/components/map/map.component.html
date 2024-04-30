@@ -1,12 +1,19 @@
 <div id="map" style="top: 0px; left:0px;width: 100%; height: 100%; position:fixed; background-color: #125699"></div>
 <div style="position: fixed; top:10px; left: 10px;">
   <button class="btn btn-sm btn-primary toolbar-button" (click)="navigate('HOME')" title="BACK TO HOME"><i-bs name="house-fill"></i-bs></button>
-  <button class="btn btn-sm btn-info toolbar-button" (click)="setHomeCoordinates()" title="SET HOME XY"><i-bs name="x-square"></i-bs></button>
-  <button class="btn btn-sm btn-primary toolbar-button" (click)="draw('Polygon')" title="DRAW A POLYGON OR MAP">POLY <i-bs name="pencil-fill"></i-bs></button>
-  <button class="btn btn-sm btn-primary toolbar-button" (click)="draw('LineString')">LINE <i-bs name="pencil"></i-bs></button>
-  <button class="btn btn-sm btn-primary toolbar-button" (click)="draw('Circle')">CIRCLE <i-bs name="dot"></i-bs></button>
-  <button *ngIf="modeSelected != 'edit'" class="btn btn-sm btn-warning toolbar-button" (click)="editFeature()" title="EDIT AN EXISTING MAP"><i-bs name="pencil-square"></i-bs></button>
-  <!--<button class="btn btn-sm btn-info toolbar-button" (click)="setNavigateMode()" title="NAVIGATION MODE (NO EDIT)"><i class="bi bi-eye"></i></button>
+  <!--<button class="btn btn-sm btn-info toolbar-button" (click)="setHomeCoordinates()" title="SET HOME XY"><i-bs name="x-square"></i-bs></button>-->
+  <button class="btn btn-sm btn-success toolbar-button" data-bs-toggle="modal" data-bs-target="#positionBookmarksModal" title="BOOKMARK POSITION" (click)="initBookmarks()"><i-bs name="bookmark"></i-bs></button>
+  <button class="btn btn-sm btn-danger toolbar-button" (click)="clearAllFeatures()" title="CLEAR"><i-bs name="eraser"></i-bs></button>
+  <button class="btn btn-sm btn-primary toolbar-button" (click)="draw('Polygon')" title="DRAW A POLYGON OR MAP"><i-bs name="bounding-box-circles"></i-bs></button>
+  <button class="btn btn-sm btn-primary toolbar-button" (click)="draw('LineString')" title="LINE"><i-bs name="dash-lg"></i-bs></button>
+  <button class="btn btn-sm btn-primary toolbar-button" (click)="draw('Circle')" title="CIRCLE"><i-bs name="circle"></i-bs></button>
+  <button *ngIf="greyScale != ''" class="btn btn-sm btn-primary toolbar-button" (click)="greyScale = ''; map?.getView()?.changed();" title="LIGHT MAP">LIGHT</button>
+  <button *ngIf="greyScale == ''" class="btn btn-sm btn-primary toolbar-button" (click)="greyScale = 'grayscale(80%) invert(100%)'; map?.getView()?.changed();" title="DARK MAP">DARK</button>
+  <!--<button *ngIf="modeSelected != 'edit'" class="btn btn-sm btn-warning toolbar-button" (click)="editFeature()" title="EDIT AN EXISTING MAP"><i-bs name="pencil-square"></i-bs></button>-->
+  <button *ngIf="lastSelectedFeature" class="btn btn-sm btn-warning toolbar-button" (click)="analyze()" title="ANALYZE">ANALYZE <i-bs name="bar-chart"></i-bs></button>
+  <button *ngIf="lastSelectedFeature" class="btn btn-sm btn-warning toolbar-button" (click)="searchAnomaly()" title="SEARCH">SEARCH <i-bs name="bar-chart"></i-bs></button>
+  <button class="btn btn-sm btn-info toolbar-button" (click)="setNavigateMode()" title="NAVIGATION MODE (NO EDIT)"><i-bs name="eye"></i-bs></button>
+  <!--
   <button *ngIf="featureModified && territoryNumberSet()" class="btn btn-sm btn-warning toolbar-button" (click)="saveMap()">SAVE MODIFICATION!</button>
   <button *ngIf="featureModified && !territoryNumberSet()" class="btn btn-sm btn-warning toolbar-button" disabled>SAVE MODIFICATION!</button>
   <button *ngIf="!hideImportedFeature" (click)="hideImportedFeature = !hideImportedFeature; vectorLayer.getSource().changed();" class="btn btn-sm btn-info toolbar-button" title="hide outline polygon"><i class="bi bi-easel-fill"></i></button>
@@ -14,4 +21,69 @@
   <button *ngIf="!showOsmData" (click)="showOsmData = !showOsmData; vectorLayer.getSource().changed();" class="btn btn-sm btn-success toolbar-button" title="show OsmData"><i class="bi bi-easel-fill"></i></button>
   <button *ngIf="showOsmData" (click)="showOsmData = !showOsmData; vectorLayer.getSource().changed();" class="btn btn-sm btn-primary toolbar-button" title="hide OsmData"><i class="bi bi-easel2"></i></button>
   <button class="btn btn-sm btn-danger toolbar-button" (click)="deleteMap()" title="DELETE MAP"><i class="bi bi-trash3-fill"></i></button>-->
+  <b>{{modeSelected}}</b>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="positionBookmarksModal" tabindex="-1" aria-labelledby="positionBookmarksModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="positionBookmarksModalLabel">Position bookmark</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        You can save a position as a bookmark:<br>
+        <input [formControl]="savePositionText" type="text" class="form-control" placeholder="position name">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" (click)="savePositionBookmark()" data-bs-toggle="modal" data-bs-target="#positionBookmarksModal">Save</button>
+      </div>
+      <div class="modal-footer">
+        <button *ngFor="let bookmark of bookmarks" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="openBookmark(bookmark)">{{bookmark}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="analysis" style="position: fixed; top:10px; right: 10px; background-color: rgba(7,82,133,0.71)">
+  <button class="btn btn-sm btn-warning toolbar-button" (click)="checkGV()" title="CHECK GV">CHECK GV <i-bs name="bar-chart"></i-bs></button>
+  <button *ngIf="generalVitality > -1" class="btn btn-sm btn-primary toolbar-button" title="GENERAL VITALITY">GV {{generalVitality}}</button>
+  <table class="table table-sm table-striped table-hover">
+    <thead>
+    <tr>
+      <th>NO</th>
+      <th>EV</th>
+      <th>RATE/SIGNATURE</th>
+      <th>POTENCY</th>
+      <th>LEVEL</th>
+      <th>HIT</th>
+      <th>GV</th>
+      <th>GV RE</th>
+      <th>REC</th>
+      <th>ACTIONS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let r of analysis.rateObjects; index as i"
+        [class.currentGvRow]="i == checkGvPos"
+        [class.hitGvRow]="r.gv > 999 && r.gv >= generalVitality"
+        [class.greenGvRow]="r.gv > 999 && r.gv < generalVitality">
+      <td>{{i + 1}}</td>
+      <td>{{r.energeticValue}}</td>
+      <td *ngIf="r.url"><a href="{{r.url}}" target="{{r.nameOrRate}}">{{r.nameOrRate}}</a></td>
+      <td *ngIf="!r.url">{{r.nameOrRate}}</td>
+      <td>{{r.potency}}</td>
+      <td>{{r.level}}</td>
+      <td></td>
+      <td>{{r.gv}}</td>
+      <td>{{r.recurringGeneralVitality}}</td>
+      <td>{{r.recurring}}</td>
+      <td><button class="btn btn-sm btn-success" (click)="broadcast(r)">BROADCAST</button> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="position: fixed; bottom:10px; left: 10px; background-color: #d2c6b0; color: #1a1d20; padding: 0.1rem">This is still a work in progress ... improvements will follow!</div>

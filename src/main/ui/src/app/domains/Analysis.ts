@@ -15,3 +15,7 @@ export class RateObject {
   potency:string = ""
   resonateCounter:number = 0
 }
+
+export class GV {
+  gv:number = -1
+}

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.domain.DashboardInformations;
 import de.isuret.polos.AetherOnePi.domain.Rate;
+import de.isuret.polos.AetherOnePi.domain.osm.MapDesign;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -173,6 +174,11 @@ public class DataService {
             LocalDateTime currentDateTime = LocalDateTime.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd-HHmmss");
             caseObject.setName(currentDateTime.format(formatter));
+        }
+        if (caseObject.getMapDesign() == null) {
+            MapDesign mapDesign = new MapDesign();
+            mapDesign.setUuid(UUID.randomUUID());
+            caseObject.setMapDesign(mapDesign);
         }
         if (caseObject.getMapDesign().getUuid() == null) {
             caseObject.getMapDesign().setUuid(UUID.randomUUID());

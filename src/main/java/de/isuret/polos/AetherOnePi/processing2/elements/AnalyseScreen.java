@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
@@ -27,7 +28,9 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
     private boolean mouseClickOccurred = false;
     private Long lastMouseClick = null;
 
+    private int page = 1;
     public final static int MAX_ENTRIES = 21;
+    public final static int MAX_ENTRIES_INTERNAL = 105;
 
     public AnalyseScreen(AetherOneUI p) {
         this.p = p;
@@ -55,7 +58,11 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                     p.fill(0, 255, 0);
                     p.text(">> CHECK GENERAL VITALITY <<", 35, 510);
                 } else {
-                    p.text("GENERAL VITALITY: " + p.getGeneralVitality(), 35, 510);
+                    String trials = "";
+                    if (p.getAnalysisResult().getNumberOfTrials() != null) {
+                        trials = " (runs = " + p.getAnalysisResult().getNumberOfTrials() + ")";
+                    }
+                    p.text("GENERAL VITALITY: " + p.getGeneralVitality() + trials, 35, 510);
                 }
             } else if (p.getAnalysisResult() != null){
                 p.fill(0, 255, 0);
@@ -132,8 +139,15 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                 }
             }
 
+            // Calculate start and end index for the sublist
+            int startIndex = (page -1) * MAX_ENTRIES;
+            int endIndex = Math.min(startIndex + MAX_ENTRIES, p.getAnalysisResult().getRateObjects().size());
+
+            // Get the sublist based on the paging parameters
+            List<RateObject> pageList = p.getAnalysisResult().getRateObjects().subList(startIndex, endIndex);
+
             // draw the rate table
-            for (RateObject rate : p.getAnalysisResult().getRateObjects()) {
+            for (RateObject rate : pageList) {
 
                 // LEVEL
                 p.fill(255);
@@ -206,7 +220,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
                     p.fill(200);
                 }
 
-                p.text(count, 35, y);
+                p.text(count + ((page - 1) * MAX_ENTRIES), 35, y);
                 p.text(rate.getEnergeticValue(), 80, y);
                 p.text(rate.getNameOrRate(), 125, y);
                 p.text(rate.getGv(), 804, y);
@@ -272,6 +286,33 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.fill(255);
             if (highestGV != null && highestY != null) {
                 p.text(highestGV, 764, highestY);
+            }
+
+            // page selection
+            if (p.getAnalysisResult().getRateObjects().size() > MAX_ENTRIES) {
+                p.noStroke();
+                for (int i=0; i < p.getAnalysisResult().getRateObjects().size() / MAX_ENTRIES; i++) {
+
+                    if (p.mouseX > 930 + ((i) * 22) && p.mouseX < 930 + ((i) * 22) + 22 && p.mouseY > 75 && p.mouseY < 95) {
+                        p.stroke(0,255,0);
+                        if (p.mousePressed) {
+                            page = i + 1;
+                            System.out.println(i);
+                        }
+                    } else {
+                        p.stroke(255);
+                    }
+
+                    if (page == i + 1) {
+                        p.fill(0, 200, 0);
+                    } else {
+                        p.fill(50, 0, 200);
+                    }
+                    p.rect(930 + (i * 22), 75, 20, 20);
+
+                    p.fill(255);
+                    p.text(String.valueOf(i+1), 937 + (i * 22), 90);
+                }
             }
         }
 

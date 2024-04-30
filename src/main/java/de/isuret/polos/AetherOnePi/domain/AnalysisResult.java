@@ -15,6 +15,7 @@ public class AnalysisResult implements Serializable {
     private UUID id;
     private List<RateObject> rateObjects = new ArrayList<>();
     private Integer generalVitality;
+    private Integer numberOfTrials; // until one of the rates reach the max energetic evaluation threshold
 
     /**
      * Make a copy
@@ -82,10 +83,22 @@ public class AnalysisResult implements Serializable {
         this.generalVitality = generalVitality;
     }
 
+    public Integer getNumberOfTrials() {
+        return numberOfTrials;
+    }
+
+    public void setNumberOfTrials(Integer numberOfTrials) {
+        this.numberOfTrials = numberOfTrials;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("--- ANALYSIS ---\n");
         sb.append("General Vitality: ").append(generalVitality).append("\n");
+
+        if (numberOfTrials != null) {
+            sb.append("Number of trials: ").append(numberOfTrials).append("\n");
+        }
 
         for (RateObject rateObject : rateObjects) {
             sb.append(rateObject.getNameOrRate());

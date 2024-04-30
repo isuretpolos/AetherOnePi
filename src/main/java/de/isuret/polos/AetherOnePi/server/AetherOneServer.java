@@ -3,6 +3,7 @@ package de.isuret.polos.AetherOnePi.server;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.domain.*;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import io.javalin.Javalin;
@@ -119,11 +120,14 @@ public class AetherOneServer {
 
         app.get("rates", ctx-> ctx.json(p.getDataService().getDatabaseNames()));
         app.get("analysis", ctx-> ctx.json(p.getAnalysisResult()));
+        app.post("analysis", ctx-> ctx.json(p.getAnalyseService().analyseRateList(p.getDataService().findAllBySourceName(p.getSelectedDatabase()))));
+        app.post("gv", ctx-> ctx.json(String.format("{\"gv\":\"%d\"}",p.checkGeneralVitalityValue())));
 
         app.post("broadcast", ctx -> {
             String json = ctx.body();
             BroadcastRequest request = objectMapper.readValue(json, BroadcastRequest.class);
             p.getAetherOneEventHandler().broadcast(request.getSignature(), request.getSeconds());
+            p.getGuiElements().selectCurrentTab(AetherOneConstants.BROADCAST);
         });
 
         //--- WebSocket

@@ -14,6 +14,8 @@ public class DashboardScreen implements IDrawableElement {
     private float blinkRate = 0.7f;
     private int click = 0;
 
+    private boolean showPatreonSection = false;
+
     public DashboardScreen(AetherOneUI p) {
         this.p = p;
         p.getDataService().init();
@@ -23,6 +25,9 @@ public class DashboardScreen implements IDrawableElement {
                 try {
                     dashboardNews = p.loadStrings(DASHBOARD_NEWS_TXT);
                     p.saveStrings(TEMPORARY_DASHBOARD_TEXT_TXT, dashboardNews);
+                    if (p.getHotbitsClient().getInteger(0,1000) >= 777) {
+                        showPatreonSection = true;
+                    }
                 } catch (Exception e) {
                     dashboardNews = p.loadStrings(TEMPORARY_DASHBOARD_TEXT_TXT);
                 }
@@ -52,28 +57,29 @@ public class DashboardScreen implements IDrawableElement {
             click -= 1;
         }
 
-        blink = blink - blinkRate;
-        p.stroke(60,179,34,blink);
-        p.noFill();
-        p.rect(40,y - 10,400,70);
+        if (showPatreonSection) {
+            blink = blink - blinkRate;
+            p.stroke(60,179,34,blink);
+            p.noFill();
+            p.rect(40,y - 10,400,70);
+            y += 20;
+            p.textFont(p.getGuiElements().getFonts().get("default"), 32);
+            p.text("Support me on PATREON", 50, y);
+            y += 28;
+            p.textFont(p.getGuiElements().getFonts().get("default"), 16);
+            p.text("and get FREE courses on radionics and homeopathy!", 50, y);
+            p.fill(60, 179, 34, blink);
+            p.text("and get FREE courses on radionics and homeopathy!", 50, y);
+            y += 20;
+            if (p.mouseX >= 40 && p.mouseX < 400 && p.mouseY < y && p.mouseY >= y - 70) {
+                p.noStroke();
+                p.fill(0, 255, 0, 40f);
+                p.rect(40, y - 78, 400, 70);
 
-        y += 20;
-        p.textFont(p.getGuiElements().getFonts().get("default"),32);
-        p.text("Support me on PATREON", 50, y);
-        y += 28;
-        p.textFont(p.getGuiElements().getFonts().get("default"),16);
-        p.text("and get FREE courses on radionics and homeopathy!", 50, y);
-        p.fill(60,179,34,blink);
-        p.text("and get FREE courses on radionics and homeopathy!", 50, y);
-        y += 20;
-        if (p.mouseX >= 40 && p.mouseX < 400 && p.mouseY < y && p.mouseY >= y - 70) {
-            p.noStroke();
-            p.fill(0,255,0,40f);
-            p.rect(40, y - 78, 400, 70);
-
-            if (p.mousePressed && click == 0) {
-                click = 100;
-                p.getAetherOneEventHandler().openWebsiteInDefaultBrowser("https://patreon.com/aetherone");
+                if (p.mousePressed && click == 0) {
+                    click = 100;
+                    p.getAetherOneEventHandler().openWebsiteInDefaultBrowser("https://patreon.com/aetherone");
+                }
             }
         }
 

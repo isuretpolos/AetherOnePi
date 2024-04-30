@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { MapComponent } from './components/map/map.component';
 import {allIcons, NgxBootstrapIconsModule} from "ngx-bootstrap-icons";
 import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import {ToastrModule} from "ngx-toastr";
   ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         ReactiveFormsModule,
         ToastrModule.forRoot(),
