@@ -39,7 +39,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       this.checkGV()
     }
 
-    console.log('Key pressed:', event.key);
+    //console.log('Key pressed:', event.key);
   }
 
   case: Case = new Case()
@@ -70,7 +70,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     }),
 
     text: new Text({
-      text: 'hello',
+      text: '',
       font: '12px Calibri,sans-serif',
       overflow: true,
       fill: new Fill({
@@ -97,7 +97,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     fromEvent<ClipboardEvent>(document.body, 'paste').pipe(
       map((event: ClipboardEvent) => event.clipboardData?.getData('text'))
     ).subscribe((clipboardContent: string | undefined) => {
-      if (clipboardContent && clipboardContent.includes('google.de/maps')) {
+      if (clipboardContent && (clipboardContent.includes('google.de/maps') || clipboardContent.includes('google.com/maps'))) {
+        console.log(clipboardContent)
         const coordinates = this.extractCoordinatesFromGoogleMapsURL(clipboardContent);
         if (coordinates) {
           this.navigateToCoordinates(coordinates);
@@ -132,7 +133,11 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.vectorLayer = new VectorLayer({
       source: this.source,
       style: function (feature) {
-        return that.styleRedOutline;
+        if (feature.get("style")) {
+          return feature.get("style")
+        } else {
+          return that.styleRedOutline
+        }
       }
     });
 
@@ -169,13 +174,16 @@ export class MapComponent implements OnInit, AfterViewInit {
 
       if (e.deselected) {
         this.lastSelectedFeature = undefined;
+        console.log("deselected")
       }
 
       this.lastSelectedFeature = e.selected[0];
+      console.log("selected")
     });
   }
 
   extractCoordinatesFromGoogleMapsURL(url: string): [number, number] | null {
+    console.log(url)
     const match = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
     if (match && match.length === 3) {
       const lat = parseFloat(match[1]);
@@ -369,27 +377,62 @@ export class MapComponent implements OnInit, AfterViewInit {
     let height: number = 10;
 
     this.aetherOnePiService.searchAnomaly(width, height).subscribe(r => {
+
       let extent: Extent | undefined = this.lastSelectedFeature?.getGeometry()?.getExtent()
       if (extent) {
 
         if (this.lastSelectedFeature?.getGeometry()?.getType() == 'Circle') {
+
+          let radius: number = (extent[0] - extent[2]) / 20
+
+          const highest:number = Math.max(...r);
+          const lowest:number = Math.min(...r);
+          let found:boolean = false
+          let copyOfOriginalFeature = this.lastSelectedFeature?.clone()
           this.source.removeFeature(this.lastSelectedFeature)
           this.lastSelectedFeature = undefined
           this.clearAllFeatures()
-          let radius: number = (extent[0] - extent[2]) / 20
 
           for (let x: number = 0; x < width; x++) {
             for (let y: number = 0; y < height; y++) {
-              let center: Array<number> = new Array<number>()
-              center.push(extent[0] - (x * (radius * 2)) - radius)
-              center.push(extent[3] + (y * (radius * 2)) + radius)
-              let circle: Circle = new Circle(center, radius, "XY")
-              let circleFeature: Feature<Circle> = new Feature({
-                geometry: circle
-              });
-              circleFeature.set("anomaly",r[x*y])
-              this.source.addFeature(circleFeature)
+
+              let anomalyValue = r[x*y]
+              if (anomalyValue == highest || anomalyValue == lowest) {
+                found = true
+                let center: Array<number> = new Array<number>()
+                center.push(extent[0] - (x * (radius * 2)) - radius)
+                center.push(extent[3] + (y * (radius * 2)) + radius)
+                let circle: Circle = new Circle(center, radius, "XY")
+                let circleFeature: Feature<Circle> = new Feature({
+                  geometry: circle
+                });
+
+                let style: Style = this.styleRedOutline.clone()
+                style.getFill()?.setColor(`rgba(${anomalyValue / 4}, 0, 0, 0.5)`)
+
+                if (anomalyValue == highest) {
+                  style.getText()?.setText('HIGH')
+                }
+                if (anomalyValue == lowest) {
+                  style.getText()?.setText('LOW')
+                }
+                circleFeature.set("style", style)
+                this.source.addFeature(circleFeature)
+              }
             }
+          }
+
+          if (!found) {
+            this.lastSelectedFeature = copyOfOriginalFeature
+            const that = this
+            setTimeout(function (){
+              let style: Style = that.styleRedOutline.clone()
+              style.getText()?.setText('NOT FOUND')
+              copyOfOriginalFeature.set("style", style)
+              that.source.addFeature(copyOfOriginalFeature)
+              that.lastSelectedFeature = copyOfOriginalFeature
+            },500)
+
           }
 
           try {
@@ -463,4 +506,14 @@ export class MapComponent implements OnInit, AfterViewInit {
       this.bookmarks.splice(index, 1);
     }
   }
+
+  openGoogleEarth() {
+    // Construct the Google Earth URL with the KML data
+    // @ts-ignore
+    const googleEarthUrl = `https://earth.google.com/web/@${this.getCoordinates(this.map?.getView().getCenter()).toString().split(',')[1]},${this.getCoordinates(this.map?.getView().getCenter()).toString().split(',')[0]},z=${Math.trunc(this.map?.getView().getZoom())}`;
+
+    // Open Google Earth in a new tab/window
+    window.open(googleEarthUrl, '_blank');
+  }
+
 }

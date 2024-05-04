@@ -13,7 +13,9 @@
   <button *ngIf="lastSelectedFeature" class="btn btn-sm btn-warning toolbar-button" (click)="analyze()" title="ANALYZE">ANALYZE <i-bs name="bar-chart"></i-bs></button>
   <button *ngIf="lastSelectedFeature" class="btn btn-sm btn-warning toolbar-button" (click)="searchAnomaly()" title="SEARCH">SEARCH <i-bs name="bar-chart"></i-bs></button>
   <button class="btn btn-sm btn-info toolbar-button" (click)="setNavigateMode()" title="NAVIGATION MODE (NO EDIT)"><i-bs name="eye"></i-bs></button>
-  <!--
+  <a class="btn btn-sm btn-info toolbar-button" *ngIf="map" href="https://www.google.com/maps/@{{getCoordinates(map.getView().getCenter()).toString().split(',')[1]}},{{getCoordinates(map.getView().getCenter()).toString().split(',')[0]}},{{map.getView().getZoom()}}z" target="googleMaps">GoogleMaps</a>
+  <!--<button class="btn btn-sm btn-info toolbar-button" (click)="openGoogleEarth()">Google Earth</button>
+
   <button *ngIf="featureModified && territoryNumberSet()" class="btn btn-sm btn-warning toolbar-button" (click)="saveMap()">SAVE MODIFICATION!</button>
   <button *ngIf="featureModified && !territoryNumberSet()" class="btn btn-sm btn-warning toolbar-button" disabled>SAVE MODIFICATION!</button>
   <button *ngIf="!hideImportedFeature" (click)="hideImportedFeature = !hideImportedFeature; vectorLayer.getSource().changed();" class="btn btn-sm btn-info toolbar-button" title="hide outline polygon"><i class="bi bi-easel-fill"></i></button>
