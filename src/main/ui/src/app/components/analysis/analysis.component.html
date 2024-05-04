@@ -25,10 +25,14 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let r of analysis.rateObjects; index as i">
+  <tr *ngFor="let r of analysis.rateObjects; index as i"
+      [class.currentGvRow]="i == analysis.generalVitality"
+      [class.hitGvRow]="r.gv > 999 && r.gv >= analysis.generalVitality"
+      [class.greenGvRow]="r.gv > 999 && r.gv < analysis.generalVitality">
     <td>{{i + 1}}</td>
     <td>{{r.energeticValue}}</td>
-    <td>{{r.nameOrRate}}</td>
+    <td *ngIf="r.url"><a href="{{r.url}}" target="{{r.nameOrRate}}">{{r.nameOrRate}}</a></td>
+    <td *ngIf="!r.url">{{r.nameOrRate}}</td>
     <td>{{r.potency}}</td>
     <td>{{r.level}}</td>
     <td></td>

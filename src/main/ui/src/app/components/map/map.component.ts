@@ -21,7 +21,9 @@ import {Analysis, RateObject} from "../../domains/Analysis";
 import {BroadcastRequest} from "../../domains/BroadcastRequest";
 import interactionDoubleClickZoom from 'ol/interaction/DoubleClickZoom';
 import {FormControl} from "@angular/forms";
-import {bookmarks} from "ngx-bootstrap-icons";
+import {fromEvent} from "rxjs";
+import {map} from 'rxjs/operators';
+import * as olProj from 'ol/proj';
 
 @Component({
   selector: 'app-map',
@@ -43,7 +45,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   case: Case = new Case()
   map: olMap | null = null;
   view: View = new View();
-  greyScale:string = 'grayscale(80%) invert(100%)'
+  greyScale: string = 'grayscale(80%) invert(100%)'
   vectorLayer: VectorLayer<any> = new VectorLayer<any>();
   source = new VectorSource();
   interaction: any = null;
@@ -52,11 +54,11 @@ export class MapComponent implements OnInit, AfterViewInit {
   dragAndDropInteraction = new DragAndDrop({formatConstructors: [GPX, GeoJSON, IGC, KML, TopoJSON]});
   modeSelected = '';
   wktFormat = new WKT();
-  analysis:Analysis|undefined
-  generalVitality:number=-1
-  checkGvPos:number=-1
+  analysis: Analysis | undefined
+  generalVitality: number = -1
+  checkGvPos: number = -1
   savePositionText = new FormControl('');
-  bookmarks:string[] = []
+  bookmarks: string[] = []
 
   styleRedOutline: Style = new Style({
     fill: new Fill({
@@ -68,7 +70,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     }),
 
     text: new Text({
-      text: '',
+      text: 'hello',
       font: '12px Calibri,sans-serif',
       overflow: true,
       fill: new Fill({
@@ -90,6 +92,19 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
+    // Listen for paste event on document body
+    fromEvent<ClipboardEvent>(document.body, 'paste').pipe(
+      map((event: ClipboardEvent) => event.clipboardData?.getData('text'))
+    ).subscribe((clipboardContent: string | undefined) => {
+      if (clipboardContent && clipboardContent.includes('google.de/maps')) {
+        const coordinates = this.extractCoordinatesFromGoogleMapsURL(clipboardContent);
+        if (coordinates) {
+          this.navigateToCoordinates(coordinates);
+        }
+      }
+    });
+
     const osmLayer = new TileLayer({
       source: new OSM()
     });
@@ -122,8 +137,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
 
     this.view = new View({
-      center: [-472202, 7530279],
-      zoom: 12
+      center: [-2525717.955686286, 3148856.901540814],
+      zoom: 3
     });
     this.map = new olMap({
       layers: [
@@ -158,6 +173,24 @@ export class MapComponent implements OnInit, AfterViewInit {
 
       this.lastSelectedFeature = e.selected[0];
     });
+  }
+
+  extractCoordinatesFromGoogleMapsURL(url: string): [number, number] | null {
+    const match = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+    if (match && match.length === 3) {
+      const lat = parseFloat(match[1]);
+      const lon = parseFloat(match[2]);
+      return [lon, lat];
+    }
+    return null;
+  }
+
+  navigateToCoordinates(coordinates: [number, number]) {
+    const view = this.map?.getView();
+    if (view) {
+      view.setCenter(olProj.fromLonLat(coordinates));
+      view.setZoom(18); // Set desired zoom level
+    }
   }
 
   navigate(url: string) {
@@ -279,10 +312,10 @@ export class MapComponent implements OnInit, AfterViewInit {
   analyze() {
     this.generalVitality = -1
     this.checkGvPos = -1
-    this.aetherOnePiService.performAnalysis().subscribe( result => {
+    this.aetherOnePiService.performAnalysis().subscribe(result => {
       console.log(result)
       this.analysis = result
-      this.analysis.rateObjects = this.analysis.rateObjects.slice(0,20)
+      this.analysis.rateObjects = this.analysis.rateObjects.slice(0, 20)
     })
   }
 
@@ -299,6 +332,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     var Y = extent[1] + (extent[3] - extent[1]) / 2;
     return [X, Y];
   }
+
   clearAllFeatures() {
     this.lastSelectedFeature = undefined
     this.analysis = undefined
@@ -311,11 +345,11 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   checkGV() {
 
-    this.aetherOnePiService.checkGV().subscribe( gv => {
+    this.aetherOnePiService.checkGV().subscribe(gv => {
       if (this.checkGvPos < 0) {
         this.generalVitality = gv.gv
       } else if (this.checkGvPos < 20) {
-        let rate:RateObject | undefined = this.analysis?.rateObjects[this.checkGvPos]
+        let rate: RateObject | undefined = this.analysis?.rateObjects[this.checkGvPos]
         if (rate) {
           rate.gv = +gv.gv
         }
@@ -331,41 +365,43 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   searchAnomaly() {
     let data = ""
+    let width: number = 10;
+    let height: number = 10;
 
-    if (this.lastSelectedFeature?.getGeometry()?.getType() == 'Circle') {
-      let extent:Extent|undefined = this.lastSelectedFeature?.getGeometry()?.getExtent()
+    this.aetherOnePiService.searchAnomaly(width, height).subscribe(r => {
+      let extent: Extent | undefined = this.lastSelectedFeature?.getGeometry()?.getExtent()
       if (extent) {
 
-        this.source.removeFeature(this.lastSelectedFeature)
-        this.lastSelectedFeature = undefined
-        this.clearAllFeatures()
+        if (this.lastSelectedFeature?.getGeometry()?.getType() == 'Circle') {
+          this.source.removeFeature(this.lastSelectedFeature)
+          this.lastSelectedFeature = undefined
+          this.clearAllFeatures()
+          let radius: number = (extent[0] - extent[2]) / 20
 
-        let radius:number = (extent[0] - extent[2]) / 20
-
-        for (let x:number=0; x < 10; x++) {
-          for (let y:number=0; y < 10; y++) {
-            let center: Array<number> = new Array<number>()
-            center.push(extent[0] - (x * (radius * 2)) - radius)
-            center.push(extent[3] + (y * (radius * 2)) + radius)
-            let circle: Circle = new Circle(center, radius, "XY")
-            let circleFeature: Feature<Circle> = new Feature({
-              geometry: circle
-            });
-            this.source.addFeature(circleFeature)
+          for (let x: number = 0; x < width; x++) {
+            for (let y: number = 0; y < height; y++) {
+              let center: Array<number> = new Array<number>()
+              center.push(extent[0] - (x * (radius * 2)) - radius)
+              center.push(extent[3] + (y * (radius * 2)) + radius)
+              let circle: Circle = new Circle(center, radius, "XY")
+              let circleFeature: Feature<Circle> = new Feature({
+                geometry: circle
+              });
+              circleFeature.set("anomaly",r[x*y])
+              this.source.addFeature(circleFeature)
+            }
           }
-        }
 
-        try {
-          this.map?.getView().fit(extent, {duration: 777});
-        } catch (e) {
-          this.map?.getView().fit(this.source.getExtent(), {duration: 777});
+          try {
+            this.map?.getView().fit(extent, {duration: 777});
+          } catch (e) {
+            this.map?.getView().fit(this.source.getExtent(), {duration: 777});
+          }
+        } else {
+          data = this.wktFormat.writeGeometry(<Geometry>this.lastSelectedFeature?.getGeometry());
         }
-
       }
-
-    } else {
-      data = this.wktFormat.writeGeometry(<Geometry>this.lastSelectedFeature?.getGeometry());
-    }
+    })
   }
 
   broadcast(r: RateObject) {
@@ -375,7 +411,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     if (broadcastRequest.seconds == 0) {
       broadcastRequest.seconds = 20
     }
-    this.aetherOnePiService.broadcast(broadcastRequest).subscribe(()=>{
+    this.aetherOnePiService.broadcast(broadcastRequest).subscribe(() => {
       console.log("broadcasting")
     })
   }
@@ -392,10 +428,21 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.bookmarks = []
     for (let localStorageKey in localStorage) {
       if (localStorageKey.startsWith("bookmarkPosition_")) {
-        this.bookmarks.push(localStorageKey.replace("bookmarkPosition_",""))
+        this.bookmarks.push(localStorageKey.replace("bookmarkPosition_", ""))
       }
-      console.log(localStorageKey)
     }
+
+    this.bookmarks = this.bookmarks.sort((n1, n2) => {
+      if (n1 > n2) {
+        return 1;
+      }
+
+      if (n1 < n2) {
+        return -1;
+      }
+
+      return 0;
+    });
   }
 
   openBookmark(bookmark: string) {
@@ -404,8 +451,16 @@ export class MapComponent implements OnInit, AfterViewInit {
       let x = bookmarkText.split(",")[0]
       let y = bookmarkText.split(",")[1]
       let zoom = bookmarkText.split(",")[2]
-      this.map?.getView().setCenter([+x,+y])
+      this.map?.getView().setCenter([+x, +y])
       this.map?.getView().setZoom(+zoom)
+    }
+  }
+
+  deleteBookmark(bookmark: string) {
+    localStorage.removeItem("bookmarkPosition_" + bookmark)
+    const index = this.bookmarks.indexOf(bookmark, 0);
+    if (index > -1) {
+      this.bookmarks.splice(index, 1);
     }
   }
 }

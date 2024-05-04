@@ -41,6 +41,10 @@ export class AetherOnePiService {
     return this.http.post<GV>(`${this.baseUrl}gv`,undefined);
   }
 
+  searchAnomaly(width:number,height:number):Observable<number[]> {
+    return this.http.post<number[]>(`${this.baseUrl}searchAnomaly?width=${width}&height=${height}`,undefined);
+  }
+
   getRates():Observable<string[]> {
     return this.http.get<string[]>(`${this.baseUrl}rates`);
   }

@@ -122,6 +122,11 @@ public class AetherOneServer {
         app.get("analysis", ctx-> ctx.json(p.getAnalysisResult()));
         app.post("analysis", ctx-> ctx.json(p.getAnalyseService().analyseRateList(p.getDataService().findAllBySourceName(p.getSelectedDatabase()))));
         app.post("gv", ctx-> ctx.json(String.format("{\"gv\":\"%d\"}",p.checkGeneralVitalityValue())));
+        app.post("searchAnomaly", ctx-> {
+            Integer width = Integer.parseInt(ctx.queryParam("width"));
+            Integer height = Integer.parseInt(ctx.queryParam("height"));
+            ctx.json(p.getAnalyseService().searchAnomaly(width,height));
+        });
 
         app.post("broadcast", ctx -> {
             String json = ctx.body();

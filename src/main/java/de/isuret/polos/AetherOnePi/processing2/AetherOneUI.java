@@ -129,25 +129,7 @@ public class AetherOneUI extends PApplet {
 
     public Integer checkGeneralVitalityValue() {
 
-        List<Integer> list = new ArrayList<Integer>();
-
-        for (int x = 0; x < 3; x++) {
-            list.add(getHotbitsClient().getInteger(1000));
-        }
-
-        Collections.sort(list, Collections.reverseOrder());
-
-        Integer gv = list.get(0);
-
-        if (gv > 950) {
-            int randomDice = getHotbitsClient().getInteger(100);
-
-            while (randomDice >= 50) {
-                gv += randomDice;
-                randomDice = getHotbitsClient().getInteger(100);
-            }
-        }
-        return gv;
+        return getAnalyseService().checkGeneralVitality();
     }
 
     private void createSurfaceIcon() throws IOException {

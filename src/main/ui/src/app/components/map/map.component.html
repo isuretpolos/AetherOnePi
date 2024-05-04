@@ -41,7 +41,20 @@
         <button type="button" class="btn btn-success" (click)="savePositionBookmark()" data-bs-toggle="modal" data-bs-target="#positionBookmarksModal">Save</button>
       </div>
       <div class="modal-footer">
-        <button *ngFor="let bookmark of bookmarks" type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="openBookmark(bookmark)">{{bookmark}}</button>
+        <table class="table table-sm table-striped table-hover">
+          <thead>
+          <tr>
+            <th>NAME</th>
+            <th>ACTIONS</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let bookmark of bookmarks">
+            <td><button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="openBookmark(bookmark)">{{bookmark}}</button></td>
+            <td><button class="btn btn-sm btn-danger" title="DELETE BOOKMARK" (click)="deleteBookmark(bookmark)"><i-bs name="trash"></i-bs></button> </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

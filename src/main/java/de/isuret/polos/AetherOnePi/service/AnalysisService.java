@@ -183,35 +183,25 @@ public class AnalysisService {
     }
 
     public Integer checkGeneralVitality() {
-        Map<Integer, Integer> vitalityMap = new HashMap<>();
+        List<Integer> list = new ArrayList<Integer>();
 
-        for (int x = 0; x < 101; x++) {
-
-            vitalityMap.put(x, 0);
+        for (int x = 0; x < 3; x++) {
+            list.add(getHotbitsClient().getInteger(1000));
         }
 
-        for (int x = 0; x < 3456; x++) {
+        Collections.sort(list, Collections.reverseOrder());
 
-            Integer key = hotbitsClient.getInteger(0, 100);
-            Integer value = vitalityMap.get(key).intValue() + 1;
+        Integer gv = list.get(0);
 
-            vitalityMap.put(key, value);
-        }
+        if (gv > 950) {
+            int randomDice = getHotbitsClient().getInteger(100);
 
-        List<VitalityObject> vitalityList = new ArrayList<>();
-
-        for (int x = 0; x < 101; x++) {
-            vitalityList.add(new VitalityObject(x, vitalityMap.get(x)));
-        }
-
-        Collections.sort(vitalityList, new Comparator<VitalityObject>() {
-            @Override
-            public int compare(VitalityObject o1, VitalityObject o2) {
-                return o2.getValue().compareTo(o1.getValue());
+            while (randomDice >= 50) {
+                gv += randomDice;
+                randomDice = getHotbitsClient().getInteger(100);
             }
-        });
-
-        return vitalityList.get(0).getValue();
+        }
+        return gv;
     }
 
     public AnalysisResult checkGeneralVitalityForAnalysis(AnalysisResult analysisResult) {
@@ -426,6 +416,19 @@ public class AnalysisService {
 
     public void setClarkeMateriaMedica(ClarkeMateriaMedica clarkeMateriaMedica) {
         this.clarkeMateriaMedica = clarkeMateriaMedica;
+    }
+
+    public List<Integer> searchAnomaly(Integer width, Integer height) {
+
+        List<Integer> analysis = new ArrayList<>();
+
+        for (int w=0; w < width; w++) {
+            for (int h=0; h < height; h++) {
+                analysis.add(checkGeneralVitality());
+            }
+        }
+
+        return analysis;
     }
 
     private class SymptomCounter {
