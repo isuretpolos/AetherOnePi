@@ -3,6 +3,9 @@ Open Source Radionics
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
 
+## End of life
+I stop the maintenance for this project and will invest all my energies into the development of the new **AetherOnePy** (AOPy). Naturally this repository remains alife for everyone.
+
 ## User manual (READ IT)
 **Please read first the [AetherOnePi User Manual](https://radionics.home.blog/aetheonepi/)**, because it explains **step by step** the most important features and techniques for analysis and broadcasting.
 
@@ -19,6 +22,7 @@ or download the Beta which is build after each change on the [Action tab](https:
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
+- 2024-12-13 **End of life** reached. New project AetherOne**Py** will replace AetherOne**Pi**
 - 2024-04-04 Anomaly Search in the Map
 - 2024-03-15 Map Analysis, browser UI
 - 2024-02-17 bugfixes and experimental features that will be revealed in the next version

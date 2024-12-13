@@ -49,8 +49,16 @@ export class AetherOnePiService {
     return this.http.get<string[]>(`${this.baseUrl}rates`);
   }
 
+  getAllCases():Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}case`);
+  }
+
+  loadCase(caseName:string):Observable<Case> {
+    return this.http.get<Case>(`${this.baseUrl}case?name=${caseName}`);
+  }
+
   getCase():Observable<Case> {
-    return this.http.get<Case>(`${this.baseUrl}case`);
+    return this.http.get<Case>(`${this.baseUrl}case/current`);
   }
 
   saveCase(caseObject:Case):Observable<void> {

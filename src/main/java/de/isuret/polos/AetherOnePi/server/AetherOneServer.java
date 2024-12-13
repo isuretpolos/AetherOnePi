@@ -77,8 +77,13 @@ public class AetherOneServer {
             ctx.json(settings);
         });
 
+        app.get("case/current", ctx -> {ctx.json(p.getCaseObject());});
         app.get("case", ctx -> {
-           ctx.json(p.getCaseObject());
+            if (ctx.queryParam("name") != null) {
+                ctx.json(p.getDataService().loadCase(ctx.queryParam("name")));
+            } else {
+                ctx.json(p.getDataService().getAllCasesNames());
+            }
         });
 
         app.post("case", ctx -> {

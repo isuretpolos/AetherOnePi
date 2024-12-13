@@ -1,0 +1,64 @@
+<div *ngIf="caseObject">
+  <h1>{{caseObject.name}}</h1>
+  <b>Created {{caseObject.created | date:"MMM dd, yyyy 'at' hh:mm a"}}</b>
+  <hr>
+  <p>{{caseObject.description}}</p>
+  <button *ngFor="let session of caseObject.sessionList" class="btn btn-sm btn-outline-light" style="margin-left: 0.2rem" [class.noAnalysis]="!session.analysisResult"
+          (click)="selectedSession = session">{{session.created | date:"MMM dd, yyyy 'at' hh:mm a"}} {{session.intenion}} {{session.description}}</button>
+
+  <div *ngIf="selectedSession && selectedSession.analysisResult">
+    <hr>
+    <button class="btn btn-danger btn-sm" (click)="selectedSession = undefined">Close Session</button>
+    <table class="table table-sm table-striped table-hover">
+      <thead>
+      <tr>
+        <th>NO</th>
+        <th>EV</th>
+        <th>RATE/SIGNATURE</th>
+        <th>POTENCY</th>
+        <th>LEVEL</th>
+        <th>HIT</th>
+        <th>GV</th>
+        <th>GV RE</th>
+        <th>REC</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let r of selectedSession.analysisResult.rateObjects; index as i"
+          [class.currentGvRow]="i == selectedSession.analysisResult.generalVitality"
+          [class.hitGvRow]="r.gv > 999 && r.gv >= selectedSession.analysisResult.generalVitality"
+          [class.greenGvRow]="r.gv > 999 && r.gv < selectedSession.analysisResult.generalVitality">
+        <td>{{i + 1}}</td>
+        <td>{{r.energeticValue}}</td>
+        <td *ngIf="r.url"><a href="{{r.url}}" target="{{r.nameOrRate}}">{{r.nameOrRate}}</a></td>
+        <td *ngIf="!r.url">{{r.nameOrRate}}</td>
+        <td>{{r.potency}}</td>
+        <td>{{r.level}}</td>
+        <td></td>
+        <td>{{r.gv}}</td>
+        <td>{{r.recurringGeneralVitality}}</td>
+        <td>{{r.recurring}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<table class="table table-sm table-striped table-hover">
+  <thead>
+  <tr>
+    <th>NAME</th>
+    <th>ACTIONS</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let c of caseNames">
+    <td>
+      <button class="btn btn-sm btn-success" (click)="openCase(c)">{{c}}</button>
+    </td>
+    <td>
+      <button class="btn btn-sm btn-danger" (click)="deletCase(c)">X</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

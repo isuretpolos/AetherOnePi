@@ -7,10 +7,12 @@ import {BroadcastComponent} from "./components/broadcast/broadcast.component";
 import {HttpClientModule} from "@angular/common/http";
 import {WeaverComponent} from "./components/weaver/weaver.component";
 import {MapComponent} from "./components/map/map.component";
+import {CasesComponent} from "./components/cases/cases.component";
 
 const routes: Routes = [
   {path: '', redirectTo: 'HOME', pathMatch: 'full'},
   {path: 'HOME', component: HomeComponent},
+  {path: 'CASES', component: CasesComponent},
   {path: 'ANALYSIS', component: AnalysisComponent},
   {path: 'MAP', component: MapComponent},
   {path: 'WEAVER', component: WeaverComponent},

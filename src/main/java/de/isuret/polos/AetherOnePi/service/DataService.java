@@ -14,6 +14,7 @@ import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.lib.StoredConfig;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
+import processing.data.Sort;
 
 import java.io.File;
 import java.io.IOException;
@@ -184,6 +185,23 @@ public class DataService {
             caseObject.getMapDesign().setUuid(UUID.randomUUID());
         }
         mapper.writeValue(new File("cases/" + caseObject.getName().replaceAll(" ","") + ".json"), caseObject);
+    }
+
+    public List<String> getAllCasesNames() {
+        File dir = new File("cases");
+        List<String> names = new ArrayList<>();
+        for (File file : Objects.requireNonNull(dir.listFiles())) {
+            if (file.isFile() && file.getName().endsWith(".json") && !file.getName().contains("dashboardInformations")) {
+                names.add(file.getName().replace(".json",""));
+            }
+        }
+        names.sort(Comparator.comparing(String::toLowerCase));
+        return names;
+    }
+
+    public Case loadCase(String caseName) throws IOException {
+        File caseFile = new File("cases/" + caseName + ".json");
+        return loadCase(caseFile);
     }
 
     public Case loadCase(File caseFile) throws IOException {

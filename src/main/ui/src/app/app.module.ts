@@ -14,6 +14,7 @@ import { MapComponent } from './components/map/map.component';
 import {allIcons, NgxBootstrapIconsModule} from "ngx-bootstrap-icons";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { CasesComponent } from './components/cases/cases.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     SettingsComponent,
     BroadcastComponent,
     WeaverComponent,
-    MapComponent
+    MapComponent,
+    CasesComponent
   ],
     imports: [
         BrowserModule,

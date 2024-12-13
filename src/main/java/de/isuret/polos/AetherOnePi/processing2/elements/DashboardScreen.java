@@ -94,6 +94,7 @@ public class DashboardScreen implements IDrawableElement {
         }
 
         for (String dataBaseName : p.getDataService().getDashboardInformations().getRecentlyLoadedCases()) {
+            if (dataBaseName.contains("dashboard")) continue;
             if (p.mouseX >= 50 && p.mouseX < 300 && p.mouseY < y && p.mouseY >= y - 20) {
                 p.noStroke();
                 p.fill(0,255,0,50f);

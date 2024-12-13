@@ -45,6 +45,7 @@ export class AppComponent {
 
   private initLinks() {
     this.addLink("HOME", true, "#f88b00");
+    this.addLink("CASES", false, "#10a4d1");
     this.addLink("ANALYSIS", false, "#c410d1");
     this.addLink("MAP", false, "#21a103");
     this.addLink("WEAVER", false, "#10d1b1");
