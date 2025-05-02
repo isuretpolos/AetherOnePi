@@ -4,7 +4,7 @@ Open Source Radionics
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
 
 ## End of life
-I stop the maintenance for this project and will invest all my energies into the development of the new **AetherOnePy** (AOPy). Naturally this repository remains alife for everyone.
+I stop the maintenance for this project and will invest all my energies into the development of the new **[AetherOnePy](https://github.com/isuretpolos/AetherOnePy)** (AOPy). Naturally this repository remains alife for everyone.
 
 ## User manual (READ IT)
 **Please read first the [AetherOnePi User Manual](https://radionics.home.blog/aetheonepi/)**, because it explains **step by step** the most important features and techniques for analysis and broadcasting.
