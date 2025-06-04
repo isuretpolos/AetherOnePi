@@ -32,7 +32,7 @@ jobs:
           pwd;
           ls -l;
           ls -l target;
-          cp target/AetherOnePi-1.3.8.jar aetherOnePi/beta/release/;
+          cp target/AetherOnePi-1.4.0.jar aetherOnePi/beta/release/;
           cp backgrounds/*.jpg aetherOnePi/beta/release/backgrounds/;
           cp data_images/IMAGE_CHAKRAS/*.* aetherOnePi/beta/release/data_images/IMAGE_CHAKRAS/;
           cp data_images/IMAGE_AURAS/*.* aetherOnePi/beta/release/data_images/IMAGE_AURAS/;
@@ -40,5 +40,5 @@ jobs:
           cp start*.bat aetherOnePi/beta/release/;
       - uses: actions/upload-artifact@master
         with:
-          name: AetherOnePi-1.3.8
+          name: AetherOnePi-1.4.0
           path: aetherOnePi/beta/release
