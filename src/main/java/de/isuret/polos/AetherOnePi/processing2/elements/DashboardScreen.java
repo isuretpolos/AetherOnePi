@@ -78,7 +78,7 @@ public class DashboardScreen implements IDrawableElement {
 
                 if (p.mousePressed && click == 0) {
                     click = 100;
-                    p.getAetherOneEventHandler().openWebsiteInDefaultBrowser("https://patreon.com/aetherone");
+                    p.getAetherOneEventHandler().openWebsiteInDefaultBrowser("https://patreon.com/c/aetherone");
                 }
             }
         }

@@ -28,14 +28,13 @@ public class BroadcastElement implements IDrawableElement {
     };
     private AetherOneUI p;
     private String tabName;
-    private Integer multiplier;
+    private final Integer multiplier;
     private Integer seconds;
     private String signature;
     private String target;
     private Long start;
     private Random random;
     private SecureRandom random2;
-    private Integer saveFrames = 0;
     private Integer movingWaveAmount = 0;
     private Integer offsetX = 0;
     private Integer offsetY = 0;
@@ -174,13 +173,13 @@ public class BroadcastElement implements IDrawableElement {
     }
 
     public void calcuateProgress() {
-        Float sec = new Float(seconds);
-        Float wid = new Float(WIDTH);
-        Float millisAfterStart = new Float(Calendar.getInstance().getTimeInMillis() - start);
-        Float delta = 100 / wid / sec;
+        float sec = Float.valueOf(seconds);
+        float wid = (float) WIDTH;
+        float millisAfterStart = (float) (Calendar.getInstance().getTimeInMillis() - start);
+        float delta = 100 / wid / sec;
         progress = millisAfterStart * delta;
 
-        if (Calendar.getInstance().getTimeInMillis() > start + (1000 * seconds)) {
+        if (Calendar.getInstance().getTimeInMillis() > start + (1000L * seconds)) {
             stop = true;
         }
     }
@@ -537,10 +536,6 @@ public class BroadcastElement implements IDrawableElement {
         p.text(signature, random.nextInt(WIDTH) + offsetX, random.nextInt(HEIGHT) + offsetY);
     }
 
-    public void mousePressed() {
-        saveFrames = 100;
-    }
-
     public AetherOneUI getP() {
         return p;
     }
@@ -597,28 +592,8 @@ public class BroadcastElement implements IDrawableElement {
         this.random = random;
     }
 
-    public SecureRandom getRandom2() {
-        return random2;
-    }
-
-    public void setRandom2(SecureRandom random2) {
-        this.random2 = random2;
-    }
-
-    public Integer getSaveFrames() {
-        return saveFrames;
-    }
-
-    public void setSaveFrames(Integer saveFrames) {
-        this.saveFrames = saveFrames;
-    }
-
     public Integer getMovingWaveAmount() {
         return movingWaveAmount;
-    }
-
-    public void setMovingWaveAmount(Integer movingWaveAmount) {
-        this.movingWaveAmount = movingWaveAmount;
     }
 
     public Integer getOffsetX() {

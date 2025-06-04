@@ -6,6 +6,7 @@ import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.Rate;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.Settings;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import processing.core.PFont;
@@ -330,7 +331,8 @@ public class GuiElements {
         for (IDrawableElement drawableElement : drawableElementList) {
 
             if (currentTab.equals(drawableElement.getAssignedTabName())
-                    || "global".equals(drawableElement.getAssignedTabName())) {
+                    || "global".equals(drawableElement.getAssignedTabName())
+                    || (drawableElement instanceof BroadcastElement && AetherOneConstants.ANALYZE.equals(currentTab))) {
 
                 /*
                 BROADCAST of the circle elements happens here
