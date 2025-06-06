@@ -444,6 +444,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                 rateObject.setUrl("");
             });
             copy.setGeneralVitality(p.getGeneralVitality());
+            while (copy.getRateObjects().size() > 21) {
+                copy.getRateObjects().remove(copy.getRateObjects().size() - 1);
+            }
 
             String jsonResult = "";
             try {
