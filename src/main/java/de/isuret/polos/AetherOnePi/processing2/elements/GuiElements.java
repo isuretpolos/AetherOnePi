@@ -44,6 +44,7 @@ public class GuiElements {
     private int foregroundOverlayAlpha = 80;
     private IDrawableElement newDrawableElement;
     private Boolean stopAll = false;
+    private Boolean analysing = false;
     private Boolean stopCurrentBroadcast = false;
     private Calendar lastAnalysis = null;
     private List<Integer> automodeGvAverage = new ArrayList<>();
@@ -478,7 +479,6 @@ public class GuiElements {
             int countActiveBroadcasts = countActiveBroadcastElements();
             lastAnalysis.add(Calendar.MILLISECOND, (countActiveBroadcasts * countActiveBroadcasts * 111));
             // analyse automatically
-            List<Rate> rates = null;
             p.setGeneralVitality(p.checkGeneralVitalityValue());
 
             automodeGvAverage.add(p.getGeneralVitality());
@@ -486,25 +486,32 @@ public class GuiElements {
                 automodeGvAverage.remove(0);
             }
 
-            // no need for auto mode if gv is higher than 200 (which means it is not optimal, but not critical either)
+            // no need for auto mode if gv is higher than 300 (which means it is not optimal, but not critical either)
             if (p.getGeneralVitality() > 300) return;
 
-            try {
-                rates = p.getDataService().findAllBySourceName(p.getSelectedDatabase());
-                AnalysisResult result = p.getAnalyseService().analyseRateList(rates);
+            if (!analysing) {
+                analysing = true;
+                new Thread(() -> {
+                    try {
+                        List<Rate> rates = p.getDataService().findAllBySourceName(p.getSelectedDatabase());
+                        AnalysisResult result = p.getAnalyseService().analyseRateList(rates);
 
-                for (RateObject rateObject : result.getRateObjects()) {
-                    // check GV
-                    int gvOfRate = p.checkGeneralVitalityValue();
-                    // if gv of rate is higher as of target + 700 or generally higher than 1400 than broadcast
-                    if (gvOfRate > 1400 || gvOfRate > p.getGeneralVitality() + 700) {
-                        int seconds = p.getHotbitsHandler().getInteger(10,1000);
-                        addBroadcastElement(rateObject.getNameOrRate(), seconds, p.getMultiplier());
-                        break;
+                        for (RateObject rateObject : result.getRateObjects()) {
+                            // check GV
+                            int gvOfRate = p.checkGeneralVitalityValue();
+                            // if gv of rate is higher as of target + 700 or generally higher than 1400 than broadcast
+                            if (gvOfRate > 1400 || gvOfRate > p.getGeneralVitality() + 700) {
+                                int seconds = p.getHotbitsHandler().getInteger(10, 1000);
+                                addBroadcastElement(rateObject.getNameOrRate(), seconds, p.getMultiplier());
+                                break;
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        analysing = false;
                     }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+                }).start();
             }
         }
     }
