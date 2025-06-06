@@ -15,6 +15,7 @@ public class AetherOneConstants {
     public static final String AREA = "AREA";
     public static final String TRAINING_START = "TRAINING[START]";
     public static final String TRAINING_UNCOVER = "TRAINING[UNCOVER]";
+    public static final String CLIPBOARD = "CLIPBOARD";
     public static final String STICKPAD = "STICKPAD";
     public static final String GV = "GV";
     public static final String PASTE_IMAGE = "PASTE IMAGE";

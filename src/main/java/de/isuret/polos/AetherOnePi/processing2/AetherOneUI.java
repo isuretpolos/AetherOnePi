@@ -233,6 +233,7 @@ public class AetherOneUI extends PApplet {
                 .addButton(AetherOneConstants.STATISTICS)
                 .addButton(AetherOneConstants.TRAINING_START)
                 .addButton(AetherOneConstants.TRAINING_UNCOVER)
+                .addButton(AetherOneConstants.CLIPBOARD)
                 .addAnalyseScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.CARD)

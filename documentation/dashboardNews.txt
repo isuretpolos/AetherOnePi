@@ -1,6 +1,6 @@
 Welcome to AetherOnePi, free Radionics for everyone!!!
 
-END OF LIFE - new project will be AetherOnePy
+Check out the new AetherOnePy project on my Patreon page!
 
 Read the documentation by clicking on the button "DOCUMENTATION".
 Else join the PATREON community if you have questions and if

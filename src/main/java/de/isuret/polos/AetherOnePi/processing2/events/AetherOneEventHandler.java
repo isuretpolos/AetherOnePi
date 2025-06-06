@@ -1,5 +1,8 @@
 package de.isuret.polos.AetherOnePi.processing2.events;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import controlP5.ControlEvent;
 import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.*;
@@ -28,10 +31,7 @@ import processing.core.PImage;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
+import java.awt.datatransfer.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -432,6 +432,32 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             p.setTrainingSignatureCovered(false);
             System.out.println(p.getTrainingSignature());
             return;
+        }
+
+        if (AetherOneConstants.CLIPBOARD.equals(name)) {
+
+            AnalysisResult result = p.getAnalysisResult();
+
+            AnalysisResult copy = new AnalysisResult();
+            copy.setRateObjects(new ArrayList<>(result.getRateObjects()));
+            copy.getRateObjects().stream().forEach(rateObject -> {
+                rateObject.setUrl("");
+            });
+            copy.setGeneralVitality(p.getGeneralVitality());
+
+            String jsonResult = "";
+            try {
+                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+                jsonResult = objectMapper.writeValueAsString(copy);
+            } catch (JsonProcessingException e) {
+                log.error("Error converting AnalysisResult to JSON", e);
+            }
+            jsonResult = "Give me an interpretation of this radionics result provided here as a json object. " +
+                    "Avoid detox chattering typical for radionics community. " +
+                    "Give me insight into the single rates, maybe you find a common pattern between the rates, " +
+                    "a family or group of rates, a miasm or mineral or plant group.\n\n" + jsonResult;
+            clipboard.setContents(new StringSelection(jsonResult), null);
         }
     }
 
