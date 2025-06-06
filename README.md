@@ -22,6 +22,7 @@ or download the Beta which is build after each change on the [Action tab](https:
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
+- 2025-06-06 P2D use GPU (v.1.5.0)
 - 2025-06-04 **AetherOnePy** is the new project that replaces AetherOnePi, but one last bugfix (v1.4.0) is released, Broadcasting is shown also in Analysis Screen
 - 2024-12-13 **End of life** reached. New project AetherOne**Py** will replace AetherOne**Pi**
 - 2024-04-04 Anomaly Search in the Map

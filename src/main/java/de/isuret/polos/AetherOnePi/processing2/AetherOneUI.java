@@ -103,7 +103,7 @@ public class AetherOneUI extends PApplet {
 
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
         settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
-        size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721));
+        size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721), P2D);
     }
 
     public void initWebcamsList() {
@@ -327,45 +327,47 @@ public class AetherOneUI extends PApplet {
         File watchlistFile = new File("watchlist.csv");
 
         if (watchlistFile.exists()) {
-            try {
-                List<String> lines = FileUtils.readLines(watchlistFile, "UTF-8");
-                lines.stream().forEach(s -> {
-                    Rate rate = new Rate();
+            new Thread(() -> {
+                try {
+                    List<String> lines = FileUtils.readLines(watchlistFile, "UTF-8");
+                    lines.stream().forEach(s -> {
+                        Rate rate = new Rate();
 
-                    if (s.contains(",")) {
-                        String[] parts = s.split(",");
-                        for (int i = 0; i < parts.length; i++)
-                            if (i == 0) {
-                                rate.setName(parts[i]);
-                            } else {
-                                Rate subRate = new Rate();
-                                subRate.setName(parts[i]);
-                                rate.getSubRates().add(subRate);
-                            }
-                    } else {
-                        rate.setName(s);
+                        if (s.contains(",")) {
+                            String[] parts = s.split(",");
+                            for (int i = 0; i < parts.length; i++)
+                                if (i == 0) {
+                                    rate.setName(parts[i]);
+                                } else {
+                                    Rate subRate = new Rate();
+                                    subRate.setName(parts[i]);
+                                    rate.getSubRates().add(subRate);
+                                }
+                        } else {
+                            rate.setName(s);
+                        }
+
+                        watchlist.add(rate);
+                    });
+
+                    logger.info("Reading watchlist.csv successful! " + watchlist.size() + " entries read!");
+                    watchlistAnalysis = analyseService.analyseRateList(watchlist);
+                    watchlistAnalysis.getRateObjects().forEach(r -> {
+                        r.setGv(checkGeneralVitalityValue());
+                    });
+                    Collections.sort(watchlistAnalysis.getRateObjects(), (o1, o2) -> {
+                        return o1.getGv().compareTo(o2.getGv());
+                    });
+                    for (RateObject rate : watchlistAnalysis.getRateObjects()) {
+                        if (rate.getGv() < 500) {
+                            watchlistRequiresAttention = true;
+                            break;
+                        }
                     }
-
-                    watchlist.add(rate);
-                });
-
-                logger.info("Reading watchlist.csv successful! " + watchlist.size() + " entries read!");
-                watchlistAnalysis = analyseService.analyseRateList(watchlist);
-                watchlistAnalysis.getRateObjects().forEach( r -> {
-                    r.setGv(checkGeneralVitalityValue());
-                });
-                Collections.sort(watchlistAnalysis.getRateObjects(), (o1, o2) -> {
-                    return o1.getGv().compareTo(o2.getGv());
-                });
-                for (RateObject rate : watchlistAnalysis.getRateObjects()) {
-                    if (rate.getGv() < 500) {
-                        watchlistRequiresAttention = true;
-                        break;
-                    }
+                } catch (IOException e) {
+                    logger.error("Error reading watchlist CSV file!", e);
                 }
-            } catch (IOException e) {
-                logger.error("Error reading watchlist CSV file!", e);
-            }
+            }).start();
         }
     }
 
