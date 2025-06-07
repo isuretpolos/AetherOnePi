@@ -470,10 +470,11 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             } catch (JsonProcessingException e) {
                 log.error("Error converting AnalysisResult to JSON", e);
             }
-            jsonResult = "Give me an interpretation of this radionics result provided here as a json object. " +
-                    "Avoid detox chattering typical for radionics community. " +
+            jsonResult = "Give me an interpretation of this radionics result provided here as a json object (from AetherOnePi digital radionics, the rate catalog was '"
+                    + p.getSelectedDatabase() + "').\n" +
+                    "Avoid detox chattering typical for radionics community.\n" +
                     "Give me insight into the single rates, maybe you find a common pattern between the rates, " +
-                    "a family or group of rates, a miasm or mineral or plant group.\n\n" + jsonResult;
+                    "a family or group of rates, a miasm or mineral or plant group.\n\n\n" + jsonResult;
             clipboard.setContents(new StringSelection(jsonResult), null);
         }
     }
