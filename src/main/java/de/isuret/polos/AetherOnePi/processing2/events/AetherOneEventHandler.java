@@ -65,6 +65,15 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         String name = theEvent.getName();
+        handleEvent(name);
+    }
+
+    public void handleEvent(String name) {
+
+        if (AetherOneConstants.EXIT.equals(name)) {
+            p.exit();
+            return;
+        }
 
         if (AetherOneConstants.DOCUMENTATION.equals(name)) {
             openWebsiteInDefaultBrowser("https://radionics.home.blog/aetheonepi/");
@@ -82,7 +91,12 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         if (AetherOneConstants.PATREON.equals(name)) {
-            openWebsiteInDefaultBrowser("https://patreon.com/aetherone");
+            openWebsiteInDefaultBrowser("https://patreon.com/c/aetherone");
+            return;
+        }
+
+        if (AetherOneConstants.ABOUT.equals(name)) {
+            openWebsiteInDefaultBrowser("https://www.patreon.com/collection/1542070?view=expanded");
             return;
         }
 

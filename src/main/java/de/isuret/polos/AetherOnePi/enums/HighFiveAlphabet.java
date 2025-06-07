@@ -2,7 +2,7 @@ package de.isuret.polos.AetherOnePi.enums;
 
 public enum HighFiveAlphabet {
 
-    _,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z;
+    __,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z;
 
     public static String getByPosition(int pos) {
 
@@ -17,7 +17,7 @@ public enum HighFiveAlphabet {
             i++;
         }
 
-        return _.name();
+        return __.name();
     }
 
     public static Integer getIntegerValue(HighFiveAlphabet a) {
