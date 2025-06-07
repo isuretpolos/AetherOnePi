@@ -3,6 +3,8 @@ Open Source Radionics
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
 
+If you like the project, please spread the word, promote it by sharing it with your friends, colleagues and family. Just don't keep it for yourself. The more people use it, the more we can improve it together. Visit our community site on [Patreon](https://www.patreon.com/c/aetherone).
+
 ## User manual (READ IT)
 **Please read first the [AetherOnePi User Manual](https://radionics.home.blog/aetheonepi/)**, because it explains **step by step** the most important features and techniques for analysis and broadcasting.
 
