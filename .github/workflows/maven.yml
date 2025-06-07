@@ -9,10 +9,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: Set up JDK 1.8
+      - name: Set up JDK 24
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 24
       - name: Install Libs and Build with Maven
         run: |
           mvn -B validate;
@@ -32,7 +32,7 @@ jobs:
           pwd;
           ls -l;
           ls -l target;
-          cp target/AetherOnePi-1.6.0.jar aetherOnePi/beta/release/;
+          cp target/AetherOnePi-2.0.0.jar aetherOnePi/beta/release/;
           cp backgrounds/*.jpg aetherOnePi/beta/release/backgrounds/;
           cp data_images/IMAGE_CHAKRAS/*.* aetherOnePi/beta/release/data_images/IMAGE_CHAKRAS/;
           cp data_images/IMAGE_AURAS/*.* aetherOnePi/beta/release/data_images/IMAGE_AURAS/;
@@ -40,5 +40,5 @@ jobs:
           cp start*.bat aetherOnePi/beta/release/;
       - uses: actions/upload-artifact@master
         with:
-          name: AetherOnePi-1.6.0
+          name: AetherOnePi-2.0.0
           path: aetherOnePi/beta/release

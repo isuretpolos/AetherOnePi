@@ -48,6 +48,7 @@ public class GuiElements {
     private Boolean stopCurrentBroadcast = false;
     private Calendar lastAnalysis = null;
     private List<Integer> automodeGvAverage = new ArrayList<>();
+    private String javaVersion = System.getProperty("java.version");
 
     public GuiElements(AetherOneUI p) {
         this.p = p;
@@ -262,6 +263,7 @@ public class GuiElements {
 
         p.fill(255);
         p.textFont(fonts.get("default"), 14);
+        //p.text("Java Version - " + javaVersion, 20, 20);
 
         int drawOrderBroadcastElements = 0;
         int countOrderBroadcastElements = 0;

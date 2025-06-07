@@ -25,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import processing.core.PApplet;
 import processing.core.PImage;
+import processing.opengl.PJOGL;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -91,6 +92,8 @@ public class AetherOneUI extends PApplet {
 
         p = this;
 
+        PJOGL.setIcon(getClass().getClassLoader().getResource("icons/aetherOnePi.png").getPath());
+
         try {
             titleAffix = " " + new File(FilenameUtils.getFullPathNoEndSeparator(new File(".").getAbsolutePath())).getName();
             if (titleAffix.toLowerCase().contains("aether")) {
@@ -103,6 +106,7 @@ public class AetherOneUI extends PApplet {
 
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
         settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
+        pixelDensity(displayDensity());
         size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721), P2D);
     }
 
@@ -456,38 +460,29 @@ public class AetherOneUI extends PApplet {
         trayIcon = new TrayIcon(image, "AetherOnePi");
         trayIcon.setImageAutoSize(true);
         trayIcon.setToolTip("AetherOnePi");
-//        final PopupMenu popup = createPopupMenuForTrayIcon();
-//        trayIcon.setPopupMenu(popup);
+        final PopupMenu popup = createPopupMenuForTrayIcon();
+        trayIcon.setPopupMenu(popup);
         tray.add(trayIcon);
     }
 
     public PopupMenu createPopupMenuForTrayIcon() {
         final PopupMenu popup = new PopupMenu();
 
-        // Create a pop-up menu components
-        MenuItem aboutItem = new MenuItem("About");
-        CheckboxMenuItem cb1 = new CheckboxMenuItem("Set auto size");
-        CheckboxMenuItem cb2 = new CheckboxMenuItem("Set tooltip");
-        Menu displayMenu = new Menu("Display");
-        MenuItem errorItem = new MenuItem("Error");
-        MenuItem warningItem = new MenuItem("Warning");
-        MenuItem infoItem = new MenuItem("Info");
-        MenuItem noneItem = new MenuItem("None");
-        MenuItem exitItem = new MenuItem("Exit");
-
         //Add components to pop-up menu
-        popup.add(aboutItem);
+        popup.add(createMenuItem("About"));
         popup.addSeparator();
-        popup.add(cb1);
-        popup.add(cb2);
+        popup.add(createMenuItem(AetherOneConstants.STOP_ALL));
         popup.addSeparator();
-        popup.add(displayMenu);
-        displayMenu.add(errorItem);
-        displayMenu.add(warningItem);
-        displayMenu.add(infoItem);
-        displayMenu.add(noneItem);
-        popup.add(exitItem);
+        popup.add(createMenuItem("Exit"));
         return popup;
+    }
+
+    public MenuItem createMenuItem(String label) {
+        MenuItem menuItem = new MenuItem(label);
+        menuItem.addActionListener(e -> {
+            p.getAetherOneEventHandler().handleEvent(label.toUpperCase());
+        });
+        return menuItem;
     }
 
     public void startWebCamHotbitAcquire() {
@@ -829,10 +824,6 @@ public class AetherOneUI extends PApplet {
 
     public TrayIcon getTrayIcon() {
         return trayIcon;
-    }
-
-    public void setTrayIcon(TrayIcon trayIcon) {
-        this.trayIcon = trayIcon;
     }
 
     public String getTrainingSignature() {

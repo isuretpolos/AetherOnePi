@@ -43,7 +43,7 @@ public class ImprobabilityMeterVerticalDialog extends PApplet {
     }
 
     public void setTitle(String title) {
-        frame.setTitle(title);
+        surface.setTitle(title);
     }
 
     public void setup() {

@@ -36,6 +36,7 @@ public class AetherOneConstants {
     public static final String BROADCAST_LIST = "BROADCAST LIST";
     public static final String STOP_CURRENT = "STOP CURRENT";
     public static final String STOP_ALL = "STOP ALL";
+    public static final String EXIT = "EXIT";
     public static final String SIGNATURE = "SIGNATURE";
     public static final String SECONDS = "SECONDS";
     public static final String MULTIPLIER = "MULTIPLIER";
@@ -71,6 +72,7 @@ public class AetherOneConstants {
     public static final String DOCUMENTATION = "DOCUMENTATION";
     public static final String WEBSITE = "WEBSITE";
     public static final String PATREON = "PATREON";
+    public static final String ABOUT = "ABOUT";
     public static final String BOOKS = "BOOKS";
     public static final String COMMUNITY = "COMMUNITY";
     public static final String GITHUB = "GITHUB";

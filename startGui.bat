@@ -1,1 +1,1 @@
-call java -jar AetherOnePi-1.6.0.jar
+call java -jar AetherOnePi-2.0.0.jar

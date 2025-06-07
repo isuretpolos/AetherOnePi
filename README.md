@@ -3,25 +3,23 @@ Open Source Radionics
 
 ![Dashboard](https://raw.githubusercontent.com/isuretpolos/AetherOnePi/master/documentation/screenshots/analysis.jpg)
 
-## End of life
-I stop the maintenance for this project and will invest all my energies into the development of the new **[AetherOnePy](https://github.com/isuretpolos/AetherOnePy)** (AOPy). Naturally this repository remains alife for everyone.
-
 ## User manual (READ IT)
 **Please read first the [AetherOnePi User Manual](https://radionics.home.blog/aetheonepi/)**, because it explains **step by step** the most important features and techniques for analysis and broadcasting.
 
 A video series explaining the software will follow.
 
-## Java 1.8 runtime
-You need Java 1.8 as a runtime. Download it from [java.com](https://www.java.com/en/download/) and install it before you run the AetherOnePi application on your PC (Windows / Linux), Mac or Raspberry Pi.
+## Java 24 runtime
+You need Java 24 as a runtime. Download it from [oracle.com](https://www.oracle.com/de/java/technologies/downloads/) and install it before you run the AetherOnePi application on your PC (Windows / Linux), Mac or Raspberry Pi.
 
 ## Download
-Download [Version 1.3.8](https://github.com/isuretpolos/AetherOnePi/releases/tag/v1.3.8)
+Download [Version 2.0.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/v2.0.0)
 
 or download the Beta which is build after each change on the [Action tab](https://github.com/isuretpolos/AetherOnePi/actions). Just click on the Build Element and in the upper right corner you will see a Artifact Download Button if the build was a success.
 
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
+- 2025-06-07 Java 24 support, Processing Core 4.4.4, TrayIcon Menu
 - 2025-06-06 P2D use GPU, Copy Result to Clipboard for AI (v.1.6.0)
 - 2025-06-04 **AetherOnePy** is the new project that replaces AetherOnePi, but one last bugfix (v1.4.0) is released, Broadcasting is shown also in Analysis Screen
 - 2024-12-13 **End of life** reached. New project AetherOne**Py** will replace AetherOne**Pi**
