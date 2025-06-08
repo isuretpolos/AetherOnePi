@@ -21,7 +21,7 @@ or download the Beta which is build after each change on the [Action tab](https:
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
-- 2025-06-08 AutoMode Graph of the GV dynamically checked during broadcast
+- 2025-06-08 AutoMode Graph of the GV dynamically checked during broadcast, Watchlist as setting (default is false)
 - 2025-06-07 Java 24 support, Processing Core 4.4.4, TrayIcon Menu
 - 2025-06-06 P2D use GPU, Copy Result to Clipboard for AI (v.1.6.0)
 - 2025-06-04 **AetherOnePy** is the new project that replaces AetherOnePi, but one last bugfix (v1.4.0) is released, Broadcasting is shown also in Analysis Screen

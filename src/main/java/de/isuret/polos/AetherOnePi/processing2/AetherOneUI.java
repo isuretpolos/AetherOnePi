@@ -9,6 +9,7 @@ import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.ResonanceViewListDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.DashboardElement;
 import de.isuret.polos.AetherOnePi.processing2.elements.GuiElements;
+import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
 import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
 import de.isuret.polos.AetherOnePi.processing2.events.KeyPressedObserver;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
@@ -331,7 +332,7 @@ public class AetherOneUI extends PApplet {
 
         File watchlistFile = new File("watchlist.csv");
 
-        if (watchlistFile.exists()) {
+        if (watchlistFile.exists() && settings.getBoolean(SettingsScreen.WATCHLIST, false)) {
             new Thread(() -> {
                 try {
                     List<String> lines = FileUtils.readLines(watchlistFile, "UTF-8");
