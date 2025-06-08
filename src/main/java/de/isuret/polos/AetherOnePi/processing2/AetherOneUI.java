@@ -71,6 +71,7 @@ public class AetherOneUI extends PApplet {
     private String trainingSignature = null;
     private Boolean trainingSignatureCovered = true;
     private Boolean autoMode = false;
+    private List<Integer> autoModeGVs = new ArrayList<>();
     private PImage clipBoardImage;
     private List<PImage> clipBoardImages = new ArrayList<>();
     private List<RateObject> resonatedList = new ArrayList<>();
@@ -91,7 +92,6 @@ public class AetherOneUI extends PApplet {
     public void settings() {
 
         p = this;
-
         PJOGL.setIcon(getClass().getClassLoader().getResource("icons/aetherOnePi.png").getPath());
 
         try {
@@ -106,8 +106,8 @@ public class AetherOneUI extends PApplet {
 
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
         settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
-        pixelDensity(displayDensity());
         size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721), P2D);
+        pixelDensity(displayDensity());
     }
 
     public void initWebcamsList() {
@@ -163,7 +163,7 @@ public class AetherOneUI extends PApplet {
         }));
 
         // TODO add dynamic more elements with resizing the screen and adjust some of the graphics which are too static
-        surface.setResizable(true);
+        javax.swing.SwingUtilities.invokeLater(() -> surface.setResizable(false));
         hotbitsHandler = new HotbitsHandler(this);
         hotbitsClient = hotbitsHandler;
         analyseService = new AnalysisService();
@@ -247,7 +247,7 @@ public class AetherOneUI extends PApplet {
                 .addButton(AetherOneConstants.ANALYZE_CARD)
                 .addButton(AetherOneConstants.GENERATE_CARD)
                 .addButton(AetherOneConstants.CLEAR_CARD)
-                .setInitialBounds(Float.valueOf(width / 2), 85f, 150f, 14f, true)
+                .setInitialBounds((float) (width / 2), 85f, 150f, 14f, true)
                 .addTextfield(AetherOneConstants.SIGNATURE_FOR_CARD)
                 .addCardScreen();
         guiElements
@@ -359,10 +359,12 @@ public class AetherOneUI extends PApplet {
                     watchlistAnalysis = analyseService.analyseRateList(watchlist);
                     watchlistAnalysis.getRateObjects().forEach(r -> {
                         r.setGv(checkGeneralVitalityValue());
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException e) {
+                        }
                     });
-                    Collections.sort(watchlistAnalysis.getRateObjects(), (o1, o2) -> {
-                        return o1.getGv().compareTo(o2.getGv());
-                    });
+                    watchlistAnalysis.getRateObjects().sort(Comparator.comparing(RateObject::getGv));
                     for (RateObject rate : watchlistAnalysis.getRateObjects()) {
                         if (rate.getGv() < 500) {
                             watchlistRequiresAttention = true;
@@ -601,10 +603,6 @@ public class AetherOneUI extends PApplet {
         return titleAffix;
     }
 
-    public void setTitleAffix(String titleAffix) {
-        this.titleAffix = titleAffix;
-    }
-
     public Settings getSettings() {
         return settings;
     }
@@ -613,20 +611,9 @@ public class AetherOneUI extends PApplet {
         this.settings = settings;
     }
 
-    public Settings getGuiConf() {
-        return guiConf;
-    }
-
-    public void setGuiConf(Settings guiConf) {
-        this.guiConf = guiConf;
-    }
 
     public GuiElements getGuiElements() {
         return guiElements;
-    }
-
-    public void setGuiElements(GuiElements guiElements) {
-        this.guiElements = guiElements;
     }
 
     public AetherOnePiStatus getStatus() {
@@ -641,25 +628,14 @@ public class AetherOneUI extends PApplet {
         return aetherOneEventHandler;
     }
 
-    public void setAetherOneEventHandler(AetherOneEventHandler aetherOneEventHandler) {
-        this.aetherOneEventHandler = aetherOneEventHandler;
-    }
-
     public IHotbitsClient getHotbitsClient() {
         return hotbitsClient;
-    }
-
-    public void setHotbitsClient(IHotbitsClient hotbitsClient) {
-        this.hotbitsClient = hotbitsClient;
     }
 
     public HotbitsHandler getHotbitsHandler() {
         return hotbitsHandler;
     }
 
-    public void setHotbitsHandler(HotbitsHandler hotbitsHandler) {
-        this.hotbitsHandler = hotbitsHandler;
-    }
 
     public boolean isHotbitsFromWebCamAcquiring() {
         return hotbitsFromWebCamAcquiring;
@@ -689,10 +665,6 @@ public class AetherOneUI extends PApplet {
         return webcamImage;
     }
 
-    public void setWebcamImage(BufferedImage webcamImage) {
-        this.webcamImage = webcamImage;
-    }
-
     public Integer getWebCamNumber() {
         return webCamNumber;
     }
@@ -703,10 +675,6 @@ public class AetherOneUI extends PApplet {
 
     public Integer getCountPackages() {
         return countPackages;
-    }
-
-    public void setCountPackages(Integer countPackages) {
-        this.countPackages = countPackages;
     }
 
     public AnalysisService getAnalyseService() {
@@ -721,9 +689,6 @@ public class AetherOneUI extends PApplet {
         return dataService;
     }
 
-    public void setDataService(DataService dataService) {
-        this.dataService = dataService;
-    }
 
     public List<MouseClickObserver> getMouseClickObserverList() {
         return mouseClickObserverList;
@@ -735,10 +700,6 @@ public class AetherOneUI extends PApplet {
 
     public List<KeyPressedObserver> getKeyPressedObserverList() {
         return keyPressedObserverList;
-    }
-
-    public void setKeyPressedObserverList(List<KeyPressedObserver> keyPressedObserverList) {
-        this.keyPressedObserverList = keyPressedObserverList;
     }
 
     public Case getCaseObject() {
@@ -848,6 +809,11 @@ public class AetherOneUI extends PApplet {
 
     public void setAutoMode(Boolean autoMode) {
         this.autoMode = autoMode;
+        this.autoModeGVs.clear();
+    }
+
+    public List<Integer> getAutoModeGVs() {
+        return autoModeGVs;
     }
 
     public PImage getClipBoardImage() {

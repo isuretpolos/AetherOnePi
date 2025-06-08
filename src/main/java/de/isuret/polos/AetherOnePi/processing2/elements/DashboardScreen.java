@@ -18,11 +18,11 @@ public class DashboardScreen implements IDrawableElement {
 
     public DashboardScreen(AetherOneUI p) {
         this.p = p;
-        p.getDataService().init();
 
         (new Thread() {
             public void run() {
                 try {
+                    p.getDataService().init();
                     dashboardNews = p.loadStrings(DASHBOARD_NEWS_TXT);
                     p.saveStrings(TEMPORARY_DASHBOARD_TEXT_TXT, dashboardNews);
                     if (p.getHotbitsClient().getInteger(0,1000) >= 777) {

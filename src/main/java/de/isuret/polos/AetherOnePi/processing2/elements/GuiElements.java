@@ -78,6 +78,7 @@ public class GuiElements {
                 .setForeground(p.color(0, 150, 20))
                 .setCaptionLabel(p.color(255))
                 .setValueLabel(p.color(255));
+
     }
 
     public GuiElements initTabs() {
@@ -310,6 +311,26 @@ public class GuiElements {
                 p.fill(gv,100 + gv,gv);
                 p.text("AUTO MODE ON -- GV = " + (int) average, 22,715);
             }
+
+            int startX = 900;
+            int baselineY = 700;
+            p.noStroke();
+            for (Integer gv : p.getAutoModeGVs()) {
+                float barHeight = (float) gv / 10;
+                float color = (float) gv / 10;
+                p.fill(color);
+                if (gv >= 1000) {
+                    p.fill(color, 255, color);
+                }
+                if (gv < 500) {
+                    p.fill(255, 255, color);
+                }
+                if (gv < 250) {
+                    p.fill(255, color, color);
+                }
+                p.rect(startX, baselineY - barHeight, 2, barHeight);
+                startX += 2;
+            }
         }
 
         p.fill(255);
@@ -482,6 +503,11 @@ public class GuiElements {
             lastAnalysis.add(Calendar.MILLISECOND, (countActiveBroadcasts * countActiveBroadcasts * 111));
             // analyse automatically
             p.setGeneralVitality(p.checkGeneralVitalityValue());
+
+            p.getAutoModeGVs().add(p.getGeneralVitality());
+            if (p.getAutoModeGVs().size() > 180) {
+                p.getAutoModeGVs().remove(0);
+            }
 
             automodeGvAverage.add(p.getGeneralVitality());
             if (automodeGvAverage.size() > 10) {
@@ -807,59 +833,8 @@ public class GuiElements {
         this.currentTab = currentTab;
     }
 
-    public boolean isVerticalAlignment() {
-        return verticalAlignment;
-    }
-
-    public void setVerticalAlignment(boolean verticalAlignment) {
-        this.verticalAlignment = verticalAlignment;
-    }
-
-    public int getBackgroundOverlayAlpha() {
-        return backgroundOverlayAlpha;
-    }
-
-    public void setBackgroundOverlayAlpha(int backgroundOverlayAlpha) {
-        this.backgroundOverlayAlpha = backgroundOverlayAlpha;
-    }
-
-    public int getForegroundOverlayAlpha() {
-        return foregroundOverlayAlpha;
-    }
-
-    public void setForegroundOverlayAlpha(int foregroundOverlayAlpha) {
-        this.foregroundOverlayAlpha = foregroundOverlayAlpha;
-    }
-
-    public IDrawableElement getNewDrawableElement() {
-        return newDrawableElement;
-    }
-
-    public void setNewDrawableElement(IDrawableElement newDrawableElement) {
-        this.newDrawableElement = newDrawableElement;
-    }
-
-    public Boolean getStopAll() {
-        return stopAll;
-    }
-
-    public void setStopAll(Boolean stopAll) {
-        this.stopAll = stopAll;
-    }
-
-    public Boolean getStopCurrentBroadcast() {
-        return stopCurrentBroadcast;
-    }
-
-    public void setStopCurrentBroadcast(Boolean stopCurrentBroadcast) {
-        this.stopCurrentBroadcast = stopCurrentBroadcast;
-    }
-
     public List<Integer> getAutomodeGvAverage() {
         return automodeGvAverage;
     }
 
-    public void setAutomodeGvAverage(List<Integer> automodeGvAverage) {
-        this.automodeGvAverage = automodeGvAverage;
-    }
 }
