@@ -59,10 +59,18 @@ public class AetherOneServer {
         port = findAvailablePort(port, 65535);
 
         app = Javalin.create(config -> {
-            config.staticFiles.add(staticFileConfig -> {
-                staticFileConfig.directory = "ui";
-                staticFileConfig.location = Location.CLASSPATH; // or Location.EXTERNAL
-            });
+
+            if (Location.CLASSPATH.equals(location)) {
+                config.staticFiles.add(staticFileConfig -> {
+                    staticFileConfig.directory = "ui";
+                    staticFileConfig.location = Location.CLASSPATH; // or Location.EXTERNAL
+                });
+            } else {
+                config.staticFiles.add(staticFileConfig -> {
+                    staticFileConfig.directory = "src/main/resources/ui";
+                    staticFileConfig.location = Location.CLASSPATH; // or Location.EXTERNAL
+                });
+            }
 
             config.bundledPlugins.enableCors(cors -> {
                 cors.addRule(it -> it.anyHost());
