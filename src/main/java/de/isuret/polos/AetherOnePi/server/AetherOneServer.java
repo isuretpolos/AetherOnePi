@@ -59,12 +59,14 @@ public class AetherOneServer {
         port = findAvailablePort(port, 65535);
 
         app = Javalin.create(config -> {
-            if (Location.CLASSPATH.equals(location)) {
-                config.addStaticFiles("ui", Location.CLASSPATH);
-            } else {
-                config.addStaticFiles("src/main/resources/ui", location);
-            }
-            config.enableCorsForAllOrigins();
+            config.staticFiles.add(staticFileConfig -> {
+                staticFileConfig.directory = "ui";
+                staticFileConfig.location = Location.CLASSPATH; // or Location.EXTERNAL
+            });
+
+            config.bundledPlugins.enableCors(cors -> {
+                cors.addRule(it -> it.anyHost());
+            });
         }).start(port);
 
         app.get("ping", ctx -> {
