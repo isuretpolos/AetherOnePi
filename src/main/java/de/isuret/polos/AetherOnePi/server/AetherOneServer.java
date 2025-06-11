@@ -11,6 +11,8 @@ import io.javalin.http.staticfiles.Location;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexableField;
 
+import java.io.IOException;
+import java.net.ServerSocket;
 import java.util.List;
 
 public class AetherOneServer {
@@ -54,6 +56,8 @@ public class AetherOneServer {
 
         Javalin app;
 
+        port = findAvailablePort(port, 65535);
+
         while (true) {
             try {
                 app = Javalin.create(config -> {
@@ -66,8 +70,7 @@ public class AetherOneServer {
                 }).start(port);
                 break;
             } catch (Exception e) {
-                System.out.println("Port " + port + " is already in use, try the next one");
-                port++;
+                System.out.println("Port " + port + " is already in use.");
             }
         }
 
@@ -160,5 +163,23 @@ public class AetherOneServer {
 
     public int getPort() {
         return port;
+    }
+
+    public static int findAvailablePort(int preferredPort, int maxPort) {
+        for (int port = preferredPort; port <= maxPort; port++) {
+            if (isPortAvailable(port)) {
+                return port;
+            }
+        }
+        throw new RuntimeException("No available port found in range " + preferredPort + " to " + maxPort);
+    }
+
+    public static boolean isPortAvailable(int port) {
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
+            serverSocket.setReuseAddress(true);
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
     }
 }
