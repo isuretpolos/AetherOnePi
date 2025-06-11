@@ -302,6 +302,13 @@ public class GuiElements {
             p.text("POWER SWITCH ON !!!", 22,700);
         }
 
+        p.fill(255);
+        p.line(200,541,200,700);
+        p.line(670,541,670,700);
+        p.line(200,558,1240,558);
+        p.text("BROADCAST QUEUE", 205,555);
+        p.text("RESONATED RATES", 675,555);
+
         if (p.getAutoMode()) {
 
             if (automodeGvAverage.size() > 0) {
@@ -318,7 +325,7 @@ public class GuiElements {
             for (Integer gv : p.getAutoModeGVs()) {
                 float barHeight = (float) gv / 10;
                 float color = (float) gv / 10;
-                p.fill(color);
+                p.fill(color,color,255);
                 if (gv >= 1000) {
                     p.fill(color, 255, color);
                 }
@@ -331,16 +338,10 @@ public class GuiElements {
                 p.rect(startX, baselineY - barHeight, 2, barHeight);
                 startX += 2;
             }
+            p.fill(255);
+            p.text("GENERAL VITALITY GRAPH", 900, 715);
         }
 
-        p.fill(255);
-        p.line(200,550,200,700);
-        p.line(670,550,670,700);
-        p.line(200,560,670,560);
-        p.text("BROADCAST QUEUE", 205,555);
-        p.line(670,560,1070,560);
-        p.text("RESONATED RATES", 675,555);
-        //p.text("X: " + p.getMousePoint().x + " Y: " + p.getMousePoint().y, 20,20);
 
         for (int i=0; i<p.getResonatedList().size(); i++) {
 

@@ -14,13 +14,14 @@ A video series explaining the software will follow.
 You need Java 24 as a runtime. Download it from [oracle.com](https://www.oracle.com/de/java/technologies/downloads/) and install it before you run the AetherOnePi application on your PC (Windows / Linux), Mac or Raspberry Pi.
 
 ## Download
-Download [Version 2.1.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/v2.1.0)
+Download [Version 2.2.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/v2.2.0)
 
 or download the Beta which is build after each change on the [Action tab](https://github.com/isuretpolos/AetherOnePi/actions). Just click on the Build Element and in the upper right corner you will see a Artifact Download Button if the build was a success.
 
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
+- 2025-06-10 Re-enabled the embedded web server, so you can access the area scan 
 - 2025-06-08 AutoMode Graph of the GV dynamically checked during broadcast, Watchlist as setting (default is false)
 - 2025-06-07 Java 24 support, Processing Core 4.4.4, TrayIcon Menu
 - 2025-06-06 P2D use GPU, Copy Result to Clipboard for AI (v.1.6.0)

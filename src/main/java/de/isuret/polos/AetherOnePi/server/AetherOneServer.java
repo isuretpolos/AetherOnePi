@@ -38,11 +38,14 @@ public class AetherOneServer {
         this.p = p;
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-        /*try {
-            init(location);
-        } catch(Exception e) {
-            e.printStackTrace();
-        }*/
+        (new Thread(() -> {
+            try {
+                init(location);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        })).start();
+
     }
 
     public void init(Location location) {
