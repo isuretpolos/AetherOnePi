@@ -58,21 +58,14 @@ public class AetherOneServer {
 
         port = findAvailablePort(port, 65535);
 
-        while (true) {
-            try {
-                app = Javalin.create(config -> {
-                    if (Location.CLASSPATH.equals(location)) {
-                        config.addStaticFiles("ui", Location.CLASSPATH);
-                    } else {
-                        config.addStaticFiles("src/main/resources/ui", location);
-                    }
-                    config.enableCorsForAllOrigins();
-                }).start(port);
-                break;
-            } catch (Exception e) {
-                System.out.println("Port " + port + " is already in use.");
+        app = Javalin.create(config -> {
+            if (Location.CLASSPATH.equals(location)) {
+                config.addStaticFiles("ui", Location.CLASSPATH);
+            } else {
+                config.addStaticFiles("src/main/resources/ui", location);
             }
-        }
+            config.enableCorsForAllOrigins();
+        }).start(port);
 
         app.get("ping", ctx -> {
             ctx.json("{\"result\":\"pong\"}");
