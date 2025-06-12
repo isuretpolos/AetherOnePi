@@ -294,13 +294,14 @@ public class GuiElements {
             drawableElementList.add(broadcastElement);
         }
 
-        if (p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false)) {
-            p.fill(0,255,0);
-            p.text("DYNAMIC ADJUSTMENTS", 22,700);
-        } else if (p.getSettings().getBoolean(SettingsScreen.POWER_SWITCH, false)) {
+        if (p.getSettings().getBoolean(SettingsScreen.POWER_SWITCH, false)) {
             p.fill(0,255,0);
             p.text("POWER SWITCH ON !!!", 22,700);
+        } else if (p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false)) {
+            p.fill(0,255,0);
+            p.text("DYNAMIC ADJUSTMENTS", 22,700);
         }
+
 
         p.fill(255);
         p.line(200,541,200,700);
@@ -445,8 +446,13 @@ public class GuiElements {
                 p.getTrayIcon().displayMessage("AetherOnePi", "Broadcast of \n" + broadcastElement.getSignature().trim() + "\nfinished!", TrayIcon.MessageType.INFO);
             }
 
-            // Dynamic adjustments happens here (disable it for the POWER_SWITCH)
-            if (p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false)) {
+            if (p.getSettings().getBoolean(SettingsScreen.POWER_SWITCH, false)) {
+                // Re-broadcast the element if it is not stopped and the power switch is on
+                // Higher priority than dynamic adjustments
+                BroadcastElement reBroadcastElement = new BroadcastElement(p, "BROADCAST", 100, broadcastElement.getSignature(), p.getMultiplier());
+                broadcastQueueList.add(reBroadcastElement);
+
+            } else if (p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false)) {
 
                 int gvTarget = p.getGeneralVitality();
                 int gvRate = p.checkGeneralVitalityValue();
@@ -473,9 +479,6 @@ public class GuiElements {
                 } else {
                     System.out.println(gvRate + " > " + gvTarget + " === " + broadcastElement.getSignature());
                 }
-            } else if (p.getSettings().getBoolean(SettingsScreen.POWER_SWITCH, false)) {
-                BroadcastElement reBroadcastElement = new BroadcastElement(p, "BROADCAST", 100, broadcastElement.getSignature(), p.getMultiplier());
-                broadcastQueueList.add(reBroadcastElement);
             }
         }
         drawableElementList.removeAll(removeElements);
