@@ -3,6 +3,7 @@ package de.isuret.polos.AetherOnePi.processing2.hotbits;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
+import de.isuret.polos.AetherOnePi.hotbits.hrng.InfiniteNoiseGenerator;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,7 @@ public class HotbitsHandler implements IHotbitsClient {
     private AetherOneUI p;
     private boolean simulation = false;
     private File hotbitsFolder = new File("hotbits");
+    private InfiniteNoiseGenerator infiniteNoiseGenerator;
 
     public HotbitsHandler(AetherOneUI p) {
         this.p = p;
@@ -34,6 +36,30 @@ public class HotbitsHandler implements IHotbitsClient {
         if (!hotbitsFolder.exists()) {
             logger.info("Creating hotbits folder, because it did not exist yet.");
             hotbitsFolder.mkdir();
+        }
+
+        // Try to initialize Infinite Noise TRNG if connected
+        initInfiniteNoiseTrng();
+    }
+
+    private void initInfiniteNoiseTrng() {
+        try {
+            if (InfiniteNoiseGenerator.isDevicePresent()) {
+                logger.info("Infinite Noise TRNG detected! Initializing...");
+                infiniteNoiseGenerator = new InfiniteNoiseGenerator();
+                if (infiniteNoiseGenerator.initialize()) {
+                    logger.info("Infinite Noise TRNG initialized successfully - using hardware TRNG for hotbits");
+                    infiniteNoiseGenerator.startContinuousGeneration("hotbits", 2000, 10000);
+                } else {
+                    logger.warn("Infinite Noise TRNG detected but initialization failed - falling back to default hotbits source");
+                    infiniteNoiseGenerator = null;
+                }
+            } else {
+                logger.info("No Infinite Noise TRNG detected - using default hotbits source");
+            }
+        } catch (Exception e) {
+            logger.info("Infinite Noise TRNG not available: {} - using default hotbits source", e.getMessage());
+            infiniteNoiseGenerator = null;
         }
     }
 
