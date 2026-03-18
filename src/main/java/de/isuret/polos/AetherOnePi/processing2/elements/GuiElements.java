@@ -294,6 +294,14 @@ public class GuiElements {
             drawableElementList.add(broadcastElement);
         }
 
+        // Update TRNG status LED and display source name
+        boolean trngConnected = p.getHotbitsHandler().isTrngConnected();
+        StatusLED trngLed = statusLEDMap.get(AetherOneConstants.TRNG);
+        if (trngLed != null) {
+            trngLed.setOn(trngConnected);
+            trngLed.setText(p.getHotbitsHandler().getTrngSourceName());
+        }
+
         if (p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false)) {
             p.fill(0,255,0);
             p.text("DYNAMIC ADJUSTMENTS", 22,700);

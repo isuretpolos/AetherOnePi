@@ -51,6 +51,7 @@ public class AetherOneConstants {
     public static final String BROADCASTING = "BROADCASTING";
     public static final String CLEARING = "CLEARING";
     public static final String COPYING = "COPYING";
+    public static final String TRNG = "TRNG";
     public static final String HOTBITS = "HOTBITS";
     public static final String PACKAGES = "PACKAGES";
     public static final String CACHE = "CACHE";
