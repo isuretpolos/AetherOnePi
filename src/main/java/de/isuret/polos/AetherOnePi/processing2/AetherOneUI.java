@@ -93,7 +93,6 @@ public class AetherOneUI extends PApplet {
     public void settings() {
 
         p = this;
-        PJOGL.setIcon(getClass().getClassLoader().getResource("icons/aetherOnePi.png").getPath());
 
         try {
             titleAffix = " " + new File(FilenameUtils.getFullPathNoEndSeparator(new File(".").getAbsolutePath())).getName();
@@ -309,6 +308,7 @@ public class AetherOneUI extends PApplet {
                 .addStatusLED(AetherOneConstants.CLEARING)
                 .addStatusLED(AetherOneConstants.GROUNDING)
                 .addStatusLED(AetherOneConstants.COPYING)
+                .addStatusLED(AetherOneConstants.TRNG)
                 .addSlider(AetherOneConstants.PACKAGES, 100, 10, 100)
                 .addSlider(AetherOneConstants.CACHE, 100, 10, 20000)
                 .addSlider(AetherOneConstants.PROGRESS, 100, 10, 100)

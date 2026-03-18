@@ -181,6 +181,20 @@ public class HotbitsHandler implements IHotbitsClient {
         return getInteger(0, bound);
     }
 
+    public boolean isTrngConnected() {
+        return infiniteNoiseGenerator != null && infiniteNoiseGenerator.isRunning();
+    }
+
+    public String getTrngSourceName() {
+        if (infiniteNoiseGenerator != null && infiniteNoiseGenerator.isRunning()) {
+            return "INFINITE NOISE TRNG";
+        } else if (hotbits.size() > 0) {
+            return "CACHED HOTBITS";
+        } else {
+            return "PSEUDO RANDOM";
+        }
+    }
+
     @Override
     public int getInteger(Integer min, Integer max) {
         if (hotbits != null && hotbits.size() > 0) {
