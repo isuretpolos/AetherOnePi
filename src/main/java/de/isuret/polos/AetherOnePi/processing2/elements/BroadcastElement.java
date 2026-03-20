@@ -375,47 +375,34 @@ public class BroadcastElement implements IDrawableElement {
     }
 
     private void playBinauralSound() {
-        if (!playingSound && movingWaveAmount > 0) {
-            playingSound = true;
 
-            if (binaural == null) {
-                int leftFreq = 50 + p.getHotbitsClient().getInteger(500);
-                int rightFreq = leftFreq + p.getHotbitsClient().getInteger(50);
-                binaural = new Binaural(leftFreq, rightFreq, 0.1f + (p.getHotbitsClient().getInteger(10)* 0.1f));
+        if (playingSound && movingWaveAmount > 0 && binaural == null) {
+            int leftFreq = 50 + p.getHotbitsClient().getInteger(500);
+            int rightFreq = leftFreq + p.getHotbitsClient().getInteger(50);
+            binaural = new Binaural(leftFreq, rightFreq, 0.1f);
 
-                (new Thread() {
-                    public void run() {
-                        binaural.play(3);
-                        binaural.shutdown();
-                        binaural = null;
-                        playingSound = false;
-                    }
-                }).start();
-            }
+            (new Thread() {
+                public void run() {
+                    binaural.play(3);
+                    binaural.shutdown();
+                    binaural = null;
+                }
+            }).start();
         }
 
-        if (playingSoundAdvanced) {
+        if (playingSoundAdvanced && binaural == null) {
             // continues playing sound
-            playingSound = true;
+            int leftFreq = 20 + p.getHotbitsClient().getInteger(520);
+            int rightFreq = leftFreq + p.getHotbitsClient().getInteger(100);
+            binaural = new Binaural(leftFreq, rightFreq, 0.1f);
 
-            if (binaural == null) {
-                int leftFreq = 20 + p.getHotbitsClient().getInteger(520);
-                int rightFreq = leftFreq + p.getHotbitsClient().getInteger(50);
-                binaural = new Binaural(leftFreq, rightFreq, 0.1f + (p.getHotbitsClient().getInteger(10)* 0.1f));
-
-                (new Thread() {
-                    public void run() {
-                        binaural.play(1);
-                        binaural.shutdown();
-                        binaural = null;
-                        playingSound = false;
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException e) {
-                        }
-                    }
-                }).start();
-            }
+            (new Thread() {
+                public void run() {
+                    binaural.play((float) p.getHotbitsClient().getInteger(2000) /1000);
+                    binaural.shutdown();
+                    binaural = null;
+                }
+            }).start();
         }
     }
 

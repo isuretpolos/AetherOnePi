@@ -35,15 +35,15 @@ public class Binaural {
         this.volume = Math.max(0f, Math.min(1f, volume));
     }
 
-    public void play(int seconds) {
+    public void play(float seconds) {
         try {
             line = AudioSystem.getSourceDataLine(audioFormat);
-            line.open(audioFormat, SAMPLE_RATE * FRAME_SIZE / 2); // half-second buffer
+            line.open(audioFormat, SAMPLE_RATE * FRAME_SIZE / 2);
             line.start();
 
             running = true;
 
-            int totalSamples = SAMPLE_RATE * seconds;
+            int totalSamples = (int) (SAMPLE_RATE * seconds);
             int chunkSamples = 1024;
             byte[] buffer = new byte[chunkSamples * FRAME_SIZE];
 
@@ -52,16 +52,31 @@ public class Binaural {
             double leftStep = 2.0 * Math.PI * leftFreq / SAMPLE_RATE;
             double rightStep = 2.0 * Math.PI * rightFreq / SAMPLE_RATE;
 
+            int fadeSamples = Math.max(1, SAMPLE_RATE / 100); // about 10 ms at 44100 Hz
+
             int produced = 0;
             while (running && produced < totalSamples) {
                 int samplesThisChunk = Math.min(chunkSamples, totalSamples - produced);
                 int index = 0;
 
                 for (int i = 0; i < samplesThisChunk; i++) {
-                    short leftSample = (short) (Math.sin(leftPhase) * Short.MAX_VALUE * volume);
-                    short rightSample = (short) (Math.sin(rightPhase) * Short.MAX_VALUE * volume);
+                    int globalSampleIndex = produced + i;
 
-                    // interleaved stereo: L low, L high, R low, R high
+                    float envelope = 1.0f;
+
+                    if (globalSampleIndex < fadeSamples) {
+                        envelope = (float) globalSampleIndex / fadeSamples;
+                    } else if (globalSampleIndex >= totalSamples - fadeSamples) {
+                        envelope = (float) (totalSamples - globalSampleIndex) / fadeSamples;
+                    }
+
+                    if (envelope < 0f) {
+                        envelope = 0f;
+                    }
+
+                    short leftSample = (short) (Math.sin(leftPhase) * Short.MAX_VALUE * volume * envelope);
+                    short rightSample = (short) (Math.sin(rightPhase) * Short.MAX_VALUE * volume * envelope);
+
                     buffer[index++] = (byte) (leftSample & 0xff);
                     buffer[index++] = (byte) ((leftSample >> 8) & 0xff);
                     buffer[index++] = (byte) (rightSample & 0xff);
