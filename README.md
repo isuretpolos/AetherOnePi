@@ -21,6 +21,7 @@ or download the Beta which is build after each change on the [Action tab](https:
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
+- 2026-03-20 Add Infinite Noise TRNG (Leetronics) as hotbits source (many thanks to @emolionl) & some bugfixes
 - 2025-06-14 History View Bugfix, didn't show GV of target
 - 2025-06-12 Powerswitch overrides Dynamic Adjustments Settings
 - 2025-06-10 Re-enabled the embedded web server, so you can access the area scan 
