@@ -47,6 +47,7 @@ public class BroadcastElement implements IDrawableElement {
 
     private Binaural binaural = null;
     private boolean playingSound = false;
+    private boolean playingSoundAdvanced = false;
     private boolean dynamicAdjustments = false;
 
     public BroadcastElement(AetherOneUI p, String tabName, int seconds, String signature, Integer multiplier) {
@@ -89,6 +90,7 @@ public class BroadcastElement implements IDrawableElement {
             playingSound = true;
         }
 
+        playingSoundAdvanced = p.getSettings().getBoolean(SettingsScreen.PLAY_SOUND_ADVANCED, false);
         dynamicAdjustments = p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false);
     }
 
@@ -380,16 +382,40 @@ public class BroadcastElement implements IDrawableElement {
                 int leftFreq = 50 + p.getHotbitsClient().getInteger(500);
                 int rightFreq = leftFreq + p.getHotbitsClient().getInteger(50);
                 binaural = new Binaural(leftFreq, rightFreq, 0.1f + (p.getHotbitsClient().getInteger(10)* 0.1f));
-            }
 
-            (new Thread() {
-                public void run() {
-                    binaural.play(3);
-                    binaural.shutdown();
-                    binaural = null;
-                    playingSound = false;
-                }
-            }).start();
+                (new Thread() {
+                    public void run() {
+                        binaural.play(3);
+                        binaural.shutdown();
+                        binaural = null;
+                        playingSound = false;
+                    }
+                }).start();
+            }
+        }
+
+        if (playingSoundAdvanced) {
+            // continues playing sound
+            playingSound = true;
+
+            if (binaural == null) {
+                int leftFreq = 20 + p.getHotbitsClient().getInteger(520);
+                int rightFreq = leftFreq + p.getHotbitsClient().getInteger(50);
+                binaural = new Binaural(leftFreq, rightFreq, 0.1f + (p.getHotbitsClient().getInteger(10)* 0.1f));
+
+                (new Thread() {
+                    public void run() {
+                        binaural.play(1);
+                        binaural.shutdown();
+                        binaural = null;
+                        playingSound = false;
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                        }
+                    }
+                }).start();
+            }
         }
     }
 
