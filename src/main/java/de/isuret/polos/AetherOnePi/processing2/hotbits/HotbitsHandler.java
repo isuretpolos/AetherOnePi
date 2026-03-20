@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
 import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
 import de.isuret.polos.AetherOnePi.hotbits.hrng.InfiniteNoiseGenerator;
+import de.isuret.polos.AetherOnePi.hotbits.hrng.TrueRngProGenerator;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +30,7 @@ public class HotbitsHandler implements IHotbitsClient {
     private boolean simulation = false;
     private File hotbitsFolder = new File("hotbits");
     private InfiniteNoiseGenerator infiniteNoiseGenerator;
+    private TrueRngProGenerator trueRngProGenerator;
 
     public HotbitsHandler(AetherOneUI p) {
         this.p = p;
@@ -38,8 +40,11 @@ public class HotbitsHandler implements IHotbitsClient {
             hotbitsFolder.mkdir();
         }
 
-        // Try to initialize Infinite Noise TRNG if connected
+        // Try to initialize hardware TRNGs (first one found wins)
         initInfiniteNoiseTrng();
+        if (infiniteNoiseGenerator == null) {
+            initTrueRngPro();
+        }
     }
 
     private void initInfiniteNoiseTrng() {
@@ -60,6 +65,27 @@ public class HotbitsHandler implements IHotbitsClient {
         } catch (Exception e) {
             logger.info("Infinite Noise TRNG not available: {} - using default hotbits source", e.getMessage());
             infiniteNoiseGenerator = null;
+        }
+    }
+
+    private void initTrueRngPro() {
+        try {
+            if (TrueRngProGenerator.isDevicePresent()) {
+                logger.info("TrueRNG Pro detected! Initializing...");
+                trueRngProGenerator = new TrueRngProGenerator();
+                if (trueRngProGenerator.initialize()) {
+                    logger.info("TrueRNG Pro initialized successfully - using hardware TRNG for hotbits");
+                    trueRngProGenerator.startContinuousGeneration("hotbits", 2000, 10000);
+                } else {
+                    logger.warn("TrueRNG Pro detected but initialization failed - falling back to default hotbits source");
+                    trueRngProGenerator = null;
+                }
+            } else {
+                logger.info("No TrueRNG Pro detected - using default hotbits source");
+            }
+        } catch (Exception e) {
+            logger.info("TrueRNG Pro not available: {} - using default hotbits source", e.getMessage());
+            trueRngProGenerator = null;
         }
     }
 
@@ -182,12 +208,15 @@ public class HotbitsHandler implements IHotbitsClient {
     }
 
     public boolean isTrngConnected() {
-        return infiniteNoiseGenerator != null && infiniteNoiseGenerator.isRunning();
+        return (infiniteNoiseGenerator != null && infiniteNoiseGenerator.isRunning())
+                || (trueRngProGenerator != null && trueRngProGenerator.isRunning());
     }
 
     public String getTrngSourceName() {
         if (infiniteNoiseGenerator != null && infiniteNoiseGenerator.isRunning()) {
             return "INFINITE NOISE TRNG";
+        } else if (trueRngProGenerator != null && trueRngProGenerator.isRunning()) {
+            return "TRUERNG PRO";
         } else if (hotbits.size() > 0) {
             return "CACHED HOTBITS";
         } else {
