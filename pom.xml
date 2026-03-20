@@ -195,6 +195,13 @@
             <version>${lucene-core.version}</version>
         </dependency>
 
+        <!-- JNA for FTDI D2XX native access (Infinite Noise TRNG) -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.14.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
