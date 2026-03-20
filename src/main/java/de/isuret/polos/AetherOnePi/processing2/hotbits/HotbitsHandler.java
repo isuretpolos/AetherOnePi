@@ -216,7 +216,7 @@ public class HotbitsHandler implements IHotbitsClient {
         if (infiniteNoiseGenerator != null && infiniteNoiseGenerator.isRunning()) {
             return "INFINITE NOISE TRNG";
         } else if (trueRngProGenerator != null && trueRngProGenerator.isRunning()) {
-            return "TRUERNG PRO";
+            return "TrueRNGPro v2.0";
         } else if (hotbits.size() > 0) {
             return "CACHED HOTBITS";
         } else {
