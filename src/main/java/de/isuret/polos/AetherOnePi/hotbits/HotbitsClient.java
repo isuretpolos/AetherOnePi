@@ -129,6 +129,16 @@ public class HotbitsClient implements IHotbitsClient {
         return getRandom(Calendar.getInstance().getTimeInMillis() + getSeed(30)).nextInt((max - min) + 1) + min;
     }
 
+    @Override
+    public boolean isInfiniteUSBavailable() {
+        return false;
+    }
+
+    @Override
+    public boolean isInfiniteUSBrunning() {
+        return false;
+    }
+
     public synchronized HotbitPackage getPackage() throws InterruptedException, IOException {
 
         actualizeLastCallValue();
@@ -423,4 +433,6 @@ public class HotbitsClient implements IHotbitsClient {
         // TODO
         return false;
     }
+
+
 }

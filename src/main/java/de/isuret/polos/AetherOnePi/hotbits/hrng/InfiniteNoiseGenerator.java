@@ -64,6 +64,7 @@ public class InfiniteNoiseGenerator {
     private Pointer ftHandle;
     private boolean deviceOpen = false;
     private volatile boolean running = false;
+    private volatile boolean working = false;
 
     // Health check state
     private long totalBitsChecked = 0;
@@ -100,24 +101,35 @@ public class InfiniteNoiseGenerator {
         try {
             FTD2xx ftd2xx = FTD2xx.INSTANCE;
             IntByReference numDevices = new IntByReference();
+
             int status = ftd2xx.FT_CreateDeviceInfoList(numDevices);
+            logger.debug("FT_CreateDeviceInfoList status=" + status +
+                    ", count=" + numDevices.getValue());
+
             if (status != FTD2xx.FT_OK || numDevices.getValue() == 0) {
                 return false;
             }
 
-            // Try to open the device with the known product ID
-            PointerByReference handleRef = new PointerByReference();
             for (int i = 0; i < numDevices.getValue(); i++) {
+                // read device info here: serial, description, flags, type, ID, locId
+                // then compare VID/PID or description/serial with your known TRNG
+                PointerByReference handleRef = new PointerByReference();
                 status = ftd2xx.FT_Open(i, handleRef);
+                logger.debug("FT_Open(" + i + ") status=" + status);
+
                 if (status == FTD2xx.FT_OK) {
-                    ftd2xx.FT_Close(handleRef.getValue());
-                    return true;
+                    try {
+                        // verify this is really your Infinite Noise device
+                        return true;
+                    } finally {
+                        ftd2xx.FT_Close(handleRef.getValue());
+                    }
                 }
             }
         } catch (UnsatisfiedLinkError e) {
-            logger.debug("FTDI D2XX library not available: {}", e.getMessage());
+            logger.error("D2XX library missing or wrong architecture: " + e.getMessage());
         } catch (Exception e) {
-            logger.debug("Error checking for Infinite Noise device: {}", e.getMessage());
+            e.printStackTrace();
         }
         return false;
     }
@@ -399,8 +411,10 @@ public class InfiniteNoiseGenerator {
                     File generated = generateHotbitsFile(targetFolder, integersPerPackage);
                     if (generated != null) {
                         logger.debug("Generated hotbits file: {}", generated.getName());
+                        working = true;
                     } else {
                         logger.warn("Failed to generate hotbits file, pausing...");
+                        working = false;
                         sleep(5000);
                     }
                 } else {
@@ -444,6 +458,10 @@ public class InfiniteNoiseGenerator {
 
     public boolean isRunning() {
         return running;
+    }
+
+    public boolean isWorking() {
+        return working;
     }
 
     public boolean isDeviceOpen() {

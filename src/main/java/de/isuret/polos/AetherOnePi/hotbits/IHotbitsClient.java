@@ -6,4 +6,6 @@ public interface IHotbitsClient {
     int getInteger(int bound);
 
     int getInteger(Integer min, Integer max);
+    boolean isInfiniteUSBavailable();
+    boolean isInfiniteUSBrunning();
 }

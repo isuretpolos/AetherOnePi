@@ -14,6 +14,9 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * The HotbitsHandler downloads asynchronously TRNG data from the AetherOnePi server and saves them as packages files
@@ -39,7 +42,13 @@ public class HotbitsHandler implements IHotbitsClient {
         }
 
         // Try to initialize Infinite Noise TRNG if connected
-        initInfiniteNoiseTrng();
+        // Do this every 10 seconds asynchronously
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(() -> {
+            if (infiniteNoiseGenerator == null) {
+                initInfiniteNoiseTrng();
+            }
+        }, 0, 10, TimeUnit.SECONDS);
     }
 
     private void initInfiniteNoiseTrng() {
@@ -55,7 +64,7 @@ public class HotbitsHandler implements IHotbitsClient {
                     infiniteNoiseGenerator = null;
                 }
             } else {
-                logger.info("No Infinite Noise TRNG detected - using default hotbits source");
+                logger.debug("No Infinite Noise TRNG detected - using default hotbits source");
             }
         } catch (Exception e) {
             logger.info("Infinite Noise TRNG not available: {} - using default hotbits source", e.getMessage());
@@ -195,5 +204,18 @@ public class HotbitsHandler implements IHotbitsClient {
         } else {
             return new SecureRandom().nextInt((max - min) + 1) + min;
         }
+    }
+
+    @Override
+    public boolean isInfiniteUSBavailable() {
+        return infiniteNoiseGenerator != null;
+    }
+
+    @Override
+    public boolean isInfiniteUSBrunning() {
+        if (infiniteNoiseGenerator != null) {
+            return infiniteNoiseGenerator.isWorking();
+        }
+        return false;
     }
 }

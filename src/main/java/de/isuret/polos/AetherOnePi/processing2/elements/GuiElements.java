@@ -316,6 +316,15 @@ public class GuiElements {
             p.text("DYNAMIC ADJUSTMENTS", 22,700);
         }
 
+        if (p.getHotbitsClient().isInfiniteUSBavailable()) {
+            if (p.getHotbitsClient().isInfiniteUSBrunning()) {
+                p.fill(0,255,0);
+            } else {
+                p.fill(255,0,0);
+            }
+            p.text("INFINITE NOISE TRNG", 22,712);
+        }
+
 
         p.fill(255);
         p.line(200,541,200,700);
