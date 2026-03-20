@@ -16,6 +16,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.*;
 
@@ -48,7 +49,7 @@ public class GuiElements {
     private Boolean stopCurrentBroadcast = false;
     private Calendar lastAnalysis = null;
     private List<Integer> automodeGvAverage = new ArrayList<>();
-    private String javaVersion = System.getProperty("java.version");
+    private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public GuiElements(AetherOneUI p) {
         this.p = p;
@@ -233,7 +234,7 @@ public class GuiElements {
                 .setColor(greenStyleColor)
                 .setRange(0, range)
                 .moveTo("global")
-                .getCaptionLabel().setPaddingX(10).setPaddingY(-9).setColor(255);
+                .getCaptionLabel().setPaddingX(4).setPaddingY(-9).setColor(255);
 
         if (verticalAlignment) {
             this.y += h + 3;
@@ -264,6 +265,19 @@ public class GuiElements {
 
         p.fill(255);
         p.textFont(fonts.get("default"), 14);
+
+        if (p.getCaseObject().getName() != null) {
+
+            p.text(p.getCaseObject().getName(), 20, 20);
+
+            if (p.getAnalysisPointer() != null) {
+                Calendar calendar = p.getCaseObject().getSessionList().get(p.getAnalysisPointer()).getCreated();
+                int textWidth = (int) p.textWidth(p.getCaseObject().getName());
+                p.text("Historic View from " + sdf.format(calendar.getTime()), 40 + textWidth, 20);
+            }
+        }
+
+
         //p.text("Java Version - " + javaVersion, 20, 20);
 
         int drawOrderBroadcastElements = 0;

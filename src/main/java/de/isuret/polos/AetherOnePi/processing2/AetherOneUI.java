@@ -196,7 +196,8 @@ public class AetherOneUI extends PApplet {
                 .addButton(AetherOneConstants.DOCUMENTATION)
                 .addButton(AetherOneConstants.BOOKS)
                 .addButton(AetherOneConstants.GITHUB)
-                .addButton(AetherOneConstants.YOUTUBE)
+                .addButton(AetherOneConstants.YOUTUBE1)
+                .addButton(AetherOneConstants.YOUTUBE2)
 
                 .addDashboardScreen();
         guiElements
@@ -734,6 +735,10 @@ public class AetherOneUI extends PApplet {
 
     public void setAnalysisResult(AnalysisResult analysisResult) {
         this.analysisResult = analysisResult;
+        if (analysisResult != null && analysisResult.getGeneralVitality() != null) {
+            System.out.println("Setting general vitality to: " + analysisResult.getGeneralVitality());
+            p.setGeneralVitality(analysisResult.getGeneralVitality());
+        }
     }
 
     public ImageLayersAnalysis getImageLayersAnalysis() {
@@ -766,6 +771,9 @@ public class AetherOneUI extends PApplet {
 
     public void setGeneralVitality(Integer generalVitality) {
         this.generalVitality = generalVitality;
+        if (this.analysisResult != null && generalVitality != null) {
+            this.analysisResult.setGeneralVitality(generalVitality);
+        }
     }
 
     public Boolean getStickPadMode() {

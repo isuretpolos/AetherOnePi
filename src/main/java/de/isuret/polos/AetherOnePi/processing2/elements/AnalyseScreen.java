@@ -7,6 +7,7 @@ import de.isuret.polos.AetherOnePi.domain.StickPad;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
+import org.apache.commons.lang3.StringUtils;
 
 import java.awt.*;
 import java.io.File;
@@ -54,7 +55,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.text("SELECTED DATABASE: " + p.getSelectedDatabase(), 35, 88);
 
             if (p.getGeneralVitality() > 0) {
-                if (p.getGvCounter() == 0) {
+                if (p.getGvCounter() == 0 && p.getAnalysisPointer() == null) {
                     p.fill(0, 255, 0);
                     p.text(">> CHECK GENERAL VITALITY <<", 35, 510);
                 } else {
@@ -312,6 +313,8 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
                     p.fill(255);
                     p.text(String.valueOf(i+1), 937 + (i * 22), 90);
+
+                    //if (i >= 4) break;
                 }
             }
         }
@@ -423,7 +426,8 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.getAetherOneEventHandler().broadcastNow();
         }
 
-        if (browserSupported && rate.getUrl() != null && (p.mouseButton == p.RIGHT || (p.mouseX >= 1040 && p.mouseX < 1080))) {
+        if (browserSupported && StringUtils.isNotBlank(rate.getUrl()) && (p.mouseButton == p.RIGHT || (p.mouseX >= 1040 && p.mouseX < 1080))) {
+            System.out.println(rate.getUrl());
             openUrl(rate.getUrl());
         }
 
@@ -462,19 +466,19 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
         if (stickPad.getGeneralVitalityChecking()) {
             p.fill(156, 255, 99);
+            p.text("STICK PAD FINISHED", 650, 88);
         } else {
             p.fill(255, 127, 127);
+            p.text("STICK PAD RECORDING (Move your mouse)", 650, 88);
+            stickPad.addStickPadPosition(p.mouseX, p.mouseY);
         }
-
-        p.text("STICK PAD ON " + p.mouseX + "," + p.mouseY + " (" + stickPad.getPositions().size() + ")", 850, 88);
-
-        stickPad.addStickPadPosition(p.mouseX, p.mouseY);
 
         if (stickPad.getPositions().size() >= 500 && !stickPad.getGeneralVitalityChecking()) {
             p.setAnalysisResult(stickPad.analyze(p.getSelectedDatabase()));
             stickPad.setGeneralVitalityChecking(true);
             p.setGvCounter(0);
         } else if (stickPad.getPositions().size() >= 10 && stickPad.getGeneralVitalityChecking()) {
+            System.out.println("check general vitality");
             stickPad.checkGeneralVitality(p);
         }
     }

@@ -50,11 +50,11 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     private AnalysisService analyseService;
     private final List<RateObject> recurringRateList = new ArrayList<RateObject>();
 
-    public AetherOneEventHandler(AetherOneUI p) {
-        this.p = p;
-        analyseService = p.getAnalyseService();
-        analyseService.setHotbitsClient(p.getHotbitsClient());
-    }
+        public AetherOneEventHandler(AetherOneUI p) {
+            this.p = p;
+            analyseService = p.getAnalyseService();
+            analyseService.setHotbitsClient(p.getHotbitsClient());
+        }
 
     public void controlEvent(ControlEvent theEvent) {
 
@@ -110,8 +110,13 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if (AetherOneConstants.YOUTUBE.equals(name)) {
-            openWebsiteInDefaultBrowser("https://www.youtube.com/channel/UCFVTNpzycFUoF4h0CbRS92Q");
+        if (AetherOneConstants.YOUTUBE1.equals(name)) {
+            openWebsiteInDefaultBrowser("https://www.youtube.com/@opensourceradionics");
+            return;
+        }
+
+        if (AetherOneConstants.YOUTUBE2.equals(name)) {
+            openWebsiteInDefaultBrowser("https://www.youtube.com/@isuretpolos");
             return;
         }
 
@@ -139,13 +144,19 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
                     "Case Files", "json");
             chooser.setFileFilter(filter);
-            int returnVal = chooser.showOpenDialog(null);
+
+            // Create temporary parent frame
+            JFrame frame = new JFrame();
+            frame.setAlwaysOnTop(true);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setLocationRelativeTo(null); // center on screen
+
+            int returnVal = chooser.showOpenDialog(frame);
+            frame.dispose(); // clean up the temporary frame
+
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-
                 File file = chooser.getSelectedFile();
-                log.info("You chose to open this file: " +
-                        file.getName());
-
+                log.info("You chose to open this file: " + file.getName());
                 loadCaseFile(file);
             }
             return;
@@ -394,6 +405,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         if (AetherOneConstants.STICKPAD.equals(name) && p.getSelectedDatabase() != null) {
             if (!p.getStickPadMode()) {
+                dataService.refreshDatabaseList();
                 p.setStickPadMode(true);
             }
             return;
