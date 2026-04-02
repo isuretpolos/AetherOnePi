@@ -86,10 +86,7 @@ public class BroadcastElement implements IDrawableElement {
 
         p.fill(random.nextInt(255), random.nextInt(255), random.nextInt(255));
 
-        if (!p.getSettings().getBoolean(SettingsScreen.PLAY_SOUND, false)) {
-            playingSound = true;
-        }
-
+        playingSound = p.getSettings().getBoolean(SettingsScreen.PLAY_SOUND, false);
         playingSoundAdvanced = p.getSettings().getBoolean(SettingsScreen.PLAY_SOUND_ADVANCED, false);
         dynamicAdjustments = p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false);
     }
