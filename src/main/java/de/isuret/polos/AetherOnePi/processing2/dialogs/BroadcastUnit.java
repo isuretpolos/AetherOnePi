@@ -19,6 +19,12 @@ public class BroadcastUnit extends PApplet {
 
     public static final int WIDTH = 320;
     public static final int HEIGHT = 180;
+
+    private static final String ADDITIONAL_RATES[] = {
+            "ENERGY", "FIRE", "POWER", "WOOD", "GROUNDING", "EARTH", "RHYTHM",
+            "METAL", "WATER", "DEEPNESS", "DO NO HARM!", "UNITY", "LOVE", "BALANCE"
+    };
+
     private Integer multiplier;
     private Integer seconds;
     private String signature;
@@ -27,7 +33,7 @@ public class BroadcastUnit extends PApplet {
     private SecureRandom random2;
     private Integer saveFrames = 0;
     private Integer movingWaveAmount = 0;
-
+    private boolean safetySwitch = true;
     private static Long lastBroadcast = null;
 
     private List<PImage> imageList;
@@ -153,11 +159,10 @@ public class BroadcastUnit extends PApplet {
         noStroke();
         fill(255,0,0);
 
-        Float sec = new Float(seconds);
-        Float wid = new Float(WIDTH);
-        Float millisAfterStart = new Float(Calendar.getInstance().getTimeInMillis() - start);
-        Float delta = 100/wid/sec;
-        Float progress = millisAfterStart * delta;
+        float sec = seconds;
+        float millisAfterStart = Calendar.getInstance().getTimeInMillis() - start;
+        float delta = (float) 100 / WIDTH /sec;
+        float progress = millisAfterStart * delta;
         rect(0,0,progress,3);
     }
 
@@ -208,6 +213,11 @@ public class BroadcastUnit extends PApplet {
         if (random2.nextInt(89) >= 88) {
             paintSignatureCharacter();
             partialInvert(random.nextInt(WIDTH), random.nextInt(HEIGHT), random.nextInt(WIDTH), random.nextInt(HEIGHT));
+
+            if (safetySwitch) {
+                text(ADDITIONAL_RATES[random.nextInt(0, ADDITIONAL_RATES.length - 1)],
+                        random.nextInt(WIDTH), random.nextInt(HEIGHT));
+            }
         }
 
         paintLine(144, 143);
@@ -508,5 +518,9 @@ public class BroadcastUnit extends PApplet {
 
     public static void setLastBroadcast(Long lastBroadcast) {
         BroadcastUnit.lastBroadcast = lastBroadcast;
+    }
+
+    public void setSafetySwitch(boolean safetySwitch) {
+        this.safetySwitch = safetySwitch;
     }
 }

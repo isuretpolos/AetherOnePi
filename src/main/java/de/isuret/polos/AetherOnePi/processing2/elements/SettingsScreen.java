@@ -23,6 +23,7 @@ public class SettingsScreen implements IDrawableElement, MouseClickObserver {
     public static final String OVERLAY = "use.overlay";
     public static final String NOTIFICATION = "notification.after.broadcast";
     public static final String WATCHLIST = "watchlist.activate";
+    public static final String SAFETY_SWITCH = "safety.switch";
     private AetherOneUI p;
     private boolean mouseClicked = false;
 
@@ -42,6 +43,7 @@ public class SettingsScreen implements IDrawableElement, MouseClickObserver {
         settings.getBoolean(OVERLAY, true);
         settings.getBoolean(NOTIFICATION, false);
         settings.getBoolean(WATCHLIST, false);
+        settings.getBoolean(SAFETY_SWITCH, true);
         AetherOnePiProcessingConfiguration.saveAllSettings();
     }
 

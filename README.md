@@ -14,13 +14,14 @@ A video series explaining the software will follow.
 You need Java 24 as a runtime. Download it from [oracle.com](https://www.oracle.com/de/java/technologies/downloads/) and install it before you run the AetherOnePi application on your PC (Windows / Linux), Mac or Raspberry Pi.
 
 ## Download
-Download [Version 2.3.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/v2.3.0)
+Download [Version 2.5.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/v2.5.0)
 
 or download the Beta which is build after each change on the [Action tab](https://github.com/isuretpolos/AetherOnePi/actions). Just click on the Build Element and in the upper right corner you will see a Artifact Download Button if the build was a success.
 
 Subscribe to my blog(s) and join the [VK community](https://vk.com/aetherone), [Reddit](https://www.reddit.com/r/digitalradionics/) or chat with **Thalia** on [Facebook MorphicEngineering Group](https://www.facebook.com/groups/morphicengineering).
 
 # Feature History
+- 2026-04-02 SafetySwitch for Broadcasting
 - 2026-03-20 Add Infinite Noise TRNG (Leetronics) as hotbits source (many thanks to @emolionl) & some bugfixes
 - 2025-06-14 History View Bugfix, didn't show GV of target
 - 2025-06-12 Powerswitch overrides Dynamic Adjustments Settings

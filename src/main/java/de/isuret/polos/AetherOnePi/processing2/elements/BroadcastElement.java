@@ -49,6 +49,7 @@ public class BroadcastElement implements IDrawableElement {
     private boolean playingSound = false;
     private boolean playingSoundAdvanced = false;
     private boolean dynamicAdjustments = false;
+    private boolean safetySwitch = true;
 
     public BroadcastElement(AetherOneUI p, String tabName, int seconds, String signature, Integer multiplier) {
         this.p = p;
@@ -89,6 +90,7 @@ public class BroadcastElement implements IDrawableElement {
         playingSound = p.getSettings().getBoolean(SettingsScreen.PLAY_SOUND, false);
         playingSoundAdvanced = p.getSettings().getBoolean(SettingsScreen.PLAY_SOUND_ADVANCED, false);
         dynamicAdjustments = p.getSettings().getBoolean(SettingsScreen.DYNAMIC_ADJUSTMENTS, false);
+        safetySwitch = p.getSettings().getBoolean(SettingsScreen.SAFETY_SWITCH, true);
     }
 
     public void start() {
@@ -292,9 +294,11 @@ public class BroadcastElement implements IDrawableElement {
             File hotbitsFolder = new File("hotbits");
 
             //p.text(one, random.nextInt(width) + offsetX, random.nextInt(height) + offsetY);
-            p.text(ADDITIONAL_RATES[p.getHotbitsClient().getInteger(0, ADDITIONAL_RATES.length - 1)],
-                    p.getHotbitsClient().getInteger(WIDTH) + offsetX,
-                    p.getHotbitsClient().getInteger(HEIGHT) + offsetY);
+            if (safetySwitch) {
+                p.text(ADDITIONAL_RATES[p.getHotbitsClient().getInteger(0, ADDITIONAL_RATES.length - 1)],
+                        p.getHotbitsClient().getInteger(WIDTH) + offsetX,
+                        p.getHotbitsClient().getInteger(HEIGHT) + offsetY);
+            }
 
             int hotbitsCacheSize = hotbitsFolder.listFiles().length;
 
