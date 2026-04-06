@@ -325,6 +325,15 @@ public class GuiElements {
             p.text("INFINITE NOISE TRNG", 22,712);
         }
 
+        if (p.getHotbitsClient().isESP32available()) {
+            if (p.getHotbitsClient().isESP32running()) {
+                p.fill(0,255,0);
+            } else {
+                p.fill(255,0,0);
+            }
+            p.text("ESP32 TRNG", 22,712);
+        }
+
 
         p.fill(255);
         p.line(200,541,200,700);

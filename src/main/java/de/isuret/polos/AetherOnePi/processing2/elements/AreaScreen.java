@@ -3,7 +3,7 @@ package de.isuret.polos.AetherOnePi.processing2.elements;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
-import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
+import de.isuret.polos.AetherOnePi.hotbits.HotbitsHandler;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
 package de.isuret.polos.AetherOnePi.processing2.dialogs;
 
-import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
+import de.isuret.polos.AetherOnePi.hotbits.HotbitsHandler;
 import processing.core.PApplet;
 
 import java.util.ArrayList;

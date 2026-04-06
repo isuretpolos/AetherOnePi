@@ -24,6 +24,8 @@ public class SettingsScreen implements IDrawableElement, MouseClickObserver {
     public static final String NOTIFICATION = "notification.after.broadcast";
     public static final String WATCHLIST = "watchlist.activate";
     public static final String SAFETY_SWITCH = "safety.switch";
+    public static final String TRNG_INFINITY = "trng.infinity";
+    public static final String TRNG_ESP32 = "trng.esp32";
     private AetherOneUI p;
     private boolean mouseClicked = false;
 
@@ -44,6 +46,8 @@ public class SettingsScreen implements IDrawableElement, MouseClickObserver {
         settings.getBoolean(NOTIFICATION, false);
         settings.getBoolean(WATCHLIST, false);
         settings.getBoolean(SAFETY_SWITCH, true);
+        settings.getBoolean(TRNG_INFINITY, false);
+        settings.getBoolean(TRNG_ESP32, false);
         AetherOnePiProcessingConfiguration.saveAllSettings();
     }
 

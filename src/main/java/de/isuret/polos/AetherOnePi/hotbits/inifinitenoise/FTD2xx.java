@@ -1,4 +1,4 @@
-package de.isuret.polos.AetherOnePi.hotbits.hrng;
+package de.isuret.polos.AetherOnePi.hotbits.inifinitenoise;
 
 import com.sun.jna.Library;
 import com.sun.jna.Native;

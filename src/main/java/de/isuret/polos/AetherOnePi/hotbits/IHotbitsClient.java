@@ -8,4 +8,6 @@ public interface IHotbitsClient {
     int getInteger(Integer min, Integer max);
     boolean isInfiniteUSBavailable();
     boolean isInfiniteUSBrunning();
+    boolean isESP32available();
+    boolean isESP32running();
 }

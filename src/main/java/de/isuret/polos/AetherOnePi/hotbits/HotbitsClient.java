@@ -139,6 +139,16 @@ public class HotbitsClient implements IHotbitsClient {
         return false;
     }
 
+    @Override
+    public boolean isESP32available() {
+        return false;
+    }
+
+    @Override
+    public boolean isESP32running() {
+        return false;
+    }
+
     public synchronized HotbitPackage getPackage() throws InterruptedException, IOException {
 
         actualizeLastCallValue();

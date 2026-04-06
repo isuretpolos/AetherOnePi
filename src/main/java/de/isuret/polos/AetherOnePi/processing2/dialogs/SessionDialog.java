@@ -3,7 +3,7 @@ package de.isuret.polos.AetherOnePi.processing2.dialogs;
 import de.isuret.polos.AetherOnePi.domain.Case;
 import de.isuret.polos.AetherOnePi.domain.Session;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
-import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
+import de.isuret.polos.AetherOnePi.hotbits.HotbitsHandler;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.CaseToHtml;
 import org.slf4j.Logger;

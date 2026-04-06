@@ -1,10 +1,10 @@
-package de.isuret.polos.AetherOnePi.processing2.hotbits;
+package de.isuret.polos.AetherOnePi.hotbits;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import de.isuret.polos.AetherOnePi.hotbits.HotBitIntegers;
-import de.isuret.polos.AetherOnePi.hotbits.IHotbitsClient;
-import de.isuret.polos.AetherOnePi.hotbits.hrng.InfiniteNoiseGenerator;
+import de.isuret.polos.AetherOnePi.hotbits.esp32.Esp32SerialHotbitsGenerator;
+import de.isuret.polos.AetherOnePi.hotbits.inifinitenoise.InfiniteNoiseGenerator;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
+import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,6 +32,7 @@ public class HotbitsHandler implements IHotbitsClient {
     private boolean simulation = false;
     private File hotbitsFolder = new File("hotbits");
     private InfiniteNoiseGenerator infiniteNoiseGenerator;
+    private Esp32SerialHotbitsGenerator esp32SerialHotbitsGenerator;
 
     public HotbitsHandler(AetherOneUI p) {
         this.p = p;
@@ -44,11 +45,22 @@ public class HotbitsHandler implements IHotbitsClient {
         // Try to initialize Infinite Noise TRNG if connected
         // Do this every 10 seconds asynchronously
         ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(() -> {
-            if (infiniteNoiseGenerator == null) {
-                initInfiniteNoiseTrng();
-            }
-        }, 0, 10, TimeUnit.SECONDS);
+        if (p.getSettings().getBoolean(SettingsScreen.TRNG_INFINITY, false)) {
+            scheduler.scheduleAtFixedRate(() -> {
+                if (infiniteNoiseGenerator == null) {
+                    initInfiniteNoiseTrng();
+                }
+            }, 0, 10, TimeUnit.SECONDS);
+        }
+
+        if (p.getSettings().getBoolean(SettingsScreen.TRNG_ESP32, false)) {
+            scheduler.scheduleAtFixedRate(() -> {
+                if (esp32SerialHotbitsGenerator == null) {
+                    initEsp32SerialHotbitsGenerator();
+                }
+            }, 0, 10, TimeUnit.SECONDS);
+        }
+
     }
 
     private void initInfiniteNoiseTrng() {
@@ -69,6 +81,23 @@ public class HotbitsHandler implements IHotbitsClient {
         } catch (Exception e) {
             logger.info("Infinite Noise TRNG not available: {} - using default hotbits source", e.getMessage());
             infiniteNoiseGenerator = null;
+        }
+    }
+
+    private void initEsp32SerialHotbitsGenerator() {
+        Esp32SerialHotbitsGenerator generator = new Esp32SerialHotbitsGenerator(921600);
+        if (!generator.initialize()) {
+            System.err.println(">>> Initialization of ESP32 failed.");
+        } else {
+            System.out.println("Connected to port: " + generator.getConnectedPortName());
+
+            generator.startContinuousGeneration(hotbitsFolder, 5000, 10000, true, 2000);
+            esp32SerialHotbitsGenerator = generator;
+
+            Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+                generator.stop();
+                generator.close();
+            }));
         }
     }
 
@@ -215,6 +244,19 @@ public class HotbitsHandler implements IHotbitsClient {
     public boolean isInfiniteUSBrunning() {
         if (infiniteNoiseGenerator != null) {
             return infiniteNoiseGenerator.isWorking();
+        }
+        return false;
+    }
+
+    @Override
+    public boolean isESP32available() {
+        return esp32SerialHotbitsGenerator != null;
+    }
+
+    @Override
+    public boolean isESP32running() {
+        if (esp32SerialHotbitsGenerator != null) {
+            return esp32SerialHotbitsGenerator.isRunning();
         }
         return false;
     }

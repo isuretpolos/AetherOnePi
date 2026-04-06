@@ -13,7 +13,7 @@ import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
 import de.isuret.polos.AetherOnePi.processing2.events.AetherOneEventHandler;
 import de.isuret.polos.AetherOnePi.processing2.events.KeyPressedObserver;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
-import de.isuret.polos.AetherOnePi.processing2.hotbits.HotbitsHandler;
+import de.isuret.polos.AetherOnePi.hotbits.HotbitsHandler;
 import de.isuret.polos.AetherOnePi.server.AetherOneServer;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;

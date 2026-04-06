@@ -1,4 +1,4 @@
-package de.isuret.polos.AetherOnePi.hotbits.hrng;
+package de.isuret.polos.AetherOnePi.hotbits.inifinitenoise;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jna.Pointer;
