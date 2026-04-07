@@ -14,7 +14,7 @@ A video series explaining the software will follow.
 You need Java 24 as a runtime. Download it from [oracle.com](https://www.oracle.com/de/java/technologies/downloads/) and install it before you run the AetherOnePi application on your PC (Windows / Linux), Mac or Raspberry Pi.
 
 ## Download
-Download [Version 2.6.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/v2.6.0)
+Download [Version 2.7.0](https://github.com/isuretpolos/AetherOnePi/releases/tag/v2.7.0)
 
 or download the Beta which is build after each change on the [Action tab](https://github.com/isuretpolos/AetherOnePi/actions). Just click on the Build Element and in the upper right corner you will see a Artifact Download Button if the build was a success.
 

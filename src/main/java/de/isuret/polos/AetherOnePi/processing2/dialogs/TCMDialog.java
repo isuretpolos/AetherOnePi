@@ -15,7 +15,17 @@ public class TCMDialog extends PApplet {
     }
 
     public void settings() {
-        size(800, 600, P2D);
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.toLowerCase().contains("mac")) {
+            System.out.println("OS is Mac");
+            // The problem with Steve Jobs abominations is that they are not able to use the same code for all platforms.
+            // They removed OpenGL support from MacOS, forcing us to use JAVA2D instead of P2D.
+            // Sadly this means it will be less performant, but at least it will work.
+            size(800, 600, JAVA2D);
+        } else {
+            System.out.println("OS is not Mac ;) --> Using P2D OpenGL");
+            size(800, 600, P2D);
+        }
         smooth();
     }
 

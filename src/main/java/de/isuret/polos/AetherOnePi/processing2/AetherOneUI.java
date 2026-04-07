@@ -107,7 +107,18 @@ public class AetherOneUI extends PApplet {
 
         guiConf = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.GUI);
         settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
-        size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721), P2D);
+
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.toLowerCase().contains("mac")) {
+            System.out.println("OS is Mac");
+            // The problem with Steve Jobs abominations is that they are not able to use the same code for all platforms.
+            // They removed OpenGL support from MacOS, forcing us to use JAVA2D instead of P2D.
+            // Sadly this means it will be less performant, but at least it will work.
+            size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721), JAVA2D);
+        } else {
+            System.out.println("OS is not Mac ;) --> Using P2D OpenGL");
+            size(guiConf.getInteger("window.size.width", 1285), guiConf.getInteger("window.size.height", 721), P2D);
+        }
         pixelDensity(displayDensity());
     }
 
