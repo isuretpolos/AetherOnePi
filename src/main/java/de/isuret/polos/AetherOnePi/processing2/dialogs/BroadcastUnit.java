@@ -63,6 +63,11 @@ public class BroadcastUnit extends PApplet {
             new File("images").mkdir();
         }
 
+        new Thread(() -> {
+            try { Thread.sleep(200); } catch (Exception ignored) {}
+            broadcastUnit.getSurface().setAlwaysOnTop(true);
+        }).start();
+
         lastBroadcast = now;
     }
 

@@ -39,6 +39,10 @@ public class ResonanceViewListDialog extends PApplet {
         ResonanceViewListDialog dialog = new ResonanceViewListDialog(resonanceList);
         String[] args2 = {""};
         PApplet.runSketch(args2, dialog);
+        new Thread(() -> {
+            try { Thread.sleep(200); } catch (Exception ignored) {}
+            dialog.getSurface().setAlwaysOnTop(true);
+        }).start();
     }
 
     ResonanceViewListDialog(List<ResonanceObject> resonanceList) {

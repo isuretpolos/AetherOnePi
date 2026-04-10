@@ -93,6 +93,7 @@ public class AetherOneUI extends PApplet {
     public void settings() {
 
         p = this;
+
         PJOGL.setIcon(getClass().getClassLoader().getResource("icons/aetherOnePi.png").getPath());
 
         try {
@@ -389,6 +390,7 @@ public class AetherOneUI extends PApplet {
                 }
             }).start();
         }
+
     }
 
     public void draw() {

@@ -739,11 +739,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
 
-        String sessionName = "";
-        if (p.getCaseObject().getName() != null) {
-            sessionName = p.getCaseObject().getName();
-        }
-        String signature = sessionName + " " + ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SIGNATURE)).getText();
+        String signature = ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SIGNATURE)).getText();
         Integer seconds = 60;
 
         try {
