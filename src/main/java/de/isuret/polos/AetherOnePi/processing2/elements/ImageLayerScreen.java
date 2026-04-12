@@ -28,7 +28,8 @@ public class ImageLayerScreen implements IDrawableElement, MouseClickObserver  {
 
         for (PImage image : p.getClipBoardImages()) {
             if (imageCount > 0) {
-                p.blend(image,START_X, START_Y, WIDTH, HEIGHT, START_X, START_Y, WIDTH, HEIGHT, p.DIFFERENCE);
+                p.image(image, START_X, START_Y, WIDTH, HEIGHT);
+                p.blend(image,0, 0, image.width, image.height, START_X * 2, START_Y * 2, WIDTH * 2, HEIGHT * 2, p.ADD);
             } else {
                 p.image(image, START_X, START_Y, WIDTH, HEIGHT);
             }

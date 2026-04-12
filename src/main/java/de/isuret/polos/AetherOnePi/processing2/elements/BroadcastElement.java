@@ -4,14 +4,12 @@ import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.ResonanceObject;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.sound.Binaural;
+import processing.core.PImage;
 
 import java.io.File;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Random;
+import java.util.*;
 
 /**
  * A broadcast element interweave a word or rate with time and space,
@@ -259,6 +257,17 @@ public class BroadcastElement implements IDrawableElement {
 
         paintRadionicCard(3, 2);
         paintRadionicCardWave(3, 2);
+
+        if (p.getClipBoardImages() != null && !p.getClipBoardImages().isEmpty()) {
+            for (PImage img : p.getClipBoardImages()) {
+                if (img != null && random2.nextInt(1000) >= 998) {
+                    p.blendMode(p.DIFFERENCE);
+                    p.imageMode(p.CORNER);
+                    p.image(img, offsetX, offsetY, WIDTH, HEIGHT);
+                    p.blendMode(p.BLEND);
+                }
+            }
+        }
 
         if (random2.nextInt(6765 + multiplier) >= 6764 + multiplier) {
             movingWaveAmount = 1;

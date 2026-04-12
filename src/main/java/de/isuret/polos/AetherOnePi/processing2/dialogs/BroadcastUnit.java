@@ -74,7 +74,6 @@ public class BroadcastUnit extends PApplet {
     public void exit() {
         surface.setVisible(false);
         dispose();
-        System.out.println("CLOSED");
     }
 
     public BroadcastUnit(int seconds, String signature, Integer multiplier) {
@@ -166,7 +165,7 @@ public class BroadcastUnit extends PApplet {
 
         float sec = seconds;
         float millisAfterStart = Calendar.getInstance().getTimeInMillis() - start;
-        float delta = (float) 100 / WIDTH /sec;
+        float delta = (float) 100 / width /sec;
         float progress = millisAfterStart * delta;
         rect(0,0,progress,3);
     }
@@ -177,13 +176,13 @@ public class BroadcastUnit extends PApplet {
 
     private void paintOverlay(int alpha) {
         choseRandomColorAlpha(alpha);
-        rect(0, 0, WIDTH, HEIGHT);
+        rect(0, 0, width, height);
     }
 
     private void paintOneLayer() {
         paintPoint();
 
-        if (random2.nextInt(21) >= 20) {
+        if (random2.nextInt(130) == 1) {
             partialInvert();
         }
 
@@ -217,11 +216,11 @@ public class BroadcastUnit extends PApplet {
 
         if (random2.nextInt(89) >= 88) {
             paintSignatureCharacter();
-            partialInvert(random.nextInt(WIDTH), random.nextInt(HEIGHT), random.nextInt(WIDTH), random.nextInt(HEIGHT));
+            //partialInvert(random.nextInt(width), random.nextInt(height), random.nextInt(width), random.nextInt(height));
 
             if (safetySwitch) {
                 text(ADDITIONAL_RATES[random.nextInt(0, ADDITIONAL_RATES.length - 1)],
-                        random.nextInt(WIDTH), random.nextInt(HEIGHT));
+                        random.nextInt(width), random.nextInt(height));
             }
         }
 
@@ -246,13 +245,15 @@ public class BroadcastUnit extends PApplet {
         paintPolygon(987, 986);
 
         paintRadionicCard(3, 2);
-        paintRadionicCardWave(3, 2);
+        paintRadionicCardWave();
 
         if (imageList != null && !imageList.isEmpty()) {
-            for (PImage image : imageList) {
-                if (random2.nextInt(1000) >= 998) {
-                    image.resize(width, height);
-                    blend(image, 0, 0, width, height, 0,0, width, height, DIFFERENCE);
+            for (PImage img : imageList) {
+                if (img != null && random2.nextInt(1000) >= 998) {
+                    blendMode(DIFFERENCE);
+                    imageMode(CORNER);
+                    image(img, 0, 0, width, height);
+                    blendMode(BLEND);
                 }
             }
         }
@@ -280,7 +281,7 @@ public class BroadcastUnit extends PApplet {
         }
     }
 
-    private void paintRadionicCardWave(int i, int i2) {
+    private void paintRadionicCardWave() {
 
         if (movingWaveAmount == 0) {
             return;
@@ -291,7 +292,6 @@ public class BroadcastUnit extends PApplet {
             return;
         }
 
-        System.out.println(movingWaveAmount);
         movingWaveAmount += 4;
 
         noFill();
@@ -309,26 +309,11 @@ public class BroadcastUnit extends PApplet {
 
         loadPixels();
 
-        for (int i = 0; i < (width * height); i++) {
-
-            float red = red(pixels[i]);
-            float green = green(pixels[i]);
-            float blue = blue(pixels[i]);
-
-            if (random.nextInt(width * height) >= (width * height) - 1) {
-                paintOverlay(5);
-                break;
-            } else if (random.nextInt(width * height) >= (width * height) / 2) {
-                red = 250 - red;
-                green = 250 - green;
-                blue = 250 - blue;
-            } else {
-                red = 255 - red;
-                green = 255 - green;
-                blue = 255 - blue;
-            }
-
-            pixels[i] = color(red, green, blue);
+        for (int i = 0; i < (width * height * 4); i++) {
+            float r = red(pixels[i]);
+            float g = green(pixels[i]);
+            float b = blue(pixels[i]);
+            pixels[i] = color(255 - r, 255 - g, 255 - b);
         }
 
         updatePixels();
@@ -341,7 +326,7 @@ public class BroadcastUnit extends PApplet {
         int xx = 0;
         int yy = 0;
 
-        for (int i = 0; i < (width * height); i++) {
+        for (int i = 0; i < (width * height * 4); i++) {
 
             xx++;
 
@@ -370,13 +355,13 @@ public class BroadcastUnit extends PApplet {
     private void paintPoint() {
         stroke(random.nextInt(255), random.nextInt(255), random.nextInt(255));
         fill(random.nextInt(255), random.nextInt(255), random.nextInt(255));
-        point(random.nextInt(WIDTH), random.nextInt(HEIGHT));
+        point(random.nextInt(width), random.nextInt(height));
     }
 
     private void paintLine(int i, int i2) {
         if (random.nextInt(i) >= i2) {
             choseRandomColorAlpha();
-            line(random.nextInt(WIDTH), random.nextInt(HEIGHT), random.nextInt(WIDTH), random.nextInt(HEIGHT));
+            line(random.nextInt(width), random.nextInt(height), random.nextInt(width), random.nextInt(height));
         }
     }
 
@@ -384,9 +369,9 @@ public class BroadcastUnit extends PApplet {
         if (random.nextInt(i) >= i2) {
             choseRandomColorAlpha();
             noFill();
-            arc(random.nextInt(WIDTH), random.nextInt(HEIGHT), 60, 60, HALF_PI, PI);
-            arc(random.nextInt(WIDTH), random.nextInt(HEIGHT), 70, 70, PI, PI + QUARTER_PI);
-            arc(random.nextInt(WIDTH), random.nextInt(HEIGHT), 80, 80, PI + QUARTER_PI, TWO_PI);
+            arc(random.nextInt(width), random.nextInt(height), 60, 60, HALF_PI, PI);
+            arc(random.nextInt(width), random.nextInt(height), 70, 70, PI, PI + QUARTER_PI);
+            arc(random.nextInt(width), random.nextInt(height), 80, 80, PI + QUARTER_PI, TWO_PI);
         }
     }
 
@@ -394,28 +379,28 @@ public class BroadcastUnit extends PApplet {
         if (random.nextInt(i) >= i2) {
             choseRandomColorAlpha();
             noFill();
-            bezier(random.nextInt(WIDTH), random.nextInt(HEIGHT), random.nextInt(WIDTH), random.nextInt(HEIGHT), random.nextInt(WIDTH), random.nextInt(HEIGHT), random.nextInt(WIDTH), random.nextInt(HEIGHT));
+            bezier(random.nextInt(width), random.nextInt(height), random.nextInt(width), random.nextInt(height), random.nextInt(width), random.nextInt(height), random.nextInt(width), random.nextInt(height));
         }
     }
 
     private void paintRectangle(int i, int i2, int i3) {
         if (random.nextInt(i) >= i2) {
             choseRandomColorAlpha();
-            rect(random.nextInt(WIDTH), random.nextInt(HEIGHT), i3, i3);
+            rect(random.nextInt(width), random.nextInt(height), i3, i3);
         }
     }
 
     private void paintEllipse(int i, int i2, int i3) {
         if (random.nextInt(i) >= i2) {
             choseRandomColorAlpha();
-            ellipse(random.nextInt(WIDTH), random.nextInt(HEIGHT), i3, i3);
+            ellipse(random.nextInt(width), random.nextInt(height), i3, i3);
         }
     }
 
     private void paintTriangle(int i, int i2) {
         if (random.nextInt(i) >= i2) {
             choseRandomColorAlpha();
-            triangle(random.nextInt(WIDTH), random.nextInt(HEIGHT), random.nextInt(WIDTH), random.nextInt(HEIGHT), random.nextInt(WIDTH), random.nextInt(HEIGHT));
+            triangle(random.nextInt(width), random.nextInt(height), random.nextInt(width), random.nextInt(height), random.nextInt(width), random.nextInt(height));
         }
     }
 
@@ -424,7 +409,7 @@ public class BroadcastUnit extends PApplet {
             choseRandomColorAlpha();
             beginShape();
             for (int c = 0; c < random.nextInt(50) + 3; c++) {
-                vertex(random.nextInt(WIDTH), random.nextInt(HEIGHT));
+                vertex(random.nextInt(width), random.nextInt(height));
             }
             endShape();
         }
@@ -447,14 +432,14 @@ public class BroadcastUnit extends PApplet {
             int pos = random.nextInt(signature.length());
             String one = signature.substring(pos, pos + 1);
             textSize(12 + random.nextInt(multiplier));
-            text(one, random.nextInt(WIDTH), random.nextInt(HEIGHT));
+            text(one, random.nextInt(width), random.nextInt(height));
             textSize(12);
         }
     }
 
     private void paintSignatureText() {
         paintPoint();
-        text(signature, random.nextInt(WIDTH), random.nextInt(HEIGHT));
+        text(signature, random.nextInt(width), random.nextInt(height));
     }
 
     public void mousePressed() {
