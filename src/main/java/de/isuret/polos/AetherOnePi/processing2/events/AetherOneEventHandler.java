@@ -687,9 +687,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new File("data"));
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "Rate List Files", "txt");
+                "Rate List Files (*.txt)", "txt");
         chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(null);
+        int returnVal = showOpenDialogInForeground(chooser);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
                 List<String> rateEntries = FileUtils.readLines(chooser.getSelectedFile(), "UTF-8");
@@ -725,9 +725,9 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new File("data"));
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "AetherOne Program", "json");
+                "AetherOne Program (*.json)", "json");
         chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(null);
+        int returnVal = showOpenDialogInForeground(chooser);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             try {
                 List<String> rateEntries = FileUtils.readLines(chooser.getSelectedFile(), "UTF-8");
@@ -756,6 +756,23 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             } catch (IOException e) {
                 log.error("Error loading rate list file", e);
             }
+        }
+    }
+
+    private int showOpenDialogInForeground(JFileChooser chooser) {
+        JFrame frame = new JFrame();
+        frame.setUndecorated(true);
+        frame.setType(Window.Type.UTILITY);
+        frame.setAlwaysOnTop(true);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.toFront();
+        frame.requestFocus();
+
+        try {
+            return chooser.showOpenDialog(frame);
+        } finally {
+            frame.dispose();
         }
     }
 
