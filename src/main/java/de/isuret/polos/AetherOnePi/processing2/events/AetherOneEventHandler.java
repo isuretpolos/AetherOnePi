@@ -428,8 +428,13 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             return;
         }
 
-        if ("BROADCAST LIST".equals(name)) {
+        if (AetherOneConstants.BROADCAST_LIST.equals(name)) {
             broadcastList();
+            return;
+        }
+
+        if (AetherOneConstants.BROADCAST_PROGRAM.equals(name)) {
+            broadcastProgram();
             return;
         }
 
@@ -683,6 +688,44 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         chooser.setCurrentDirectory(new File("data"));
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "Rate List Files", "txt");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                List<String> rateEntries = FileUtils.readLines(chooser.getSelectedFile(), "UTF-8");
+
+                for (String line : rateEntries) {
+                    if (line.contains("(") && line.contains(")")) {
+                        String signature = line.substring(0, line.indexOf("(")).trim();
+                        String duration = line.substring(line.indexOf("(") + 1).replace(")", "").trim().toUpperCase();
+                        log.info(signature + " - " + duration);
+                        int seconds = 0;
+                        if (duration.contains("S")) {
+                            seconds = Integer.parseInt(duration.replace("S", ""));
+                        }
+                        if (duration.contains("M")) {
+                            seconds = Integer.parseInt(duration.replace("M", "")) * 60;
+                        }
+                        if (duration.contains("H")) {
+                            seconds = Integer.parseInt(duration.replace("H", "")) * 3600;
+                        }
+                        p.getGuiElements().addBroadcastElement(signature, seconds, p.getMultiplier());
+                    } else {
+                        log.info(line);
+                        p.getGuiElements().addBroadcastElement(line, 20, p.getMultiplier());
+                    }
+                }
+            } catch (IOException e) {
+                log.error("Error loading rate list file", e);
+            }
+        }
+    }
+
+    private void broadcastProgram() {
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File("data"));
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "AetherOne Program", "json");
         chooser.setFileFilter(filter);
         int returnVal = chooser.showOpenDialog(null);
         if (returnVal == JFileChooser.APPROVE_OPTION) {

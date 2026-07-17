@@ -304,6 +304,7 @@ public class AetherOneUI extends PApplet {
                 .setInitialBounds(border, posY, 150f, 14f, false)
                 .addButton(AetherOneConstants.BROADCAST_NOW)
                 .addButton(AetherOneConstants.BROADCAST_LIST)
+                .addButton(AetherOneConstants.BROADCAST_PROGRAM)
                 .addButton(AetherOneConstants.STOP_CURRENT)
                 .addButton(AetherOneConstants.STOP_ALL)
                 .addButton(AetherOneConstants.SHOW_RESONANCE_LIST)

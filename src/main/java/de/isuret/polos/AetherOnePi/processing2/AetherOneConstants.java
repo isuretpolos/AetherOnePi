@@ -34,6 +34,7 @@ public class AetherOneConstants {
     public static final String STATISTICS = "STATISTICS";
     public static final String BROADCAST_NOW = "BROADCAST NOW";
     public static final String BROADCAST_LIST = "BROADCAST LIST";
+    public static final String BROADCAST_PROGRAM = "BROADCAST PROGRAM";
     public static final String STOP_CURRENT = "STOP CURRENT";
     public static final String STOP_ALL = "STOP ALL";
     public static final String EXIT = "EXIT";
