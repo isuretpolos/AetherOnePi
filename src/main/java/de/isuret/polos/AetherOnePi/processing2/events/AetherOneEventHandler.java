@@ -151,7 +151,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setLocationRelativeTo(null); // center on screen
 
-            int returnVal = chooser.showOpenDialog(frame);
+            int returnVal = showOpenDialogInForeground(chooser);
             frame.dispose(); // clean up the temporary frame
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -288,19 +288,28 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         if (AetherOneConstants.LOAD_IMAGE.equals(name)) {
+            log.info("LOAD_IMAGE: creating chooser");
             JFileChooser chooser = new JFileChooser();
+
+            log.info("LOAD_IMAGE: showing chooser");
+            chooser.setMultiSelectionEnabled(true);
             chooser.setCurrentDirectory(new File("data_images"));
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
                     "Images", "jpg","jpeg","png","tiff","bmp");
             chooser.setFileFilter(filter);
-            int returnVal = chooser.showOpenDialog(null);
+            int returnVal = showOpenDialogInForeground(chooser);
+            log.info("LOAD_IMAGE: chooser returned: " + returnVal);
+
             if (returnVal == JFileChooser.APPROVE_OPTION) {
 
-                File imageFile = chooser.getSelectedFile();
-                log.info("You chose to open this image: " +
-                        imageFile.getAbsolutePath());
+                File imageFiles [] = chooser.getSelectedFiles();
+                log.info("LOAD_IMAGE: selected " + imageFiles.length + " files");
 
-                p.getClipBoardImages().add(p.loadImage(imageFile.getAbsolutePath()));
+                for (File imageFile : imageFiles) {
+                    log.info("LOAD_IMAGE: before loadImage: " + imageFile.getAbsolutePath());
+                    p.getClipBoardImages().add(p.loadImage(imageFile.getAbsolutePath()));
+                    log.info("LOAD_IMAGE: after loadImage: " + imageFile.getAbsolutePath());
+                }
             }
             return;
         }
@@ -387,7 +396,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
                     "Case Files", "json");
             chooser.setFileFilter(filter);
-            int returnVal = chooser.showOpenDialog(null);
+            int returnVal = showOpenDialogInForeground(chooser);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
 
                 File directory = chooser.getSelectedFile();
