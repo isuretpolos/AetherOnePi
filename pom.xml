@@ -9,7 +9,7 @@
     <description>Open Source Radionics</description>
 
     <properties>
-        <aether.version>2.8.1</aether.version>
+        <aether.version>2.9.0</aether.version>
         <java.version>24</java.version>
         <commons-io.version>2.7</commons-io.version>
         <pi4j-core.version>1.2</pi4j-core.version>
@@ -196,6 +196,13 @@
             <groupId>com.fazecast</groupId>
             <artifactId>jSerialComm</artifactId>
             <version>2.11.0</version>
+        </dependency>
+
+        <!-- SOUND -->
+        <dependency>
+            <groupId>fr.delthas</groupId>
+            <artifactId>javamp3</artifactId>
+            <version>1.0.1</version>
         </dependency>
 
     </dependencies>

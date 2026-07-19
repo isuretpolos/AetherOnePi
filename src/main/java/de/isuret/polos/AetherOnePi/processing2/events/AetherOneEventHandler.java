@@ -27,6 +27,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import processing.core.PImage;
+import processing.sound.SoundFile;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -502,8 +503,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                     "Give me insight into the single rates, maybe you find a common pattern between the rates, " +
                     "a family or group of rates, a miasm or mineral or plant group.\n\n\n" + jsonResult;
             clipboard.setContents(new StringSelection(jsonResult), null);
+            return;
+        }
+
+        if (AetherOneConstants.EGOCLEANER.equals(name)) {
+            SoundFile soundFile = new SoundFile(p, "sounds/EgoCleaner.wav");
+            soundFile.play();
         }
     }
+
+
 
     private void clearAetherOnePiUV() {
         p.setClearUv(70);
