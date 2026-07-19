@@ -1,6 +1,8 @@
 package de.isuret.polos.AetherOnePi.service;
 
 import de.isuret.polos.AetherOnePi.domain.BroadCastData;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
+import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -18,9 +20,11 @@ public class BroadcastQueue {
     private List<BroadCastData> broadCastDataList = new ArrayList<>();
 
     private BroadCastService broadCastService;
+    private AetherOneUI p;
 
     @PostConstruct
-    public void init() {
+    public void init(AetherOneUI p) {
+        this.p = p;
         queueProcessing();
     }
 
@@ -54,7 +58,7 @@ public class BroadcastQueue {
     private void broadcastFromQueue() {
         logger.info("broadcasting from queue ...");
 
-        if (broadCastDataList.size() > 0) {
+        if (broadCastDataList.size() > 0 && p.getSettings().getBoolean(SettingsScreen.POWER_SWITCH, false)) {
             broadCastService.broadcast(broadCastDataList.remove(0));
         }
     }

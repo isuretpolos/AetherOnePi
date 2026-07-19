@@ -611,6 +611,7 @@ public class GuiElements {
         }
 
         drawableElementList.removeAll(removeElements);
+        broadcastQueueList.clear();
     }
 
     private void removeCurrentBroadcastElement() {
