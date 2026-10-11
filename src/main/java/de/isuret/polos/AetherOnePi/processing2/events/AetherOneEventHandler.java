@@ -18,6 +18,7 @@ import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
 import de.isuret.polos.AetherOnePi.server.WebSocketManager;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
+import de.isuret.polos.AetherOnePi.sound.BinauralSweep;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
 import de.isuret.polos.AetherOnePi.utils.cards.CardMaker;
@@ -50,12 +51,21 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     private final DataService dataService = new DataService();
     private AnalysisService analyseService;
     private final List<RateObject> recurringRateList = new ArrayList<RateObject>();
+    private BinauralSweep binaural;
 
-        public AetherOneEventHandler(AetherOneUI p) {
-            this.p = p;
-            analyseService = p.getAnalyseService();
-            analyseService.setHotbitsClient(p.getHotbitsClient());
-        }
+    public AetherOneEventHandler(AetherOneUI p) {
+        this.p = p;
+        analyseService = p.getAnalyseService();
+        analyseService.setHotbitsClient(p.getHotbitsClient());
+
+        binaural = new BinauralSweep(
+                200,       // min
+                220,       // max
+                0.3f,      // volume
+                false,        // min -> max -> min in 10 Sekunden
+                1       // +4 Hz wechselt rechts/links
+        );
+    }
 
     public void controlEvent(ControlEvent theEvent) {
 
@@ -270,6 +280,16 @@ public class AetherOneEventHandler implements KeyPressedObserver {
 
         if (AetherOneConstants.GROUNDING.equals(name)) {
             grounding();
+            return;
+        }
+
+        if (AetherOneConstants.BINAURAL_SWEEP.equals(name)) {
+
+            if (binaural.isRunning()) {
+                binaural.end();
+            } else {
+                binaural.start();
+            }
             return;
         }
 
