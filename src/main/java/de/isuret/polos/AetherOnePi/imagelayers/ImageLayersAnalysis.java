@@ -2,10 +2,12 @@ package de.isuret.polos.AetherOnePi.imagelayers;
 
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import processing.core.PImage;
+import processing.core.PApplet;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * ImageLayersAnalysis contains an analysis of an image or layers of images
@@ -13,6 +15,7 @@ import java.util.List;
 public class ImageLayersAnalysis {
 
     private AetherOneUI p;
+    private final String baseImageName;
 
     public List<ImageLayer> imageLayers = new ArrayList<>();
     private int x = 0;
@@ -26,6 +29,7 @@ public class ImageLayersAnalysis {
     public ImageLayersAnalysis(AetherOneUI p, File directory) {
 
         this.p = p;
+        this.baseImageName = directory.getName() + ".png";
         this.x = p.getGuiElements().getBorder() + 5;
 
         if (directory.getName().startsWith("IMAGE")) {
@@ -38,7 +42,7 @@ public class ImageLayersAnalysis {
 
             if (file.isDirectory()) continue;
             if (!file.isFile()) continue;
-            if (!file.getName().startsWith("IMAGE")) continue;
+            if (!file.getName().equals(baseImageName)) continue;
             if (!file.getName().toLowerCase().endsWith("png")) continue;
 
             PImage image = p.loadImage(file.getAbsolutePath());
@@ -50,7 +54,7 @@ public class ImageLayersAnalysis {
 
             if (file.isDirectory()) continue;
             if (!file.isFile()) continue;
-            if (file.getName().startsWith("IMAGE")) continue;
+            if (file.getName().equals(baseImageName)) continue;
             if (!file.getName().toLowerCase().endsWith("png")) continue;
 
             PImage image = p.loadImage(file.getAbsolutePath());
@@ -88,10 +92,10 @@ public class ImageLayersAnalysis {
             }
         }
 
-        float minF = new Float(min);
-        float maxF = new Float(max);
+        float minF = (float) min;
+        float maxF = (float) max;
         relativeGVratio = 256 / (maxF - minF);
-        relativeMax = new Float(max - min);
+        relativeMax = (float)(max - min);
 
         System.out.println("min " + min + " and max " + max + " after " + rounds + " rounds with an relative GV ratio of " + relativeGVratio);
 
@@ -118,6 +122,29 @@ public class ImageLayersAnalysis {
 
             p.noTint();
             layer++;
+        }
+    }
+
+    /** Always paint the collection's base, then randomly paint individual overlays on top. */
+    public void drawBroadcast(PApplet target, float x, float y, float width, float height, Random random) {
+        target.pushStyle();
+        try {
+            target.blendMode(PApplet.BLEND);
+            target.imageMode(PApplet.CORNER);
+            target.noTint();
+            for (ImageLayer layer : imageLayers) {
+                if (layer.getName().equals(baseImageName)) {
+                    target.image(layer.getImage(), x, y, width, height);
+                    break;
+                }
+            }
+            for (ImageLayer layer : imageLayers) {
+                if (!layer.getName().equals(baseImageName) && random.nextInt(1000) >= 950) {
+                    target.image(layer.getImage(), x, y, width, height);
+                }
+            }
+        } finally {
+            target.popStyle();
         }
     }
 

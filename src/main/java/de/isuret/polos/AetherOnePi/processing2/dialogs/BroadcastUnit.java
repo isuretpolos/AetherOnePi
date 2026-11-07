@@ -1,5 +1,6 @@
 package de.isuret.polos.AetherOnePi.processing2.dialogs;
 
+import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import processing.core.PApplet;
 import processing.core.PImage;
 
@@ -37,6 +38,7 @@ public class BroadcastUnit extends PApplet {
     private static Long lastBroadcast = null;
 
     private List<PImage> imageList;
+    private ImageLayersAnalysis imageLayers;
 
     public static void main(String[] args) {
         startBroadcastUnit(480, "Sulfur",1);
@@ -46,6 +48,11 @@ public class BroadcastUnit extends PApplet {
         startBroadcastUnit(seconds, signature, null, multiplier);
     }
     public static void startBroadcastUnit(int seconds, String signature, List<PImage> imageList, Integer multiplier) {
+        startBroadcastUnit(seconds, signature, imageList, multiplier, null);
+    }
+
+    public static void startBroadcastUnit(int seconds, String signature, List<PImage> imageList, Integer multiplier,
+                                          ImageLayersAnalysis imageLayers) {
 
         Long now = Calendar.getInstance().getTimeInMillis();
 
@@ -56,6 +63,7 @@ public class BroadcastUnit extends PApplet {
 
         BroadcastUnit broadcastUnit = new BroadcastUnit(seconds, signature, multiplier);
         broadcastUnit.imageList = imageList;
+        broadcastUnit.imageLayers = imageLayers;
         String[] args2 = {""};
         PApplet.runSketch(args2, broadcastUnit);
 
@@ -149,6 +157,9 @@ public class BroadcastUnit extends PApplet {
         }
 
         paintOneLayer();
+        if (imageLayers != null) {
+            imageLayers.drawBroadcast(this, 0, 0, width, height, random2);
+        }
         paintProgressBar();
 
         if (saveFrames > 0) {

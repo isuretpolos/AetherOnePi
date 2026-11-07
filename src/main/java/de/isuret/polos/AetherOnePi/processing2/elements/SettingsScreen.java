@@ -15,6 +15,7 @@ public class SettingsScreen implements IDrawableElement, MouseClickObserver {
     public static final String BROADCAST_DELTA_TIME = "broadcast.delta.time";
     public static final String BROADCAST_SINGLE_RATES_ONLY = "broadcast.single.rates.only";
     public static final String BROADCAST_EMBEDDED = "broadcast.embedded";
+    public static final String BROADCAST_IMAGE_LAYERS = "broadcast.image.layers";
     public static final String ANALYSIS_VERY_HIGH_MAX_HIT = "analysis.very.high.max.hit";
     public static final String PLAY_SOUND = "play.binaural.sound";
     public static final String PLAY_SOUND_ADVANCED = "play.sound.advanced";
@@ -37,6 +38,7 @@ public class SettingsScreen implements IDrawableElement, MouseClickObserver {
         settings.getBoolean(BROADCAST_DELTA_TIME, false);
         settings.getBoolean(BROADCAST_SINGLE_RATES_ONLY, false);
         settings.getBoolean(BROADCAST_EMBEDDED, true);
+        settings.getBoolean(BROADCAST_IMAGE_LAYERS, false);
         settings.getBoolean(ANALYSIS_VERY_HIGH_MAX_HIT, false);
         settings.getBoolean(PLAY_SOUND, false);
         settings.getBoolean(PLAY_SOUND_ADVANCED, false);

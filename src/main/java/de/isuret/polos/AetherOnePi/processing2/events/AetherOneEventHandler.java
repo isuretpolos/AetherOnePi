@@ -14,6 +14,7 @@ import de.isuret.polos.AetherOnePi.processing2.dialogs.SelectDatabaseDialog;
 import de.isuret.polos.AetherOnePi.processing2.dialogs.SessionDialog;
 import de.isuret.polos.AetherOnePi.processing2.elements.AnalyseScreen;
 import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
+import de.isuret.polos.AetherOnePi.processing2.elements.BroadcastScreen;
 import de.isuret.polos.AetherOnePi.processing2.processes.GroundingProcess;
 import de.isuret.polos.AetherOnePi.server.WebSocketManager;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
@@ -341,7 +342,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
 
         if (AetherOneConstants.BROADCAST_IMAGE.equals(name)) {
-            BroadcastUnit.startBroadcastUnit(60, "energy", p.getClipBoardImages(), p.getMultiplier());
+            BroadcastUnit.startBroadcastUnit(60, "energy", p.getClipBoardImages(), p.getMultiplier(),
+                    BroadcastScreen.getBroadcastImageLayers(p));
             return;
         }
 
@@ -865,7 +867,8 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         if (broadCastEmbedded) {
             p.getGuiElements().addBroadcastElement(signature, seconds, p.getMultiplier());
         } else {
-            BroadcastUnit.startBroadcastUnit(seconds, signature, p.getClipBoardImages(), p.getMultiplier());
+            BroadcastUnit.startBroadcastUnit(seconds, signature, p.getClipBoardImages(), p.getMultiplier(),
+                    BroadcastScreen.getBroadcastImageLayers(p));
         }
     }
 

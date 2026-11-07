@@ -2,6 +2,7 @@ package de.isuret.polos.AetherOnePi.processing2.elements;
 
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.ResonanceObject;
+import de.isuret.polos.AetherOnePi.imagelayers.ImageLayersAnalysis;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.sound.Binaural;
 import processing.core.PImage;
@@ -115,6 +116,11 @@ public class BroadcastElement implements IDrawableElement {
 
         if (seconds == null) return;
         if (signature == null) return;
+
+        ImageLayersAnalysis imageLayers = BroadcastScreen.getBroadcastImageLayers(p);
+        if (imageLayers != null) {
+            imageLayers.drawBroadcast(p, offsetX, offsetY, WIDTH, HEIGHT, random2);
+        }
 
         if (random.nextInt(13) >= 12) {
             paintSignatureCharacter();
