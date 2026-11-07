@@ -1,0 +1,39 @@
+{
+  "id": "settings",
+  "title": "Settings",
+  "keys": [
+    {
+      "slot": 0,
+      "title": "BROADCAST",
+      "enabled": false,
+      "press": null,
+      "valueKey": "broadcast.status",
+      "icon": "status.svg"
+    },
+    {
+      "slot": 1,
+      "title": "TRNG",
+      "enabled": false,
+      "press": null,
+      "valueKey": "hotbits.status",
+      "icon": "status.svg"
+    },
+    {
+      "slot": 2,
+      "title": "HOME",
+      "enabled": true,
+      "press": {
+        "type": "home"
+      },
+      "icon": "back.svg"
+    }
+  ],
+  "encoders": [
+    {
+      "slot": 0,
+      "title": "TRNG",
+      "layout": "status-dial",
+      "valueKey": "hotbits.status"
+    }
+  ]
+}

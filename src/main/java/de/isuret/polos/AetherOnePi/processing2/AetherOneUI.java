@@ -15,6 +15,8 @@ import de.isuret.polos.AetherOnePi.processing2.events.KeyPressedObserver;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
 import de.isuret.polos.AetherOnePi.hotbits.HotbitsHandler;
 import de.isuret.polos.AetherOnePi.server.AetherOneServer;
+import de.isuret.polos.AetherOnePi.server.streamdeck.StreamDeckRuntime;
+import de.isuret.polos.AetherOnePi.server.streamdeck.StreamDeckServer;
 import de.isuret.polos.AetherOnePi.service.AnalysisService;
 import de.isuret.polos.AetherOnePi.service.DataService;
 import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
@@ -78,6 +80,8 @@ public class AetherOneUI extends PApplet {
     private List<RateObject> resonatedList = new ArrayList<>();
     private List<ResonanceObject> resonanceList = new ArrayList<>();
     private AetherOneServer aetherOneServer;
+    private final StreamDeckRuntime streamDeckRuntime = new StreamDeckRuntime();
+    private volatile StreamDeckServer streamDeckServer;
     private Logger logger = LoggerFactory.getLogger(AetherOneUI.class);
 
     private List<Rate> watchlist = new ArrayList<>();
@@ -344,6 +348,13 @@ public class AetherOneUI extends PApplet {
 
         hotbitsHandler.loadHotbits();
         aetherOneServer = new AetherOneServer(Location.CLASSPATH, this);
+        Thread.startVirtualThread(() -> {
+            try {
+                streamDeckServer = StreamDeckServer.start(streamDeckRuntime);
+            } catch (Exception e) {
+                System.err.println("Stream Deck server could not start: " + e.getMessage());
+            }
+        });
 
         File watchlistFile = new File("watchlist.csv");
 
@@ -396,6 +407,7 @@ public class AetherOneUI extends PApplet {
     }
 
     public void draw() {
+        streamDeckRuntime.update(this);
         guiElements.draw();
 
         if (clearUv > 0) {
@@ -408,6 +420,9 @@ public class AetherOneUI extends PApplet {
     }
 
     public void stop() {
+        if (streamDeckServer != null) {
+            streamDeckServer.close();
+        }
         aetherOneEventHandler.saveResonanceProtocol();
     }
 

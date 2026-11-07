@@ -1,0 +1,46 @@
+{
+  "id": "aopi-progress-dial",
+  "items": [
+    {
+      "key": "title",
+      "type": "text",
+      "rect": [
+        12,
+        8,
+        176,
+        23
+      ],
+      "font": {
+        "size": 16,
+        "weight": 600
+      },
+      "alignment": "center"
+    },
+    {
+      "key": "value",
+      "type": "text",
+      "rect": [
+        8,
+        34,
+        184,
+        35
+      ],
+      "font": {
+        "size": 23,
+        "weight": 600
+      },
+      "alignment": "center"
+    },
+    {
+      "key": "progress",
+      "type": "bar",
+      "rect": [
+        12,
+        77,
+        176,
+        12
+      ],
+      "value": 0
+    }
+  ]
+}

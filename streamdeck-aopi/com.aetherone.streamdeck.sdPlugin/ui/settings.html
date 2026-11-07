@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>AetherOnePi Stream Deck settings</title>
+    <style>
+        body { background: #282828; color: #eee; font: 13px system-ui, sans-serif; padding: 10px; }
+        label { display: block; margin: 8px 0; }
+        input:not([type=checkbox]) { display: block; width: 100%; box-sizing: border-box; margin-top: 4px; }
+        button { margin: 4px 4px 4px 0; }
+        output { display: block; margin-top: 8px; overflow-wrap: anywhere; }
+    </style>
+</head>
+<body>
+    <form id="connection">
+        <label>Bootstrap URL <input id="url" type="url" required maxlength="1024"></label>
+        <label>Access token <input id="token" type="password" maxlength="512" autocomplete="off"></label>
+        <label><input id="clearToken" type="checkbox"> Remove saved token</label>
+        <label>Poll interval override (ms)
+            <input id="pollInterval" type="number" min="500" max="10000" placeholder="Use server default">
+        </label>
+        <button type="submit">Connect / Test</button>
+        <button type="button" id="home">Reset to MAIN</button>
+        <output id="status" aria-live="polite">Waiting for plugin…</output>
+    </form>
+    <form id="slotSettings">
+        <label>Slot override (optional, zero-based)
+            <input id="slotIndex" type="number" min="0" max="35" placeholder="Use physical coordinates">
+        </label>
+        <button type="submit">Save slot override</button>
+    </form>
+    <script src="settings.js"></script>
+</body>
+</html>

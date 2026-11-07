@@ -951,14 +951,15 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         }
     }
 
-    private void analyzeCurrentDatabase() {
-        analyzeDatabase(p.getSelectedDatabase());
+    public boolean analyzeCurrentDatabase() {
+        boolean completed = analyzeDatabase(p.getSelectedDatabase());
 
         // TODO check if a new session is required
         p.setAnalysisPointer(null);
+        return completed;
     }
 
-    private void analyzeDatabase(String databaseName) {
+    private boolean analyzeDatabase(String databaseName) {
 
         try {
             p.setGvCounter(0);
@@ -981,8 +982,10 @@ public class AetherOneEventHandler implements KeyPressedObserver {
             WebSocketManager.updateAnalysis();
 
             saveCase();
+            return true;
         } catch (IOException e) {
             log.error("Error analyzing ", e);
+            return false;
         }
     }
 

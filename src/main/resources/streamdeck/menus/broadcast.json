@@ -1,0 +1,85 @@
+{
+  "id": "broadcast",
+  "title": "Broadcast",
+  "keys": [
+    {
+      "slot": 0,
+      "title": "START",
+      "enabled": true,
+      "press": {
+        "type": "command",
+        "command": "broadcast.start"
+      },
+      "icon": "broadcast.svg"
+    },
+    {
+      "slot": 1,
+      "title": "STOP",
+      "enabled": true,
+      "press": {
+        "type": "command",
+        "command": "broadcast.stop"
+      },
+      "icon": "stop.svg"
+    },
+    {
+      "slot": 2,
+      "title": "RATE",
+      "enabled": true,
+      "press": {
+        "type": "navigate",
+        "menuId": "rates"
+      },
+      "valueKey": "rates.selectedLabel",
+      "icon": "rates.svg"
+    },
+    {
+      "slot": 3,
+      "title": "STATUS",
+      "enabled": false,
+      "press": null,
+      "valueKey": "broadcast.status",
+      "icon": "status.svg"
+    },
+    {
+      "slot": 4,
+      "title": "BACK",
+      "enabled": true,
+      "press": {
+        "type": "back"
+      },
+      "icon": "back.svg"
+    }
+  ],
+  "encoders": [
+    {
+      "slot": 0,
+      "title": "Duration",
+      "layout": "value-dial",
+      "valueKey": "broadcast.durationSeconds",
+      "unit": "s",
+      "rotateCommand": "broadcast.adjustDuration",
+      "push": {
+        "type": "command",
+        "command": "broadcast.resetDuration"
+      }
+    },
+    {
+      "slot": 1,
+      "title": "Selected rate",
+      "layout": "navigation-dial",
+      "valueKey": "rates.selectedLabel",
+      "touch": {
+        "type": "navigate",
+        "menuId": "rates"
+      }
+    },
+    {
+      "slot": 2,
+      "title": "Broadcast",
+      "layout": "progress-dial",
+      "valueKey": "broadcast.progressPercent",
+      "unit": "%"
+    }
+  ]
+}

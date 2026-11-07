@@ -1,0 +1,63 @@
+{
+  "id": "rates",
+  "title": "Rates",
+  "keys": [
+    {
+      "slot": 0,
+      "title": "PREVIOUS",
+      "enabled": true,
+      "press": {
+        "type": "command",
+        "command": "rates.previous"
+      },
+      "icon": "back.svg"
+    },
+    {
+      "slot": 1,
+      "title": "NEXT",
+      "enabled": true,
+      "press": {
+        "type": "command",
+        "command": "rates.next"
+      },
+      "icon": "next.svg"
+    },
+    {
+      "slot": 2,
+      "title": "SELECT",
+      "enabled": true,
+      "press": {
+        "type": "command",
+        "command": "rates.select"
+      },
+      "valueKey": "rates.candidateLabel",
+      "icon": "rates.svg"
+    },
+    {
+      "slot": 3,
+      "title": "BACK",
+      "enabled": true,
+      "press": {
+        "type": "back"
+      },
+      "icon": "back.svg"
+    }
+  ],
+  "encoders": [
+    {
+      "slot": 0,
+      "title": "Choose rate",
+      "layout": "navigation-dial",
+      "valueKey": "rates.candidateLabel",
+      "rotateCommand": "rates.next",
+      "push": {
+        "type": "command",
+        "command": "rates.select"
+      },
+      "touch": {
+        "type": "command",
+        "command": "rates.select"
+      }
+    }
+  ]
+}

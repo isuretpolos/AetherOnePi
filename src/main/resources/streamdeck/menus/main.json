@@ -1,0 +1,82 @@
+{
+  "id": "main",
+  "title": "AetherOnePi",
+  "keys": [
+    {
+      "slot": 0,
+      "title": "ANALYSIS",
+      "enabled": true,
+      "press": {
+        "type": "navigate",
+        "menuId": "analysis"
+      },
+      "icon": "analysis.svg"
+    },
+    {
+      "slot": 1,
+      "title": "BROADCAST",
+      "enabled": true,
+      "press": {
+        "type": "navigate",
+        "menuId": "broadcast"
+      },
+      "icon": "broadcast.svg"
+    },
+    {
+      "slot": 2,
+      "title": "RATES",
+      "enabled": true,
+      "press": {
+        "type": "navigate",
+        "menuId": "rates"
+      },
+      "icon": "rates.svg"
+    },
+    {
+      "slot": 3,
+      "title": "SETTINGS",
+      "enabled": true,
+      "press": {
+        "type": "navigate",
+        "menuId": "settings"
+      },
+      "icon": "settings.svg"
+    },
+    {
+      "slot": 4,
+      "title": "CLEAR RESULTS",
+      "enabled": true,
+      "press": {
+        "type": "command",
+        "command": "analysis.clear"
+      },
+      "icon": "clear.svg"
+    },
+    {
+      "slot": 5,
+      "title": "STATUS",
+      "enabled": false,
+      "press": null,
+      "valueKey": "broadcast.status",
+      "icon": "status.svg"
+    }
+  ],
+  "encoders": [
+    {
+      "slot": 0,
+      "title": "GV",
+      "layout": "status-dial",
+      "valueKey": "gv.value"
+    },
+    {
+      "slot": 1,
+      "title": "Broadcast",
+      "layout": "progress-dial",
+      "valueKey": "broadcast.progressPercent",
+      "touch": {
+        "type": "navigate",
+        "menuId": "broadcast"
+      }
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": "analysis",
+  "title": "Analysis",
+  "keys": [
+    {
+      "slot": 0,
+      "title": "START",
+      "enabled": true,
+      "press": {
+        "type": "command",
+        "command": "analysis.start"
+      },
+      "icon": "analysis.svg"
+    },
+    {
+      "slot": 1,
+      "title": "CLEAR",
+      "enabled": true,
+      "press": {
+        "type": "command",
+        "command": "analysis.clear"
+      },
+      "icon": "clear.svg"
+    },
+    {
+      "slot": 2,
+      "title": "RESULTS",
+      "enabled": false,
+      "press": null,
+      "valueKey": "analysis.lastResultCount",
+      "icon": "status.svg"
+    },
+    {
+      "slot": 3,
+      "title": "MEASURE GV",
+      "enabled": true,
+      "press": {
+        "type": "command",
+        "command": "gv.measure"
+      },
+      "icon": "status.svg"
+    },
+    {
+      "slot": 4,
+      "title": "BACK",
+      "enabled": true,
+      "press": {
+        "type": "back"
+      },
+      "icon": "back.svg"
+    }
+  ],
+  "encoders": [
+    {
+      "slot": 0,
+      "title": "GV",
+      "layout": "status-dial",
+      "valueKey": "gv.value"
+    },
+    {
+      "slot": 1,
+      "title": "Results",
+      "layout": "status-dial",
+      "valueKey": "analysis.lastResultCount"
+    }
+  ]
+}
