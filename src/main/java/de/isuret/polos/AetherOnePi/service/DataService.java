@@ -103,6 +103,8 @@ public class DataService {
         List<String> lines = null;
 
         if (rateListName.endsWith(".txt")) {
+            File file = new File(rateListName);
+            System.out.println(file.getAbsolutePath());
             lines = FileUtils.readLines(databases.get(rateListName), "UTF-8");
         } else {
             lines = new ArrayList<>();
@@ -117,6 +119,7 @@ public class DataService {
         for (String line : lines) {
 
             if (line == null) continue;
+            if (de.isuret.polos.AetherOnePi.utils.RateUtils.isRateListHeader(line)) continue;
             if (line.trim().length() == 0) continue;
 
             Rate rate = new Rate();

@@ -16,15 +16,23 @@ public class RateUtils {
     private RateUtils() {}
 
     public static void insertRate(final AnalysisResult analysisResult, final Map<String, Integer> ratesValues, String rate) {
-        String parts [] = rate.split("\t");
-
-        if (parts.length > 1) {
-            analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate), parts[0], parts[1], 0, 0, 0, 0, null,0));
-        } else {
-            analysisResult.getRateObjects().add(new RateObject(ratesValues.get(rate), rate, null, 0, 0, 0, 0, null,0));
+        String[] parts = rate.split("\t", -1);
+        RateObject rateObject = new RateObject(ratesValues.get(rate), parts[0],
+                parts.length > 1 ? parts[1] : null, 0, 0, 0, 0, null, 0);
+        if (parts.length > 2) {
+            rateObject.setClassification(parts[2].trim());
         }
+        if (parts.length > 3) {
+            rateObject.setSubfamily(parts[3].trim());
+        }
+        analysisResult.getRateObjects().add(rateObject);
     }
 
+    public static boolean isRateListHeader(String line) {
+        String[] parts = line.replace("\uFEFF", "").split("\t", -1);
+        return parts.length >= 2 && "NAME".equalsIgnoreCase(parts[0].trim())
+                && "URL".equalsIgnoreCase(parts[1].trim());
+    }
     public static void main(String args[]) throws Exception {
 
         if (args.length == 0) {

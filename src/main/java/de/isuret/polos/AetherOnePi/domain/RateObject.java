@@ -20,6 +20,10 @@ public class RateObject {
      */
     private String url;
 
+    private String classification;
+
+    private String subfamily;
+
     /**
      * The general vitality in relation to the current vitality of the target.
      */
@@ -55,6 +59,8 @@ public class RateObject {
         energeticValue = r.energeticValue;
         nameOrRate = r.nameOrRate;
         url = r.url;
+        classification = r.classification;
+        subfamily = r.subfamily;
         recurring = r.recurring;
         potency = r.potency;
     }
@@ -95,6 +101,22 @@ public class RateObject {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getClassification() {
+        return classification;
+    }
+
+    public void setClassification(String classification) {
+        this.classification = classification;
+    }
+
+    public String getSubfamily() {
+        return subfamily;
+    }
+
+    public void setSubfamily(String subfamily) {
+        this.subfamily = subfamily;
     }
 
     public Integer getGv() {

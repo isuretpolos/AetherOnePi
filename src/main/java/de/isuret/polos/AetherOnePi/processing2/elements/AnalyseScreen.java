@@ -4,6 +4,7 @@ import controlP5.Textfield;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
 import de.isuret.polos.AetherOnePi.domain.Session;
 import de.isuret.polos.AetherOnePi.domain.StickPad;
+import de.isuret.polos.AetherOnePi.utils.RateMetadataFrequency;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.events.MouseClickObserver;
@@ -85,6 +86,9 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
         if (p.getAnalysisResult() != null) {
 
+            boolean hasMetadata = p.getAnalysisResult().getRateObjects().stream()
+                    .anyMatch(rate -> StringUtils.isNotBlank(rate.getClassification())
+                            || StringUtils.isNotBlank(rate.getSubfamily()));
             int y = 110;
             int count = 0;
 
@@ -93,6 +97,12 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.text("NO", 35, y);
             p.text("EV", 80, y);
             p.text("RATE / SIGNATURE", 125, y);
+            if (hasMetadata) {
+                p.textSize(10);
+                p.text("CLASS", 440, y);
+                p.text("SUBFAMILY", 480, y);
+                p.textSize(15);
+            }
             p.text("POTENCY", 600, y);
             p.text("LVL", 724, y);
             p.text("HIT", 764, y);
@@ -146,6 +156,11 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
             // Get the sublist based on the paging parameters
             List<RateObject> pageList = p.getAnalysisResult().getRateObjects().subList(startIndex, endIndex);
+
+            List<RateObject> topRates = p.getAnalysisResult().getRateObjects().subList(0,
+                    Math.min(MAX_ENTRIES, p.getAnalysisResult().getRateObjects().size()));
+            RateMetadataFrequency classFrequency = new RateMetadataFrequency(topRates, RateObject::getClassification);
+            RateMetadataFrequency subfamilyFrequency = new RateMetadataFrequency(topRates, RateObject::getSubfamily);
 
             // draw the rate table
             for (RateObject rate : pageList) {
@@ -223,7 +238,7 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
                 p.text(count + ((page - 1) * MAX_ENTRIES), 35, y);
                 p.text(rate.getEnergeticValue(), 80, y);
-                p.text(rate.getNameOrRate(), 125, y);
+                p.text(fitText(rate.getNameOrRate(), hasMetadata ? 305 : 455), 125, y);
                 p.text(rate.getGv(), 804, y);
 
                 // Mark reoccurrence of word parts in the list
@@ -254,6 +269,17 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
                 p.stroke(160);
 
+                if (hasMetadata) {
+                    p.pushStyle();
+                    int classBrightness = classFrequency.getBrightness(rate.getClassification());
+                    p.stroke(classBrightness, classBrightness, 0);
+                    drawClassification(rate.getClassification(), 456, y - 6);
+                    int subfamilyBrightness = subfamilyFrequency.getBrightness(rate.getSubfamily());
+                    p.fill(subfamilyBrightness, subfamilyBrightness, 0);
+                    p.text(fitText(rate.getSubfamily(), 105), 480, y);
+                    p.popStyle();
+                }
+
                 if (highestGV == null || highestGV < rate.getGv()) {
                     highestGV = rate.getGv();
                     highestY = y;
@@ -275,6 +301,10 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
 
             p.line(70, 100, 70, y - 15);
             p.line(105, 100, 105, y - 15);
+            if (hasMetadata) {
+                p.line(435, 100, 435, y - 15);
+                p.line(475, 100, 475, y - 15);
+            }
             p.line(590, 100, 590, y - 15);
             p.line(720, 100, 720, y - 15);
             p.line(760, 100, 760, y - 15);
@@ -288,6 +318,8 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             if (highestGV != null && highestY != null) {
                 p.text(highestGV, 764, highestY);
             }
+
+            drawMetadataTooltip(pageList, hasMetadata, classFrequency, subfamilyFrequency);
 
             // page selection
             if (p.getAnalysisResult().getRateObjects().size() > MAX_ENTRIES) {
@@ -346,6 +378,114 @@ public class AnalyseScreen implements IDrawableElement, MouseClickObserver {
             p.line(0, 94 + (p.getGvCounter() * 18),900, 94 + (p.getGvCounter() * 18));
             p.line(0, 112 + (p.getGvCounter() * 18),900, 112 + (p.getGvCounter() * 18));
         }
+    }
+
+    private String fitText(String text, float width) {
+        if (text == null) {
+            return "";
+        }
+        if (p.textWidth(text) <= width) {
+            return text;
+        }
+        int end = text.length();
+        while (end > 0 && p.textWidth(text.substring(0, end) + "...") > width) {
+            end--;
+        }
+        return text.substring(0, end) + "...";
+    }
+
+    private void drawClassification(String classification, float x, float y) {
+        if (StringUtils.isBlank(classification)) {
+            return;
+        }
+        p.pushStyle();
+        p.noFill();
+        p.strokeWeight(1.5f);
+        switch (classification.toUpperCase(java.util.Locale.ROOT)) {
+            case "PLANT":
+                p.ellipse(x + 3, y - 2, 10, 6);
+                p.line(x - 5, y + 6, x + 6, y - 4);
+                break;
+            case "MINERAL":
+                p.quad(x, y - 7, x + 7, y, x, y + 7, x - 7, y);
+                break;
+            case "ANIMAL":
+                p.ellipse(x, y + 3, 8, 6);
+                p.ellipse(x - 5, y - 3, 3, 3);
+                p.ellipse(x, y - 5, 3, 3);
+                p.ellipse(x + 5, y - 3, 3, 3);
+                break;
+            case "FUNGI":
+                p.arc(x, y, 14, 12, p.PI, p.TWO_PI);
+                p.line(x - 7, y, x + 7, y);
+                p.line(x, y, x, y + 7);
+                break;
+            case "BACTERIA":
+                p.ellipse(x, y, 14, 7);
+                p.line(x - 3, y - 1, x + 3, y + 1);
+                break;
+            case "VIRUS":
+                p.ellipse(x, y, 8, 8);
+                for (int i = 0; i < 8; i++) {
+                    float angle = i * p.PI / 4;
+                    p.line(x + 4 * p.cos(angle), y + 4 * p.sin(angle),
+                            x + 7 * p.cos(angle), y + 7 * p.sin(angle));
+                }
+                break;
+            case "ALGAE":
+                for (int i = -1; i <= 1; i++) {
+                    p.bezier(x + i * 5, y + 6, x + i * 5 - 5, y,
+                            x + i * 5 + 5, y, x + i * 5, y - 6);
+                }
+                break;
+            case "SYNTHETIC":
+                p.rect(x - 5, y - 5, 10, 10);
+                p.line(x - 5, y - 5, x + 5, y + 5);
+                break;
+            case "CHEMICAL":
+                p.triangle(x, y - 6, x - 7, y + 6, x + 7, y + 6);
+                p.line(x - 4, y + 2, x + 4, y + 2);
+                break;
+            case "NOSODE":
+                p.line(x - 6, y, x + 6, y);
+                p.line(x, y - 6, x, y + 6);
+                break;
+            case "IMPONDERABLE":
+                p.line(x + 3, y - 7, x - 3, y);
+                p.line(x - 3, y, x + 3, y);
+                p.line(x + 3, y, x - 3, y + 7);
+                break;
+            default:
+                p.ellipse(x, y, 12, 12);
+                break;
+        }
+        p.popStyle();
+    }
+
+    private void drawMetadataTooltip(List<RateObject> rates, boolean hasMetadata,
+                                     RateMetadataFrequency classFrequency, RateMetadataFrequency subfamilyFrequency) {
+        int row = (p.mouseY - 112) / 18;
+        if (!hasMetadata || p.mouseX < 125 || p.mouseX >= 590 || p.mouseY < 112
+                || row >= rates.size()) {
+            return;
+        }
+        RateObject rate = rates.get(row);
+        String label = rate.getNameOrRate();
+        if (StringUtils.isNotBlank(rate.getClassification())) {
+            label += " | " + rate.getClassification() + " (" + classFrequency.getCount(rate.getClassification()) + "/21)";
+        }
+        if (StringUtils.isNotBlank(rate.getSubfamily())) {
+            label += " | " + rate.getSubfamily() + " (" + subfamilyFrequency.getCount(rate.getSubfamily()) + "/21)";
+        }
+        p.pushStyle();
+        p.textSize(13);
+        float x = Math.max(5, Math.min(p.mouseX + 12, p.width - p.textWidth(label) - 20));
+        p.fill(15, 30, 25);
+        p.stroke(198, 220, 255);
+        p.rect(x, p.mouseY + 10, p.textWidth(label) + 12, 23);
+        p.fill(255);
+        p.text(label, x + 6, p.mouseY + 26);
+        p.popStyle();
     }
 
     private void drawAnalysisBroadband() {
