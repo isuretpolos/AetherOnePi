@@ -190,6 +190,9 @@ export class Surface {
             }
             session.menu = menu;
             this.render(session);
+            if (action.type === "navigate" && action.command) {
+                void this.command(control, previous, action.command);
+            }
         } catch {
             this.alert(control);
         } finally {

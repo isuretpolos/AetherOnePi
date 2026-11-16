@@ -197,7 +197,8 @@ final class StreamDeckCatalog {
             return;
         }
         require(action.type() != null && switch (action.type()) {
-            case "navigate" -> action.menuId() != null && IDS.contains(action.menuId()) && action.command() == null;
+            case "navigate" -> action.menuId() != null && IDS.contains(action.menuId())
+                    && (action.command() == null || "analysis.show".equals(action.command()));
             case "command" -> action.command() != null && StreamDeckProtocol.COMMANDS.contains(action.command())
                     && !action.command().equals("broadcast.adjustDuration") && action.menuId() == null;
             case "back", "home", "none" -> action.command() == null && action.menuId() == null;

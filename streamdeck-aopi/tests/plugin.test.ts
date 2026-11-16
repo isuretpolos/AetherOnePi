@@ -55,6 +55,7 @@ test("navigates independent devices, batches rotation, renders revisions and rec
     const menuSource = async (id: string) => JSON.parse(await readFile(
         new URL(`../../src/main/resources/streamdeck/menus/${id}.json`, import.meta.url), "utf8"));
     const main = await menuSource("main");
+    const analysis = await menuSource("analysis");
     const broadcast = await menuSource("broadcast");
     const icon = await readFile(new URL("../../src/main/resources/streamdeck/assets/broadcast.svg", import.meta.url), "utf8");
     const sent: { command: string; args: object; source: { deviceId: string; slot: number } }[] = [];
@@ -78,8 +79,8 @@ test("navigates independent devices, batches rotation, renders revisions and rec
                 rates: { selectedLabel: "Example", candidateLabel: "Example" }
             });
         }
-        if (path.endsWith("/main") || path.endsWith("/broadcast")) {
-            const menu = path.endsWith("/main") ? main : broadcast;
+        if (path.endsWith("/main") || path.endsWith("/broadcast") || path.endsWith("/analysis")) {
+            const menu = path.endsWith("/main") ? main : path.endsWith("/analysis") ? analysis : broadcast;
             return Response.json({ ...menu, revision,
                 encoders: url.searchParams.get("device") === "key-only" ? [] : menu.encoders,
                 keys: revision === "one" ? menu.keys : menu.keys.filter((key: { slot: number }) => key.slot !== 0)
@@ -110,6 +111,7 @@ test("navigates independent devices, batches rotation, renders revisions and rec
     };
     const first = add("first", "key", 0);
     const second = add("second", "key", 0);
+    const secondBack = add("second", "key", 4);
     const navigate = add("first", "key", 1);
     const back = add("first", "key", 4);
     const dial = add("first", "encoder", 0);
@@ -117,6 +119,12 @@ test("navigates independent devices, batches rotation, renders revisions and rec
 
     surface.configure({ url: defaultUrl, token: "local-token" });
     await until(() => displays.get(first)?.title === "ANALYSIS" && displays.get(second)?.title === "ANALYSIS");
+    surface.press("second", second, "key");
+    await until(() => sent[0]?.command === "analysis.show" && displays.get(second)?.title === "START");
+    assert.equal(displays.get(first)?.title, "ANALYSIS");
+    sent.shift();
+    surface.press("second", secondBack, "key");
+    await until(() => displays.get(second)?.title === "ANALYSIS");
     surface.press("first", navigate, "key");
     await until(() => displays.get(first)?.title === "START");
     assert.equal(displays.get(second)?.title, "ANALYSIS");

@@ -4,7 +4,7 @@ AetherOnePi is a single Maven module targeting Java 24. Its existing Javalin 6.6
 
 Processing owns the analysis results, current catalog, embedded broadcast queue and drawable elements. The draw loop consumes bounded remote commands and publishes immutable snapshots. The current-catalog analysis operation performs its existing analysis, session and WebSocket updates on that same thread. The GUI's CLEAR action is a UV visual effect. Stream Deck's analysis clear resets only the current result and GV. Rate controls select an entry from the current analysis for broadcasting.
 
-The embedded broadcast implementation owns queuing, progress, stopping and the safety setting. Remote starts require embedded mode, the safety setting enabled, auto mode off and an idle broadcast queue. Separate broadcast windows lack a shared stop and progress interface. Their control and a remotely writable safety switch are omitted.
+Stream Deck START uses the application's broadcast action and honors the embedded broadcast setting. Remote starts require the safety setting enabled, auto mode off and an idle embedded queue. Embedded broadcasts report progress and respond to STOP. Separate windows use their own close control.
 
 Menu and asset changes are loaded from bounded JSON and image files. The plugin uses one bootstrap URL, HTTP polling and two generic action types. State publication is independent of the legacy analysis WebSocket.
 
@@ -44,4 +44,4 @@ For another model, place the two generic action types on the matching device as 
 
 Verify an installation by opening MAIN, navigating to BROADCAST, rotating the duration dial three clockwise steps, and returning via BACK. Select a test analysis result and verify broadcast progress and STOP. Change an icon or label in the override directory and check that the device picks it up. Then close AetherOnePi and confirm the display goes offline and reconnects after restart.
 
-The runtime reports active ESP32 or Infinite USB TRNG sources where available. Aggregate Hotbits counts, separate broadcast windows and remotely writable safety or auto mode settings are outside this implementation.
+The runtime reports active ESP32 or Infinite USB TRNG sources where available. Aggregate Hotbits counts and remotely writable safety or auto mode settings are outside this implementation.

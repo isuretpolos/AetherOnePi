@@ -2,6 +2,7 @@ package de.isuret.polos.AetherOnePi.server.streamdeck;
 
 import de.isuret.polos.AetherOnePi.domain.AnalysisResult;
 import de.isuret.polos.AetherOnePi.domain.RateObject;
+import de.isuret.polos.AetherOnePi.processing2.AetherOneConstants;
 import de.isuret.polos.AetherOnePi.processing2.AetherOneUI;
 import de.isuret.polos.AetherOnePi.processing2.elements.BroadcastElement;
 import de.isuret.polos.AetherOnePi.processing2.elements.SettingsScreen;
@@ -82,8 +83,11 @@ public final class StreamDeckRuntime {
     }
 
     private String execute(AetherOneUI ui, List<RateObject> rates, Request request) throws Exception {
+        System.out.println(request.command() + " " + request.args());
         switch (request.command()) {
+            case "analysis.show" -> showAnalysisTab(ui);
             case "analysis.start" -> {
+                showAnalysisTab(ui);
                 publish(ui, rates, true);
                 return ui.getAetherOneEventHandler().analyzeCurrentDatabase() ? null : "analysis_failed";
             }
@@ -93,21 +97,17 @@ public final class StreamDeckRuntime {
                 ui.setGeneralVitality(0);
                 WebSocketManager.updateAnalysis();
             }
-            case "gv.measure" -> ui.setGeneralVitality(ui.checkGeneralVitalityValue());
+            case "gv.measure" -> ui.getAetherOneEventHandler().checkGeneralVitality();
             case "broadcast.start" -> {
-                if (selected == null || selected.getNameOrRate() == null || selected.getNameOrRate().isBlank()) {
-                    return "no_selected_rate";
+                String signature = broadcastSignature(ui);
+                if (signature == null || signature.isBlank()) {
+                    return "no_broadcast_signature";
                 }
                 var settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
-                if (!canStart(ui) || !settings.getBoolean(SettingsScreen.BROADCAST_EMBEDDED, true)) {
+                if (!canStart(ui)) {
                     return "broadcast_unavailable";
                 }
-                int seconds = durationSeconds;
-                if (settings.getBoolean(SettingsScreen.BROADCAST_DELTA_TIME, false)
-                        && ui.getGeneralVitality() < seconds) {
-                    seconds -= ui.getGeneralVitality();
-                }
-                ui.getAetherOneEventHandler().broadcast(selected.getNameOrRate(), seconds);
+                ui.getAetherOneEventHandler().broadcastNow(signature, durationSeconds, settings);
             }
             case "broadcast.stop" -> ui.getGuiElements().stopAllBroadcasts();
             case "broadcast.adjustDuration" ->
@@ -129,10 +129,18 @@ public final class StreamDeckRuntime {
         return null;
     }
 
+    private void showAnalysisTab(AetherOneUI ui) {
+        ui.getGuiElements().getCp5().getTab(AetherOneConstants.ANALYZE).bringToFront();
+        ui.getGuiElements().selectCurrentTab(AetherOneConstants.ANALYZE);
+    }
+
+    private String broadcastSignature(AetherOneUI ui) {
+        return selected == null ? ui.getAetherOneEventHandler().getBroadcastSignature() : selected.getNameOrRate();
+    }
+
     private boolean canStart(AetherOneUI ui) {
         return !Boolean.TRUE.equals(ui.getAutoMode())
                 && ui.getSettings().getBoolean(SettingsScreen.SAFETY_SWITCH, true)
-                && ui.getGuiElements().getBroadcastQueueList().isEmpty()
                 && activeBroadcast(ui) == null;
     }
 
@@ -158,14 +166,15 @@ public final class StreamDeckRuntime {
             remaining = (total - elapsed + 999) / 1000;
             progress = (int) (elapsed * 100 / total);
         }
-        String status = active != null ? "ACTIVE" : queued ? "QUEUED" : embedded ? "IDLE" : "UNAVAILABLE";
+        String status = active != null ? "ACTIVE" : queued ? "QUEUED" : embedded ? "IDLE" : "WINDOW MODE";
         var hotbits = ui.getHotbitsHandler();
         String trng = hotbits.isESP32running() ? "ESP32" : hotbits.isInfiniteUSBrunning() ? "INFINITE USB" : null;
+        String signature = broadcastSignature(ui);
         snapshot = new Snapshot(new Analysis(running, rates.size()),
                 new Vitality(gv != null && gv > 0, gv != null && gv > 0 ? gv : null),
-                new Broadcast(embedded || active != null || queued, embedded || active != null || queued
-                        ? active != null || queued : null, durationSeconds, remaining, progress, status,
-                        embedded && selected != null && canStart(ui)),
+                new Broadcast(true, embedded || active != null || queued ? active != null || queued : null,
+                        durationSeconds, remaining, progress, status,
+                        signature != null && !signature.isBlank() && canStart(ui)),
                 new Rates(selected == null ? null : selected.getNameOrRate(),
                         rates.isEmpty() ? null : rates.get(candidate).getNameOrRate()),
                 new Hotbits(trng != null, trng));

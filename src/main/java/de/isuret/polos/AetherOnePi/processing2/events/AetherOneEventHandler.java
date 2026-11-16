@@ -836,24 +836,29 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     public synchronized void broadcastNow() {
-
-        Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
-
-        String signature = ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SIGNATURE)).getText();
-        Integer seconds = 60;
+        int seconds = 60;
 
         try {
             seconds = Integer.parseInt(((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SECONDS)).getText());
-
-            if (settings.getBoolean(SettingsScreen.BROADCAST_DELTA_TIME, false) && p.getGeneralVitality() < seconds) {
-                seconds -= p.getGeneralVitality();
-            }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SECONDS)).setText("60");
         }
 
-        // replaced by the embedded BroadcastElement
-        broadcast(signature, seconds);
+        broadcastNow(getBroadcastSignature(), seconds,
+                AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS));
+    }
+
+    public String getBroadcastSignature() {
+        return ((Textfield) p.getGuiElements().getCp5().get(AetherOneConstants.SIGNATURE)).getText();
+    }
+
+    public synchronized void broadcastNow(String signature, int seconds, Settings settings) {
+        Integer gv = p.getGeneralVitality();
+        if (settings.getBoolean(SettingsScreen.BROADCAST_DELTA_TIME, false) && gv != null && gv < seconds) {
+            seconds -= gv;
+        }
+
+        broadcast(signature, seconds, settings);
 
         BroadCastData broadCastData = new BroadCastData();
         broadCastData.setSignature(signature);
@@ -861,7 +866,11 @@ public class AetherOneEventHandler implements KeyPressedObserver {
     }
 
     public void broadcast(String signature, Integer seconds) {
-        Settings settings = AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS);
+        broadcast(signature, seconds,
+                AetherOnePiProcessingConfiguration.loadSettings(AetherOnePiProcessingConfiguration.SETTINGS));
+    }
+
+    private void broadcast(String signature, int seconds, Settings settings) {
         boolean broadCastEmbedded = settings.getBoolean(SettingsScreen.BROADCAST_EMBEDDED, true);
 
         if (broadCastEmbedded) {
@@ -1139,7 +1148,7 @@ public class AetherOneEventHandler implements KeyPressedObserver {
         return null;
     }
 
-    private void checkGeneralVitality() {
+    public void checkGeneralVitality() {
 
         if (p.getAnalysisResult() == null) return;
 

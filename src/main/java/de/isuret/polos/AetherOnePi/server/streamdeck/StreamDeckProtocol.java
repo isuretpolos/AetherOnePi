@@ -7,7 +7,7 @@ import java.util.Set;
 
 final class StreamDeckProtocol {
     static final String VERSION = "aopi-streamdeck/1";
-    static final Set<String> COMMANDS = Set.of("analysis.start", "analysis.clear", "gv.measure",
+    static final Set<String> COMMANDS = Set.of("analysis.show", "analysis.start", "analysis.clear", "gv.measure",
             "broadcast.start", "broadcast.stop", "broadcast.adjustDuration", "broadcast.resetDuration",
             "rates.next", "rates.previous", "rates.select");
     static final Set<String> STATE_KEYS = Set.of("analysis.lastResultCount", "gv.value", "broadcast.durationSeconds",

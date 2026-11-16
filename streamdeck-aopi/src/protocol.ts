@@ -1,7 +1,7 @@
 export const protocol = "aopi-streamdeck/1";
 export const menuIds = ["main", "analysis", "broadcast", "rates", "settings"] as const;
 export const layouts = ["value-dial", "status-dial", "progress-dial", "navigation-dial"] as const;
-const commands = ["analysis.start", "analysis.clear", "gv.measure", "broadcast.start", "broadcast.stop",
+const commands = ["analysis.show", "analysis.start", "analysis.clear", "gv.measure", "broadcast.start", "broadcast.stop",
     "broadcast.adjustDuration", "broadcast.resetDuration", "rates.next", "rates.previous", "rates.select"] as const;
 export const valueKeys = ["analysis.lastResultCount", "gv.value", "broadcast.durationSeconds",
     "broadcast.progressPercent", "broadcast.status", "rates.selectedLabel", "rates.candidateLabel", "hotbits.status"] as const;
@@ -11,7 +11,8 @@ export type Command = typeof commands[number];
 export type ValueKey = typeof valueKeys[number];
 export type Layout = typeof layouts[number];
 export type DeviceClass = "plus-xl" | "plus" | "xl" | "key-only";
-export type Interaction = { type: "navigate"; menuId: MenuId } | { type: "command"; command: Command }
+export type Interaction = { type: "navigate"; menuId: MenuId; command?: "analysis.show" }
+    | { type: "command"; command: Command }
     | { type: "home" | "back" | "none" };
 
 export type Key = {
@@ -83,7 +84,11 @@ function optional<T>(value: unknown, parse: (value: unknown) => T): T | undefine
 function interaction(value: unknown): Interaction {
     const item = object(value);
     switch (item.type) {
-        case "navigate": return { type: item.type, menuId: member(item.menuId, menuIds) };
+        case "navigate": return {
+            type: item.type,
+            menuId: member(item.menuId, menuIds),
+            command: optional(item.command, (command) => member(command, ["analysis.show"] as const))
+        };
         case "command": return { type: item.type, command: member(item.command, commands) };
         case "home":
         case "back":

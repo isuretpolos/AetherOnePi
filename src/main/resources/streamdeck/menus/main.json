@@ -8,7 +8,8 @@
       "enabled": true,
       "press": {
         "type": "navigate",
-        "menuId": "analysis"
+        "menuId": "analysis",
+        "command": "analysis.show"
       },
       "icon": "analysis.svg"
     },
