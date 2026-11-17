@@ -47,6 +47,17 @@ The UI uses a `ScreenViewport` and Scene2D tables. Extra screen space becomes
 usable layout space; it does not stretch a fixed image of the 1285 × 721 UI.
 The background fills its container while preserving its aspect ratio, cropping
 the edges as necessary. The status area remains below the scrollable body.
+The status footer is shared by Dashboard, Settings, and Hotbits. Switching pages
+never hides or collapses it, and the page panel cannot expand over it. Indicator
+rows wrap at smaller widths and follow the shared font size.
+
+There is one acquisition light per source: Webcam, ESP32, and Infinite Noise USB.
+Gray means inactive, amber means opening/warming up or stopping, and green means
+the source is acquiring samples. These lights follow the acquisition worker,
+so they continue to show activity when navigating away from the Hotbits page.
+Scanning, camera preview, source selection, and enabling a setting alone do not
+light an acquisition indicator. Legacy service lights stay gray until their
+services are implemented.
 
 Future screens should follow the same rules: use layout containers, expanding
 cells, wrapped labels, and scroll panes; update the viewport in `resize`; avoid

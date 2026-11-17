@@ -14,6 +14,7 @@ import de.isuret.polos.aopi.hotbits.HotbitsPackageStore;
 import de.isuret.polos.aopi.settings.ApplicationSettings;
 import de.isuret.polos.aopi.settings.Setting;
 import de.isuret.polos.aopi.settings.SettingsRepository;
+import de.isuret.polos.aopi.ui.StatusLight;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,6 +31,9 @@ public final class HotbitsUiSmokeTest {
 
     public static void main(String[] args) throws Exception {
         boolean infiniteNoise = args.length > 0 && args[0].equals("infinite-noise");
+        boolean webcam = args.length > 0 && args[0].equals("webcam");
+        HotbitsBackend.Kind testedKind = infiniteNoise ? HotbitsBackend.Kind.INFINITE_NOISE
+                : webcam ? HotbitsBackend.Kind.WEBCAM : HotbitsBackend.Kind.ESP32;
         Path directory = Files.createTempDirectory(Path.of("lwjgl3/build"), "hotbits-ui-");
         System.setProperty("aopi.dataDirectory", directory.toAbsolutePath().toString());
         ApplicationSettings settings = new ApplicationSettings();
@@ -60,7 +64,7 @@ public final class HotbitsUiSmokeTest {
 
                     @Override
                     public byte[] readSample() throws InterruptedException {
-                        byte[] bytes = new byte[4096];
+                        byte[] bytes = new byte[webcam ? 65536 : 4096];
                         fixture.nextBytes(bytes);
                         reads.incrementAndGet();
                         Thread.sleep(3);
@@ -79,6 +83,7 @@ public final class HotbitsUiSmokeTest {
             private int frames;
             private int phase;
             private int backgroundReads;
+            private int settingsFrame;
 
             @Override
             public void render() {
@@ -90,7 +95,7 @@ public final class HotbitsUiSmokeTest {
                 Stage stage = (Stage) ((InputMultiplexer) Gdx.input.getInputProcessor()).getProcessors().get(1);
                 if (phase == 0 && frames >= 5) {
                     click(stage, "hotbits-tab");
-                    click(stage, infiniteNoise ? "hotbits-infinite-noise" : "hotbits-esp32");
+                    click(stage, infiniteNoise ? "hotbits-infinite-noise" : webcam ? "hotbits-webcam" : "hotbits-esp32");
                     click(stage, "hotbits-scan");
                     phase++;
                 } else if (phase == 1 && stage.getRoot().findActor("hotbits-device-fixture") != null) {
@@ -109,7 +114,15 @@ public final class HotbitsUiSmokeTest {
                     backgroundReads = reads.get();
                     settings.setFontSize(32);
                     phase++;
-                } else if (phase == 4 && reads.get() > backgroundReads + 100) {
+                } else if (phase == 4 && reads.get() > backgroundReads + (webcam ? 250 : 100)) {
+                    NavigationLayoutSmokeTest.requireVisibleFooter(stage);
+                    requireAcquisitionLights(stage, testedKind);
+                    click(stage, "settings-tab");
+                    settingsFrame = frames;
+                    phase++;
+                } else if (phase == 5 && frames > settingsFrame + 2) {
+                    NavigationLayoutSmokeTest.requireVisibleFooter(stage);
+                    requireAcquisitionLights(stage, testedKind);
                     click(stage, "hotbits-tab");
                     if (infiniteNoise) {
                         settings.setEnabled(Setting.INFINITE_NOISE, false);
@@ -117,7 +130,9 @@ public final class HotbitsUiSmokeTest {
                         click(stage, "hotbits-stop");
                     }
                     phase++;
-                } else if (phase == 5 && released.get() && !button(stage, "hotbits-esp32").isDisabled()) {
+                } else if (phase == 6 && released.get() && !button(stage, "hotbits-esp32").isDisabled()) {
+                    NavigationLayoutSmokeTest.requireVisibleFooter(stage);
+                    requireAcquisitionLights(stage, null);
                     if (infiniteNoise && !button(stage, "hotbits-start").isDisabled()) {
                         throw new AssertionError("Disabled Infinite Noise setting did not prevent restart.");
                     }
@@ -134,13 +149,24 @@ public final class HotbitsUiSmokeTest {
                     } catch (java.io.IOException exception) {
                         throw new AssertionError(exception);
                     }
-                    System.out.println("Hotbits UI smoke test passed for " + (infiniteNoise ? "Infinite Noise USB" : "ESP32")
+                    System.out.println("Hotbits UI smoke test passed for " + testedKind
                             + ": scan, select, acquire, background navigation, live font change, stop, and packages.");
                     Gdx.app.exit();
                     phase++;
                 }
             }
         }, configuration);
+    }
+
+    private static void requireAcquisitionLights(Stage stage, HotbitsBackend.Kind activeKind) {
+        for (HotbitsBackend.Kind kind : HotbitsBackend.Kind.values()) {
+            StatusLight indicator = stage.getRoot().findActor("hotbits-led-"
+                    + kind.name().toLowerCase(java.util.Locale.ROOT));
+            StatusLight.State expected = kind == activeKind ? StatusLight.State.ON : StatusLight.State.OFF;
+            if (indicator.getState() != expected) {
+                throw new AssertionError("Wrong acquisition light for " + kind + ": " + indicator.getState());
+            }
+        }
     }
 
     private static TextButton button(Stage stage, String name) {

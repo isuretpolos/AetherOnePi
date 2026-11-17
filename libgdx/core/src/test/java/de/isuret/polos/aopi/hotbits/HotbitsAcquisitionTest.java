@@ -80,6 +80,7 @@ class HotbitsAcquisitionTest {
         try (HotbitsAcquisition service = service(source, store, 10000, 2)) {
             assertTrue(service.start(DEVICE));
             assertTrue(reading.await(2, TimeUnit.SECONDS));
+            assertEquals(HotbitsBackend.Kind.ESP32, service.acquiringKind());
             assertFalse(service.start(DEVICE));
             service.stop();
             awaitIdle(service);
@@ -87,6 +88,7 @@ class HotbitsAcquisitionTest {
             assertEquals(0, store.count());
             assertEquals(0, service.snapshot().pendingIntegers());
             assertEquals(HotbitsAcquisition.State.IDLE, service.snapshot().state());
+            assertNull(service.acquiringKind());
         }
     }
 
@@ -136,6 +138,7 @@ class HotbitsAcquisitionTest {
             service.preview(DEVICE);
             awaitIdle(service);
             assertArrayEquals(new byte[]{1, 2, 3}, service.snapshot().previewPng());
+            assertNull(service.acquiringKind());
             assertTrue(source.closed.get());
             assertEquals(0, store.count());
         }
@@ -148,6 +151,7 @@ class HotbitsAcquisitionTest {
             service.scan(HotbitsBackend.Kind.ESP32);
             awaitIdle(service);
             assertEquals(List.of(DEVICE), service.snapshot().devices());
+            assertNull(service.acquiringKind());
             assertFalse(source.opened);
             assertEquals(HotbitsAcquisition.State.IDLE, service.snapshot().state());
         }

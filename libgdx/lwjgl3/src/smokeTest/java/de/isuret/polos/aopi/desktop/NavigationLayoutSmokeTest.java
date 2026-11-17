@@ -7,6 +7,11 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.math.Vector2;
+import de.isuret.polos.aopi.hotbits.HotbitsBackend;
+
+import java.util.List;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import de.isuret.polos.aopi.AopiApplication;
 import de.isuret.polos.aopi.settings.ApplicationSettings;
@@ -32,7 +37,18 @@ public final class NavigationLayoutSmokeTest {
         configuration.setForegroundFPS(30);
         controller.configure(configuration);
 
-        new Lwjgl3Application(new AopiApplication(settings, repository, controller, false) {
+        HotbitsBackend backend = new HotbitsBackend() {
+            @Override
+            public List<Device> discover(Kind kind) {
+                return List.of();
+            }
+
+            @Override
+            public Source create(Device device) {
+                throw new UnsupportedOperationException("This layout check never opens hardware.");
+            }
+        };
+        new Lwjgl3Application(new AopiApplication(settings, repository, controller, false, backend) {
             private int frames;
             private int scenario;
             private float dashboardWidth;
@@ -53,25 +69,45 @@ public final class NavigationLayoutSmokeTest {
                     }
                     dashboard.fire(new ChangeListener.ChangeEvent());
                 } else if (step == 5) {
+                    requireVisibleFooter(stage);
                     requireFullHeight(dashboard);
                     dashboardWidth = dashboard.getWidth();
                     dashboardHeight = dashboard.getHeight();
                     settingsTab.fire(new ChangeListener.ChangeEvent());
                 } else if (step == 8) {
+                    requireVisibleFooter(stage);
                     requireFullHeight(dashboard);
                     requireSameSize(dashboard, dashboardWidth, dashboardHeight);
+                    TextButton hotbits = stage.getRoot().findActor("hotbits-tab");
+                    hotbits.fire(new ChangeListener.ChangeEvent());
+                } else if (step == 10) {
+                    requireVisibleFooter(stage);
                     dashboard.fire(new ChangeListener.ChangeEvent());
                 } else if (step == 11) {
+                    requireVisibleFooter(stage);
                     requireFullHeight(dashboard);
                     requireSameSize(dashboard, dashboardWidth, dashboardHeight);
                     scenario++;
                     if (scenario == 4) {
-                        System.out.println("Navigation layout smoke test passed at 14, 24, and 32 px, including 800 x 600.");
+                        System.out.println("Navigation/footer layout passed on Dashboard, Settings, and Hotbits at 14, 24, and 32 px, including 800 x 600.");
                         Gdx.app.exit();
                     }
                 }
             }
         }, configuration);
+    }
+
+    static void requireVisibleFooter(Stage stage) {
+        Actor footer = stage.getRoot().findActor("service-status");
+        Actor panel = stage.getRoot().findActor("page-panel");
+        Vector2 footerPosition = footer.localToStageCoordinates(new Vector2());
+        Vector2 panelPosition = panel.localToStageCoordinates(new Vector2());
+        if (!footer.isVisible() || footer.getHeight() <= 0 || footerPosition.y < -0.5f
+                || footerPosition.y + footer.getHeight() > panelPosition.y + 0.5f
+                || footerPosition.y + footer.getHeight() > stage.getHeight() + 0.5f) {
+            throw new AssertionError("Status footer is hidden, clipped, or covered by the page panel: footer y="
+                    + footerPosition.y + ", height=" + footer.getHeight() + ", panel y=" + panelPosition.y);
+        }
     }
 
     private static void requireFullHeight(TextButton button) {

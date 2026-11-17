@@ -14,6 +14,9 @@ font-size slider** with a live, application-wide preview and automatic saving.
 The **HOTBITS** tab supports webcam discovery, a single-image preview, and
 background webcam, ESP32 serial, and Infinite Noise USB acquisition with start/stop
 and live package counts. Infinite Noise uses the installed FTDI D2XX driver.
+The shared status footer remains visible on every tab, with separate acquisition
+lights for Webcam, ESP32, and Infinite Noise USB (gray: inactive; amber: opening
+or stopping; green: acquiring samples).
 Window position, size, fullscreen, and maximized state are saved on close in
 `aopi-libgdx-data/settings.json` and restored on startup. To reset window placement,
 close the app and delete the file's `window` section. Deleting the entire file

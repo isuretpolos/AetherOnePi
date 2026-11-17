@@ -85,3 +85,12 @@ tasks.register('infiniteNoiseUiSmokeTest', JavaExec) {
     workingDir = rootProject.projectDir
     jvmArgs application.applicationDefaultJvmArgs
 }
+
+tasks.register('webcamUiSmokeTest', JavaExec) {
+    dependsOn smokeTestClasses
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    mainClass = 'de.isuret.polos.aopi.desktop.HotbitsUiSmokeTest'
+    args 'webcam'
+    workingDir = rootProject.projectDir
+    jvmArgs application.applicationDefaultJvmArgs
+}

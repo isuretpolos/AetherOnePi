@@ -38,6 +38,7 @@ public class HotbitsAcquisition implements AutoCloseable {
     private volatile boolean stopping;
     private volatile boolean closed;
     private volatile HotbitsBackend.Source activeSource;
+    private volatile HotbitsBackend.Kind acquiringKind;
     private volatile Thread workerThread;
     private volatile Snapshot snapshot = new Snapshot(State.IDLE, "Choose a source, then scan for devices.",
             List.of(), 0, 0, 0, 0, null);
@@ -70,6 +71,10 @@ public class HotbitsAcquisition implements AutoCloseable {
         return busy.get();
     }
 
+    public HotbitsBackend.Kind acquiringKind() {
+        return acquiringKind;
+    }
+
     public boolean scan(HotbitsBackend.Kind kind) {
         return submit(State.SCANNING, "Scanning devices...", () -> {
             List<HotbitsBackend.Device> devices = List.copyOf(backend.discover(kind));
@@ -99,7 +104,7 @@ public class HotbitsAcquisition implements AutoCloseable {
     }
 
     public boolean start(HotbitsBackend.Device device) {
-        return submit(State.ACQUIRING, "Opening " + device.name() + "...", () -> acquire(device));
+        return submit(State.ACQUIRING, "Opening " + device.name() + "...", device.kind(), () -> acquire(device));
     }
 
     private void acquire(HotbitsBackend.Device device) throws Exception {
@@ -149,11 +154,16 @@ public class HotbitsAcquisition implements AutoCloseable {
         checkStopped();
     }
 
-    private synchronized boolean submit(State state, String message, Operation operation) {
+    private boolean submit(State state, String message, Operation operation) {
+        return submit(state, message, null, operation);
+    }
+
+    private synchronized boolean submit(State state, String message, HotbitsBackend.Kind kind, Operation operation) {
         if (closed || !busy.compareAndSet(false, true)) {
             return false;
         }
         stopping = false;
+        acquiringKind = kind;
         Snapshot previous = snapshot;
         snapshot = new Snapshot(state, message, previous.devices(), previous.cachedPackages(), 0, 0, 0, null);
         worker.execute(() -> {
@@ -188,6 +198,7 @@ public class HotbitsAcquisition implements AutoCloseable {
                                 snapshot.cachedPackages(), snapshot.sessionPackages(), 0, snapshot.sampleCount());
                     }
                     workerThread = null;
+                    acquiringKind = null;
                     Thread.interrupted();
                     busy.set(false);
                 }

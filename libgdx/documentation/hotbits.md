@@ -165,7 +165,11 @@ already reached, and acquisition stops when it reaches the limit.
 
 Counters show complete cached packages, packages created this session, integers
 in the current package, and processed samples. The dashboard footer also reports
-the cache and acquisition state. Only `hotbits_*.json` regular files are counted;
+the cache and acquisition state. This shared footer stays visible on every tab.
+It has separate Webcam, ESP32, and Infinite Noise USB lights: gray when inactive,
+amber during opening/warmup or stopping, and green after sample acquisition starts.
+Only the source actually used by the worker is lit; selecting a source or previewing
+a camera does not light it. Only `hotbits_*.json` regular files are counted;
 unrelated JSON files and temporary files are ignored. Cache counting occurs when
 refreshing or starting; future analysis/consumption is not implemented yet.
 
@@ -217,6 +221,12 @@ deterministic test samples and isolated files. It checks scan/select/start,
 background acquisition while navigating away, a live 32 px font change, STOP,
 resource release, and complete package creation. It does not open real devices.
 The navigation-size regression test also passes.
+The three source UI tasks (`hotbitsUiSmokeTest`, `infiniteNoiseUiSmokeTest`, and
+`webcamUiSmokeTest`) also verify that the correct LED stays green on Dashboard
+and Settings during background acquisition, the other lights remain off, and
+all lights return to gray after stopping. The navigation/footer layout check
+covers all tabs at 14, 24, and 32 px, including an 800 × 600 window, and verifies
+that the footer is visible and sits below the page panel.
 
 The `:lwjgl3:infiniteNoiseUiSmokeTest` task runs the same isolated UI workflow for
 the Infinite Noise source, checking that its setting must be enabled and that

@@ -36,6 +36,10 @@ import de.isuret.polos.aopi.hotbits.HotbitsAcquisition;
 import de.isuret.polos.aopi.hotbits.HotbitsPackageStore;
 import de.isuret.polos.aopi.hotbits.HotbitsPage;
 
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Locale;
+
 /** Shared application shell. Pages keep their actors while navigation and font size change. */
 public class AopiScreen extends ScreenAdapter {
 
@@ -71,6 +75,7 @@ public class AopiScreen extends ScreenAdapter {
     private TextButton hotbitsTab;
     private Table root;
     private Table serviceStatus;
+    private final Map<HotbitsBackend.Kind, StatusLight> acquisitionLights = new EnumMap<>(HotbitsBackend.Kind.class);
     private boolean twoColumns;
 
     public AopiScreen(ApplicationSettings settings, SettingsRepository settingsRepository,
@@ -141,12 +146,14 @@ public class AopiScreen extends ScreenAdapter {
         panel.add(pageContainer).grow().minHeight(0).row();
 
         Table panelBorder = new Table();
+        panelBorder.setName("page-panel");
         panelBorder.setBackground(skin.newDrawable("white", Color.valueOf("71627E")));
         panelBorder.pad(1);
         panelBorder.add(panel).grow();
         root.add(panelBorder).grow().minHeight(0).row();
         serviceStatus = statusIndicators();
-        root.add(serviceStatus).growX().padTop(12).row();
+        // The footer belongs to the shell, outside every tab's scrollable content.
+        root.add(serviceStatus).growX().minHeight(Value.prefHeight).padTop(12).row();
         message.setWrap(true);
         root.add(message).growX().padTop(10);
 
@@ -210,12 +217,8 @@ public class AopiScreen extends ScreenAdapter {
         dashboardTab.setChecked(!selected);
         settingsTab.setChecked(selected);
         hotbitsTab.setChecked(false);
-        serviceStatus.setVisible(!selected);
         if (selected) {
-            root.getCell(serviceStatus).height(0).padTop(0);
             stage.setScrollFocus(settingsScroll);
-        } else {
-            root.getCell(serviceStatus).height(com.badlogic.gdx.scenes.scene2d.ui.Value.prefHeight).padTop(12);
         }
         root.invalidateHierarchy();
     }
@@ -226,8 +229,6 @@ public class AopiScreen extends ScreenAdapter {
         dashboardTab.setChecked(false);
         settingsTab.setChecked(false);
         hotbitsTab.setChecked(true);
-        serviceStatus.setVisible(false);
-        root.getCell(serviceStatus).height(0).padTop(0);
         root.invalidateHierarchy();
         stage.setScrollFocus(hotbitsScroll);
     }
@@ -258,17 +259,26 @@ public class AopiScreen extends ScreenAdapter {
 
     private Table statusIndicators() {
         Table status = new Table();
+        status.setName("service-status");
         HorizontalGroup indicators = wrappingRow(18);
         for (String name : new String[]{"PI", "BROADCASTING", "CLEARING", "GROUNDING", "COPYING"}) {
-            Table indicator = new Table();
-            Image light = new Image(skin.newDrawable("white", Color.valueOf("655E70")));
-            indicator.add(light).size(14, 8).padRight(6);
-            indicator.add(new Label(name, skin, "muted"));
+            indicators.addActor(new StatusLight(name, skin));
+        }
+        for (HotbitsBackend.Kind kind : HotbitsBackend.Kind.values()) {
+            String label = switch (kind) {
+                case WEBCAM -> "WEBCAM";
+                case ESP32 -> "ESP32";
+                case INFINITE_NOISE -> "INFINITE NOISE USB";
+            };
+            StatusLight indicator = new StatusLight(label, skin);
+            indicator.setName("hotbits-led-" + kind.name().toLowerCase(Locale.ROOT));
+            acquisitionLights.put(kind, indicator);
             indicators.addActor(indicator);
         }
         status.add(indicators).growX().row();
         // These services do not exist yet. Do not imply that hardware is connected.
         serviceCounts = new Label("PACKAGES: --     CACHE: --     PROGRESS: --     QUEUE: --", skin, "muted");
+        serviceCounts.setName("hotbits-counters");
         serviceCounts.setWrap(true);
         status.add(serviceCounts).growX().padTop(10);
         return status;
@@ -438,9 +448,22 @@ public class AopiScreen extends ScreenAdapter {
         }
         if (hotbitsPage != null) {
             hotbitsPage.update();
-            serviceCounts.setText("HOTBITS PACKAGES: " + hotbits.snapshot().cachedPackages()
-                    + " | CURRENT PACKAGE: " + hotbits.snapshot().pendingIntegers()
-                    + " / " + HotbitsAcquisition.INTEGERS_PER_PACKAGE + " | " + hotbits.snapshot().state());
+            HotbitsAcquisition.Snapshot snapshot = hotbits.snapshot();
+            HotbitsBackend.Kind acquiringKind = hotbits.acquiringKind();
+            for (Map.Entry<HotbitsBackend.Kind, StatusLight> entry : acquisitionLights.entrySet()) {
+                StatusLight.State lightState = StatusLight.State.OFF;
+                if (entry.getKey() == acquiringKind) {
+                    if (snapshot.state() == HotbitsAcquisition.State.STOPPING) {
+                        lightState = StatusLight.State.WAITING;
+                    } else if (snapshot.state() == HotbitsAcquisition.State.ACQUIRING) {
+                        lightState = snapshot.sampleCount() > 0 ? StatusLight.State.ON : StatusLight.State.WAITING;
+                    }
+                }
+                entry.getValue().setState(lightState);
+            }
+            serviceCounts.setText("HOTBITS: " + snapshot.cachedPackages()
+                    + " | PACKAGE: " + snapshot.pendingIntegers()
+                    + " / " + HotbitsAcquisition.INTEGERS_PER_PACKAGE + " | " + snapshot.state());
         }
         settingsPage.update(delta, settingsRepository);
         ScreenUtils.clear(0.03f, 0.02f, 0.06f, 1);
