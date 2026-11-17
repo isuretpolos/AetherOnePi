@@ -287,7 +287,7 @@ public class AetherOneUI extends PApplet {
                 .addButton(AetherOneConstants.ANALYZE_IMAGE)
                 .addButton(AetherOneConstants.CLEAR_IMAGE)
                 .addButton(AetherOneConstants.BROADCAST_IMAGE)
-                .addButton(AetherOneConstants.GENERATE_MD_5)
+                .addButton(AetherOneConstants.SIGILMAKER)
                 .addImageLayerScreen();
         guiElements
                 .selectCurrentTab(AetherOneConstants.RATES)

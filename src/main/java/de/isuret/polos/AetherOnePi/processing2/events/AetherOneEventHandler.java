@@ -24,10 +24,12 @@ import de.isuret.polos.AetherOnePi.utils.AetherOnePiProcessingConfiguration;
 import de.isuret.polos.AetherOnePi.utils.StatisticsGenerator;
 import de.isuret.polos.AetherOnePi.utils.cards.CardMaker;
 import de.isuret.polos.AetherOnePi.utils.cards.RadionicLine;
+import de.isuret.polos.SigilMaker.SigilMaker;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import processing.core.PApplet;
 import processing.core.PImage;
 import processing.sound.SoundFile;
 
@@ -429,6 +431,10 @@ public class AetherOneEventHandler implements KeyPressedObserver {
                 p.setImageLayersAnalysis(new ImageLayersAnalysis(p, directory));
             }
             return;
+        }
+
+        if (AetherOneConstants.SIGILMAKER.equals(name)) {
+            SigilMaker.openFromAetherOne();
         }
 
         if (AetherOneConstants.ANALYZE_IMAGE.equals(name)) {

@@ -25,7 +25,7 @@ public class AetherOneConstants {
     public static final String LOAD_IMAGE_LAYERS = "LOAD IMAGE LAYERS";
     public static final String CLEAR_IMAGE = "CLEAR IMAGE";
     public static final String BROADCAST_IMAGE = "BROADCAST IMAGE";
-    public static final String GENERATE_MD_5 = "GENERATE MD5";
+    public static final String SIGILMAKER = "SIGILMAKER";
     public static final String PASTE_AREA = "PASTE AREA";
     public static final String LOAD_AREA = "LOAD AREA";
     public static final String CLEAR_AREA = "CLEAR AREA";

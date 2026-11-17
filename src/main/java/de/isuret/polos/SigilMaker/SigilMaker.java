@@ -2,6 +2,7 @@ package de.isuret.polos.SigilMaker;
 
 import processing.core.PApplet;
 import processing.core.PImage;
+import processing.awt.PSurfaceAWT;
 
 import javax.imageio.ImageIO;
 import javax.swing.JColorChooser;
@@ -10,6 +11,8 @@ import javax.swing.JOptionPane;
 import java.awt.AlphaComposite;
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.Frame;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
@@ -24,18 +27,20 @@ public class SigilMaker extends PApplet {
 
     private static final int CANVAS_X = 270;
     private static final int CANVAS_Y = 100;
-    private static final int CANVAS_SIZE = 720;
+    private static final int CANVAS_WIDTH = 720;
+    private static final int CANVAS_HEIGHT = 405;
     private static final Path IMAGE_ROOT = Paths.get("data_images").toAbsolutePath();
     private static final String[] ACTIONS = {"New", "Open", "Save", "Add layer", "Import", "Color", "Undo", "Clear"};
     private static final String[] TOOLS = {"Pen", "Line", "Circle", "Eraser"};
 
-    private SigilCollection collection = new SigilCollection("UNTITLED", CANVAS_SIZE, CANVAS_SIZE);
+    private SigilCollection collection = new SigilCollection("UNTITLED", CANVAS_WIDTH, CANVAS_HEIGHT);
     private int selectedLayer;
     private int layerOffset;
     private String tool = "Pen";
     private Color ink = Color.BLACK;
     private int brushSize = 4;
     private boolean dirty;
+    private boolean openedFromAetherOne;
     private boolean drawing;
     private int startX;
     private int startY;
@@ -47,6 +52,12 @@ public class SigilMaker extends PApplet {
         PApplet.main(SigilMaker.class.getName());
     }
 
+    public static void openFromAetherOne() {
+        SigilMaker sigilMaker = new SigilMaker();
+        sigilMaker.openedFromAetherOne = true;
+        PApplet.runSketch(new String[]{SigilMaker.class.getName()}, sigilMaker);
+    }
+
     @Override
     public void settings() {
         size(1020, 885);
@@ -56,6 +67,11 @@ public class SigilMaker extends PApplet {
     public void setup() {
         surface.setTitle("Sigil Maker");
         textFont(createFont("SansSerif", 14));
+        EventQueue.invokeLater(() -> {
+            Frame frame = ((PSurfaceAWT.SmoothCanvas) surface.getNative()).getFrame();
+            frame.toFront();
+            frame.requestFocus();
+        });
     }
 
     @Override
@@ -73,6 +89,8 @@ public class SigilMaker extends PApplet {
         text(brushSize + " px", 520, 79);
         fill(ink.getRGB());
         rect(635, 60, 25, 25);
+        button(680, 57, 145, "Rename title", false);
+        button(835, 57, 155, "Rename rate", false);
         fill(240);
         text(collection.getName(), 15, 121);
         text("Layers (click to select)", 15, 151);
@@ -88,20 +106,21 @@ public class SigilMaker extends PApplet {
         text("Layer 1 = permanent base", 15, 828);
         text("Visibility is preview only", 15, 850);
         noStroke();
-        for (int y = 0; y < CANVAS_SIZE; y += 20) {
-            for (int x = 0; x < CANVAS_SIZE; x += 20) {
+        for (int y = 0; y < CANVAS_HEIGHT; y += 20) {
+            for (int x = 0; x < CANVAS_WIDTH; x += 20) {
                 fill((x / 20 + y / 20) % 2 == 0 ? 245 : 220);
-                rect(CANVAS_X + x, CANVAS_Y + y, 20, 20);
+                rect(CANVAS_X + x, CANVAS_Y + y,
+                        Math.min(20, CANVAS_WIDTH - x), Math.min(20, CANVAS_HEIGHT - y));
             }
         }
         for (SigilCollection.Layer layer : collection.getLayers()) {
             if (layer.isVisible()) {
                 PImage image = new PImage(layer.getImage());
-                image(image, CANVAS_X, CANVAS_Y, CANVAS_SIZE, CANVAS_SIZE);
+                image(image, CANVAS_X, CANVAS_Y, CANVAS_WIDTH, CANVAS_HEIGHT);
             }
         }
         fill(235);
-        text((dirty ? "Unsaved — " : "") + status, CANVAS_X, 850, CANVAS_SIZE, 32);
+        text((dirty ? "Unsaved — " : "") + status, CANVAS_X, CANVAS_Y + CANVAS_HEIGHT + 30, CANVAS_WIDTH, 32);
     }
 
     private String shorten(String name) {
@@ -128,6 +147,14 @@ public class SigilMaker extends PApplet {
                 }
             }
             if (mouseY >= 57 && mouseY < 87) {
+                if (mouseX >= 680 && mouseX < 825) {
+                    renameSelection(true);
+                    return;
+                }
+                if (mouseX >= 835 && mouseX < 990) {
+                    renameSelection(false);
+                    return;
+                }
                 for (int i = 0; i < TOOLS.length; i++) {
                     if (mouseX >= 15 + i * 110 && mouseX < 117 + i * 110) {
                         tool = TOOLS[i];
@@ -213,7 +240,7 @@ public class SigilMaker extends PApplet {
                 }
                 String name = JOptionPane.showInputDialog("Collection name (IMAGE_ is added automatically):");
                 if (name != null) {
-                    reset(new SigilCollection(name, CANVAS_SIZE, CANVAS_SIZE));
+                    reset(new SigilCollection(name, CANVAS_WIDTH, CANVAS_HEIGHT));
                     dirty = true;
                 }
                 break;
@@ -294,10 +321,39 @@ public class SigilMaker extends PApplet {
                 JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION;
     }
 
+    private void renameSelection(boolean title) {
+        boolean renameTitle = title || selectedLayer == 0;
+        String currentName = renameTitle ? collection.getName() : currentLayer().getName();
+        String name = JOptionPane.showInputDialog(renameTitle ? "Collection title:" : "Rate / layer name:", currentName);
+        if (name == null || name.equals(currentName)) {
+            return;
+        }
+        if (renameTitle) {
+            collection.rename(name);
+        } else {
+            collection.renameLayer(selectedLayer, name);
+        }
+        dirty = true;
+        status = renameTitle ? "Collection title changed. Save to write the renamed collection."
+                : "Rate name changed. Save to update its filename.";
+    }
+
     @Override
     public void exit() {
         if (canDiscard()) {
             super.exit();
+        }
+    }
+
+    @Override
+    public void exitActual() {
+        if (openedFromAetherOne) {
+            EventQueue.invokeLater(() -> {
+                Frame frame = ((PSurfaceAWT.SmoothCanvas) surface.getNative()).getFrame();
+                frame.dispose();
+            });
+        } else {
+            super.exitActual();
         }
     }
 
@@ -323,16 +379,16 @@ public class SigilMaker extends PApplet {
     }
 
     private boolean insideCanvas() {
-        return mouseX >= CANVAS_X && mouseX < CANVAS_X + CANVAS_SIZE
-                && mouseY >= CANVAS_Y && mouseY < CANVAS_Y + CANVAS_SIZE;
+        return mouseX >= CANVAS_X && mouseX < CANVAS_X + CANVAS_WIDTH
+                && mouseY >= CANVAS_Y && mouseY < CANVAS_Y + CANVAS_HEIGHT;
     }
 
     private int imageX(int screenX) {
-        return Math.round((screenX - CANVAS_X) * currentLayer().getImage().getWidth() / (float) CANVAS_SIZE);
+        return Math.round((screenX - CANVAS_X) * currentLayer().getImage().getWidth() / (float) CANVAS_WIDTH);
     }
 
     private int imageY(int screenY) {
-        return Math.round((screenY - CANVAS_Y) * currentLayer().getImage().getHeight() / (float) CANVAS_SIZE);
+        return Math.round((screenY - CANVAS_Y) * currentLayer().getImage().getHeight() / (float) CANVAS_HEIGHT);
     }
 
     private void remember() {

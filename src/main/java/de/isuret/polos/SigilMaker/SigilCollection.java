@@ -9,35 +9,62 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /** A base image and transparent rate layers sharing the same canvas coordinates. */
 public class SigilCollection {
 
-    private final String name;
+    private String name;
     private final List<Layer> layers = new ArrayList<>();
+    private final Set<Path> savedFiles = new HashSet<>();
 
     public SigilCollection(String name, int width, int height) {
-        String normalized = name.trim().toUpperCase(Locale.ROOT).replace(' ', '_');
-        this.name = normalized.startsWith("IMAGE_") ? normalized : "IMAGE_" + normalized;
-        validateName(this.name);
-        if (this.name.equals("IMAGE_")) {
-            throw new IllegalArgumentException("Enter a collection name.");
-        }
+        this.name = normalizeCollectionName(name);
         layers.add(new Layer(this.name, new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)));
     }
 
+    private static String normalizeCollectionName(String name) {
+        String normalized = name.trim().toUpperCase(Locale.ROOT).replace(' ', '_');
+        normalized = normalized.startsWith("IMAGE_") ? normalized : "IMAGE_" + normalized;
+        validateName(normalized);
+        if (normalized.equals("IMAGE_")) {
+            throw new IllegalArgumentException("Enter a collection name.");
+        }
+        return normalized;
+    }
+
+    public void rename(String name) {
+        this.name = normalizeCollectionName(name);
+        layers.get(0).name = this.name;
+    }
+
+    public void renameLayer(int index, String name) {
+        if (index == 0) {
+            rename(name);
+            return;
+        }
+        Layer layer = layers.get(index);
+        validateRateName(name, layer);
+        layer.name = name;
+    }
+
     public void addLayer(String name) {
+        validateRateName(name, null);
+        BufferedImage base = layers.get(0).image;
+        layers.add(new Layer(name, new BufferedImage(base.getWidth(), base.getHeight(), BufferedImage.TYPE_INT_ARGB)));
+    }
+
+    private void validateRateName(String name, Layer renamedLayer) {
         validateName(name);
         if (name.toUpperCase(Locale.ROOT).startsWith("IMAGE")) {
             throw new IllegalArgumentException("Rate names must not start with IMAGE (reserved for the base).");
         }
-        if (layers.stream().anyMatch(layer -> layer.name.equalsIgnoreCase(name))) {
+        if (layers.stream().anyMatch(layer -> layer != renamedLayer && layer.name.equalsIgnoreCase(name))) {
             throw new IllegalArgumentException("A layer with that name already exists.");
         }
-        BufferedImage base = layers.get(0).image;
-        layers.add(new Layer(name, new BufferedImage(base.getWidth(), base.getHeight(), BufferedImage.TYPE_INT_ARGB)));
     }
 
     private static void validateName(String name) {
@@ -49,13 +76,24 @@ public class SigilCollection {
     }
 
     public Path save(Path root) throws IOException {
-        Path directory = root.resolve(name);
+        Path directory = root.resolve(name).toAbsolutePath().normalize();
         Files.createDirectories(directory);
+        Set<Path> currentFiles = new HashSet<>();
         for (Layer layer : layers) {
-            if (!ImageIO.write(layer.image, "png", directory.resolve(layer.name + ".png").toFile())) {
+            Path file = directory.resolve(layer.name + ".png");
+            if (!ImageIO.write(layer.image, "png", file.toFile())) {
                 throw new IOException("PNG image writer is unavailable.");
             }
+            currentFiles.add(file);
         }
+        // Remove previous rate filenames only in the collection being saved.
+        for (Path file : savedFiles) {
+            if (file.getParent().equals(directory) && !currentFiles.contains(file)) {
+                Files.deleteIfExists(file);
+            }
+        }
+        savedFiles.clear();
+        savedFiles.addAll(currentFiles);
         return directory;
     }
 
@@ -67,6 +105,7 @@ public class SigilCollection {
         BufferedImage base = read(directory.resolve(name + ".png"));
         SigilCollection collection = new SigilCollection(name, base.getWidth(), base.getHeight());
         collection.layers.get(0).image = base;
+        collection.savedFiles.add(directory.resolve(name + ".png").toAbsolutePath().normalize());
         List<Path> files;
         try (Stream<Path> stream = Files.list(directory)) {
             files = stream.filter(Files::isRegularFile)
@@ -85,6 +124,7 @@ public class SigilCollection {
             }
             collection.addLayer(filename.substring(0, filename.length() - 4));
             collection.layers.get(collection.layers.size() - 1).image = image;
+            collection.savedFiles.add(file.toAbsolutePath().normalize());
         }
         return collection;
     }
@@ -110,7 +150,7 @@ public class SigilCollection {
     }
 
     public static class Layer {
-        private final String name;
+        private String name;
         private BufferedImage image;
         private boolean visible = true;
 
