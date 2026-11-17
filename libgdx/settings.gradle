@@ -1,0 +1,3 @@
+rootProject.name = 'aopi-libgdx'
+
+include 'core', 'lwjgl3'

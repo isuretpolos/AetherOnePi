@@ -1,0 +1,50 @@
+plugins {
+    id 'application'
+}
+
+dependencies {
+    // Keep all LWJGL Java libraries and native binaries on a Java 24 compatible version.
+    implementation platform('org.lwjgl:lwjgl-bom:3.3.6')
+    implementation project(':core')
+    implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+    runtimeOnly "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    runtimeOnly "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+}
+
+application {
+    mainClass = 'de.isuret.polos.aopi.desktop.DesktopLauncher'
+
+    // Java 24 requires explicit native access for the desktop graphics libraries.
+    applicationDefaultJvmArgs = ['--enable-native-access=ALL-UNNAMED']
+
+    // GLFW must start on the first thread on macOS.
+    if (System.getProperty('os.name').toLowerCase(java.util.Locale.ROOT).contains('mac')) {
+        applicationDefaultJvmArgs += ['-XstartOnFirstThread']
+    }
+}
+
+tasks.named('run', JavaExec) {
+    // Give development runs a predictable, independent data directory.
+    workingDir = rootProject.projectDir
+}
+
+// Explicit opt-in: this check opens real windows and needs a desktop with OpenGL.
+sourceSets {
+    smokeTest {
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
+configurations {
+    smokeTestImplementation.extendsFrom implementation
+    smokeTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+tasks.register('windowPersistenceSmokeTest', JavaExec) {
+    dependsOn smokeTestClasses
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    mainClass = 'de.isuret.polos.aopi.desktop.WindowPersistenceSmokeTest'
+    workingDir = rootProject.projectDir
+    jvmArgs application.applicationDefaultJvmArgs
+}

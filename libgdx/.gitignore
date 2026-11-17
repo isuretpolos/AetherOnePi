@@ -1,0 +1,4 @@
+.gradle/
+.gradle-user-home/
+**/build/
+aopi-libgdx-data/
