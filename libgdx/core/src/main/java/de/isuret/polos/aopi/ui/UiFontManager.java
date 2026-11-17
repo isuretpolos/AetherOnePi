@@ -71,6 +71,10 @@ public class UiFontManager {
         }
     }
 
+    public void refresh(Actor root, Skin skin) {
+        refreshLabels(root, skin.getFont("default-font"));
+    }
+
     public void dispose() {
         generator.dispose();
     }

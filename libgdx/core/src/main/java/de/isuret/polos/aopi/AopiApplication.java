@@ -6,6 +6,7 @@ import de.isuret.polos.aopi.settings.ApplicationSettings;
 import de.isuret.polos.aopi.settings.SettingsRepository;
 import de.isuret.polos.aopi.ui.AopiScreen;
 import de.isuret.polos.aopi.ui.WindowModeController;
+import de.isuret.polos.aopi.hotbits.HotbitsBackend;
 
 /**
  * Entry point for the new, independent AOPi application.
@@ -17,18 +18,25 @@ public class AopiApplication extends Game {
     private final SettingsRepository repository;
     private final WindowModeController windowMode;
     private final boolean settingsLoadFailed;
+    private final HotbitsBackend hotbitsBackend;
 
     public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
                           WindowModeController windowMode, boolean settingsLoadFailed) {
+        this(settings, repository, windowMode, settingsLoadFailed, null);
+    }
+
+    public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
+                          WindowModeController windowMode, boolean settingsLoadFailed, HotbitsBackend hotbitsBackend) {
         this.settings = settings;
         this.repository = repository;
         this.windowMode = windowMode;
         this.settingsLoadFailed = settingsLoadFailed;
+        this.hotbitsBackend = hotbitsBackend;
     }
 
     @Override
     public void create() {
-        setScreen(new AopiScreen(settings, repository, windowMode, settingsLoadFailed));
+        setScreen(new AopiScreen(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend));
     }
 
     @Override

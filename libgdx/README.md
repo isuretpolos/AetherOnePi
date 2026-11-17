@@ -11,6 +11,8 @@ The application displays the AOPi dashboard: galaxy background, navigation,
 project links, news, recent cases, watchlist alerts, and inactive service indicators.
 The **SETTINGS** tab includes all 15 original boolean options and a **14–32 px
 font-size slider** with a live, application-wide preview and automatic saving.
+The **HOTBITS** tab supports webcam discovery, a single-image preview, and
+background webcam/ESP32 serial acquisition with start/stop and live package counts.
 Window position, size, fullscreen, and maximized state are saved on close in
 `aopi-libgdx-data/settings.json` and restored on startup. To reset window placement,
 close the app and delete the file's `window` section. Deleting the entire file
@@ -30,12 +32,15 @@ needed. Fonts and controls retain their proportions instead of stretching.
 Project news refreshes asynchronously and works offline using a separate cache
 or bundled fallback. Project links open in the default browser. Other screens
 and the embedded browser are visibly disabled until they are implemented.
-No analysis, broadcasting, hardware access, or server is started.
+Hardware is accessed only after a Hotbits action. No acquisition starts
+automatically. Analysis, broadcasting, and the embedded server are not implemented.
 
 See [Dashboard behavior and data](documentation/dashboard.md) for details about
 recent cases, watchlist alerts, data isolation, and the responsive layout.
 See [Settings and font size](documentation/settings.md) for live preview,
 configuration storage, defaults, and future feature options.
+See [Hotbits acquisition](documentation/hotbits.md) for camera setup, ESP32 firmware,
+package storage, extraction, cancellation, and current limitations.
 
 ## Requirements
 
@@ -79,12 +84,15 @@ in `lwjgl3/build/distributions/`.
 The Gradle build and installed distribution were verified on Windows with
 JDK 24.0.1. The desktop window was launched, its client area measured at
 1285 × 721 pixels using a DPI-aware Windows check, and closed successfully.
-The build and eighteen tests pass. Startup with the bundled scalable
+The build and thirty-two tests pass. Startup with the bundled scalable
 font has been verified. The previous dashboard was visually confirmed by the
 user. Slider dragging, fullscreen, and narrow-window reflow have not yet been
 verified through automated desktop interaction. A separate native lifecycle test
 has verified saving/restoring window bounds, reopening in fullscreen, and
 returning to the previous window position and size.
+An isolated Hotbits UI test verifies discovery, selection, acquisition, background
+navigation, live font changes, stop, and package output using test input. Physical
+camera/ESP32 capture has not been verified; Infinite Noise USB is not implemented.
 Linux and macOS launch paths have not been tested.
 
 Java 24 may print a `sun.misc.Unsafe::objectFieldOffset` deprecation warning
@@ -122,6 +130,10 @@ the controls being used.
 and connected-monitor handling. `DesktopLauncher` loads the shared settings before
 creating the window. Screens dispose their stages, textures, theme, and active
 requests when the application closes.
+`HotbitsPage` displays immutable acquisition snapshots. `HotbitsAcquisition` owns
+the background worker, extraction, and complete-package writes.
+`DesktopHotbitsBackend` owns webcam and serial adapters; native device dependencies
+remain in the desktop module.
 
 Keep new code readable, use English comments to explain decisions, and document
 new features as they arrive. Add modules or abstractions when a real feature

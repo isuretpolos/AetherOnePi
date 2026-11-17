@@ -54,7 +54,9 @@ Each row has a readable label, explanation, stable key, and ON/OFF control.
 The control sits on the left beside its text. Subtly alternating backgrounds
 span each complete setting row to make that association clear at every font size.
 These options are stored now so future feature implementations can use the same
-settings model. They do not start hardware, analysis, sound, or broadcasting.
+settings model. Enabling ESP32 permits manual serial acquisition on the Hotbits
+page; it does not open a port automatically. Disabling it stops an ESP32 session.
+The other feature options do not yet start hardware, analysis, sound, or broadcasting.
 The overlay option refers to the future broadcast visualization, not the dark
 dashboard background. The font-size setting is already active throughout the UI.
 
@@ -155,8 +157,9 @@ configuration.
 ## Verification
 
 The Gradle build, installed distribution, and application startup were checked
-on Windows/JDK 24.0.1. Eighteen tests pass: five dashboard tests, eight
-settings tests, and five window-placement tests. Settings tests cover original defaults, persistence across a
+on Windows/JDK 24.0.1. Thirty-two tests pass, including five dashboard tests, eight
+settings tests, five window-placement tests, and fourteen Hotbits tests.
+Settings tests cover original defaults, persistence across a
 restart, font bounds, unknown keys, malformed input, and retaining the old file
 when a staging write fails. Window tests cover connected negative-coordinate
 monitors, missing monitors, enormous sizes, and displays smaller than the normal

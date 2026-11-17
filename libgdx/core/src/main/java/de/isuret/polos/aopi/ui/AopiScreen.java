@@ -31,6 +31,10 @@ import de.isuret.polos.aopi.dashboard.DashboardState;
 import de.isuret.polos.aopi.settings.ApplicationSettings;
 import de.isuret.polos.aopi.settings.SettingsPage;
 import de.isuret.polos.aopi.settings.SettingsRepository;
+import de.isuret.polos.aopi.hotbits.HotbitsBackend;
+import de.isuret.polos.aopi.hotbits.HotbitsAcquisition;
+import de.isuret.polos.aopi.hotbits.HotbitsPackageStore;
+import de.isuret.polos.aopi.hotbits.HotbitsPage;
 
 /** Shared application shell. Pages keep their actors while navigation and font size change. */
 public class AopiScreen extends ScreenAdapter {
@@ -58,20 +62,29 @@ public class AopiScreen extends ScreenAdapter {
     private final SettingsRepository settingsRepository;
     private final SettingsPage settingsPage;
     private final ScrollPane settingsScroll;
+    private final HotbitsAcquisition hotbits;
+    private final HotbitsPage hotbitsPage;
+    private final ScrollPane hotbitsScroll;
+    private Label serviceCounts;
     private TextButton dashboardTab;
     private TextButton settingsTab;
+    private TextButton hotbitsTab;
     private Table root;
     private Table serviceStatus;
     private boolean twoColumns;
 
     public AopiScreen(ApplicationSettings settings, SettingsRepository settingsRepository,
-                      WindowModeController windowMode, boolean loadFailed) {
-        FileHandle dataDirectory = Gdx.files.local(System.getProperty("aopi.dataDirectory", "aopi-libgdx-data"));
+                      WindowModeController windowMode, boolean loadFailed, HotbitsBackend hotbitsBackend) {
+        FileHandle dataDirectory = new FileHandle(System.getProperty("aopi.dataDirectory", "aopi-libgdx-data"));
         this.settingsRepository = settingsRepository;
         this.settings = settings;
         this.windowMode = windowMode;
         settingsPage = new SettingsPage(settings, skin);
         settingsScroll = scrollPane(settingsPage);
+        hotbits = hotbitsBackend == null ? null : new HotbitsAcquisition(hotbitsBackend,
+                new HotbitsPackageStore(dataDirectory.child("hotbits").file().toPath()));
+        hotbitsPage = hotbits == null ? null : new HotbitsPage(hotbits, settings, skin);
+        hotbitsScroll = hotbitsPage == null ? null : scrollPane(hotbitsPage);
         if (loadFailed) {
             settingsPage.showLoadError();
         }
@@ -82,6 +95,9 @@ public class AopiScreen extends ScreenAdapter {
         buildLayout();
         fullscreen.setText(Gdx.graphics.isFullscreen() ? "WINDOWED [F11]" : "FULLSCREEN [F11]");
         fonts.update(skin, settings.getFontSize(), stage.getRoot(), settingsPage);
+        if (hotbitsPage != null) {
+            fonts.refresh(hotbitsPage, skin);
+        }
         loadDashboardState();
         refreshNews();
     }
@@ -148,6 +164,9 @@ public class AopiScreen extends ScreenAdapter {
         settingsTab = navigationTab("SETTINGS", () -> selectSettings(true));
         dashboardTab.setName("dashboard-tab");
         settingsTab.setName("settings-tab");
+        hotbitsTab = navigationTab("HOTBITS", this::selectHotbits);
+        hotbitsTab.setName("hotbits-tab");
+        hotbitsTab.setDisabled(hotbits == null);
         dashboardTab.setChecked(true);
         tabs.addActor(dashboardTab);
         for (String name : new String[]{"SESSION", "SETTINGS", "ANALYZE", "IMAGE", "CARD", "RATES",
@@ -156,6 +175,10 @@ public class AopiScreen extends ScreenAdapter {
             tab.pad(8, 10, 8, 10);
             if (name.equals("SETTINGS")) {
                 tabs.addActor(settingsTab);
+                continue;
+            }
+            if (name.equals("HOTBITS")) {
+                tabs.addActor(hotbitsTab);
                 continue;
             }
             tab.setDisabled(true);
@@ -186,6 +209,7 @@ public class AopiScreen extends ScreenAdapter {
         pageContainer.add(selected ? settingsScroll : dashboardPage).grow().minHeight(0);
         dashboardTab.setChecked(!selected);
         settingsTab.setChecked(selected);
+        hotbitsTab.setChecked(false);
         serviceStatus.setVisible(!selected);
         if (selected) {
             root.getCell(serviceStatus).height(0).padTop(0);
@@ -194,6 +218,18 @@ public class AopiScreen extends ScreenAdapter {
             root.getCell(serviceStatus).height(com.badlogic.gdx.scenes.scene2d.ui.Value.prefHeight).padTop(12);
         }
         root.invalidateHierarchy();
+    }
+
+    private void selectHotbits() {
+        pageContainer.clearChildren();
+        pageContainer.add(hotbitsScroll).grow().minHeight(0);
+        dashboardTab.setChecked(false);
+        settingsTab.setChecked(false);
+        hotbitsTab.setChecked(true);
+        serviceStatus.setVisible(false);
+        root.getCell(serviceStatus).height(0).padTop(0);
+        root.invalidateHierarchy();
+        stage.setScrollFocus(hotbitsScroll);
     }
 
     private ScrollPane scrollPane(Actor content) {
@@ -232,9 +268,9 @@ public class AopiScreen extends ScreenAdapter {
         }
         status.add(indicators).growX().row();
         // These services do not exist yet. Do not imply that hardware is connected.
-        Label counters = new Label("PACKAGES: --     CACHE: --     PROGRESS: --     QUEUE: --", skin, "muted");
-        counters.setWrap(true);
-        status.add(counters).growX().padTop(10);
+        serviceCounts = new Label("PACKAGES: --     CACHE: --     PROGRESS: --     QUEUE: --", skin, "muted");
+        serviceCounts.setWrap(true);
+        status.add(serviceCounts).growX().padTop(10);
         return status;
     }
 
@@ -396,6 +432,15 @@ public class AopiScreen extends ScreenAdapter {
     public void render(float delta) {
         if (fonts.update(skin, settings.getFontSize(), stage.getRoot(), dashboardPage, settingsPage)) {
             arrangeColumns(Gdx.graphics.getWidth());
+            if (hotbitsPage != null) {
+                fonts.refresh(hotbitsPage, skin);
+            }
+        }
+        if (hotbitsPage != null) {
+            hotbitsPage.update();
+            serviceCounts.setText("HOTBITS PACKAGES: " + hotbits.snapshot().cachedPackages()
+                    + " | CURRENT PACKAGE: " + hotbits.snapshot().pendingIntegers()
+                    + " / " + HotbitsAcquisition.INTEGERS_PER_PACKAGE + " | " + hotbits.snapshot().state());
         }
         settingsPage.update(delta, settingsRepository);
         ScreenUtils.clear(0.03f, 0.02f, 0.06f, 1);
@@ -418,6 +463,10 @@ public class AopiScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
+        if (hotbits != null) {
+            hotbits.close();
+            hotbitsPage.dispose();
+        }
         settingsPage.save(settingsRepository);
         news.dispose();
         stage.dispose();

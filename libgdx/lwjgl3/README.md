@@ -1,0 +1,1 @@
+Essentially this is nothing else than the launcher for the LibGDX based desktop app.

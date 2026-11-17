@@ -66,8 +66,8 @@ public class SettingsPage extends Table {
         add(reset).growX().left().padBottom(16).row();
         saveStatus = paragraph("Settings are saved automatically after changes.");
         add(saveStatus).row();
-        add(paragraph("The options below preserve the original AOPi settings. They are saved now; their effects "
-                + "become available as analysis, broadcasting, sound, and hardware support are implemented."))
+        add(paragraph("ESP32 TRNG enables manual ESP32 acquisition on the Hotbits tab. The other original AOPi "
+                + "options are saved for use as analysis, broadcasting, sound, and further hardware support are implemented."))
                 .padBottom(16).row();
 
         String previousGroup = "";

@@ -27,7 +27,8 @@ through the libGDX render thread. Closing the screen cancels an outstanding requ
 Unlike the original randomly displayed, blinking Patreon section, the support
 link is always available and does not flash. Empty states are explicit. Hardware
 indicators are inactive and counters display `--`, because those services have
-not been implemented. Dashboard and Settings are available; the remaining tabs
+not been implemented. Hotbits package counts and acquisition state are live.
+Dashboard, Settings, and Hotbits are available; the remaining tabs
 and BROWSER are disabled until their features are implemented.
 
 ## Resizing and fullscreen
