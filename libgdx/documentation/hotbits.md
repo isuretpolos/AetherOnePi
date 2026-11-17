@@ -1,7 +1,7 @@
 # Hotbits acquisition
 
 The independent Hotbits tab recreates the original webcam workflow and adds
-explicit ESP32 serial selection. All device discovery, capture, conditioning,
+explicit ESP32 serial and Infinite Noise USB selection. All device discovery, capture, conditioning,
 and disk writes run on a background worker. Switching tabs does not stop a session.
 The page uses the shared font setting, wrapped controls, and vertical scrolling.
 
@@ -64,6 +64,57 @@ This example assumes the target ESP32 board and installed ESP32 Arduino core
 provide those functions. Follow the board's USB/serial driver and firmware
 requirements. Enabling ESP32 in Settings never starts acquisition automatically.
 
+## Infinite Noise USB workflow
+
+1. Connect the Infinite Noise USB stick and install the matching
+   [FTDI D2XX driver](https://ftdichip.com/drivers/d2xx-drivers/) for the operating
+   system and Java architecture. On Windows the adapter loads `ftd2xx.dll`.
+2. Enable **Infinite Noise TRNG** in Settings (`trng.infinity`).
+3. Open Hotbits, select **INFINITE NOISE USB**, and click **SCAN DEVICES**.
+4. Select your stick by its description and serial number.
+5. Start acquisition. Opening includes warmup, so the first progress update may
+   take a little longer. You can navigate to other tabs while it runs.
+6. Click STOP or disable its Settings option to release the stick.
+
+Scanning only enumerates FTDI descriptors. The app requires USB ID `0403:6015`,
+a nonempty serial number, and a description containing `Infinite Noise` or
+`infnoise`. Generic FTDI boards sharing that USB ID are not listed or configured.
+Devices with a custom/erased description will not be recognized automatically.
+The chosen serial and descriptors are checked again before any bit-bang setup.
+
+The adapter lazily loads FTDI D2XX through JNA. Missing native libraries produce
+an actionable error on the page; webcam and ESP32 do not need that library.
+For a manually installed library outside the normal search path, pass
+`-Djna.library.path=<directory>` to the JVM. Use a library matching the running
+Java architecture. No DLL, driver, or system configuration is installed or
+changed by the application.
+
+The native implementation uses synchronous FT240X bit-bang mode: alternating
+switch-enable pins 2 and 0, comparator inputs on pins 1 and 4, 30000 baud, and
+512-byte transfers. It extracts comparator 1 on even samples and comparator 2
+on odd samples, then packs the resulting bits into bytes. The implementation
+was independently written using the upstream
+[Infinite Noise protocol](https://github.com/waywardgeek/infnoise/blob/master/software/libinfnoise.c)
+and the [FTDI API documentation](https://ftdichip.com/wp-content/uploads/2025/06/D2XX_Programmers_Guide.pdf)
+as references.
+
+Warmup discards 32768 extracted bits. Basic continuous checks reject stuck runs,
+unusual bit balance, and extreme transition rates over 8192-bit windows.
+Warmup is limited to ten seconds, with 500 ms native read/write timeouts.
+Short transfers and disconnects stop acquisition without emitting partial samples.
+STOP and application shutdown reset bit-bang mode and close the USB handle.
+
+These checks are **not** a port of the vendor's full predictor-based entropy
+monitor and do not claim its measured entropy guarantees or certification.
+The extracted bytes use the same SHA-256 package conditioner as the other sources;
+timestamps and software RNG values are never mixed into the sample data.
+
+If the device is busy, close other AOPi instances or utilities using the stick.
+The vendor's `infnoise` service/tool also needs exclusive device access. Driver
+and USB permissions differ across operating systems; consult the
+[vendor's integration FAQ](https://leetronics.de/en/infinite-noise-trng/faq/).
+The app does not stop external services or alter operating-system drivers.
+
 ## Extraction and limitations
 
 For webcam samples, `FrameEntropyExtractor` compares each pixel against the
@@ -72,7 +123,8 @@ pixels are discarded. Increased/decreased brightness produces candidate bits.
 Von Neumann pairing maps `01` to `0`, `10` to `1`, and discards `00` and `11`.
 Partial bits carry between frames, and a resolution change resets the extractor.
 
-For ESP32, the selected port supplies raw bytes directly. Both paths then feed
+For ESP32, the selected port supplies raw bytes directly. Infinite Noise supplies
+packed comparator bits after warmup. All three paths then feed
 `EntropyConditioner`: each 256 input bytes is hashed with SHA-256, producing
 eight nonnegative 31-bit integers. It does not seed or expand `Random` or
 `SecureRandom`, add timestamps to the values, or deduplicate values. Repeated
@@ -85,9 +137,8 @@ Hashing and bias reduction cannot create entropy that the input does not contain
 Use a validated hardware source if your application requires validated randomness.
 No cryptographic certification or entropy estimate is claimed.
 
-Infinite Noise USB is not implemented in this version. Its Settings flag remains
-stored for a future driver implementation. This version does not open FTDI
-devices, download remote hotbits, or substitute software-generated data.
+This version opens only explicitly selected devices after acquisition is started.
+It does not download remote hotbits or substitute software-generated data.
 
 ## Packages and isolation
 
@@ -137,6 +188,10 @@ on the Hotbits page. Complete files remain intact; there is no fallback generato
 
 - `HotbitsBackend`: small device discovery and source interface.
 - `DesktopHotbitsBackend`: camera/serial adapters and PNG preview encoding.
+- `InfiniteNoiseSource`: selected-stick ownership, warmup, reads, and cleanup.
+- `InfiniteNoiseDecoder`: clock pattern, comparator-bit extraction, and basic checks.
+- `JnaD2xxTransport`: lazy native-library loading, descriptor enumeration, identity
+  verification, bounded USB exchanges, reset, and close.
 - `HotbitsAcquisition`: worker ownership, snapshots, cancellation, and capacity.
 - `FrameEntropyExtractor`: consecutive-frame differences and bit-pair extraction.
 - `EntropyConditioner`: block hashing and basic repeated-input checks.
@@ -145,19 +200,35 @@ on the Hotbits page. Complete files remain intact; there is no fallback generato
 
 No Processing classes, original application services, or original source folders
 are referenced by this implementation. Webcam Capture 0.3.12 and jSerialComm
-2.11.0 are desktop dependencies, not core dependencies.
+2.11.0 and JNA 5.14.0 are desktop dependencies, not core dependencies.
 
 ## Verification
 
-The build and **32 unit tests** pass on Windows/JDK 24.0.1. Fourteen tests cover
+The build and **46 unit tests** pass on Windows/JDK 24.0.1. Fourteen core tests cover
 extraction, conditioning, package contents, capacity, device release, cancellation,
 double-start prevention, discovery, preview, application shutdown, and read/write failures.
+Fourteen additional desktop tests cover FTDI identity filtering, explicit serial
+selection, correct comparator phase, clock pattern, warmup discard, stuck/periodic
+input, short transfers, cancellation, and cleanup. Native API calls are mocked
+in those tests; no physical hardware is opened by the unit test suite.
 
 The opt-in `:lwjgl3:hotbitsUiSmokeTest` task exercises the real Scene2D page with
 deterministic test samples and isolated files. It checks scan/select/start,
 background acquisition while navigating away, a live 32 px font change, STOP,
 resource release, and complete package creation. It does not open real devices.
 The navigation-size regression test also passes.
+
+The `:lwjgl3:infiniteNoiseUiSmokeTest` task runs the same isolated UI workflow for
+the Infinite Noise source, checking that its setting must be enabled and that
+disabling it stops acquisition and prevents restart. Its input is simulated;
+it does not open physical USB devices.
+
+On the development Windows machine, a separate real-device check loaded the
+installed D2XX driver and recognized one connected Infinite Noise stick. Warmup,
+comparator reads, SHA-256 conditioning, and a full **10000-value** package succeeded
+using the actual acquisition worker. The one-package capacity stop released the
+stick. All validation data was written under `lwjgl3/build/`, separate from the
+user's hotbits cache. This verifies basic acquisition, not statistical randomness.
 
 **Physical webcam and ESP32 capture have not yet been verified.** Drivers and
 permissions require checking on the target machine. For a manual check, preview

@@ -29,6 +29,7 @@ public final class HotbitsUiSmokeTest {
     }
 
     public static void main(String[] args) throws Exception {
+        boolean infiniteNoise = args.length > 0 && args[0].equals("infinite-noise");
         Path directory = Files.createTempDirectory(Path.of("lwjgl3/build"), "hotbits-ui-");
         System.setProperty("aopi.dataDirectory", directory.toAbsolutePath().toString());
         ApplicationSettings settings = new ApplicationSettings();
@@ -89,12 +90,17 @@ public final class HotbitsUiSmokeTest {
                 Stage stage = (Stage) ((InputMultiplexer) Gdx.input.getInputProcessor()).getProcessors().get(1);
                 if (phase == 0 && frames >= 5) {
                     click(stage, "hotbits-tab");
-                    click(stage, "hotbits-esp32");
+                    click(stage, infiniteNoise ? "hotbits-infinite-noise" : "hotbits-esp32");
                     click(stage, "hotbits-scan");
                     phase++;
                 } else if (phase == 1 && stage.getRoot().findActor("hotbits-device-fixture") != null) {
                     click(stage, "hotbits-device-fixture");
                     phase++;
+                } else if (phase == 2 && infiniteNoise && !settings.isEnabled(Setting.INFINITE_NOISE)) {
+                    if (!button(stage, "hotbits-start").isDisabled()) {
+                        throw new AssertionError("USB acquisition was enabled before its setting was enabled.");
+                    }
+                    settings.setEnabled(Setting.INFINITE_NOISE, true);
                 } else if (phase == 2 && !button(stage, "hotbits-start").isDisabled()) {
                     click(stage, "hotbits-start");
                     phase++;
@@ -105,9 +111,16 @@ public final class HotbitsUiSmokeTest {
                     phase++;
                 } else if (phase == 4 && reads.get() > backgroundReads + 100) {
                     click(stage, "hotbits-tab");
-                    click(stage, "hotbits-stop");
+                    if (infiniteNoise) {
+                        settings.setEnabled(Setting.INFINITE_NOISE, false);
+                    } else {
+                        click(stage, "hotbits-stop");
+                    }
                     phase++;
-                } else if (phase == 5 && released.get() && !button(stage, "hotbits-start").isDisabled()) {
+                } else if (phase == 5 && released.get() && !button(stage, "hotbits-esp32").isDisabled()) {
+                    if (infiniteNoise && !button(stage, "hotbits-start").isDisabled()) {
+                        throw new AssertionError("Disabled Infinite Noise setting did not prevent restart.");
+                    }
                     try {
                         HotbitsPackageStore store = new HotbitsPackageStore(directory.resolve("hotbits"));
                         if (store.count() == 0) {
@@ -121,7 +134,8 @@ public final class HotbitsUiSmokeTest {
                     } catch (java.io.IOException exception) {
                         throw new AssertionError(exception);
                     }
-                    System.out.println("Hotbits UI smoke test passed: scan, select, acquire, background navigation, live font change, stop, and packages.");
+                    System.out.println("Hotbits UI smoke test passed for " + (infiniteNoise ? "Infinite Noise USB" : "ESP32")
+                            + ": scan, select, acquire, background navigation, live font change, stop, and packages.");
                     Gdx.app.exit();
                     phase++;
                 }

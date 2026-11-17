@@ -33,10 +33,17 @@ public class DesktopHotbitsBackend implements HotbitsBackend {
                 cameras.put(id, found.get(index));
                 devices.add(new Device(kind, id, found.get(index).getName()));
             }
-        } else {
+        } else if (kind == Kind.ESP32) {
             for (SerialPort port : SerialPort.getCommPorts()) {
                 devices.add(new Device(kind, port.getSystemPortName(),
                         port.getSystemPortName() + " - " + port.getDescriptivePortName()));
+            }
+            devices.sort(Comparator.comparing(Device::id));
+        } else {
+            for (InfiniteNoiseTransport.DeviceInfo info : new JnaD2xxTransport().listDevices()) {
+                if (info.isInfiniteNoise()) {
+                    devices.add(new Device(kind, info.serial(), info.description() + " - " + info.serial()));
+                }
             }
             devices.sort(Comparator.comparing(Device::id));
         }
@@ -51,6 +58,9 @@ public class DesktopHotbitsBackend implements HotbitsBackend {
                 throw new IOException("Camera is no longer listed. Scan again.");
             }
             return new CameraSource(webcam);
+        }
+        if (device.kind() == Kind.INFINITE_NOISE) {
+            return new InfiniteNoiseSource(new JnaD2xxTransport(), device.id());
         }
         return new SerialSource(device.id());
     }

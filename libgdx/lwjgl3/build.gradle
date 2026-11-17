@@ -9,9 +9,18 @@ dependencies {
     implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
     implementation 'com.github.sarxos:webcam-capture:0.3.12'
     implementation 'com.fazecast:jSerialComm:2.11.0'
+    implementation 'net.java.dev.jna:jna:5.14.0'
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     runtimeOnly 'org.slf4j:slf4j-simple:1.7.36'
     runtimeOnly "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     runtimeOnly "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
+}
+
+test {
+    useJUnitPlatform()
+    jvmArgs '--enable-native-access=ALL-UNNAMED'
 }
 
 application {
@@ -64,6 +73,15 @@ tasks.register('hotbitsUiSmokeTest', JavaExec) {
     dependsOn smokeTestClasses
     classpath = sourceSets.smokeTest.runtimeClasspath
     mainClass = 'de.isuret.polos.aopi.desktop.HotbitsUiSmokeTest'
+    workingDir = rootProject.projectDir
+    jvmArgs application.applicationDefaultJvmArgs
+}
+
+tasks.register('infiniteNoiseUiSmokeTest', JavaExec) {
+    dependsOn smokeTestClasses
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    mainClass = 'de.isuret.polos.aopi.desktop.HotbitsUiSmokeTest'
+    args 'infinite-noise'
     workingDir = rootProject.projectDir
     jvmArgs application.applicationDefaultJvmArgs
 }

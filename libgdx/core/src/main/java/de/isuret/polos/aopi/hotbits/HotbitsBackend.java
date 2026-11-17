@@ -6,7 +6,7 @@ import java.util.List;
 public interface HotbitsBackend {
 
     enum Kind {
-        WEBCAM, ESP32
+        WEBCAM, ESP32, INFINITE_NOISE
     }
 
     record Device(Kind kind, String id, String name) {

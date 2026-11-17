@@ -32,6 +32,7 @@ public class HotbitsPage extends Table {
     private final Table previewContainer = new Table();
     private final TextButton webcam;
     private final TextButton esp32;
+    private final TextButton infiniteNoise;
     private final TextButton scan;
     private final TextButton preview;
     private final TextButton start;
@@ -56,6 +57,7 @@ public class HotbitsPage extends Table {
 
         webcam = button("WEBCAM", () -> selectKind(HotbitsBackend.Kind.WEBCAM));
         esp32 = button("ESP32 SERIAL", () -> selectKind(HotbitsBackend.Kind.ESP32));
+        infiniteNoise = button("INFINITE NOISE USB", () -> selectKind(HotbitsBackend.Kind.INFINITE_NOISE));
         scan = button("SCAN DEVICES", () -> {
             clearPreview();
             acquisition.scan(kind);
@@ -65,10 +67,13 @@ public class HotbitsPage extends Table {
         stop = button("STOP", acquisition::stop);
         webcam.setStyle(skin.get("toggle", TextButton.TextButtonStyle.class));
         esp32.setStyle(skin.get("toggle", TextButton.TextButtonStyle.class));
+        infiniteNoise.setStyle(skin.get("toggle", TextButton.TextButtonStyle.class));
         webcam.setProgrammaticChangeEvents(false);
         esp32.setProgrammaticChangeEvents(false);
+        infiniteNoise.setProgrammaticChangeEvents(false);
         webcam.setName("hotbits-webcam");
         esp32.setName("hotbits-esp32");
+        infiniteNoise.setName("hotbits-infinite-noise");
         scan.setName("hotbits-scan");
         preview.setName("hotbits-preview");
         start.setName("hotbits-start");
@@ -76,6 +81,7 @@ public class HotbitsPage extends Table {
         HorizontalGroup sources = controlRow();
         sources.addActor(webcam);
         sources.addActor(esp32);
+        sources.addActor(infiniteNoise);
         sources.addActor(scan);
         add(sources).row();
         add(devices).row();
@@ -98,8 +104,11 @@ public class HotbitsPage extends Table {
         add(paragraph("ESP32: enable ESP32 TRNG in Settings, select the correct port, and use firmware that streams "
                 + "raw random bytes at 921600 baud (8N1). Ports are never opened just to guess which device is connected."))
                 .row();
+        add(paragraph("Infinite Noise USB: enable Infinite Noise TRNG in Settings, install the FTDI D2XX driver, "
+                + "scan, and select your stick by its serial number. Close other applications using the stick."))
+                .row();
         add(paragraph("Webcam noise is experimental, not a certified random source. Extraction and hashing cannot "
-                + "guarantee entropy. No software-generated fallback is used. Infinite Noise USB support is not available yet."))
+                + "guarantee entropy. No software-generated fallback is used."))
                 .row();
         selectKind(kind);
         acquisition.refreshCache();
@@ -110,12 +119,17 @@ public class HotbitsPage extends Table {
         this.kind = kind;
         webcam.setChecked(kind == HotbitsBackend.Kind.WEBCAM);
         esp32.setChecked(kind == HotbitsBackend.Kind.ESP32);
+        infiniteNoise.setChecked(kind == HotbitsBackend.Kind.INFINITE_NOISE);
         selected = null;
         displayedDevices = List.of();
         devices.clearChildren();
         deviceButtons.clear();
         devices.add(paragraph("Click SCAN DEVICES to list available "
-                + (kind == HotbitsBackend.Kind.WEBCAM ? "cameras." : "serial ports."))).growX();
+                + switch (kind) {
+                    case WEBCAM -> "cameras.";
+                    case ESP32 -> "serial ports.";
+                    case INFINITE_NOISE -> "Infinite Noise USB sticks.";
+                })).growX();
         clearPreview();
     }
 
@@ -138,16 +152,15 @@ public class HotbitsPage extends Table {
             selected = null;
             buildDevices();
         }
-        if (snapshot.state() == HotbitsAcquisition.State.ACQUIRING && kind == HotbitsBackend.Kind.ESP32
-                && !settings.isEnabled(Setting.ESP32)) {
+        if (snapshot.state() == HotbitsAcquisition.State.ACQUIRING && !isSourceEnabled()) {
             acquisition.stop();
         }
         webcam.setDisabled(busy);
         esp32.setDisabled(busy);
+        infiniteNoise.setDisabled(busy);
         scan.setDisabled(busy);
         preview.setDisabled(busy || selected == null || kind != HotbitsBackend.Kind.WEBCAM);
-        start.setDisabled(busy || selected == null || (kind == HotbitsBackend.Kind.ESP32
-                && !settings.isEnabled(Setting.ESP32)));
+        start.setDisabled(busy || selected == null || !isSourceEnabled());
         stop.setDisabled(!busy || snapshot.state() == HotbitsAcquisition.State.STOPPING);
         for (TextButton button : deviceButtons) {
             button.setDisabled(busy);
@@ -165,6 +178,14 @@ public class HotbitsPage extends Table {
                 status.setText("Camera preview could not be displayed. You can scan again or start acquisition.");
             }
         }
+    }
+
+    private boolean isSourceEnabled() {
+        return switch (kind) {
+            case WEBCAM -> true;
+            case ESP32 -> settings.isEnabled(Setting.ESP32);
+            case INFINITE_NOISE -> settings.isEnabled(Setting.INFINITE_NOISE);
+        };
     }
 
     private void buildDevices() {

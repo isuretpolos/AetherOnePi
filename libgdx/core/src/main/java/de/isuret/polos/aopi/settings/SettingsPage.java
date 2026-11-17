@@ -66,7 +66,7 @@ public class SettingsPage extends Table {
         add(reset).growX().left().padBottom(16).row();
         saveStatus = paragraph("Settings are saved automatically after changes.");
         add(saveStatus).row();
-        add(paragraph("ESP32 TRNG enables manual ESP32 acquisition on the Hotbits tab. The other original AOPi "
+        add(paragraph("ESP32 TRNG and Infinite Noise TRNG enable their sources on the Hotbits tab. The other original AOPi "
                 + "options are saved for use as analysis, broadcasting, sound, and further hardware support are implemented."))
                 .padBottom(16).row();
 

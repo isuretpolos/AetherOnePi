@@ -12,7 +12,8 @@ project links, news, recent cases, watchlist alerts, and inactive service indica
 The **SETTINGS** tab includes all 15 original boolean options and a **14–32 px
 font-size slider** with a live, application-wide preview and automatic saving.
 The **HOTBITS** tab supports webcam discovery, a single-image preview, and
-background webcam/ESP32 serial acquisition with start/stop and live package counts.
+background webcam, ESP32 serial, and Infinite Noise USB acquisition with start/stop
+and live package counts. Infinite Noise uses the installed FTDI D2XX driver.
 Window position, size, fullscreen, and maximized state are saved on close in
 `aopi-libgdx-data/settings.json` and restored on startup. To reset window placement,
 close the app and delete the file's `window` section. Deleting the entire file
@@ -84,7 +85,7 @@ in `lwjgl3/build/distributions/`.
 The Gradle build and installed distribution were verified on Windows with
 JDK 24.0.1. The desktop window was launched, its client area measured at
 1285 × 721 pixels using a DPI-aware Windows check, and closed successfully.
-The build and thirty-two tests pass. Startup with the bundled scalable
+The build and forty-six tests pass. Startup with the bundled scalable
 font has been verified. The previous dashboard was visually confirmed by the
 user. Slider dragging, fullscreen, and narrow-window reflow have not yet been
 verified through automated desktop interaction. A separate native lifecycle test
@@ -92,7 +93,9 @@ has verified saving/restoring window bounds, reopening in fullscreen, and
 returning to the previous window position and size.
 An isolated Hotbits UI test verifies discovery, selection, acquisition, background
 navigation, live font changes, stop, and package output using test input. Physical
-camera/ESP32 capture has not been verified; Infinite Noise USB is not implemented.
+camera/ESP32 capture has not been verified. Infinite Noise USB was tested with
+the connected stick on Windows: discovery, warmup, a complete 10000-value package
+in an isolated build folder, capacity stop, and release all succeeded.
 Linux and macOS launch paths have not been tested.
 
 Java 24 may print a `sun.misc.Unsafe::objectFieldOffset` deprecation warning
@@ -134,6 +137,8 @@ requests when the application closes.
 the background worker, extraction, and complete-package writes.
 `DesktopHotbitsBackend` owns webcam and serial adapters; native device dependencies
 remain in the desktop module.
+`InfiniteNoiseSource` and `JnaD2xxTransport` implement the USB path with explicit
+serial selection, bounded transfers, warmup, and continuous basic source checks.
 
 Keep new code readable, use English comments to explain decisions, and document
 new features as they arrive. Add modules or abstractions when a real feature

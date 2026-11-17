@@ -28,7 +28,7 @@ public enum Setting {
     ADVANCED_SOUND("Sound", "play.sound.advanced", "Advanced sound", false,
             "Enable the original advanced broadcast sound mode."),
     INFINITE_NOISE("Hardware", "trng.infinity", "Infinite Noise TRNG", false,
-            "Use an Infinite Noise USB generator as a hotbits source."),
+            "Allow manual Infinite Noise USB acquisition on the Hotbits tab."),
     ESP32("Hardware", "trng.esp32", "ESP32 TRNG", false,
             "Allow manual ESP32 serial acquisition on the Hotbits tab."),
     OVERLAY("Appearance", "use.overlay", "Broadcast overlay", true,
