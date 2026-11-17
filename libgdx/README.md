@@ -11,6 +11,9 @@ The application displays the AOPi dashboard: galaxy background, navigation,
 project links, news, recent cases, watchlist alerts, and inactive service indicators.
 The **SETTINGS** tab includes all 15 original boolean options and a **14–32 px
 font-size slider** with a live, application-wide preview and automatic saving.
+The **SESSION** tab creates, edits, saves, and loads cases; appends dated notes;
+shows session history; and generates Essential Questions from acquired hotbits.
+It protects unsaved changes and preserves a recovery draft on normal close.
 The **HOTBITS** tab supports webcam discovery, a single-image preview, and
 background webcam, ESP32 serial, and Infinite Noise USB acquisition with start/stop
 and live package counts. Infinite Noise uses the installed FTDI D2XX driver.
@@ -45,6 +48,8 @@ See [Settings and font size](documentation/settings.md) for live preview,
 configuration storage, defaults, and future feature options.
 See [Hotbits acquisition](documentation/hotbits.md) for camera setup, ESP32 firmware,
 package storage, extraction, cancellation, and current limitations.
+See [Cases and sessions](documentation/session.md) for the editor, case files,
+draft recovery, recent-case links, and Essential Questions.
 
 ## Requirements
 
@@ -88,7 +93,7 @@ in `lwjgl3/build/distributions/`.
 The Gradle build and installed distribution were verified on Windows with
 JDK 24.0.1. The desktop window was launched, its client area measured at
 1285 × 721 pixels using a DPI-aware Windows check, and closed successfully.
-The build and forty-six tests pass. Startup with the bundled scalable
+The build and sixty-two tests pass. Startup with the bundled scalable
 font has been verified. The previous dashboard was visually confirmed by the
 user. Slider dragging, fullscreen, and narrow-window reflow have not yet been
 verified through automated desktop interaction. A separate native lifecycle test
@@ -100,6 +105,10 @@ camera/ESP32 capture has not been verified. Infinite Noise USB was tested with
 the connected stick on Windows: discovery, warmup, a complete 10000-value package
 in an isolated build folder, capacity stop, and release all succeeded.
 Linux and macOS launch paths have not been tested.
+The Session desktop workflow also passes: case save/load, rename, notes,
+Essential Questions, recent-case links, font updates, unsaved-change cancellation,
+and close/recover/save. All four implemented tabs pass the footer/navigation
+layout checks, including 32 px text at 800 × 600.
 
 Java 24 may print a `sun.misc.Unsafe::objectFieldOffset` deprecation warning
 from LWJGL during startup. The window works with this warning; it comes from
@@ -142,6 +151,9 @@ the background worker, extraction, and complete-package writes.
 remain in the desktop module.
 `InfiniteNoiseSource` and `JnaD2xxTransport` implement the USB path with explicit
 serial selection, bounded transfers, warmup, and continuous basic source checks.
+`SessionPage` owns case editing and history. `CaseRepository` saves independent
+case documents and recovery drafts. `CachedHotbits` claims acquired packages once
+for `EssentialQuestions`; it never reads original AOPi's cache or generates fallback values.
 
 Keep new code readable, use English comments to explain decisions, and document
 new features as they arrive. Add modules or abstractions when a real feature

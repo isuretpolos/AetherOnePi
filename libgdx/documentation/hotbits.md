@@ -171,7 +171,11 @@ amber during opening/warmup or stopping, and green after sample acquisition star
 Only the source actually used by the worker is lit; selecting a source or previewing
 a camera does not light it. Only `hotbits_*.json` regular files are counted;
 unrelated JSON files and temporary files are ignored. Cache counting occurs when
-refreshing or starting; future analysis/consumption is not implemented yet.
+refreshing or starting and after successful Essential Questions draws when idle.
+An active writer recounts complete cached files when publishing a package, so
+Session consumption does not leave its capacity count permanently stale.
+Analysis consumption is not implemented yet; Essential Questions uses the
+[Session cache reader](session.md).
 
 ## Lifecycle and failures
 
@@ -208,7 +212,7 @@ are referenced by this implementation. Webcam Capture 0.3.12 and jSerialComm
 
 ## Verification
 
-The build and **46 unit tests** pass on Windows/JDK 24.0.1. Fourteen core tests cover
+The build and **62 unit tests** pass on Windows/JDK 24.0.1. Fourteen core tests cover
 extraction, conditioning, package contents, capacity, device release, cancellation,
 double-start prevention, discovery, preview, application shutdown, and read/write failures.
 Fourteen additional desktop tests cover FTDI identity filtering, explicit serial

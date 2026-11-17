@@ -64,7 +64,19 @@ public class DashboardRepository {
         }
         JsonValue caseData = new JsonReader().parse(file);
         return caseData.getString("name", name) + "\n\n" + caseData.getString("description", "No description.")
-                + "\n\nCase editing will be available when the Session screen is implemented.";
+                + "\n\nThis is a read-only preview of a manually supplied case file.";
+    }
+
+    public String caseTitle(String id) {
+        if (!isSafeCaseName(id)) {
+            return id;
+        }
+        try {
+            FileHandle file = directory.child("cases").child(id + ".json");
+            return file.exists() ? new com.badlogic.gdx.utils.JsonReader().parse(file).getString("name", id) : id;
+        } catch (RuntimeException exception) {
+            return id;
+        }
     }
 
     private boolean isSafeCaseName(String name) {

@@ -35,6 +35,10 @@ import de.isuret.polos.aopi.hotbits.HotbitsBackend;
 import de.isuret.polos.aopi.hotbits.HotbitsAcquisition;
 import de.isuret.polos.aopi.hotbits.HotbitsPackageStore;
 import de.isuret.polos.aopi.hotbits.HotbitsPage;
+import de.isuret.polos.aopi.session.CachedHotbits;
+import de.isuret.polos.aopi.session.CaseData;
+import de.isuret.polos.aopi.session.CaseRepository;
+import de.isuret.polos.aopi.session.SessionPage;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -69,6 +73,10 @@ public class AopiScreen extends ScreenAdapter {
     private final HotbitsAcquisition hotbits;
     private final HotbitsPage hotbitsPage;
     private final ScrollPane hotbitsScroll;
+    private final SessionPage sessionPage;
+    private final ScrollPane sessionScroll;
+    private TextButton sessionTab;
+    private Label caseTitle;
     private Label serviceCounts;
     private TextButton dashboardTab;
     private TextButton settingsTab;
@@ -93,6 +101,13 @@ public class AopiScreen extends ScreenAdapter {
         if (loadFailed) {
             settingsPage.showLoadError();
         }
+        sessionPage = new SessionPage(new CaseRepository(dataDirectory.file().toPath()),
+                new CachedHotbits(dataDirectory.child("hotbits").file().toPath()), skin, stage, this::caseChanged, () -> {
+            if (hotbits != null && !hotbits.isBusy()) {
+                hotbits.refreshCache();
+            }
+        });
+        sessionScroll = scrollPane(sessionPage);
         repository = new DashboardRepository(dataDirectory);
         news = new DashboardNews(dataDirectory);
         newsText.setText(news.initialText());
@@ -103,6 +118,7 @@ public class AopiScreen extends ScreenAdapter {
         if (hotbitsPage != null) {
             fonts.refresh(hotbitsPage, skin);
         }
+        fonts.refresh(sessionPage, skin);
         loadDashboardState();
         refreshNews();
     }
@@ -116,10 +132,10 @@ public class AopiScreen extends ScreenAdapter {
         root = new Table();
         root.pad(24);
         Table heading = new Table();
-        Label title = new Label("AetherOnePi", skin);
-        title.setFontScale(1.35f);
-        heading.add(title).left();
-        heading.add().expandX();
+        caseTitle = new Label("AetherOnePi", skin);
+        caseTitle.setFontScale(1.35f);
+        caseTitle.setEllipsis(true);
+        heading.add(caseTitle).growX().minWidth(0);
         heading.add(fullscreen).minHeight(36);
         root.add(heading).growX().padBottom(16).row();
 
@@ -171,6 +187,8 @@ public class AopiScreen extends ScreenAdapter {
         settingsTab = navigationTab("SETTINGS", () -> selectSettings(true));
         dashboardTab.setName("dashboard-tab");
         settingsTab.setName("settings-tab");
+        sessionTab = navigationTab("SESSION", this::selectSession);
+        sessionTab.setName("session-tab");
         hotbitsTab = navigationTab("HOTBITS", this::selectHotbits);
         hotbitsTab.setName("hotbits-tab");
         hotbitsTab.setDisabled(hotbits == null);
@@ -180,6 +198,10 @@ public class AopiScreen extends ScreenAdapter {
                 "PEGGOTTY", "AREA", "HOTBITS", "BROADCAST"}) {
             TextButton tab = new TextButton(name, skin, "tab");
             tab.pad(8, 10, 8, 10);
+            if (name.equals("SESSION")) {
+                tabs.addActor(sessionTab);
+                continue;
+            }
             if (name.equals("SETTINGS")) {
                 tabs.addActor(settingsTab);
                 continue;
@@ -217,6 +239,7 @@ public class AopiScreen extends ScreenAdapter {
         dashboardTab.setChecked(!selected);
         settingsTab.setChecked(selected);
         hotbitsTab.setChecked(false);
+        sessionTab.setChecked(false);
         if (selected) {
             stage.setScrollFocus(settingsScroll);
         }
@@ -229,8 +252,26 @@ public class AopiScreen extends ScreenAdapter {
         dashboardTab.setChecked(false);
         settingsTab.setChecked(false);
         hotbitsTab.setChecked(true);
+        sessionTab.setChecked(false);
         root.invalidateHierarchy();
         stage.setScrollFocus(hotbitsScroll);
+    }
+
+    private void selectSession() {
+        pageContainer.clearChildren();
+        pageContainer.add(sessionScroll).grow().minHeight(0);
+        dashboardTab.setChecked(false);
+        settingsTab.setChecked(false);
+        hotbitsTab.setChecked(false);
+        sessionTab.setChecked(true);
+        root.invalidateHierarchy();
+        stage.setScrollFocus(sessionScroll);
+    }
+
+    private void caseChanged(CaseData data) {
+        caseTitle.setText(data.name().isBlank() ? "AetherOnePi" : "AetherOnePi - " + data.name());
+        Gdx.graphics.setTitle(data.name().isBlank() ? "AOPi - libGDX" : "AOPi - " + data.name());
+        loadDashboardState();
     }
 
     private ScrollPane scrollPane(Actor content) {
@@ -313,7 +354,9 @@ public class AopiScreen extends ScreenAdapter {
                 recentCases.add(paragraph("No cases opened yet.")).growX();
             }
             for (String name : state.recentCases()) {
-                recentCases.add(button(name, () -> showCase(name))).growX().minHeight(32).padBottom(6).row();
+                TextButton recent = button(repository.caseTitle(name), () -> showCase(name));
+                recent.setName("recent-case-" + name);
+                recentCases.add(recent).growX().minHeight(32).padBottom(6).row();
             }
             if (state.watchlist().isEmpty()) {
                 watchlistColumn.add(paragraph("No watchlist alerts to display.\nWatchlist analysis is not running."))
@@ -356,6 +399,16 @@ public class AopiScreen extends ScreenAdapter {
     }
 
     private void showCase(String name) {
+        try {
+            java.util.UUID.fromString(name);
+            selectSession();
+            sessionPage.openCase(name, () -> {
+                sessionScroll.setScrollY(0);
+            });
+            return;
+        } catch (IllegalArgumentException ignored) {
+            // Keep read-only previews for manually supplied, older dashboard examples.
+        }
         try {
             showDialog("Case: " + name, repository.readCaseSummary(name));
         } catch (RuntimeException exception) {
@@ -442,6 +495,7 @@ public class AopiScreen extends ScreenAdapter {
     public void render(float delta) {
         if (fonts.update(skin, settings.getFontSize(), stage.getRoot(), dashboardPage, settingsPage)) {
             arrangeColumns(Gdx.graphics.getWidth());
+            fonts.refresh(sessionPage, skin);
             if (hotbitsPage != null) {
                 fonts.refresh(hotbitsPage, skin);
             }
@@ -486,6 +540,7 @@ public class AopiScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
+        sessionPage.dispose();
         if (hotbits != null) {
             hotbits.close();
             hotbitsPage.dispose();

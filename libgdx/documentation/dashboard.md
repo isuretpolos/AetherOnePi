@@ -28,7 +28,7 @@ Unlike the original randomly displayed, blinking Patreon section, the support
 link is always available and does not flash. Empty states are explicit. Hardware
 indicators are inactive and counters display `--`, because those services have
 not been implemented. Hotbits package counts and acquisition state are live.
-Dashboard, Settings, and Hotbits are available; the remaining tabs
+Dashboard, Session, Settings, and Hotbits are available; the remaining tabs
 and BROWSER are disabled until their features are implemented.
 
 ## Resizing and fullscreen
@@ -86,10 +86,11 @@ aopi-libgdx-data/
 ```
 
 The dashboard starts empty when no snapshot exists. The app does not seed fake
-cases or produce watchlist analysis. Future Session and Watchlist features can
-write this snapshot or replace the repository with their own application services.
-Until then, this optional format allows existing dashboard behavior to be checked
-with deliberately supplied data:
+cases or produce watchlist analysis. Saving or loading a case in Session updates
+the recent list automatically while preserving watchlist and unknown metadata.
+Recent entries use stable case IDs; buttons display the saved names and open
+the actual Session editor. This optional format also allows manual dashboard
+examples to be checked with deliberately supplied data:
 
 ```json
 {
@@ -113,9 +114,10 @@ An example independent `cases/Example.json`:
 }
 ```
 
-Clicking a recent case shows its name and description in a read-only dialog.
-Session editing and starting a case from a watchlist alert are future work; the
-dashboard does not pretend those actions are already available.
+UUID-based recent cases open the Session editor and respect its unsaved-changes
+prompt. Manually supplied examples such as `Example.json` retain a read-only
+preview. They are not automatically converted to the new versioned case format.
+Starting a case from a watchlist alert remains future work.
 
 ## Validation
 

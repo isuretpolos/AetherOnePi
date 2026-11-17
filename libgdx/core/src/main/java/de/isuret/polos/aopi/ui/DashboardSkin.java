@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
@@ -54,6 +55,26 @@ public final class DashboardSkin {
         toggle.checked = background(skin, "285C45");
         toggle.checkedOver = background(skin, "357B5B");
         skin.add("toggle", toggle);
+
+        TextField.TextFieldStyle field = new TextField.TextFieldStyle();
+        field.font = font;
+        field.fontColor = Color.valueOf("EEEAF5");
+        field.messageFontColor = Color.valueOf("ACA6BF");
+        field.disabledFontColor = Color.valueOf("ACA6BF");
+        field.background = background(skin, "282136");
+        field.background.setLeftWidth(10);
+        field.background.setRightWidth(10);
+        field.background.setTopHeight(10);
+        field.background.setBottomHeight(10);
+        field.focusedBackground = skin.newDrawable("white", Color.valueOf("382B4C"));
+        field.focusedBackground.setLeftWidth(10);
+        field.focusedBackground.setRightWidth(10);
+        field.focusedBackground.setTopHeight(10);
+        field.focusedBackground.setBottomHeight(10);
+        field.cursor = background(skin, "DDD0FF");
+        field.cursor.setMinWidth(2);
+        field.selection = background(skin, "655184");
+        skin.add("default", field);
 
         Slider.SliderStyle slider = new Slider.SliderStyle();
         slider.background = background(skin, "453957");

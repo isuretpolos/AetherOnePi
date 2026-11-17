@@ -78,6 +78,10 @@ public final class NavigationLayoutSmokeTest {
                     requireVisibleFooter(stage);
                     requireFullHeight(dashboard);
                     requireSameSize(dashboard, dashboardWidth, dashboardHeight);
+                    TextButton session = stage.getRoot().findActor("session-tab");
+                    session.fire(new ChangeListener.ChangeEvent());
+                } else if (step == 9) {
+                    requireVisibleFooter(stage);
                     TextButton hotbits = stage.getRoot().findActor("hotbits-tab");
                     hotbits.fire(new ChangeListener.ChangeEvent());
                 } else if (step == 10) {
@@ -89,7 +93,7 @@ public final class NavigationLayoutSmokeTest {
                     requireSameSize(dashboard, dashboardWidth, dashboardHeight);
                     scenario++;
                     if (scenario == 4) {
-                        System.out.println("Navigation/footer layout passed on Dashboard, Settings, and Hotbits at 14, 24, and 32 px, including 800 x 600.");
+                        System.out.println("Navigation/footer layout passed on Dashboard, Session, Settings, and Hotbits at 14, 24, and 32 px, including 800 x 600.");
                         Gdx.app.exit();
                     }
                 }

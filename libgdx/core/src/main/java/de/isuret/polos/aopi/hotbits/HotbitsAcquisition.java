@@ -287,7 +287,12 @@ public class HotbitsAcquisition implements AutoCloseable {
                 } catch (IOException exception) {
                     throw new UncheckedIOException(exception);
                 }
-                cached++;
+                try {
+                    // Session draws may have claimed a cached package while acquisition continued.
+                    cached = store.count();
+                } catch (IOException exception) {
+                    throw new UncheckedIOException(exception);
+                }
                 saved++;
                 position = 0;
                 publish(State.ACQUIRING, "Saved package " + saved + " this session.", cached, saved, 0,

@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.Layout;
 
@@ -44,6 +45,7 @@ public class UiFontManager {
             style.font = next;
         }
         skin.get(Window.WindowStyle.class).titleFont = next;
+        skin.get(TextField.TextFieldStyle.class).font = next;
 
         // Replace label caches but keep the actors themselves, including a slider being dragged.
         for (Actor root : roots) {
@@ -56,6 +58,11 @@ public class UiFontManager {
     }
 
     private void refreshLabels(Actor actor, BitmapFont font) {
+        if (actor instanceof TextField field) {
+            TextField.TextFieldStyle style = new TextField.TextFieldStyle(field.getStyle());
+            style.font = font;
+            field.setStyle(style);
+        }
         if (actor instanceof Label label) {
             Label.LabelStyle style = new Label.LabelStyle(label.getStyle());
             style.font = font;
