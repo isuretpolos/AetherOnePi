@@ -14,6 +14,9 @@ font-size slider** with a live, application-wide preview and automatic saving.
 The **SESSION** tab creates, edits, saves, and loads cases; appends dated notes;
 shows session history; and generates Essential Questions from acquired hotbits.
 It protects unsaved changes and preserves a recovery draft on normal close.
+The **ANALYSIS** tab imports and selects rate lists, scores them using acquired
+hotbits, displays potency and level, checks GV, filters results, and saves
+immutable snapshots into session history. Completed results recover on restart.
 The **HOTBITS** tab supports webcam discovery, a single-image preview, and
 background webcam, ESP32 serial, and Infinite Noise USB acquisition with start/stop
 and live package counts. Infinite Noise uses the installed FTDI D2XX driver.
@@ -40,7 +43,7 @@ Project news refreshes asynchronously and works offline using a separate cache
 or bundled fallback. Project links open in the default browser. Other screens
 and the embedded browser are visibly disabled until they are implemented.
 Hardware is accessed only after a Hotbits action. No acquisition starts
-automatically. Analysis, broadcasting, and the embedded server are not implemented.
+automatically. Broadcasting and the embedded server are not implemented.
 
 See [Dashboard behavior and data](documentation/dashboard.md) for details about
 recent cases, watchlist alerts, data isolation, and the responsive layout.
@@ -50,6 +53,8 @@ See [Hotbits acquisition](documentation/hotbits.md) for camera setup, ESP32 firm
 package storage, extraction, cancellation, and current limitations.
 See [Cases and sessions](documentation/session.md) for the editor, case files,
 draft recovery, recent-case links, and Essential Questions.
+See [Analysis](documentation/analysis.md) for rate-list formats, scoring rules,
+hotbits consumption, GV, and saving results into cases.
 
 ## Requirements
 
@@ -93,7 +98,7 @@ in `lwjgl3/build/distributions/`.
 The Gradle build and installed distribution were verified on Windows with
 JDK 24.0.1. The desktop window was launched, its client area measured at
 1285 × 721 pixels using a DPI-aware Windows check, and closed successfully.
-The build and sixty-two tests pass. Startup with the bundled scalable
+The build and eighty-two tests pass. Startup with the bundled scalable
 font has been verified. The previous dashboard was visually confirmed by the
 user. Slider dragging, fullscreen, and narrow-window reflow have not yet been
 verified through automated desktop interaction. A separate native lifecycle test
@@ -107,8 +112,10 @@ in an isolated build folder, capacity stop, and release all succeeded.
 Linux and macOS launch paths have not been tested.
 The Session desktop workflow also passes: case save/load, rename, notes,
 Essential Questions, recent-case links, font updates, unsaved-change cancellation,
-and close/recover/save. All four implemented tabs pass the footer/navigation
+and close/recover/save. All five implemented tabs pass the footer/navigation
 layout checks, including 32 px text at 800 × 600.
+The Analysis window check passes list selection, scoring, filtering, GV,
+case snapshot save/reopen, duplicate prevention, cancellation, and cache exhaustion.
 
 Java 24 may print a `sun.misc.Unsafe::objectFieldOffset` deprecation warning
 from LWJGL during startup. The window works with this warning; it comes from
@@ -153,7 +160,10 @@ remain in the desktop module.
 serial selection, bounded transfers, warmup, and continuous basic source checks.
 `SessionPage` owns case editing and history. `CaseRepository` saves independent
 case documents and recovery drafts. `CachedHotbits` claims acquired packages once
-for `EssentialQuestions`; it never reads original AOPi's cache or generates fallback values.
+for `EssentialQuestions` and `AnalysisEngine`; it never reads original AOPi's cache
+or generates fallback values. `AnalysisPage` coordinates background work and
+immutable result snapshots; `RateRepository` owns list selection and imports,
+and `AnalysisStore` preserves the last completed result independently of cases.
 
 Keep new code readable, use English comments to explain decisions, and document
 new features as they arrive. Add modules or abstractions when a real feature

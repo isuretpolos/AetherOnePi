@@ -57,7 +57,9 @@ These options are stored now so future feature implementations can use the same
 settings model. Enabling ESP32 or Infinite Noise permits manual acquisition for
 that source on the Hotbits page; it does not open a device automatically.
 Disabling the corresponding setting stops an active session.
-The other feature options do not yet start hardware, analysis, sound, or broadcasting.
+The analysis high-hit option selects a scoring threshold of 1000 instead of 100
+on the next analysis. Other future options do not yet start watchlist analysis,
+sound, or broadcasting.
 The overlay option refers to the future broadcast visualization, not the dark
 dashboard background. The font-size setting is already active throughout the UI.
 
@@ -158,7 +160,7 @@ configuration.
 ## Verification
 
 The Gradle build, installed distribution, and application startup were checked
-on Windows/JDK 24.0.1. Sixty-two tests pass, including five dashboard tests, eight
+on Windows/JDK 24.0.1. Eighty-two tests pass, including five dashboard tests, eight
 settings tests, five window-placement tests, fourteen core Hotbits tests, and
 fourteen desktop Infinite Noise protocol/transport tests, nine case persistence
 tests, and seven cached-draw/Essential Questions tests.

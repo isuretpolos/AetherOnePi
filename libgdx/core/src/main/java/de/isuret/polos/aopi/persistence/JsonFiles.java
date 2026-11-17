@@ -1,4 +1,4 @@
-package de.isuret.polos.aopi.session;
+package de.isuret.polos.aopi.persistence;
 
 import com.badlogic.gdx.utils.JsonValue;
 import com.badlogic.gdx.utils.JsonWriter;
@@ -11,12 +11,12 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
 /** Publishes a complete local document without truncating the previous file on a write failure. */
-final class JsonFiles {
+public final class JsonFiles {
 
     private JsonFiles() {
     }
 
-    static void write(Path file, JsonValue json) throws IOException {
+    public static void write(Path file, JsonValue json) throws IOException {
         Files.createDirectories(file.toAbsolutePath().getParent());
         Path temporary = file.resolveSibling(file.getFileName() + ".tmp");
         Files.writeString(temporary, json.prettyPrint(JsonWriter.OutputType.json, 100), StandardCharsets.UTF_8);

@@ -8,13 +8,13 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import de.isuret.polos.aopi.analysis.AnalysisResult;
 
 import java.time.Instant;
 import java.time.ZoneId;
@@ -40,6 +40,7 @@ public class SessionPage extends Table {
     private final Stage stage;
     private final Consumer<CaseData> onCaseChanged;
     private final Runnable onHotbitsConsumed;
+    private final Consumer<AnalysisResult> onAnalysisOpened;
     private final ExecutorService io = Executors.newSingleThreadExecutor(task -> {
         Thread thread = new Thread(task, "aopi-session-files");
         thread.setDaemon(true);
@@ -70,13 +71,15 @@ public class SessionPage extends Table {
     }
 
     public SessionPage(CaseRepository repository, CachedHotbits hotbits, Skin skin, Stage stage,
-                       Consumer<CaseData> onCaseChanged, Runnable onHotbitsConsumed) {
+                       Consumer<CaseData> onCaseChanged, Runnable onHotbitsConsumed,
+                       Consumer<AnalysisResult> onAnalysisOpened) {
         this.repository = repository;
         this.questions = new EssentialQuestions(hotbits::nextInt);
         this.skin = skin;
         this.stage = stage;
         this.onCaseChanged = onCaseChanged;
         this.onHotbitsConsumed = onHotbitsConsumed;
+        this.onAnalysisOpened = onAnalysisOpened;
         top().left();
         defaults().growX().spaceBottom(12);
         add(new Label("SESSION", skin, "accent")).row();
@@ -118,7 +121,7 @@ public class SessionPage extends Table {
                 saveCase(null);
             }
         })).row();
-        add(paragraph("Analysis and broadcast attachments become available with those features."))
+        add(paragraph("Saved analysis snapshots appear in session history. Broadcast attachments are not available yet."))
                 .padBottom(16).row();
         add(new Label("SESSION HISTORY", skin, "accent")).row();
         history.top().left();
@@ -179,6 +182,27 @@ public class SessionPage extends Table {
     }
 
     private void saveCase(Runnable afterSave) {
+        saveCase(afterSave, null);
+    }
+
+    public String currentCaseId() {
+        return current.id();
+    }
+
+    public void attachAnalysis(AnalysisResult analysis) {
+        if (busy) {
+            status.setText("Wait for the current Session operation, then save the analysis again.");
+            return;
+        }
+        if (current.sessionList().stream().anyMatch(entry -> entry.analysis() != null
+                && entry.analysis().id().equals(analysis.id()))) {
+            status.setText("This analysis snapshot is already saved in the current case.");
+            return;
+        }
+        saveCase(null, analysis);
+    }
+
+    private void saveCase(Runnable afterSave, AnalysisResult analysis) {
         if (name.getText().isBlank()) {
             status.setText("Enter a case name before saving.");
             stage.setKeyboardFocus(name);
@@ -189,6 +213,10 @@ public class SessionPage extends Table {
         if (!intention.getText().isBlank() || !notes.getText().isBlank()) {
             entries.add(new CaseData.Entry(UUID.randomUUID().toString(), Instant.now(),
                     intention.getText().trim(), notes.getText()));
+        }
+        if (analysis != null) {
+            entries.add(new CaseData.Entry(UUID.randomUUID().toString(), Instant.now(),
+                    "Analysis: " + analysis.database(), analysis.asText(), analysis));
         }
         CaseData toSave = new CaseData(current.id(), name.getText().trim(), description.getText(),
                 current.created(), Instant.now(), entries);
@@ -251,38 +279,7 @@ public class SessionPage extends Table {
 
     private void chooseCase() {
         runJob(repository::list, listing -> {
-            Dialog dialog = new Dialog("Load case", skin);
-            dialog.setName("session-load-dialog");
-            Table list = new Table();
-            list.top().left();
-            if (listing.cases().isEmpty()) {
-                list.add(paragraph("No saved cases in this application's case folder.")).growX().row();
-            }
-            for (CaseData data : listing.cases()) {
-                TextButton choice = new TextButton(data.name() + "\n" + DATE.format(data.lastChange()), skin);
-                choice.setName("session-load-" + data.id());
-                choice.getLabel().setWrap(true);
-                choice.pad(12);
-                choice.addListener(new ChangeListener() {
-                    @Override
-                    public void changed(ChangeEvent event, Actor actor) {
-                        dialog.hide();
-                        openCase(data.id(), null);
-                    }
-                });
-                list.add(choice).growX().padBottom(8).row();
-            }
-            if (!listing.unreadableFiles().isEmpty()) {
-                list.add(paragraph(listing.unreadableFiles().size() + " unreadable or unsupported case files were skipped."))
-                        .growX().row();
-            }
-            ScrollPane scroll = new ScrollPane(list, skin);
-            scroll.setScrollingDisabled(true, false);
-            dialog.getContentTable().add(scroll).width(Math.min(620, stage.getWidth() - 100))
-                    .height(stage.getHeight() * 0.5f).pad(16);
-            dialog.button("CANCEL");
-            dialog.key(Input.Keys.ESCAPE, null);
-            dialog.show(stage);
+            new CasePickerDialog(listing, skin, id -> openCase(id, null)).show(stage);
         });
     }
 
@@ -348,6 +345,19 @@ public class SessionPage extends Table {
             card.setBackground(skin.newDrawable("white", Color.valueOf(index % 2 == 0 ? "292238" : "211C2D")));
             card.add(paragraph(DATE.format(entry.created()) + " | " + entry.intention())).growX().row();
             card.add(paragraph(entry.description())).growX().padTop(8);
+            if (entry.analysis() != null) {
+                card.row();
+                TextButton open = new TextButton("VIEW ANALYSIS", skin);
+                open.setName("session-view-analysis-" + entry.analysis().id());
+                open.pad(10);
+                open.addListener(new ChangeListener() {
+                    @Override
+                    public void changed(ChangeEvent event, Actor actor) {
+                        onAnalysisOpened.accept(entry.analysis());
+                    }
+                });
+                card.add(open).left().padTop(8);
+            }
             history.add(card).growX().padBottom(8).row();
         }
     }

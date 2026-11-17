@@ -7,6 +7,7 @@ import de.isuret.polos.aopi.settings.SettingsRepository;
 import de.isuret.polos.aopi.ui.AopiScreen;
 import de.isuret.polos.aopi.ui.WindowModeController;
 import de.isuret.polos.aopi.hotbits.HotbitsBackend;
+import de.isuret.polos.aopi.analysis.RateFilePicker;
 
 /**
  * Entry point for the new, independent AOPi application.
@@ -19,6 +20,7 @@ public class AopiApplication extends Game {
     private final WindowModeController windowMode;
     private final boolean settingsLoadFailed;
     private final HotbitsBackend hotbitsBackend;
+    private final RateFilePicker rateFilePicker;
 
     public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
                           WindowModeController windowMode, boolean settingsLoadFailed) {
@@ -27,16 +29,23 @@ public class AopiApplication extends Game {
 
     public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
                           WindowModeController windowMode, boolean settingsLoadFailed, HotbitsBackend hotbitsBackend) {
+        this(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend, null);
+    }
+
+    public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
+                          WindowModeController windowMode, boolean settingsLoadFailed, HotbitsBackend hotbitsBackend,
+                          RateFilePicker rateFilePicker) {
         this.settings = settings;
         this.repository = repository;
         this.windowMode = windowMode;
         this.settingsLoadFailed = settingsLoadFailed;
         this.hotbitsBackend = hotbitsBackend;
+        this.rateFilePicker = rateFilePicker;
     }
 
     @Override
     public void create() {
-        setScreen(new AopiScreen(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend));
+        setScreen(new AopiScreen(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend, rateFilePicker));
     }
 
     @Override

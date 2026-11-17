@@ -8,6 +8,8 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import de.isuret.polos.aopi.AopiApplication;
 import de.isuret.polos.aopi.hotbits.HotbitsBackend;
@@ -117,9 +119,33 @@ public final class SessionUiSmokeTest {
                         phase++;
                     } else if (phase == 7 && ready(stage)) {
                         require(field(stage, "session-name").getText().isEmpty(), "NEW did not clear the editor.");
+                        for (int index = 0; index < 20; index++) {
+                            CaseData blank = CaseData.create();
+                            cases.save(new CaseData(blank.id(), "Other case " + index, "Searchable description " + index,
+                                    blank.created(), blank.lastChange(), blank.sessionList()));
+                        }
                         click(stage, "session-load");
                         phase++;
                     } else if (phase == 8 && stage.getRoot().findActor("session-load-" + savedId) != null) {
+                        ScrollPane list = stage.getRoot().findActor("session-case-results");
+                        list.validate();
+                        require(list.getMaxY() > 0, "Long case list has no scroll range.");
+                        require(stage.getScrollFocus() == list, "Mouse wheel is not directed to the case list.");
+                        list.setScrollY(list.getMaxY());
+                        list.updateVisualScroll();
+                        require(list.getScrollY() > 0, "Case list cannot scroll.");
+                        TextField search = field(stage, "session-case-search");
+                        search.setText("ReNaMeD");
+                        Label count = stage.getRoot().findActor("session-case-count");
+                        require(count.getText().toString().startsWith("1 of "), "Case-name filtering failed.");
+                        require(list.getScrollY() == 0, "Search did not return the list to the top.");
+                        search.setText("Searchable description 19");
+                        require(count.getText().toString().startsWith("1 of "), "Description filtering failed.");
+                        search.setText("no matching case");
+                        require(count.getText().toString().startsWith("0 of "), "Empty search result was not displayed.");
+                        search.setText("");
+                        require(count.getText().toString().startsWith("21 of "), "Clearing search did not restore all cases.");
+                        search.setText("renamed");
                         click(stage, "session-load-" + savedId);
                         phase++;
                     } else if (phase == 9 && ready(stage)) {

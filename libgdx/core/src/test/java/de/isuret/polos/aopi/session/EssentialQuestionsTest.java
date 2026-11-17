@@ -22,17 +22,22 @@ class EssentialQuestionsTest {
         Path file = store.write(new int[]{12, 34, 56}, HotbitsBackend.Kind.INFINITE_NOISE);
         CachedHotbits values = new CachedHotbits(directory);
         assertEquals(12, values.nextInt(101));
-        assertEquals(34, values.nextInt(101));
-        assertEquals(56, values.nextInt(101));
+        assertEquals(0, values.nextInt(101));
+        assertEquals(0, values.nextInt(101));
         assertEquals(0, store.count());
         assertTrue(Files.exists(directory.resolve("consumed").resolve(file.getFileName())));
-        assertThrows(IOException.class, () -> values.nextInt(101));
+        assertThrows(IOException.class, () -> {
+            for (int index = 0; index < 100; index++) {
+                values.nextInt(101);
+            }
+        });
         assertThrows(IOException.class, () -> new CachedHotbits(directory).nextInt(101));
     }
 
     @Test
     void outOfRangeTailValuesAreRejectedBeforeBoundedDraw() throws IOException {
-        new HotbitsPackageStore(directory).write(new int[]{Integer.MAX_VALUE, 42}, HotbitsBackend.Kind.ESP32);
+        // Seven bits encode 127 (rejected), then 42 (accepted).
+        new HotbitsPackageStore(directory).write(new int[]{127 | (42 << 7)}, HotbitsBackend.Kind.ESP32);
         assertEquals(42, new CachedHotbits(directory).nextInt(101));
     }
 

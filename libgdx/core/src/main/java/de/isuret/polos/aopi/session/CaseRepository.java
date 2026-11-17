@@ -2,6 +2,8 @@ package de.isuret.polos.aopi.session;
 
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
+import de.isuret.polos.aopi.persistence.JsonFiles;
+import de.isuret.polos.aopi.analysis.AnalysisJson;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -130,7 +132,8 @@ public class CaseRepository {
         }
         for (JsonValue entry : sessions) {
             entries.add(new CaseData.Entry(entry.getString("id"), Instant.parse(entry.getString("created")),
-                    entry.getString("intention", ""), entry.getString("description", "")));
+                    entry.getString("intention", ""), entry.getString("description", ""),
+                    entry.has("analysis") ? AnalysisJson.read(entry.get("analysis")) : null));
         }
         return new CaseData(root.getString("id"), name, root.getString("description", ""),
                 Instant.parse(root.getString("created")), Instant.parse(root.getString("lastChange")), entries);
@@ -151,6 +154,9 @@ public class CaseRepository {
             value.addChild("created", new JsonValue(entry.created().toString()));
             value.addChild("intention", new JsonValue(entry.intention()));
             value.addChild("description", new JsonValue(entry.description()));
+            if (entry.analysis() != null) {
+                value.addChild("analysis", AnalysisJson.write(entry.analysis()));
+            }
             entries.addChild(value);
         }
         root.addChild("sessionList", entries);

@@ -39,6 +39,11 @@ import de.isuret.polos.aopi.session.CachedHotbits;
 import de.isuret.polos.aopi.session.CaseData;
 import de.isuret.polos.aopi.session.CaseRepository;
 import de.isuret.polos.aopi.session.SessionPage;
+import de.isuret.polos.aopi.analysis.AnalysisPage;
+import de.isuret.polos.aopi.analysis.AnalysisResult;
+import de.isuret.polos.aopi.analysis.AnalysisStore;
+import de.isuret.polos.aopi.analysis.RateFilePicker;
+import de.isuret.polos.aopi.analysis.RateRepository;
 
 import java.util.EnumMap;
 import java.util.Map;
@@ -75,6 +80,9 @@ public class AopiScreen extends ScreenAdapter {
     private final ScrollPane hotbitsScroll;
     private final SessionPage sessionPage;
     private final ScrollPane sessionScroll;
+    private final AnalysisPage analysisPage;
+    private final ScrollPane analysisScroll;
+    private TextButton analysisTab;
     private TextButton sessionTab;
     private Label caseTitle;
     private Label serviceCounts;
@@ -87,7 +95,8 @@ public class AopiScreen extends ScreenAdapter {
     private boolean twoColumns;
 
     public AopiScreen(ApplicationSettings settings, SettingsRepository settingsRepository,
-                      WindowModeController windowMode, boolean loadFailed, HotbitsBackend hotbitsBackend) {
+                      WindowModeController windowMode, boolean loadFailed, HotbitsBackend hotbitsBackend,
+                      RateFilePicker rateFilePicker) {
         FileHandle dataDirectory = new FileHandle(System.getProperty("aopi.dataDirectory", "aopi-libgdx-data"));
         this.settingsRepository = settingsRepository;
         this.settings = settings;
@@ -101,13 +110,21 @@ public class AopiScreen extends ScreenAdapter {
         if (loadFailed) {
             settingsPage.showLoadError();
         }
-        sessionPage = new SessionPage(new CaseRepository(dataDirectory.file().toPath()),
-                new CachedHotbits(dataDirectory.child("hotbits").file().toPath()), skin, stage, this::caseChanged, () -> {
-            if (hotbits != null && !hotbits.isBusy()) {
-                hotbits.refreshCache();
+        CachedHotbits cachedHotbits = new CachedHotbits(dataDirectory.child("hotbits").file().toPath(), () -> {
+            if (hotbits != null) {
+                hotbits.cacheChanged();
             }
         });
+        sessionPage = new SessionPage(new CaseRepository(dataDirectory.file().toPath()),
+                cachedHotbits, skin, stage, this::caseChanged, this::hotbitsConsumed, this::openAnalysis);
         sessionScroll = scrollPane(sessionPage);
+        analysisPage = new AnalysisPage(skin, stage, new RateRepository(dataDirectory.child("rates").file().toPath()),
+                new AnalysisStore(dataDirectory.file().toPath()), cachedHotbits, settings, rateFilePicker, snapshot -> {
+            selectSession();
+            sessionPage.attachAnalysis(snapshot);
+        }, this::hotbitsConsumed, sessionPage::currentCaseId,
+                () -> hotbits != null && hotbits.snapshot().state() == HotbitsAcquisition.State.ACQUIRING);
+        analysisScroll = scrollPane(analysisPage);
         repository = new DashboardRepository(dataDirectory);
         news = new DashboardNews(dataDirectory);
         newsText.setText(news.initialText());
@@ -119,6 +136,7 @@ public class AopiScreen extends ScreenAdapter {
             fonts.refresh(hotbitsPage, skin);
         }
         fonts.refresh(sessionPage, skin);
+        fonts.refresh(analysisPage, skin);
         loadDashboardState();
         refreshNews();
     }
@@ -189,6 +207,8 @@ public class AopiScreen extends ScreenAdapter {
         settingsTab.setName("settings-tab");
         sessionTab = navigationTab("SESSION", this::selectSession);
         sessionTab.setName("session-tab");
+        analysisTab = navigationTab("ANALYSIS", this::selectAnalysis);
+        analysisTab.setName("analysis-tab");
         hotbitsTab = navigationTab("HOTBITS", this::selectHotbits);
         hotbitsTab.setName("hotbits-tab");
         hotbitsTab.setDisabled(hotbits == null);
@@ -200,6 +220,10 @@ public class AopiScreen extends ScreenAdapter {
             tab.pad(8, 10, 8, 10);
             if (name.equals("SESSION")) {
                 tabs.addActor(sessionTab);
+                continue;
+            }
+            if (name.equals("ANALYZE")) {
+                tabs.addActor(analysisTab);
                 continue;
             }
             if (name.equals("SETTINGS")) {
@@ -240,6 +264,7 @@ public class AopiScreen extends ScreenAdapter {
         settingsTab.setChecked(selected);
         hotbitsTab.setChecked(false);
         sessionTab.setChecked(false);
+        analysisTab.setChecked(false);
         if (selected) {
             stage.setScrollFocus(settingsScroll);
         }
@@ -253,6 +278,7 @@ public class AopiScreen extends ScreenAdapter {
         settingsTab.setChecked(false);
         hotbitsTab.setChecked(true);
         sessionTab.setChecked(false);
+        analysisTab.setChecked(false);
         root.invalidateHierarchy();
         stage.setScrollFocus(hotbitsScroll);
     }
@@ -264,8 +290,32 @@ public class AopiScreen extends ScreenAdapter {
         settingsTab.setChecked(false);
         hotbitsTab.setChecked(false);
         sessionTab.setChecked(true);
+        analysisTab.setChecked(false);
         root.invalidateHierarchy();
         stage.setScrollFocus(sessionScroll);
+    }
+
+    private void selectAnalysis() {
+        pageContainer.clearChildren();
+        pageContainer.add(analysisScroll).grow().minHeight(0);
+        dashboardTab.setChecked(false);
+        settingsTab.setChecked(false);
+        hotbitsTab.setChecked(false);
+        sessionTab.setChecked(false);
+        analysisTab.setChecked(true);
+        root.invalidateHierarchy();
+        stage.setScrollFocus(analysisScroll);
+    }
+
+    private void openAnalysis(AnalysisResult snapshot) {
+        selectAnalysis();
+        analysisPage.showResult(snapshot);
+    }
+
+    private void hotbitsConsumed() {
+        if (hotbits != null && !hotbits.isBusy()) {
+            hotbits.refreshCache();
+        }
     }
 
     private void caseChanged(CaseData data) {
@@ -471,10 +521,14 @@ public class AopiScreen extends ScreenAdapter {
 
     @Override
     public void show() {
+        var shortcuts = new de.isuret.polos.aopi.analysis.AnalysisShortcuts(
+                () -> analysisTab.isChecked() && analysisPage.allowsShortcuts(),
+                analysisPage::triggerAnalysis, analysisPage::triggerVitality);
         // Handle global window shortcuts before Scene2D consumes widget input.
         Gdx.input.setInputProcessor(new InputMultiplexer(new InputAdapter() {
             @Override
             public boolean keyDown(int keycode) {
+                boolean handled = shortcuts.keyDown(keycode);
                 if (keycode == Input.Keys.F11) {
                     toggleFullscreen();
                     return true;
@@ -486,7 +540,12 @@ public class AopiScreen extends ScreenAdapter {
                     fullscreen.setText(Gdx.graphics.isFullscreen() ? "WINDOWED [F11]" : "FULLSCREEN [F11]");
                     return true;
                 }
-                return false;
+                return handled;
+            }
+
+            @Override
+            public boolean keyUp(int keycode) {
+                return shortcuts.keyUp(keycode);
             }
         }, stage));
     }
@@ -496,6 +555,7 @@ public class AopiScreen extends ScreenAdapter {
         if (fonts.update(skin, settings.getFontSize(), stage.getRoot(), dashboardPage, settingsPage)) {
             arrangeColumns(Gdx.graphics.getWidth());
             fonts.refresh(sessionPage, skin);
+            fonts.refresh(analysisPage, skin);
             if (hotbitsPage != null) {
                 fonts.refresh(hotbitsPage, skin);
             }
@@ -515,11 +575,12 @@ public class AopiScreen extends ScreenAdapter {
                 }
                 entry.getValue().setState(lightState);
             }
-            serviceCounts.setText("HOTBITS: " + snapshot.cachedPackages()
+            serviceCounts.setText("CACHED PACKAGES: " + snapshot.cachedPackages()
                     + " | PACKAGE: " + snapshot.pendingIntegers()
                     + " / " + HotbitsAcquisition.INTEGERS_PER_PACKAGE + " | " + snapshot.state());
         }
         settingsPage.update(delta, settingsRepository);
+        analysisPage.update();
         ScreenUtils.clear(0.03f, 0.02f, 0.06f, 1);
         stage.act(Math.min(delta, 0.1f));
         stage.draw();
@@ -540,6 +601,7 @@ public class AopiScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
+        analysisPage.dispose();
         sessionPage.dispose();
         if (hotbits != null) {
             hotbits.close();

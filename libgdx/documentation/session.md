@@ -15,6 +15,16 @@ original Processing UI, Swing dialogs, source files, and runtime data are not us
 5. Use **LOAD** to choose from this application's saved cases, ordered by most
    recent change. Dashboard recent-case buttons also open the editor.
 
+The Load case dialog has a search field above the results. It filters case names
+and descriptions immediately as you type, without regard to capitalization.
+The counter shows matching and total cases. Clear the field to restore the full
+list; a no-match message appears when nothing fits the search.
+
+The results have a visible vertical scrollbar and receive mouse-wheel input
+while the dialog is open. The search field stays above the scrolling list, and
+filtering returns results to the top. Dialog bounds follow window resizing and
+fullscreen changes; the shared font setting also applies to the picker.
+
 Case editing is inline, replacing the original EDIT CASE Swing dialog. There is
 no extra edit-mode toggle. Name changes update the same case file: identity is a
 UUID, not a filename derived from the displayed name. Two cases can share a name
@@ -128,13 +138,16 @@ the app is closed; no case notes depend on those archived files.
 ## Current limits
 
 Case details, note sessions, history, questions, and recent-case integration work.
-Analysis/broadcast result attachments will arrive with those features. Original
+Analysis snapshots can be saved from ANALYSIS and reopened with VIEW ANALYSIS in
+history. A snapshot keeps its original values even after later GV checks; saving
+the same snapshot twice is ignored. Note-only case files remain compatible.
+Broadcast result attachments are not implemented. Original
 case import and HTML export are not implemented. The original Session dialog's
 unused OPEN HTML action is not exposed as a nonfunctional button.
 
 ## Verification
 
-The build and **62 unit tests** pass on Windows/JDK 24.0.1. Nine case tests cover
+The build and **82 unit tests** pass on Windows/JDK 24.0.1. Nine case tests cover
 round trips, rename identity, duplicate names, invalid names/paths, write failure,
 unreadable files, recent-case metadata, draft recovery, and mismatched IDs. Seven
 draw tests cover one-time package claims, archived data, rejection sampling,
@@ -146,3 +159,6 @@ session append semantics, Essential Questions, dashboard recent links, live font
 changes in editable fields, unsaved-change cancellation, and a complete
 close/recover/save sequence. The navigation/footer check covers Session alongside
 Dashboard, Settings, and Hotbits at 14, 24, and 32 px, including 800 × 600.
+The Session UI check also uses 21 cases to verify the list's scroll range,
+mouse-wheel focus, mixed-case name search, description search, no-match results,
+clearing the query, and opening a filtered case.

@@ -13,6 +13,7 @@ import java.util.stream.Stream;
 public class HotbitsPackageStore {
 
     private final Path directory;
+    private volatile int knownCount;
 
     public HotbitsPackageStore(Path directory) {
         this.directory = directory;
@@ -20,13 +21,19 @@ public class HotbitsPackageStore {
 
     public int count() throws IOException {
         if (!Files.exists(directory)) {
+            knownCount = 0;
             return 0;
         }
         try (Stream<Path> files = Files.list(directory)) {
-            return Math.toIntExact(files.filter(Files::isRegularFile)
+            knownCount = Math.toIntExact(files.filter(Files::isRegularFile)
                     .filter(path -> path.getFileName().toString().startsWith("hotbits_"))
                     .filter(path -> path.getFileName().toString().endsWith(".json")).count());
+            return knownCount;
         }
+    }
+
+    public int knownCount() {
+        return knownCount;
     }
 
     public Path write(int[] values, HotbitsBackend.Kind kind) throws IOException {

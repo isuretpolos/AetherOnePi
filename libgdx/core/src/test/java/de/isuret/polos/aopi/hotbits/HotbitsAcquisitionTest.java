@@ -173,6 +173,31 @@ class HotbitsAcquisitionTest {
     }
 
     @Test
+    void claimedPackagesUpdateTheVisibleCountDuringActiveAcquisition() throws Exception {
+        CountDownLatch reading = new CountDownLatch(1);
+        TestSource source = new TestSource() {
+            @Override
+            public byte[] readSample() throws InterruptedException {
+                reading.countDown();
+                new CountDownLatch(1).await();
+                return new byte[0];
+            }
+        };
+        HotbitsPackageStore store = new HotbitsPackageStore(directory);
+        store.write(new int[]{42}, HotbitsBackend.Kind.ESP32);
+        store.write(new int[]{43}, HotbitsBackend.Kind.ESP32);
+        try (HotbitsAcquisition service = service(source, store, 10000, 10)) {
+            service.start(DEVICE);
+            assertTrue(reading.await(2, TimeUnit.SECONDS));
+            assertEquals(2, service.snapshot().cachedPackages());
+            var reader = new de.isuret.polos.aopi.session.CachedHotbits(directory, service::cacheChanged);
+            reader.nextInt(100);
+            assertEquals(1, service.snapshot().cachedPackages());
+            assertEquals(HotbitsAcquisition.State.ACQUIRING, service.snapshot().state());
+        }
+    }
+
+    @Test
     void applicationShutdownStopsAnActiveReadAndReleasesTheDevice() throws Exception {
         CountDownLatch reading = new CountDownLatch(1);
         TestSource source = new TestSource() {

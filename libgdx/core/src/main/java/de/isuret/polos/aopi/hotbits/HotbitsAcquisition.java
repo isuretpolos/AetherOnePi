@@ -64,7 +64,14 @@ public class HotbitsAcquisition implements AutoCloseable {
     }
 
     public Snapshot snapshot() {
-        return snapshot;
+        Snapshot current = snapshot;
+        return new Snapshot(current.state(), current.message(), current.devices(), store.knownCount(),
+                current.sessionPackages(), current.pendingIntegers(), current.sampleCount(), current.previewPng());
+    }
+
+    /** Called by the cache reader on its worker thread, including during active acquisition. */
+    public void cacheChanged() throws IOException {
+        store.count();
     }
 
     public boolean isBusy() {
