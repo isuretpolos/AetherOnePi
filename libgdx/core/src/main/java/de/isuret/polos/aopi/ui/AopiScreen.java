@@ -19,6 +19,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Value;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Scaling;
@@ -104,7 +105,8 @@ public class AopiScreen extends ScreenAdapter {
         Table panel = new Table();
         panel.setBackground(skin.newDrawable("white", new Color(0.035f, 0.02f, 0.07f, 0.82f)));
         panel.pad(16);
-        panel.add(navigation()).growX().padBottom(12).row();
+        // Scroll panes can shrink to zero; reserve the tabs' preferred height on every page.
+        panel.add(navigation()).growX().minHeight(Value.prefHeight).padBottom(12).row();
         dashboardPage.add(projectLinks()).growX().padBottom(20).row();
 
         newsColumn.top().left();
@@ -144,6 +146,8 @@ public class AopiScreen extends ScreenAdapter {
         HorizontalGroup tabs = new HorizontalGroup().space(4).left();
         dashboardTab = navigationTab("DASHBOARD", () -> selectSettings(false));
         settingsTab = navigationTab("SETTINGS", () -> selectSettings(true));
+        dashboardTab.setName("dashboard-tab");
+        settingsTab.setName("settings-tab");
         dashboardTab.setChecked(true);
         tabs.addActor(dashboardTab);
         for (String name : new String[]{"SESSION", "SETTINGS", "ANALYZE", "IMAGE", "CARD", "RATES",

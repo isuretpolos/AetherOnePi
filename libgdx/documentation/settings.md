@@ -25,6 +25,8 @@ progress. Label caches and layout measurements are refreshed on the render
 thread. The largest font leaves the settings in a scrollable page; navigation
 uses one horizontally scrollable row. Dashboard columns stack earlier when
 larger text would otherwise make them too narrow.
+The navigation row reserves its preferred height, so switching to the long
+Settings page cannot compress its buttons or remove their padding.
 
 ## Original AOPi options
 
@@ -166,6 +168,11 @@ actual close/reopen lifecycle, preservation of font and boolean values, reopenin
 in fullscreen, and returning to the saved normal bounds. It has passed on Windows.
 It is separate from `build` because it requires a desktop and OpenGL and changes
 display mode briefly. It does not touch the user's application settings.
+
+The separate `:lwjgl3:navigationLayoutSmokeTest` task verifies that navigation
+buttons retain their full preferred height and identical dimensions when
+switching between Dashboard and Settings. It covers 14, 24, and 32 px fonts and
+an 800 × 600 window using isolated test data. This check has passed on Windows.
 
 Interactive verification still needed:
 
