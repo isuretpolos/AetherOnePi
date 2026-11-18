@@ -355,6 +355,12 @@ public class AopiScreen extends ScreenAdapter {
         root.invalidateHierarchy();
     }
 
+    public void stopAllBroadcasts() {
+        broadcasts.stopAll();
+        broadcastPage.update(message::setText);
+        message.setText("All broadcasts stopped.");
+    }
+
     private void hotbitsConsumed() {
         if (hotbits != null && !hotbits.isBusy()) {
             hotbits.refreshCache();

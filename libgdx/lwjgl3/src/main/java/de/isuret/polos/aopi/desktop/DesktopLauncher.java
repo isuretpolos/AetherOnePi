@@ -32,13 +32,33 @@ public final class DesktopLauncher {
         DesktopWindowController windowController = new DesktopWindowController(settings);
         Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
         configuration.setTitle("AOPi - libGDX");
+        DesktopIcons.configure(configuration);
         windowController.configure(configuration);
         configuration.setHdpiMode(HdpiMode.Logical);
         configuration.useVsync(true);
         configuration.setForegroundFPS(60);
         configuration.setIdleFPS(15);
 
-        new Lwjgl3Application(new AopiApplication(settings, repository, windowController, loadFailed,
-                new DesktopHotbitsBackend(), new DesktopRateFilePicker(), new DesktopBroadcastImagePicker()), configuration);
+        AopiApplication application = new AopiApplication(settings, repository, windowController, loadFailed,
+                new DesktopHotbitsBackend(), new DesktopRateFilePicker(), new DesktopBroadcastImagePicker());
+        try (DesktopTray tray = new DesktopTray()) {
+            configuration.setWindowListener(new com.badlogic.gdx.backends.lwjgl3.Lwjgl3WindowAdapter() {
+                @Override
+                public void created(com.badlogic.gdx.backends.lwjgl3.Lwjgl3Window window) {
+                    windowController.created(window);
+                    tray.install(() -> {
+                        if (window.isIconified()) {
+                            window.restoreWindow();
+                        }
+                        window.focusWindow();
+                    }, () -> {
+                        if (application.getScreen() instanceof de.isuret.polos.aopi.ui.AopiScreen screen) {
+                            screen.stopAllBroadcasts();
+                        }
+                    }, () -> com.badlogic.gdx.Gdx.app.exit());
+                }
+            });
+            new Lwjgl3Application(application, configuration);
+        }
     }
 }

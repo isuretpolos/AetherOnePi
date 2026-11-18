@@ -11,6 +11,8 @@ and user data. See the broadcast documentation for the source and adapter detail
 
 The application displays the AOPi dashboard: galaxy background, navigation,
 project links, news, recent cases, watchlist alerts, and inactive service indicators.
+The original blue-and-white π icon is used for the native window/taskbar and
+system tray, including AOPi's About, STOP ALL, and Exit tray menu.
 The **SETTINGS** tab includes all 15 original boolean options and a **14–32 px
 font-size slider** with a live, application-wide preview and automatic saving.
 The **SESSION** tab creates, edits, saves, and loads cases; appends dated notes;
@@ -65,6 +67,8 @@ See [Analysis](documentation/analysis.md) for rate-list formats, scoring rules,
 hotbits consumption, GV, and saving results into cases.
 See [Desktop broadcast](documentation/broadcast.md) for queues, timing, settings,
 reports, and the distinction between visual and hardware output.
+See [Original application icons](documentation/icons.md) for the bundled asset,
+tray actions, cleanup, and platform behavior.
 
 ## Requirements
 
