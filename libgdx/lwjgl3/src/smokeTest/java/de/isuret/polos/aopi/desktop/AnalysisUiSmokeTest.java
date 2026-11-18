@@ -123,6 +123,12 @@ public final class AnalysisUiSmokeTest {
                                 "Target GV and selected list must share the heading, in that order.");
                         requireCompactRows(stage);
                         requireHeaderPlacement(stage, true);
+                        click(stage, "analysis-broadcast");
+                        require(field(stage, "broadcast-signature").getText().lines().count() == 20,
+                                "Analysis rates did not transfer to Broadcast.");
+                        require(((TextButton) stage.getRoot().findActor("broadcast-tab")).isChecked(),
+                                "Analysis BROADCAST did not open the Broadcast tab.");
+                        click(stage, "analysis-tab");
                         settings.setFontSize(32);
                         // Native resizing may invoke render before setWindowedMode returns.
                         phase = 9;

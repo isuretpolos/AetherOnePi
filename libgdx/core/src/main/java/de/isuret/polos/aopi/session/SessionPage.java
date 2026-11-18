@@ -121,7 +121,7 @@ public class SessionPage extends Table {
                 saveCase(null);
             }
         })).row();
-        add(paragraph("Saved analysis snapshots appear in session history. Broadcast attachments are not available yet."))
+        add(paragraph("Saved analysis snapshots and broadcast reports appear in session history."))
                 .padBottom(16).row();
         add(new Label("SESSION HISTORY", skin, "accent")).row();
         history.top().left();
@@ -203,6 +203,23 @@ public class SessionPage extends Table {
     }
 
     private void saveCase(Runnable afterSave, AnalysisResult analysis) {
+        saveCase(afterSave, analysis, null);
+    }
+
+    public void attachBroadcast(de.isuret.polos.aopi.broadcast.BroadcastService.Report report) {
+        if (busy) {
+            status.setText("Wait for the current Session operation, then save the broadcast report again.");
+            return;
+        }
+        if (current.sessionList().stream().anyMatch(entry -> entry.id().equals(report.id()))) {
+            status.setText("This broadcast report is already saved in the current case.");
+            return;
+        }
+        saveCase(null, null, report);
+    }
+
+    private void saveCase(Runnable afterSave, AnalysisResult analysis,
+                          de.isuret.polos.aopi.broadcast.BroadcastService.Report broadcast) {
         if (name.getText().isBlank()) {
             status.setText("Enter a case name before saving.");
             stage.setKeyboardFocus(name);
@@ -217,6 +234,10 @@ public class SessionPage extends Table {
         if (analysis != null) {
             entries.add(new CaseData.Entry(UUID.randomUUID().toString(), Instant.now(),
                     "Analysis: " + analysis.database(), analysis.asText(), analysis));
+        }
+        if (broadcast != null) {
+            entries.add(new CaseData.Entry(broadcast.id(), broadcast.ended(), "Broadcast: " + broadcast.outcome(),
+                    broadcast.asText()));
         }
         CaseData toSave = new CaseData(current.id(), name.getText().trim(), description.getText(),
                 current.created(), Instant.now(), entries);

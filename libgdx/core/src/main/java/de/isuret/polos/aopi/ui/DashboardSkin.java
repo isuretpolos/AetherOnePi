@@ -88,6 +88,7 @@ public final class DashboardSkin {
         slider.knobBefore = background(skin, "9C7ACF");
         slider.knobBefore.setMinHeight(8);
         skin.add("default-horizontal", slider);
+        skin.add("default-horizontal", new com.badlogic.gdx.scenes.scene2d.ui.ProgressBar.ProgressBarStyle(slider));
 
         ScrollPane.ScrollPaneStyle scroll = new ScrollPane.ScrollPaneStyle();
         scroll.vScroll = background(skin, "211D2D");

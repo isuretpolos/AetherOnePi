@@ -21,6 +21,7 @@ public class AopiApplication extends Game {
     private final boolean settingsLoadFailed;
     private final HotbitsBackend hotbitsBackend;
     private final RateFilePicker rateFilePicker;
+    private final de.isuret.polos.aopi.broadcast.BroadcastImagePicker broadcastImagePicker;
 
     public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
                           WindowModeController windowMode, boolean settingsLoadFailed) {
@@ -35,17 +36,24 @@ public class AopiApplication extends Game {
     public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
                           WindowModeController windowMode, boolean settingsLoadFailed, HotbitsBackend hotbitsBackend,
                           RateFilePicker rateFilePicker) {
+        this(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend, rateFilePicker, null);
+    }
+
+    public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
+                          WindowModeController windowMode, boolean settingsLoadFailed, HotbitsBackend hotbitsBackend,
+                          RateFilePicker rateFilePicker, de.isuret.polos.aopi.broadcast.BroadcastImagePicker broadcastImagePicker) {
         this.settings = settings;
         this.repository = repository;
         this.windowMode = windowMode;
         this.settingsLoadFailed = settingsLoadFailed;
         this.hotbitsBackend = hotbitsBackend;
         this.rateFilePicker = rateFilePicker;
+        this.broadcastImagePicker = broadcastImagePicker;
     }
 
     @Override
     public void create() {
-        setScreen(new AopiScreen(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend, rateFilePicker));
+        setScreen(new AopiScreen(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend, rateFilePicker, broadcastImagePicker));
     }
 
     @Override

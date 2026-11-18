@@ -65,6 +65,8 @@ public class AnalysisPage extends Table {
     private final TextButton copy;
     private final TextButton save;
     private final TextButton importLists;
+    private final TextButton broadcast;
+    private Consumer<List<String>> broadcastAction;
     private final ExecutorService worker = Executors.newSingleThreadExecutor(task -> {
         Thread thread = new Thread(task, "aopi-analysis");
         thread.setDaemon(true);
@@ -141,6 +143,9 @@ public class AnalysisPage extends Table {
         actions.addActor(gvAll);
         copy = button("COPY RESULTS", "analysis-copy", () -> Gdx.app.getClipboard().setContents(result.asText()));
         actions.addActor(copy);
+        broadcast = button("BROADCAST", "analysis-broadcast", () ->
+                broadcastAction.accept(result.rows().stream().map(AnalysisResult.Row::name).toList()));
+        actions.addActor(broadcast);
         save = button("SAVE TO CURRENT CASE", "analysis-save-case", () -> saveToCase.accept(result));
         actions.addActor(save);
         actions.addActor(button("CLEAR", "analysis-clear", this::clearResult));
@@ -503,6 +508,7 @@ public class AnalysisPage extends Table {
         gvNext.setDisabled(busy || result == null);
         gvAll.setDisabled(busy || result == null);
         copy.setDisabled(busy || result == null);
+        broadcast.setDisabled(busy || result == null || broadcastAction == null);
         save.setDisabled(busy || result == null);
         if (busy) {
             status.setText(progress);
@@ -535,6 +541,14 @@ public class AnalysisPage extends Table {
         if (!analyze.isDisabled()) {
             analyze();
         }
+    }
+
+    public AnalysisResult currentResult() {
+        return result;
+    }
+
+    public void setBroadcastAction(Consumer<List<String>> action) {
+        broadcastAction = action;
     }
 
     public void triggerVitality() {

@@ -105,8 +105,10 @@ the existing schema with an optional `analysis` object on a history entry, so
 existing note-only cases continue to load.
 
 These randomized results do not constitute a medical diagnosis. Watchlist
-automation, training, stick-pad input, audio, broadcasting, and original-format
+automation, training, stick-pad input, audio, hardware broadcasting, and original-format
 case/result import are separate features and are not implemented here.
+The BROADCAST button copies the current result names into the desktop Broadcast
+page without starting it; see [Desktop broadcast](broadcast.md).
 
 ## Verification
 

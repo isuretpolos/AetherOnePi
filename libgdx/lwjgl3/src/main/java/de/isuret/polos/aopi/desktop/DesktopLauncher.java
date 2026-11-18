@@ -39,6 +39,6 @@ public final class DesktopLauncher {
         configuration.setIdleFPS(15);
 
         new Lwjgl3Application(new AopiApplication(settings, repository, windowController, loadFailed,
-                new DesktopHotbitsBackend(), new DesktopRateFilePicker()), configuration);
+                new DesktopHotbitsBackend(), new DesktopRateFilePicker(), new DesktopBroadcastImagePicker()), configuration);
     }
 }

@@ -110,3 +110,19 @@ tasks.register('analysisUiSmokeTest', JavaExec) {
     workingDir = rootProject.projectDir
     jvmArgs application.applicationDefaultJvmArgs
 }
+
+tasks.register('broadcastUiSmokeTest', JavaExec) {
+    dependsOn smokeTestClasses
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    mainClass = 'de.isuret.polos.aopi.desktop.BroadcastUiSmokeTest'
+    workingDir = rootProject.projectDir
+    jvmArgs application.applicationDefaultJvmArgs
+}
+
+tasks.register('broadcastPortSmokeTest', JavaExec) {
+    dependsOn smokeTestClasses
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    mainClass = 'de.isuret.polos.aopi.desktop.BroadcastPortSmokeTest'
+    workingDir = rootProject.projectDir
+    jvmArgs application.applicationDefaultJvmArgs
+}

@@ -141,13 +141,14 @@ Case details, note sessions, history, questions, and recent-case integration wor
 Analysis snapshots can be saved from ANALYSIS and reopened with VIEW ANALYSIS in
 history. A snapshot keeps its original values even after later GV checks; saving
 the same snapshot twice is ignored. Note-only case files remain compatible.
-Broadcast result attachments are not implemented. Original
+Completed/stopped broadcast reports can also be saved from Broadcast. The report
+ID prevents duplicate history entries. Original
 case import and HTML export are not implemented. The original Session dialog's
 unused OPEN HTML action is not exposed as a nonfunctional button.
 
 ## Verification
 
-The build and **82 unit tests** pass on Windows/JDK 24.0.1. Nine case tests cover
+The build and **87 unit tests** pass on Windows/JDK 24.0.1. Nine case tests cover
 round trips, rename identity, duplicate names, invalid names/paths, write failure,
 unreadable files, recent-case metadata, draft recovery, and mismatched IDs. Seven
 draw tests cover one-time package claims, archived data, rejection sampling,

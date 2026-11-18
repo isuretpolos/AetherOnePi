@@ -59,8 +59,11 @@ that source on the Hotbits page; it does not open a device automatically.
 Disabling the corresponding setting stops an active session.
 The analysis high-hit option selects a scoring threshold of 1000 instead of 100
 on the next analysis. Other future options do not yet start watchlist analysis,
-sound, or broadcasting.
-The overlay option refers to the future broadcast visualization, not the dark
+sound, or hardware broadcasting. The desktop Broadcast page uses single-rate
+queuing, delta time, the original safety-word branch, image layers, both original
+sound modes, and footer completion notifications;
+see [Broadcast](broadcast.md) for details and remaining legacy options.
+The overlay option refers to the original global broadcast overlay, not the dark
 dashboard background. The font-size setting is already active throughout the UI.
 
 ## Saving and failures
@@ -160,7 +163,7 @@ configuration.
 ## Verification
 
 The Gradle build, installed distribution, and application startup were checked
-on Windows/JDK 24.0.1. Eighty-two tests pass, including five dashboard tests, eight
+on Windows/JDK 24.0.1. Eighty-seven tests pass, including five dashboard tests, eight
 settings tests, five window-placement tests, fourteen core Hotbits tests, and
 fourteen desktop Infinite Noise protocol/transport tests, nine case persistence
 tests, and seven cached-draw/Essential Questions tests.

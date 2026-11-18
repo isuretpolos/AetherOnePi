@@ -61,7 +61,7 @@ public final class NavigationLayoutSmokeTest {
                 Stage stage = (Stage) ((InputMultiplexer) Gdx.input.getInputProcessor()).getProcessors().get(1);
                 TextButton dashboard = stage.getRoot().findActor("dashboard-tab");
                 TextButton settingsTab = stage.getRoot().findActor("settings-tab");
-                int step = frames % 14;
+                int step = frames % 16;
                 if (step == 1) {
                     settings.setFontSize(new int[]{14, 24, 32, 32}[scenario]);
                     if (scenario == 3) {
@@ -90,14 +90,18 @@ public final class NavigationLayoutSmokeTest {
                     analysis.fire(new ChangeListener.ChangeEvent());
                 } else if (step == 12) {
                     requireVisibleFooter(stage);
+                    TextButton broadcast = stage.getRoot().findActor("broadcast-tab");
+                    broadcast.fire(new ChangeListener.ChangeEvent());
+                } else if (step == 14) {
+                    requireVisibleFooter(stage);
                     dashboard.fire(new ChangeListener.ChangeEvent());
-                } else if (step == 13) {
+                } else if (step == 15) {
                     requireVisibleFooter(stage);
                     requireFullHeight(dashboard);
                     requireSameSize(dashboard, dashboardWidth, dashboardHeight);
                     scenario++;
                     if (scenario == 4) {
-                        System.out.println("Navigation/footer layout passed on Dashboard, Session, Settings, Analysis, and Hotbits at 14, 24, and 32 px, including 800 x 600.");
+                        System.out.println("Navigation/footer layout passed on Dashboard, Session, Settings, Analysis, Broadcast, and Hotbits at 14, 24, and 32 px, including 800 x 600.");
                         Gdx.app.exit();
                     }
                 }
