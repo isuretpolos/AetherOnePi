@@ -15,6 +15,8 @@ The original blue-and-white π icon is used for the native window/taskbar and
 system tray, including AOPi's About, STOP ALL, and Exit tray menu.
 The **SETTINGS** tab includes all 15 original boolean options and a **14–32 px
 font-size slider** with a live, application-wide preview and automatic saving.
+Panel background color and transparency are also editable with a live preview,
+RGB/hex controls, automatic saving, and a reset button.
 The **SESSION** tab creates, edits, saves, and loads cases; appends dated notes;
 shows session history; and generates Essential Questions from acquired hotbits.
 It protects unsaved changes and preserves a recovery draft on normal close.
@@ -112,7 +114,7 @@ in `lwjgl3/build/distributions/`.
 The Gradle build and installed distribution were verified on Windows with
 JDK 24.0.1. The desktop window was launched, its client area measured at
 1285 × 721 pixels using a DPI-aware Windows check, and closed successfully.
-The build and eighty-seven tests pass. Startup with the bundled scalable
+The build and ninety-one tests pass. Startup with the bundled scalable
 font has been verified. The previous dashboard was visually confirmed by the
 user. Slider dragging, fullscreen, and narrow-window reflow have not yet been
 verified through automated desktop interaction. A separate native lifecycle test

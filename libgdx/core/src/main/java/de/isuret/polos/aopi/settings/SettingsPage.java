@@ -10,6 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 
 /** Settings content shares the application's stage and theme, so preview changes are global. */
@@ -22,6 +25,10 @@ public class SettingsPage extends Table {
     private final Label saveStatus;
     private boolean dirty;
     private float saveDelay;
+    private Slider panelTransparency;
+    private TextField panelColor;
+    private Label colorValidation;
+    private Label transparencyValue;
 
     public SettingsPage(ApplicationSettings settings, Skin skin) {
         this.settings = settings;
@@ -49,7 +56,7 @@ public class SettingsPage extends Table {
                 changedSettings();
             }
         });
-        addSliderKeyboardSupport();
+        addSliderKeyboardSupport(fontSize, ApplicationSettings.MIN_FONT_SIZE, ApplicationSettings.MAX_FONT_SIZE);
 
         add(paragraph("Preview: AetherOnePi - The quick brown fox jumps over the lazy dog. 0123456789"))
                 .padTop(8).row();
@@ -63,6 +70,7 @@ public class SettingsPage extends Table {
         add(reset).growX().left().padBottom(16).row();
         saveStatus = paragraph("Settings are saved automatically after changes.");
         add(saveStatus).row();
+        addBackgroundControls();
         add(paragraph("ESP32 TRNG and Infinite Noise TRNG enable their sources on the Hotbits tab. The other original AOPi "
                 + "options are saved for use as analysis, broadcasting, sound, and further hardware support are implemented."))
                 .padBottom(16).row();
@@ -106,21 +114,127 @@ public class SettingsPage extends Table {
         add(row).spaceBottom(4).row();
     }
 
-    private void addSliderKeyboardSupport() {
-        fontSize.addListener(new InputListener() {
+    private void addBackgroundControls() {
+        add(new Label("PANEL BACKGROUND", skin, "accent")).padTop(8).row();
+        HorizontalGroup colors = new HorizontalGroup().wrap().left().rowLeft().space(8).wrapSpace(8);
+        colors.addActor(new Label("Color", skin));
+        panelColor = new TextField("#" + settings.getPanelColor(), skin) {
+            @Override
+            public float getPrefWidth() {
+                return Math.max(150, getStyle().font.getCapHeight() * 8 + 24);
+            }
+        };
+        panelColor.setName("panel-color");
+        panelColor.setMaxLength(7);
+        panelColor.setProgrammaticChangeEvents(true);
+        panelColor.setTextFieldFilter((field, character) -> character == '#' || Character.digit(character, 16) >= 0);
+        colors.addActor(panelColor);
+        TextButton choose = new TextButton("CHOOSE COLOR", skin);
+        choose.setName("panel-color-choose");
+        choose.pad(7, 10, 7, 10);
+        choose.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                choosePanelColor();
+            }
+        });
+        colors.addActor(choose);
+        TextButton reset = new TextButton("RESET BACKGROUND", skin);
+        reset.setName("panel-background-reset");
+        reset.pad(7, 10, 7, 10);
+        reset.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                panelColor.setText("#" + ApplicationSettings.DEFAULT_PANEL_COLOR);
+                panelTransparency.setValue(0);
+            }
+        });
+        colors.addActor(reset);
+        add(colors).row();
+        colorValidation = new Label("RGB hex color (#RRGGBB). Changes apply to every tab immediately.", skin, "muted");
+        colorValidation.setWrap(true);
+        add(colorValidation).row();
+        panelColor.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                try {
+                    settings.setPanelColor(panelColor.getText());
+                    colorValidation.setText("RGB hex color (#RRGGBB). Changes apply to every tab immediately.");
+                    changedSettings();
+                } catch (IllegalArgumentException exception) {
+                    colorValidation.setText("Enter six hex digits. The previous valid color remains active.");
+                }
+            }
+        });
+        transparencyValue = new Label("Transparency: " + settings.getPanelTransparency() + "%", skin);
+        transparencyValue.setName("panel-transparency-value");
+        add(transparencyValue).left().row();
+        panelTransparency = new Slider(0, 100, 1, false, skin);
+        panelTransparency.setName("panel-transparency");
+        panelTransparency.setValue(settings.getPanelTransparency());
+        addSliderKeyboardSupport(panelTransparency, 0, 100);
+        panelTransparency.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                settings.setPanelTransparency(Math.round(panelTransparency.getValue()));
+                transparencyValue.setText("Transparency: " + settings.getPanelTransparency() + "%");
+                changedSettings();
+            }
+        });
+        add(panelTransparency).height(40).row();
+        add(paragraph("0%: solid color. 100%: fully transparent, showing the galaxy background."))
+                .padBottom(8).row();
+    }
+
+    private void choosePanelColor() {
+        Dialog dialog = new Dialog("Panel color — live preview", skin);
+        dialog.setName("panel-color-dialog");
+        Color initial = Color.valueOf(settings.getPanelColor());
+        Slider[] components = new Slider[3];
+        String[] names = {"Red", "Green", "Blue"};
+        int[] values = {Math.round(initial.r * 255), Math.round(initial.g * 255), Math.round(initial.b * 255)};
+        for (int index = 0; index < components.length; index++) {
+            final int channel = index;
+            Slider slider = new Slider(0, 255, 1, false, skin);
+            components[index] = slider;
+            slider.setName("panel-color-" + names[index].toLowerCase(java.util.Locale.ROOT));
+            slider.setValue(values[index]);
+            addSliderKeyboardSupport(slider, 0, 255);
+            Label value = new Label(names[index] + ": " + values[index], skin);
+            dialog.getContentTable().add(value).left().pad(8).row();
+            dialog.getContentTable().add(slider).width(Math.min(480, getStage().getWidth() - 100)).height(40).pad(8).row();
+            slider.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    values[channel] = Math.round(slider.getValue());
+                    value.setText(names[channel] + ": " + values[channel]);
+                    panelColor.setText(String.format(java.util.Locale.ROOT, "#%02X%02X%02X", values[0], values[1], values[2]));
+                }
+            });
+        }
+        TextButton done = new TextButton("DONE", skin);
+        done.setName("panel-color-done");
+        done.pad(8, 12, 8, 12);
+        dialog.button(done);
+        dialog.key(Input.Keys.ESCAPE, null);
+        dialog.show(getStage());
+    }
+
+    private void addSliderKeyboardSupport(Slider slider, int minimum, int maximum) {
+        slider.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                getStage().setKeyboardFocus(fontSize);
+                slider.getStage().setKeyboardFocus(slider);
                 return false;
             }
 
             @Override
             public boolean keyDown(InputEvent event, int keycode) {
                 switch (keycode) {
-                    case Input.Keys.LEFT, Input.Keys.DOWN -> fontSize.setValue(fontSize.getValue() - 1);
-                    case Input.Keys.RIGHT, Input.Keys.UP -> fontSize.setValue(fontSize.getValue() + 1);
-                    case Input.Keys.HOME -> fontSize.setValue(ApplicationSettings.MIN_FONT_SIZE);
-                    case Input.Keys.END -> fontSize.setValue(ApplicationSettings.MAX_FONT_SIZE);
+                    case Input.Keys.LEFT, Input.Keys.DOWN -> slider.setValue(slider.getValue() - 1);
+                    case Input.Keys.RIGHT, Input.Keys.UP -> slider.setValue(slider.getValue() + 1);
+                    case Input.Keys.HOME -> slider.setValue(minimum);
+                    case Input.Keys.END -> slider.setValue(maximum);
                     default -> { return false; }
                 }
                 return true;
@@ -135,7 +249,7 @@ public class SettingsPage extends Table {
     }
 
     public void update(float delta, SettingsRepository repository) {
-        if (!dirty || fontSize.isDragging()) {
+        if (!dirty || fontSize.isDragging() || panelTransparency.isDragging()) {
             return;
         }
         saveDelay -= delta;

@@ -134,3 +134,11 @@ tasks.register('desktopIconsSmokeTest', JavaExec) {
     workingDir = rootProject.projectDir
     jvmArgs application.applicationDefaultJvmArgs
 }
+
+tasks.register('panelAppearanceSmokeTest', JavaExec) {
+    dependsOn smokeTestClasses
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    mainClass = 'de.isuret.polos.aopi.desktop.PanelAppearanceSmokeTest'
+    workingDir = rootProject.projectDir
+    jvmArgs application.applicationDefaultJvmArgs
+}

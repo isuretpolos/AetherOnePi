@@ -47,6 +47,21 @@ public class SettingsRepository {
             settings.setFontSize(size.asInt());
         }
         JsonValue window = parsed.get("window");
+        JsonValue appearance = parsed.get("appearance");
+        if (appearance != null && appearance.isObject()) {
+            JsonValue color = appearance.get("panelColor");
+            if (color != null && color.isString()) {
+                try {
+                    settings.setPanelColor(color.asString());
+                } catch (IllegalArgumentException ignored) {
+                    // Invalid manually edited colors fall back without discarding other settings.
+                }
+            }
+            JsonValue transparency = appearance.get("panelTransparency");
+            if (transparency != null && transparency.isNumber()) {
+                settings.setPanelTransparency((int) Math.max(0, Math.min(100, transparency.asLong())));
+            }
+        }
         if (window != null && window.isObject()) {
             try {
                 int width = window.getInt("width", 0);
@@ -66,6 +81,16 @@ public class SettingsRepository {
     }
 
     public void save(ApplicationSettings settings) throws IOException {
+        JsonValue appearance = document.get("appearance");
+        if (appearance == null || !appearance.isObject()) {
+            document.remove("appearance");
+            appearance = new JsonValue(JsonValue.ValueType.object);
+            document.addChild("appearance", appearance);
+        }
+        appearance.remove("panelColor");
+        appearance.addChild("panelColor", new JsonValue(settings.getPanelColor()));
+        appearance.remove("panelTransparency");
+        appearance.addChild("panelTransparency", new JsonValue(settings.getPanelTransparency()));
         document.remove("fontSize");
         document.addChild("fontSize", new JsonValue(settings.getFontSize()));
         JsonValue booleans = document.get("booleans");

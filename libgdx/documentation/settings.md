@@ -66,6 +66,37 @@ see [Broadcast](broadcast.md) for details and remaining legacy options.
 The overlay option refers to the original global broadcast overlay, not the dark
 dashboard background. The font-size setting is already active throughout the UI.
 
+## Panel background color and transparency
+
+**PANEL BACKGROUND** controls the large shared panel behind every tab. CHOOSE
+COLOR opens red/green/blue sliders with live preview. Alternatively, type a
+six-digit RGB hex color such as `#1C1625`. Invalid or incomplete text keeps the
+previous valid color active. DONE closes the live-preview chooser.
+
+The **Transparency** slider goes from 0% (solid) to 100% (fully transparent),
+revealing the galaxy beneath the panel. Changes preview immediately on all tabs
+and save automatically using the same debounce as other settings. Sliders also
+support arrow keys and Home/End after clicking them. RESET BACKGROUND restores
+the previous visible indigo color and 0% transparency, without changing font size
+or boolean settings. Controls and result-row colors retain their own backgrounds.
+
+The panel has no border stroke or opaque backing beneath its adjustable fill.
+This makes intermediate transparency values blend with the actual galaxy image.
+Settings are stored in this readable section of `settings.json`:
+
+```json
+"appearance": {
+  "panelColor": "1C1625",
+  "panelTransparency": 0
+}
+```
+
+Close the app and remove `appearance` to reset only these values manually.
+Older settings files default to the previous visible indigo. Invalid colors fall
+back safely, transparency is clamped to 0–100, and unknown appearance keys survive
+saving. Appearance persistence has unit tests; `:lwjgl3:panelAppearanceSmokeTest`
+checks RGB/hex controls, autosave/reload, and actual rendered transparency pixels.
+
 ## Saving and failures
 
 Settings are saved in `aopi-libgdx-data/settings.json` under the application's
@@ -163,7 +194,7 @@ configuration.
 ## Verification
 
 The Gradle build, installed distribution, and application startup were checked
-on Windows/JDK 24.0.1. Eighty-seven tests pass, including five dashboard tests, eight
+on Windows/JDK 24.0.1. Ninety-one tests pass, including five dashboard tests, eight
 settings tests, five window-placement tests, fourteen core Hotbits tests, and
 fourteen desktop Infinite Noise protocol/transport tests, nine case persistence
 tests, and seven cached-draw/Essential Questions tests.

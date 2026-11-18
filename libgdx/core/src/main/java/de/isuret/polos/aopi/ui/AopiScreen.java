@@ -168,7 +168,6 @@ public class AopiScreen extends ScreenAdapter {
         root.pad(24);
 
         Table panel = new Table();
-        panel.setBackground(skin.newDrawable("white", new Color(0.035f, 0.02f, 0.07f, 0.82f)));
         panel.pad(16);
         // Scroll panes can shrink to zero; reserve the tabs' preferred height on every page.
         panel.add(navigation()).growX().minHeight(Value.prefHeight).padBottom(12).row();
@@ -191,7 +190,7 @@ public class AopiScreen extends ScreenAdapter {
 
         Table panelBorder = new Table();
         panelBorder.setName("page-panel");
-        panelBorder.setBackground(skin.newDrawable("white", Color.valueOf("71627E")));
+        panelBorder.setBackground(new PanelBackground(skin.getDrawable("white"), settings));
         panelBorder.pad(1);
         panelBorder.add(panel).grow();
         root.add(panelBorder).grow().minHeight(0).row();
