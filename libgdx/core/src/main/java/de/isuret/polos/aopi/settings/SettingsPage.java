@@ -242,7 +242,7 @@ public class SettingsPage extends Table {
         });
     }
 
-    private void changedSettings() {
+    public void changedSettings() {
         dirty = true;
         saveDelay = 0.4f;
         saveStatus.setText("Preview applied. Saving changes...");

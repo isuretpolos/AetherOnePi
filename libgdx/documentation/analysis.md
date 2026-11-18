@@ -15,6 +15,11 @@ Questions. It does not load the original application's classes, cache, or data.
 3. SELECT DATA opens a searchable, scrollable list selector. A small ANALYSIS_TIME
    starter list is supplied when there are no lists. This is a standalone copy of
    the original time list, bundled as a resource rather than read from the old app.
+   The selected list is remembered in `settings.json` as `lastRateList`, including
+   when an imported list becomes selected. Startup restores that list if it still
+   exists; otherwise it selects the first available list. Paths are relative to
+   this application's `rates/` folder. Removing `lastRateList` manually resets the
+   selection preference without changing other settings.
 4. ANALYZE runs on a worker thread. You can switch tabs while it works; STOP cancels
    it. Results show rank, rate, energetic value (EV), potency, level, GV, recurrence,
    and available classification metadata in a compact table with one line per

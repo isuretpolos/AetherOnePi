@@ -32,6 +32,7 @@ public final class AnalysisUiSmokeTest {
         Path directory = Files.createTempDirectory(Path.of("lwjgl3/build"), "analysis-ui-");
         System.setProperty("aopi.dataDirectory", directory.toAbsolutePath().toString());
         Files.createDirectories(directory.resolve("rates"));
+        Files.writeString(directory.resolve("rates/A-default.txt"), "Default rate");
         Files.writeString(directory.resolve("rates/fixture.tsv"),
                 "NAME\tURL\tCLASSIFICATION\tSUBFAMILY\nAlpha\t\tPlants\tFamily\n"
                         + String.join("\n", java.util.stream.IntStream.range(1, 100).mapToObj(index -> "Rate " + index).toList()));
@@ -185,6 +186,8 @@ public final class AnalysisUiSmokeTest {
                 }
             }
         }, configuration);
+        var restoredSettings = new SettingsRepository(new FileHandle(directory.toFile())).load();
+        require(restoredSettings.getLastRateList().equals("fixture.tsv"), "Last selected rate list was not saved on close.");
     }
 
     private static boolean enabled(Stage stage, String id) {

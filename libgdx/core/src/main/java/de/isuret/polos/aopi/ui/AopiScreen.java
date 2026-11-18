@@ -129,7 +129,8 @@ public class AopiScreen extends ScreenAdapter {
             selectSession();
             sessionPage.attachAnalysis(snapshot);
         }, this::hotbitsConsumed, sessionPage::currentCaseId,
-                () -> hotbits != null && hotbits.snapshot().state() == HotbitsAcquisition.State.ACQUIRING);
+                () -> hotbits != null && hotbits.snapshot().state() == HotbitsAcquisition.State.ACQUIRING,
+                settingsPage::changedSettings);
         analysisScroll = scrollPane(analysisPage);
         broadcastPage = new BroadcastPage(skin, broadcasts, new BroadcastHistory(dataDirectory.file().toPath()),
                 settings, analysisPage::currentResult, report -> {

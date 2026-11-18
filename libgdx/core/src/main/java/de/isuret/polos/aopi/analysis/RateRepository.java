@@ -60,6 +60,14 @@ public class RateRepository {
         return readFile(path);
     }
 
+    /** Restore only a list that still belongs to the app's rates directory. */
+    public String findSelection(String preferred) throws IOException {
+        List<ListInfo> available = list();
+        String normalized = preferred == null ? "" : preferred.replace('\\', '/');
+        return available.stream().filter(info -> info.id().replace('\\', '/').equals(normalized))
+                .map(ListInfo::id).findFirst().orElse(available.isEmpty() ? null : available.getFirst().id());
+    }
+
     public ListInfo importFile(Path source) throws IOException {
         if (!isRateFile(source)) {
             throw new IOException("Choose a .txt or .tsv rate file.");

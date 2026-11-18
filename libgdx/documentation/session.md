@@ -148,7 +148,7 @@ unused OPEN HTML action is not exposed as a nonfunctional button.
 
 ## Verification
 
-The build and **91 unit tests** pass on Windows/JDK 24.0.1. Nine case tests cover
+The build and **92 unit tests** pass on Windows/JDK 24.0.1. Nine case tests cover
 round trips, rename identity, duplicate names, invalid names/paths, write failure,
 unreadable files, recent-case metadata, draft recovery, and mismatched IDs. Seven
 draw tests cover one-time package claims, archived data, rejection sampling,

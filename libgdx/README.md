@@ -114,7 +114,7 @@ in `lwjgl3/build/distributions/`.
 The Gradle build and installed distribution were verified on Windows with
 JDK 24.0.1. The desktop window was launched, its client area measured at
 1285 × 721 pixels using a DPI-aware Windows check, and closed successfully.
-The build and ninety-one tests pass. Startup with the bundled scalable
+The build and ninety-two tests pass. Startup with the bundled scalable
 font has been verified. The previous dashboard was visually confirmed by the
 user. Slider dragging, fullscreen, and narrow-window reflow have not yet been
 verified through automated desktop interaction. A separate native lifecycle test

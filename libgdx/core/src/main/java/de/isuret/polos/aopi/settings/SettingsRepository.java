@@ -43,6 +43,10 @@ public class SettingsRepository {
             }
         }
         JsonValue size = parsed.get("fontSize");
+        JsonValue lastRateList = parsed.get("lastRateList");
+        if (lastRateList != null && lastRateList.isString()) {
+            settings.setLastRateList(lastRateList.asString());
+        }
         if (size != null && size.isNumber()) {
             settings.setFontSize(size.asInt());
         }
@@ -81,6 +85,8 @@ public class SettingsRepository {
     }
 
     public void save(ApplicationSettings settings) throws IOException {
+        document.remove("lastRateList");
+        document.addChild("lastRateList", new JsonValue(settings.getLastRateList()));
         JsonValue appearance = document.get("appearance");
         if (appearance == null || !appearance.isObject()) {
             document.remove("appearance");

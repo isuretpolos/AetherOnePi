@@ -42,6 +42,7 @@ public class AnalysisPage extends Table {
     private final RateRepository rates;
     private final AnalysisStore store;
     private final ApplicationSettings settings;
+    private final Runnable selectionChanged;
     private final RateFilePicker filePicker;
     private final Consumer<AnalysisResult> saveToCase;
     private final Runnable consumed;
@@ -88,13 +89,14 @@ public class AnalysisPage extends Table {
     public AnalysisPage(Skin skin, Stage stage, RateRepository rates, AnalysisStore store,
                         CachedHotbits hotbits, ApplicationSettings settings, RateFilePicker filePicker,
                         Consumer<AnalysisResult> saveToCase, Runnable consumed, Supplier<String> caseId,
-                        BooleanSupplier acquisitionActive) {
+                        BooleanSupplier acquisitionActive, Runnable selectionChanged) {
         this.skin = skin;
         results = new AnalysisResultsTable(skin);
         this.stage = stage;
         this.rates = rates;
         this.store = store;
         this.settings = settings;
+        this.selectionChanged = selectionChanged;
         this.filePicker = filePicker;
         this.saveToCase = saveToCase;
         this.consumed = consumed;
@@ -179,11 +181,9 @@ public class AnalysisPage extends Table {
         String starter = Gdx.files.internal("analysis/ANALYSIS_TIME.txt").readString("UTF-8");
         runJob(() -> {
             rates.ensureStarter(starter);
-            List<RateRepository.ListInfo> lists = rates.list();
-            return lists.isEmpty() ? null : lists.getFirst().id();
+            return rates.findSelection(settings.getLastRateList());
         }, id -> {
-            selected = id;
-            selectedLabel.setText(id == null ? "Import a .txt or .tsv rate list." : id);
+            selectList(id);
             runJob(store::load, restored -> {
                 if (restored != null) {
                     showResult(restored, null);
@@ -291,8 +291,7 @@ public class AnalysisPage extends Table {
                     choice.addListener(new ChangeListener() {
                         @Override
                         public void changed(ChangeEvent event, Actor actor) {
-                            selected = list.id();
-                            selectedLabel.setText(list.name());
+                            selectList(list.id());
                             status.setText("Rate list selected. ANALYZE uses acquired hotbits.");
                             dialog.hide();
                         }
@@ -339,8 +338,7 @@ public class AnalysisPage extends Table {
                 }
                 return last;
             }, imported -> {
-                selected = imported.id();
-                selectedLabel.setText(imported.name());
+                selectList(imported.id());
                 status.setText("Rate files copied into this application's rates folder.");
             });
         }, message -> status.setText(message));
@@ -403,6 +401,16 @@ public class AnalysisPage extends Table {
                 + result.trials() + " | Hit limit: " + result.hitLimit());
         if (shown == 0) {
             results.add(paragraph("No rates match the filter.")).colspan(headings.length).growX();
+        }
+    }
+
+    private void selectList(String id) {
+        selected = id;
+        selectedLabel.setText(id == null ? "Import a .txt or .tsv rate list." : id);
+        String previous = settings.getLastRateList();
+        settings.setLastRateList(id);
+        if (!previous.equals(settings.getLastRateList())) {
+            selectionChanged.run();
         }
     }
 

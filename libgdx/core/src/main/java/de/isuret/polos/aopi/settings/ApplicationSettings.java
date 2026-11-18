@@ -16,6 +16,7 @@ public class ApplicationSettings {
     private WindowPlacement windowPlacement;
     private String panelColor = DEFAULT_PANEL_COLOR;
     private int panelTransparency;
+    private String lastRateList = "";
 
     public ApplicationSettings() {
         for (Setting setting : Setting.values()) {
@@ -65,5 +66,13 @@ public class ApplicationSettings {
 
     public void setPanelTransparency(int percent) {
         panelTransparency = Math.max(0, Math.min(100, percent));
+    }
+
+    public String getLastRateList() {
+        return lastRateList;
+    }
+
+    public void setLastRateList(String list) {
+        lastRateList = list == null ? "" : list.replace('\\', '/');
     }
 }

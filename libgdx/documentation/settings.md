@@ -194,7 +194,7 @@ configuration.
 ## Verification
 
 The Gradle build, installed distribution, and application startup were checked
-on Windows/JDK 24.0.1. Ninety-one tests pass, including five dashboard tests, eight
+on Windows/JDK 24.0.1. Ninety-two tests pass, including five dashboard tests, eight
 settings tests, five window-placement tests, fourteen core Hotbits tests, and
 fourteen desktop Infinite Noise protocol/transport tests, nine case persistence
 tests, and seven cached-draw/Essential Questions tests.
