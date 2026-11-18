@@ -70,7 +70,6 @@ public class AopiScreen extends ScreenAdapter {
     private final Table recentCases = new Table();
     private final Label newsText = paragraph("");
     private final Label message = new Label("Ready. F11: fullscreen | Esc: return to window", skin, "muted");
-    private final TextButton fullscreen = button("FULLSCREEN [F11]", this::toggleFullscreen);
     private final TextButton refresh = button("REFRESH", this::refresh);
     private final DashboardRepository repository;
     private final DashboardNews news;
@@ -92,7 +91,6 @@ public class AopiScreen extends ScreenAdapter {
     private TextButton broadcastTab;
     private StatusLight broadcastLight;
     private TextButton sessionTab;
-    private Label caseTitle;
     private Label serviceCounts;
     private TextButton dashboardTab;
     private TextButton settingsTab;
@@ -149,7 +147,6 @@ public class AopiScreen extends ScreenAdapter {
         newsText.setText(news.initialText());
 
         buildLayout();
-        fullscreen.setText(Gdx.graphics.isFullscreen() ? "WINDOWED [F11]" : "FULLSCREEN [F11]");
         fonts.update(skin, settings.getFontSize(), stage.getRoot(), settingsPage);
         if (hotbitsPage != null) {
             fonts.refresh(hotbitsPage, skin);
@@ -169,13 +166,6 @@ public class AopiScreen extends ScreenAdapter {
 
         root = new Table();
         root.pad(24);
-        Table heading = new Table();
-        caseTitle = new Label("AetherOnePi", skin);
-        caseTitle.setFontScale(1.35f);
-        caseTitle.setEllipsis(true);
-        heading.add(caseTitle).growX().minWidth(0);
-        heading.add(fullscreen).minHeight(36);
-        root.add(heading).growX().padBottom(16).row();
 
         Table panel = new Table();
         panel.setBackground(skin.newDrawable("white", new Color(0.035f, 0.02f, 0.07f, 0.82f)));
@@ -368,7 +358,6 @@ public class AopiScreen extends ScreenAdapter {
     }
 
     private void caseChanged(CaseData data) {
-        caseTitle.setText(data.name().isBlank() ? "AetherOnePi" : "AetherOnePi - " + data.name());
         Gdx.graphics.setTitle(data.name().isBlank() ? "AOPi - libGDX" : "AOPi - " + data.name());
         loadDashboardState();
     }
@@ -543,7 +532,6 @@ public class AopiScreen extends ScreenAdapter {
         if (!windowMode.toggle()) {
             message.setText("The display could not change its window mode.");
         }
-        fullscreen.setText(Gdx.graphics.isFullscreen() ? "WINDOWED [F11]" : "FULLSCREEN [F11]");
     }
 
     private TextButton button(String text, Runnable action) {
@@ -591,7 +579,6 @@ public class AopiScreen extends ScreenAdapter {
                     if (!windowMode.restoreWindow()) {
                         message.setText("The display could not return to windowed mode.");
                     }
-                    fullscreen.setText(Gdx.graphics.isFullscreen() ? "WINDOWED [F11]" : "FULLSCREEN [F11]");
                     return true;
                 }
                 return handled;

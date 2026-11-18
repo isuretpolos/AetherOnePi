@@ -31,7 +31,7 @@ public final class DesktopLauncher {
         }
         DesktopWindowController windowController = new DesktopWindowController(settings);
         Lwjgl3ApplicationConfiguration configuration = new Lwjgl3ApplicationConfiguration();
-        configuration.setTitle("AOPi - libGDX");
+        configuration.setTitle("AetherOnePi - AOPi");
         DesktopIcons.configure(configuration);
         windowController.configure(configuration);
         configuration.setHdpiMode(HdpiMode.Logical);

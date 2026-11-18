@@ -35,7 +35,7 @@ and BROWSER are disabled until their features are implemented.
 
 - Initial content area: 1285 × 721 logical pixels.
 - Minimum window content area: 800 × 600.
-- F11 or the fullscreen button: enter or leave fullscreen on the current monitor.
+- F11: enter or leave fullscreen on the current monitor.
 - Escape while fullscreen: restore the previous window size.
 - At widths of 1050 or more with the default font size, news/recent cases and
   the watchlist sit side by side. Larger text raises this width threshold.

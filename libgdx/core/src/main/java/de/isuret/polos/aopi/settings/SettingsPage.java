@@ -29,12 +29,9 @@ public class SettingsPage extends Table {
         top().left();
         defaults().growX().spaceBottom(12);
 
-        add(new Label("SETTINGS", skin, "accent")).row();
-        add(paragraph("Choose a comfortable text size. Changes appear immediately throughout the app."))
-                .row();
 
         Table fontHeading = new Table();
-        fontHeading.add(new Label("Font size", skin)).expandX().left();
+        fontHeading.add(new Label("Choose a comfortable text size. Changes appear immediately throughout the app.", skin)).expandX().left();
         fontSizeValue = new Label(settings.getFontSize() + " px", skin);
         fontHeading.add(fontSizeValue).right();
         // Reserve enough height for the largest font, keeping the slider stable while dragging.

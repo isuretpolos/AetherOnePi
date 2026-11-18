@@ -41,7 +41,7 @@ application's defaults and the local `config/Gui.json` at implementation time.
 Operating system borders add to the outer window size. Display scaling may
 change the number of physical pixels. The window can be resized down to 800 × 600.
 
-Press **F11** or click **FULLSCREEN** to use the current monitor's fullscreen
+Press **F11** to use the current monitor's fullscreen
 resolution. Press F11 again or **Escape** to restore the previous window size.
 The layout fills the available space, wraps controls and text, and changes from
 two columns to one below 1050 logical pixels at the default font size (earlier
