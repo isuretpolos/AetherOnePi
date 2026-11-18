@@ -52,13 +52,10 @@ public class AnalysisPage extends Table {
     private final Label status;
     private final Label selectedLabel;
     private final Label targetVitality;
-    private final Label summary;
     private final TextField filter;
     private final AnalysisResultsTable results;
-    private final Table header = new Table();
     private final Table commands = new Table();
     private final Table information = new Table();
-    private boolean wideHeader;
     private final TextButton stop;
     private final TextButton analyze;
     private final TextButton gvNext;
@@ -115,23 +112,19 @@ public class AnalysisPage extends Table {
             progress = message + " | Draws used: " + drawsUsed;
         });
         top().left();
-        defaults().growX().spaceBottom(12);
+        defaults().growX().spaceBottom(6);
         commands.top().left();
         commands.setName("analysis-commands");
-        commands.defaults().growX().spaceBottom(10);
+        commands.defaults().growX();
         information.top().left();
         information.setName("analysis-information");
-        information.defaults().growX().spaceBottom(6);
-        Table heading = new Table();
-        heading.setName("analysis-heading");
         targetVitality = new Label("Target GV: --", skin, "accent");
         targetVitality.setName("analysis-target-gv");
-        heading.add(targetVitality).top().padRight(20);
-        selectedLabel = paragraph("No rate list selected.");
+        selectedLabel = new Label("No rate list selected.", skin, "muted");
+        selectedLabel.setEllipsis(true);
+        selectedLabel.setAlignment(Align.right);
         selectedLabel.setName("analysis-selected");
-        heading.add(selectedLabel).growX().top();
-        add(heading).row();
-        add(header).row();
+        add(commands).row();
         HorizontalGroup actions = new HorizontalGroup().wrap().left().rowLeft().space(8).wrapSpace(8);
         actions.addActor(button("SELECT DATA", "analysis-select", this::chooseRates));
         importLists = button("IMPORT LISTS", "analysis-import", this::importRates);
@@ -155,11 +148,11 @@ public class AnalysisPage extends Table {
         commands.add(actions).row();
         status = paragraph("Choose a list and acquire hotbits before starting.");
         status.setName("analysis-status");
-        information.add(status).row();
-        summary = paragraph("");
-        summary.setName("analysis-summary");
-        information.add(summary).row();
-        arrangeHeader(false);
+        information.add(targetVitality).top().padRight(12);
+        information.add(status).growX().minWidth(0).top();
+        information.add(selectedLabel).width(com.badlogic.gdx.scenes.scene2d.ui.Value.percentWidth(0.3f, information))
+                .minWidth(0).top().padLeft(12);
+        add(information).row();
         filter = new TextField("", skin);
         filter.setName("analysis-filter");
         filter.setMessageText("Filter results by rate, classification, or subfamily...");
@@ -187,9 +180,9 @@ public class AnalysisPage extends Table {
             runJob(store::load, restored -> {
                 if (restored != null) {
                     showResult(restored, null);
-                    status.setText("Restored the last completed analysis.");
+                    status.setText("Analysis restored.");
                 } else {
-                    status.setText("Ready. Choose a rate list and acquire hotbits before analyzing.");
+                    status.setText("Ready.");
                 }
             });
         });
@@ -206,7 +199,7 @@ public class AnalysisPage extends Table {
             return completed;
         }, completed -> {
             showResult(completed, context);
-            status.setText("Analysis complete. Check GV or save a snapshot to the current case.");
+            status.setText("Analysis complete.");
         });
     }
 
@@ -217,7 +210,7 @@ public class AnalysisPage extends Table {
         }, ignored -> {
             result = null;
             rebuildResults();
-            status.setText("Analysis cleared. Saved case snapshots are unchanged.");
+            status.setText("Analysis cleared.");
         });
     }
 
@@ -229,7 +222,7 @@ public class AnalysisPage extends Table {
             return checked;
         }, checked -> {
             showResult(checked, resultCaseId);
-            status.setText(all ? "Target and top 20 GV checked." : "Next GV checked (top 20). After the last eligible rate, the next click starts a new pass.");
+            status.setText(all ? "Top 20 GV checked." : "GV checked.");
         });
     }
 
@@ -292,7 +285,7 @@ public class AnalysisPage extends Table {
                         @Override
                         public void changed(ChangeEvent event, Actor actor) {
                             selectList(list.id());
-                            status.setText("Rate list selected. ANALYZE uses acquired hotbits.");
+                            status.setText("List selected.");
                             dialog.hide();
                         }
                     });
@@ -339,7 +332,7 @@ public class AnalysisPage extends Table {
                 return last;
             }, imported -> {
                 selectList(imported.id());
-                status.setText("Rate files copied into this application's rates folder.");
+                status.setText("Lists imported.");
             });
         }, message -> status.setText(message));
     }
@@ -350,7 +343,6 @@ public class AnalysisPage extends Table {
         targetVitality.setText("Target GV: " + (result == null || result.generalVitality() == null
                 ? "--" : result.generalVitality()));
         if (result == null) {
-            summary.setText("No analysis result yet.");
             return;
         }
         String query = filter.getText().strip().toLowerCase(Locale.ROOT);
@@ -397,8 +389,6 @@ public class AnalysisPage extends Table {
             addResultCell(row.subfamily(), background, false, false);
             results.row();
         }
-        summary.setText(shown + " / " + result.rows().size() + " rates | Trials: "
-                + result.trials() + " | Hit limit: " + result.hitLimit());
         if (shown == 0) {
             results.add(paragraph("No rates match the filter.")).colspan(headings.length).growX();
         }
@@ -527,28 +517,6 @@ public class AnalysisPage extends Table {
         if (busy) {
             status.setText(progress);
         }
-    }
-
-    @Override
-    public void layout() {
-        boolean wide = getWidth() >= 1650f * settings.getFontSize() / 18f;
-        if (wide != wideHeader) {
-            arrangeHeader(wide);
-        }
-        super.layout();
-    }
-
-    private void arrangeHeader(boolean wide) {
-        wideHeader = wide;
-        header.clearChildren();
-        if (wide) {
-            header.add(commands).width(com.badlogic.gdx.scenes.scene2d.ui.Value.percentWidth(0.64f, header)).top().left();
-            header.add(information).growX().minWidth(0).top().padLeft(24);
-        } else {
-            header.add(commands).growX().row();
-            header.add(information).growX();
-        }
-        invalidateHierarchy();
     }
 
     public void triggerAnalysis() {

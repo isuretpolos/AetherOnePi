@@ -94,9 +94,9 @@ public final class AnalysisUiSmokeTest {
                         require(snapshot.rows().size() == 20, "Result must contain only the top 20 rates.");
                         field(stage, "analysis-filter").setText("pLaNtS");
                         long plantRows = snapshot.rows().stream().filter(row -> row.classification().equals("Plants")).count();
-                        require(text(stage, "analysis-summary").contains(plantRows + " / 20"), "Metadata filter failed.");
+                        require(visibleRates(stage) == plantRows, "Metadata filter failed.");
                         field(stage, "analysis-filter").setText("no matching rate");
-                        require(text(stage, "analysis-summary").contains("0 / 20"), "Empty filter failed.");
+                        require(visibleRates(stage) == 0, "Empty filter failed.");
                         field(stage, "analysis-filter").setText("");
                         Gdx.input.getInputProcessor().keyDown(com.badlogic.gdx.Input.Keys.ENTER);
                         Gdx.input.getInputProcessor().keyUp(com.badlogic.gdx.Input.Keys.ENTER);
@@ -128,14 +128,15 @@ public final class AnalysisUiSmokeTest {
                         click(stage, "session-view-analysis-" + snapshot.id());
                         phase++;
                     } else if (phase == 8) {
-                        require(text(stage, "analysis-summary").contains("20 / 20"), "History did not reopen analysis.");
+                        require(visibleRates(stage) == 20, "History did not reopen analysis.");
+                        require(stage.getRoot().findActor("analysis-summary") == null, "Unwanted statistics summary remains.");
                         require(text(stage, "analysis-target-gv").contains(snapshot.generalVitality().toString()), "Target GV missing from heading.");
                         Label target = stage.getRoot().findActor("analysis-target-gv");
                         Label selected = stage.getRoot().findActor("analysis-selected");
                         require(target.getX() < selected.getX() && Math.abs(target.getTop() - selected.getTop()) < 1,
                                 "Target GV and selected list must share the heading, in that order.");
                         requireCompactRows(stage);
-                        requireHeaderPlacement(stage, true);
+                        requireHeaderPlacement(stage);
                         click(stage, "analysis-broadcast");
                         require(field(stage, "broadcast-signature").getText().lines().count() == 20,
                                 "Analysis rates did not transfer to Broadcast.");
@@ -150,7 +151,7 @@ public final class AnalysisUiSmokeTest {
                         NavigationLayoutSmokeTest.requireVisibleFooter(stage);
                         require(field(stage, "analysis-filter").getStyle().font.getCapHeight() > 16, "Font did not update.");
                         requireCompactRows(stage);
-                        requireHeaderPlacement(stage, false);
+                        requireHeaderPlacement(stage);
                         com.badlogic.gdx.scenes.scene2d.ui.ScrollPane columns = stage.getRoot().findActor("analysis-result-columns");
                         require(columns.getMaxX() > 0, "Wide result columns cannot scroll in a small window.");
                         click(stage, "analysis-save-case");
@@ -227,11 +228,25 @@ public final class AnalysisUiSmokeTest {
         }
     }
 
-    private static void requireHeaderPlacement(Stage stage, boolean beside) {
+    private static void requireHeaderPlacement(Stage stage) {
         com.badlogic.gdx.scenes.scene2d.Actor commands = stage.getRoot().findActor("analysis-commands");
         com.badlogic.gdx.scenes.scene2d.Actor information = stage.getRoot().findActor("analysis-information");
-        require(beside ? information.getX() >= commands.getX() + commands.getWidth()
-                : Math.abs(information.getX() - commands.getX()) < 1, "Analysis information is misplaced.");
+        require(information.getTop() <= commands.getY() + 1, "Target/status must sit below the command buttons.");
+        Label target = stage.getRoot().findActor("analysis-target-gv");
+        Label status = stage.getRoot().findActor("analysis-status");
+        require(Math.abs(target.getTop() - status.getTop()) < 1 && target.getX() < status.getX(),
+                "Target GV and status must share one compact row.");
+    }
+
+    private static int visibleRates(Stage stage) {
+        com.badlogic.gdx.scenes.scene2d.ui.Table results = stage.getRoot().findActor("analysis-results");
+        int count = 0;
+        for (var actor : results.getChildren()) {
+            if (actor.getName() != null && actor.getName().startsWith("analysis-result-")) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private static void click(Stage stage, String id) {
