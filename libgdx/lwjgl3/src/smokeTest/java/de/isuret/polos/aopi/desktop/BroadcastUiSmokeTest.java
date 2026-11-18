@@ -68,9 +68,10 @@ public final class BroadcastUiSmokeTest {
                         field(stage, "broadcast-seconds").setText("1");
                         click(stage, "broadcast-add");
                         phase++;
-                    } else if (phase == 3 && enabled(stage, "broadcast-remove-1")) {
+                    } else if (phase == 3 && enabled(stage, "broadcast-clear")) {
                         requireAlignedInputs(stage);
-                        click(stage, "broadcast-remove-1");
+                        require(stage.getRoot().findActor("broadcast-remove-0") == null,
+                                "Queue list buttons remain below the broadcast units.");
                         click(stage, "broadcast-clear");
                         click(stage, "broadcast-add");
                         click(stage, "broadcast-start");
@@ -116,6 +117,10 @@ public final class BroadcastUiSmokeTest {
                         Gdx.graphics.setWindowedMode(1440, 1000);
                     } else if (phase == 11 && frames > previewFrame + 90) {
                         require(text(stage, "broadcast-current").contains("Active: 8"), "Original eight-unit broadcast mode did not start.");
+                        var controls = stage.getRoot().findActor("broadcast-command-area");
+                        var information = stage.getRoot().findActor("broadcast-information");
+                        require(information.getX() >= controls.getX() + controls.getWidth(),
+                                "Broadcast status and active count did not move to the upper-right.");
                         var pixels = PixmapScreenshot.capture();
                         com.badlogic.gdx.graphics.PixmapIO.writePNG(new FileHandle(directory.resolve("broadcast-preview.png").toFile()), pixels);
                         pixels.dispose();

@@ -68,7 +68,12 @@ nonempty line becomes its own broadcast unit. With **One rate at a time** off,
 up to eight units run concurrently, with additional entries queued. With it on,
 one unit runs at a time. Toggling this setting does not cancel already active units.
 
-ADD TO QUEUE adds pending entries. REMOVE removes a pending entry. CLEAR QUEUE
+The queued/status message and active-unit count sit at the upper-right beside
+the command/image controls on wide windows. They stack below the controls when
+space or font size requires it. Pending entries are counted without an extra
+queue list or per-entry REMOVE buttons below the broadcast units.
+
+ADD TO QUEUE adds pending entries. CLEAR QUEUE
 removes pending entries without stopping active units. STOP CURRENT stops the
 oldest active unit and lets the next queued entry take its slot. STOP ALL stops
 every active unit and clears the pending queue. Queues support 500 pending entries.

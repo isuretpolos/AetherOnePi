@@ -36,7 +36,10 @@ public class BroadcastPage extends Table {
     private final Label status;
     private final Label current;
     private final Label lastReport;
-    private final Table queue = new Table();
+    private final Table controlHeader = new Table();
+    private final Table commandArea = new Table();
+    private final Table information = new Table();
+    private boolean wideControls;
     private final TextButton start;
     private final TextButton stop;
     private final TextButton save;
@@ -45,7 +48,6 @@ public class BroadcastPage extends Table {
         thread.setDaemon(true);
         return thread;
     });
-    private List<BroadcastService.Request> previousQueue = List.of();
     private String latestId = "";
     private boolean disposed;
     private final BroadcastVisual visual;
@@ -86,6 +88,13 @@ public class BroadcastPage extends Table {
         inputs.add(new Label("Multiplier", skin)).padLeft(8).padRight(6);
         inputs.add(intensity).width(numberWidth(intensity, 4)).fillY();
         add(inputs).row();
+        commandArea.setName("broadcast-command-area");
+        commandArea.top().left();
+        commandArea.defaults().growX().spaceBottom(6);
+        information.setName("broadcast-information");
+        information.top().left();
+        information.defaults().growX().spaceBottom(6);
+        add(controlHeader).row();
         HorizontalGroup actions = new HorizontalGroup().wrap().left().space(6).wrapSpace(6);
         actions.addActor(button("USE ANALYSIS", "broadcast-use-analysis", () -> {
             AnalysisResult result = analysis.get();
@@ -119,7 +128,7 @@ public class BroadcastPage extends Table {
         }));
         save = button("SAVE REPORT TO CASE", "broadcast-save-case", () -> saveToCase.accept(latest()));
         actions.addActor(save);
-        add(actions).row();
+        commandArea.add(actions).row();
         HorizontalGroup images = new HorizontalGroup().wrap().left().space(6).wrapSpace(6);
         for (var source : BroadcastImagePicker.Source.values()) {
             String title = switch (source) {
@@ -134,15 +143,14 @@ public class BroadcastPage extends Table {
             images.addActor(pick);
         }
         images.addActor(button("CLEAR IMAGES", "broadcast-images-clear", this::clearImages));
-        add(images).row();
+        commandArea.add(images).row();
         status.setName("broadcast-status");
-        add(status).row();
+        information.add(status).row();
         current.setName("broadcast-current");
-        add(current).row();
+        information.add(current).row();
+        arrangeControls(false);
         visual = new BroadcastVisual(service, new BroadcastContext(skin, settings, hotbits, cacheSize), skin);
         add(visual).minHeight(com.badlogic.gdx.scenes.scene2d.ui.Value.prefHeight).row();
-        queue.top().left();
-        add(queue).row();
         resonanceText = label("RESONATED RATES");
         resonanceText.setName("broadcast-resonances");
         add(resonanceText).row();
@@ -202,19 +210,6 @@ public class BroadcastPage extends Table {
             current.setText("Active: " + service.active().size() + " / "
                     + (settings.isEnabled(Setting.BROADCAST_SINGLE_RATES) ? 1 : 8) + " | Queued: " + service.queued().size());
         }
-        var pending = service.queued();
-        if (!pending.equals(previousQueue)) {
-            previousQueue = pending;
-            queue.clearChildren();
-            for (int index = 0; index < pending.size(); index++) {
-                int position = index;
-                var request = pending.get(index);
-                queue.add(label((index + 1) + ". " + preview(request.signature()) + " | " + request.seconds() + " s"))
-                        .growX().padBottom(3);
-                queue.add(button("REMOVE", "broadcast-remove-" + index, () -> service.removeQueued(position)))
-                        .padLeft(8).padBottom(3).row();
-            }
-        }
         var report = latest();
         if (report != null && !report.id().equals(latestId)) {
             latestId = report.id();
@@ -235,9 +230,31 @@ public class BroadcastPage extends Table {
         return reports.isEmpty() ? null : reports.getLast();
     }
 
-    private String preview(String text) {
-        String compact = text.replaceAll("\\s+", " ").strip();
-        return compact.length() <= 160 ? compact : compact.substring(0, 157) + "...";
+    @Override
+    public void layout() {
+        boolean wide = getWidth() >= 1200 * settings.getFontSize() / 16f;
+        if (wide != wideControls) {
+            arrangeControls(wide);
+        }
+        super.layout();
+    }
+
+    private void arrangeControls(boolean wide) {
+        wideControls = wide;
+        controlHeader.clearChildren();
+        if (wide) {
+            controlHeader.add(commandArea).growX().minWidth(0).top();
+            controlHeader.add(information).width(new com.badlogic.gdx.scenes.scene2d.ui.Value() {
+                @Override
+                public float get(Actor context) {
+                    return 280 * settings.getFontSize() / 16f;
+                }
+            }).top().padLeft(16);
+        } else {
+            controlHeader.add(commandArea).growX().row();
+            controlHeader.add(information).growX();
+        }
+        invalidateHierarchy();
     }
 
     private void persist(BroadcastService.Report report) {
