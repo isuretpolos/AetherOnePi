@@ -27,6 +27,10 @@ Questions. It does not load the original application's classes, cache, or data.
    pass. GV TOP 20 checks the target and all retained rates together. Only the top
    20 results are retained. Filtering does not change the
    eligible ranks. Rows meeting or exceeding target GV have green values.
+   A green rectangle outlines the rate that GV (NEXT) or Return will check next.
+   It advances after each check. No rate is outlined when the next check is the
+   target GV. A filter hiding that rate hides its outline without changing the
+   check order.
 6. COPY RESULTS copies the full result, including rows hidden by the filter.
    SAVE TO CURRENT CASE saves a structured snapshot and readable report in the
    current Session case. Give that case a name first. Pending session notes are

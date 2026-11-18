@@ -102,11 +102,23 @@ public final class AnalysisUiSmokeTest {
                         phase++;
                     } else if (phase == 5 && enabled(stage, "analysis-gv-all")) {
                         require(store.load().generalVitality() != null, "Target GV not persisted.");
+                        requireNextRate(stage, "analysis-result-0");
+                        click(stage, "analysis-gv-next");
+                        phase = 50;
+                    } else if (phase == 50 && enabled(stage, "analysis-gv-all")) {
+                        require(store.load().rows().getFirst().generalVitality() != null, "First rate GV not checked.");
+                        requireNextRate(stage, "analysis-result-1");
+                        requireGreenOutline(stage);
+                        field(stage, "analysis-filter").setText("no matching rate");
+                        requireNextRate(stage, null);
+                        field(stage, "analysis-filter").setText("");
+                        requireNextRate(stage, "analysis-result-1");
                         click(stage, "analysis-gv-all");
-                        phase++;
+                        phase = 6;
                     } else if (phase == 6 && enabled(stage, "analysis-save-case")) {
                         snapshot = store.load();
                         require(snapshot.rows().subList(0, 20).stream().allMatch(row -> row.generalVitality() != null), "GV ALL failed.");
+                        requireNextRate(stage, null);
                         click(stage, "analysis-save-case");
                         phase++;
                     } else if (phase == 7 && enabled(stage, "session-save")) {
@@ -187,6 +199,29 @@ public final class AnalysisUiSmokeTest {
         require(first.getHeight() <= first.getPrefHeight() + 1, "Result row has excessive vertical padding.");
         require(Math.abs(first.getY() - second.getY()) <= first.getPrefHeight() + 1,
                 "Results have card-sized gaps between rows.");
+    }
+
+    private static void requireNextRate(Stage stage, String expected) {
+        de.isuret.polos.aopi.analysis.AnalysisResultsTable results = stage.getRoot().findActor("analysis-results");
+        var actor = results.getNextRate();
+        require(expected == null ? actor == null : actor != null && expected.equals(actor.getName()),
+                "Next-GV outline targets the wrong rate.");
+    }
+
+    private static void requireGreenOutline(Stage stage) {
+        de.isuret.polos.aopi.analysis.AnalysisResultsTable results = stage.getRoot().findActor("analysis-results");
+        var row = results.getNextRate();
+        var position = results.localToStageCoordinates(new com.badlogic.gdx.math.Vector2(1,
+                row.getY() + row.getHeight() / 2));
+        float scaleX = Gdx.graphics.getBackBufferWidth() / stage.getWidth();
+        float scaleY = Gdx.graphics.getBackBufferHeight() / stage.getHeight();
+        var pixel = com.badlogic.gdx.graphics.Pixmap.createFromFrameBuffer(
+                (int) (position.x * scaleX), (int) (position.y * scaleY), 1, 1);
+        try {
+            require(pixel.getPixel(0, 0) == 0xA3DF39FF, "Green outline did not render around the next rate.");
+        } finally {
+            pixel.dispose();
+        }
     }
 
     private static void requireHeaderPlacement(Stage stage, boolean beside) {

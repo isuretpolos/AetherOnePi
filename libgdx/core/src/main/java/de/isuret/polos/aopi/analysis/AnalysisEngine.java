@@ -87,13 +87,14 @@ public class AnalysisEngine {
         List<AnalysisResult.Row> rows = new ArrayList<>(result.rows());
         int checkedCount = Math.min(GV_RATE_LIMIT, rows.size());
         Integer target = result.generalVitality();
+        int nextRate = nextVitalityRate(result);
         if (all) {
             target = vitality();
             for (int index = 0; index < checkedCount; index++) {
                 progress.accept("Checking GV: " + (index + 1) + " / " + checkedCount);
                 rows.set(index, rows.get(index).withVitality(vitality()));
             }
-        } else if (target == null || rows.subList(0, checkedCount).stream().allMatch(row -> row.generalVitality() != null)) {
+        } else if (nextRate < 0) {
             target = vitality();
             for (int index = 0; index < checkedCount; index++) {
                 var row = rows.get(index);
@@ -101,15 +102,23 @@ public class AnalysisEngine {
                         row.energeticValue(), row.potency(), row.level(), null, row.recurring()));
             }
         } else {
-            for (int index = 0; index < checkedCount; index++) {
-                if (rows.get(index).generalVitality() == null) {
-                    rows.set(index, rows.get(index).withVitality(vitality()));
-                    break;
-                }
-            }
+            rows.set(nextRate, rows.get(nextRate).withVitality(vitality()));
         }
         return new AnalysisResult(UUID.randomUUID().toString(), result.created(), result.database(), result.hitLimit(),
                 result.trials(), target, rows);
+    }
+
+    /** -1 means the next check is the target GV, rather than a rate. Filters never alter this order. */
+    public static int nextVitalityRate(AnalysisResult result) {
+        if (result == null || result.generalVitality() == null) {
+            return -1;
+        }
+        for (int index = 0; index < Math.min(GV_RATE_LIMIT, result.rows().size()); index++) {
+            if (result.rows().get(index).generalVitality() == null) {
+                return index;
+            }
+        }
+        return -1;
     }
 
     private String potency() throws IOException {

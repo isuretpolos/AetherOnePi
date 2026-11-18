@@ -53,7 +53,7 @@ public class AnalysisPage extends Table {
     private final Label targetVitality;
     private final Label summary;
     private final TextField filter;
-    private final Table results = new Table();
+    private final AnalysisResultsTable results;
     private final Table header = new Table();
     private final Table commands = new Table();
     private final Table information = new Table();
@@ -90,6 +90,7 @@ public class AnalysisPage extends Table {
                         Consumer<AnalysisResult> saveToCase, Runnable consumed, Supplier<String> caseId,
                         BooleanSupplier acquisitionActive) {
         this.skin = skin;
+        results = new AnalysisResultsTable(skin);
         this.stage = stage;
         this.rates = rates;
         this.store = store;
@@ -347,6 +348,7 @@ public class AnalysisPage extends Table {
 
     private void rebuildResults() {
         results.clearChildren();
+        results.setNextRate(null);
         targetVitality.setText("Target GV: " + (result == null || result.generalVitality() == null
                 ? "--" : result.generalVitality()));
         if (result == null) {
@@ -360,6 +362,7 @@ public class AnalysisPage extends Table {
         }
         results.row();
         int shown = 0;
+        int nextRate = AnalysisEngine.nextVitalityRate(result);
         for (int index = 0; index < result.rows().size(); index++) {
             AnalysisResult.Row row = result.rows().get(index);
             if (!(row.name() + " " + row.classification() + " " + row.subfamily()).toLowerCase(Locale.ROOT).contains(query)) {
@@ -371,6 +374,9 @@ public class AnalysisPage extends Table {
             addResultCell(Integer.toString(row.energeticValue()), background, false, true);
             Label name = addResultCell(row.name(), background, true, false);
             name.setName("analysis-result-" + index);
+            if (index == nextRate) {
+                results.setNextRate(name);
+            }
             if (safeUrl(row.url())) {
                 name.setColor(Color.valueOf("89C9F0"));
                 name.addListener(new ClickListener() {
