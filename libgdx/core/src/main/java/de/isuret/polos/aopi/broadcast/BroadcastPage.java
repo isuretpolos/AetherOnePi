@@ -71,15 +71,21 @@ public class BroadcastPage extends Table {
         signature.setName("broadcast-signature");
         signature.setMessageText("Enter a signature, intention, or rates...");
         signature.setMaxLength(20000);
-        add(signature).height(55).row();
-        HorizontalGroup options = new HorizontalGroup().wrap().left().space(8).wrapSpace(6);
         seconds = number("60", "broadcast-seconds");
         intensity = number("1", "broadcast-intensity");
-        options.addActor(new Label("Seconds", skin));
-        options.addActor(seconds);
-        options.addActor(new Label("Multiplier", skin));
-        options.addActor(intensity);
-        add(options).row();
+        Table inputs = new Table();
+        inputs.setName("broadcast-inputs");
+        inputs.add(signature).growX().minWidth(0).height(new com.badlogic.gdx.scenes.scene2d.ui.Value() {
+            @Override
+            public float get(Actor context) {
+                return Math.max(42, signature.getStyle().font.getLineHeight() + 20);
+            }
+        });
+        inputs.add(new Label("Seconds", skin)).padLeft(8).padRight(6);
+        inputs.add(seconds).width(numberWidth(seconds, 5)).fillY();
+        inputs.add(new Label("Multiplier", skin)).padLeft(8).padRight(6);
+        inputs.add(intensity).width(numberWidth(intensity, 4)).fillY();
+        add(inputs).row();
         HorizontalGroup actions = new HorizontalGroup().wrap().left().space(6).wrapSpace(6);
         actions.addActor(button("USE ANALYSIS", "broadcast-use-analysis", () -> {
             AnalysisResult result = analysis.get();
@@ -322,6 +328,15 @@ public class BroadcastPage extends Table {
         field.setMaxLength(5);
         field.setWidth(100);
         return field;
+    }
+
+    private com.badlogic.gdx.scenes.scene2d.ui.Value numberWidth(TextField field, int digits) {
+        return new com.badlogic.gdx.scenes.scene2d.ui.Value() {
+            @Override
+            public float get(Actor context) {
+                return Math.max(70, field.getStyle().font.getData().getGlyph('0').xadvance * digits + 24);
+            }
+        };
     }
 
     private TextButton button(String text, String name, Runnable action) {

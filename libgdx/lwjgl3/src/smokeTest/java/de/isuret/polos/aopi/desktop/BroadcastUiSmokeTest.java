@@ -69,6 +69,7 @@ public final class BroadcastUiSmokeTest {
                         click(stage, "broadcast-add");
                         phase++;
                     } else if (phase == 3 && enabled(stage, "broadcast-remove-1")) {
+                        requireAlignedInputs(stage);
                         click(stage, "broadcast-remove-1");
                         click(stage, "broadcast-clear");
                         click(stage, "broadcast-add");
@@ -123,6 +124,7 @@ public final class BroadcastUiSmokeTest {
                         phase = 12;
                         Gdx.graphics.setWindowedMode(800, 600);
                     } else if (phase == 12 && enabled(stage, "broadcast-stop")) {
+                        requireAlignedInputs(stage);
                         NavigationLayoutSmokeTest.requireVisibleFooter(stage);
                         require(field(stage, "broadcast-signature").getStyle().font.getCapHeight() > 16,
                                 "Broadcast input did not follow font size.");
@@ -170,6 +172,19 @@ public final class BroadcastUiSmokeTest {
         if (!condition) {
             throw new AssertionError(message);
         }
+    }
+
+    private static void requireAlignedInputs(Stage stage) {
+        TextField rate = field(stage, "broadcast-signature");
+        TextField seconds = field(stage, "broadcast-seconds");
+        TextField multiplier = field(stage, "broadcast-intensity");
+        require(rate.getParent() == seconds.getParent() && rate.getParent() == multiplier.getParent(),
+                "Broadcast inputs must share one row.");
+        require(Math.abs(rate.getY() - seconds.getY()) < 1 && Math.abs(rate.getY() - multiplier.getY()) < 1
+                        && Math.abs(rate.getHeight() - seconds.getHeight()) < 1
+                        && Math.abs(rate.getHeight() - multiplier.getHeight()) < 1,
+                "Rate, Seconds, and Multiplier are not aligned.");
+        require(rate.getWidth() > 80, "Compact numeric controls leave no room for the rate field.");
     }
 
     private static class PixmapScreenshot {

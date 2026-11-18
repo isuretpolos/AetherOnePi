@@ -61,6 +61,9 @@ Enter a signature or one rate per line. BROADCAST in Analysis and USE ANALYSIS
 copy the current analysis names without starting them automatically.
 
 Set **Seconds** (1–86400) and **Multiplier** (1–1000), then BROADCAST NOW. Each
+input sits on the same row as the rate field. Numeric fields size to their digits
+and the selected font, leaving the remaining width for the rate.
+Each
 nonempty line becomes its own broadcast unit. With **One rate at a time** off,
 up to eight units run concurrently, with additional entries queued. With it on,
 one unit runs at a time. Toggling this setting does not cancel already active units.
