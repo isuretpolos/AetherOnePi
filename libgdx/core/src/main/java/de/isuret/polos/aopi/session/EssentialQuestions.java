@@ -2,7 +2,7 @@ package de.isuret.polos.aopi.session;
 
 import java.io.IOException;
 
-/** Reimplements the original question sequence using cached acquired values, without a software fallback. */
+/** Reimplements the original question sequence through the shared AOPi-compatible random source. */
 public class EssentialQuestions {
 
     @FunctionalInterface

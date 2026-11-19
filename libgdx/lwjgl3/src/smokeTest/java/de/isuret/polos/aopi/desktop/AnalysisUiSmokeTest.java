@@ -56,6 +56,7 @@ public final class AnalysisUiSmokeTest {
             private int phase;
             private String caseId;
             private AnalysisResult snapshot;
+            private int resumeFrame;
 
             @Override
             public void render() {
@@ -177,9 +178,19 @@ public final class AnalysisUiSmokeTest {
                         click(stage, "analysis-run");
                         phase++;
                     } else if (phase == 12 && enabled(stage, "analysis-run")) {
-                        require(text(stage, "analysis-status").contains("failed"), "Missing hotbits did not report failure.");
-                        require(snapshot.equals(store.load()), "Exhaustion replaced the completed result.");
-                        System.out.println("Analysis UI passed: scoring, filtering, GV, case save/reopen, duplicate protection, cancellation, exhaustion, font and footer.");
+                        require(text(stage, "analysis-status").contains("complete"), "Analysis did not finish with SecureRandom fallback.");
+                        require(((de.isuret.polos.aopi.ui.StatusLight) stage.getRoot().findActor("secure-random-indicator")).getState()
+                                == de.isuret.polos.aopi.ui.StatusLight.State.WARNING, "Fallback warning LED is not orange.");
+                        packages.write(new java.util.Random(789).ints(10000, 0, Integer.MAX_VALUE).toArray(), HotbitsBackend.Kind.ESP32);
+                        resumeFrame = frames;
+                        phase = 13;
+                    } else if (phase == 13 && frames > resumeFrame + 5) {
+                        click(stage, "analysis-gv-next");
+                        phase = 14;
+                    } else if (phase == 14 && enabled(stage, "analysis-gv-next")) {
+                        require(((de.isuret.polos.aopi.ui.StatusLight) stage.getRoot().findActor("secure-random-indicator")).getState()
+                                == de.isuret.polos.aopi.ui.StatusLight.State.OFF, "Fallback warning did not clear when hotbits resumed.");
+                        System.out.println("Analysis UI passed: scoring, filtering, GV, case save/reopen, cancellation, SecureRandom fallback, orange warning, recovery, font and footer.");
                         Gdx.app.exit();
                     }
                 } catch (Exception exception) {

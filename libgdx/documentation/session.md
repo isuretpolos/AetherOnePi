@@ -111,10 +111,11 @@ reported separately after the case itself was saved successfully.
 
 ## Essential Questions
 
-Acquire a package on the Hotbits tab first. **ESSENTIAL QUESTIONS** uses acquired
-cached values and adds a generated report to the pending session note. Review it
-and SAVE to keep it in history. Existing typed notes are retained. Missing or
-invalid hotbits produce an error instead of a software-generated fallback.
+**ESSENTIAL QUESTIONS** uses the shared AOPi-compatible random source and adds a
+generated report to the pending session note. Review it and SAVE to keep it in
+history. Existing typed notes are retained. Each cached integer seeds a fresh
+java.util.Random for one draw. Missing/unreadable hotbits use SecureRandom, with
+an orange SECURE RANDOM warning LED in the shared footer.
 
 The original question sequence is reimplemented: appropriateness is the maximum
 of three 0–100 draws; general vitality is the maximum of three 0–1000 draws, with
@@ -128,7 +129,7 @@ consent. The report states this explicitly.
 
 The reader claims a complete package by moving it into `hotbits/consumed/` before
 using any values. It then consumes its values once from an in-memory buffer.
-Bounded draws use rejection sampling, avoiding modulo bias. Another instance
+Each value is used once as a whole seed, without bit splitting. Another instance
 cannot claim the same source file after the move. Claimed files are retained,
 never deleted automatically, and are not read again as fresh entropy.
 Any unused part of that in-memory buffer is abandoned on application exit rather
@@ -151,7 +152,7 @@ unused OPEN HTML action is not exposed as a nonfunctional button.
 The build and **92 unit tests** pass on Windows/JDK 24.0.1. Nine case tests cover
 round trips, rename identity, duplicate names, invalid names/paths, write failure,
 unreadable files, recent-case metadata, draft recovery, and mismatched IDs. Seven
-draw tests cover one-time package claims, archived data, rejection sampling,
+draw tests cover one-time package claims, archived data, original seeded semantics,
 missing/invalid hotbits, question branches, and bounded extension.
 
 The opt-in `:lwjgl3:sessionUiSmokeTest` uses isolated files and deterministic test

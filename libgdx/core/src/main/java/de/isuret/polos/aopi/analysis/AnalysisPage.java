@@ -32,7 +32,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-import java.util.function.BooleanSupplier;
 
 /** UI owns immutable completed results; the worker owns list IO and all random draws. */
 public class AnalysisPage extends Table {
@@ -86,7 +85,7 @@ public class AnalysisPage extends Table {
     public AnalysisPage(Skin skin, Stage stage, RateRepository rates, AnalysisStore store,
                         CachedHotbits hotbits, ApplicationSettings settings, RateFilePicker filePicker,
                         Consumer<AnalysisResult> saveToCase, Runnable consumed, Supplier<String> caseId,
-                        BooleanSupplier acquisitionActive, Runnable selectionChanged) {
+                        Runnable selectionChanged) {
         this.skin = skin;
         results = new AnalysisResultsTable(skin);
         this.stage = stage;
@@ -102,8 +101,7 @@ public class AnalysisPage extends Table {
             if (cancelled) {
                 throw new InterruptedIOException("Analysis cancelled.");
             }
-            int value = hotbits.nextInt(bound, acquisitionActive, () -> progress = calculationProgress
-                    + " | Waiting for fresh hotbits from acquisition... | Draws used: " + drawsUsed);
+            int value = hotbits.nextInt(bound);
             drawsUsed++;
             progress = calculationProgress + " | Draws used: " + drawsUsed;
             return value;
@@ -146,7 +144,7 @@ public class AnalysisPage extends Table {
         actions.addActor(save);
         actions.addActor(button("CLEAR", "analysis-clear", this::clearResult));
         commands.add(actions).row();
-        status = paragraph("Choose a list and acquire hotbits before starting.");
+        status = paragraph("Ready.");
         status.setName("analysis-status");
         information.add(targetVitality).top().padRight(12);
         information.add(status).growX().minWidth(0).top();

@@ -6,9 +6,9 @@ Questions. It does not load the original application's classes, cache, or data.
 
 ## Workflow
 
-1. Acquire hotbits on HOTBITS. A 100-rate analysis fits comfortably within two
-   packages in the regression fixtures, including GV and the higher hit limit.
-   Larger lists require more entropy. Acquisition can continue in the background.
+1. Acquired hotbits supply seeds when available. If they are unavailable, analysis
+   continues with SecureRandom and lights the orange SECURE RANDOM warning LED.
+   Acquisition can continue in the background and seeded draws resume automatically.
 2. Use IMPORT LISTS to copy one or more UTF-8 `.txt` or `.tsv` files into this
    application's `aopi-libgdx-data/rates/` directory. The source files stay intact.
    A duplicate filename gets a unique prefix; existing lists are never overwritten.
@@ -92,18 +92,25 @@ Pathological scoring and GV sequences have finite limits; all draws support
 cancellation. Recurrence counts appearances in consecutive completed results for
 the same currently open case during this run, starting at zero.
 
-Only acquired cache values supply these draws. The reader uses all 31 bits of
-each nonnegative integer, retaining unused bits across draws and package
-boundaries. It takes the minimum bits needed for each bound and rejects outcomes
-outside the bound, preserving unbiased sampling. A bound of one uses no entropy.
-This is bit conservation, not pseudorandom expansion or reuse of consumed bits.
+The shared reader follows original AOPi semantics: one cached integer seeds one
+fresh `java.util.Random`, then `new Random(seed).nextInt(bound)` supplies the draw.
+It does not extract/reuse individual bits or carry bits between draws. Even a
+bound of one consumes its own cached seed. Signed integer seeds are supported.
+The API's upper bound remains exclusive; inclusive min/max callers pass
+`max - min + 1` and add the minimum, matching AOPi's `getInteger(min, max)`.
+
+When no cached seed is available, or a package cannot be read, `SecureRandom`
+supplies a bounded draw immediately. The orange **SECURE RANDOM** LED in the
+shared footer marks this warning; it is not an error or an acquisition LED.
+The LED reflects the most recent draw's source and clears when a cached seed is
+used again. Empty/unreadable caches are checked again after 100 ms, avoiding a
+disk scan for every fallback draw. This is file-discovery throttling only.
+
 Packages are claimed once into `hotbits/consumed/`; analysis and questions share
 one in-memory reader. Cancelling or failing an analysis does not return consumed
-values to the cache. If the cache temporarily empties while acquisition is active,
-Analysis displays its current phase and draw count, waits for the next complete
-package, and resumes without losing progress. STOP also cancels this wait. If no
-source is running, exhaustion reports how many draws were used and keeps the
-previous completed result. It never switches to software-generated random values.
+seeds to the cache. Empty caches do not pause or fail analysis, including during
+active acquisition. STOP still cancels an analysis; cancellation is never converted
+into a SecureRandom fallback.
 The footer counts unused complete packages and updates as they are claimed,
 including while acquisition is running. The partial package being acquired is
 not available until all 10000 integers have been saved.
@@ -122,14 +129,15 @@ page without starting it; see [Desktop broadcast](broadcast.md).
 
 ## Verification
 
-`build` includes engine, parser, import isolation, cache exhaustion, interruption,
+`build` includes engine, parser, import isolation, seeded draws, fallback, interruption,
 GV sequencing, persistence, and case attachment tests. Consumption tests analyze
-100 rates and check all GV values using only two packages, across 20 fixed test
-seeds at each hit limit. The highest observed use is 3971 integers (less than one
-10000-integer package). They also check bit conservation across package boundaries.
+100-rate lists at both hit limits. Tests compare each cached draw directly with
+`new Random(seed).nextInt(bound)`, including signed seeds, package boundaries,
+and bound one. They check SecureRandom bounds, warning state, and automatic
+return to seeded draws when fresh packages arrive.
 The opt-in
 `:lwjgl3:analysisUiSmokeTest` opens an isolated application window and exercises
 list selection, scoring, result search, GV, case save/reopen, duplicate protection,
-cancellation, cache exhaustion, global font changes, and footer visibility at
+cancellation, SecureRandom fallback, orange LED/recovery, font changes, and footer visibility at
 800 × 600. Its deterministic random data is
 strictly a test fixture. `:lwjgl3:navigationLayoutSmokeTest` includes ANALYSIS.

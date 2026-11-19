@@ -18,7 +18,7 @@ class AnalysisConsumptionTest {
     Path directory;
 
     @Test
-    void oneHundredRatesAndAllVitalitiesFitWithinTwoPackagesAtBothHitLimits() throws Exception {
+    void analysisUsesCachedSeedsAndCompletesWithFallbackWhenTheyRunOut() throws Exception {
         var rates = IntStream.range(0, 100).mapToObj(index ->
                 new RateRepository.Rate("Rate " + index, "", "", "")).toList();
         long maximumUsed = 0;
@@ -36,7 +36,10 @@ class AnalysisConsumptionTest {
                 assertEquals(20, result.rows().size());
                 assertTrue(result.rows().getFirst().energeticValue() >= (highLimit ? 1000 : 100));
                 assertTrue(result.rows().subList(0, 20).stream().allMatch(row -> row.generalVitality() != null));
-                assertTrue(hotbits.integersUsed() < 20000, "Exceeded two-package budget.");
+                assertTrue(hotbits.integersUsed() > 0 && hotbits.integersUsed() <= 20000);
+                if (hotbits.integersUsed() < 20000) {
+                    assertFalse(hotbits.isUsingSecureRandom());
+                }
                 maximumUsed = Math.max(maximumUsed, hotbits.integersUsed());
             }
         }
@@ -44,27 +47,25 @@ class AnalysisConsumptionTest {
     }
 
     @Test
-    void smallDrawsUseEveryBitAndCrossPackageBoundaries() throws Exception {
+    void everyDrawConsumesOneSeedAcrossPackageBoundaries() throws Exception {
         HotbitsPackageStore store = new HotbitsPackageStore(directory);
-        // The first 30 bits encode fifteen zero draws; the final bit carries into the next package.
         java.nio.file.Files.move(store.write(new int[]{1 << 30}, HotbitsBackend.Kind.ESP32),
                 directory.resolve("hotbits_001.json"));
         java.nio.file.Files.move(store.write(new int[]{1}, HotbitsBackend.Kind.ESP32),
                 directory.resolve("hotbits_002.json"));
         CachedHotbits hotbits = new CachedHotbits(directory);
-        for (int index = 0; index < 15; index++) {
-            assertEquals(0, hotbits.nextInt(4));
-        }
+        assertEquals(new Random(1 << 30).nextInt(4), hotbits.nextInt(4));
         assertEquals(1, hotbits.integersUsed());
-        assertEquals(3, hotbits.nextInt(4));
+        assertEquals(new Random(1).nextInt(4), hotbits.nextInt(4));
         assertEquals(2, hotbits.integersUsed());
     }
 
     @Test
-    void aSinglePossibleOutcomeNeedsNoEntropy() throws Exception {
+    void boundOneStillConsumesASeedAsInAopi() throws Exception {
+        new HotbitsPackageStore(directory).write(new int[]{123}, HotbitsBackend.Kind.ESP32);
         CachedHotbits hotbits = new CachedHotbits(directory);
         assertEquals(0, hotbits.nextInt(1));
-        assertEquals(0, hotbits.integersUsed());
+        assertEquals(1, hotbits.integersUsed());
         assertThrows(IllegalArgumentException.class, () -> hotbits.nextInt(0));
     }
 }

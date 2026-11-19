@@ -112,8 +112,9 @@ work. The source class's dynamic-adjustment field/accessors are retained.
 
 BroadcastElement retains its two original random sources and hotbits-assisted
 branches. Its adapter follows the original broadcast fallback to SecureRandom
-when acquired values are unavailable. This policy is confined to broadcasting:
-Analysis and Essential Questions still have no software-generated fallback.
+when acquired values are unavailable. The shared reader follows the same policy
+for Analysis and Essential Questions and lights an orange SECURE RANDOM warning
+when fallback is used. A cached integer seeds one fresh java.util.Random draw.
 Cached package counts are supplied by the new app, never by original AOPi folders.
 
 RESONATED RATES shows cumulative counts. Each actual original resonance test adds

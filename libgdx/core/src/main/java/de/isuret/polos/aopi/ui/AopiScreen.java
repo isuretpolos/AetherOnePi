@@ -90,6 +90,8 @@ public class AopiScreen extends ScreenAdapter {
     private final ScrollPane broadcastScroll;
     private TextButton broadcastTab;
     private StatusLight broadcastLight;
+    private StatusLight secureRandomLight;
+    private final CachedHotbits cachedHotbits;
     private TextButton sessionTab;
     private Label serviceCounts;
     private TextButton dashboardTab;
@@ -116,7 +118,7 @@ public class AopiScreen extends ScreenAdapter {
         if (loadFailed) {
             settingsPage.showLoadError();
         }
-        CachedHotbits cachedHotbits = new CachedHotbits(dataDirectory.child("hotbits").file().toPath(), () -> {
+        cachedHotbits = new CachedHotbits(dataDirectory.child("hotbits").file().toPath(), () -> {
             if (hotbits != null) {
                 hotbits.cacheChanged();
             }
@@ -128,9 +130,7 @@ public class AopiScreen extends ScreenAdapter {
                 new AnalysisStore(dataDirectory.file().toPath()), cachedHotbits, settings, rateFilePicker, snapshot -> {
             selectSession();
             sessionPage.attachAnalysis(snapshot);
-        }, this::hotbitsConsumed, sessionPage::currentCaseId,
-                () -> hotbits != null && hotbits.snapshot().state() == HotbitsAcquisition.State.ACQUIRING,
-                settingsPage::changedSettings);
+        }, this::hotbitsConsumed, sessionPage::currentCaseId, settingsPage::changedSettings);
         analysisScroll = scrollPane(analysisPage);
         broadcastPage = new BroadcastPage(skin, broadcasts, new BroadcastHistory(dataDirectory.file().toPath()),
                 settings, analysisPage::currentResult, report -> {
@@ -409,6 +409,9 @@ public class AopiScreen extends ScreenAdapter {
             acquisitionLights.put(kind, indicator);
             indicators.addActor(indicator);
         }
+        secureRandomLight = new StatusLight("SECURE RANDOM", skin);
+        secureRandomLight.setName("secure-random-indicator");
+        indicators.addActor(secureRandomLight);
         status.add(indicators).growX().row();
         // These services do not exist yet. Do not imply that hardware is connected.
         serviceCounts = new Label("PACKAGES: --     CACHE: --     PROGRESS: --     QUEUE: --", skin, "muted");
@@ -625,6 +628,7 @@ public class AopiScreen extends ScreenAdapter {
         analysisPage.update();
         broadcastPage.update(message::setText);
         broadcastLight.setState(broadcasts.isRunning() ? StatusLight.State.ON : StatusLight.State.OFF);
+        secureRandomLight.setState(cachedHotbits.isUsingSecureRandom() ? StatusLight.State.WARNING : StatusLight.State.OFF);
         ScreenUtils.clear(0.03f, 0.02f, 0.06f, 1);
         stage.act(Math.min(delta, 0.1f));
         stage.draw();

@@ -80,7 +80,7 @@ public class BroadcastContext implements Disposable {
     public int getInteger(int maximum) { return getInteger(0, maximum); }
     public int getInteger(int minimum, int maximum) {
         // BroadcastElement originally uses PRNGs and HotbitsHandler's SecureRandom fallback.
-        // This policy is confined to broadcasting; analysis still has no software fallback.
+        // The shared reader also exposes SecureRandom fallback through the footer warning LED.
         if (hotbits != null && System.nanoTime() >= retryHotbits) {
             try {
                 return hotbits.nextInt(maximum - minimum + 1) + minimum;

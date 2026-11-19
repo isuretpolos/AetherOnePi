@@ -21,36 +21,38 @@ class EssentialQuestionsTest {
         HotbitsPackageStore store = new HotbitsPackageStore(directory);
         Path file = store.write(new int[]{12, 34, 56}, HotbitsBackend.Kind.INFINITE_NOISE);
         CachedHotbits values = new CachedHotbits(directory);
-        assertEquals(12, values.nextInt(101));
-        assertEquals(0, values.nextInt(101));
-        assertEquals(0, values.nextInt(101));
+        assertEquals(new java.util.Random(12).nextInt(101), values.nextInt(101));
+        assertEquals(new java.util.Random(34).nextInt(101), values.nextInt(101));
+        assertEquals(new java.util.Random(56).nextInt(101), values.nextInt(101));
         assertEquals(0, store.count());
         assertTrue(Files.exists(directory.resolve("consumed").resolve(file.getFileName())));
-        assertThrows(IOException.class, () -> {
-            for (int index = 0; index < 100; index++) {
-                values.nextInt(101);
-            }
-        });
-        assertThrows(IOException.class, () -> new CachedHotbits(directory).nextInt(101));
+        values.nextInt(101);
+        assertTrue(values.isUsingSecureRandom());
+        var restarted = new CachedHotbits(directory);
+        restarted.nextInt(101);
+        assertTrue(restarted.isUsingSecureRandom());
     }
 
     @Test
-    void outOfRangeTailValuesAreRejectedBeforeBoundedDraw() throws IOException {
-        // Seven bits encode 127 (rejected), then 42 (accepted).
-        new HotbitsPackageStore(directory).write(new int[]{127 | (42 << 7)}, HotbitsBackend.Kind.ESP32);
-        assertEquals(42, new CachedHotbits(directory).nextInt(101));
+    void fullIntegerIsUsedAsTheSeed() throws IOException {
+        new HotbitsPackageStore(directory).write(new int[]{Integer.MAX_VALUE}, HotbitsBackend.Kind.ESP32);
+        assertEquals(new java.util.Random(Integer.MAX_VALUE).nextInt(101), new CachedHotbits(directory).nextInt(101));
     }
 
     @Test
-    void missingPackagesProduceAnErrorRatherThanSoftwareFallback() {
-        assertThrows(IOException.class, () -> new EssentialQuestions(new CachedHotbits(directory)::nextInt).ask());
+    void missingPackagesUseSecureRandom() throws IOException {
+        CachedHotbits values = new CachedHotbits(directory);
+        assertFalse(new EssentialQuestions(values::nextInt).ask().isEmpty());
+        assertTrue(values.isUsingSecureRandom());
     }
 
     @Test
     void invalidPackageIsLeftInPlaceAndNeverUsed() throws IOException {
         Path file = directory.resolve("hotbits_bad.json");
-        Files.writeString(file, "{\"integerList\":[-1]}");
-        assertThrows(IOException.class, () -> new CachedHotbits(directory).nextInt(101));
+        Files.writeString(file, "{\"integerList\":[2147483648]}");
+        CachedHotbits values = new CachedHotbits(directory);
+        values.nextInt(101);
+        assertTrue(values.isUsingSecureRandom());
         assertTrue(Files.exists(file));
         assertFalse(Files.exists(directory.resolve("consumed")));
     }

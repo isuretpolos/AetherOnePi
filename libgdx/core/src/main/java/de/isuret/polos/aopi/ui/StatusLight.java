@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 public class StatusLight extends Table {
 
     public enum State {
-        OFF, WAITING, ON
+        OFF, WAITING, ON, WARNING
     }
 
     private final Image light;
@@ -29,6 +29,7 @@ public class StatusLight extends Table {
             case OFF -> Color.valueOf("655E70");
             case WAITING -> Color.valueOf("E3B341");
             case ON -> Color.valueOf("55D487");
+            case WARNING -> Color.valueOf("FFA500");
         });
     }
 

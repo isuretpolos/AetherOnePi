@@ -177,7 +177,9 @@ serial selection, bounded transfers, warmup, and continuous basic source checks.
 `SessionPage` owns case editing and history. `CaseRepository` saves independent
 case documents and recovery drafts. `CachedHotbits` claims acquired packages once
 for `EssentialQuestions` and `AnalysisEngine`; it never reads original AOPi's cache
-or generates fallback values. `AnalysisPage` coordinates background work and
+and uses each cached integer as a java.util.Random seed for one draw. If no seed
+is available, SecureRandom supplies the draw and an orange SECURE RANDOM footer
+LED warns about the fallback. `AnalysisPage` coordinates background work and
 immutable result snapshots; `RateRepository` owns list selection and imports,
 and `AnalysisStore` preserves the last completed result independently of cases.
 `BroadcastService` owns monotonic queue timing; `BroadcastPage` supplies the

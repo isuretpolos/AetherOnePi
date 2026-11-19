@@ -9,7 +9,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.function.BooleanSupplier;
+import java.util.Random;
+import java.security.SecureRandom;
 
 /** Claims cached packages once; consumed files are archived rather than reused or deleted. */
 public class CachedHotbits {
@@ -17,9 +18,10 @@ public class CachedHotbits {
     private final Path directory;
     private int[] values = new int[0];
     private int position;
-    private long bitBuffer;
-    private int bufferedBits;
     private long integersUsed;
+    private final SecureRandom secureRandom = new SecureRandom();
+    private volatile boolean usingSecureRandom;
+    private long nextCacheCheck = System.nanoTime();
     private final CacheChanged onCacheChanged;
 
     @FunctionalInterface
@@ -42,55 +44,39 @@ public class CachedHotbits {
         this.onCacheChanged = onCacheChanged;
     }
 
-    /** Wait only while a real source is active. Never hold the reader lock while waiting. */
-    public int nextInt(int bound, BooleanSupplier acquisitionActive, Runnable onWaiting) throws IOException {
-        while (true) {
-            try {
-                return nextInt(bound);
-            } catch (EmptyCacheException exception) {
-                if (!acquisitionActive.getAsBoolean()) {
-                    throw exception;
-                }
-                onWaiting.run();
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException interrupted) {
-                    Thread.currentThread().interrupt();
-                    throw new java.io.InterruptedIOException("Analysis cancelled while waiting for hotbits.");
-                }
-            }
-        }
-    }
-
+    /** AOPi semantics: consume one cached integer only as the seed for one java.util.Random draw. */
     public synchronized int nextInt(int bound) throws IOException {
         if (bound <= 0) {
             throw new IllegalArgumentException("Bound must be positive.");
         }
-        if (bound == 1) {
-            return 0;
+        if (Thread.currentThread().isInterrupted()) {
+            throw new java.io.InterruptedIOException("Random draw cancelled.");
         }
-        int requiredBits = Integer.SIZE - Integer.numberOfLeadingZeros(bound - 1);
-        long mask = (1L << requiredBits) - 1;
-        for (int attempt = 0; attempt < 10000; attempt++) {
-            // Keep unused bits for the next draw, even across package boundaries.
-            // At most 61 bits fit here: 30 remaining bits plus one 31-bit integer.
-            while (bufferedBits < requiredBits) {
-                if (position == values.length) {
+        if (position == values.length) {
+            // Avoid rescanning an empty/unreadable disk cache for every SecureRandom draw.
+            // This only throttles file discovery; it never reuses seeds or random bits.
+            if (System.nanoTime() >= nextCacheCheck) {
+                try {
                     loadPackage();
+                } catch (IOException | RuntimeException exception) {
+                    nextCacheCheck = System.nanoTime() + 100_000_000L;
+                    usingSecureRandom = true;
+                    return secureRandom.nextInt(bound);
                 }
-                bitBuffer |= (long) values[position++] << bufferedBits;
-                bufferedBits += 31;
-                integersUsed++;
             }
-            int value = (int) (bitBuffer & mask);
-            bitBuffer >>>= requiredBits;
-            bufferedBits -= requiredBits;
-            // Reject the unused tail rather than introduce modulo bias.
-            if (value < bound) {
-                return value;
+            if (position == values.length) {
+                usingSecureRandom = true;
+                return secureRandom.nextInt(bound);
             }
         }
-        throw new IOException("Cached hotbits could not supply a bounded draw.");
+        int seed = values[position++];
+        integersUsed++;
+        usingSecureRandom = false;
+        return new Random(seed).nextInt(bound);
+    }
+
+    public boolean isUsingSecureRandom() {
+        return usingSecureRandom;
     }
 
     public synchronized long integersUsed() {
@@ -119,7 +105,7 @@ public class CachedHotbits {
         }
         List<Integer> checked = new ArrayList<>();
         for (JsonValue value : list) {
-            if (!value.isLong() || value.asLong() < 0 || value.asLong() > Integer.MAX_VALUE) {
+            if (!value.isLong() || value.asLong() < Integer.MIN_VALUE || value.asLong() > Integer.MAX_VALUE) {
                 throw new IOException("Invalid hotbits integer in " + file.getFileName());
             }
             checked.add(value.asInt());
