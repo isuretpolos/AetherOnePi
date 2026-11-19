@@ -33,7 +33,21 @@ public final class BroadcastPortSmokeTest {
                 var skin = DashboardSkin.create();
                 var settings = new ApplicationSettings();
                 var soundRequests = new java.util.concurrent.atomic.AtomicInteger();
-                var context = new BroadcastContext(skin, settings, null, () -> 0) {
+                var seed = new java.util.concurrent.atomic.AtomicInteger(seedForTransparency(0));
+                var seedDraws = new java.util.concurrent.atomic.AtomicInteger();
+                var layerSeeds = new java.util.ArrayDeque<Integer>();
+                var hotbits = new de.isuret.polos.aopi.session.CachedHotbits(java.nio.file.Path.of("unused")) {
+                    @Override
+                    public synchronized int nextInt(int bound) {
+                        if (bound == Integer.MAX_VALUE) {
+                            seedDraws.incrementAndGet();
+                            if (!layerSeeds.isEmpty()) { return layerSeeds.removeFirst(); }
+                            return seed.get();
+                        }
+                        return 0;
+                    }
+                };
+                var context = new BroadcastContext(skin, settings, hotbits, () -> 0) {
                     @Override
                     public void playAudio(Runnable task) {
                         soundRequests.incrementAndGet();
@@ -71,16 +85,70 @@ public final class BroadcastPortSmokeTest {
                     var red = image("overlay.png", 0xff0000ff);
                     context.setImages(List.of(green, red), true);
                     settings.setEnabled(Setting.BROADCAST_IMAGES, true);
-                    context.getImageLayers().drawBroadcast(context, 0, 0, 320, 180, new Random() {
+                    drawLayerFrame(context, new Random() {
                         @Override
                         public int nextInt(int bound) { return bound - 1; }
                     });
                     context.loadPixels();
                     require(context.pixels[100] == 0xff0000ff, "Image overlays did not draw after the base.");
-                    context.getImageLayers().drawBroadcast(context, 0, 0, 320, 180, new Random() {
+                    int seedsAtStart = seedDraws.get();
+                    for (int frame = 0; frame < 120; frame++) {
+                        drawLayerFrame(context, new Random());
+                    }
+                    require(seedDraws.get() == seedsAtStart && seedsAtStart == 2,
+                            "Image-layer animation consumed hotbits after its initial seed.");
+                    seed.set(seedForTransparency(50));
+                    layerSeeds.add(seedForTransparency(0));
+                    layerSeeds.add(seedForTransparency(50));
+                    context.setBroadcastId("half-opacity");
+                    drawLayerFrame(context, new Random());
+                    context.loadPixels();
+                    // SpriteBatch packs alpha into an even 8-bit value; allow its two-level quantization.
+                    require(Math.abs(context.red(context.pixels[100]) - 128) <= 2
+                                    && Math.abs(context.green(context.pixels[100]) - 128) <= 2
+                                    && (context.pixels[100] & 255) == 255,
+                            "50% layer transparency did not blend with the base: " + Integer.toHexString(context.pixels[100]));
+                    seed.set(seedForTransparency(100));
+                    layerSeeds.add(seedForTransparency(0));
+                    layerSeeds.add(seedForTransparency(100));
+                    context.setBroadcastId("transparent");
+                    drawLayerFrame(context, new Random() {
                         @Override
                         public int nextInt(int bound) { return 0; }
                     });
+                    context.loadPixels();
+                    require(context.pixels[100] == 0x00ff00ff, "100% transparency did not reveal the base.");
+                    require(seedDraws.get() == 6, "A new broadcast did not receive exactly one seed per layer, including the base.");
+                    context.setBroadcastId("all-transparent");
+                    drawLayerFrame(context, new Random());
+                    context.loadPixels();
+                    require(context.red(context.pixels[100]) < 10 && context.green(context.pixels[100]) < 10,
+                            "Transparent base/overlays retained opaque pixels from the previous cycle.");
+                    // Check consecutive cycles against two independent seeded sequences.
+                    int baseSeed = seedForTransparency(20);
+                    int overlaySeed = seedForTransparency(80);
+                    layerSeeds.add(baseSeed);
+                    layerSeeds.add(overlaySeed);
+                    Random expectedBase = new Random(baseSeed);
+                    Random expectedOverlay = new Random(overlaySeed);
+                    context.setBroadcastId("independent-animation");
+                    int previousPixel = 0;
+                    boolean changed = false;
+                    for (int frame = 0; frame < 120; frame++) {
+                        drawLayerFrame(context, new Random());
+                        context.loadPixels();
+                        float baseAlpha = (100 - expectedBase.nextInt(101)) / 100f;
+                        float overlayAlpha = (100 - expectedOverlay.nextInt(101)) / 100f;
+                        float expectedRed = 255 * overlayAlpha + 8 * (1 - baseAlpha) * (1 - overlayAlpha);
+                        float expectedGreen = (255 * baseAlpha + 5 * (1 - baseAlpha)) * (1 - overlayAlpha);
+                        require(Math.abs(context.red(context.pixels[100]) - expectedRed) < 6
+                                        && Math.abs(context.green(context.pixels[100]) - expectedGreen) < 6,
+                                "A layer did not receive its independent transparency for this cycle.");
+                        changed |= frame > 0 && previousPixel != context.pixels[100];
+                        previousPixel = context.pixels[100];
+                    }
+                    require(changed && seedDraws.get() == 10, "Layer opacity stayed static or consumed additional hotbits.");
+                    context.image(green, 0, 0, 320, 180);
                     context.blendMode(BroadcastContext.DIFFERENCE);
                     context.image(red, 0, 0, 320, 180);
                     context.blendMode(BroadcastContext.BLEND);
@@ -142,9 +210,33 @@ public final class BroadcastPortSmokeTest {
         return new BroadcastImage(name, new Texture(pixels), pixels);
     }
 
+    private static int seedForTransparency(int transparency) {
+        for (int seed = 0; seed < 100000; seed++) {
+            if (new Random(seed).nextInt(101) == transparency) { return seed; }
+        }
+        throw new AssertionError("No fixture seed for transparency " + transparency);
+    }
+
+    private static void drawLayerFrame(BroadcastContext context, Random random) {
+        // This fixture framebuffer represents the temporary image pass, not persistent artwork.
+        Gdx.gl.glClearColor(0.03f, 0.02f, 0.06f, 1);
+        Gdx.gl.glClear(com.badlogic.gdx.graphics.GL20.GL_COLOR_BUFFER_BIT);
+        context.getImageLayers().drawBroadcast(context, 0, 0, 320, 180, random);
+    }
+
     private static void verifyDisplayedOrientation(com.badlogic.gdx.scenes.scene2d.ui.Skin skin,
                                                    BroadcastImage image) throws Exception {
-        BroadcastContext context = new BroadcastContext(skin, new ApplicationSettings(), null, () -> 0);
+        ApplicationSettings settings = new ApplicationSettings();
+        var seedDraws = new java.util.concurrent.atomic.AtomicInteger();
+        int layerSeed = seedForTransparency(50);
+        var hotbits = new de.isuret.polos.aopi.session.CachedHotbits(java.nio.file.Path.of("unused")) {
+            @Override
+            public synchronized int nextInt(int bound) {
+                seedDraws.incrementAndGet();
+                return layerSeed;
+            }
+        };
+        BroadcastContext context = new BroadcastContext(skin, settings, hotbits, () -> 0);
         BroadcastService service = new BroadcastService();
         service.enqueue(List.of(new BroadcastService.Request("Orientation", 60, 1)));
         service.start();
@@ -173,6 +265,51 @@ public final class BroadcastPortSmokeTest {
         try {
             require(pixels.getPixel(10, 150) == 0xff0000ff, "Displayed broadcast image top is inverted.");
             require(pixels.getPixel(10, 20) == 0x0000ffff, "Displayed broadcast image bottom is inverted.");
+            output.end();
+            // Pause new random paint, retaining existing artwork while testing image pass changes.
+            var elementField = surface.getClass().getDeclaredField("element");
+            elementField.setAccessible(true);
+            ((BroadcastElement) elementField.get(surface)).setSeconds(null);
+            context.setImages(List.of(image("green-layer.png", 0x00ff00ff)), true);
+            settings.setEnabled(Setting.BROADCAST_IMAGES, true);
+            var imageBufferField = surface.getClass().getDeclaredField("imageBuffer");
+            imageBufferField.setAccessible(true);
+            FrameBuffer imageBuffer = (FrameBuffer) imageBufferField.get(surface);
+            Random expected = new Random(layerSeed);
+            for (int frame = 0; frame < 120; frame++) {
+                visual.update();
+                source.begin();
+                context.loadPixels();
+                require(context.pixels[10 * 320 + 10] == 0xff0000ff
+                                && context.pixels[170 * 320 + 10] == 0x0000ffff,
+                        "Image-layer rendering erased persistent broadcast artwork.");
+                source.end();
+                imageBuffer.begin();
+                context.loadPixels();
+                int expectedAlpha = Math.round((100 - expected.nextInt(101)) * 255 / 100f);
+                require(Math.abs((context.pixels[100] & 255) - expectedAlpha) <= 2,
+                        "The temporary image pass accumulated old opacity.");
+                imageBuffer.end();
+            }
+            require(seedDraws.get() == 1, "Separate image rendering consumed hotbits per frame.");
+            // Restart the layer generator to check a known 50% composite over the saved red/blue artwork.
+            context.setImages(List.of(image("green-layer.png", 0x00ff00ff)), true);
+            visual.update();
+            output.begin();
+            batch.begin();
+            visual.draw(batch, 1);
+            batch.end();
+            Pixmap composite = Pixmap.createFromFrameBuffer(0, 0, 320, 240);
+            try {
+                int top = composite.getPixel(10, 150);
+                int bottom = composite.getPixel(10, 20);
+                require(Math.abs(context.red(top) - 128) <= 2 && Math.abs(context.green(top) - 128) <= 2,
+                        "Image layers did not composite over preserved artwork at the expected opacity.");
+                require(context.blue(bottom) > 120 && context.green(bottom) > 120,
+                        "The existing lower artwork disappeared behind the image pass.");
+            } finally {
+                composite.dispose();
+            }
         } finally {
             pixels.dispose();
             output.end();

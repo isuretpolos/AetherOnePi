@@ -26,6 +26,8 @@ public class BroadcastVisual extends Widget implements Disposable {
 
     private class Surface implements Disposable {
         private final FrameBuffer buffer = new FrameBuffer(Pixmap.Format.RGBA8888, 320, 180, false);
+        private final FrameBuffer imageBuffer = new FrameBuffer(Pixmap.Format.RGBA8888, 320, 180, false);
+        private boolean hasImageLayers;
         private final BroadcastElement element;
         private double renderedSeconds;
 
@@ -37,6 +39,7 @@ public class BroadcastVisual extends Widget implements Disposable {
             element.setOffsetY(0);
             element.setStart(unit.started().toEpochMilli());
             buffer.getColorBufferTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+            imageBuffer.getColorBufferTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
             buffer.begin();
             Gdx.gl.glClearColor(0.03f, 0.02f, 0.06f, 1);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -47,6 +50,7 @@ public class BroadcastVisual extends Widget implements Disposable {
         public void dispose() {
             element.dispose();
             buffer.dispose();
+            imageBuffer.dispose();
         }
     }
 
@@ -62,26 +66,43 @@ public class BroadcastVisual extends Widget implements Disposable {
         var ids = new HashSet<String>();
         for (var unit : service.active()) {
             ids.add(unit.id());
+            context.setBroadcastId(unit.id());
             Surface surface = surfaces.computeIfAbsent(unit.id(), ignored -> new Surface(unit));
             double elapsed = service.elapsedSeconds(unit);
-            surface.buffer.begin();
-            try {
-                // Original Processing runs at 60 fps. Limit catch-up after a suspended desktop.
-                int frames = Math.min(4, Math.max(1, (int) ((elapsed - surface.renderedSeconds) * 60)));
-                for (int frame = 0; frame < frames; frame++) {
+            // Original Processing runs at 60 fps. Limit catch-up after a suspended desktop.
+            int frames = Math.min(4, Math.max(1, (int) ((elapsed - surface.renderedSeconds) * 60)));
+            for (int frame = 0; frame < frames; frame++) {
+                ImageLayersAnalysis layers = context.getImageLayers();
+                surface.hasImageLayers = layers != null && !layers.isEmpty();
+                surface.buffer.begin();
+                context.setSeparateImageLayerPass(true);
+                try {
                     context.setNowMillis(unit.started().toEpochMilli() + (long) (elapsed * 1000));
                     surface.element.draw();
+                } finally {
+                    context.setSeparateImageLayerPass(false);
+                    surface.buffer.end();
                 }
-                surface.renderedSeconds = elapsed;
-            } finally {
-                surface.buffer.end();
+                if (surface.hasImageLayers) {
+                    surface.imageBuffer.begin();
+                    try {
+                        // Only the temporary image pass is cleared. Original paint keeps accumulating.
+                        Gdx.gl.glClearColor(0, 0, 0, 0);
+                        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+                        layers.drawBroadcast(context, 0, 0, 320, 180, null);
+                    } finally {
+                        surface.imageBuffer.end();
+                    }
+                }
             }
+            surface.renderedSeconds = elapsed;
         }
         for (String id : new HashSet<>(surfaces.keySet())) {
             if (!ids.contains(id)) {
                 surfaces.remove(id).dispose();
             }
         }
+        context.retainImageLayerBroadcasts(ids);
         var events = context.getResonanceList();
         while (resonancePointer < events.size()) {
             service.resonate(events.get(resonancePointer++).getRateObject().getNameOrRate());
@@ -142,6 +163,20 @@ public class BroadcastVisual extends Widget implements Disposable {
             // have their bottom row at v=0; reversing it turns all artwork upside down.
             batch.draw(surface.buffer.getColorBufferTexture(), x, top - captionHeight() - imageHeight,
                     tileWidth - 3, imageHeight, 0, 0, 1, 1);
+            if (surface.hasImageLayers) {
+                int source = batch.getBlendSrcFunc();
+                int destination = batch.getBlendDstFunc();
+                int sourceAlpha = batch.getBlendSrcFuncAlpha();
+                int destinationAlpha = batch.getBlendDstFuncAlpha();
+                // The transparent image framebuffer contains premultiplied RGB.
+                batch.setBlendFunctionSeparate(GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA,
+                        GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
+                batch.setColor(parentAlpha, parentAlpha, parentAlpha, parentAlpha);
+                batch.draw(surface.imageBuffer.getColorBufferTexture(), x, top - captionHeight() - imageHeight,
+                        tileWidth - 3, imageHeight, 0, 0, 1, 1);
+                batch.setBlendFunctionSeparate(source, destination, sourceAlpha, destinationAlpha);
+                batch.setColor(1, 1, 1, parentAlpha);
+            }
             index++;
         }
         font.setColor(oldFontColor);

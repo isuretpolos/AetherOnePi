@@ -48,11 +48,13 @@ public class BroadcastContext implements Disposable {
     private final List<BroadcastImage> clipboardImages = new ArrayList<>();
     private final List<BroadcastImage> layerImages = new ArrayList<>();
     private ImageLayersAnalysis imageLayers;
+    private boolean separateImageLayerPass;
     private final List<RateObject> resonated = new ArrayList<>();
     private final List<ResonanceObject> resonances = new ArrayList<>();
     private final java.security.SecureRandom fallback = new java.security.SecureRandom();
     private long retryHotbits;
     private long now;
+    private String broadcastId = "";
     private final ExecutorService audio = Executors.newCachedThreadPool(task -> {
         Thread thread = new Thread(task, "aopi-broadcast-audio");
         thread.setDaemon(true);
@@ -72,6 +74,11 @@ public class BroadcastContext implements Disposable {
     }
 
     public long nowMillis() { return now; }
+    public String broadcastId() { return broadcastId; }
+    public void setBroadcastId(String id) { broadcastId = id; }
+    public void retainImageLayerBroadcasts(java.util.Set<String> activeIds) {
+        if (imageLayers != null) { imageLayers.retainBroadcasts(activeIds); }
+    }
     public void setNowMillis(long now) { this.now = now; }
     public int getHotbitsCacheSize() { return cacheSize.getAsInt(); }
     public BroadcastContext getSettings() { return this; }
@@ -93,7 +100,10 @@ public class BroadcastContext implements Disposable {
     public List<BroadcastImage> getClipBoardImages() { return clipboardImages; }
     public List<RateObject> getResonatedList() { return resonated; }
     public List<ResonanceObject> getResonanceList() { return resonances; }
-    public ImageLayersAnalysis getImageLayers() { return settings.isEnabled(Setting.BROADCAST_IMAGES) ? imageLayers : null; }
+    public ImageLayersAnalysis getImageLayers() {
+        return !separateImageLayerPass && settings.isEnabled(Setting.BROADCAST_IMAGES) ? imageLayers : null;
+    }
+    public void setSeparateImageLayerPass(boolean separate) { separateImageLayerPass = separate; }
     public void playAudio(Runnable task) { audio.execute(task); }
     public void setImages(List<BroadcastImage> images, boolean layers) {
         List<BroadcastImage> destination = layers ? layerImages : clipboardImages;
@@ -206,15 +216,26 @@ public class BroadcastContext implements Disposable {
         // image() sets its batch color to white before every draw, so no tint state can leak in.
     }
     public void image(BroadcastImage image, float x, float y, float w, float h) {
+        image(image, x, y, w, h, 1);
+    }
+
+    /** Opacity multiplies the PNG's own alpha; it is local to this draw and cannot tint later images. */
+    public void image(BroadcastImage image, float x, float y, float w, float h, float opacity) {
+        opacity = Math.max(0, Math.min(1, opacity));
+        if (opacity == 0) { return; }
         if (blend == DIFFERENCE) {
             // Exact Processing DIFFERENCE for arbitrary RGBA images, not an approximate blend equation.
-            differenceImage(image, x, y, w, h);
+            differenceImage(image, x, y, w, h, opacity);
             return;
         }
-        batch.setColor(Color.WHITE);
+        batch.setColor(1, 1, 1, opacity);
+        // Keep accumulated framebuffer alpha intact when blending a translucent overlay over its base.
+        batch.setBlendFunctionSeparate(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA,
+                GL20.GL_ONE, GL20.GL_ONE_MINUS_SRC_ALPHA);
         batch.begin(); batch.draw(image.texture(), x, 180 - y - h, w, h); batch.end();
+        batch.setColor(Color.WHITE);
     }
-    private void differenceImage(BroadcastImage image, float x, float y, float w, float h) {
+    private void differenceImage(BroadcastImage image, float x, float y, float w, float h, float opacity) {
         loadPixels();
         Pixmap source = image.pixels();
             for (int yy = Math.max(0, (int) y); yy < Math.min(180, y + h); yy++) {
@@ -222,7 +243,7 @@ public class BroadcastContext implements Disposable {
                     int color = source.getPixel(Math.min(source.getWidth() - 1, (int) ((xx - x) * source.getWidth() / w)),
                             Math.min(source.getHeight() - 1, (int) ((yy - y) * source.getHeight() / h)));
                     int old = pixels[yy * 320 + xx];
-                    float alpha = (color & 255) / 255f;
+                    float alpha = (color & 255) / 255f * opacity;
                     int r = Math.round(red(old) * (1 - alpha) + Math.abs(red(old) - red(color)) * alpha);
                     int g = Math.round(green(old) * (1 - alpha) + Math.abs(green(old) - green(color)) * alpha);
                     int b = Math.round(blue(old) * (1 - alpha) + Math.abs(blue(old) - blue(color)) * alpha);

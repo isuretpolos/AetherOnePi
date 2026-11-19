@@ -19,8 +19,9 @@ random tests, including:
 - The original `random2.nextInt(6765 + multiplier) >= 6764 + multiplier` resonance
   test, timestamped events, and cumulative per-signature counters.
 - Clipboard/imported images with the original DIFFERENCE blending test.
-- `ImageLayersAnalysis.drawBroadcast`: base image first, independent 5% overlay
-  selection. The matching `<collection-folder-name>.png` is loaded first.
+- `ImageLayersAnalysis.drawBroadcast`: base image first. Overlay opacity now uses
+  independent hotbits-seeded generators as described below, replacing the original
+  5% selection. The matching `<collection-folder-name>.png` is loaded first.
 - Additional safety-switch words, hotbits cache thresholds and reseeding rules.
 - Both `playBinauralSound` branches and the original stereo `Binaural` generator.
 - The original drawing overload, draw-order offsets, progress calculation, and
@@ -97,6 +98,22 @@ The file matching the folder name is the base, followed by its overlays. A succe
 selection automatically enables and saves **Broadcast image layers** in Settings.
 The status shows the collection name and loaded layer count. Selecting a collection
 does not start broadcasting. CLEAR IMAGES releases both selections, including GPU resources.
+
+Every image, including the base, acts as an independent rate layer:
+when a broadcast first draws the collection, one hotbits-backed
+`nextInt(Integer.MAX_VALUE)` draw seeds an extra `java.util.Random` for that layer.
+Every animation frame uses that generator's `nextInt(101)` to choose transparency
+from 0% through 100%, multiplied by the PNG's existing alpha. Each unit has two
+surfaces: original BroadcastElement artwork accumulates on its persistent surface,
+while image layers redraw on a separate transparent surface. Only that temporary
+image surface is cleared each cycle. It is composited over the preserved artwork
+with premultiplied-alpha blending, so layer opacity changes without becoming
+permanent and without erasing circles, waves, characters, or other paint. Animation does not
+consume further hotbits for layer transparency. A new broadcast gets fresh seeds;
+finished broadcasts release their generators. Replacing the collection initializes
+new generators on its first draw. Missing hotbits use the shared SecureRandom
+fallback and its orange footer warning. This replaces the original Broadcast
+overlay's 5% on/off selection with continuously evaluated opacity.
 Selections are session-only and do not read original AOPi image directories unless
 you explicitly choose them.
 
