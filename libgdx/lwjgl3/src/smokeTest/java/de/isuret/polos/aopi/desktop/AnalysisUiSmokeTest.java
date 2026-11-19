@@ -245,8 +245,15 @@ public final class AnalysisUiSmokeTest {
         require(information.getTop() <= commands.getY() + 1, "Target/status must sit below the command buttons.");
         Label target = stage.getRoot().findActor("analysis-target-gv");
         Label status = stage.getRoot().findActor("analysis-status");
-        require(Math.abs(target.getTop() - status.getTop()) < 1 && target.getX() < status.getX(),
-                "Target GV and status must share one compact row.");
+        Label selected = stage.getRoot().findActor("analysis-selected");
+        TextField filter = field(stage, "analysis-filter");
+        float center = filter.getY() + filter.getHeight() / 2;
+        require(target.getParent() == filter.getParent() && selected.getParent() == filter.getParent()
+                        && Math.abs(target.getY() + target.getHeight() / 2 - center) < 1
+                        && Math.abs(selected.getY() + selected.getHeight() / 2 - center) < 1
+                        && target.getX() < status.getX() && status.getX() < filter.getX()
+                        && filter.getX() < selected.getX(),
+                "Target/status, search, and selected list must share one aligned row.");
     }
 
     private static int visibleRates(Stage stage) {

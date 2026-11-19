@@ -49,9 +49,10 @@ keep their normal behavior. Left and right Ctrl and both Return keys work.
 Shortcuts stay inactive on other tabs and in modal dialogs. Return works while
 the result filter has focus. Busy operations ignore repeated action requests.
 
-Command buttons come first. Directly below, Target GV and the status message
-share a compact line, with the selected list aligned right and shortened when
-necessary. The rates/trials/hit-limit summary is omitted from the page; those
+Command buttons come first. Directly below, Target GV/status sit on the left,
+the search field fills the middle, and the selected list is aligned right, all
+on the same row. The list name is shortened when necessary. The
+rates/trials/hit-limit summary is omitted from the page; those
 values remain in saved analysis data and copied reports.
 The page scrolls vertically, its toolbar wraps, and controls follow the global
 font setting. Result columns scroll horizontally when the window or font size

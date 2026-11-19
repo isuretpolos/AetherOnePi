@@ -146,10 +146,6 @@ public class AnalysisPage extends Table {
         commands.add(actions).row();
         status = paragraph("Ready.");
         status.setName("analysis-status");
-        information.add(targetVitality).top().padRight(12);
-        information.add(status).growX().minWidth(0).top();
-        information.add(selectedLabel).width(com.badlogic.gdx.scenes.scene2d.ui.Value.percentWidth(0.3f, information))
-                .minWidth(0).top().padLeft(12);
         add(information).row();
         filter = new TextField("", skin);
         filter.setName("analysis-filter");
@@ -161,7 +157,12 @@ public class AnalysisPage extends Table {
                 rebuildResults();
             }
         });
-        add(filter).minHeight(42).row();
+        information.add(targetVitality).padRight(8);
+        information.add(status).width(com.badlogic.gdx.scenes.scene2d.ui.Value.percentWidth(0.14f, information))
+                .minWidth(0).padRight(12);
+        information.add(filter).growX().minWidth(80).minHeight(42);
+        information.add(selectedLabel).width(com.badlogic.gdx.scenes.scene2d.ui.Value.percentWidth(0.28f, information))
+                .minWidth(0).padLeft(8);
         results.top().left();
         ScrollPane resultColumns = new ScrollPane(results, skin);
         resultColumns.setName("analysis-result-columns");

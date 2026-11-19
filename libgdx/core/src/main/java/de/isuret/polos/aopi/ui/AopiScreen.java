@@ -226,8 +226,7 @@ public class AopiScreen extends ScreenAdapter {
         hotbitsTab.setDisabled(hotbits == null);
         dashboardTab.setChecked(true);
         tabs.addActor(dashboardTab);
-        for (String name : new String[]{"SESSION", "SETTINGS", "ANALYZE", "IMAGE", "CARD", "RATES",
-                "PEGGOTTY", "AREA", "HOTBITS", "BROADCAST"}) {
+        for (String name : new String[]{"SESSION", "SETTINGS", "ANALYZE", "IMAGE", "HOTBITS", "BROADCAST"}) {
             TextButton tab = new TextButton(name, skin, "tab");
             tab.pad(8, 10, 8, 10);
             if (name.equals("SESSION")) {
