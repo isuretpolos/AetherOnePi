@@ -45,6 +45,22 @@ public final class BroadcastPortSmokeTest {
                 element.setRandom(new Random(123));
                 buffer.begin();
                 try {
+                    var asymmetric = image("orientation.png", 0x0000ffff);
+                    asymmetric.pixels().setColor(0xff0000ff);
+                    asymmetric.pixels().fillRectangle(0, 0, 320, 90);
+                    asymmetric.texture().draw(asymmetric.pixels(), 0, 0);
+                    context.image(asymmetric, 0, 0, 320, 180);
+                    context.loadPixels();
+                    require(context.pixels[10 * 320 + 10] == 0xff0000ff, "Image top is vertically inverted.");
+                    require(context.pixels[170 * 320 + 10] == 0x0000ffff, "Image bottom is vertically inverted.");
+                    context.updatePixels();
+                    context.loadPixels();
+                    require(context.pixels[10 * 320 + 10] == 0xff0000ff, "Pixel update inverted the image top.");
+                    require(context.pixels[170 * 320 + 10] == 0x0000ffff, "Pixel update inverted the image bottom.");
+                    buffer.end();
+                    verifyDisplayedOrientation(skin, asymmetric);
+                    buffer.begin();
+                    asymmetric.dispose();
                     context.noStroke();
                     context.fill(30, 60, 90);
                     context.rect(0, 0, 320, 180);
@@ -124,6 +140,46 @@ public final class BroadcastPortSmokeTest {
         pixels.setColor(color);
         pixels.fill();
         return new BroadcastImage(name, new Texture(pixels), pixels);
+    }
+
+    private static void verifyDisplayedOrientation(com.badlogic.gdx.scenes.scene2d.ui.Skin skin,
+                                                   BroadcastImage image) throws Exception {
+        BroadcastContext context = new BroadcastContext(skin, new ApplicationSettings(), null, () -> 0);
+        BroadcastService service = new BroadcastService();
+        service.enqueue(List.of(new BroadcastService.Request("Orientation", 60, 1)));
+        service.start();
+        BroadcastVisual visual = new BroadcastVisual(service, context, skin);
+        visual.setWidth(320);
+        visual.setHeight(visual.getPrefHeight());
+        visual.update();
+        // Replace the random paint with an asymmetric fixture, then exercise the real tile draw.
+        var field = BroadcastVisual.class.getDeclaredField("surfaces");
+        field.setAccessible(true);
+        Object surface = ((java.util.Map<?, ?>) field.get(visual)).values().iterator().next();
+        var bufferField = surface.getClass().getDeclaredField("buffer");
+        bufferField.setAccessible(true);
+        FrameBuffer source = (FrameBuffer) bufferField.get(surface);
+        source.begin();
+        context.image(image, 0, 0, 320, 180);
+        source.end();
+        FrameBuffer output = new FrameBuffer(Pixmap.Format.RGBA8888, 320, 240, false);
+        var batch = new com.badlogic.gdx.graphics.g2d.SpriteBatch();
+        batch.setProjectionMatrix(new com.badlogic.gdx.math.Matrix4().setToOrtho2D(0, 0, 320, 240));
+        output.begin();
+        batch.begin();
+        visual.draw(batch, 1);
+        batch.end();
+        Pixmap pixels = Pixmap.createFromFrameBuffer(0, 0, 320, 240);
+        try {
+            require(pixels.getPixel(10, 150) == 0xff0000ff, "Displayed broadcast image top is inverted.");
+            require(pixels.getPixel(10, 20) == 0x0000ffff, "Displayed broadcast image bottom is inverted.");
+        } finally {
+            pixels.dispose();
+            output.end();
+            output.dispose();
+            batch.dispose();
+            visual.dispose();
+        }
     }
 
     private static void invoke(BroadcastElement element, String name, Class<?>[] types, Object... arguments) throws Exception {

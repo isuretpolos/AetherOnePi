@@ -138,8 +138,10 @@ public class BroadcastVisual extends Widget implements Disposable {
             String caption = title + " | " + remaining + " s";
             font.draw(batch, caption, x + 3, top - 2, 0, caption.length(),
                     tileWidth - 8, com.badlogic.gdx.utils.Align.left, false, "...");
+            // This Batch overload takes the lower-left UV first. Framebuffers
+            // have their bottom row at v=0; reversing it turns all artwork upside down.
             batch.draw(surface.buffer.getColorBufferTexture(), x, top - captionHeight() - imageHeight,
-                    tileWidth - 3, imageHeight, 0, 1, 1, 0);
+                    tileWidth - 3, imageHeight, 0, 0, 1, 1);
             index++;
         }
         font.setColor(oldFontColor);
