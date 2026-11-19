@@ -22,6 +22,7 @@ public class AopiApplication extends Game {
     private final HotbitsBackend hotbitsBackend;
     private final RateFilePicker rateFilePicker;
     private final de.isuret.polos.aopi.broadcast.BroadcastImagePicker broadcastImagePicker;
+    private final de.isuret.polos.aopi.image.SigilFilePicker sigilFilePicker;
 
     public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
                           WindowModeController windowMode, boolean settingsLoadFailed) {
@@ -42,6 +43,13 @@ public class AopiApplication extends Game {
     public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
                           WindowModeController windowMode, boolean settingsLoadFailed, HotbitsBackend hotbitsBackend,
                           RateFilePicker rateFilePicker, de.isuret.polos.aopi.broadcast.BroadcastImagePicker broadcastImagePicker) {
+        this(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend, rateFilePicker, broadcastImagePicker, null);
+    }
+
+    public AopiApplication(ApplicationSettings settings, SettingsRepository repository,
+                          WindowModeController windowMode, boolean settingsLoadFailed, HotbitsBackend hotbitsBackend,
+                          RateFilePicker rateFilePicker, de.isuret.polos.aopi.broadcast.BroadcastImagePicker broadcastImagePicker,
+                          de.isuret.polos.aopi.image.SigilFilePicker sigilFilePicker) {
         this.settings = settings;
         this.repository = repository;
         this.windowMode = windowMode;
@@ -49,11 +57,13 @@ public class AopiApplication extends Game {
         this.hotbitsBackend = hotbitsBackend;
         this.rateFilePicker = rateFilePicker;
         this.broadcastImagePicker = broadcastImagePicker;
+        this.sigilFilePicker = sigilFilePicker;
     }
 
     @Override
     public void create() {
-        setScreen(new AopiScreen(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend, rateFilePicker, broadcastImagePicker));
+        setScreen(new AopiScreen(settings, repository, windowMode, settingsLoadFailed, hotbitsBackend,
+                rateFilePicker, broadcastImagePicker, sigilFilePicker));
     }
 
     @Override
@@ -72,6 +82,9 @@ public class AopiApplication extends Game {
         try {
             // Share the Settings page's model so shutdown retains the latest font and boolean edits.
             repository.save(settings);
+            // and close it properly
+            Gdx.app.exit();
+            System.exit(0);
         } catch (Exception exception) {
             Gdx.app.error("Settings", "Cannot save the final window position and size.", exception);
         }

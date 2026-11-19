@@ -40,7 +40,7 @@ public final class DesktopLauncher {
         configuration.setIdleFPS(15);
 
         AopiApplication application = new AopiApplication(settings, repository, windowController, loadFailed,
-                new DesktopHotbitsBackend(), new DesktopRateFilePicker(), new DesktopBroadcastImagePicker());
+                new DesktopHotbitsBackend(), new DesktopRateFilePicker(), new DesktopBroadcastImagePicker(), new DesktopSigilFilePicker());
         try (DesktopTray tray = new DesktopTray()) {
             configuration.setWindowListener(new com.badlogic.gdx.backends.lwjgl3.Lwjgl3WindowAdapter() {
                 @Override

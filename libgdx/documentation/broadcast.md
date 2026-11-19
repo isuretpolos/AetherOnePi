@@ -90,9 +90,13 @@ ADD IMAGES selects PNG/JPEG images. PASTE IMAGE explicitly imports an image from
 the system clipboard into `aopi-libgdx-data/broadcast-images/`. These images are
 used by the original clipboard-image/Difference branch.
 
-IMAGE LAYERS selects a directory of PNG layers. The file matching the folder name
-is the base, followed by its overlays. Enable **Broadcast image layers** in Settings
-to paint them. CLEAR IMAGES releases both selections, including GPU resources.
+IMAGE LAYERS opens an in-app collection chooser with search and scrolling. It
+lists collections saved by IMAGE in `aopi-libgdx-data/data_images/`; BROWSE selects
+a PNG-layer folder elsewhere. The chooser shows the currently selected collection.
+The file matching the folder name is the base, followed by its overlays. A successful
+selection automatically enables and saves **Broadcast image layers** in Settings.
+The status shows the collection name and loaded layer count. Selecting a collection
+does not start broadcasting. CLEAR IMAGES releases both selections, including GPU resources.
 Selections are session-only and do not read original AOPi image directories unless
 you explicitly choose them.
 

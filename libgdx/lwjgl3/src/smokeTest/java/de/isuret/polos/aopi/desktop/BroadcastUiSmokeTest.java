@@ -28,6 +28,10 @@ public final class BroadcastUiSmokeTest {
     public static void main(String[] args) throws Exception {
         Path directory = Files.createTempDirectory(Path.of("lwjgl3/build"), "broadcast-ui-");
         System.setProperty("aopi.dataDirectory", directory.toAbsolutePath().toString());
+        var collection = new de.isuret.polos.aopi.image.SigilCollection("Broadcast Test", 80, 60);
+        collection.addLayer("Overlay");
+        collection.save(directory.resolve("data_images"));
+        new de.isuret.polos.aopi.image.SigilCollection("Other", 80, 60).save(directory.resolve("data_images"));
         SettingsRepository repository = new SettingsRepository(new FileHandle(directory.toFile()));
         var settings = repository.load();
         settings.setEnabled(Setting.BROADCAST_SINGLE_RATES, true);
@@ -61,13 +65,23 @@ public final class BroadcastUiSmokeTest {
                     } else if (phase == 2 && enabled(stage, "session-save")) {
                         caseId = cases.list().cases().getFirst().id();
                         click(stage, "broadcast-tab");
+                        click(stage, "broadcast-images-LAYERS");
+                        phase = 20;
+                    } else if (phase == 20 && stage.getRoot().findActor("broadcast-layers-search") != null) {
+                        field(stage, "broadcast-layers-search").setText("BROADCAST_TEST");
+                        require(stage.getRoot().findActor("broadcast-layers-IMAGE_OTHER") == null, "Collection search did not filter the list.");
+                        click(stage, "broadcast-layers-IMAGE_BROADCAST_TEST");
+                        require(settings.isEnabled(Setting.BROADCAST_IMAGES), "Selecting image layers did not enable them.");
+                        require(text(stage, "broadcast-status").contains("2 layers loaded and enabled"), "Image layers were not loaded.");
+                        phase = 21;
+                    } else if (phase == 21 && stage.getRoot().findActor("broadcast-layers-dialog") == null) {
                         field(stage, "broadcast-signature").setText("Alpha\nBeta");
                         field(stage, "broadcast-seconds").setText("0");
                         click(stage, "broadcast-start");
                         require(text(stage, "broadcast-status").contains("Cannot queue"), "Invalid duration accepted.");
                         field(stage, "broadcast-seconds").setText("1");
                         click(stage, "broadcast-add");
-                        phase++;
+                        phase = 3;
                     } else if (phase == 3 && enabled(stage, "broadcast-clear")) {
                         requireAlignedInputs(stage);
                         require(stage.getRoot().findActor("broadcast-remove-0") == null,

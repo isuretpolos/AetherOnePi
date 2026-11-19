@@ -28,6 +28,10 @@ signature characters, geometric layers, Béziers, image layers, resonance tests,
 expanding waves, and optional original binaural audio. Up to eight separate units
 run together, or one with the single-rate setting. Queue controls, footer status,
 JSON reports, resonance protocols, and case-history attachments are integrated.
+The **IMAGE** tab embeds SigilMaker: pen, line, circle, eraser, ink color,
+brush size, undo, transparent named rate layers, image import, and compatible
+PNG collection save/open. Saved collections can be sent directly to Broadcast.
+See [SigilMaker in IMAGE](documentation/image.md) for tools, storage, and recovery.
 The **HOTBITS** tab supports webcam discovery, a single-image preview, and
 background webcam, ESP32 serial, and Infinite Noise USB acquisition with start/stop
 and live package counts. Infinite Noise uses the installed FTDI D2XX driver.

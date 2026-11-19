@@ -88,6 +88,9 @@ public class AopiScreen extends ScreenAdapter {
     private final BroadcastService broadcasts = new BroadcastService();
     private final BroadcastPage broadcastPage;
     private final ScrollPane broadcastScroll;
+    private final de.isuret.polos.aopi.image.SigilPage imagePage;
+    private final ScrollPane imageScroll;
+    private TextButton imageTab;
     private TextButton broadcastTab;
     private StatusLight broadcastLight;
     private StatusLight secureRandomLight;
@@ -104,7 +107,8 @@ public class AopiScreen extends ScreenAdapter {
 
     public AopiScreen(ApplicationSettings settings, SettingsRepository settingsRepository,
                       WindowModeController windowMode, boolean loadFailed, HotbitsBackend hotbitsBackend,
-                      RateFilePicker rateFilePicker, de.isuret.polos.aopi.broadcast.BroadcastImagePicker broadcastImagePicker) {
+                      RateFilePicker rateFilePicker, de.isuret.polos.aopi.broadcast.BroadcastImagePicker broadcastImagePicker,
+                      de.isuret.polos.aopi.image.SigilFilePicker sigilFilePicker) {
         FileHandle dataDirectory = new FileHandle(System.getProperty("aopi.dataDirectory", "aopi-libgdx-data"));
         this.settingsRepository = settingsRepository;
         this.settings = settings;
@@ -137,8 +141,15 @@ public class AopiScreen extends ScreenAdapter {
                     selectSession();
                     sessionPage.attachBroadcast(report);
                 }, message::setText, cachedHotbits,
-                () -> hotbits == null ? 0 : hotbits.snapshot().cachedPackages(), broadcastImagePicker);
+                () -> hotbits == null ? 0 : hotbits.snapshot().cachedPackages(), broadcastImagePicker,
+                dataDirectory.file().toPath(), settingsPage::changedSettings);
         broadcastScroll = scrollPane(broadcastPage);
+        imagePage = new de.isuret.polos.aopi.image.SigilPage(skin,
+                new de.isuret.polos.aopi.image.SigilRepository(dataDirectory.file().toPath()), sigilFilePicker, path -> {
+                    broadcastPage.useImageLayers(path);
+                    selectBroadcast();
+                });
+        imageScroll = scrollPane(imagePage);
         analysisPage.setBroadcastAction(rates -> {
             broadcastPage.useRates(rates);
             selectBroadcast();
@@ -155,6 +166,7 @@ public class AopiScreen extends ScreenAdapter {
         fonts.refresh(sessionPage, skin);
         fonts.refresh(analysisPage, skin);
         fonts.refresh(broadcastPage, skin);
+        fonts.refresh(imagePage, skin);
         loadDashboardState();
         refreshNews();
     }
@@ -221,6 +233,8 @@ public class AopiScreen extends ScreenAdapter {
         analysisTab.setName("analysis-tab");
         broadcastTab = navigationTab("BROADCAST", this::selectBroadcast);
         broadcastTab.setName("broadcast-tab");
+        imageTab = navigationTab("IMAGE", this::selectImage);
+        imageTab.setName("image-tab");
         hotbitsTab = navigationTab("HOTBITS", this::selectHotbits);
         hotbitsTab.setName("hotbits-tab");
         hotbitsTab.setDisabled(hotbits == null);
@@ -249,6 +263,10 @@ public class AopiScreen extends ScreenAdapter {
                 tabs.addActor(broadcastTab);
                 continue;
             }
+            if (name.equals("IMAGE")) {
+                tabs.addActor(imageTab);
+                continue;
+            }
             tab.setDisabled(true);
             tabs.addActor(tab);
         }
@@ -273,6 +291,7 @@ public class AopiScreen extends ScreenAdapter {
     }
 
     private void selectSettings(boolean selected) {
+        imageTab.setChecked(false);
         broadcastTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(selected ? settingsScroll : dashboardPage).grow().minHeight(0);
@@ -288,6 +307,7 @@ public class AopiScreen extends ScreenAdapter {
     }
 
     private void selectHotbits() {
+        imageTab.setChecked(false);
         broadcastTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(hotbitsScroll).grow().minHeight(0);
@@ -301,6 +321,7 @@ public class AopiScreen extends ScreenAdapter {
     }
 
     private void selectSession() {
+        imageTab.setChecked(false);
         broadcastTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(sessionScroll).grow().minHeight(0);
@@ -314,6 +335,7 @@ public class AopiScreen extends ScreenAdapter {
     }
 
     private void selectAnalysis() {
+        imageTab.setChecked(false);
         broadcastTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(analysisScroll).grow().minHeight(0);
@@ -332,6 +354,7 @@ public class AopiScreen extends ScreenAdapter {
     }
 
     private void selectBroadcast() {
+        imageTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(broadcastScroll).grow().minHeight(0);
         dashboardTab.setChecked(false);
@@ -348,6 +371,21 @@ public class AopiScreen extends ScreenAdapter {
         broadcasts.stopAll();
         broadcastPage.update(message::setText);
         message.setText("All broadcasts stopped.");
+    }
+
+    private void selectImage() {
+        pageContainer.clearChildren();
+        pageContainer.add(imageScroll).grow().minHeight(0);
+        dashboardTab.setChecked(false);
+        settingsTab.setChecked(false);
+        sessionTab.setChecked(false);
+        analysisTab.setChecked(false);
+        hotbitsTab.setChecked(false);
+        broadcastTab.setChecked(false);
+        imageTab.setChecked(true);
+        imagePage.onShown();
+        stage.setScrollFocus(imageScroll);
+        root.invalidateHierarchy();
     }
 
     private void hotbitsConsumed() {
@@ -600,6 +638,7 @@ public class AopiScreen extends ScreenAdapter {
             fonts.refresh(sessionPage, skin);
             fonts.refresh(analysisPage, skin);
             fonts.refresh(broadcastPage, skin);
+            fonts.refresh(imagePage, skin);
             if (hotbitsPage != null) {
                 fonts.refresh(hotbitsPage, skin);
             }
@@ -625,6 +664,7 @@ public class AopiScreen extends ScreenAdapter {
         }
         settingsPage.update(delta, settingsRepository);
         analysisPage.update();
+        imagePage.update();
         broadcastPage.update(message::setText);
         broadcastLight.setState(broadcasts.isRunning() ? StatusLight.State.ON : StatusLight.State.OFF);
         secureRandomLight.setState(cachedHotbits.isUsingSecureRandom() ? StatusLight.State.WARNING : StatusLight.State.OFF);
@@ -648,6 +688,7 @@ public class AopiScreen extends ScreenAdapter {
 
     @Override
     public void dispose() {
+        imagePage.dispose();
         broadcastPage.dispose();
         analysisPage.dispose();
         sessionPage.dispose();

@@ -61,7 +61,7 @@ public final class NavigationLayoutSmokeTest {
                 Stage stage = (Stage) ((InputMultiplexer) Gdx.input.getInputProcessor()).getProcessors().get(1);
                 TextButton dashboard = stage.getRoot().findActor("dashboard-tab");
                 TextButton settingsTab = stage.getRoot().findActor("settings-tab");
-                int step = frames % 16;
+                int step = frames % 18;
                 if (step == 1) {
                     settings.setFontSize(new int[]{14, 24, 32, 32}[scenario]);
                     if (scenario == 3) {
@@ -90,12 +90,16 @@ public final class NavigationLayoutSmokeTest {
                     analysis.fire(new ChangeListener.ChangeEvent());
                 } else if (step == 12) {
                     requireVisibleFooter(stage);
-                    TextButton broadcast = stage.getRoot().findActor("broadcast-tab");
-                    broadcast.fire(new ChangeListener.ChangeEvent());
+                    TextButton image = stage.getRoot().findActor("image-tab");
+                    image.fire(new ChangeListener.ChangeEvent());
                 } else if (step == 14) {
                     requireVisibleFooter(stage);
+                    TextButton broadcast = stage.getRoot().findActor("broadcast-tab");
+                    broadcast.fire(new ChangeListener.ChangeEvent());
+                } else if (step == 16) {
+                    requireVisibleFooter(stage);
                     dashboard.fire(new ChangeListener.ChangeEvent());
-                } else if (step == 15) {
+                } else if (step == 17) {
                     requireVisibleFooter(stage);
                     requireFullHeight(dashboard);
                     requireSameSize(dashboard, dashboardWidth, dashboardHeight);

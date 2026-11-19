@@ -1,6 +1,7 @@
 package de.isuret.polos.aopi.broadcast;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.HorizontalGroup;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -9,12 +10,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextArea;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.ScrollPane;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import de.isuret.polos.aopi.analysis.AnalysisResult;
 import de.isuret.polos.aopi.settings.ApplicationSettings;
 import de.isuret.polos.aopi.settings.Setting;
 
 import java.util.ArrayList;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -54,16 +58,24 @@ public class BroadcastPage extends Table {
     private final Label resonanceText;
     private final java.util.Set<String> persisted = new java.util.HashSet<>();
     private int persistedResonances;
+    private final Path collectionsDirectory;
+    private final Runnable settingsChanged;
+    private final BroadcastImagePicker imagePicker;
+    private String selectedLayers = "None";
 
     public BroadcastPage(Skin skin, BroadcastService service, BroadcastHistory history, ApplicationSettings settings,
                          Supplier<AnalysisResult> analysis, Consumer<BroadcastService.Report> saveToCase,
                          Consumer<String> notification, de.isuret.polos.aopi.session.CachedHotbits hotbits,
-                         java.util.function.IntSupplier cacheSize, BroadcastImagePicker imagePicker) {
+                         java.util.function.IntSupplier cacheSize, BroadcastImagePicker imagePicker,
+                         Path dataDirectory, Runnable settingsChanged) {
         this.skin = skin;
         this.service = service;
         this.history = history;
         this.settings = settings;
         this.analysis = analysis;
+        this.collectionsDirectory = dataDirectory.resolve("data_images");
+        this.settingsChanged = settingsChanged;
+        this.imagePicker = imagePicker;
         top().left();
         defaults().growX().spaceBottom(8);
         status = label("Ready.");
@@ -136,10 +148,14 @@ public class BroadcastPage extends Table {
                 case LAYERS -> "IMAGE LAYERS";
                 case CLIPBOARD -> "PASTE IMAGE";
             };
-            TextButton pick = button(title, "broadcast-images-" + source.name(), () ->
-                    imagePicker.choose(source, paths -> loadImages(paths, source == BroadcastImagePicker.Source.LAYERS),
-                            status::setText));
-            pick.setDisabled(imagePicker == null);
+            TextButton pick = button(title, "broadcast-images-" + source.name(), () -> {
+                if (source == BroadcastImagePicker.Source.LAYERS) {
+                    chooseImageLayers();
+                } else {
+                    imagePicker.choose(source, paths -> loadImages(paths, false), status::setText);
+                }
+            });
+            pick.setDisabled(imagePicker == null && source != BroadcastImagePicker.Source.LAYERS);
             images.addActor(pick);
         }
         images.addActor(button("CLEAR IMAGES", "broadcast-images-clear", this::clearImages));
@@ -162,6 +178,90 @@ public class BroadcastPage extends Table {
     public void useRates(List<String> rates) {
         signature.setText(String.join("\n", rates));
         status.setText("Analysis rates copied. ADD TO QUEUE or START when ready.");
+    }
+
+    public void useImageLayers(Path directory) {
+        loadImages(List.of(directory), true);
+    }
+
+    /** Saved SigilMaker collections are selectable without leaving the application. */
+    private void chooseImageLayers() {
+        io.execute(() -> {
+            try {
+                List<Path> folders;
+                if (!java.nio.file.Files.isDirectory(collectionsDirectory)) {
+                    folders = List.of();
+                } else {
+                    try (var entries = java.nio.file.Files.list(collectionsDirectory)) {
+                        folders = entries.filter(java.nio.file.Files::isDirectory)
+                                .filter(path -> java.nio.file.Files.isRegularFile(path.resolve(path.getFileName() + ".png")))
+                                .sorted(java.util.Comparator.comparing(path -> path.getFileName().toString())).toList();
+                    }
+                }
+                Gdx.app.postRunnable(() -> {
+                    if (!disposed) { showImageLayers(folders); }
+                });
+            } catch (Exception exception) {
+                Gdx.app.postRunnable(() -> {
+                    if (!disposed) { status.setText("Could not list image layers: " + exception.getMessage()); }
+                });
+            }
+        });
+    }
+
+    private void showImageLayers(List<Path> folders) {
+        Dialog dialog = new Dialog("Choose image-layer collection", skin);
+        dialog.setName("broadcast-layers-dialog");
+        Table content = dialog.getContentTable();
+        content.defaults().growX().pad(6);
+        content.add(label("Selected: " + selectedLayers)).row();
+        TextField search = new TextField("", skin);
+        search.setName("broadcast-layers-search");
+        search.setMessageText("Filter image-layer collections...");
+        content.add(search).row();
+        Table entries = new Table();
+        entries.top().defaults().growX().padBottom(6);
+        ScrollPane scroll = new ScrollPane(entries, skin);
+        scroll.setScrollingDisabled(true, false);
+        scroll.setFadeScrollBars(false);
+        scroll.setFlickScroll(false);
+        Runnable filter = () -> {
+            entries.clearChildren();
+            String query = search.getText().strip().toLowerCase(java.util.Locale.ROOT);
+            for (Path folder : folders) {
+                String name = folder.getFileName().toString();
+                if (name.toLowerCase(java.util.Locale.ROOT).contains(query)) {
+                    entries.add(button(name, "broadcast-layers-" + name, () -> {
+                        dialog.hide();
+                        useImageLayers(folder);
+                    })).row();
+                }
+            }
+            if (entries.getChildren().isEmpty()) {
+                entries.add(label(folders.isEmpty() ? "No saved collections. Save one in IMAGE or choose BROWSE."
+                        : "No matching collections.")).row();
+            }
+            scroll.setScrollY(0);
+        };
+        search.setProgrammaticChangeEvents(true);
+        search.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) { filter.run(); }
+        });
+        filter.run();
+        content.add(scroll).width(Math.min(580, getStage().getWidth() - 70))
+                .height(Math.min(330, getStage().getHeight() - 230)).row();
+        if (imagePicker != null) {
+            dialog.getButtonTable().add(button("BROWSE…", "broadcast-layers-browse", () -> {
+                dialog.hide();
+                imagePicker.choose(BroadcastImagePicker.Source.LAYERS, paths -> loadImages(paths, true), status::setText);
+            }));
+        }
+        dialog.button("CANCEL");
+        dialog.key(Input.Keys.ESCAPE, null);
+        dialog.show(getStage());
+        getStage().setKeyboardFocus(search);
+        getStage().setScrollFocus(scroll);
     }
 
     private void enqueue(boolean run) {
@@ -319,13 +419,20 @@ public class BroadcastPage extends Table {
                                     .thenComparing(java.nio.file.Path::toString)).toList();
                 }
             }
-            if (files.isEmpty()) { return; }
+            if (files.isEmpty()) { throw new IllegalArgumentException("The selected folder contains no PNG layers."); }
             if (files.size() > 64) { throw new IllegalArgumentException("Choose at most 64 images."); }
             for (var path : files) {
                 loaded.add(BroadcastImage.load(path));
             }
             visual.context().setImages(loaded, layers);
-            status.setText("Loaded " + loaded.size() + (layers ? " image layers. Enable Broadcast image layers in Settings." : " broadcast images."));
+            if (layers) {
+                selectedLayers = paths.getFirst().getFileName().toString();
+                settings.setEnabled(Setting.BROADCAST_IMAGES, true);
+                settingsChanged.run();
+                status.setText("Image layers: " + selectedLayers + " | " + loaded.size() + " layers loaded and enabled.");
+            } else {
+                status.setText("Loaded " + loaded.size() + " broadcast images.");
+            }
         } catch (Exception exception) {
             loaded.forEach(BroadcastImage::dispose);
             status.setText("Could not load images: " + exception.getMessage());
@@ -333,6 +440,7 @@ public class BroadcastPage extends Table {
     }
 
     private void clearImages() {
+        selectedLayers = "None";
         visual.context().setImages(List.of(), true);
         visual.context().setImages(List.of(), false);
         status.setText("Broadcast images cleared.");
