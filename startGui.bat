@@ -1,1 +1,0 @@
-call java -jar AetherOnePi-2.10.0.jar
