@@ -21,6 +21,13 @@ public class RateRepository {
     public record ListInfo(String id, String name) {
     }
 
+    public record ImportResult(List<ListInfo> imported, List<String> errors) {
+        public ImportResult {
+            imported = List.copyOf(imported);
+            errors = List.copyOf(errors);
+        }
+    }
+
     private final Path directory;
 
     public RateRepository(Path directory) {
@@ -81,6 +88,23 @@ public class RateRepository {
         }
         Files.copy(source, destination);
         return new ListInfo(destination.getFileName().toString(), destination.getFileName().toString());
+    }
+
+    /** Copy each selected list independently; a rejected file must not prevent the remaining imports. */
+    public ImportResult importFiles(List<Path> sources) throws IOException {
+        List<ListInfo> imported = new ArrayList<>();
+        List<String> errors = new ArrayList<>();
+        for (Path source : sources) {
+            if (Thread.currentThread().isInterrupted()) {
+                throw new java.io.InterruptedIOException("Rate-list import cancelled.");
+            }
+            try {
+                imported.add(importFile(source));
+            } catch (IOException | SecurityException exception) {
+                errors.add(source.getFileName() + ": " + exception.getMessage());
+            }
+        }
+        return new ImportResult(imported, errors);
     }
 
     private boolean isRateFile(Path path) {

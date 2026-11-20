@@ -12,6 +12,12 @@ Questions. It does not load the original application's classes, cache, or data.
 2. Use IMPORT LISTS to copy one or more UTF-8 `.txt` or `.tsv` files into this
    application's `aopi-libgdx-data/rates/` directory. The source files stay intact.
    A duplicate filename gets a unique prefix; existing lists are never overwritten.
+   In the file chooser, use Ctrl/Shift or Ctrl+A to select multiple lists, then
+   click IMPORT. The chooser stays above AOPi. Files are checked independently:
+   an empty, unreadable, or invalid list is skipped without stopping the other
+   imports. Status reports imported/skipped counts and the first rejection reason.
+   The last successfully imported list is selected automatically; all imported
+   lists appear immediately in SELECT DATA. Cancel leaves existing lists intact.
 3. SELECT DATA opens a searchable, scrollable list selector. A small ANALYSIS_TIME
    starter list is supplied when there are no lists. This is a standalone copy of
    the original time list, bundled as a resource rather than read from the old app.

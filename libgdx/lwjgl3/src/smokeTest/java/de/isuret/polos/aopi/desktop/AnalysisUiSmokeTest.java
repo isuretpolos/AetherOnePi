@@ -51,7 +51,16 @@ public final class AnalysisUiSmokeTest {
         configuration.setWindowedMode(1900, 1000);
         CaseRepository cases = new CaseRepository(directory);
         AnalysisStore store = new AnalysisStore(directory);
-        new Lwjgl3Application(new AopiApplication(settings, repository, controller, false) {
+        Path sourceFolder = Files.createDirectories(directory.resolve("import-source"));
+        Path importOne = sourceFolder.resolve("Import-one.txt");
+        Path importTwo = sourceFolder.resolve("Import-two.tsv");
+        Path importEmpty = sourceFolder.resolve("Empty.txt");
+        Files.writeString(importOne, "Imported first rate");
+        Files.writeString(importTwo, "Imported second rate\t\tMineral\tFamily");
+        Files.writeString(importEmpty, "# No usable entries");
+        de.isuret.polos.aopi.analysis.RateFilePicker picker = (selected, error) ->
+                selected.accept(java.util.List.of(importOne, importEmpty, importTwo));
+        new Lwjgl3Application(new AopiApplication(settings, repository, controller, false, null, picker) {
             private int frames;
             private int phase;
             private String caseId;
@@ -78,9 +87,22 @@ public final class AnalysisUiSmokeTest {
                         click(stage, "analysis-tab");
                         phase++;
                     } else if (phase == 3 && enabled(stage, "analysis-run")) {
+                        click(stage, "analysis-import");
+                        phase = 32;
+                    } else if (phase == 32 && enabled(stage, "analysis-run")) {
+                        require(text(stage, "analysis-status").contains("Imported 2")
+                                        && text(stage, "analysis-status").contains("Skipped 1"),
+                                "Multi-file import did not report successful and rejected lists.");
+                        require(Files.exists(directory.resolve("rates/Import-one.txt"))
+                                        && Files.exists(directory.resolve("rates/Import-two.tsv")),
+                                "Imported lists are not in the local rates folder.");
+                        require(settings.getLastRateList().equals("Import-two.tsv"), "Imported list was not selected.");
                         click(stage, "analysis-select");
                         phase = 30;
                     } else if (phase == 30 && stage.getRoot().findActor("analysis-list-search") != null) {
+                        require(stage.getRoot().findActor("analysis-list-Import-one.txt") != null
+                                        && stage.getRoot().findActor("analysis-list-Import-two.tsv") != null,
+                                "Imported lists were not available for selection.");
                         field(stage, "analysis-list-search").setText("FIXTURE");
                         click(stage, "analysis-list-fixture.tsv");
                         phase = 31;

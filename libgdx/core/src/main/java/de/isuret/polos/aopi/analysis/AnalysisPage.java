@@ -323,19 +323,24 @@ public class AnalysisPage extends Table {
     }
 
     private void importRates() {
+        status.setText("Select rate lists (.txt / .tsv); use Ctrl or Shift to select several files.");
         filePicker.choose(paths -> {
-            if (disposed || paths.isEmpty()) {
+            if (disposed) {
                 return;
             }
-            runJob(() -> {
-                RateRepository.ListInfo last = null;
-                for (var path : paths) {
-                    last = rates.importFile(path);
+            if (paths.isEmpty()) {
+                status.setText("Import cancelled.");
+                return;
+            }
+            runJob(() -> rates.importFiles(paths), imported -> {
+                if (!imported.imported().isEmpty()) {
+                    selectList(imported.imported().getLast().id());
                 }
-                return last;
-            }, imported -> {
-                selectList(imported.id());
-                status.setText("Lists imported.");
+                String summary = "Imported " + imported.imported().size() + " rate list(s) into the local rates folder.";
+                if (!imported.errors().isEmpty()) {
+                    summary += " Skipped " + imported.errors().size() + ": " + imported.errors().getFirst();
+                }
+                status.setText(summary);
             });
         }, message -> status.setText(message));
     }
