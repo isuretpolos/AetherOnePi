@@ -93,6 +93,21 @@ public final class AnalysisUiSmokeTest {
                     } else if (phase == 4 && enabled(stage, "analysis-gv-next")) {
                         snapshot = store.load();
                         require(snapshot.rows().size() == 20, "Result must contain only the top 20 rates.");
+                        click(stage, "analysis-queue-0");
+                        click(stage, "analysis-queue-0");
+                        require(text(stage, "analysis-status").contains(snapshot.rows().getFirst().name()),
+                                "Queue feedback did not identify the selected rate.");
+                        require(((TextButton) stage.getRoot().findActor("analysis-tab")).isChecked(),
+                                "Queuing a rate switched away from Analysis.");
+                        phase = 40;
+                    } else if (phase == 40) {
+                        click(stage, "broadcast-tab");
+                        require(text(stage, "broadcast-current").contains("Idle | Queued: 2"),
+                                "Repeated QUEUE clicks did not append duplicates, or started broadcasting.");
+                        require(field(stage, "broadcast-signature").getText().isEmpty(),
+                                "Queueing a rate overwrote the Broadcast input.");
+                        click(stage, "broadcast-clear");
+                        click(stage, "analysis-tab");
                         clickHeading(stage, "analysis-sort-ev");
                         require(stage.getRoot().findActor("analysis-result-19").getY()
                                         > stage.getRoot().findActor("analysis-result-0").getY(),
@@ -110,7 +125,7 @@ public final class AnalysisUiSmokeTest {
                         field(stage, "analysis-filter").setText("");
                         Gdx.input.getInputProcessor().keyDown(com.badlogic.gdx.Input.Keys.ENTER);
                         Gdx.input.getInputProcessor().keyUp(com.badlogic.gdx.Input.Keys.ENTER);
-                        phase++;
+                        phase = 5;
                     } else if (phase == 5 && enabled(stage, "analysis-gv-all")) {
                         require(store.load().generalVitality() != null, "Target GV not persisted.");
                         requireNextRate(stage, "analysis-result-0");

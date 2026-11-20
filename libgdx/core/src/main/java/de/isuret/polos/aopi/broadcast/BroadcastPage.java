@@ -265,6 +265,18 @@ public class BroadcastPage extends Table {
     }
 
     private void enqueue(boolean run) {
+        enqueue(signature.getText().lines().map(String::strip).filter(line -> !line.isEmpty()).toList(), run);
+    }
+
+    /** Append one rate using the current duration/multiplier, without starting or replacing the queue. */
+    public String queueRate(String rate) {
+        if (enqueue(List.of(rate), false)) {
+            status.setText("Queued: " + rate);
+        }
+        return status.getText().toString();
+    }
+
+    private boolean enqueue(List<String> signatures, boolean run) {
         try {
             int duration = Integer.parseInt(seconds.getText());
             int strength = Integer.parseInt(intensity.getText());
@@ -278,7 +290,6 @@ public class BroadcastPage extends Table {
                     duration -= result.generalVitality();
                 }
             }
-            List<String> signatures = signature.getText().lines().map(String::strip).filter(line -> !line.isEmpty()).toList();
             List<BroadcastService.Request> requests = new ArrayList<>();
             if (signatures.size() > 500) {
                 throw new IllegalArgumentException("The queue supports at most 500 items.");
@@ -291,8 +302,10 @@ public class BroadcastPage extends Table {
                 service.start();
             }
             status.setText("Queued " + requests.size() + " broadcast(s).");
+            return true;
         } catch (IllegalArgumentException exception) {
             status.setText("Cannot queue broadcast: " + exception.getMessage());
+            return false;
         }
     }
 

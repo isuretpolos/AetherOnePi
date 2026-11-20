@@ -132,6 +132,15 @@ existing note-only cases continue to load.
 These randomized results do not constitute a medical diagnosis. Watchlist
 automation, training, stick-pad input, audio, hardware broadcasting, and original-format
 case/result import are separate features and are not implemented here.
+Each result row has a compact QUEUE button. Every click appends that rate as a
+separate Broadcast queue entry, including repeated clicks on the same rate.
+It uses the current Broadcast Seconds and Multiplier fields and the existing
+duration settings. It does not start broadcasting, replace the queue, change
+the Broadcast input, or switch tabs. The Analysis status confirms the rate or
+reports invalid Broadcast input. Sorting and filtering keep each button tied
+to its own rate. If broadcasting is already running, appended entries join its
+normal pending queue.
+
 The BROADCAST button copies the current result names into the desktop Broadcast
 page without starting it; see [Desktop broadcast](broadcast.md).
 

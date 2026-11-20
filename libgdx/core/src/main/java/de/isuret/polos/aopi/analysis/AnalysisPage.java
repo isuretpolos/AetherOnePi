@@ -64,6 +64,8 @@ public class AnalysisPage extends Table {
     private final TextButton importLists;
     private final TextButton broadcast;
     private Consumer<List<String>> broadcastAction;
+    private java.util.function.Function<String, String> queueAction;
+    private final List<TextButton> queueButtons = new ArrayList<>();
     private final ExecutorService worker = Executors.newSingleThreadExecutor(task -> {
         Thread thread = new Thread(task, "aopi-analysis");
         thread.setDaemon(true);
@@ -339,6 +341,7 @@ public class AnalysisPage extends Table {
     }
 
     private void rebuildResults() {
+        queueButtons.clear();
         results.clearChildren();
         results.setNextRate(null);
         targetVitality.setText("Target GV: " + (result == null || result.generalVitality() == null
@@ -361,6 +364,7 @@ public class AnalysisPage extends Table {
                 }
             });
         }
+        addResultCell("", "352843", false, false);
         results.row();
         int shown = 0;
         int nextRate = AnalysisEngine.nextVitalityRate(result);
@@ -398,10 +402,24 @@ public class AnalysisPage extends Table {
             addResultCell(Integer.toString(row.recurring()), background, false, true);
             addResultCell(row.classification(), background, false, false);
             addResultCell(row.subfamily(), background, false, false);
+            TextButton queue = new TextButton("QUEUE", skin);
+            queue.setName("analysis-queue-" + index);
+            queue.pad(3, 7, 3, 7);
+            queue.setDisabled(busy || queueAction == null);
+            queue.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    if (!queue.isDisabled() && queueAction != null) {
+                        status.setText(queueAction.apply(row.name()));
+                    }
+                }
+            });
+            queueButtons.add(queue);
+            results.add(queue).fill();
             results.row();
         }
         if (shown == 0) {
-            results.add(paragraph("No rates match the filter.")).colspan(AnalysisResultSort.values().length).growX();
+            results.add(paragraph("No rates match the filter.")).colspan(AnalysisResultSort.values().length + 1).growX();
         }
     }
 
@@ -516,6 +534,7 @@ public class AnalysisPage extends Table {
     }
 
     public void update() {
+        queueButtons.forEach(button -> button.setDisabled(busy || queueAction == null));
         controls.forEach(control -> control.setDisabled(busy));
         stop.setDisabled(!busy);
         analyze.setDisabled(busy || selected == null);
@@ -542,6 +561,11 @@ public class AnalysisPage extends Table {
 
     public void setBroadcastAction(Consumer<List<String>> action) {
         broadcastAction = action;
+    }
+
+    public void setQueueAction(java.util.function.Function<String, String> action) {
+        queueAction = action;
+        update();
     }
 
     public void triggerVitality() {

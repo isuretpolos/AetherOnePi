@@ -154,6 +154,7 @@ public class AopiScreen extends ScreenAdapter {
             broadcastPage.useRates(rates);
             selectBroadcast();
         });
+        analysisPage.setQueueAction(broadcastPage::queueRate);
         repository = new DashboardRepository(dataDirectory);
         news = new DashboardNews(dataDirectory);
         newsText.setText(news.initialText());
