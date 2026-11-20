@@ -31,7 +31,7 @@ public class ImageLayersAnalysis {
             for (int index = 0; index < layers.size(); index++) {
                 // The Random argument remains only for compatibility with BroadcastElement's original API.
                 int transparency = 100;
-                if (generators[index].nextInt(1000) >= 999) {
+                if (generators[index].nextInt(10) >= 9) {
                     transparency = generators[index].nextInt(101);
                 }
                 target.image(layers.get(index), x, y, width, height, (100 - transparency) / 100f);
