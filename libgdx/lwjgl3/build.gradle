@@ -40,6 +40,53 @@ tasks.named('run', JavaExec) {
     workingDir = rootProject.projectDir
 }
 
+// Use the existing Java/application plugins; no additional packaging plugin is needed.
+def mergedServices = layout.buildDirectory.dir('fat-jar-services')
+tasks.register('mergeRuntimeServices') {
+    inputs.files(configurations.runtimeClasspath, sourceSets.main.output)
+    outputs.dir(mergedServices)
+    doLast {
+        delete(mergedServices)
+        def services = [:]
+        def sources = [sourceSets.main.output.asFileTree] + configurations.runtimeClasspath.collect {
+            it.isDirectory() ? fileTree(it) : zipTree(it)
+        }
+        sources.each { source ->
+            source.matching { include 'META-INF/services/*' }.visit { entry ->
+                if (!entry.directory) {
+                    def name = entry.relativePath.pathString
+                    def providers = services.computeIfAbsent(name) { new LinkedHashSet<String>() }
+                    providers.addAll(entry.file.readLines('UTF-8').collect { it.replaceFirst(/#.*/, '').trim() }.findAll { it })
+                }
+            }
+        }
+        services.each { name, providers ->
+            def target = mergedServices.get().file(name).asFile
+            target.parentFile.mkdirs()
+            target.setText(providers.join('\n') + '\n', 'UTF-8')
+        }
+    }
+}
+
+tasks.register('fatJar', Jar) {
+    group = 'distribution'
+    description = 'Builds the executable AOPi JAR with runtime libraries, natives, and assets.'
+    dependsOn tasks.named('mergeRuntimeServices')
+    archiveFileName = 'AOPi.jar'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    manifest {
+        attributes 'Main-Class': application.mainClass.get(),
+                'Enable-Native-Access': 'ALL-UNNAMED',
+                'Multi-Release': 'true'
+    }
+    from(sourceSets.main.output) { exclude 'META-INF/services/**' }
+    from({ configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }) {
+        exclude 'META-INF/services/**', 'META-INF/MANIFEST.MF', 'META-INF/INDEX.LIST',
+                'META-INF/*.SF', 'META-INF/*.RSA', 'META-INF/*.DSA', 'META-INF/SIG-*', '**/module-info.class'
+    }
+    from(mergedServices)
+}
+
 // Explicit opt-in: this check opens real windows and needs a desktop with OpenGL.
 sourceSets {
     smokeTest {
@@ -51,6 +98,15 @@ sourceSets {
 configurations {
     smokeTestImplementation.extendsFrom implementation
     smokeTestRuntimeOnly.extendsFrom runtimeOnly
+}
+
+tasks.register('portableJarSmokeTest', JavaExec) {
+    dependsOn smokeTestClasses, tasks.named('fatJar')
+    classpath = sourceSets.smokeTest.runtimeClasspath
+    mainClass = 'de.isuret.polos.aopi.desktop.PortableJarSmokeTest'
+    args rootProject.layout.projectDirectory.file('dist/AOPi.jar').asFile.absolutePath
+    workingDir = rootProject.projectDir
+    jvmArgs application.applicationDefaultJvmArgs
 }
 
 tasks.register('windowPersistenceSmokeTest', JavaExec) {

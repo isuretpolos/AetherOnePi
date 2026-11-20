@@ -88,6 +88,55 @@ different version is selected.
 
 ## Run and build
 
+To test the project and build the portable Windows distribution with PowerShell:
+
+```powershell
+# From the repository root:
+.\libgdx\build-distribution.ps1
+
+# Or, from this libgdx folder:
+.\build-distribution.ps1
+```
+
+The script finds JDK 24 through `JAVA_HOME`, `javac` on PATH, or common Windows
+installation folders, and runs the included Gradle wrapper from the correct
+project directory. You can select a JDK explicitly:
+
+```powershell
+.\build-distribution.ps1 -JavaHome 'C:\Program Files\Java\jdk-24'
+```
+
+If PowerShell blocks local scripts, run it in a separate process with:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\libgdx\build-distribution.ps1
+```
+
+This invocation does not change your saved execution policy. The script runs
+`:core:test :lwjgl3:test :lwjgl3:fatJar`, validates the manifest, required libraries,
+Windows natives, and all bundled core assets, then publishes exactly these files:
+
+```text
+dist/
+  AOPi.jar
+  AOPi.bat
+```
+
+The JAR includes the application, runtime dependencies, native libraries, assets,
+and merged Java service registrations. It uses Gradle's built-in Jar task with
+the existing Java/application plugins. No additional packaging plugin is needed.
+The distribution script does not run installDist, startScripts, or ZIP/TAR tasks.
+It fails on a failed build, missing JAR, or missing required archive content.
+It restores the calling directory and environment variables afterward. No
+application is launched by the build script.
+
+Double-click `dist/AOPi.bat` to launch. It changes to its own directory and runs
+`javaw -jar AOPi.jar`. **Java 24 must be installed and available on PATH** on the
+target computer; no Java runtime is bundled. The manifest supplies the main class
+and enables native access for the desktop libraries. Keep both files together
+in a writable folder: the application creates its data folder there when run.
+No user data is included or removed by packaging.
+
 Open a terminal in this folder. On Windows PowerShell:
 
 ```powershell
@@ -102,16 +151,30 @@ sh ./gradlew :lwjgl3:run
 sh ./gradlew build
 ```
 
-Close the window to stop the application. To create a distribution with launch
-scripts and runtime libraries:
+Close the window to stop the application. To build only the executable fat JAR:
 
 ```powershell
-.\gradlew.bat :lwjgl3:installDist
+.\gradlew.bat :lwjgl3:fatJar
 ```
 
-The result is in `lwjgl3/build/install/lwjgl3/`. It still requires Java 24;
-it does not bundle a Java runtime. `build` also produces ZIP and TAR distributions
-in `lwjgl3/build/distributions/`.
+The wrapper filename is `gradlew.bat`: use `.\gradlew.bat`, **not**
+`.\gradlew\.bat`. Run that direct command from this `libgdx` folder.
+
+The fat JAR is `lwjgl3/build/libs/AOPi.jar`. Use `build-distribution.ps1` to also
+run tests, verify its contents, and create the two-file `dist` folder.
+The older Gradle application distribution tasks remain available separately,
+but the portable distribution script does not invoke them.
+
+After building `dist`, this optional native check launches the actual published
+JAR with isolated application data, verifies the screen and assets, and closes it:
+
+```powershell
+.\gradlew.bat :lwjgl3:portableJarSmokeTest
+```
+
+The check uses a test-only Java agent outside `dist`; the application starts with
+`java -jar dist/AOPi.jar`, without an external dependency classpath. This validates
+the manifest entry point, actual desktop startup, native loading, and asset access.
 
 ## Verification and known limitations
 

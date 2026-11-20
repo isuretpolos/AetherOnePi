@@ -2,3 +2,4 @@
 .gradle-user-home/
 **/build/
 aopi-libgdx-data/
+dist/
