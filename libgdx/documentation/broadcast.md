@@ -74,7 +74,12 @@ the command/image controls on wide windows. They stack below the controls when
 space or font size requires it. Pending entries are counted without an extra
 queue list or per-entry REMOVE buttons below the broadcast units.
 
-ADD TO QUEUE adds pending entries. CLEAR QUEUE
+ADD TO QUEUE adds pending entries. BROADCAST NOW reads the current Seconds and
+Multiplier fields and applies them to pending entries before starting them,
+including rates added with Analysis QUEUE buttons. For example, queueing at 60
+seconds and changing Seconds to 20 before BROADCAST NOW starts those rates with
+20 seconds. Invalid controls leave the queue intact. Already active units retain
+their original timing; changing the fields does not restart them. CLEAR QUEUE
 removes pending entries without stopping active units. STOP CURRENT stops the
 oldest active unit and lets the next queued entry take its slot. STOP ALL stops
 every active unit and clears the pending queue. Queues support 500 pending entries.

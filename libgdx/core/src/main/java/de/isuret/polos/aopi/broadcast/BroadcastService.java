@@ -94,6 +94,15 @@ public class BroadcastService {
         }
     }
 
+    /** Apply the visible controls to pending rates; already running units retain their timing. */
+    public void start(int seconds, int intensity) {
+        List<Request> pending = queue.stream()
+                .map(request -> new Request(request.signature(), seconds, intensity)).toList();
+        queue.clear();
+        queue.addAll(pending);
+        start();
+    }
+
     private void fillSlots(long now) {
         while (running && active.size() < concurrency && !queue.isEmpty()) {
             active.add(new Unit(UUID.randomUUID().toString(), queue.removeFirst(), now, Instant.now()));

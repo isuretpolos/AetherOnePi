@@ -87,8 +87,14 @@ public final class BroadcastUiSmokeTest {
                         require(stage.getRoot().findActor("broadcast-remove-0") == null,
                                 "Queue list buttons remain below the broadcast units.");
                         click(stage, "broadcast-clear");
+                        field(stage, "broadcast-seconds").setText("60");
                         click(stage, "broadcast-add");
+                        field(stage, "broadcast-seconds").setText("0");
                         click(stage, "broadcast-start");
+                        require(text(stage, "broadcast-status").contains("Cannot start"), "Queued start accepted invalid duration.");
+                        field(stage, "broadcast-seconds").setText("1");
+                        click(stage, "broadcast-start");
+                        require(text(stage, "broadcast-status").contains("1 seconds"), "Queued start retained the old 60-second duration.");
                         phase++;
                     } else if (phase == 4 && enabled(stage, "broadcast-stop")) {
                         require(((StatusLight) stage.getRoot().findActor("broadcast-indicator")).getState()

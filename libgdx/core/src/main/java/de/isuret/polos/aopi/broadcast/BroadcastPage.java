@@ -121,7 +121,13 @@ public class BroadcastPage extends Table {
             if (service.queued().isEmpty()) {
                 enqueue(true);
             } else {
-                service.start();
+                try {
+                    Parameters parameters = parameters();
+                    service.start(parameters.seconds(), parameters.multiplier());
+                    status.setText("Started queued rates | " + parameters.seconds() + " seconds | Multiplier: " + parameters.multiplier());
+                } catch (IllegalArgumentException exception) {
+                    status.setText("Cannot start broadcast: " + exception.getMessage());
+                }
             }
         });
         actions.addActor(start);
@@ -278,24 +284,13 @@ public class BroadcastPage extends Table {
 
     private boolean enqueue(List<String> signatures, boolean run) {
         try {
-            int duration = Integer.parseInt(seconds.getText());
-            int strength = Integer.parseInt(intensity.getText());
-            if (duration < 1 || duration > 86400 || strength < 1 || strength > 1000) {
-                throw new IllegalArgumentException("Use 1–86400 seconds and intensity 1–1000.");
-            }
-            if (settings.isEnabled(Setting.BROADCAST_DELTA_TIME)) {
-                AnalysisResult result = analysis.get();
-                if (result != null && result.generalVitality() != null && result.generalVitality() > 0
-                        && result.generalVitality() < duration) {
-                    duration -= result.generalVitality();
-                }
-            }
+            Parameters parameters = parameters();
             List<BroadcastService.Request> requests = new ArrayList<>();
             if (signatures.size() > 500) {
                 throw new IllegalArgumentException("The queue supports at most 500 items.");
             }
             for (String value : signatures) {
-                requests.add(new BroadcastService.Request(value, duration, strength));
+                requests.add(new BroadcastService.Request(value, parameters.seconds(), parameters.multiplier()));
             }
             service.enqueue(requests);
             if (run) {
@@ -307,6 +302,24 @@ public class BroadcastPage extends Table {
             status.setText("Cannot queue broadcast: " + exception.getMessage());
             return false;
         }
+    }
+
+    private record Parameters(int seconds, int multiplier) { }
+
+    private Parameters parameters() {
+        int duration = Integer.parseInt(seconds.getText());
+        int strength = Integer.parseInt(intensity.getText());
+        if (duration < 1 || duration > 86400 || strength < 1 || strength > 1000) {
+            throw new IllegalArgumentException("Use 1–86400 seconds and intensity 1–1000.");
+        }
+        if (settings.isEnabled(Setting.BROADCAST_DELTA_TIME)) {
+            AnalysisResult result = analysis.get();
+            if (result != null && result.generalVitality() != null && result.generalVitality() > 0
+                    && result.generalVitality() < duration) {
+                duration -= result.generalVitality();
+            }
+        }
+        return new Parameters(duration, strength);
     }
 
     public void update(Consumer<String> notification) {

@@ -17,6 +17,37 @@ class BroadcastServiceTest {
     Path directory;
 
     @Test
+    void startUsesUpdatedControlsAndCompletesAfterTwentySeconds() {
+        AtomicLong time = new AtomicLong();
+        BroadcastService service = new BroadcastService(time::get);
+        service.enqueue(List.of(new BroadcastService.Request("Rate", 60, 1),
+                new BroadcastService.Request("Rate", 60, 1)));
+        service.start(20, 3);
+        assertEquals(2, service.active().size());
+        assertTrue(service.active().stream().allMatch(unit -> unit.request().seconds() == 20
+                && unit.request().intensity() == 3));
+        time.set(19_999_000_000L);
+        service.update();
+        assertEquals(2, service.active().size());
+        time.set(20_000_000_000L);
+        service.update();
+        assertFalse(service.isRunning());
+        assertEquals(2, service.reports().size());
+        assertTrue(service.reports().stream().allMatch(report -> report.seconds() == 20
+                && report.elapsedSeconds() == 20));
+    }
+
+    @Test
+    void invalidStartParametersPreservePendingRequests() {
+        BroadcastService service = new BroadcastService();
+        var request = new BroadcastService.Request("Rate", 60, 1);
+        service.enqueue(List.of(request));
+        assertThrows(IllegalArgumentException.class, () -> service.start(0, 1));
+        assertEquals(List.of(request), service.queued());
+        assertFalse(service.isRunning());
+    }
+
+    @Test
     void originalParallelModeRunsEightSeparateUnitsAndRefillsSlots() {
         AtomicLong time = new AtomicLong();
         BroadcastService service = new BroadcastService(time::get);
