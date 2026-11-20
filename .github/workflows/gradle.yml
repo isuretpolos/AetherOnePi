@@ -1,0 +1,47 @@
+name: Build AOPi desktop JARs
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 24
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '24'
+          cache: gradle
+          cache-dependency-path: AOPi/**/*.gradle*
+
+      - name: Build platform JARs
+        working-directory: AOPi
+        run: bash ./gradlew --no-daemon :lwjgl3:platformJars
+
+      - name: Upload Linux JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: AOPi-Linux
+          path: AOPi/lwjgl3/build/libs/AOPi-Linux.jar
+          if-no-files-found: error
+
+      - name: Upload Mac JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: AOPi-Mac
+          path: AOPi/lwjgl3/build/libs/AOPi-Mac.jar
+          if-no-files-found: error
+
+      - name: Upload Windows JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: AOPi-Windows
+          path: AOPi/lwjgl3/build/libs/AOPi-Windows.jar
+          if-no-files-found: error
