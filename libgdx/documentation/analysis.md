@@ -33,6 +33,9 @@ Questions. It does not load the original application's classes, cache, or data.
    20 results are retained. Filtering does not change the
    eligible ranks. Rows meeting or exceeding target GV have green values.
    A green rectangle outlines the rate that GV (NEXT) or Return will check next.
+   A white rectangle outlines the entire row under the mouse, including its QUEUE
+   button. When both outlines identify the same rate, white is inset inside green
+   so both remain visible. Leaving the row removes its hover outline.
    It advances after each check. No rate is outlined when the next check is the
    target GV. A filter hiding that rate hides its outline without changing the
    check order.

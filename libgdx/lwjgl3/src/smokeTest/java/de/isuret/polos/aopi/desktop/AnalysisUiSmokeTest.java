@@ -135,6 +135,7 @@ public final class AnalysisUiSmokeTest {
                         require(store.load().rows().getFirst().generalVitality() != null, "First rate GV not checked.");
                         requireNextRate(stage, "analysis-result-1");
                         requireGreenOutline(stage);
+                        requireHoverOutline(stage);
                         field(stage, "analysis-filter").setText("no matching rate");
                         requireNextRate(stage, null);
                         field(stage, "analysis-filter").setText("");
@@ -271,6 +272,32 @@ public final class AnalysisUiSmokeTest {
         } finally {
             pixel.dispose();
         }
+    }
+
+    private static void requireHoverOutline(Stage stage) {
+        de.isuret.polos.aopi.analysis.AnalysisResultsTable results = stage.getRoot().findActor("analysis-results");
+        // Hovering the QUEUE cell should outline its entire rate, including when it is next for GV.
+        com.badlogic.gdx.scenes.scene2d.Actor queue = stage.getRoot().findActor("analysis-queue-1");
+        var pointer = queue.localToStageCoordinates(new com.badlogic.gdx.math.Vector2(queue.getWidth() / 2, queue.getHeight() / 2));
+        stage.stageToScreenCoordinates(pointer);
+        stage.mouseMoved(Math.round(pointer.x), Math.round(pointer.y));
+        stage.act(0);
+        stage.draw();
+        require(results.getHoveredRate() == results.getNextRate(), "Hover did not identify the rate under its QUEUE cell.");
+        var row = results.getHoveredRate();
+        var position = results.localToStageCoordinates(new com.badlogic.gdx.math.Vector2(3, row.getY() + row.getHeight() / 2));
+        var pixel = com.badlogic.gdx.graphics.Pixmap.createFromFrameBuffer(
+                (int) (position.x * Gdx.graphics.getBackBufferWidth() / stage.getWidth()),
+                (int) (position.y * Gdx.graphics.getBackBufferHeight() / stage.getHeight()), 1, 1);
+        try {
+            require(pixel.getPixel(0, 0) == 0xffffffff, "White hover rectangle did not render.");
+        } finally {
+            pixel.dispose();
+        }
+        requireGreenOutline(stage);
+        stage.mouseMoved(0, 0);
+        stage.act(0);
+        require(results.getHoveredRate() == null, "Hover outline remained after leaving the table.");
     }
 
     private static void requireHeaderPlacement(Stage stage) {
