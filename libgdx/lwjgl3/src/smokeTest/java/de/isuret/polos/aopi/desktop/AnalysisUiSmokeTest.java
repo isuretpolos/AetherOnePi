@@ -93,6 +93,15 @@ public final class AnalysisUiSmokeTest {
                     } else if (phase == 4 && enabled(stage, "analysis-gv-next")) {
                         snapshot = store.load();
                         require(snapshot.rows().size() == 20, "Result must contain only the top 20 rates.");
+                        clickHeading(stage, "analysis-sort-ev");
+                        require(stage.getRoot().findActor("analysis-result-19").getY()
+                                        > stage.getRoot().findActor("analysis-result-0").getY(),
+                                "EV header did not sort ascending.");
+                        clickHeading(stage, "analysis-sort-ev");
+                        require(stage.getRoot().findActor("analysis-result-0").getY()
+                                        > stage.getRoot().findActor("analysis-result-19").getY(),
+                                "EV header did not toggle descending.");
+                        clickHeading(stage, "analysis-sort-rank");
                         field(stage, "analysis-filter").setText("pLaNtS");
                         long plantRows = snapshot.rows().stream().filter(row -> row.classification().equals("Plants")).count();
                         require(visibleRates(stage) == plantRows, "Metadata filter failed.");
@@ -205,6 +214,16 @@ public final class AnalysisUiSmokeTest {
     private static boolean enabled(Stage stage, String id) {
         TextButton button = stage.getRoot().findActor(id);
         return button != null && !button.isDisabled();
+    }
+
+    private static void clickHeading(Stage stage, String id) {
+        stage.draw();
+        com.badlogic.gdx.scenes.scene2d.Actor header = stage.getRoot().findActor(id);
+        var point = header.localToStageCoordinates(new com.badlogic.gdx.math.Vector2(header.getWidth() / 2, header.getHeight() / 2));
+        stage.stageToScreenCoordinates(point);
+        stage.touchDown(Math.round(point.x), Math.round(point.y), 0, com.badlogic.gdx.Input.Buttons.LEFT);
+        stage.touchUp(Math.round(point.x), Math.round(point.y), 0, com.badlogic.gdx.Input.Buttons.LEFT);
+        stage.draw();
     }
 
     private static void requireCompactRows(Stage stage) {

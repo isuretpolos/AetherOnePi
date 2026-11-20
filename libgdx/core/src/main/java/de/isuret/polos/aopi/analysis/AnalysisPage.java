@@ -81,6 +81,8 @@ public class AnalysisPage extends Table {
     private String selected;
     private String resultCaseId;
     private AnalysisResult result;
+    private AnalysisResultSort sortColumn = AnalysisResultSort.RANK;
+    private boolean sortDescending;
 
     public AnalysisPage(Skin skin, Stage stage, RateRepository rates, AnalysisStore store,
                         CachedHotbits hotbits, ApplicationSettings settings, RateFilePicker filePicker,
@@ -345,14 +347,24 @@ public class AnalysisPage extends Table {
             return;
         }
         String query = filter.getText().strip().toLowerCase(Locale.ROOT);
-        String[] headings = {"#", "EV", "RATE", "POTENCY", "LEVEL", "GV", "REC.", "CLASSIFICATION", "SUBFAMILY"};
-        for (int column = 0; column < headings.length; column++) {
-            addResultCell(headings[column], "352843", column == 2, false).setColor(Color.valueOf("C9B0F5"));
+        for (AnalysisResultSort column : AnalysisResultSort.values()) {
+            String direction = column == sortColumn ? (sortDescending ? " v" : " ^") : "";
+            Label header = addResultCell(column.heading() + direction, "352843", column == AnalysisResultSort.RATE, false);
+            header.setName("analysis-sort-" + column.name().toLowerCase(Locale.ROOT));
+            header.setColor(Color.valueOf("C9B0F5"));
+            header.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    sortDescending = column == sortColumn && !sortDescending;
+                    sortColumn = column;
+                    rebuildResults();
+                }
+            });
         }
         results.row();
         int shown = 0;
         int nextRate = AnalysisEngine.nextVitalityRate(result);
-        for (int index = 0; index < result.rows().size(); index++) {
+        for (int index : sortColumn.indices(result, sortDescending)) {
             AnalysisResult.Row row = result.rows().get(index);
             if (!(row.name() + " " + row.classification() + " " + row.subfamily()).toLowerCase(Locale.ROOT).contains(query)) {
                 continue;
@@ -389,7 +401,7 @@ public class AnalysisPage extends Table {
             results.row();
         }
         if (shown == 0) {
-            results.add(paragraph("No rates match the filter.")).colspan(headings.length).growX();
+            results.add(paragraph("No rates match the filter.")).colspan(AnalysisResultSort.values().length).growX();
         }
     }
 

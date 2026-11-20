@@ -36,6 +36,13 @@ Questions. It does not load the original application's classes, cache, or data.
    It advances after each check. No rate is outlined when the next check is the
    target GV. A filter hiding that rate hides its outline without changing the
    check order.
+   Click any column header to sort ascending; click it again for descending.
+   The active header shows `^` or `v`. Numeric columns sort numerically; potency
+   compares scale then numeric strength (C 2 before C 10). Unchecked GV stays
+   last in either direction. The # column restores the original ranking.
+   Sorting affects only the display: filtering, next-GV highlighting, the GV
+   check sequence, saved results, and exports retain their original rate identity.
+
 6. COPY RESULTS copies the full result, including rows hidden by the filter.
    SAVE TO CURRENT CASE saves a structured snapshot and readable report in the
    current Session case. Give that case a name first. Pending session notes are
