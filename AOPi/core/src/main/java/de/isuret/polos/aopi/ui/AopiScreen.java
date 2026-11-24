@@ -91,6 +91,9 @@ public class AopiScreen extends ScreenAdapter {
     private final de.isuret.polos.aopi.image.SigilPage imagePage;
     private final ScrollPane imageScroll;
     private TextButton imageTab;
+    private final TextPage textPage;
+    private final ScrollPane textScroll;
+    private TextButton textTab;
     private TextButton broadcastTab;
     private StatusLight broadcastLight;
     private StatusLight secureRandomLight;
@@ -150,6 +153,9 @@ public class AopiScreen extends ScreenAdapter {
                     selectBroadcast();
                 });
         imageScroll = scrollPane(imagePage);
+        textPage = new TextPage(skin, stage, cachedHotbits, dataDirectory.child("texts").file().toPath(),
+                this::hotbitsConsumed);
+        textScroll = scrollPane(textPage);
         analysisPage.setBroadcastAction(rates -> {
             broadcastPage.useRates(rates);
             selectBroadcast();
@@ -168,6 +174,8 @@ public class AopiScreen extends ScreenAdapter {
         fonts.refresh(analysisPage, skin);
         fonts.refresh(broadcastPage, skin);
         fonts.refresh(imagePage, skin);
+        fonts.refresh(textPage, skin);
+        textPage.refreshFonts();
         loadDashboardState();
         refreshNews();
     }
@@ -236,12 +244,14 @@ public class AopiScreen extends ScreenAdapter {
         broadcastTab.setName("broadcast-tab");
         imageTab = navigationTab("IMAGE", this::selectImage);
         imageTab.setName("image-tab");
+        textTab = navigationTab("TEXT", this::selectText);
+        textTab.setName("text-tab");
         hotbitsTab = navigationTab("HOTBITS", this::selectHotbits);
         hotbitsTab.setName("hotbits-tab");
         hotbitsTab.setDisabled(hotbits == null);
         dashboardTab.setChecked(true);
         tabs.addActor(dashboardTab);
-        for (String name : new String[]{"SESSION", "SETTINGS", "ANALYZE", "IMAGE", "HOTBITS", "BROADCAST"}) {
+        for (String name : new String[]{"SESSION", "SETTINGS", "ANALYZE", "IMAGE", "TEXT", "HOTBITS", "BROADCAST"}) {
             TextButton tab = new TextButton(name, skin, "tab");
             tab.pad(8, 10, 8, 10);
             if (name.equals("SESSION")) {
@@ -266,6 +276,10 @@ public class AopiScreen extends ScreenAdapter {
             }
             if (name.equals("IMAGE")) {
                 tabs.addActor(imageTab);
+                continue;
+            }
+            if (name.equals("TEXT")) {
+                tabs.addActor(textTab);
                 continue;
             }
             tab.setDisabled(true);
@@ -293,6 +307,7 @@ public class AopiScreen extends ScreenAdapter {
 
     private void selectSettings(boolean selected) {
         imageTab.setChecked(false);
+        textTab.setChecked(false);
         broadcastTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(selected ? settingsScroll : dashboardPage).grow().minHeight(0);
@@ -309,6 +324,7 @@ public class AopiScreen extends ScreenAdapter {
 
     private void selectHotbits() {
         imageTab.setChecked(false);
+        textTab.setChecked(false);
         broadcastTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(hotbitsScroll).grow().minHeight(0);
@@ -323,6 +339,7 @@ public class AopiScreen extends ScreenAdapter {
 
     private void selectSession() {
         imageTab.setChecked(false);
+        textTab.setChecked(false);
         broadcastTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(sessionScroll).grow().minHeight(0);
@@ -337,6 +354,7 @@ public class AopiScreen extends ScreenAdapter {
 
     private void selectAnalysis() {
         imageTab.setChecked(false);
+        textTab.setChecked(false);
         broadcastTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(analysisScroll).grow().minHeight(0);
@@ -356,6 +374,7 @@ public class AopiScreen extends ScreenAdapter {
 
     private void selectBroadcast() {
         imageTab.setChecked(false);
+        textTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(broadcastScroll).grow().minHeight(0);
         dashboardTab.setChecked(false);
@@ -375,6 +394,7 @@ public class AopiScreen extends ScreenAdapter {
     }
 
     private void selectImage() {
+        textTab.setChecked(false);
         pageContainer.clearChildren();
         pageContainer.add(imageScroll).grow().minHeight(0);
         dashboardTab.setChecked(false);
@@ -386,6 +406,21 @@ public class AopiScreen extends ScreenAdapter {
         imageTab.setChecked(true);
         imagePage.onShown();
         stage.setScrollFocus(imageScroll);
+        root.invalidateHierarchy();
+    }
+
+    private void selectText() {
+        pageContainer.clearChildren();
+        pageContainer.add(textScroll).grow().minHeight(0);
+        dashboardTab.setChecked(false);
+        settingsTab.setChecked(false);
+        sessionTab.setChecked(false);
+        analysisTab.setChecked(false);
+        hotbitsTab.setChecked(false);
+        broadcastTab.setChecked(false);
+        imageTab.setChecked(false);
+        textTab.setChecked(true);
+        stage.setScrollFocus(textScroll);
         root.invalidateHierarchy();
     }
 
@@ -627,6 +662,9 @@ public class AopiScreen extends ScreenAdapter {
 
             @Override
             public boolean keyUp(int keycode) {
+                if (textTab.isChecked() && (keycode == Input.Keys.CONTROL_LEFT || keycode == Input.Keys.CONTROL_RIGHT)) {
+                    textPage.analyze();
+                }
                 return shortcuts.keyUp(keycode);
             }
         }, stage));
@@ -640,6 +678,8 @@ public class AopiScreen extends ScreenAdapter {
             fonts.refresh(analysisPage, skin);
             fonts.refresh(broadcastPage, skin);
             fonts.refresh(imagePage, skin);
+            fonts.refresh(textPage, skin);
+            textPage.refreshFonts();
             if (hotbitsPage != null) {
                 fonts.refresh(hotbitsPage, skin);
             }
@@ -690,6 +730,7 @@ public class AopiScreen extends ScreenAdapter {
     @Override
     public void dispose() {
         imagePage.dispose();
+        textPage.dispose();
         broadcastPage.dispose();
         analysisPage.dispose();
         sessionPage.dispose();
